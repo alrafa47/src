@@ -24,6 +24,7 @@ Ext.define('SIPAS.view.Sipas.unit.List', {
         'SIPAS.view.Sipas.com.button.Edit',
         'SIPAS.view.Sipas.com.button.Delete',
         'SIPAS.view.Sipas.com.button.ToggleFilter',
+        'SIPAS.view.Sipas.unit.Combo',
         'Ext.button.Button',
         'Ext.toolbar.Fill',
         'Ext.form.field.ComboBox',
@@ -98,6 +99,9 @@ Ext.define('SIPAS.view.Sipas.unit.List', {
                         },
                         {
                             xtype: 'tbfill'
+                        },
+                        {
+                            xtype: 'sipasunitcombo'
                         },
                         {
                             xtype: 'combobox',

@@ -58,8 +58,7 @@ Ext.define('SIPAS.view.Sipas.akun.List', {
                     },
                     items: [
                         {
-                            xtype: 'sipasunitcombo',
-                            itemId: 'comboUnit'
+                            xtype: 'sipasunitcombo'
                         },
                         {
                             xtype: 'sipas_com_button_refresh'

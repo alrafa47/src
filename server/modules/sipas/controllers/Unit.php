@@ -38,6 +38,8 @@ class unit extends Base_Controller
         $sorter = json_decode(varGet('sort', '[]'));
         $recursive = varGet('recursive');
 
+        $filter = $this->filterUnit($filter);
+
         if (strtolower($id) == 'root') $id = null;
 
         if ($section == 'tree') {
@@ -92,6 +94,8 @@ class unit extends Base_Controller
         $start = varGet('start');
         $filter = json_decode(varGet('filter', '[]'));
         $sorter = json_decode(varGet('sort', '[]'));
+
+        $filter = $this->filterUnit($filter);
 
         if (strtolower($id) == 'root') $id = null;
 
@@ -148,6 +152,8 @@ class unit extends Base_Controller
         $filter = json_decode(varGet('filter', '[]'));
         $sorter = json_decode(varGet('sort', '[]'));
 
+        $filter = $this->filterUnit($filter);
+
         if (strtolower($id) == 'root') $id = null;
 
         if ($section == 'tree') {
@@ -188,6 +194,18 @@ class unit extends Base_Controller
             }
         }
         $this->response($records);
+    }
+
+    public function filterUnit($filter)
+    {
+        $unit = varGet('unit');
+        if ($unit && $unit != 'semua') {
+            array_unshift($filter, (object)array(
+                'type'  => 'custom',
+                'value' => "unit_id ='$unit' OR unit_induk_id ='$unit'"
+            ));
+        }
+        return $filter;
     }
 
     public function owner($section = null)
@@ -468,17 +486,5 @@ class unit extends Base_Controller
             $operation = $unit->update($id, $data);
         }
         return $data;
-    }
-
-    public function filterUnit($filter)
-    {
-        $unit = varGet('unit');
-        if ($unit && $unit != 'semua') {
-            array_unshift($filter, (object)array(
-                'type'  => 'custom',
-                'value' => "unit_id ='$unit' OR unit_induk_id ='$unit'"
-            ));
-        }
-        return $filter;
     }
 }
