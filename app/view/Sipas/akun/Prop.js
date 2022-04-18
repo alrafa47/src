@@ -18,13 +18,14 @@ Ext.define('SIPAS.view.Sipas.akun.Prop', {
     alias: 'widget.sipas_akun_prop',
 
     requires: [
+        'SIPAS.view.Sipas.unit.Combo',
         'SIPAS.view.Sipas.com.button.Delete',
         'SIPAS.view.Sipas.com.button.Edit',
         'SIPAS.view.Sipas.com.button.Save',
         'Ext.form.Panel',
-        'Ext.form.field.Text',
         'Ext.form.FieldContainer',
         'Ext.form.field.Checkbox',
+        'Ext.form.field.ComboBox',
         'Ext.button.Button'
     ],
 
@@ -122,6 +123,11 @@ Ext.define('SIPAS.view.Sipas.akun.Prop', {
                             name: 'akun_isaktif',
                             boxLabel: 'Aktif',
                             inputValue: '1'
+                        },
+                        {
+                            xtype: 'sipasunitcombo',
+                            fieldLabel: 'Unit',
+                            name: 'akun_unit_id'
                         }
                     ]
                 }

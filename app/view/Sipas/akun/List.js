@@ -18,12 +18,13 @@ Ext.define('SIPAS.view.Sipas.akun.List', {
     alias: 'widget.sipas_akun_list',
 
     requires: [
+        'SIPAS.view.Sipas.unit.Combo',
         'SIPAS.view.Sipas.com.button.Refresh',
         'SIPAS.view.Sipas.com.button.Add',
         'SIPAS.view.Sipas.com.button.View',
+        'Ext.form.field.ComboBox',
         'Ext.button.Button',
         'Ext.toolbar.Fill',
-        'Ext.form.field.ComboBox',
         'Ext.grid.RowNumberer',
         'Ext.selection.RowModel',
         'Ext.toolbar.Paging'
@@ -56,6 +57,10 @@ Ext.define('SIPAS.view.Sipas.akun.List', {
                         }
                     },
                     items: [
+                        {
+                            xtype: 'sipasunitcombo',
+                            itemId: 'comboUnit'
+                        },
                         {
                             xtype: 'sipas_com_button_refresh'
                         },

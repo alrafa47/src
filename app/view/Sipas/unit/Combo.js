@@ -17,7 +17,6 @@ Ext.define('SIPAS.view.Sipas.unit.Combo', {
     extend: 'Ext.form.field.ComboBox',
     alias: 'widget.sipasunitcombo',
 
-    itemId: 'comboUnit',
     emptyText: 'Unit',
     displayField: 'unit_nama',
     store: 'Sipas.unit.Combo',
