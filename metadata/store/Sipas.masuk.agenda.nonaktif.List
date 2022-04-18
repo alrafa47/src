@@ -1,0 +1,64 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.masuk.agenda.nonaktif.List",
+        "model": "Sipas.Surat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.masuk.agenda.nonaktif.List"
+    },
+    "name": "Sipas.masuk.agenda.aktif.List1",
+    "designerId": "da8e7120-fb82-404d-94f9-743f6f0c836b",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat_masuk/nonaktif"
+            },
+            "name": "MyAjaxProxy33",
+            "designerId": "0f6bfb8b-d8bd-4412-b0ce-27326c89cdf4",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader33",
+                    "designerId": "124c1c78-1136-4822-87bc-fc92523f3375"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_properti_buat_tgl",
+                "root": null
+            },
+            "name": "MySorter2",
+            "designerId": "89056a0c-7945-423c-92a3-d493807eeccd"
+        }
+    ]
+}

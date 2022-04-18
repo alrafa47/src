@@ -1,0 +1,60 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.keluar.agenda.tembusan.penerima.List",
+        "model": "Sipas.Staf",
+        "remoteFilter": true,
+        "storeId": "Sipas.keluar.agenda.tembusan.penerima.List"
+    },
+    "name": "Sipas.masuk.agenda.distribusi.penerima.List1",
+    "designerId": "9c88d8c6-10c8-4081-8dc6-4bb65f6c0f64",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/staf/read"
+            },
+            "name": "MyAjaxProxy48",
+            "designerId": "734d58cd-01bc-4bcc-bc98-0f5c4cfe8161",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader48",
+                    "designerId": "b2484017-8105-443e-90af-f2ec9ab9593f"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "staf_nama"
+            },
+            "name": "MySorter11",
+            "designerId": "836f074e-b017-45df-b1bd-b9029e43ccc6"
+        }
+    ]
+}

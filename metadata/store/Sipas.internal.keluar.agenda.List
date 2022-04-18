@@ -1,0 +1,78 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.internal.keluar.agenda.List",
+        "model": "Sipas.Surat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.internal.keluar.agenda.List"
+    },
+    "name": "Sipas.internal.agenda.list.scope.in.List2",
+    "designerId": "10829677-54d3-4168-895d-95298506fa00",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat_ikeluar/read/scope"
+            },
+            "name": "MyAjaxProxy42",
+            "designerId": "ded3bd85-4128-4642-928b-a42825daa925",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "record": null,
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader42",
+                    "designerId": "790efe13-0801-4aea-87f3-ae7709b93635"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_properti_buat_tgl"
+            },
+            "name": "MySorter4",
+            "designerId": "d9a51b6b-76d9-43d7-97d3-f6fd61e52434"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": null,
+                "property": "surat_sorter"
+            },
+            "name": "MySorter",
+            "designerId": "6cc971f2-d5c6-4a9e-934c-04bcdb11b3a8"
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+Ext.define('SIPAS.controller.Sipas.staf.Entity', {
+	extend: 'SIPAS.controller.Sipas.base.Base',
+
+	controllers: [
+	'Sipas.staf.List',
+        'Sipas.staf.Prop',
+        'Sipas.staf.Lookup',
+        'Sipas.staf.impt.Prop',
+        'Sipas.staf.wakil.Pane',
+        'Sipas.staf.wakil.Popup',
+        'Sipas.staf.wakil.Lookup',
+        'Sipas.staf.wakil.pgs.Popup',
+        'Sipas.staf.wakil.atasan.Popup',
+        'Sipas.staf.wakil.monitoring.Mainview',
+        'Sipas.staf.wakil.monitoring.tugassaya.List',
+        'Sipas.staf.wakil.monitoring.riwayat.List',
+        'Sipas.staf.wakil.monitoring.masuk.List',
+        'Sipas.staf.wakil.monitoring.koreksi.List',
+        'Sipas.staf.tim.Compact',
+        'Sipas.staf.tim.List',
+        'Sipas.staf.tim.Prop',
+        'Sipas.staf.tim.Popup',
+        'Sipas.staf.tim.anggota.List',
+        'Sipas.staf.tim.anggota.Form',
+        'Sipas.staf.penerima.Lookup',
+        'Sipas.staf.penerima.List',
+        'Sipas.staf.penerima.disposisi.Lookup',
+        'Sipas.staf.penerima.available.Lookup',
+        'Sipas.staf.penerima.jabatan.Lookup',
+        'Sipas.staf.penerima.unit.Lookup',
+        'Sipas.staf.penerima.tim.Lookup',
+        'Sipas.staf.penerima.tim.disposisi.Lookup',
+        'Sipas.staf.penerima.tim.anggota.List',
+        'Sipas.staf.penerima.recent.Lookup',
+        'Sipas.staf.penerima.staf.Lookup',
+        'Sipas.staf.upload.tandatangan.Popup',
+        'Sipas.staf.akun.Lookup'
+	]
+	
+});

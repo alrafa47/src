@@ -1,0 +1,190 @@
+{
+    "type": "Ext.form.FieldContainer",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_com_reportfilter_ekspedisi",
+        "designer|userClassName": "Sipas.com.reportfilter.Ekspedisi",
+        "fieldLabel": "",
+        "filterAfterDate": "Setelah Tanggal",
+        "filterBeforeDate": "Sebelum Tanggal",
+        "filterDate": "Pada Tanggal",
+        "filterDateRange": "Rentang Tanggal",
+        "filterMonth": "Pada Bulan",
+        "filterYear": "Pada Tahun",
+        "height": null,
+        "itemId": null,
+        "layout": "hbox",
+        "width": null
+    },
+    "name": "Sipas.com.reportfilter2",
+    "designerId": "b24032f9-4809-4a44-b141-c241dd9cfc10",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "filterDate",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterYear",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterMonth",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterDateRange",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterAfterDate",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterBeforeDate",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterDateConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterDateRangeConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterBeforeDateConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterAfterDateConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterMonthConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterYearConfig",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.form.field.ComboBox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "displayField": "surat_masuk_nomor",
+                "fieldLabel": "No. Surat",
+                "hideTrigger": true,
+                "itemId": "comboFilter",
+                "labelWidth": 70,
+                "layout|flex": 1,
+                "minChars": 1,
+                "store": "Sipas.masuk.agenda.Combo",
+                "typeAhead": true,
+                "valueField": "surat_masuk_surat"
+            },
+            "name": "MyComboBox1",
+            "designerId": "9fb55785-fb2b-4072-9759-6653ba84a18d"
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": "x-btn-bordered",
+                "iconCls": null,
+                "itemId": "buttonProcess",
+                "layout|flex": 1,
+                "text": "<b>PROSES</b>"
+            },
+            "name": "MyButton",
+            "designerId": "70d8d962-b618-4ab0-90d5-2d09148b2734",
+            "cn": [
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processButtonProcess",
+                        "implHandler": [
+                            "var me = this;",
+                            "return Ext.apply(config, me.filterProcessConfig);"
+                        ]
+                    },
+                    "name": "processButtonProcess",
+                    "designerId": "bca197b4-9e8f-4380-a8ad-2f02b2bfdba7"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onButtonProcessClick",
+                        "implHandler": [
+                            "filter= this.down('#comboFilter').getValue();",
+                            "this.fireEventArgs('process',[this,filter, filter, e, eOpts]);"
+                        ],
+                        "name": "click",
+                        "scope": "me"
+                    },
+                    "name": "onButtonProcessClick",
+                    "designerId": "bb5052c4-d9c7-46a1-be07-335b8e8c5f56"
+                }
+            ]
+        },
+        {
+            "type": "customevent",
+            "reference": {
+                "name": "customEvents",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "process",
+                "params": [
+                    "me",
+                    "filter",
+                    "value",
+                    "e",
+                    "eOpts"
+                ]
+            },
+            "name": "CustomEvent",
+            "designerId": "e3d805a3-57d1-4271-a332-8b8d8b50b671"
+        }
+    ]
+}

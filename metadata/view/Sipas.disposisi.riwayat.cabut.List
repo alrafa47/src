@@ -1,0 +1,207 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "allowDeselect": true,
+        "bodyBorder": false,
+        "border": null,
+        "designer|userAlias": "sipas_disposisi_riwayat_cabut_list",
+        "designer|userClassName": "Sipas.disposisi.riwayat.cabut.List",
+        "disableSelection": true,
+        "frameHeader": false,
+        "header": false,
+        "height": null,
+        "hideHeaders": null,
+        "id": null,
+        "itemId": "Sipas.disposisi.forward.penerima.List1",
+        "margin": null,
+        "padding": null,
+        "store": "Sipas.disposisi.riwayat.cabut.List",
+        "title": "Daftar Penerima"
+    },
+    "name": "Sipas.disposisi.forward.penerima.List1",
+    "designerId": "13e47633-3c62-4786-8419-15d686ca643e",
+    "cn": [
+        {
+            "type": "Ext.form.field.Hidden",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "left",
+                "fieldLabel": "Label",
+                "itemId": "disposisi_penerima",
+                "name": "disposisi_penerima_penerima",
+                "width": 100
+            },
+            "name": "MyHiddenField1",
+            "designerId": "bf966b0c-3988-4893-9738-d98303fcabff"
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "itemId": "toolbarControl"
+            },
+            "name": "MyToolbar54",
+            "designerId": "36ae3715-6edb-40d8-8bce-4e0a0219c361",
+            "cn": [
+                {
+                    "type": "Ext.form.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": "alternative bold",
+                        "hidden": true,
+                        "layout|flex": null,
+                        "layout|margins": null,
+                        "padding": 5,
+                        "text": "Penerima"
+                    },
+                    "name": "MyLabel",
+                    "designerId": "523f6ea1-709f-4bc3-b321-85f50f57e0d6",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onLabelAfterRender",
+                                "implHandler": [
+                                    "component.setText(component.up('panel').title);"
+                                ],
+                                "name": "afterrender",
+                                "scope": "me"
+                            },
+                            "name": "onLabelAfterRender",
+                            "designerId": "eb7c2849-fd50-46c1-9e01-3b70a231314e"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "disposisi_masuk_penerima_nama",
+                "flex": 1,
+                "maxWidth": null,
+                "menuText": null,
+                "minWidth": 200,
+                "sortable": false,
+                "text": "Penerima",
+                "width": null
+            },
+            "name": "MyColumn151",
+            "designerId": "2a4a6f78-c414-4550-b86d-79b45937b280",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var is_tembusan = record.get('disposisi_masuk_istembusan'),",
+                            "    is_berkas = record.get('disposisi_masuk_isberkas'),",
+                            "    berkas_isterima = record.get('disposisi_masuk_isberkasterima'),",
+                            "    berkas_terima_tgl = record.get('disposisi_masuk_berkasterima_tgl'),",
+                            "    jabatan = record.get('disposisi_masuk_penerima_jabatan_nama') ? record.get('disposisi_masuk_penerima_jabatan_nama') : '(Tidak ada jabatan)',",
+                            "    unit = record.get('disposisi_masuk_penerima_unit_nama') ? record.get('disposisi_masuk_penerima_unit_nama') : '(Tidak ada unit)';",
+                            "",
+                            "if (is_tembusan === 1){",
+                            "    is_tembusan = '<span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-logo-closed-captioning\"></i></span>Tembusan<span class=\"margin-right-8\"></span>';",
+                            "} else {",
+                            "    is_tembusan = '';",
+                            "}",
+                            "",
+                            "if (is_berkas === 1){",
+                            "    if (berkas_isterima === 1){",
+                            "        is_berkas = '<span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-md-copy green-700-i\"></i></span>Berkas diterima pada '+Ext.util.Format.date(berkas_terima_tgl, 'd M Y H:i');",
+                            "    } else {",
+                            "        is_berkas = '<span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-md-copy\"></i></span>Berkas belum diterima';",
+                            "    }",
+                            "} else {",
+                            "    is_berkas = '';",
+                            "}",
+                            "",
+                            "var id = record.getId(),",
+                            "    tpl = this.dataTpl || (",
+                            "        this.tpl =",
+                            "        \"<div class='cell-col'><div class='cell-row'><div class='cell-visual cell-visual-left'>\"+",
+                            "        \"<img src='server.php/sipas/staf/get_image/foto?id={disposisi_masuk_penerima_id}' class='img img-circle img-32'>\"+",
+                            "        \"</div>\"+",
+                            "        \"<div class='cell-text'>\"+",
+                            "        \"<div class='subtext ellipsis'>\"+record.get('disposisi_masuk_penerima_nama')+\"</div>\"+",
+                            "//         \"<div class='subtext'>\"+jabatan+\"</div>\"+",
+                            "        \"<div class='supporttext supporttext-dark ellipsis'>\"+jabatan+\" - \"+unit+\"</div>\"+",
+                            "        \"<div class='supporttext supporttext-dark'>\"+is_tembusan+is_berkas+\"</div>\"+",
+                            "        \"</div></div>\"",
+                            "    );",
+                            "return (new Ext.Template(tpl)).apply(record.getData());"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "e3a04678-546d-4634-8b62-efd8da85a15f"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyGridView14",
+            "designerId": "3a98aa71-e378-405b-a42c-d8ec83e95fc6"
+        },
+        {
+            "type": "Ext.grid.plugin.RowEditing",
+            "reference": {
+                "name": "plugins",
+                "type": "array"
+            },
+            "codeClass": "Ext.grid.plugin.RowEditing",
+            "userConfig": {
+                "pluginId": "roweditor"
+            },
+            "name": "MyRowEditingPlugin",
+            "designerId": "2ee7957a-8955-4d16-ac52-9efbf307ce28"
+        }
+    ]
+}

@@ -1,0 +1,868 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyBorder": false,
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_arsip_preview_popup",
+        "designer|userClassName": "Sipas.arsip.preview.Popup",
+        "height": 250,
+        "layout": "hbox",
+        "maximizable": true,
+        "maximized": true,
+        "modal": true,
+        "title": "Preview Dokumen",
+        "width": 400
+    },
+    "name": "Sipas.sdoc.editor.Popup1",
+    "designerId": "46357208-9ebc-4d50-bf7c-4f963887087e",
+    "cn": [
+        {
+            "type": "Ext.panel.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "autoScroll": true,
+                "itemId": "panelist",
+                "layout|flex": null,
+                "title": null,
+                "width": 170
+            },
+            "name": "MyPanel",
+            "designerId": "92c76726-4a3a-4dec-b31b-a764497d1989",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "border": null,
+                        "container|padding": null,
+                        "dock": "top",
+                        "itemId": "toolbarBerkas",
+                        "padding": 0
+                    },
+                    "name": "MyToolbar2",
+                    "designerId": "61c0fe9d-4cb3-4048-a365-e7e66a0e63fa",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": null,
+                                "hidden": null,
+                                "layout|flex": null,
+                                "layout|margins": "0 0 0 16",
+                                "margin": null,
+                                "padding": null,
+                                "value": "<b style=\"color:#04408c\">Berkas Lain</b>"
+                            },
+                            "name": "MyDisplayField3",
+                            "designerId": "12ec75af-e0bf-4595-aca5-1361ec048c25"
+                        },
+                        {
+                            "type": "Ext.toolbar.Fill",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "hidden": null,
+                                "layout|flex": null
+                            },
+                            "name": "MyFill",
+                            "designerId": "be0dd3a8-d9b3-49b6-b3b9-9d255528158d"
+                        },
+                        {
+                            "type": "processcfgfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "config"
+                                ],
+                                "fn": "processToolbarBerkas",
+                                "implHandler": [
+                                    "",
+                                    "return config;"
+                                ]
+                            },
+                            "name": "processToolbarBerkas",
+                            "designerId": "9f98525a-7333-4ea0-8f40-6f25b922dcf7"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "autoScroll": null,
+                        "itemId": "listPreview",
+                        "maxHeight": 567,
+                        "minHeight": null,
+                        "preserveScrollOnRefresh": null,
+                        "viewConfig": [
+                            "{",
+                            "preserveScrollOnRefresh: true",
+                            "}"
+                        ],
+                        "width": 170
+                    },
+                    "name": "sipas.arsip.dataview",
+                    "configAlternates": {
+                        "viewConfig": "array"
+                    },
+                    "designerId": "716f1050-50ea-4063-b1e1-7a49f50b61ea",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "viewConfig",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "6a8e4870-93a0-4e1b-8334-a516718b8a3e",
+                    "cn": [
+                        {
+                            "type": "processcfgfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "config"
+                                ],
+                                "fn": "processListPreview",
+                                "implHandler": [
+                                    "Ext.apply(config, this.dataviewConfig);",
+                                    "return config;"
+                                ]
+                            },
+                            "name": "processListPreview",
+                            "designerId": "262771cc-3d0c-4669-9ec1-765b6be6de55"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "itemId": "panepreview",
+                "layout": "vbox",
+                "layout|flex": 1
+            },
+            "name": "MyContainer2",
+            "designerId": "383946fb-d5ea-448e-a7f8-ca1dbf5c6ef0",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "border": null,
+                        "height": 10,
+                        "hidden": null,
+                        "itemId": "cmpeditor",
+                        "layout|flex": 1,
+                        "width": null
+                    },
+                    "name": "sipas.com.ckeditor",
+                    "designerId": "faaf9f69-e311-4403-9665-21f159113b3d",
+                    "masterInstanceId": "9b881d42-08c0-482f-a84a-7bbc32f0de2f"
+                },
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "border": false,
+                        "header": false,
+                        "itemId": "cmppreview",
+                        "layout|flex": 1,
+                        "title": null
+                    },
+                    "name": "MyPanel2",
+                    "designerId": "524e325c-f96b-4cd2-8497-90456f84caf1",
+                    "cn": [
+                        {
+                            "type": "Ext.toolbar.Toolbar",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dock": "top",
+                                "itemId": "toolbarControl"
+                            },
+                            "name": "MyToolbar1",
+                            "designerId": "6e7891a7-acf0-41c9-82d4-f6c56e1db496",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "hidden": true,
+                                        "layout|flex": null
+                                    },
+                                    "name": "sipas.com.button.refresh",
+                                    "designerId": "e2d79137-3ff5-4a90-ab96-94ee6541796d",
+                                    "masterInstanceId": "e517a5ab-fc5b-441a-97a3-5c706738d092",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onReload",
+                                                "implHandler": [
+                                                    "this.reload();"
+                                                ],
+                                                "name": "click",
+                                                "scope": "me"
+                                            },
+                                            "name": "onReload",
+                                            "designerId": "80ad811d-2bdc-4406-8ed7-692cf3606e72"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": null,
+                                        "itemId": "btncetak",
+                                        "layout|flex": null
+                                    },
+                                    "name": "sipas.com.button.print",
+                                    "designerId": "0e1fd2d2-e608-432f-b969-749094bb067a",
+                                    "masterInstanceId": "4acde223-fe77-4a4b-8394-07ccd10e338e",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onPrint",
+                                                "implHandler": [
+                                                    "this.print();"
+                                                ],
+                                                "name": "click",
+                                                "scope": "me"
+                                            },
+                                            "name": "onPrint",
+                                            "designerId": "ed6fb596-4529-4189-9cc6-661905aeceff"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "hidden": null,
+                                        "itemId": "btndownload",
+                                        "layout|flex": null
+                                    },
+                                    "name": "sipas.com.button.download",
+                                    "designerId": "e07e4b58-14c2-4a1f-9ca3-f8b1be10ec4f",
+                                    "masterInstanceId": "57671838-a3d0-4dd9-89fa-8be31c5e1c88"
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "btnzoom",
+                                        "layout|flex": null
+                                    },
+                                    "name": "sipas.com.button.zoom",
+                                    "designerId": "f64b9c51-f43c-48be-a503-e7d0e75b1f13",
+                                    "masterInstanceId": "d313fdcd-8ba8-4890-a154-ee234e2e3fa1",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onZoom",
+                                                "implHandler": [
+                                                    "this.zoom();"
+                                                ],
+                                                "name": "click",
+                                                "scope": "me"
+                                            },
+                                            "name": "onZoom",
+                                            "designerId": "42f33158-7c46-4bd1-8fda-e27043ccee0f"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "btnzoomin",
+                                        "layout|flex": null
+                                    },
+                                    "name": "sipas.com.button.zoomin",
+                                    "designerId": "3a1f414b-d1c3-4887-a776-2576d87b7bd3",
+                                    "masterInstanceId": "7bf0b373-68ef-40f7-a68b-c725f2980209",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onZoomIn",
+                                                "implHandler": [
+                                                    "this.zoomIn();"
+                                                ],
+                                                "name": "click",
+                                                "scope": "me"
+                                            },
+                                            "name": "onZoomIn",
+                                            "designerId": "d447bdc9-1d51-4589-b26b-98f6b2ce5892"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "btnzoomout",
+                                        "layout|flex": null
+                                    },
+                                    "name": "sipas.com.button.zoomout",
+                                    "designerId": "35970e02-199c-439c-9d38-1981b2eb89a1",
+                                    "masterInstanceId": "ddf8073f-db33-4230-a222-1ef65c899e66",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onZoomOut",
+                                                "implHandler": [
+                                                    "this.zoomOut();"
+                                                ],
+                                                "name": "click",
+                                                "scope": "me"
+                                            },
+                                            "name": "onZoomOut",
+                                            "designerId": "8219af3f-df75-48fd-96b3-26d062ac9da3"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "linkedinstance",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "defaultAlign": "center",
+                                "itemId": "iframe"
+                            },
+                            "name": "sipas.com.iframe",
+                            "designerId": "529be084-33eb-4b34-9ac1-76adf30fb8c0",
+                            "masterInstanceId": "a7c0f8fc-2b77-4dae-a6f7-a8dcd7ba84e5"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "bodyPadding": "8 16 8 16",
+                        "border": false,
+                        "header": false,
+                        "itemId": "cmplink",
+                        "layout": null,
+                        "layout|flex": 1,
+                        "margin": null,
+                        "title": null
+                    },
+                    "name": "MyForm",
+                    "designerId": "4e7ef5da-9d8e-4443-a4cf-7431fe635cc7",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "emptyText": "Masukkan Perihal Tautan",
+                                "fieldLabel": "Tentang",
+                                "labelAlign": "top",
+                                "layout|anchor": "100%",
+                                "name": "dokumen_nama",
+                                "readOnly": true
+                            },
+                            "name": "MyTextField3",
+                            "designerId": "2b7069df-242c-41e0-a6f1-4fc9e6e8065e"
+                        },
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "stretch",
+                                "layout": "hbox",
+                                "margin": "0 0 12 0"
+                            },
+                            "name": "MyContainer4",
+                            "designerId": "1c65abd0-b799-4b3a-a9c5-557fb2f886f4",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "emptyText": "http://www.example.com",
+                                        "enableKeyEvents": true,
+                                        "fieldLabel": "Perihal",
+                                        "labelAlign": "top",
+                                        "layout|flex": 1,
+                                        "name": "dokumen_file",
+                                        "readOnly": true,
+                                        "width": 330
+                                    },
+                                    "name": "MyTextField2",
+                                    "designerId": "ac13dce8-ab32-43e2-9836-acf9265457b8"
+                                },
+                                {
+                                    "type": "Ext.container.Container",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout": "fit",
+                                        "layout|flex": null,
+                                        "layout|margins": null,
+                                        "margin": null,
+                                        "padding": null,
+                                        "width": 40
+                                    },
+                                    "name": "MyContainer1",
+                                    "designerId": "f0025a92-6987-4da7-b1a0-d98f28e9f997",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.button.Button",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": "x-btn-circle",
+                                                "designer|uiInterfaceName": "default-toolbar-small",
+                                                "height": null,
+                                                "iconCls": "icon ion-md-open",
+                                                "itemId": "buttonOpenLink",
+                                                "margin": "20 0 0 0",
+                                                "maxHeight": null,
+                                                "padding": null,
+                                                "text": null,
+                                                "tooltip": null,
+                                                "ui": "default-toolbar",
+                                                "width": null
+                                            },
+                                            "name": "MyButton4",
+                                            "designerId": "22207c08-b267-4402-a1c3-b2a4bf863ca4"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "panepenerima",
+                "layout|flex": null,
+                "store": "Sipas.surat.penerima.keputusan.List",
+                "title": null,
+                "width": 280
+            },
+            "name": "MyGridPanel",
+            "designerId": "49f6503e-0c03-4aca-843d-736f31442bf6",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top",
+                        "height": null,
+                        "id": null,
+                        "itemId": "toolbarControl"
+                    },
+                    "name": "MyToolbar41",
+                    "designerId": "a9cb867a-3945-4310-b550-c9f94eef51f8",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": null,
+                                "hidden": null,
+                                "hideLabel": true,
+                                "layout|flex": null,
+                                "layout|margins": "0 0 0 5",
+                                "value": "<b style=\"color:#04408c\">Penerima Surat</b>",
+                                "width": 100
+                            },
+                            "name": "MyDisplayField",
+                            "designerId": "b5ccfbf3-4163-4c3d-ac5a-c38b3bab5bd1"
+                        },
+                        {
+                            "type": "Ext.toolbar.Fill",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "hidden": null,
+                                "layout|flex": null
+                            },
+                            "name": "MyFill1",
+                            "designerId": "6d7c9d17-ebf4-45cd-9081-33de57b4bec5"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.View",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyGridView",
+                    "designerId": "eeab0b4f-c876-47ea-a500-6cca33854815"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "staf_nama",
+                        "flex": 1,
+                        "menuDisabled": true,
+                        "menuText": null,
+                        "minWidth": 160,
+                        "sortable": false,
+                        "text": "Nama Staf"
+                    },
+                    "name": "MyColumn98",
+                    "designerId": "bc15586b-1386-40a6-a2d6-3366b2f5d0b0",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "modelStaf = Ext.ModelManager.getModel('SIPAS.model.Sipas.Staf');",
+                                    "return modelStaf.renderPegawai(value, record);"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "da22504e-29b6-409d-ad07-216988892c33"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "processSipasarsippreviewPopup",
+                "implHandler": [
+                    "Ext.applyIf(config,{",
+                    "    downloadUrl: config && config.url",
+                    "},{});",
+                    "return config;"
+                ]
+            },
+            "name": "processSipasarsippreviewPopup",
+            "designerId": "ec3afedd-cc2a-4bbe-8ab9-62d14f791c66"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getFrame",
+                "implHandler": [
+                    "return this.down('#iframe');"
+                ]
+            },
+            "name": "getFrame",
+            "designerId": "4ea4b227-5d68-45b7-9949-eb1be52d45ab"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "print",
+                "implHandler": [
+                    "this.getFrame().print();",
+                    "this.fireEvent('print',this);"
+                ]
+            },
+            "name": "print",
+            "designerId": "db2cfba3-9cc7-4c4a-91d0-a801b264c52c"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "value"
+                ],
+                "fn": "zoom",
+                "implHandler": [
+                    "this.getFrame().zoom(value);",
+                    "this.fireEvent('zoom', this, this.getFrame().zoomState);"
+                ]
+            },
+            "name": "zoom",
+            "designerId": "ffc77be3-b53b-420a-abe6-e7ce602db7d8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "increase"
+                ],
+                "fn": "zoomIn",
+                "implHandler": [
+                    "this.getFrame().zoomIn(increase);",
+                    "this.fireEvent('zoomin', this, this.getFrame().zoomState);"
+                ]
+            },
+            "name": "zoomIn",
+            "designerId": "00dfdf24-92be-4905-b5bc-0b347da99f41"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "decrease"
+                ],
+                "fn": "zoomOut",
+                "implHandler": [
+                    "this.getFrame().zoomOut(decrease);",
+                    "this.fireEvent('zoomout', this, this.getFrame().zoomState);"
+                ]
+            },
+            "name": "zoomOut",
+            "designerId": "2fbdcd23-04a9-4e68-a7cd-d721e85c4f93"
+        },
+        {
+            "type": "customevent",
+            "reference": {
+                "name": "customEvents",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|createAlias": null,
+                "designer|displayName": null,
+                "name": "print"
+            },
+            "name": "CustomEvent4",
+            "designerId": "070b4a89-fa1c-4ae7-9161-46199a858c74"
+        },
+        {
+            "type": "customevent",
+            "reference": {
+                "name": "customEvents",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "zoom"
+            },
+            "name": "CustomEvent14",
+            "designerId": "4014f24b-c1e9-4a35-b58b-a6b66a2fc846"
+        },
+        {
+            "type": "customevent",
+            "reference": {
+                "name": "customEvents",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "zoomin"
+            },
+            "name": "CustomEvent15",
+            "designerId": "cfa5fcde-6346-4207-8e81-9dad0c6732b1"
+        },
+        {
+            "type": "customevent",
+            "reference": {
+                "name": "customEvents",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "zoomout"
+            },
+            "name": "CustomEvent16",
+            "designerId": "d8f47b4e-99c3-4a5e-bcf3-4154e3eee848"
+        }
+    ]
+}

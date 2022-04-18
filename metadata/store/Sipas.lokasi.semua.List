@@ -1,0 +1,62 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.lokasi.semua.List",
+        "model": "Sipas.Lokasi",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.lokasi.semua.List"
+    },
+    "designerId": "fd4a1cd7-cd07-4edb-983d-b7289dce1e56",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/lokasi/read"
+            },
+            "name": "MyAjaxProxy20",
+            "designerId": "01be69ee-3e11-489c-81aa-a5da37c0e572",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "idProperty": null,
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader20",
+                    "designerId": "559dfa82-beaa-4a5a-bd6c-625d564fa882"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "lokasi_nama"
+            },
+            "name": "MySorter15",
+            "designerId": "254fabc0-b14a-47f7-b4f4-3a816737cbe5"
+        }
+    ]
+}

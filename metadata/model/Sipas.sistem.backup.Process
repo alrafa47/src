@@ -1,0 +1,154 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.sistem.backup.Process",
+        "idProperty": "process_id"
+    },
+    "name": "Sipas.system.Backup1",
+    "designerId": "82d70b5b-3fdc-474a-8d83-95569a033a20",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "process_id"
+            },
+            "name": "MyField700",
+            "designerId": "1126657b-7c30-4a69-a283-38711efcc0c1"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "process_nama"
+            },
+            "name": "MyField704",
+            "designerId": "556e9420-8478-4b5b-b3e3-0da1eafeeb89"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "process_status",
+                "type": "int"
+            },
+            "name": "MyField705",
+            "designerId": "890cc9f0-e792-48e9-a15d-46467aa2df5e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "process_status_convert",
+                "type": null
+            },
+            "name": "MyField1167",
+            "designerId": "ce229701-1e44-4ffa-a0ae-59fa3961c676",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "v",
+                            "rec"
+                        ],
+                        "fn": "convert",
+                        "implHandler": [
+                            "var value = rec.get('process_status'),",
+                            "    exec = rec.get('process_exec');",
+                            "",
+                            "if(exec !== true){",
+                            "    return 'Tidak tereksekusi';",
+                            "}else{",
+                            "    if(value === 0){",
+                            "        return 'Menunggu';",
+                            "    }else if(value === 1){",
+                            "        return '<i class=\"loading\" style=\"margin: 0 4px -4px 0\"></i> Proses';",
+                            "    }else if(value === 2){",
+                            "        return '<i class=\"icon ion-md-checkmark green-600-i\"></i> Selesai';",
+                            "    }else{",
+                            "        return '<i class=\"icon ion-md-close red-600-i\"></i> Gagal';",
+                            "    }",
+                            "}"
+                        ]
+                    },
+                    "name": "convert",
+                    "designerId": "2c5d7bfe-da3e-48d3-95cb-e56c805eb34c"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "process_exec"
+            },
+            "name": "MyField706",
+            "designerId": "ed61ad2e-48f8-4e17-993d-44db8b30bb79"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "process_backup"
+            },
+            "name": "MyField7",
+            "designerId": "c12f61ae-6c73-4499-af5f-40a294871766"
+        },
+        {
+            "type": "staticfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "statusProsesBackup",
+                "implHandler": [
+                    "return {",
+                    "    PROCESS_INITIATE : 0,",
+                    "    PROCESS_EXECUTE : 1,",
+                    "    PROCESS_DONE : 2,",
+                    "    PROCESS_FAIL : 4",
+                    "};"
+                ]
+            },
+            "name": "statusProsesBackup",
+            "designerId": "b3069485-c3b9-4c9e-81ad-1e9f6c51b3f6"
+        }
+    ]
+}

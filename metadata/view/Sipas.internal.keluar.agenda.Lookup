@@ -1,0 +1,588 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "sipas_internal_keluar_agenda_lookup",
+        "designer|userClassName": "Sipas.internal.keluar.agenda.Lookup",
+        "height": 400,
+        "id": null,
+        "itemId": null,
+        "layout": "fit",
+        "maximizable": true,
+        "minHeight": 100,
+        "minWidth": 200,
+        "modal": true,
+        "title": "Daftar Referensi Nomor Surat Keluar Internal",
+        "width": 720
+    },
+    "name": "Sipas.internal.masuk.agenda.Lookup1",
+    "designerId": "4ed99e0b-e076-4b6c-afcd-18b901b18fb7",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "id": null,
+                "itemId": "toolbarProperties"
+            },
+            "name": "MyToolbar39",
+            "designerId": "04b9447d-31f9-44da-a024-86dda12cd36f",
+            "cn": [
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayField": "unit_nama",
+                        "editable": false,
+                        "fieldLabel": null,
+                        "hideTrigger": true,
+                        "itemId": "comboScope",
+                        "labelAlign": null,
+                        "layout|flex": null,
+                        "minWidth": 300,
+                        "store": "Sipas.surat.scope.Combo",
+                        "valueField": "unit_id"
+                    },
+                    "name": "MyComboBox36",
+                    "designerId": "fd8e75fa-cb83-42dc-8ac4-ec5d249672db",
+                    "cn": [
+                        {
+                            "type": "Ext.view.BoundList",
+                            "reference": {
+                                "name": "listConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemSelector": "div"
+                            },
+                            "name": "MyBoundList",
+                            "designerId": "b3b1457a-d990-485c-a794-21abb797640c",
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "{unit_nama} <span style=\"color: gray\">({unit_kode})</span>"
+                                        ]
+                                    },
+                                    "name": "itemTpl",
+                                    "designerId": "774e5f77-1bca-4555-83e7-e3c534207f92"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "allowDeselect": true,
+                "border": false,
+                "emptyText": "Tidak Ada Data",
+                "frameHeader": null,
+                "id": null,
+                "itemId": null,
+                "store": "Sipas.internal.keluar.agenda.Lookup",
+                "title": null
+            },
+            "name": "MyGridPanel2",
+            "designerId": "546f66b3-8c41-4203-9741-aded1f920a01",
+            "cn": [
+                {
+                    "type": "Ext.grid.View",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyGridView3",
+                    "designerId": "14af8570-1365-4c1e-8d84-0fc9f3bac528"
+                },
+                {
+                    "type": "Ext.grid.RowNumberer",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "name": "MyRowNumberer11",
+                    "designerId": "7fa4abf9-0ab5-4607-ac6f-f5c8acaa4e15"
+                },
+                {
+                    "type": "Ext.grid.column.Date",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "surat_tanggal",
+                        "filterable": true,
+                        "format": "d M Y",
+                        "text": "Tgl.Surat",
+                        "width": 100
+                    },
+                    "name": "MyDateColumn1",
+                    "designerId": "2b8b47c5-0930-44ee-876b-a34b6da81104",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "filterable",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "surat_registrasi",
+                        "filterable": true,
+                        "items": [
+                            "{",
+                            "xtype: 'textfield',",
+                            "emptyText: 'Cari No Regisrasi',",
+                            "flex: 1,",
+                            "margin: 2,",
+                            "listeners: {",
+                            "change: function(textfield, e, eOpts){",
+                            "this.up('gridpanel').filterHeader(this);",
+                            "}",
+                            "}",
+                            "}"
+                        ],
+                        "text": "No.Registrasi",
+                        "width": 140
+                    },
+                    "name": "MyColumn10",
+                    "configAlternates": {
+                        "items": "object"
+                    },
+                    "designerId": "850f741b-0d41-4c5e-852a-f331086809c4",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "filterable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "items",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "if (value){",
+                                    "    return value;",
+                                    "} else {",
+                                    "    return '<span class=\"alternative\">-</span>';",
+                                    "}"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "c3417b1a-eaf4-4de9-807d-ff14bfb6829e"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "surat_nomor",
+                        "filterable": true,
+                        "items": [
+                            "{",
+                            "xtype: 'textfield',",
+                            "emptyText: 'Cari No Surat',",
+                            "flex: 1,",
+                            "margin: 2,",
+                            "listeners: {",
+                            "change: function(textfield, e, eOpts){",
+                            "this.up('gridpanel').filterHeader(this);",
+                            "}",
+                            "}",
+                            "}"
+                        ],
+                        "text": "No.Surat",
+                        "width": 140
+                    },
+                    "name": "MyColumn59",
+                    "configAlternates": {
+                        "items": "object"
+                    },
+                    "designerId": "9b20f7c4-0914-402d-8c74-ba7570a9cebb",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "filterable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "items",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "if (value){",
+                                    "    return '<span class=\"blue-700-i\">'+value+'</span>';",
+                                    "} else {",
+                                    "    return '<span class=\"alternative\">-</span>';",
+                                    "}"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "4054efd6-d474-4ddb-b996-4ce5113108c9"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "surat_perihal",
+                        "filterable": true,
+                        "flex": null,
+                        "items": [
+                            "{",
+                            "xtype: 'textfield',",
+                            "emptyText: 'Cari Perihal Surat',",
+                            "flex: 1,",
+                            "margin: 2,",
+                            "listeners: {",
+                            "change: function(textfield, e, eOpts){",
+                            "this.up('gridpanel').filterHeader(this);",
+                            "}",
+                            "}",
+                            "}"
+                        ],
+                        "text": "Perihal",
+                        "width": 300
+                    },
+                    "name": "MyColumn63",
+                    "configAlternates": {
+                        "items": "object"
+                    },
+                    "designerId": "2bb70c07-dec8-4628-a1e3-f366d89c94e8",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "filterable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "items",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "if (value){",
+                                    "    return value;",
+                                    "} else {",
+                                    "    return '<span class=\"alternative\">-</span>';",
+                                    "}"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "b263dbf5-b697-45cc-9c09-e7bf973352e4"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "itipe_nama",
+                        "filterable": true,
+                        "items": [
+                            "{",
+                            "xtype: 'textfield',",
+                            "emptyText: 'Cari Jenis Surat',",
+                            "flex: 1,",
+                            "margin: 2,",
+                            "listeners: {",
+                            "change: function(textfield, e, eOpts){",
+                            "this.up('gridpanel').filterHeader(this);",
+                            "}",
+                            "}",
+                            "}"
+                        ],
+                        "text": "Jenis",
+                        "width": 160
+                    },
+                    "name": "MyColumn58",
+                    "configAlternates": {
+                        "items": "object"
+                    },
+                    "designerId": "ef6050a7-342f-453d-8c92-0dc07853f662",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "filterable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "items",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "if (value){",
+                                    "    return value;",
+                                    "} else {",
+                                    "    return '<span class=\"alternative\">-</span>';",
+                                    "}"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "faf358e2-0e04-4543-9db5-3ddc5972f072"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "surat_agenda",
+                        "filterable": true,
+                        "hidden": true,
+                        "items": [
+                            "{",
+                            "    xtype: 'textfield',",
+                            "    emptyText: 'Cari No Agenda',",
+                            "    flex: 1,",
+                            "    margin: 2,",
+                            "    listeners: {",
+                            "        change: function(textfield, e, eOpts){",
+                            "            this.up('gridpanel').filterHeader(this);",
+                            "        }",
+                            "    }",
+                            "}"
+                        ],
+                        "text": "No.Agenda",
+                        "width": 100
+                    },
+                    "name": "MyColumn95",
+                    "configAlternates": {
+                        "items": "object"
+                    },
+                    "designerId": "dae97755-7eed-430d-a1b7-02d59b930ce6",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "filterable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "items",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "if (value){",
+                                    "    return value;",
+                                    "} else {",
+                                    "    return '<span class=\"alternative\">-</span>';",
+                                    "}"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "ced536b4-8315-423f-b65a-8a54ae08034a"
+                        }
+                    ]
+                },
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processMyGridPanel2",
+                        "implHandler": [
+                            "var filters = {\r",
+                            "    ftype: 'filters',\r",
+                            "    encode: true, \r",
+                            "    local: false \r",
+                            "};\r",
+                            "\r",
+                            "if (! config.features) {\r",
+                            "    config.features=filters;\r",
+                            "} else {\r",
+                            "    config.features.push(filters);\r",
+                            "}\r",
+                            "\r",
+                            "return config;"
+                        ]
+                    },
+                    "name": "processMyGridPanel2",
+                    "designerId": "7bbdd07c-a771-42b7-95fc-535b6bac911b"
+                },
+                {
+                    "type": "Ext.toolbar.Paging",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayInfo": true,
+                        "dock": "bottom",
+                        "store": "Sipas.internal.keluar.agenda.Lookup",
+                        "width": 360
+                    },
+                    "name": "MyPagingToolbar",
+                    "designerId": "d523435d-c880-4511-8575-f846abc3860a"
+                }
+            ]
+        }
+    ]
+}

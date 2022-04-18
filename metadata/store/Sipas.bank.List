@@ -1,0 +1,62 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.bank.List",
+        "model": "Sipas.Surat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "storeId": "Sipas.bank.List"
+    },
+    "name": "MyJsonStore",
+    "designerId": "b6387e55-fae4-4145-88b6-361da5a745f5",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/bank/read"
+            },
+            "name": "MyAjaxProxy8",
+            "designerId": "0ca610b3-c84e-4403-ab69-3e08baa5dc52",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader8",
+                    "designerId": "b58bedb8-4165-4370-a97d-e1745e305d2b"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_properti_buat_tgl"
+            },
+            "name": "MySorter24",
+            "designerId": "c5275955-2035-4626-99ae-acddacdca418"
+        }
+    ]
+}

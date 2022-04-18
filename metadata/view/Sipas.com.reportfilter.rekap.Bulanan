@@ -1,0 +1,544 @@
+{
+    "type": "Ext.form.FieldContainer",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_com_reportfilter_rekap_bulanan",
+        "designer|userClassName": "Sipas.com.reportfilter.rekap.Bulanan",
+        "fieldLabel": "",
+        "filterAfterDate": "Setelah Tanggal",
+        "filterBeforeDate": "Sebelum Tanggal",
+        "filterDate": "Pada Tanggal",
+        "filterDateRange": "Rentang Tanggal",
+        "filterMonth": "Pada Bulan",
+        "filterYear": "Pada Tahun",
+        "height": null,
+        "itemId": null,
+        "layout": "hbox",
+        "width": null
+    },
+    "name": "Sipas.com.reportfilter.Rekap1",
+    "designerId": "70f8453a-fd45-49cf-9aab-7447874a7b5a",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "filterDate",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterYear",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterMonth",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterDateRange",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterAfterDate",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterBeforeDate",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterDateConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterDateRangeConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterBeforeDateConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterAfterDateConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterMonthConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterYearConfig",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.form.field.Checkbox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "boxLabel": "Filter",
+                "boxLabelAlign": "before",
+                "checked": null,
+                "fieldLabel": "",
+                "hidden": true,
+                "itemId": "checkboxFilter",
+                "layout|margins": "0 4 0 0",
+                "name": "filter",
+                "padding": null
+            },
+            "name": "MyCheckbox",
+            "designerId": "8d985df3-54da-4e04-9481-18ad9323e788",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onCheckboxFilterChange",
+                        "implHandler": [
+                            "field.next('#comboFilter').setDisabled(oldValue);",
+                            "field.next('#comboUnit').setDisabled(oldValue);",
+                            "this.setFiltered(newValue);"
+                        ],
+                        "name": "change",
+                        "scope": "me"
+                    },
+                    "name": "onCheckboxFilterChange",
+                    "designerId": "2be35a2b-3fb4-46d7-bf12-7ba276e118f6"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.field.ComboBox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "anyMatch": true,
+                "bootstrapProperty": null,
+                "disabled": null,
+                "displayField": "surat_nama",
+                "editable": null,
+                "emptyText": "Pilih Jenis Surat",
+                "fieldLabel": "Tipe",
+                "forceSelection": true,
+                "hidden": true,
+                "hideLabel": true,
+                "hideTrigger": true,
+                "itemId": "comboTipe",
+                "labelWidth": 60,
+                "layout|flex": 1,
+                "margin": "0 5 0 0",
+                "name": "surat_tipe",
+                "queryMode": "local",
+                "store": "Sipas.surat.tipe.Combo",
+                "valueField": "surat_tipe"
+            },
+            "name": "MyComboBox3",
+            "designerId": "d8f0d5d2-6770-4dd0-9dcb-23e7f3b0ae5f",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "bootstrapProperty",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.field.ComboBox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bootstrapProperty": "Sipas.unit.Prop",
+                "displayField": "unit_nama",
+                "emptyText": "Pilih Unit Kerja",
+                "fieldLabel": "Unit Kerja",
+                "itemId": "comboUnit",
+                "labelWidth": 60,
+                "layout|flex": 1,
+                "matchFieldWidth": false,
+                "minChars": 2,
+                "name": "staf_unit",
+                "pageSize": 15,
+                "store": "Sipas.unit.Combo",
+                "tpl": null,
+                "typeAhead": true,
+                "valueField": "unit_id"
+            },
+            "name": "MyComboBox13",
+            "configAlternates": {
+                "associated": "boolean"
+            },
+            "designerId": "677bf983-4071-426d-b9ce-851b2d753489",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "bootstrapProperty",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "tpl",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.view.BoundList",
+                    "reference": {
+                        "name": "listConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemSelector": "div"
+                    },
+                    "name": "MyBoundList1",
+                    "designerId": "3b3c7715-393c-469f-b109-3b7d7b770448",
+                    "cn": [
+                        {
+                            "type": "Ext.XTemplate",
+                            "reference": {
+                                "name": "itemTpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "itemTpl",
+                                "implHandler": [
+                                    "{unit_nama} ({unit_kode})"
+                                ]
+                            },
+                            "name": "itemTpl",
+                            "designerId": "b452abfb-e368-418f-928a-347584150851"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.field.ComboBox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "disabled": null,
+                "displayField": "display",
+                "editable": false,
+                "emptyText": "Pilih Rentang Waktu",
+                "fieldLabel": "",
+                "hidden": null,
+                "hideLabel": true,
+                "itemId": "comboFilter",
+                "layout|flex": 1,
+                "name": null,
+                "store": [
+                    "[",
+                    "['month',this.filterMonth]",
+                    "]"
+                ],
+                "valueField": "value"
+            },
+            "name": "MyComboBox",
+            "configAlternates": {
+                "store": "array"
+            },
+            "designerId": "f400a741-dff3-4bb0-bfb1-fae463c91a96",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onComboFilterSelect",
+                        "implHandler": [
+                            "var me = this;",
+                            "me.setFilter(records[0] && records[0].get('field1') );"
+                        ],
+                        "name": "select",
+                        "scope": "me"
+                    },
+                    "name": "onComboFilterSelect",
+                    "designerId": "5f3a9781-092b-4cc1-82f5-9bffa083e2b2"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "editable": false,
+                "emptyText": "Bulan",
+                "hidden": true,
+                "itemId": "datefieldMonth",
+                "labelAlign": "right",
+                "layout|flex": 1,
+                "readOnly": null,
+                "width": 120
+            },
+            "name": "sipas.com.form.field.month3",
+            "designerId": "35c2225e-f75f-4549-bfb1-1c1eb6a6a225",
+            "masterInstanceId": "86982c19-8a58-44c3-bfa8-112217dce165",
+            "cn": [
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processDatefieldMonth",
+                        "implHandler": [
+                            "var me = this;",
+                            "return Ext.apply(config, me.filterMonthConfig);"
+                        ]
+                    },
+                    "name": "processDatefieldMonth",
+                    "designerId": "437d4917-288c-4a48-b97e-1dd1393f39a3"
+                }
+            ]
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": "extrasmall",
+                "iconCls": null,
+                "itemId": "buttonProcess",
+                "layout|flex": 1,
+                "margin": "0 0 0 5",
+                "text": "<b>PROSES</b>"
+            },
+            "name": "MyButton",
+            "designerId": "e3236c08-3777-45c3-95b8-44f52c9a8203",
+            "cn": [
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processButtonProcess",
+                        "implHandler": [
+                            "var me = this;",
+                            "return Ext.apply(config, me.filterProcessConfig);"
+                        ]
+                    },
+                    "name": "processButtonProcess",
+                    "designerId": "325bc1b8-488a-465e-8f34-5a4fdc27d4a2"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onButtonProcessClick",
+                        "implHandler": [
+                            "",
+                            "this.fireEventArgs('process',[this,this.getFilter(), this.getValue(), e, eOpts]);"
+                        ],
+                        "name": "click",
+                        "scope": "me"
+                    },
+                    "name": "onButtonProcessClick",
+                    "designerId": "d919750e-6555-4938-b833-e59d0955f300"
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "isFiltered",
+                "implHandler": [
+                    "return this.down('#checkboxFilter').getValue();"
+                ]
+            },
+            "name": "isFiltered",
+            "designerId": "f2263f41-eb67-456d-8cac-261190bc2e15"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getFilter",
+                "implHandler": [
+                    "return this.down('#comboFilter').getValue();"
+                ]
+            },
+            "name": "getFilter",
+            "designerId": "a53e63b6-2baf-4927-b70f-381f93140bf6"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "filter"
+                ],
+                "fn": "setFilter",
+                "implHandler": [
+                    "this.down('#comboFilter').setValue(filter);",
+                    "",
+                    "var me = this,",
+                    "\tcmpMonth = me.down('#datefieldMonth');",
+                    "",
+                    "switch(filter){",
+                    "\tcase 'month': cmpMonth.show(); break;",
+                    "}"
+                ]
+            },
+            "name": "setFilter",
+            "designerId": "309cc06a-b6d3-42c9-ab7a-bc5b8016d8cf"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "value"
+                ],
+                "fn": "setValue",
+                "implHandler": [
+                    "var me = this,",
+                    "\tcmpMonth = me.down('#datefieldMonth');",
+                    "",
+                    "switch(me.getFilter()){",
+                    "\tcase 'month': return cmpMonth.setValue(value);",
+                    "}"
+                ]
+            },
+            "name": "setValue",
+            "designerId": "ed02ac38-4aa1-4667-b0f9-a5a46cfd59a8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getValue",
+                "implHandler": [
+                    "var me = this,",
+                    "\tcmpMonth = me.down('#datefieldMonth');",
+                    "",
+                    "switch(me.getFilter()){",
+                    "\tcase 'month': return Ext.util.Format.date(cmpMonth.getValue(), cmpMonth.submitFormat);",
+                    "}"
+                ]
+            },
+            "name": "getValue",
+            "designerId": "dc2130f7-08d3-43a1-8e06-4ed13d5a2f44"
+        },
+        {
+            "type": "customevent",
+            "reference": {
+                "name": "customEvents",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "process",
+                "params": [
+                    "me",
+                    "filter",
+                    "value",
+                    "e",
+                    "eOpts"
+                ]
+            },
+            "name": "CustomEvent",
+            "designerId": "931f2912-c8e1-4c68-bb95-13187db87150"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "filtered"
+                ],
+                "fn": "setFiltered",
+                "implHandler": [
+                    "if(!filtered){",
+                    "    this.setFilter(null);",
+                    "}"
+                ]
+            },
+            "name": "setFiltered",
+            "designerId": "b80585b7-e39d-45f5-be8f-4fc8ca47a26c"
+        }
+    ]
+}

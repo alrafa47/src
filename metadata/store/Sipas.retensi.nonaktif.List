@@ -1,0 +1,62 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.retensi.nonaktif.List",
+        "model": "Sipas.Retensi",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.retensi.nonaktif.List"
+    },
+    "name": "Sipas.retensi.aktif.List1",
+    "designerId": "73f083c3-703b-4f2e-ad65-1e18320865bd",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/retensi/nonaktif"
+            },
+            "name": "MyAjaxProxy1",
+            "designerId": "e1531e2b-6c4c-4944-99b7-943d5c7ebb4f",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader1",
+                    "designerId": "406fdda9-1371-49b7-a085-b5a7e7ee8d17"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "retensi_hari"
+            },
+            "name": "MySorter",
+            "designerId": "cf5efe6e-485f-4124-938b-a7d6246ab60d"
+        }
+    ]
+}

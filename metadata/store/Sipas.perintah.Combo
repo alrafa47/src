@@ -1,0 +1,59 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.perintah.Combo",
+        "model": "Sipas.Perintah",
+        "pageSize": 1000,
+        "storeId": "Sipas.perintah.Combo"
+    },
+    "name": "Sipas.disposisi.aksi.Combo1",
+    "designerId": "b7ae0799-a82f-4c6f-85d8-2a4c5d156ce0",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/perintah/aktif"
+            },
+            "name": "MyAjaxProxy46",
+            "designerId": "f687e150-a99f-42de-bb56-e84b8dfe6af6",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader46",
+                    "designerId": "a8379a38-2cf6-455e-8561-37740cf292fd"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "perintah_nama"
+            },
+            "name": "MySorter1",
+            "designerId": "c4bb2a5a-69df-44c2-bf92-d995d6c06f39"
+        }
+    ]
+}

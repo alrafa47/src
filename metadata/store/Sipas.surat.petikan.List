@@ -1,0 +1,63 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.surat.petikan.List",
+        "model": "Sipas.Staf",
+        "pageSize": 1000,
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.surat.petikan.List"
+    },
+    "name": "Sipas.surat.penyetuju.List2",
+    "designerId": "f708f414-c600-42d3-bac9-4124c2fa2b78",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": null
+            },
+            "name": "MyAjaxProxy50",
+            "designerId": "f389af52-e147-443e-9144-f6a4cebf08a2",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader50",
+                    "designerId": "5756f20b-9134-421a-8515-90fcf5669e98"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "surat_stack_level"
+            },
+            "name": "MySorter19",
+            "designerId": "85da813f-4e88-4e96-b705-e8927f8b54e6"
+        }
+    ]
+}

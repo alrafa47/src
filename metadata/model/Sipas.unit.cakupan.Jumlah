@@ -1,0 +1,74 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.unit.cakupan.Jumlah",
+        "idProperty": "unit_cakupan_jabatan"
+    },
+    "name": "MyModel",
+    "designerId": "268e936e-d2fa-401b-b46c-1292a7a545d0",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "api": [
+                    "{",
+                    "    read : 'server.php/sipas/staf/read_jumlah_cakupan'",
+                    "}"
+                ]
+            },
+            "name": "MyAjaxProxy15",
+            "designerId": "d6418ee6-adb2-475e-a8f6-2da2a46f0284",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader16",
+                    "designerId": "fa3fde7d-fa0b-44bc-a163-f8043f84fc80"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "unit_cakupan_jabatan"
+            },
+            "name": "MyField209",
+            "designerId": "466212fb-665f-4c3a-bfd3-3da2f2b4ab2e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "jabatan_unit_jumlah"
+            },
+            "name": "MyField220",
+            "designerId": "e8db7fa1-fdff-4a5a-ba36-22c127a44997"
+        }
+    ]
+}

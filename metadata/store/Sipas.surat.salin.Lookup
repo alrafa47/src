@@ -1,0 +1,63 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.surat.salin.Lookup",
+        "model": "Sipas.Surat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.surat.salin.Lookup"
+    },
+    "name": "Sipas.keluar.agenda.Lookup2",
+    "designerId": "823eb867-d3d0-4751-8f80-d4a28ced4c56",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat/salinNomor"
+            },
+            "name": "MyAjaxProxy32",
+            "designerId": "cebe5431-2ee1-4d99-8cb8-dd0bb2db7bba",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader32",
+                    "designerId": "46c7ced6-25f9-4640-a18d-31b532390b0d"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_tanggal"
+            },
+            "name": "MySorter38",
+            "designerId": "bef99687-6801-4f9b-abf6-05af1eef2e9f"
+        }
+    ]
+}

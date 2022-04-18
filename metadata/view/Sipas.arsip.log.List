@@ -1,0 +1,297 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "dbclickToView": true,
+        "designer|userAlias": "sipas_arsip_log_list",
+        "designer|userClassName": "Sipas.arsip.log.List",
+        "height": null,
+        "hideHeaders": true,
+        "store": "Sipas.arsip.log.List",
+        "title": "Riwayat Dokumen",
+        "width": null
+    },
+    "name": "MyGridPanel",
+    "designerId": "14258b0c-d691-4f75-93e0-908702f3f4f0",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "dbclickToView",
+            "type": "boolean"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "properti_pembuat_nama",
+                "flex": 1,
+                "maxWidth": null,
+                "minWidth": 200,
+                "sortable": true,
+                "text": "",
+                "width": null
+            },
+            "name": "MyColumn151",
+            "designerId": "3a57e0fb-5a2f-472f-84e6-57046700e74d",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var aktif = record.get('dokumen_isactive');",
+                            "var id = record.getId(),",
+                            "\tjabatan = record.get('properti_pembuat_jabatan_nama') ? record.get('properti_pembuat_jabatan_nama') : '(Tidak ada jabatan)',",
+                            "\tunit = record.get('properti_pembuat_unit_nama') ? record.get('properti_pembuat_unit_nama') : '(Tidak ada unit)',",
+                            "    tpl = this.dataTpl || (",
+                            "        this.tpl =",
+                            "        \"<div class='cell-row margin-left-8'><div class='cell-visual cell-visual-left'>\"+",
+                            "        \"<img src='server.php/sipas/staf/get_image/foto?id=\"+record.get('properti_pembuat_id')+\"' class='img img-circle img-32'>\"+",
+                            "        \"</div><div class='cell-text'><div class='subtext ellipsis'>\"+value+\"</div>\"+",
+                            "        \"<div class='supporttext supporttext-dark ellipsis'>\"+jabatan+\" - \"+unit+\"</div></div>\"",
+                            "    );",
+                            "if(!aktif){",
+                            "    return (new Ext.Template(tpl)).apply(record.getData());",
+                            "}else{",
+                            "    return '<b>'+(new Ext.Template(tpl)).apply(record.getData())+'</b>';",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "a3f58103-3e62-4756-998a-f3749fafa4b6"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "dokumen_nama",
+                "flex": 1,
+                "sortable": true,
+                "text": "Nama Dokumen",
+                "width": 200
+            },
+            "name": "MyColumn1",
+            "designerId": "a4481266-3e23-4a3b-ae1e-74f667e3baaa",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var aktif = record.get('dokumen_isactive');",
+                            "var val = '',",
+                            "    nama = (record.get('dokumen_ext') == '.sdoc') ? value : value + record.get('dokumen_ext'),",
+                            "    tgl = Ext.util.Format.date(record.get('properti_buat_tgl'), 'd M Y H:i'),",
+                            "    idStaf = record.get('dokumen_buat_staf'),",
+                            "    pelaku = record.get('dokumen_buat_pelaku'),",
+                            "    pelakuNama = record.get('pelaku_nama'),",
+                            "    via_asistensi = '';",
+                            "if(!aktif){",
+                            "    val= '<div class=\"cell-text\"><div class=\"subtext\">'+nama+'</div>'+'<div class=\"supporttext supporttext-dark\">'+tgl+'</div></div>';",
+                            "}else{",
+                            "    val= '<div class=\"cell-text\"><div class=\"subtext\"><b>'+nama+'</b><span class=\"italic\" style=\"font-size:10px;\"> (aktif)</span></div>'+'<div class=\"supporttext supporttext-dark\">'+tgl+'</div></div>';",
+                            "}",
+                            "if(pelaku && pelaku != idStaf){",
+                            "    via_asistensi = '<div class=\"supporttext supporttext-dark\">Via asistensi oleh <span class=\"bold\">'+pelakuNama+'</span></div>';",
+                            "}",
+                            "return '<div class=\"margin-left-8\">'+val+via_asistensi+'</div>';"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "7beced8d-8210-4e58-8e66-035d85b2268a"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "dokumen_ext",
+                "hidden": true,
+                "sortable": true,
+                "text": "Tipe File",
+                "width": 60
+            },
+            "name": "MyColumn2",
+            "designerId": "31a832a9-d308-4438-a7f9-0c02f5dea39e",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var aktif = record.get('dokumen_isactive');",
+                            "",
+                            "return this.genAktif(value, aktif);"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "f671f853-7df7-4d56-97db-a8c6fa6db625"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Date",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "properti_buat_tgl",
+                "format": "d-m-Y H:i",
+                "hidden": true,
+                "sortable": true,
+                "text": "Tanggal Dokumen",
+                "width": 160
+            },
+            "name": "MyDateColumn1",
+            "designerId": "95925019-f2fe-4ceb-a3e6-9f10dc166ec0"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "dokumen_isactive",
+                "hidden": true,
+                "sortable": true,
+                "text": "Status",
+                "width": 160
+            },
+            "name": "MyColumn3",
+            "designerId": "6574ed6a-22c5-4d61-8a32-bcd6b0ecb86f",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(value){",
+                            "    return this.genAktif('Aktif', value);",
+                            "}",
+                            "else{",
+                            "    return this.genAktif('Tidak Aktif', value);",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "4c0abde6-ccd0-4901-92cc-7dee98100bf7"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyGridView",
+            "designerId": "90b5f558-a5e6-4c67-a0b0-e8b123ff77c5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "value",
+                    "aktif"
+                ],
+                "fn": "genAktif",
+                "implHandler": [
+                    "if(!aktif){",
+                    "    return '<span class=\"alternative\">'+value+'</span>';",
+                    "}else{",
+                    "    return '<span class=\"bold\">'+value+'</span>';",
+                    "}"
+                ]
+            },
+            "name": "genAktif",
+            "designerId": "b89f76b0-740d-453b-ac19-1d25037082dd"
+        }
+    ]
+}

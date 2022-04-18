@@ -1,0 +1,62 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.ekspedisi.nonaktif.List",
+        "model": "Sipas.Ekspedisi",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.ekspedisi.nonaktif.List"
+    },
+    "name": "Sipas.jenis.nonaktif.List1",
+    "designerId": "af9ed630-7476-40cd-ac9d-98590926c53b",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/ekspedisi/nonaktif"
+            },
+            "name": "MyAjaxProxy12",
+            "designerId": "8d8d1887-03f3-421e-b836-48e5ac4cb9e4",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader12",
+                    "designerId": "da62d59d-a92c-4110-9dfa-ab0882732bc7"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "ekspedisi_nama"
+            },
+            "name": "MySorter9",
+            "designerId": "69112252-87bf-47a6-af00-f97f2b512c1f"
+        }
+    ]
+}

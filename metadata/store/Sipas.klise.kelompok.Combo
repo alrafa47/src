@@ -1,0 +1,58 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.klise.kelompok.Combo",
+        "model": "Sipas.klise.Kelompok",
+        "storeId": "Sipas.klise.kelompok.Combo"
+    },
+    "name": "MyJsonStore",
+    "designerId": "77988df5-76d2-4501-a46e-00ec724ad7e3",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/klise_kelompok/read"
+            },
+            "name": "MyAjaxProxy7",
+            "designerId": "d0263559-f347-4859-9a20-229931c39329",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader7",
+                    "designerId": "646b9bcb-6878-4ac2-ae7c-52a24262a192"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "klise_kelompok"
+            },
+            "name": "MySorter11",
+            "designerId": "31a812d9-26f6-4f6c-829c-05a9412479cf"
+        }
+    ]
+}

@@ -1,0 +1,64 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.session.notification.agenda.eksternal.masuk.aktif7.List",
+        "model": "Sipas.Surat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.session.notification.agenda.eksternal.masuk.aktif7.List"
+    },
+    "name": "Sipas.masuk.agenda.aktif.List1",
+    "designerId": "e661ca4f-b5de-4859-9ac8-b63704f064f2",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/notif_agenda/eksternal/masuk_aktif7"
+            },
+            "name": "MyAjaxProxy33",
+            "designerId": "447812ac-53e7-4703-b480-7e0cf75e6ac9",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader33",
+                    "designerId": "e5bc9e5d-98a4-4574-8c41-c7ab51eefc0d"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_properti_buat_tgl",
+                "root": null
+            },
+            "name": "MySorter2",
+            "designerId": "690e9a56-019d-4361-b2e4-13522afd9a50"
+        }
+    ]
+}

@@ -1,0 +1,387 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "allowDeselect": null,
+        "bodyPadding": null,
+        "clickToView": true,
+        "columnLines": false,
+        "designer|userAlias": "sipas_aksi_list",
+        "designer|userClassName": "Sipas.aksi.List",
+        "emptyText": "Tidak ada Data",
+        "forceFit": null,
+        "height": null,
+        "id": null,
+        "itemId": null,
+        "margin": null,
+        "maxHeight": null,
+        "maxWidth": null,
+        "minHeight": null,
+        "minWidth": null,
+        "padding": null,
+        "store": "Sipas.aksi.aktif.List",
+        "title": "Tindakan Disposisi",
+        "titleAlign": null,
+        "width": null
+    },
+    "name": "Sipas.retensi.List1",
+    "designerId": "e8c101f9-fcd0-4ab5-885f-afb04c4ddf8e",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "clickToView",
+            "type": "boolean"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "dock": "top",
+                "id": null,
+                "itemId": "toolbarProperties"
+            },
+            "name": "MyToolbar6",
+            "designerId": "b6f4e878-2225-4793-ba64-d2342d4992f7",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": null,
+                        "layout|flex": null,
+                        "ui": null
+                    },
+                    "name": "sipas.com.button.refresh90",
+                    "configAlternates": {
+                        "roleable": "boolean"
+                    },
+                    "designerId": "d870755a-8235-49f2-a9dd-4e4181393513",
+                    "masterInstanceId": "e517a5ab-fc5b-441a-97a3-5c706738d092"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "roleName": "aksi_insert",
+                        "roleable": true,
+                        "ui": null
+                    },
+                    "name": "sipas.com.button.add43",
+                    "designerId": "1ddfdf16-e4d5-4773-b19f-9d46f4425273",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "420a71a2-f0ab-4b83-bf9b-b7cf567d6c9f"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.togglefilter47",
+                    "designerId": "ae823fbf-301f-48ea-bf63-2042e7b24e4b",
+                    "masterInstanceId": "6f699e21-9335-4237-9e49-37b207a20475",
+                    "cn": [
+                        {
+                            "type": "basicfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "button",
+                                    "state"
+                                ],
+                                "fn": "toggleHandler",
+                                "implHandler": [
+                                    "button.up('grid').query('gridcolumn textfield').forEach(function(field){",
+                                    "    state ? field.show():field.hide();",
+                                    "});"
+                                ]
+                            },
+                            "name": "toggleHandler",
+                            "designerId": "5c30c961-3f94-4315-bc9b-42aadaf9bb3c"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "MyFill28",
+                    "designerId": "faf33fa1-2119-41cb-9082-6a3f53e6100e"
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": null,
+                        "displayField": "nama",
+                        "editable": false,
+                        "fieldLabel": null,
+                        "hideTrigger": true,
+                        "itemId": "Aktif",
+                        "labelAlign": "right",
+                        "layout|flex": null,
+                        "store": [
+                            "{",
+                            "    fields: ['value','nama'],",
+                            "    data: [",
+                            "        {value:0,nama:'Semua'},",
+                            "        {value:1,nama:'Aktif'},",
+                            "        {value:2,nama:'Tidak Aktif'}",
+                            "    ]",
+                            "}"
+                        ],
+                        "ui": null,
+                        "value": "Aktif",
+                        "valueField": "value",
+                        "width": 200
+                    },
+                    "name": "MyComboBox27",
+                    "configAlternates": {
+                        "value": "string",
+                        "store": "array"
+                    },
+                    "designerId": "5161ae14-58a8-474e-a7f4-1bb09d193db3"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.RowNumberer",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "MyRowNumberer1",
+            "designerId": "58f8207a-398b-4076-9a3f-063429479f2b"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "aksi_nama",
+                "filterable": true,
+                "flex": null,
+                "items": [
+                    "{",
+                    "xtype: 'textfield',",
+                    "emptyText: 'Cari Respon',",
+                    "flex: 1,",
+                    "margin: 2,",
+                    "listeners: {",
+                    "change: function(textfield, e, eOpts){",
+                    "this.up('gridpanel').filterHeader(this);",
+                    "}",
+                    "}",
+                    "}"
+                ],
+                "languageCode": "tindakan_list_kolom",
+                "languageMode": "text",
+                "languageable": true,
+                "minWidth": 400,
+                "text": "Tindakan",
+                "width": null
+            },
+            "name": "MyColumn34",
+            "configAlternates": {
+                "filters": "object",
+                "filter": "object",
+                "items": "object"
+            },
+            "designerId": "3296b331-3685-4757-962e-0282d5586dc7",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "languageable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "languageMode",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "languageCode",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var aktif = record.get('aksi_isaktif');",
+                            "",
+                            "if(value){",
+                            "    return this.genAktif(value, aktif);",
+                            "}else{",
+                            "    return '<span class=\"alternative\">-</span>';",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "90daf06e-cb3f-4aa7-8f78-fb29f41ffaf7"
+                }
+            ]
+        },
+        {
+            "type": "Ext.selection.RowModel",
+            "reference": {
+                "name": "selModel",
+                "type": "object"
+            },
+            "codeClass": "Ext.selection.RowModel",
+            "userConfig": {
+                "allowDeselect": null
+            },
+            "name": "MyRowSelectionModel",
+            "designerId": "fa472cc2-40e3-4b06-92d2-003d01e29f5d"
+        },
+        {
+            "type": "Ext.toolbar.Paging",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "displayInfo": true,
+                "dock": "bottom",
+                "store": "Sipas.aksi.aktif.List",
+                "width": 360
+            },
+            "name": "MyPagingToolbar1",
+            "designerId": "48c7f18d-9246-4971-80b5-f3ce8d3b1f1a"
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "processSipasasalList",
+                "implHandler": [
+                    "var filters = {\r",
+                    "    ftype: 'filters',\r",
+                    "    encode: true, \r",
+                    "    local: false \r",
+                    "};\r",
+                    "\r",
+                    "if (! config.features) {\r",
+                    "    config.features=filters;\r",
+                    "} else {\r",
+                    "    config.features.push(filters);\r",
+                    "}\r",
+                    "\r",
+                    "return config;"
+                ]
+            },
+            "name": "processSipasasalList",
+            "designerId": "e185545c-564d-4603-82da-187ad067f486"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "value",
+                    "aktif"
+                ],
+                "fn": "genAktif",
+                "implHandler": [
+                    "if(!aktif){",
+                    "    return '<span class=\"alternative\">'+value+'</span>';",
+                    "}else{",
+                    "    return value;",
+                    "}"
+                ]
+            },
+            "name": "genAktif",
+            "designerId": "95803646-6a60-4926-b9db-535c984267fb"
+        }
+    ]
+}

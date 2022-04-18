@@ -1,0 +1,63 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": null,
+        "designer|userClassName": "Sipas.riwayat.session.Nonaktif",
+        "model": "Sipas.disposisi.Riwayat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.riwayat.session.Nonaktif"
+    },
+    "name": "Sipas.riwayat.session.Aktif1",
+    "designerId": "c28398ba-9c5a-4975-a125-24dd24be17bf",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/account/riwayat_nonaktif"
+            },
+            "name": "MyAjaxProxy5",
+            "designerId": "c2e3ac78-59de-4121-b2a7-d989b0d6b202",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader5",
+                    "designerId": "ec84f325-65bb-461b-85a9-df1e676c0367"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "disposisi_tgl"
+            },
+            "name": "MySorter28",
+            "designerId": "fd9ee3d4-9278-451d-bcc3-7c8245e98a62"
+        }
+    ]
+}

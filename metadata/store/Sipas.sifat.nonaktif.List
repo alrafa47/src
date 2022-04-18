@@ -1,0 +1,62 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.sifat.nonaktif.List",
+        "model": "Sipas.Sifat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.sifat.nonaktif.List"
+    },
+    "name": "Sipas.sifat.aktif.List1",
+    "designerId": "c622810e-7e44-4771-8d16-a21fe207f95d",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/sifat/nonaktif"
+            },
+            "name": "MyAjaxProxy14",
+            "designerId": "5100fc38-9c6c-4a3d-8c8d-08217983260c",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader14",
+                    "designerId": "50ff9945-e3d5-4446-9fa0-aca2174ebfa9"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "sifat_nama"
+            },
+            "name": "MySorter11",
+            "designerId": "4fc56d03-4f85-44ca-b4b5-10a9ec51dada"
+        }
+    ]
+}

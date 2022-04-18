@@ -1,0 +1,65 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.staf.wakil.monitoring.masuk.List",
+        "model": "Sipas.disposisi.Masuk",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.staf.wakil.monitoring.masuk.List"
+    },
+    "name": "Sipas.pegawai.asistensi.monitoring.disposisi.List1",
+    "designerId": "c5a95615-c232-4927-bfa6-f46b39028256",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/account/asistensi/masuk"
+            },
+            "name": "MyAjaxProxy51",
+            "designerId": "68465228-3855-4ef0-95c4-c5c93a549639",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader51",
+                    "designerId": "de65df41-7968-471c-b32e-93040eb95d81"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "tanggal",
+                "direction": "DESC",
+                "property": "disposisi_tgl",
+                "root": "data"
+            },
+            "name": "MySorter4",
+            "designerId": "c59f8814-8482-46d4-bbc6-267b01e8ffe5"
+        }
+    ]
+}

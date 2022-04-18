@@ -1,0 +1,505 @@
+{
+    "type": "Ext.Component",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoEl": [
+            "{",
+            " tag:\"iframe\",",
+            " frameborder:\"0\",",
+            " width:\"100%\",",
+            " height:\"100%\",",
+            " src: this.url,",
+            " name:this.name,",
+            " allowfullscreen: true,",
+            " mozallowfullscreen: true,",
+            " webkitallowfullscreen: true",
+            "}"
+        ],
+        "designer|userAlias": "sipas_com_iframe",
+        "designer|userClassName": "Sipas.com.Iframe",
+        "height": null,
+        "loadingText": "Loading ...",
+        "maskLoading": true,
+        "name": null,
+        "url": "about:blank",
+        "width": null,
+        "zoomState": 1
+    },
+    "name": "MyComponent1",
+    "configAlternates": {
+        "maskLoading": "boolean",
+        "zoomState": "number"
+    },
+    "designerId": "a7c0f8fc-2b77-4dae-a6f7-a8dcd7ba84e5",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "url",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "loadingText",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "maskLoading",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "zoomState",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "customevent",
+            "reference": {
+                "name": "customEvents",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "beforeload"
+            },
+            "name": "CustomEvent1",
+            "designerId": "892f4b1e-e94d-4f0b-9046-9d78590f3bd9"
+        },
+        {
+            "type": "customevent",
+            "reference": {
+                "name": "customEvents",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "load"
+            },
+            "name": "CustomEvent2",
+            "designerId": "cdf3e8fa-c210-4f9f-8d89-fbf6b43f9dd6"
+        },
+        {
+            "type": "customevent",
+            "reference": {
+                "name": "customEvents",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "zoom"
+            },
+            "name": "CustomEvent10",
+            "designerId": "dc6a75df-7aa2-4938-a374-77923b1d94c0"
+        },
+        {
+            "type": "customevent",
+            "reference": {
+                "name": "customEvents",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "zoomin"
+            },
+            "name": "CustomEvent11",
+            "designerId": "a6170a70-408c-4b3f-ab48-1769c87eedb4"
+        },
+        {
+            "type": "customevent",
+            "reference": {
+                "name": "customEvents",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "zoomout"
+            },
+            "name": "CustomEvent12",
+            "designerId": "ee2840d3-d72c-4912-812d-9df4cdc65216"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onAfterRender",
+                "implHandler": [
+                    "var me = this;",
+                    "this.getFrame().onload = function(){",
+                    "    me.onLoad();",
+                    "};"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "name": "onAfterRender",
+            "designerId": "1f80d578-2d56-4774-9913-45c80f892968"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getWindow",
+                "implHandler": [
+                    "var me = this,",
+                    "    win = me.name ? window.frames[name] : me.el.dom.contentWindow;",
+                    "return win;"
+                ]
+            },
+            "name": "getWindow",
+            "designerId": "5aa9bfe2-a735-4c15-8d92-05304db89c23"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getDocument",
+                "implHandler": [
+                    "try {",
+                    "    return this.getWindow().document;",
+                    "} catch (ex) {",
+                    "    return null;",
+                    "}"
+                ]
+            },
+            "name": "getDocument",
+            "designerId": "8ec5b81a-bad2-486e-8304-6c263bee6b9f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getBody",
+                "implHandler": [
+                    "var doc = this.getDocument();",
+                    "return doc.body || doc.documentElement;"
+                ]
+            },
+            "name": "getBody",
+            "designerId": "3456f6c3-78b2-4625-aa02-0b93ae5ec3ea"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getFrame",
+                "implHandler": [
+                    "var me = this;",
+                    "if(!me.rendered) return;",
+                    "return me.el.dom;"
+                ]
+            },
+            "name": "getFrame",
+            "designerId": "cef50d28-a7cd-4234-9b94-3b8d10ec5a69"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "beforeDestroy",
+                "implHandler": [
+                    "this.cleanupListeners(true);",
+                    "this.callParent(arguments);"
+                ]
+            },
+            "name": "beforeDestroy",
+            "designerId": "7bbfa4ec-70f3-4cd0-a852-4a7659b5c162"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "destroying"
+                ],
+                "fn": "cleanupListeners",
+                "implHandler": [
+                    "var doc, prop;",
+                    "",
+                    "if (this.rendered) {",
+                    "    try {",
+                    "        doc = this.getDocument();",
+                    "        if (doc) {",
+                    "            Ext.EventManager.removeAll(doc);",
+                    "            if (destroying) {",
+                    "                for (prop in doc) {",
+                    "                    if (doc.hasOwnProperty && doc.hasOwnProperty(prop)) {",
+                    "                        delete doc[prop];",
+                    "                    }",
+                    "                }",
+                    "            }",
+                    "        }",
+                    "    } catch(e) { }",
+                    "}"
+                ]
+            },
+            "name": "cleanupListeners",
+            "designerId": "da16c136-7666-4f5c-80bd-e38ff8041552"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "event"
+                ],
+                "fn": "onRelayedEvent",
+                "implHandler": [
+                    "// relay event from the iframe's document to the document that owns the iframe...",
+                    "",
+                    "        var iframeEl = this.el,",
+                    "",
+                    "            // Get the left-based iframe position",
+                    "            iframeXY = Ext.Element.getTrueXY(iframeEl),",
+                    "            originalEventXY = event.getXY(),",
+                    "",
+                    "            // Get the left-based XY position.",
+                    "            // This is because the consumer of the injected event (Ext.EventManager) will",
+                    "            // perform its own RTL normalization.",
+                    "            eventXY = Ext.EventManager.getPageXY(event.browserEvent);",
+                    "",
+                    "        // the event from the inner document has XY relative to that document's origin,",
+                    "        // so adjust it to use the origin of the iframe in the outer document:",
+                    "        event.xy = [iframeXY[0] + eventXY[0], iframeXY[1] + eventXY[1]];",
+                    "",
+                    "        event.injectEvent(iframeEl); // blame the iframe for the event...",
+                    "",
+                    "        event.xy = originalEventXY; // restore the original XY (just for safety)"
+                ]
+            },
+            "name": "onRelayedEvent",
+            "designerId": "428e672b-4cc5-452c-af42-0220b615a958"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "url",
+                    "callback",
+                    "scope"
+                ],
+                "fn": "load",
+                "implHandler": [
+                    "var me = this,",
+                    "    frame = me.getFrame();",
+                    "",
+                    "if (me.fireEvent('beforeload', me, url) !== false) {",
+                    "    if(me.maskLoading) {",
+                    "        me.rendered && me.setLoading(me.loadingText);",
+                    "    }",
+                    "    ",
+                    "    this.on('load', callback || Ext.emptyFn, scope || this, {single: true});",
+                    "",
+                    "    me.url = (url || me.url);",
+                    "    frame && (frame.src = me.url);",
+                    "}",
+                    "return me;"
+                ]
+            },
+            "name": "load",
+            "designerId": "beba9bfc-b5ff-4580-945e-cb1c963801ec"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "callback",
+                    "scope"
+                ],
+                "fn": "reload",
+                "implHandler": [
+                    "return this.load(this.url, callback, scope);"
+                ]
+            },
+            "name": "reload",
+            "designerId": "d3e93521-f0c7-4c2e-b4f3-7a46080d2b56"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "print",
+                "implHandler": [
+                    "this.getWindow().print();",
+                    "return this;"
+                ]
+            },
+            "name": "print",
+            "designerId": "c7899888-2b68-476a-bd9a-b5d8afba52be"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "value"
+                ],
+                "fn": "zoom",
+                "implHandler": [
+                    "this.zoomState = value = value || 1.0;",
+                    "this.getBody().style.zoom = this.zoomState;",
+                    "return this;"
+                ]
+            },
+            "name": "zoom",
+            "designerId": "6561c1fc-9a05-4aee-9a07-f2081dd28ef4"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "value"
+                ],
+                "fn": "zoomIn",
+                "implHandler": [
+                    "this.zoomState += value || 0.1;",
+                    "this.getBody().style.zoom = this.zoomState;",
+                    "return this;"
+                ]
+            },
+            "name": "zoomIn",
+            "designerId": "ad5e093c-ab22-418e-928e-4eb973b02bf4"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "value"
+                ],
+                "fn": "zoomOut",
+                "implHandler": [
+                    "this.zoomState -= value || 0.1;",
+                    "this.getBody().style.zoom = this.zoomState;",
+                    "return this;"
+                ]
+            },
+            "name": "zoomOut",
+            "designerId": "061aa729-03fc-4bcb-9c44-ff0a4e6ad5c8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onLoad",
+                "implHandler": [
+                    "var me = this,",
+                    "    doc = me.getDocument(),",
+                    "    fn = me.onRelayedEvent;",
+                    "",
+                    "this.setLoading(false);",
+                    "this.fireEvent('load', this, doc);",
+                    "return; // force end sub",
+                    "",
+                    "if (doc) {",
+                    "    try {",
+                    "        Ext.EventManager.removeAll(doc);",
+                    "",
+                    "        // These events need to be relayed from the inner document (where they stop",
+                    "        // bubbling) up to the outer document. This has to be done at the DOM level so",
+                    "        // the event reaches listeners on elements like the document body. The effected",
+                    "        // mechanisms that depend on this bubbling behavior are listed to the right",
+                    "        // of the event.",
+                    "        Ext.EventManager.on(doc, {",
+                    "            mousedown: fn, // menu dismisal (MenuManager) and Window onMouseDown (toFront)",
+                    "            mousemove: fn, // window resize drag detection",
+                    "            mouseup: fn,   // window resize termination",
+                    "            click: fn,     // not sure, but just to be safe",
+                    "            dblclick: fn,  // not sure again",
+                    "            scope: me",
+                    "        });",
+                    "    } catch(e) {",
+                    "        // cannot do this xss",
+                    "    }",
+                    "",
+                    "    // We need to be sure we remove all our events from the iframe on unload or we're going to LEAK!",
+                    "    Ext.EventManager.on(this.getWindow(), 'beforeunload', me.cleanupListeners, me);",
+                    "",
+                    "    this.setLoading(false);",
+                    "    this.fireEvent('load', this);",
+                    "",
+                    "} else if(me.url && me.url != '') {",
+                    "",
+                    "    this.setLoading(false);",
+                    "    this.fireEvent('error', this);",
+                    "}"
+                ]
+            },
+            "name": "onLoad",
+            "designerId": "6a798cb5-fbcf-4931-a3d8-753cbe31802d"
+        }
+    ]
+}

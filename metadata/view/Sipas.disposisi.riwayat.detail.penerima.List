@@ -1,0 +1,461 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "sipas_disposisi_riwayat_detail_penerima_list",
+        "designer|userClassName": "Sipas.disposisi.riwayat.detail.penerima.List",
+        "disableSelection": true,
+        "emptyText": "Tidak ada Data",
+        "header": false,
+        "hideHeaders": true,
+        "itemId": null,
+        "store": "Sipas.disposisi.riwayat.detail.penerima.List",
+        "title": "Penerima Disposisi",
+        "viewConfig": [
+            "{",
+            "    getRowClass: function(record, rowIndex, rowParams, store)",
+            "    {",
+            "        if (record.get('disposisi_masuk_aksi') && !record.get(\"disposisi_masuk_aksi_baca_tgl\")){         ",
+            "            return \"x-grid-row-bold\";",
+            "        }",
+            "    }",
+            "}"
+        ]
+    },
+    "name": "MyGridPanel4",
+    "configAlternates": {
+        "viewConfig": "object"
+    },
+    "designerId": "9ddd2472-c92a-4a29-ab4f-7289c18af6cd",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "viewConfig",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "disposisi_masuk_penerima_nama",
+                "flex": 1,
+                "minWidth": null,
+                "sortable": true,
+                "text": "Pegawai",
+                "width": 300
+            },
+            "name": "MyColumn67",
+            "designerId": "fbb5fdba-72c6-4dc1-86e4-466a2a46d73e",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var id = record.getId(),",
+                            "\tjabatan = record.get('disposisi_masuk_penerima_jabatan_nama') ? record.get('disposisi_masuk_penerima_jabatan_nama') : '(Tidak ada jabatan)',",
+                            "\tunit = record.get('disposisi_masuk_penerima_unit_nama') ? record.get('disposisi_masuk_penerima_unit_nama') : '(Tidak ada unit)',",
+                            "    tpl = this.dataTpl || (",
+                            "        this.tpl =",
+                            "        \"<div class='cell-col'><div class='cell-row margin-left-12'><div class='cell-visual cell-visual-left'>\"+",
+                            "        \"<img src='server.php/sipas/staf/get_image/foto?id={disposisi_masuk_penerima_id}' class='img img-circle img-32'>\"+",
+                            "        \"</div>\"+",
+                            "        \"<div class='cell-text'>\"+",
+                            "        \"<div class='subtext ellipsis'>\"+record.get('disposisi_masuk_penerima_nama')+\"</div>\"+",
+                            "//         \"<div>\"+jabatan+\"</div>\"+",
+                            "        \"<div class='supporttext supporttext-dark ellipsis'>\"+jabatan+\" - \"+unit+\"</div>\"+",
+                            "        \"</div></div></div>\"",
+                            "    );",
+                            "return (new Ext.Template(tpl)).apply(record.getData());"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "c0dfbebf-da07-4d62-abb7-b7f20bb385c1"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "disposisi_masuk_isbaca",
+                "flex": 1,
+                "sortable": true,
+                "text": "Status",
+                "width": null
+            },
+            "name": "MyColumn1",
+            "designerId": "c31540c6-46b3-4882-9e1b-f01ecb071e85",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var tglbkr = record.get('disposisi_masuk_berkasterima_tgl'),",
+                            "    status = '<span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-md-mail\"></i></span>Belum dibaca</span>',",
+                            "    berkas = '',",
+                            "    tindakan = '',",
+                            "    tpl = '',",
+                            "    cabut = '';",
+                            "",
+                            "if(record.get('disposisi_masuk_isberkasterima') === 0){",
+                            "    berkas = '<span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-md-copy\"></i></span><span class=\"alternative\">Berkas belum diterima</span>';",
+                            "}else if(record.get('disposisi_masuk_isberkasterima') === 1){",
+                            "    berkas = '<span class=\"badge badge-solid margin-right-4 info\"><i class=\"icon ion-md-copy green-700-i\"></i></span><span class=\"green-500-i\">Berkas diterima pada '+Ext.util.Format.date(tglbkr, 'd M Y H:i')+'</span>';",
+                            "}",
+                            "",
+                            "if(value === 1){",
+                            "    status = '<span class=\"primary\"><span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-md-mail-open blue-500-i\"></i></span>Dibaca pada ' + Ext.util.Format.date(record.get('disposisi_masuk_baca_tgl'), 'd M Y H:i')+'</span>';",
+                            "}",
+                            "",
+                            "if(record.get('disposisi_masuk_aksi') !== null){",
+                            "    if(record.get('disposisi_masuk_pesan') === null){",
+                            "        tindakan = '<span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-md-text\"></i></span>' +record.get('aksi_nama');",
+                            "    }else{",
+                            "        tindakan = '<span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-md-text\"></i></span>' +record.get('aksi_nama') + ', ' + record.get('disposisi_masuk_pesan');",
+                            "    }",
+                            "}",
+                            "",
+                            "if(record.get('disposisi_masuk_iscabut') === 1){",
+                            "    cabut = '<span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-md-document red-700-i\"></i></span><span class=\"danger\">Disposisi ini telah direvisi</span><div class=\"supporttext supporttext-dark\">Pada '+Ext.util.Format.date(record.get('disposisi_cabut_tgl'), 'd M Y H:i')+'</div>';",
+                            "}",
+                            "",
+                            "if(record.get('disposisi_masuk_istembusan') === 1)",
+                            "{",
+                            "    if(record.get('disposisi_masuk_isberkas') === 1){",
+                            "        tpl = '<div class=\"supporttext supporttext-dark\">'+cabut + '<span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-logo-closed-captioning\"></i></span>Tembusan </div><div class=\"supporttext supporttext-dark\">' + status + '</div><div class=\"supporttext supporttext-dark\">' + berkas + '</div><div class=\"supporttext supporttext-dark\">' + tindakan + '</div>';",
+                            "    }else{",
+                            "        tpl = '<div class=\"supporttext supporttext-dark\">'+cabut + '<span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-logo-closed-captioning\"></i></span>Tembusan </div><div class=\"supporttext supporttext-dark\">' + status + '</div><div class=\"supporttext supporttext-dark\">' + tindakan + '</div>';",
+                            "    }",
+                            "",
+                            "}else{",
+                            "    if(record.get('disposisi_masuk_isberkas') === 1){",
+                            "        tpl = '<div class=\"supporttext supporttext-dark\">' + cabut + status + '</div><div class=\"supporttext\">' + berkas + '</div><div class=\"supporttext supporttext-dark\">' + tindakan + '</div>';",
+                            "    }else{",
+                            "        tpl = '<div class=\"supporttext supporttext-dark\">' + cabut + status + '</div><div class=\"supporttext\">' + tindakan + '</div>';",
+                            "    }",
+                            "}",
+                            "return '<div class=\"cell-text margin-left-12\">'+tpl+'</div>';"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "719691fa-c78a-408d-b6e5-ab04a8b192ca"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "disposisi_masuk_nomor",
+                "flex": null,
+                "hidden": true,
+                "sortable": true,
+                "text": "Kode Terima",
+                "width": 140
+            },
+            "name": "MyColumn55",
+            "designerId": "24250670-1ab4-4357-9004-a486a58cce7d"
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "hidden": true
+            },
+            "name": "MyToolbar27",
+            "designerId": "65720ff9-b988-483b-9b06-8bb676e20373",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.TextItem",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": "alternative bold",
+                        "layout|flex": null,
+                        "padding": 4,
+                        "text": "Penerima"
+                    },
+                    "name": "MyTextItem4",
+                    "designerId": "6004d702-3cfd-42de-b518-cb5cdbddb89b"
+                }
+            ]
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "dock": "top"
+            },
+            "name": "MyToolbar4",
+            "designerId": "a27de948-98b2-45f2-9bf7-1bb43e7c88eb",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.TextItem",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "languageCode": "riwayat_disposisi_popup_list",
+                        "languageMode": "text",
+                        "languageable": true,
+                        "layout|flex": null,
+                        "text": "<span class=\"bold\">Status Riwayat</span>"
+                    },
+                    "name": "MyTextItem8",
+                    "configAlternates": {
+                        "languageable": "boolean"
+                    },
+                    "designerId": "f187c0d9-8f35-4675-ae8f-1399c824b0be",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageCode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageMode",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "basicfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processMyToolbar57",
+                        "implHandler": [
+                            "if(!this.editable) return null;",
+                            "return config;"
+                        ]
+                    },
+                    "name": "processMyToolbar57",
+                    "designerId": "f450ccd6-5ee8-4ac5-bcfe-e772b1228407"
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "MyFill3",
+                    "designerId": "9cf8caff-3094-4d16-8ecb-ca63056b9ed5"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": "x-btn-bordered",
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.print31",
+                    "designerId": "477640c2-97bc-49d1-812d-e4d1fab59704",
+                    "masterInstanceId": "4acde223-fe77-4a4b-8394-07ccd10e338e"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": "x-btn-bordered",
+                        "featureName": "riwayat_perintah",
+                        "featureable": true,
+                        "height": null,
+                        "iconCls": null,
+                        "itemId": "buttonArahan",
+                        "layout|flex": null,
+                        "margin": null,
+                        "maxHeight": null,
+                        "roleName": null,
+                        "roleable": null,
+                        "text": "Ubah Arahan",
+                        "ui": null,
+                        "width": null
+                    },
+                    "name": "MyButton38",
+                    "configAlternates": {
+                        "featureable": "boolean",
+                        "roleable": "boolean"
+                    },
+                    "designerId": "513d6781-8475-4109-af0a-3f742bc35237",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": "x-btn-bordered",
+                        "featureName": "disposisi_batal",
+                        "featureable": true,
+                        "iconCls": null,
+                        "itemId": "buttonCabutDisposisi",
+                        "languageCode": "riwayat_disposisi_batal",
+                        "languageMode": "text",
+                        "languageable": true,
+                        "layout|flex": null,
+                        "roleName": "disposisi_batal",
+                        "roleable": true,
+                        "text": "Batal Disposisi",
+                        "ui": null
+                    },
+                    "name": "MyButton2",
+                    "configAlternates": {
+                        "featureable": "boolean",
+                        "languageable": "boolean"
+                    },
+                    "designerId": "da048f11-39d1-45f2-bd00-602058b758c6",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageCode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageMode",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

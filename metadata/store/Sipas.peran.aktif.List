@@ -1,0 +1,60 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.peran.aktif.List",
+        "model": "Sipas.Peran",
+        "pageSize": 1000,
+        "storeId": "Sipas.peran.aktif.List"
+    },
+    "name": "Sipas.peran.List1",
+    "designerId": "5aa32e24-bc99-49f7-8e40-e08757c03d95",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/peran/aktif"
+            },
+            "name": "MyAjaxProxy3",
+            "designerId": "79550809-efa9-45c3-9da1-0d4855993455",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader3",
+                    "designerId": "d6cfcf75-9cb5-4675-8e1c-d92a9e2426bd"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": null,
+                "property": "peran_nama"
+            },
+            "name": "MySorter",
+            "designerId": "f4802f49-025b-4e64-b3c5-81e3a21d26b9"
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "type": "Ext.grid.column.Column",
+    "reference": {
+        "name": "columns",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "dataIndex": "surat_isdistribusi",
+        "designer|userAlias": "sipas_surat_penyetujuan_column",
+        "designer|userClassName": "Sipas.surat.penyetujuan.Column",
+        "filter": null,
+        "filterable": true,
+        "minWidth": null,
+        "sortable": true,
+        "text": "Status",
+        "width": 140
+    },
+    "name": "MyColumn2",
+    "configAlternates": {
+        "renderer": "object",
+        "filter": "object"
+    },
+    "designerId": "82ebfae5-a483-4b45-aa61-ddb30e8c0a7a",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "filterable",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filter",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "value",
+                    "metaData",
+                    "record",
+                    "rowIndex",
+                    "colIndex",
+                    "store",
+                    "view"
+                ],
+                "fn": "renderer",
+                "implHandler": [
+                    "this.modelDefault = Ext.ModelManager.getModel('SIPAS.model.Sipas.Surat');",
+                    "return this.modelDefault.renderStatusDistribusi(value, record);"
+                ]
+            },
+            "name": "renderer",
+            "designerId": "8d17035c-b72d-4bc6-b989-2362b20a0f12"
+        }
+    ]
+}

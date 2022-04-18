@@ -1,0 +1,81 @@
+{
+    "type": "Ext.data.TreeStore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": null,
+        "designer|userClassName": "Sipas.unit.jabatan.aktif.Treelist",
+        "model": "Sipas.Jabatan",
+        "remoteFilter": null,
+        "remoteSort": null,
+        "storeId": "Sipas.unit.jabatan.aktif.Treelist"
+    },
+    "name": "Sipas.unit.jabatan.semua.Treelist1",
+    "designerId": "7c58717c-950f-404f-b284-6cf8f4289211",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/jabatan/aktif/tree"
+            },
+            "name": "MyAjaxProxy9",
+            "designerId": "84756d9b-4e45-4fd2-bc8d-26a44cfc1a76",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader9",
+                    "designerId": "c12a3def-5eb9-411c-960e-82b7d8fa8156"
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onTreeStoreBeforeLoad",
+                "implHandler": [
+                    "if(store.isLoading()){\r",
+                    "    return false;\r",
+                    "}"
+                ],
+                "name": "beforeload",
+                "scope": "me"
+            },
+            "name": "onTreeStoreBeforeLoad",
+            "designerId": "84a0abc2-6a3e-4abd-b7e1-a5e8d4d4b6d2"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "jabatan_nama"
+            },
+            "name": "MySorter7",
+            "designerId": "3173d47e-8a36-4122-a95d-b4cebdfa39ce"
+        }
+    ]
+}

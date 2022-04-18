@@ -1,0 +1,292 @@
+{
+    "type": "Ext.tree.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "clickToView": true,
+        "designer|userAlias": "sipas_jabatan_treelist",
+        "designer|userClassName": "Sipas.jabatan.Treelist",
+        "emptyText": "Tidak ada Data",
+        "height": null,
+        "hidden": null,
+        "itemId": null,
+        "requires": [
+            "SIPAS.store.Sipas.jabatan.aktif.Treelist"
+        ],
+        "rootVisible": false,
+        "rowLines": true,
+        "store": "Sipas.jabatan.aktif.Treelist",
+        "title": "Jabatan",
+        "useArrows": true,
+        "width": null
+    },
+    "designerId": "b8c29d20-1a2d-4cbe-8915-1efac0307f36",
+    "isBuiltIn": true,
+    "iconCls": "icon-treegridpanel",
+    "autoName": "TreeGrid",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "clickToView",
+            "type": "boolean"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.tree.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyTreeView",
+            "designerId": "b2e984f9-2f32-45b8-a9bc-675c8d1c109e"
+        },
+        {
+            "type": "Ext.tree.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "jabatan_nama",
+                "flex": 1,
+                "text": "Jabatan"
+            },
+            "name": "MyTreeColumn",
+            "designerId": "2e795439-c37b-4151-97b0-f73823c5898f",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if (record.get('jabatan_isaktif') == '1'){",
+                            "    return (new Ext.Template('{jabatan_nama} <span class=\"alternative\">({jabatan_kode})</span>')).apply(record.getData());",
+                            "} else {",
+                            "    return (new Ext.Template('<span class=\"alternative\">{jabatan_nama}</span> <span class=\"alternative\">({jabatan_kode})</span>')).apply(record.getData());",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "91972cf1-5a69-495a-b521-ed5df6460452"
+                }
+            ]
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "dock": "top"
+            },
+            "name": "MyToolbar13",
+            "designerId": "d4bb68c5-e411-44fa-a527-4948536d23b7",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.refresh58",
+                    "designerId": "726a2b5c-1151-4f5c-a3bf-b75bed3a5a5e",
+                    "masterInstanceId": "e517a5ab-fc5b-441a-97a3-5c706738d092"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "roleName": "jabatan_insert"
+                    },
+                    "name": "sipas.com.button.add22",
+                    "designerId": "4cc2cabe-56ea-405e-89e0-a70332ce3612",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "boolean"
+                        }
+                    ],
+                    "masterInstanceId": "420a71a2-f0ab-4b83-bf9b-b7cf567d6c9f"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": true,
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.view11",
+                    "designerId": "54762919-e0b7-48de-bd3a-0c7daf5d036d",
+                    "masterInstanceId": "88073f46-f23e-4800-a045-344110bd18fc"
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "MyFill31",
+                    "designerId": "b37ff75f-62bc-428e-87a0-3bce2e5c8c0f"
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayField": "nama",
+                        "editable": false,
+                        "fieldLabel": null,
+                        "hideTrigger": true,
+                        "itemId": "Aktif",
+                        "labelAlign": null,
+                        "layout|flex": null,
+                        "store": [
+                            "{",
+                            "    fields: ['value','nama'],",
+                            "    data: [",
+                            "        {value:0,nama:'Semua Jabatan'},",
+                            "        {value:1,nama:'Jabatan Aktif'},",
+                            "        {value:2,nama:'Jabatan Tidak Aktif'}",
+                            "    ]",
+                            "}"
+                        ],
+                        "value": "Aktif",
+                        "valueField": "value"
+                    },
+                    "name": "MyComboBox29",
+                    "configAlternates": {
+                        "value": "string",
+                        "store": "array"
+                    },
+                    "designerId": "36a088d9-76ff-4a97-b282-ce2bbaae75d7"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyPadding": 10,
+                "collapseDirection": "right",
+                "collapsed": true,
+                "collapsible": true,
+                "dock": "right",
+                "hidden": true,
+                "minWidth": 300,
+                "title": "Detail",
+                "titleCollapse": true,
+                "width": null
+            },
+            "name": "MyForm1",
+            "designerId": "1623f1fe-72c5-4116-b51a-d811daaaeeba",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "jabatan_kode",
+                        "fieldLabel": "Kode Jabatan",
+                        "labelAlign": "top",
+                        "layout|anchor": "100%",
+                        "readOnly": true
+                    },
+                    "name": "MyTextField",
+                    "designerId": "7d2aa267-1bda-4bfc-86a7-4eb6d16e656e"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "jabatan_nama",
+                        "fieldLabel": "Nama Jabatan",
+                        "labelAlign": "top",
+                        "layout|anchor": "100%",
+                        "readOnly": true
+                    },
+                    "name": "MyTextField1",
+                    "designerId": "c21e8c95-65ec-4017-8799-3fb0b5d615db"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "jabatan_keterangan",
+                        "fieldLabel": "Keterangan Jabatan",
+                        "labelAlign": "top",
+                        "layout|anchor": "100%",
+                        "readOnly": true
+                    },
+                    "name": "MyTextField4",
+                    "designerId": "32f5bb33-b1aa-4f73-b49c-6e8ab4353e7d"
+                }
+            ]
+        }
+    ]
+}

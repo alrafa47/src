@@ -1,0 +1,61 @@
+{
+    "type": "Ext.data.TreeStore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.unit.Lookup",
+        "model": "Sipas.Unit",
+        "remoteFilter": true,
+        "remoteSort": true,
+        "storeId": "Sipas.unit.Lookup"
+    },
+    "name": "Sipas.jabatan.Lookup1",
+    "designerId": "7ec70061-7a1f-4b44-a67f-4dfaf1c979d6",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/unit/aktif"
+            },
+            "name": "MyAjaxProxy10",
+            "designerId": "d6172bfb-bd25-4551-ba86-81df2d068ae5",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": null
+                    },
+                    "name": "MyJsonReader10",
+                    "designerId": "be632a67-da25-44f9-b483-9be457d8856c"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "unit_nama"
+            },
+            "name": "MySorter6",
+            "designerId": "17321d5c-b9c2-467e-b44a-c8649c0f7d78"
+        }
+    ]
+}

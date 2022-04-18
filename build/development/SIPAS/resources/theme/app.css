@@ -1,0 +1,511 @@
+.x-dataview-timeline .x-form-display-field > div.row-wrap
+{
+    position: relative;
+    display: block;
+    padding-top: 8px;
+}
+.x-dataview-timeline .x-form-display-field > div.row-wrap:last-child
+{
+    padding-bottom: 8px;
+}
+.x-dataview-timeline .x-form-display-field > div.row-wrap:before
+{
+    content: "";
+    display: block;
+    width: 4px;
+    background-color: #BDBDBD;
+    position: absolute;
+    left: 6px; top: 0px; right: 0px; bottom: 0px;   
+}
+.x-dataview-timeline .x-form-display-field > div.row-wrap:first-child:before
+{
+    top: 26px;
+}
+.x-dataview-timeline .x-form-display-field > div.row-wrap:after
+{
+    content: "";
+    display: block;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    background-color: #9E9E9E;
+    position: absolute;
+    left: 0px; top: 26px; right: 0px; bottom: 0px;   
+}
+.x-dataview-timeline .x-form-display-field > div.row-wrap div.row
+{
+    border-radius: 4px;
+    margin-left: 20px;
+    margin-top: 0px;
+    display: block;
+}
+.x-dataview-timeline-node:before
+{
+    position: absolute; left: 0; top:0; right:0; bottom:0;
+    content: "";
+    width: 4px;
+    left: 10px;
+    background-color: #BDBDBD;
+    display: block;
+}
+.x-dataview-timeline-node:after
+{
+    position: absolute; left: 4px; top:36px; right:0; bottom:0;
+    content: "";
+    width: 16px;
+    height: 16px;
+    background-color: #9E9E9E;
+    display: block;
+    border-radius: 50%;
+}
+.x-dataview-timeline-node-start:before
+{
+    left: 10px;
+    top: 36px;
+    right:0;
+    bottom: 0;
+    /* height: 36px; */
+}
+.x-dataview-timeline-node-start:after
+{
+    left: 4px; top:36px; right:0; bottom:0;
+    height: 16px;
+}
+.x-dataview-timeline-node-end:before
+{
+    left: 10px; top:0; right:0; bottom:auto;
+    height: 36px;
+}
+.x-dataview-timeline-node-end:after
+{
+    left: 4px; top:36px; right:0; bottom:0;
+    height: 16px;
+}
+
+.x-dataview-plainemptytext .x-grid-empty
+{
+    background-color: transparent;
+}
+
+/**********
+ * initial 
+ **********/
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body:not(.x-body) {
+    background-color: #2196F3;
+    background-image: url('app/logo.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 128px auto;
+}
+
+/**********
+   * app 
+   **********/
+
+/* viewport */
+
+body:not(.x-container) {
+    background-color: #757575;
+    background-image: url('app/door.logo.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 128px auto;
+}
+
+/* door */
+
+.sipas_door {}
+
+.sipas_door:before {
+    content: "";
+    display: block;
+    position: absolute;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    background-color: #424242;
+    background-image: url('app/home.wallpaper.jpg');
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover;
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -ms-filter: blur(3px);
+    -o-filter: blur(3px);
+    filter: blur(3px);
+    transform: scale(1.025);
+}
+
+.sipas_door .containerLogo {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
+/* sipas login */
+
+.sipas_session_login_container {
+    border-radius: 4px;
+}
+
+.sipas_session_login_container .container_left {
+    background-color: #424242;
+}
+
+.sipas_session_login_container .container_right {
+    background-color: #ffffff;
+}
+
+.sipas_session_login_container .container_right .x-form-field {
+    -webkit-text-fill-color: #424242;
+    -moz-text-fill-color: #424242;
+    -ms-text-fill-color: #424242;
+    -o-text-fill-color: #424242;
+    text-fill-color: #424242;
+    color: #424242;
+    font-size: 14px;
+    margin: 0px;
+
+    background-color: transparent;
+    background-repeat: no-repeat !important;
+    background-position: 10px center !important;
+    background-size: 16px;
+    padding: 4px 12px 4px 42px;
+    border: 1px solid #E0E0E0;
+    border-radius: 2px;
+    height: 2.5em;
+}
+
+.sipas_session_login_container .container_right .x-form-field.x-form-empty-field {
+    -webkit-text-fill-color: #BDBDBD;
+    -moz-text-fill-color: #BDBDBD;
+    -ms-text-fill-color: #BDBDBD;
+    -o-text-fill-color: #BDBDBD;
+    text-fill-color: #BDBDBD;
+    color: #BDBDBD;
+}
+
+.sipas_session_login_container .container_right .x-form-field.x-form-focus {
+    border-color: #2196F3;
+}
+
+.sipas_session_login_container .container_right .x-form-field.x-form-invalid-field {
+    border-color: #F44336;
+}
+
+.sipas_session_login_container .container_right .x-form-field.textfieldUsername {
+    background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNjRweCIgaGVpZ2h0PSI2NHB4Ij4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNDM3LjAyLDMzMC45OGMtMjcuODgzLTI3Ljg4Mi02MS4wNzEtNDguNTIzLTk3LjI4MS02MS4wMThDMzc4LjUyMSwyNDMuMjUxLDQwNCwxOTguNTQ4LDQwNCwxNDggICAgQzQwNCw2Ni4zOTMsMzM3LjYwNywwLDI1NiwwUzEwOCw2Ni4zOTMsMTA4LDE0OGMwLDUwLjU0OCwyNS40NzksOTUuMjUxLDY0LjI2MiwxMjEuOTYyICAgIGMtMzYuMjEsMTIuNDk1LTY5LjM5OCwzMy4xMzYtOTcuMjgxLDYxLjAxOEMyNi42MjksMzc5LjMzMywwLDQ0My42MiwwLDUxMmg0MGMwLTExOS4xMDMsOTYuODk3LTIxNiwyMTYtMjE2czIxNiw5Ni44OTcsMjE2LDIxNiAgICBoNDBDNTEyLDQ0My42Miw0ODUuMzcxLDM3OS4zMzMsNDM3LjAyLDMzMC45OHogTTI1NiwyNTZjLTU5LjU1MSwwLTEwOC00OC40NDgtMTA4LTEwOFMxOTYuNDQ5LDQwLDI1Niw0MCAgICBjNTkuNTUxLDAsMTA4LDQ4LjQ0OCwxMDgsMTA4UzMxNS41NTEsMjU2LDI1NiwyNTZ6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==) !important;
+}
+
+.sipas_session_login_container .container_right .x-form-field.textfieldPassword {
+    background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNjRweCIgaGVpZ2h0PSI2NHB4Ij4KPGc+Cgk8Zz4KCQk8Y2lyY2xlIGN4PSIzODQiIGN5PSIxMjAiIHI9IjMyIiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMzU2LDBjLTg2LjAxOSwwLTE1Niw2OS45ODEtMTU2LDE1NmMwLDEyLjA1LDEuMzc1LDIzLjk4Miw0LjA5NywzNS42MTlMMCwzOTUuNzE2VjUxMmgxMjh2LTU2aDU2di01Nmg1NnYtNTZoNDQuMjg0ICAgIGwzNi4wOTgtMzYuMDk3QzMzMi4wMTgsMzEwLjYyNSwzNDMuOTUyLDMxMiwzNTYsMzEyYzg2LjAxOSwwLDE1Ni02OS45ODEsMTU2LTE1NlM0NDIuMDE5LDAsMzU2LDB6IE0zNTYsMjcyICAgIGMtMTIuMDg3LDAtMjQuMDA4LTEuODU1LTM1LjQzLTUuNTE0bC0xMS42MTgtMy43MjJMMjY3LjcxNiwzMDRIMjAwdjU2aC01NnY1Nkg4OHY1Nkg0MHYtNTkuNzE2bDIwOS4yMzctMjA5LjIzNmwtMy43MjItMTEuNjE4ICAgIEMyNDEuODU1LDE4MC4wMDksMjQwLDE2OC4wODksMjQwLDE1NmMwLTYzLjk2Myw1Mi4wMzctMTE2LDExNi0xMTZzMTE2LDUyLjAzNywxMTYsMTE2UzQxOS45NjMsMjcyLDM1NiwyNzJ6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==) !important;
+}
+
+/* home */
+
+.sipas_home {}
+
+.sipas_home:before {
+    content: "";
+    display: block;
+    position: absolute;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    background-color: #424242;
+    background-image: url('app/home.wallpaper.jpg');
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover;
+    /* -webkit-filter: blur(5px);
+      -moz-filter: blur(5px);
+      -ms-filter: blur(5px);
+      -o-filter: blur(5px);
+      filter: blur(5px); */
+    transform: scale(1.025);
+}
+
+/* home page pane */
+
+.sipas_home_page_pane {}
+
+.sipas_home_page_pane .x-toolbar-header .containerLogo {
+    background-position: 8px center;
+    background-size: auto 24px;
+    background-repeat: no-repeat;
+}
+
+.sipas_home_page_pane .x-toolbar-header .x-btn .x-btn-inner {
+    font-weight: 400;
+}
+
+.sipas_home_page_pane .x-toolbar-header .x-btn .x-btn-inner,
+.sipas_home_page_pane .x-toolbar-task .x-btn .x-btn-inner {
+    text-transform: none;
+}
+
+.sipas_home_page_pane .x-toolbar-task .x-btn .x-btn-split {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4lMEEgICAgPHBhdGggZD0iTTE5IDYuNDFMMTcuNTkgNSAxMiAxMC41OSA2LjQxIDUgNSA2LjQxIDEwLjU5IDEyIDUgMTcuNTkgNi40MSAxOSAxMiAxMy40MSAxNy41OSAxOSAxOSAxNy41OSAxMy40MSAxMnoiLz4lMEEgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPiUwQTwvc3ZnPg==");
+    background-size: 14px;
+}
+
+.sipas_home_page_pane .containerPage {}
+
+.sipas_home_page_pane>.x-panel-body {
+    background: none;
+}
+
+/* home side */
+
+.sipas_home_side_pane {
+    box-shadow: rgba(0, 0, 0, 0.5) 1px 0px 6px;
+    z-index: 2;
+}
+
+/* for berkas */
+
+.sipas_archive {
+    background-color: #eeeeee;
+    align-items: center;
+}
+
+.sipas_archive .image-wrap {
+    margin: 4px;
+    padding: 0px;
+    display: inline-block;
+    border-bottom: 1px solid #c4c4c4;
+    border-left: 1px solid #d3d3d3;
+    border-right: 1px solid #d3d3d3;
+    border-top: 1px solid #d3d3d3;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    background-color: white;
+    cursor: pointer;
+    position: relative;
+    float: left;
+}
+
+.sipas_archive .image-wrap.x-item-primary {
+    outline: 1px solid #4CAF50;
+    border-color: #4CAF50;
+}
+
+.sipas_archive .image-wrap.x-item-primary:after {
+    content: "\2605";
+    display: block;
+    z-index: 1;
+    width: 20px;
+    height: 20px;
+    background: #4CAF50;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-bottom-right-radius: 2px;
+    line-height: 20px;
+    font-size: 12px;
+    text-align: center;
+    1: 50px letter-spacing: 1px;
+    color: white;
+}
+
+.sipas_archive .image-wrap.x-item-primary .image-title {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+    color: white;
+}
+
+.sipas_archive .image-wrap.x-item-over {
+    border: 1px solid #aaa;
+}
+
+.sipas_archive .image-wrap.x-item-selected {
+    border-color: #679fff;
+    outline: 1px solid #679fff;
+}
+
+.sipas_archive .image-wrap .image-container {
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    height: 180px;
+    width: 140px;
+    border: 0px solid #D0D0D0;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sipas_archive .image-wrap.x-item-over,
+.sipas_archive .image-wrap.x-item-selected {
+    padding: 0px;
+}
+
+.sipas_archive .image-wrap .image {
+    display: block;
+    width: 140px;
+    height: 180px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.sipas_archive .image-wrap .image-title {
+    padding: 7px;
+    background-color: white;
+    border-top: 1px solid #e2e2e2;
+    font-size: .9em;
+    font-weight: bold;
+    color: #444;
+    bottom: 0px;
+    content: " ";
+    position: absolute;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sipas_archive .image-wrap .image-title .desc {
+    font-size: 9px;
+    display: block;
+    font-weight: normal;
+    margin-top: 4px;
+}
+
+/* notification pane */
+
+.sipas_session_profile_viewer_pane,
+.sipas_session_profile_editor_pane {
+    background-color: #616161;
+    background-image: url('app/home.profile.wallpaper.jpg');
+    background-size: cover;
+    background-position: top left;
+    background-repeat: no-repeat;
+}
+
+.sipas_session_profile_viewer_pane .x-btn .x-btn-icon-el {
+    background-size: cover;
+}
+
+.sipas_session_profile_editor_pane .profilePicture:hover::after,
+.sipas_staf_prop .stafPicture:hover::after {
+    border-radius: 100%;
+    content: url("app/camera.png");
+    text-align: center;
+    vertical-align: bottom;
+    vertical-align: -50%;
+    display: block;
+    background-color: rgba(128, 128, 128, .25);
+    width: 100%;
+    height: 100%;
+    line-height: 160px;
+    /* 128 + 32 */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+.sipas_staf_prop .stafSignaturePicture:hover::after {
+    /*border-radius: 100%;*/
+    content: url("app/camera.png");
+    text-align: center;
+    vertical-align: bottom;
+    vertical-align: -50%;
+    display: block;
+    background-color: rgba(128, 128, 128, .25);
+    width: 100%;
+    height: 100%;
+    line-height: 160px;
+    /* 128 + 32 */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+/* some custom */
+
+.sipas_com_disposisi_pengirim_pane .pengirimImage,
+.sipas_com_disposisi_perintah_pane .perintahImage,
+.sipas_masuk_session_prop .berkasImage,
+.sipas_disposisi_penerima_detail_form .berkasImage,
+.sipas_com_surat_pane .suratImage {
+    background-size: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.sipas_disposisi_penerima_detail_form .penerimaImage,
+.sipas_disposisi_penerima_detail_form .tembusanImage,
+.sipas_masuk_session_prop .tembusanImage,
+.sipas_disposisi_penerima_detail_form .notberkasImage {
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.sipas_disposisi_penerima_detail_form .penerimaImage {
+    background-image: url('app/disposisi_penerima.png');
+}
+
+.sipas_disposisi_penerima_detail_form .tembusanImage,
+.sipas_masuk_session_prop .tembusanImage {
+    background-image: url('app/disposisi_tembusan.png');
+}
+
+.sipas_disposisi_penerima_detail_form .notberkasImage {
+    background-image: url('app/disposisi_isnotberkas.png');
+}
+
+.sipas_disposisi_penerima_detail_form .berkasImage,
+.sipas_masuk_session_prop .berkasImage {
+    background-image: url('app/disposisi_isberkas.png');
+}
+
+.content-center span div {
+    vertical-align: middle !important;
+    text-align: center !important;
+}
+
+/* custom */
+
+.x-field-search .x-form-field {
+    background-color: #EEEEEE;
+    border-radius: 32px;
+    border: 1px solid #9E9E9E;
+    border-bottom-width: 1px;
+    padding: 0px 16px;
+}
+
+.x-field-search .x-form-trigger-wrap .x-form-field {
+    border-bottom-width: 1px;
+    background-color: #F5F5F5
+}
+
+.x-column-header .x-field.x-form-type-text .x-form-field.x-form-focus {
+    background-color: #EEEEEE;
+    border: 1px solid #2196F3;
+    background-position: 3px center;
+    border-radius: 3px;
+}
+
+.loading {
+    margin: 0 4px 0 0;
+    display: inline-block;
+    height: 16px !important;
+    width: 16px !important;
+    background-repeat: no-repeat;
+    background-image: url(loading.gif);
+    background-position: 0 center;
+}

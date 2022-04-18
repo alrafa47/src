@@ -1,0 +1,286 @@
+{
+    "type": "Ext.form.FieldSet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": "sipas_com_surat_pane",
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_com_konsep_pane",
+        "designer|userClassName": "Sipas.com.konsep.Pane",
+        "enableButtonView": true,
+        "formConfig": [
+            "{}"
+        ],
+        "height": null,
+        "itemId": null,
+        "layout": "hbox",
+        "padding": null,
+        "title": null
+    },
+    "name": "Sipas.com.surat.Pane1",
+    "configAlternates": {
+        "enableButtonView": "boolean",
+        "formConfig": "object"
+    },
+    "designerId": "bccb1dc0-43b1-40bc-a8a2-2e73ff5871b5",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "enableButtonView",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "formConfig",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "constructor",
+                "implHandler": [
+                    "this.callParent(arguments);",
+                    "return Ext.applyIf(this,{",
+                    "    form: new Ext.form.Basic(this)",
+                    "});"
+                ]
+            },
+            "name": "constructor",
+            "designerId": "5a315d60-7a66-4d65-a48d-be154fa41f0f"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": "suratImage",
+                "height": 50,
+                "itemId": "suratImage",
+                "padding": 2,
+                "width": 50
+            },
+            "name": "MyContainer37",
+            "designerId": "d0763e2a-c7fb-4b04-8912-eb2aa99b6c9c",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onSuratImageRender",
+                        "implHandler": [
+                            "Ext.create('Ext.tip.ToolTip',{",
+                            "    target: component.getEl(),",
+                            "    html: 'Keterangan Surat'",
+                            "});"
+                        ],
+                        "name": "render",
+                        "scope": "me"
+                    },
+                    "name": "onSuratImageRender",
+                    "designerId": "62d99db6-86f5-4e79-abaa-38b46ed3e8ab"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaults": [
+                    "{margin:0,margins:0,padding:0}"
+                ],
+                "itemId": "suratData",
+                "layout|flex": 1,
+                "margin": "0 0 0 10"
+            },
+            "name": "MyContainer38",
+            "designerId": "ca50b1cd-dbb4-481c-a177-33e4906abaed",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": null,
+                        "name": "surat_perihal",
+                        "value": null
+                    },
+                    "name": "MyDisplayField14",
+                    "designerId": "109bafce-cb45-4efb-b784-33e0da7dc181",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "displayField"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "if(value){",
+                                    "    return '<strong>'+Ext.util.Format.ellipsis(value,30)+'</strong>';",
+                                    "}else{",
+                                    "    return '<span style= \"color: grey;\">'+'Tidak Ada Perihal'+'</span>';",
+                                    "}"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "e5669351-5eda-4b9b-849c-cfaeb14fbbd8"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "stretch",
+                        "defaults": null,
+                        "itemId": "suratDisplay",
+                        "layout": "hbox"
+                    },
+                    "name": "MyContainer39",
+                    "designerId": "0a7e0ae3-3264-43ab-8a45-bb9662c00c9c",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": null,
+                                "layout|flex": null,
+                                "layout|margins": "0",
+                                "margin": 0,
+                                "name": "surat_nomor",
+                                "padding": 0,
+                                "value": null
+                            },
+                            "name": "MyDisplayField17",
+                            "designerId": "c0c09dd7-768d-47ff-a38d-f348eced3511",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "value",
+                                            "displayField"
+                                        ],
+                                        "fn": "renderer",
+                                        "implHandler": [
+                                            "return Ext.util.Format.ellipsis(value,30);"
+                                        ]
+                                    },
+                                    "name": "renderer",
+                                    "designerId": "f940dc01-a618-47f9-bbb1-544ec072ebd8"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 1
+                            },
+                            "name": "MyContainer43",
+                            "designerId": "9ad737c7-3b0a-477c-84ed-5eaa2e21dd7f"
+                        },
+                        {
+                            "type": "linkedinstance",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "hidden": null,
+                                "layout|flex": null,
+                                "text": "Lihat Surat"
+                            },
+                            "name": "sipas.com.button.view19",
+                            "designerId": "cb45ecbb-385e-469f-889b-8911393c08bb",
+                            "masterInstanceId": "88073f46-f23e-4800-a045-344110bd18fc"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": null,
+                        "itemId": "jenisSurat",
+                        "name": "surat_jenis_masuk",
+                        "value": null
+                    },
+                    "name": "MyDisplayField7",
+                    "designerId": "d95ba4e7-86dd-4305-9631-27d9d6b8e971"
+                },
+                {
+                    "type": "basicfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "constructor",
+                        "implHandler": [
+                            "this.callParent(arguments);",
+                            "    return Ext.applyIf(this,{",
+                            "        form: new Ext.form.Basic(this)",
+                            "});"
+                        ]
+                    },
+                    "name": "constructor",
+                    "designerId": "3054d1e0-c402-4fa5-b33c-610847c177ce"
+                }
+            ]
+        }
+    ]
+}

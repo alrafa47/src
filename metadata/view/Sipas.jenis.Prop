@@ -1,0 +1,959 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "constrain": true,
+        "defaultFocus": null,
+        "designer|userAlias": "sipas_jenis_prop",
+        "designer|userClassName": "Sipas.jenis.Prop",
+        "height": 520,
+        "id": null,
+        "itemId": null,
+        "layout": "fit",
+        "maxHeight": null,
+        "maximizable": true,
+        "minHeight": 400,
+        "minWidth": 400,
+        "minimizable": null,
+        "modal": true,
+        "title": "Jenis Surat",
+        "width": 500
+    },
+    "designerId": "c96af9aa-4615-49a1-b28d-e56bc6568812",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "autoScroll": true,
+                "bodyPadding": "8 16 8 16",
+                "border": false,
+                "header": false,
+                "id": null,
+                "itemId": null,
+                "maxHeight": null,
+                "title": "Jenis Surat",
+                "titleAlign": "center"
+            },
+            "name": "MyForm5",
+            "designerId": "b6c0cef8-2f6f-4ecd-8e07-5e7176bc9075",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "emptyText": "Masukkan nama jenis",
+                        "fieldLabel": "Nama Jenis",
+                        "itemId": null,
+                        "layout|anchor": "100%",
+                        "name": "jenis_nama"
+                    },
+                    "name": "MyTextField9",
+                    "designerId": "d95a4eee-6013-405e-a395-be6e5a31bd69"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "emptyText": "Masukkan Kode Jenis",
+                        "fieldLabel": "Kode Jenis",
+                        "itemId": null,
+                        "layout|anchor": null,
+                        "name": "jenis_kode",
+                        "width": 240
+                    },
+                    "name": "MyTextField8",
+                    "designerId": "fa72edcf-b27e-4af8-bec0-c5de14e797fc"
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "stretch",
+                        "featureName": "jenis_retensi",
+                        "featureable": true,
+                        "itemId": "containerJenis",
+                        "layout": "hbox"
+                    },
+                    "name": "MyContainer2",
+                    "configAlternates": {
+                        "featureable": "boolean"
+                    },
+                    "designerId": "1d1bf794-e5d3-4726-86be-ba3c99ac712c",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Number",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "allowDecimals": false,
+                                "allowExponential": false,
+                                "emptyText": "0",
+                                "fieldLabel": "Lama Masa Aktif",
+                                "hideTrigger": true,
+                                "itemId": null,
+                                "labelWidth": null,
+                                "minValue": 0,
+                                "name": "jenis_retensi",
+                                "width": 160
+                            },
+                            "name": "MyNumberField1",
+                            "designerId": "d5d7dac1-0f3b-4409-b1f9-f8d173777bcb",
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "afterSubTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "afterSubTpl",
+                                        "implHandler": [
+                                            "hari"
+                                        ]
+                                    },
+                                    "name": "afterSubTpl",
+                                    "designerId": "a16dc10c-4e00-422b-b806-d2ee7a5fa01f"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.field.ComboBox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "anyMatch": true,
+                                "cls": "x-field-triggeronly",
+                                "designer|displayName": "Retensi",
+                                "displayField": "retensi_nama",
+                                "editable": false,
+                                "emptyText": "Pilih masa aktif",
+                                "fieldLabel": null,
+                                "forceSelection": true,
+                                "formItemCls": "comboRetensi",
+                                "itemId": "comboRetensi",
+                                "labelWidth": null,
+                                "layout|flex": null,
+                                "matchFieldWidth": false,
+                                "minChars": null,
+                                "name": null,
+                                "padding": null,
+                                "pageSize": 15,
+                                "queryMode": null,
+                                "store": "Sipas.retensi.Combo",
+                                "submitValue": false,
+                                "typeAhead": null,
+                                "valueField": "retensi_hari",
+                                "width": 20
+                            },
+                            "name": "MyComboBox",
+                            "designerId": "c0172d0a-10ee-4b57-8f5a-e2231cac1403",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onRetensiAfterRender",
+                                        "implHandler": [
+                                            "var c = component.up('#containerJenis').down('[name=jenis_retensi]') || {};",
+                                            "if(c.readOnly) {",
+                                            "    component.hide();",
+                                            "}else{",
+                                            "    component.getStore().reload();",
+                                            "    component.setValue(0);",
+                                            "",
+                                            "}"
+                                        ],
+                                        "name": "afterrender",
+                                        "scope": "me"
+                                    },
+                                    "name": "onRetensiAfterRender",
+                                    "designerId": "988d7e7f-6ff7-4d12-9c72-4cf1ed4fa90b"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onRetensiSelect",
+                                        "implHandler": [
+                                            "numberfield = combo.up('#containerJenis').down('[name=jenis_retensi]');",
+                                            "",
+                                            "if(!numberfield.readOnly){",
+                                            "    numberfield.setValue(combo.getValue());",
+                                            "}"
+                                        ],
+                                        "name": "select",
+                                        "scope": "me"
+                                    },
+                                    "name": "onRetensiSelect",
+                                    "designerId": "f932654f-9855-4851-8612-b21593b0fd16"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "autoScroll": null,
+                        "padding": 0,
+                        "title": "Opsi Tampil"
+                    },
+                    "name": "MyFieldSet3",
+                    "designerId": "9e2f8438-3850-4a05-8367-1fc3b4053bcc",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Checkbox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "boxLabel": "Tampil di Surat Masuk Eksternal",
+                                "fieldLabel": null,
+                                "inputValue": null,
+                                "name": "jenis_tampil_sm"
+                            },
+                            "name": "MyCheckbox5",
+                            "designerId": "bee394b8-267f-493e-b59e-fc700d6d36bb"
+                        },
+                        {
+                            "type": "Ext.form.field.Checkbox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "boxLabel": "Tampil di Surat Keluar Eksternal",
+                                "fieldLabel": null,
+                                "inputValue": null,
+                                "name": "jenis_tampil_sk"
+                            },
+                            "name": "MyCheckbox3",
+                            "designerId": "cb34727a-2694-44b2-95fc-97a80abe0c05"
+                        },
+                        {
+                            "type": "Ext.form.field.Checkbox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "boxLabel": "Tampil di Surat Internal",
+                                "featureName": "agenda_internal",
+                                "featureable": true,
+                                "fieldLabel": null,
+                                "inputValue": null,
+                                "name": "jenis_tampil_si"
+                            },
+                            "name": "MyCheckbox4",
+                            "designerId": "321797a2-560e-46e8-9ee3-9cdd98bda109",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "featureName",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "featureable",
+                                    "type": "boolean"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.field.Checkbox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "boxLabel": "Tampil di Surat Keputusan",
+                                "featureName": "agenda_internal",
+                                "featureable": true,
+                                "fieldLabel": null,
+                                "inputValue": null,
+                                "languageCode": "cb_tampil_disik",
+                                "languageMode": "boxLabel",
+                                "languageable": true,
+                                "name": "jenis_tampil_sik"
+                            },
+                            "name": "MyCheckbox1",
+                            "configAlternates": {
+                                "languageable": "boolean"
+                            },
+                            "designerId": "5f1782ab-3252-470f-be46-273ac91a280f",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "featureName",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "featureable",
+                                    "type": "boolean"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageable",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageCode",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageMode",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "padding": 0,
+                        "title": "Penomoran Khusus"
+                    },
+                    "name": "MyFieldSet28",
+                    "designerId": "f357b484-d9f3-467f-ae29-ee673b090f32",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Checkbox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "boxLabel": "Gunakan Penomoran Awal",
+                                "fieldLabel": "Gunakan Penomoran Awal",
+                                "hideLabel": true,
+                                "itemId": "cbNomorAwal",
+                                "labelWidth": 200,
+                                "layout|anchor": "100%",
+                                "name": "jenis_nomor_awal"
+                            },
+                            "name": "MyCheckbox6",
+                            "designerId": "5d1ed908-8466-4f4a-91c0-48b59efa0657"
+                        },
+                        {
+                            "type": "Ext.form.field.Checkbox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "boxLabel": "Gunakan Penomoran Terpusat Perjenis",
+                                "fieldLabel": "Gunakan Penomoran Terpusat Perjenis",
+                                "hideLabel": true,
+                                "itemId": "cbPusat",
+                                "labelWidth": 200,
+                                "layout|anchor": "100%",
+                                "name": "jenis_terpusat_jenis"
+                            },
+                            "name": "MyCheckbox",
+                            "designerId": "a2b5c242-0a8c-4546-a12a-19df34f5ca8a"
+                        },
+                        {
+                            "type": "Ext.form.field.Checkbox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "boxLabel": "Gunakan Penomoran Perunit Perjenis",
+                                "fieldLabel": "Gunakan Penomoran Perunit Perjenis",
+                                "hideLabel": true,
+                                "itemId": "cbUJ",
+                                "labelWidth": 200,
+                                "layout|anchor": "100%",
+                                "name": "jenis_terpusat_unit"
+                            },
+                            "name": "MyCheckbox21",
+                            "designerId": "b2c0306b-a210-4fa5-ad44-3043270a8efc"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "padding": 0,
+                        "title": "Batasi Backdate"
+                    },
+                    "name": "MyFieldSet29",
+                    "designerId": "63765b45-d08f-4030-b099-c16a43fcd9a2",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Checkbox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "boxLabel": "Batasi akses pengajuan surat dengan tanggal backdate pada jenis ini",
+                                "fieldLabel": null,
+                                "inputValue": null,
+                                "layout|anchor": "100%",
+                                "name": "jenis_batasibackdate"
+                            },
+                            "name": "MyCheckbox2",
+                            "designerId": "aaf97da0-e134-415c-bc87-0dea33e04c3d"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "featurable": null,
+                        "padding": 0,
+                        "title": "Batasi Penerima"
+                    },
+                    "name": "MyFieldSet5",
+                    "configAlternates": {
+                        "featurable": "boolean"
+                    },
+                    "designerId": "9e400adf-874c-4baf-951d-af962f14d180",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featurable",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Checkbox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "boxLabel": "Batasi akses penerimaan surat keluar internal",
+                                "fieldLabel": null,
+                                "inputValue": null,
+                                "layout|anchor": "100%",
+                                "name": "jenis_batasipenerima"
+                            },
+                            "name": "MyCheckbox2",
+                            "designerId": "4ed0b713-d68e-4d1f-b264-574ce2f544f3"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "featurable": null,
+                        "languageCode": "batas_reupload",
+                        "languageMode": "fieldLabel",
+                        "languageable": true,
+                        "padding": 0,
+                        "title": "Batas Belum Reupload"
+                    },
+                    "name": "MyFieldSet2",
+                    "configAlternates": {
+                        "featurable": "boolean",
+                        "languageable": "boolean"
+                    },
+                    "designerId": "0d7206bd-358f-4456-a15b-27fc2c33ed8f",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featurable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageCode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageMode",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Checkbox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "boxLabel": "Batasan pembuat surat yang belum upload ulang berkas",
+                                "fieldLabel": null,
+                                "inputValue": null,
+                                "itemId": "batasReupload",
+                                "layout|anchor": "100%",
+                                "name": "jenis_isbatas"
+                            },
+                            "name": "MyCheckbox2",
+                            "designerId": "da5badd8-6b4c-4d94-a89f-d041c6ca093f"
+                        },
+                        {
+                            "type": "Ext.form.field.Number",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "emptyText": "Atur Maksimal",
+                                "fieldLabel": "Batas Maksimal",
+                                "itemId": "batasMax",
+                                "layout|anchor": "47%",
+                                "name": "jenis_batas_jumlah"
+                            },
+                            "name": "MyNumberField3",
+                            "designerId": "1a8153f5-79e0-46b0-9768-6e6825488004"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "featurable": null,
+                        "languageCode": "jenis_perlu_ttd",
+                        "languageMode": "fieldLabel",
+                        "languageable": true,
+                        "padding": 0,
+                        "title": "Perlu Tanda Tangan Digital"
+                    },
+                    "name": "MyFieldSet36",
+                    "configAlternates": {
+                        "featurable": "boolean",
+                        "languageable": "boolean"
+                    },
+                    "designerId": "ec792330-85b4-4be7-b067-e5706f2b9129",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featurable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageCode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageMode",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Checkbox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "boxLabel": "Jenis perlu tanda tangan",
+                                "fieldLabel": null,
+                                "inputValue": null,
+                                "languageCode": "jenis_ttd_desc",
+                                "languageMode": "boxLabel",
+                                "languageable": true,
+                                "layout|anchor": "100%",
+                                "name": "jenis_ttd"
+                            },
+                            "name": "MyCheckbox2",
+                            "configAlternates": {
+                                "languageable": "boolean"
+                            },
+                            "designerId": "07b0c220-3680-4ede-afbe-54c3fed86e69",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageMode",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageCode",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageable",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "featureName": "jenis_perunit",
+                        "featureable": true,
+                        "padding": 0,
+                        "title": "Akses"
+                    },
+                    "name": "MyFieldSet1",
+                    "configAlternates": {
+                        "featureable": "boolean"
+                    },
+                    "designerId": "308a04cf-aa0c-438d-8235-42358db8227e",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Checkbox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "boxLabel": "Batasi akses hanya untuk unit tertentu",
+                                "fieldLabel": null,
+                                "inputValue": "1",
+                                "layout|anchor": "100%",
+                                "name": "jenis_tipe"
+                            },
+                            "name": "MyCheckbox2",
+                            "designerId": "4d6e2ff6-4bd6-4277-96f5-0f0099647cc9",
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "afterBoxLabelTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "afterBoxLabelTpl",
+                                        "implHandler": [
+                                            "<div class=\"supporttext margin-left-24\">Jika diaktifkan maka jenis hanya akan tampil pada unit yang terpilih saja</div>"
+                                        ]
+                                    },
+                                    "name": "afterBoxLabelTpl",
+                                    "designerId": "7ca27711-7b34-4b7e-ade1-7f99d9b2c58b"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "stretch",
+                                "container|padding": "0 24",
+                                "layout": "hbox",
+                                "ui": null
+                            },
+                            "name": "MyContainer1",
+                            "designerId": "9cc38ceb-bae3-44f3-888b-cf5afb27fe5e",
+                            "cn": [
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": "x-btn-bordered",
+                                        "designer|uiInterfaceName": "default-toolbar-small",
+                                        "hidden": null,
+                                        "itemId": "btnUnit",
+                                        "languageCode": "jenis_perunit_jenis",
+                                        "languageMode": "text",
+                                        "languageable": true,
+                                        "layout|flex": null,
+                                        "layout|margins": null,
+                                        "roleName": "jenis_unit",
+                                        "roleable": true,
+                                        "text": "atur Daftar Unit",
+                                        "ui": "default-toolbar"
+                                    },
+                                    "name": "MyButton16",
+                                    "designerId": "740ac082-d4c4-47d3-87fc-73df2dd1ee62",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "roleable",
+                                            "type": "boolean"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "roleName",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "languageable",
+                                            "type": "boolean"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "languageMode",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "languageCode",
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "padding": 0,
+                        "title": "Status Aktif"
+                    },
+                    "name": "MyFieldSet",
+                    "designerId": "bfb25f22-f205-4c62-82c6-6a76c0da38c6",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Checkbox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "boxLabel": "Aktif",
+                                "fieldLabel": null,
+                                "inputValue": "1",
+                                "layout|anchor": "100%",
+                                "name": "jenis_isaktif"
+                            },
+                            "name": "MyCheckbox2",
+                            "designerId": "21f27204-2038-46c9-adb8-e84eceb4aa5d"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": null,
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "container|pack": "end",
+                "designer|uiInterfaceName": "footer",
+                "dock": "bottom",
+                "itemId": "toolbarAction",
+                "layout": "hbox",
+                "margin": null,
+                "ui": "footer"
+            },
+            "name": "MyContainer56",
+            "designerId": "314214b4-6dc4-447d-a74d-10716bb6ac59",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "roleName": "jenis_delete",
+                        "roleable": true
+                    },
+                    "name": "sipas.com.button.delete44",
+                    "designerId": "4096672d-5b1c-4fed-99c0-8358b42cbca4",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "3715315e-7ae6-4239-80e7-cf81a5ce1662"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "roleName": "jenis_update",
+                        "roleable": true
+                    },
+                    "name": "sipas.com.button.edit44",
+                    "designerId": "28dbb17b-0b25-4f86-af34-45abd6ea7dff",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "be261aa1-046c-471a-86a7-50d2783a6919"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": null,
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.save48",
+                    "designerId": "dc8e6aed-c7aa-46b1-b8c6-52713b75d19e",
+                    "masterInstanceId": "feb6c6f9-7733-4b38-9254-091d0db2d3a9"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "MyContainer",
+            "designerId": "d78bd1e0-26f8-45f5-9612-7138bd1e3cc5"
+        }
+    ]
+}

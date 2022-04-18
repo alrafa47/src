@@ -1,0 +1,62 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.sla.rumus.List",
+        "model": "Sipas.sla.Rumus",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.sla.rumus.List"
+    },
+    "name": "MyJsonStore",
+    "designerId": "24c38def-4e49-417c-a3e9-36cdc9efd93f",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/sla_rumus/read"
+            },
+            "name": "MyAjaxProxy5",
+            "designerId": "7de86d8c-c48f-4d5c-854e-52ece6adc6db",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader5",
+                    "designerId": "4a174412-ff2e-4fdc-ab8e-e3f66cc6bfd9"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "sla_rumus_index"
+            },
+            "name": "MySorter",
+            "designerId": "35b9debe-50f0-4cf8-a564-e1af3c4ccf0e"
+        }
+    ]
+}

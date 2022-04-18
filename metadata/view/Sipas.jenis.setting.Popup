@@ -1,0 +1,738 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "constrain": true,
+        "constrainHeader": true,
+        "defaultFocus": null,
+        "designer|userAlias": "sipas_jenis_setting_popup",
+        "designer|userClassName": "Sipas.jenis.setting.Popup",
+        "height": 450,
+        "id": null,
+        "itemId": null,
+        "layout": "fit",
+        "maximizable": true,
+        "minHeight": null,
+        "minWidth": null,
+        "minimizable": null,
+        "modal": true,
+        "title": "Daftar Jenis Surat",
+        "width": 600
+    },
+    "name": "Sipas.jenis.Popup1",
+    "designerId": "76a575b8-f571-441d-a0aa-d00359fdb940",
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "allowDeselect": true,
+                "bodyPadding": null,
+                "clickToView": true,
+                "columnLines": false,
+                "disableSelection": true,
+                "emptyText": "Tidak ada Data",
+                "forceFit": null,
+                "frame": null,
+                "height": null,
+                "id": null,
+                "itemId": null,
+                "margin": null,
+                "maxHeight": null,
+                "maxWidth": null,
+                "minHeight": null,
+                "minWidth": null,
+                "padding": null,
+                "store": "Sipas.jenis.aktif.List",
+                "title": null,
+                "titleAlign": null,
+                "width": null
+            },
+            "name": "Sipas.jenis.List2",
+            "designerId": "15c368dc-7dad-440e-a227-b0a6feae994b",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "clickToView",
+                    "type": "boolean"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|defaultMargins": [
+                            "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                        ],
+                        "dock": "top",
+                        "id": null,
+                        "itemId": "toolbarProperties"
+                    },
+                    "name": "MyToolbar16",
+                    "designerId": "9393c89b-b746-4fe5-be25-675c41b54509",
+                    "cn": [
+                        {
+                            "type": "linkedinstance",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "id": null,
+                                "layout|flex": null
+                            },
+                            "name": "sipas.com.button.refresh72",
+                            "configAlternates": {
+                                "roleable": "boolean"
+                            },
+                            "designerId": "29809f0b-7dbe-47b0-a625-6a9ced7c060d",
+                            "masterInstanceId": "e517a5ab-fc5b-441a-97a3-5c706738d092"
+                        },
+                        {
+                            "type": "linkedinstance",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "width": null
+                            },
+                            "name": "sipas.com.button.togglefilter32",
+                            "designerId": "b41a014f-9c84-4da0-8ffd-0dcb0f6aedd4",
+                            "masterInstanceId": "6f699e21-9335-4237-9e49-37b207a20475",
+                            "cn": [
+                                {
+                                    "type": "basicfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "button",
+                                            "state"
+                                        ],
+                                        "fn": "toggleHandler",
+                                        "implHandler": [
+                                            "button.up('grid').query('gridcolumn textfield').forEach(function(field){",
+                                            "    state ? field.show():field.hide();",
+                                            "});"
+                                        ]
+                                    },
+                                    "name": "toggleHandler",
+                                    "designerId": "35f05df1-2eae-4f68-8c99-b0c882774727"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.RowNumberer",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "name": "MyRowNumberer5",
+                    "designerId": "417ee38c-8486-4efe-90fd-51096c53fd89"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "jenis_nama",
+                        "filterable": true,
+                        "items": [
+                            "{",
+                            "xtype: 'textfield',",
+                            "emptyText: 'Cari Nama Jenis',",
+                            "flex: 1,",
+                            "margin: 2,",
+                            "listeners: {",
+                            "change: function(textfield, e, eOpts){",
+                            "this.up('gridpanel').filterHeader(this);",
+                            "}",
+                            "}",
+                            "}"
+                        ],
+                        "minWidth": null,
+                        "sortable": true,
+                        "text": "Nama Jenis",
+                        "width": 400
+                    },
+                    "name": "MyColumn16",
+                    "configAlternates": {
+                        "filters": "object",
+                        "filter": "object",
+                        "items": "object"
+                    },
+                    "designerId": "3414c214-4f87-4e46-bb24-7f0a57cd4d27",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "filterable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "items",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "var aktif = record.get('jenis_isaktif');",
+                                    "",
+                                    "if(value){",
+                                    "    return this.genAktif(value, aktif);",
+                                    "}else{",
+                                    "    return '<span class=\"alternative\">-</span>';",
+                                    "}"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "cb5c281a-fef1-456b-ba5d-899aba134e29"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "jenis_kode",
+                        "filterable": true,
+                        "items": [
+                            "{",
+                            "xtype: 'textfield',",
+                            "emptyText: 'Cari Kode Jenis',",
+                            "flex: 1,",
+                            "margin: 2,",
+                            "listeners: {",
+                            "change: function(textfield, e, eOpts){",
+                            "this.up('gridpanel').filterHeader(this);",
+                            "}",
+                            "}",
+                            "}"
+                        ],
+                        "sortable": true,
+                        "text": "Kode Jenis",
+                        "width": 160
+                    },
+                    "name": "MyColumn22",
+                    "configAlternates": {
+                        "filters": "object",
+                        "filter": "object",
+                        "items": "object"
+                    },
+                    "designerId": "e578c7ac-880e-4d0f-b3c0-3024be04408a",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "filterable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "items",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "var aktif = record.get('jenis_isaktif');",
+                                    "",
+                                    "if(value){",
+                                    "    return this.genAktif(value, aktif);",
+                                    "}else{",
+                                    "    return '<span class=\"alternative\">-</span>';",
+                                    "}"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "f1099c0a-fc5d-4865-bef3-1a4961d7b0dd"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "align": "center",
+                        "dataIndex": "jenis_terpusat",
+                        "text": "Pernomoran",
+                        "width": 200
+                    },
+                    "name": "MyColumn104",
+                    "designerId": "625c0526-3672-41ad-948e-33aa13092957",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "var aktif = record.get('jenis_isaktif');",
+                                    "if(value){",
+                                    "    if(value === 1){",
+                                    "        value = \"Terpusat\";",
+                                    "    }",
+                                    "    else if(value === 2){",
+                                    "        value = \"Perunit\";",
+                                    "    }",
+                                    "}else{",
+                                    "    value = \"Mengikuti Pengaturan Sistem\";",
+                                    "}",
+                                    "",
+                                    "return this.genAktif(value, aktif);"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "ca99c4eb-a9cf-4973-8d61-1431c4735ab2"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "align": "center",
+                        "dataIndex": "jenis_tipe",
+                        "featureName": "agenda_internal",
+                        "featureable": false,
+                        "text": "Tampil di<br/>Unit Khusus"
+                    },
+                    "name": "MyColumn5",
+                    "designerId": "5f479474-416b-42b6-b6eb-9a6e50a79978",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "var aktif = record.get('jenis_isaktif');",
+                                    "",
+                                    "if(value){",
+                                    "    value = \"<span class='badge badge-solid'><i class='icon ion-md-checkmark-circle green-500-i' </i></span>\";",
+                                    "    return this.genAktif(value, aktif);",
+                                    "}else{",
+                                    "    value = '<span class=\"alternative\">-</span>';",
+                                    "    return value;",
+                                    "}"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "5fbb9328-fe49-4552-a93c-a46a2dba88f6"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "align": "center",
+                        "dataIndex": "jenis_tampil_si",
+                        "featureName": "agenda_internal",
+                        "featureable": true,
+                        "text": "Tampil di<br/>Surat Internal"
+                    },
+                    "name": "MyColumn26",
+                    "designerId": "17c118ed-f397-4abb-8465-b8057f6e3f57",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "var aktif = record.get('jenis_isaktif');",
+                                    "",
+                                    "if(value){",
+                                    "    value = \"<span class='badge badge-solid'><i class='icon ion-md-checkmark-circle green-500-i'></i></span>\";",
+                                    "    return this.genAktif(value, aktif);",
+                                    "}else{",
+                                    "    value = '<span class=\"alternative\">-</span>';",
+                                    "    return value;",
+                                    "}"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "e5d5287a-eb4f-48f5-bd68-85aa4e1db925"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "align": "center",
+                        "dataIndex": "jenis_tampil_sm",
+                        "text": "Tampil di<br/>Surat Masuk",
+                        "width": null
+                    },
+                    "name": "MyColumn105",
+                    "designerId": "0b7841ce-a974-4c34-a8f2-5c5bc05acf10",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "var aktif = record.get('jenis_isaktif');",
+                                    "",
+                                    "if(value){",
+                                    "    value = \"<span class='badge badge-solid'><i class='icon ion-md-checkmark-circle green-500-i'></i></span>\";",
+                                    "    return this.genAktif(value, aktif);",
+                                    "}else{",
+                                    "    value = '<span class=\"alternative\">-</span>';",
+                                    "    return value;",
+                                    "}"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "6376d6df-ff29-4810-847e-417389a8b976"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "align": "center",
+                        "dataIndex": "jenis_tampil_sk",
+                        "text": "Tampil di<br/>Surat Keluar",
+                        "width": null
+                    },
+                    "name": "MyColumn3",
+                    "designerId": "4ada7e14-2b87-47b4-81b5-ed0ef823d350",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "var aktif = record.get('jenis_isaktif');",
+                                    "",
+                                    "if(value){",
+                                    "    value = \"<span class='badge badge-solid'><i class='icon ion-md-checkmark-circle green-500-i'></i></span>\";",
+                                    "    return this.genAktif(value, aktif);",
+                                    "}else{",
+                                    "    value = '<span class=\"alternative\">-</span>';",
+                                    "    return value;",
+                                    "}"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "5916f19d-78fb-4b0a-a58c-641a7dcdccf7"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.selection.RowModel",
+                    "reference": {
+                        "name": "selModel",
+                        "type": "object"
+                    },
+                    "codeClass": "Ext.selection.RowModel",
+                    "userConfig": {
+                        "allowDeselect": false,
+                        "mode": "SINGLE"
+                    },
+                    "name": "MyRowSelectionModel4",
+                    "designerId": "2c26a5e1-9186-4faf-982a-788dac5e1370"
+                },
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processSipasjenisList",
+                        "implHandler": [
+                            "var filters = {\r",
+                            "    ftype: 'filters',\r",
+                            "    encode: true, \r",
+                            "    local: false \r",
+                            "};\r",
+                            "\r",
+                            "if (! config.features) {\r",
+                            "    config.features=filters;\r",
+                            "} else {\r",
+                            "    config.features.push(filters);\r",
+                            "}\r",
+                            "\r",
+                            "return config;"
+                        ]
+                    },
+                    "name": "processSipasjenisList",
+                    "designerId": "da96882d-4dad-4485-a705-270adba360be"
+                },
+                {
+                    "type": "Ext.toolbar.Paging",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayInfo": true,
+                        "dock": "bottom",
+                        "store": "Sipas.jenis.aktif.List",
+                        "width": 360
+                    },
+                    "name": "MyPagingToolbar5",
+                    "designerId": "a6143e4f-02d9-40bd-ab8e-4ce77d41b1bb"
+                },
+                {
+                    "type": "basicfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "aktif"
+                        ],
+                        "fn": "genAktif",
+                        "implHandler": [
+                            "if(!aktif){",
+                            "    return '<span class=\"alternative\">'+value+'</span>';",
+                            "}else{",
+                            "    return value;",
+                            "}"
+                        ]
+                    },
+                    "name": "genAktif",
+                    "designerId": "271dc558-9a3a-4795-b6a2-0accdc7b0b0a"
+                }
+            ]
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|uiInterfaceName": "footer",
+                "dock": "bottom",
+                "itemId": "toolbarControl",
+                "ui": "footer"
+            },
+            "name": "MyToolbar2",
+            "designerId": "6d4c4c1e-5065-4109-ac42-90ef95a9064b",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "MyFill",
+                    "designerId": "af6c7021-651f-4008-b3bf-0983b3f7ed76"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": "bold",
+                        "designer|uiInterfaceName": "default",
+                        "hidden": true,
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.close6",
+                    "designerId": "75c2f7e3-a529-4f21-a306-935644208e0e",
+                    "masterInstanceId": "1fccff29-0e7c-4e45-9b62-49cc0ad2dbdc"
+                }
+            ]
+        }
+    ]
+}

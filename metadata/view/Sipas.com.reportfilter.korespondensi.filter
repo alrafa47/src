@@ -1,0 +1,227 @@
+{
+    "type": "Ext.form.FieldContainer",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_com_reportfilter_korespondensi_filter",
+        "designer|userClassName": "Sipas.com.reportfilter.korespondensi.filter",
+        "fieldLabel": "",
+        "filterAfterDate": "Setelah Tanggal",
+        "filterBeforeDate": "Sebelum Tanggal",
+        "filterDate": "Pada Tanggal",
+        "filterDateRange": "Rentang Tanggal",
+        "filterMonth": "Pada Bulan",
+        "filterYear": "Pada Tahun",
+        "height": null,
+        "itemId": null,
+        "layout": "hbox",
+        "width": null
+    },
+    "name": "Sipas.com.reportfilter.Korespondensi1",
+    "designerId": "8ae97222-60e0-411a-89da-a2a1530bc848",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "filterDate",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterYear",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterMonth",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterDateRange",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterAfterDate",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterBeforeDate",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterDateConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterDateRangeConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterBeforeDateConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterAfterDateConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterMonthConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterYearConfig",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.form.field.ComboBox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "anyMatch": true,
+                "disabled": null,
+                "displayField": "surat_unit",
+                "editable": null,
+                "emptyText": "Pilih Instansi",
+                "fieldLabel": null,
+                "forceSelection": true,
+                "hidden": null,
+                "itemId": "comboInstansi",
+                "labelWidth": 60,
+                "layout|flex": 1,
+                "name": "template_contact",
+                "queryMode": "local",
+                "store": "Sipas.surat.unit.Combo",
+                "valueField": "surat_unit"
+            },
+            "name": "MyComboBox2",
+            "designerId": "aaba350c-ff6b-4d8d-8f5f-12a40a3227e8",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onComboInstansiSelect",
+                        "implHandler": [
+                            "var container = this,",
+                            "    comboFilter = container.down('#comboFilter'),",
+                            "    instansiVal = combo.getValue();",
+                            "",
+                            "if(instansiVal) comboFilter.setDisabled(false);",
+                            "else comboFilter.setDisabled(true);"
+                        ],
+                        "name": "select",
+                        "scope": "me"
+                    },
+                    "name": "onComboInstansiSelect",
+                    "designerId": "5b84b0ae-d23d-4445-9a14-7ce6d7593fea"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.field.ComboBox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "anyMatch": true,
+                "disabled": true,
+                "displayField": "korespondensi_perihal",
+                "editable": null,
+                "emptyText": "Masukkan Perihal Surat",
+                "fieldLabel": null,
+                "hidden": null,
+                "hideLabel": true,
+                "itemId": "comboFilter",
+                "layout|flex": 1,
+                "name": null,
+                "queryMode": "local",
+                "store": "Sipas.korespondensi.perihal.Combo",
+                "valueField": "korespondensi_perihal"
+            },
+            "name": "MyComboBox",
+            "designerId": "afd2e715-7f6f-41d1-9760-93aaa88b67cb"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|uiInterfaceName": "default-toolbar",
+                "hidden": null,
+                "layout|flex": null,
+                "ui": "default-toolbar"
+            },
+            "name": "sipas.com.button.minus8",
+            "designerId": "81157dbc-6bf1-47a3-9f66-49db7fe34ecf",
+            "masterInstanceId": "fb4f6998-c149-482e-94bb-d550d135b31c",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onButtonClick",
+                        "implHandler": [
+                            "var comboIns = this.down('#comboInstansi'),",
+                            "    comboFilter = this.down('#comboFilter');",
+                            "",
+                            "comboIns.setValue(null);",
+                            "comboFilter.setValue(null);",
+                            "comboFilter.setDisabled(true)"
+                        ],
+                        "name": "click",
+                        "scope": "me"
+                    },
+                    "name": "onButtonClick",
+                    "designerId": "192459f4-3be0-4274-9966-866c9a9c7e62"
+                }
+            ]
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": null,
+                "iconCls": null,
+                "itemId": "buttonProcess",
+                "layout|flex": 1,
+                "text": "<b>PROSES</b>"
+            },
+            "name": "MyButton",
+            "designerId": "4beeef71-6000-4f53-a7fa-678b671e2119"
+        }
+    ]
+}

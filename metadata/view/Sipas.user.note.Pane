@@ -1,0 +1,193 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.user.note.Pane",
+        "height": 500,
+        "itemId": "paneHakaksesUserNote",
+        "layout": "fit",
+        "title": "Catatan",
+        "width": 450
+    },
+    "name": "MyPanel",
+    "designerId": "e068bfff-7816-47be-9429-7019a93caef1",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top"
+            },
+            "name": "MyToolbar",
+            "designerId": "0fd50457-9b89-47a9-bcd4-8d6ed467c31c",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true,
+                        "layout|flex": null,
+                        "text": "Tandai"
+                    },
+                    "name": "sipas.com.button.check",
+                    "designerId": "c66aa794-13ec-44d2-a76f-4eafd36987f8",
+                    "masterInstanceId": "43ecad24-52d4-4f4e-b3f7-1d5a4a511f50"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true,
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.uncheck",
+                    "designerId": "878ef949-1338-4201-bbfe-26a5132f0930",
+                    "masterInstanceId": "8fe7dbbd-9925-48da-9108-2a7f86dc1228"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "header": false,
+                "store": "Sipas.user.note.List",
+                "title": "My Grid Panel"
+            },
+            "name": "MyGridPanel",
+            "designerId": "977d9b8a-f8c1-4384-957b-03cd476860e6",
+            "cn": [
+                {
+                    "type": "Ext.grid.RowNumberer",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "name": "MyRowNumberer2",
+                    "designerId": "752118b1-9bbf-4ec2-a8b0-8cb8cc43ce2f"
+                },
+                {
+                    "type": "Ext.grid.column.Boolean",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "align": "center",
+                        "dataIndex": "user_note_status",
+                        "falseText": null,
+                        "filterable": true,
+                        "menuDisabled": true,
+                        "text": null,
+                        "trueText": null,
+                        "width": 40
+                    },
+                    "name": "MyBooleanColumn1",
+                    "designerId": "17bbc5f3-80cd-45d3-8494-547c0d8055d2",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "filterable",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Date",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "user_note_date",
+                        "filterable": true,
+                        "format": "d-m-Y",
+                        "text": "Waktu",
+                        "width": 100
+                    },
+                    "name": "MyDateColumn",
+                    "designerId": "11aa4abc-5676-4ff6-9bcd-109c21d9ff56",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "filterable",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "user_note_text",
+                        "filterable": true,
+                        "flex": 1,
+                        "text": "Catatan"
+                    },
+                    "name": "MyColumn12",
+                    "designerId": "50b4123d-387a-4643-8ff4-185e9b955f34",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "filterable",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.View",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyGridView2",
+                    "designerId": "904e263a-a53b-4f53-8049-e20b6b08f7f0"
+                },
+                {
+                    "type": "Ext.toolbar.Paging",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayInfo": true,
+                        "dock": "bottom",
+                        "store": "Sipas.user.note.List",
+                        "width": 360
+                    },
+                    "name": "MyPagingToolbar2",
+                    "designerId": "183137c0-3e9c-4dec-8843-3a032b30d2cd"
+                }
+            ]
+        }
+    ]
+}

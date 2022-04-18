@@ -1,0 +1,335 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_klise_lookup",
+        "designer|userClassName": "Sipas.klise.Lookup",
+        "height": 500,
+        "itemId": null,
+        "languageCode": "berkas_template_lookup",
+        "languageMode": "title",
+        "languageable": true,
+        "layout": "hbox",
+        "maximizable": true,
+        "modal": true,
+        "title": "Pilih Template",
+        "width": 800
+    },
+    "name": "MyWindow",
+    "designerId": "f0dc5927-f255-4a3c-8a2b-ebb8c79306f8",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "languageable",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageMode",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageCode",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "border": false,
+                "header": false,
+                "layout|flex": 1,
+                "store": "Sipas.klise.Lookup",
+                "title": null,
+                "width": 300
+            },
+            "name": "MyGridPanel",
+            "designerId": "83fbeb52-b523-4d74-a8c1-e2bd58ea8904",
+            "cn": [
+                {
+                    "type": "Ext.grid.View",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyGridView",
+                    "designerId": "80039e55-0920-4695-b7c7-a0bf3823749d"
+                },
+                {
+                    "type": "Ext.grid.RowNumberer",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "name": "MyRowNumberer",
+                    "designerId": "8ef6c000-c3a8-464e-b03b-bb0bedc4d5b4"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "klise_nama",
+                        "filterable": true,
+                        "flex": 5,
+                        "items": [
+                            "{",
+                            "xtype: 'textfield',",
+                            "                                flex: 1,",
+                            "                                margin: 2,",
+                            "                                listeners: {",
+                            "                                    change: function(textfield, e, eOpts){",
+                            "                                                        this.up('gridpanel').filterHeader(this);",
+                            "                                                        }",
+                            "                                }",
+                            "}"
+                        ],
+                        "text": "Nama",
+                        "width": null
+                    },
+                    "name": "MyColumn5",
+                    "configAlternates": {
+                        "filterable": "boolean",
+                        "items": "object"
+                    },
+                    "designerId": "04e2d235-2198-4aaa-8b7b-e625e4e61f1c",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "filterable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "items",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "var tpl = new Ext.XTemplate([",
+                                    "    '<span class=\"badge badge-solid margin-right-4\">',",
+                                    "        '<i class=\"icon ion-md-clipboard grey-700-i\"></i>',",
+                                    "    '</span>{nama}']);",
+                                    "",
+                                    "return tpl.apply({",
+                                    "    nama: value",
+                                    "});"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "062ac509-1bd1-4d4e-9943-09b7bfb8625d"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "klise_kelompok",
+                        "flex": 5,
+                        "text": "Kelompok",
+                        "width": null
+                    },
+                    "name": "MyColumn2",
+                    "designerId": "00066ec6-8c1e-4e0c-bfd1-1be079cdbdec"
+                },
+                {
+                    "type": "Ext.grid.feature.Grouping",
+                    "reference": {
+                        "name": "features",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "enableGroupingMenu": false,
+                        "enableNoGroups": false,
+                        "hideGroupedHeader": true
+                    },
+                    "name": "MyGroupingFeature3",
+                    "designerId": "4825fcce-f96a-4f0b-81b7-55d03f0a68a9",
+                    "cn": [
+                        {
+                            "type": "Ext.XTemplate",
+                            "reference": {
+                                "name": "groupHeaderTpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "groupHeaderTpl",
+                                "implHandler": [
+                                    "{name}"
+                                ]
+                            },
+                            "name": "groupHeaderTpl",
+                            "designerId": "da155c61-b8a3-4d5f-8d26-87809fdbf699"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Paging",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayInfo": true,
+                        "dock": "bottom",
+                        "store": "Sipas.klise.Lookup",
+                        "width": 360
+                    },
+                    "name": "MyPagingToolbar",
+                    "designerId": "f9379f4b-b5ef-4a4b-baeb-8c12fed112b7"
+                },
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processMyGridPanel",
+                        "implHandler": [
+                            "var filters = {",
+                            "    ftype: 'filters',",
+                            "    encode: true,",
+                            "    local: false",
+                            "};",
+                            "",
+                            "if (! config.features) {",
+                            "    config.features=filters;",
+                            "} else {",
+                            "    config.features.push(filters);",
+                            "}",
+                            "",
+                            "return config;"
+                        ]
+                    },
+                    "name": "processMyGridPanel",
+                    "designerId": "f91ea08f-7263-4059-8ed6-3bf1c04b7d94"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "languageCode": "berkas_template_lookup_preview",
+                "languageMode": "title",
+                "languageable": true,
+                "layout|flex": 2
+            },
+            "name": "sipas.klise.preview.pane",
+            "designerId": "514f77b7-2b97-4ca2-a3f7-7996a23aa836",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "languageable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "languageMode",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "languageCode",
+                    "type": "string"
+                }
+            ],
+            "masterInstanceId": "605cc179-7f86-4cfc-b8ad-7c8df5820071"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": null,
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "container|pack": "end",
+                "designer|uiInterfaceName": "footer",
+                "dock": "bottom",
+                "itemId": null,
+                "layout": "hbox",
+                "layout|flex": 1,
+                "margin": null,
+                "ui": "footer"
+            },
+            "name": "MyContainer63",
+            "designerId": "eb7a4400-b9e3-4322-9624-34c9c6b638ac",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|uiInterfaceName": "default",
+                        "itemId": "buttonPilih",
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.putin25",
+                    "designerId": "a63b8e09-8546-43a5-b35b-91a291036e2b",
+                    "masterInstanceId": "2a6a3c93-a982-4961-b600-192b59ee290e"
+                }
+            ]
+        }
+    ]
+}

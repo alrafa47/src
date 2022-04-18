@@ -1,0 +1,79 @@
+{
+    "type": "Ext.data.TreeStore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.unit.aktif.Treelist",
+        "model": "Sipas.Unit",
+        "storeId": "Sipas.unit.aktif.Treelist"
+    },
+    "name": "Sipas.unit.Treelist1",
+    "designerId": "ce85f894-1ef5-4953-850c-264f27a673d9",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/unit/aktif/tree"
+            },
+            "name": "MyAjaxProxy9",
+            "designerId": "fb6174dc-69cd-4b5f-99c2-84d4eca5448a",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": null
+                    },
+                    "name": "MyJsonReader9",
+                    "designerId": "4e9e14a5-41ef-4e84-9c50-24510c618032"
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onTreeStoreBeforeLoad",
+                "implHandler": [
+                    "if(store.isLoading()){\r",
+                    "    return false;\r",
+                    "}"
+                ],
+                "name": "beforeload",
+                "scope": "me"
+            },
+            "name": "onTreeStoreBeforeLoad",
+            "designerId": "d2689785-e612-4839-874b-fe178fbcfdac"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "unit_nama"
+            },
+            "name": "MySorter7",
+            "designerId": "eea5b32b-acd1-4ad3-b731-1998e6c49c0b"
+        }
+    ]
+}

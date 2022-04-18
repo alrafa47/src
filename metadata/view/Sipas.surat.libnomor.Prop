@@ -1,0 +1,422 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "sipas_surat_libnomor_prop",
+        "designer|userClassName": "Sipas.surat.libnomor.Prop",
+        "featureCode": "surat_libnomor",
+        "featureable": null,
+        "height": 270,
+        "languageCode": "surat_libnomor_prop",
+        "languageMode": "title",
+        "languageable": true,
+        "layout": "fit",
+        "maximizable": true,
+        "modal": true,
+        "ruleCode": "surat_libnomor",
+        "ruleable": null,
+        "title": "Penomoran Surat",
+        "width": 520
+    },
+    "name": "MyWindow",
+    "designerId": "43d065b7-b589-45fc-9717-b8a70a10e042",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "languageable",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageCode",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageMode",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "featureable",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "featureCode",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "ruleable",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "ruleCode",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyPadding": "8 16 8 16",
+                "border": false,
+                "header": false,
+                "title": "Penomoran"
+            },
+            "name": "MyForm1",
+            "designerId": "5d9cba8a-e4e2-41a2-943a-f7514af13f24",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Number",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "allowDecimals": false,
+                        "allowExponential": false,
+                        "fieldLabel": "No. Urut",
+                        "labelWidth": 110,
+                        "layout|anchor": null,
+                        "minValue": 1,
+                        "name": "surat_libnomor_value",
+                        "size": 10,
+                        "value": [
+                            "{",
+                            "value:1",
+                            "}"
+                        ],
+                        "width": 485
+                    },
+                    "name": "MyNumberField1",
+                    "designerId": "3b1556ad-1529-4b92-8311-f17f7271fd5b"
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayField": "display",
+                        "editable": null,
+                        "fieldLabel": "Model",
+                        "itemId": "comboModel",
+                        "labelWidth": 110,
+                        "languageCode": null,
+                        "languageMode": null,
+                        "languageable": null,
+                        "name": "surat_libnomor_model",
+                        "queryMode": null,
+                        "store": [
+                            "{",
+                            "fields: [\"display\", \"modelvalue\"],",
+                            "data:[",
+                            "    {",
+                            "        display: 'Tidak menggunakan model',",
+                            "        modelvalue: null",
+                            "    },",
+                            "    {",
+                            "        display: 'No. Registrasi',",
+                            "        modelvalue: 0",
+                            "    },",
+                            "    {",
+                            "        display: 'Eksternal',",
+                            "        modelvalue: 2",
+                            "    },",
+                            "    {",
+                            "        display: 'Internal',",
+                            "        modelvalue: 4",
+                            "    },",
+                            "    {",
+                            "        display: 'Notadinas',",
+                            "        modelvalue: 6",
+                            "    }",
+                            "]",
+                            "}"
+                        ],
+                        "valueField": "modelvalue",
+                        "width": 485
+                    },
+                    "name": "MyComboBox",
+                    "configAlternates": {
+                        "data": "array",
+                        "store": "array"
+                    },
+                    "designerId": "067d4aae-50d5-4292-b0bc-3f1a114bb925",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageCode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageMode",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.field.Number",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "allowDecimals": false,
+                        "allowExponential": false,
+                        "autoStripChars": true,
+                        "enforceMaxLength": true,
+                        "fieldLabel": "Tahun",
+                        "labelWidth": 110,
+                        "layout|anchor": null,
+                        "maxLength": 4,
+                        "maxValue": null,
+                        "minLength": 4,
+                        "minLengthText": null,
+                        "minValue": 1500,
+                        "name": "surat_libnomor_tahun",
+                        "size": 5,
+                        "validateBlank": true,
+                        "value": [
+                            "(new Date()).getFullYear()"
+                        ],
+                        "width": null
+                    },
+                    "name": "MyNumberField",
+                    "designerId": "6cad6d80-4b36-4d98-819b-5f32a5651ef3",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onNumberfieldAfterRender",
+                                "implHandler": [
+                                    "var $this = this,",
+                                    "    $app = SIPAS.getApplication(),",
+                                    "    $runtime = $app.Runtime().getValue(),",
+                                    "    year = (new Date()).getFullYear();",
+                                    "",
+                                    "    component.setMaxValue(year);",
+                                    "    if($runtime.useRentangTahunPenomoran){",
+                                    "        var rentang = $runtime.rentangTahunPenomoran - 1,",
+                                    "            value = year - rentang;",
+                                    "        component.setMinValue(value);",
+                                    "    }",
+                                    ""
+                                ],
+                                "name": "afterrender",
+                                "scope": "me"
+                            },
+                            "name": "onNumberfieldAfterRender",
+                            "designerId": "0e4e8af2-91bf-4567-b70f-5be8ac127c2b"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "assocRecord": "getJenis",
+                        "associated": true,
+                        "autoSelect": false,
+                        "displayField": "jenis_display",
+                        "fieldLabel": "Jenis",
+                        "labelWidth": 110,
+                        "languageCode": null,
+                        "languageMode": null,
+                        "languageable": null,
+                        "layout|anchor": null,
+                        "name": "surat_libnomor_jenis",
+                        "store": "Sipas.jenis.Combo",
+                        "valueField": "jenis_id",
+                        "width": 485
+                    },
+                    "name": "MyComboBox3",
+                    "configAlternates": {
+                        "languageable": "boolean"
+                    },
+                    "designerId": "5aee5098-6134-4cc6-ab1a-359dc9f2fde9",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "associated",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "assocRecord",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageCode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageMode",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "assocRecord": "getUnitPembuat",
+                        "associated": true,
+                        "autoSelect": false,
+                        "displayField": "unit_display",
+                        "fieldLabel": "Unit Pembuat",
+                        "labelWidth": 110,
+                        "languageCode": "unit_pembuat",
+                        "languageMode": "text",
+                        "languageable": true,
+                        "layout|anchor": null,
+                        "name": "surat_libnomor_unit_pembuat",
+                        "store": "Sipas.unit.Combo",
+                        "valueField": "unit_id",
+                        "width": 485
+                    },
+                    "name": "MyComboBox10",
+                    "configAlternates": {
+                        "languageable": "boolean"
+                    },
+                    "designerId": "7eefed6b-8812-4bf1-a63c-0c025b52083b",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "associated",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "assocRecord",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageCode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageMode",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": null,
+                        "container|defaultMargins": [
+                            "{\"top\":0,\"right\":4,\"bottom\":6,\"left\":4}"
+                        ],
+                        "container|pack": "end",
+                        "designer|uiInterfaceName": "footer",
+                        "dock": "bottom",
+                        "itemId": "toolbarAction",
+                        "layout": "hbox",
+                        "ui": "footer"
+                    },
+                    "name": "MyContainer2",
+                    "designerId": "eaf292de-22e4-4be5-bee7-9f403203e5e5",
+                    "cn": [
+                        {
+                            "type": "linkedinstance",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null
+                            },
+                            "name": "sipas.com.button.delete1",
+                            "designerId": "6e5269db-57f5-4922-af00-1a3a3349b6e1",
+                            "masterInstanceId": "3715315e-7ae6-4239-80e7-cf81a5ce1662"
+                        },
+                        {
+                            "type": "linkedinstance",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null
+                            },
+                            "name": "sipas.com.button.edit",
+                            "designerId": "486579d0-d59e-478f-ac10-7aca3548b4fa",
+                            "masterInstanceId": "be261aa1-046c-471a-86a7-50d2783a6919"
+                        },
+                        {
+                            "type": "linkedinstance",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null
+                            },
+                            "name": "sipas.com.button.save",
+                            "designerId": "f2ecc94f-0c66-4246-a85c-3a0de5834cf9",
+                            "masterInstanceId": "feb6c6f9-7733-4b38-9254-091d0db2d3a9"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

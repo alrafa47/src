@@ -1,0 +1,130 @@
+{
+    "type": "Ext.form.FieldSet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "border": false,
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_surat_informasi_pembuatan_pane",
+        "designer|userClassName": "Sipas.surat.informasi.pembuatan.Pane",
+        "layout": "vbox",
+        "padding": 0,
+        "title": null,
+        "width": null
+    },
+    "name": "MyFieldSet8",
+    "designerId": "d6ee7af1-3bd6-4950-afed-54af129c7ba1",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "constructor",
+                "implHandler": [
+                    "this.callParent(arguments);",
+                    "    return Ext.applyIf(this,{",
+                    "        form: new Ext.form.Basic(this)",
+                    "});"
+                ]
+            },
+            "name": "constructor",
+            "designerId": "a8d3f851-42dc-4a42-b0de-244a74ed0265"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": "suratImage",
+                "height": 48,
+                "hidden": true,
+                "itemId": "suratImage",
+                "margin": "0 5 0 0",
+                "padding": null,
+                "width": 48
+            },
+            "name": "MyContainer13",
+            "designerId": "c6a2b124-12c2-4e75-8ec8-0032401cff27",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onSuratImageRender",
+                        "implHandler": [
+                            "Ext.create('Ext.tip.ToolTip',{",
+                            "    target: component.getEl(),",
+                            "    html: 'Keterangan Surat'",
+                            "});"
+                        ],
+                        "name": "render",
+                        "scope": "me"
+                    },
+                    "name": "onSuratImageRender",
+                    "designerId": "56df80a7-e3d0-4cc7-b252-b0a78aa25b14"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "container|pack": "center",
+                "itemId": "containerPembuatan",
+                "layout": "vbox",
+                "layout|flex": 1
+            },
+            "name": "MyContainer12",
+            "designerId": "6d6f6734-cbb8-4e1f-a490-35c4ca39d3d9",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabledCls": "disabled",
+                        "fieldLabel": null,
+                        "fieldStyle": "display:flex",
+                        "id": null,
+                        "itemId": "textPembuatan",
+                        "labelAlign": null,
+                        "labelClsExtra": "f11",
+                        "labelSeparator": "&nbsp;",
+                        "labelStyle": "color:gray;",
+                        "labelWidth": null,
+                        "layout|flex": null,
+                        "layout|margins": null,
+                        "maxWidth": 400,
+                        "name": null,
+                        "value": "Surat ini dibuat pada, oleh",
+                        "width": 400
+                    },
+                    "name": "MyDisplayField5",
+                    "designerId": "1643694d-a97d-4ada-866f-71a510aa5538"
+                }
+            ]
+        }
+    ]
+}

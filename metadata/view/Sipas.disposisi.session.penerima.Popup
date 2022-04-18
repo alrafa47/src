@@ -1,0 +1,313 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "border": false,
+        "designer|userAlias": "sipas_disposisi_session_penerima_popup",
+        "designer|userClassName": "Sipas.disposisi.session.penerima.Popup",
+        "height": 500,
+        "languageCode": "disposisi_masuk_penerima_popup",
+        "languageMode": "title",
+        "languageable": true,
+        "layout": "fit",
+        "maximizable": true,
+        "modal": true,
+        "title": "Daftar Penerima Lain",
+        "width": 700
+    },
+    "name": "Sipas.surat.tembusan.Popup1",
+    "configAlternates": {
+        "languageable": "boolean"
+    },
+    "designerId": "d23b5f27-3347-4a8d-ae45-7edba605ccb3",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "languageable",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageMode",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageCode",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "autoScroll": true,
+                "bodyPadding": null,
+                "border": false,
+                "cls": "sipas_disposisi_penerima_detail_form",
+                "header": false,
+                "layout": "fit",
+                "title": "My Form"
+            },
+            "name": "MyForm",
+            "designerId": "6d24d2ff-f4b7-4057-8038-f47d58a80fd8",
+            "cn": [
+                {
+                    "type": "Ext.grid.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "associated": true,
+                        "cls": null,
+                        "emptyText": "Tidak ada Data",
+                        "header": false,
+                        "hideHeaders": true,
+                        "itemId": "listPenerima",
+                        "margin": "0 10 10 10",
+                        "store": "Sipas.disposisi.session.penerima.Popup",
+                        "title": "My Grid Panel"
+                    },
+                    "name": "MyGridPanel",
+                    "designerId": "50aed93c-7dd6-4578-928f-e2c473af672c",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "associated",
+                            "type": "boolean"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": null,
+                                "dataIndex": "penyetuju_nama",
+                                "flex": 1,
+                                "minWidth": 200,
+                                "text": "Penerima",
+                                "width": null
+                            },
+                            "name": "MyColumn10",
+                            "designerId": "2055741f-579c-4846-8acd-4580b95954b6",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "value",
+                                            "metaData",
+                                            "record",
+                                            "rowIndex",
+                                            "colIndex",
+                                            "store",
+                                            "view"
+                                        ],
+                                        "fn": "renderer",
+                                        "implHandler": [
+                                            "var modelPegawai = Ext.ModelManager.getModel('SIPAS.model.Sipas.Staf'),",
+                                            "    modelJabatan = Ext.ModelManager.getModel('SIPAS.model.Sipas.Jabatan'),",
+                                            "    is_tembusan = record.get('disposisi_masuk_istembusan'),",
+                                            "\tis_berkas = record.get('disposisi_masuk_isberkas'),",
+                                            "\tis_berkas_terima = record.get('disposisi_masuk_isberkasterima'),",
+                                            "\tis_baca = record.get('disposisi_masuk_isbaca'),",
+                                            "\tis_terus = record.get('disposisi_masuk_isterus'),",
+                                            "\tberkas_terima_tgl = Ext.util.Format.date(record.get('disposisi_masuk_berkasterima_tgl'), 'd M Y H:i'),",
+                                            "\tbaca_tgl = Ext.util.Format.date(record.get('disposisi_masuk_baca_tgl'), 'd M Y H:i'),",
+                                            "\tterus_tgl = Ext.util.Format.date(record.get('disposisi_masuk_terus_tgl'), 'd M Y H:i'),",
+                                            "    staf_id = record.get('disposisi_masuk_penerima_id'),",
+                                            "    staf_nama = record.get('disposisi_masuk_penerima_nama'),",
+                                            "    staf_jabatan = record.get('disposisi_masuk_penerima_jabatan_nama'),",
+                                            "    staf_unit = record.get('disposisi_masuk_penerima_unit_nama'),",
+                                            "    jabatan_id = record.get('jabatan_penerima_id'),",
+                                            "    jabatan_nama = record.get('jabatan_penerima_nama'),",
+                                            "    supporttext = '';",
+                                            "",
+                                            "    if (is_berkas == '1'){",
+                                            "    \tif (is_berkas_terima == '1'){",
+                                            "\t\t\tsupporttext = supporttext+'<span class=\"info margin-right-8\">'+",
+                                            "                '<span class=\"badge badge-solid margin-right-4\">'+",
+                                            "                    '<i class=\"icon ion-md-copy green-600-i\"></i>'+",
+                                            "                '</span> Berkas diterima pada '+berkas_terima_tgl+",
+                                            "            '</span>';",
+                                            "\t\t} else {",
+                                            "\t\t\tsupporttext = supporttext+'<span class=\"margin-right-8\">'+",
+                                            "                '<span class=\"badge badge-solid margin-right-4\">'+",
+                                            "                    '<i class=\"icon ion-md-copy\"></i>'+",
+                                            "                '</span> Berkas belum diterima'+",
+                                            "            '</span>';",
+                                            "\t\t}",
+                                            "    }",
+                                            "",
+                                            "    if (is_tembusan == '1'){",
+                                            "        supporttext = supporttext+'<span class=\"margin-right-8\">'+",
+                                            "                '<span class=\"badge badge-solid margin-right-4\">'+",
+                                            "                    '<i class=\"icon ion-logo-closed-captioning\"></i>'+",
+                                            "                '</span>Tembusan'+",
+                                            "            '</span>';",
+                                            "    }",
+                                            "",
+                                            "if(jabatan_id) {",
+                                            "    return modelJabatan.renderJabatanAdditional(jabatan_id, jabatan_nama, supporttext, false);",
+                                            "} else {",
+                                            "    return modelPegawai.renderPegawaiAdditional(staf_id, staf_nama, staf_jabatan, staf_unit, supporttext, false);",
+                                            "}"
+                                        ]
+                                    },
+                                    "name": "renderer",
+                                    "designerId": "79e9e4de-2cd8-46be-a1d1-d37716b42f6c"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": null,
+                                "dataIndex": "penyetuju_nama",
+                                "flex": 1,
+                                "minWidth": 200,
+                                "text": "Status",
+                                "width": null
+                            },
+                            "name": "MyColumn4",
+                            "designerId": "5249d947-228c-48c2-a380-e845c45bad91",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "value",
+                                            "metaData",
+                                            "record",
+                                            "rowIndex",
+                                            "colIndex",
+                                            "store",
+                                            "view"
+                                        ],
+                                        "fn": "renderer",
+                                        "implHandler": [
+                                            "var modelPegawai = Ext.ModelManager.getModel('SIPAS.model.Sipas.Staf'),",
+                                            "    is_tembusan = record.get('disposisi_masuk_istembusan'),",
+                                            "\tis_berkas = record.get('disposisi_masuk_isberkas'),",
+                                            "\tis_berkas_terima = record.get('disposisi_masuk_isberkasterima'),",
+                                            "\tis_baca = record.get('disposisi_masuk_isbaca'),",
+                                            "\tis_terus = record.get('disposisi_masuk_isterus'),",
+                                            "\tberkas_terima_tgl = Ext.util.Format.date(record.get('disposisi_masuk_berkasterima_tgl'), 'd M Y H:i'),",
+                                            "\tbaca_tgl = Ext.util.Format.date(record.get('disposisi_masuk_baca_tgl'), 'd M Y H:i'),",
+                                            "\tterus_tgl = Ext.util.Format.date(record.get('disposisi_masuk_terus_tgl'), 'd M Y H:i'),",
+                                            "    staf_id = record.get('disposisi_masuk_penerima_id'),",
+                                            "    staf_nama = record.get('disposisi_masuk_penerima_nama'),",
+                                            "    staf_jabatan = record.get('disposisi_masuk_penerima_jabatan_nama'),",
+                                            "    staf_unit = record.get('disposisi_masuk_penerima_unit_nama'),",
+                                            "    supporttext = '<div class=\"cell-text\"><div class=\"subtext\">'+",
+                                            "                '<span class=\"badge badge-solid margin-right-4\">'+",
+                                            "                    '<i class=\"icon ion-md-mail\"></i>'+",
+                                            "                '</span>Belum dibaca'+",
+                                            "            '</div></div>';",
+                                            "",
+                                            "    if (is_baca == '1'){",
+                                            "    \tsupporttext = '<div class=\"cell-text\"><div class=\"subtext primary\">'+",
+                                            "                '<span class=\"badge badge-solid margin-right-4\">'+",
+                                            "                    '<i class=\"icon ion-md-mail-open blue-600-i\"></i>'+",
+                                            "                '</span>Dibaca'+",
+                                            "            '</div><div class=\"supporttext supporttext-dark\">Pada '+baca_tgl+'</div></div>';",
+                                            "    }",
+                                            "",
+                                            "    if (is_terus == '1'){",
+                                            "\t\tsupporttext = '<div class=\"cell-text\"><div class=\"subtext info\">'+",
+                                            "                '<span class=\"badge badge-solid margin-right-4\">'+",
+                                            "                    '<i class=\"icon ion-md-send green-600-i\"></i>'+",
+                                            "                '</span>Diteruskan'+",
+                                            "            '</div><div class=\"supporttext supporttext-dark\">Pada '+terus_tgl+'</div></div>';",
+                                            "    }",
+                                            "",
+                                            "return supporttext;"
+                                        ]
+                                    },
+                                    "name": "renderer",
+                                    "designerId": "cc0c0a26-05a4-40e6-98fc-bf8b4f87077e"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.grid.View",
+                            "reference": {
+                                "name": "viewConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disableSelection": true
+                            },
+                            "name": "MyGridView",
+                            "designerId": "4ba95c50-00f0-4e9b-a1cf-a9ddfe4b4201"
+                        },
+                        {
+                            "type": "Ext.grid.feature.Grouping",
+                            "reference": {
+                                "name": "features",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "enableGroupingMenu": false,
+                                "enableNoGroups": false
+                            },
+                            "name": "MyGroupingFeature1",
+                            "designerId": "653c22f9-8140-4873-8cd1-8dbf51867acf",
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "groupHeaderTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "groupHeaderTpl",
+                                        "implHandler": [
+                                            "<div><tpl if=\"name\">Tembusan<tpl else>Penerima</tpl></div>{[this.render(this, values)]}"
+                                        ]
+                                    },
+                                    "name": "groupHeaderTpl",
+                                    "designerId": "69f0a79d-f325-4ce4-8cd0-7e180c3aafb8"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,317 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "border": false,
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_masuk_pengarahan_form",
+        "designer|userClassName": "Sipas.masuk.pengarahan.Form",
+        "header": false,
+        "height": null,
+        "languageCode": "text",
+        "languageName": "resi_surat",
+        "languageable": true,
+        "layout": "vbox",
+        "title": "My Panel",
+        "width": null
+    },
+    "name": "MyPanel1",
+    "configAlternates": {
+        "languageable": "boolean"
+    },
+    "designerId": "4747dd8c-7fc9-432f-b1ba-373f47b6fe44",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "languageable",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageCode",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageName",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyPadding": null,
+                "border": false,
+                "header": false,
+                "itemId": "form",
+                "layout|flex": 1,
+                "title": "My Form"
+            },
+            "name": "MyForm1",
+            "designerId": "13d85e86-769d-408f-897c-54f6cff418e7",
+            "cn": [
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout": "anchor",
+                        "padding": 5
+                    },
+                    "name": "MyContainer34",
+                    "designerId": "af9ee470-e013-477b-b526-e395787f383b",
+                    "cn": [
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "stretch",
+                                "layout": "hbox"
+                            },
+                            "name": "MyContainer4",
+                            "designerId": "a230e995-d3ce-428c-b291-0966407318b6",
+                            "cn": [
+                                {
+                                    "type": "Ext.container.Container",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": 1
+                                    },
+                                    "name": "MyContainer7",
+                                    "designerId": "c8e6d247-ee75-4360-ab51-448fbe5b7ce8"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.field.ComboBox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "anyMatch": true,
+                                "associated": true,
+                                "displayField": "unit_nama",
+                                "emptyText": "Pilih unit",
+                                "fieldLabel": "Ditujukan Pada Unit :",
+                                "forceSelection": true,
+                                "itemId": "comboUnit",
+                                "labelWidth": 120,
+                                "layout|anchor": "100%",
+                                "minChars": 2,
+                                "name": "surat_unit",
+                                "pageSize": 15,
+                                "store": "Sipas.unit.Combo",
+                                "valueField": "unit_id"
+                            },
+                            "name": "MyComboBox18",
+                            "configAlternates": {
+                                "associated": "boolean"
+                            },
+                            "designerId": "4da18517-46e9-49c3-b5ab-16afd098c903",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "associated",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.view.BoundList",
+                                    "reference": {
+                                        "name": "listConfig",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemSelector": "div"
+                                    },
+                                    "name": "MyBoundList1",
+                                    "designerId": "57e8bb18-534d-4c8f-91e6-0b3685934394",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.XTemplate",
+                                            "reference": {
+                                                "name": "itemTpl",
+                                                "type": "object"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|displayName": "itemTpl",
+                                                "implHandler": [
+                                                    "{unit_nama} <span style=\"color: gray\">({unit_kode})</span>"
+                                                ]
+                                            },
+                                            "name": "itemTpl",
+                                            "designerId": "bb6bdeb5-5ed1-4897-8a33-08786dcf1c99"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": null,
+                        "container|defaultMargins": [
+                            "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                        ],
+                        "container|pack": "end",
+                        "designer|uiInterfaceName": "footer",
+                        "dock": "bottom",
+                        "itemId": "toolbarAction",
+                        "layout": "hbox",
+                        "margin": null,
+                        "ui": "footer"
+                    },
+                    "name": "MyContainer2",
+                    "designerId": "6556c7da-5208-4376-a5a1-223001e8c8eb",
+                    "cn": [
+                        {
+                            "type": "linkedinstance",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "languageCode": "resi_surat",
+                                "languageMode": "text",
+                                "languageable": true,
+                                "layout|flex": null,
+                                "roleName": null,
+                                "roleable": null
+                            },
+                            "name": "sipas.com.button.print33",
+                            "configAlternates": {
+                                "languageable": "boolean"
+                            },
+                            "designerId": "db4a5cdc-022d-4d21-9915-293403fb1e4a",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "roleable",
+                                    "type": "boolean"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "roleName",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageable",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageCode",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageMode",
+                                    "type": "string"
+                                }
+                            ],
+                            "masterInstanceId": "4acde223-fe77-4a4b-8394-07ccd10e338e"
+                        },
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": null,
+                                "container|defaultMargins": [
+                                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                                ],
+                                "container|pack": "end",
+                                "designer|uiInterfaceName": "footer",
+                                "itemId": null,
+                                "layout": "hbox",
+                                "layout|flex": 1,
+                                "margin": null,
+                                "ui": "footer"
+                            },
+                            "name": "MyContainer3",
+                            "designerId": "1bb3eabe-0ccd-4ab3-84af-39a91eab00a9"
+                        },
+                        {
+                            "type": "linkedinstance",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|uiInterfaceName": "default",
+                                "itemId": "btnSimpan",
+                                "languageCode": "pengarahan_surat",
+                                "languageMode": "text",
+                                "languageable": true,
+                                "layout|flex": null,
+                                "scale": null
+                            },
+                            "name": "sipas.com.button.save42",
+                            "configAlternates": {
+                                "languageable": "boolean"
+                            },
+                            "designerId": "27985f97-1e73-4dec-8759-4597af92b862",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageable",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageCode",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageMode",
+                                    "type": "string"
+                                }
+                            ],
+                            "masterInstanceId": "feb6c6f9-7733-4b38-9254-091d0db2d3a9"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

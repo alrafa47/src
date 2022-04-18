@@ -1,0 +1,62 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.surat.unit.Combo",
+        "model": "Sipas.surat.Unit",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.surat.unit.Combo"
+    },
+    "name": "Sipas.surat.kontak.Combo1",
+    "designerId": "d1074afb-a4a6-4067-bcf1-a9f51337b99c",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat_unit/read"
+            },
+            "name": "MyAjaxProxy7",
+            "designerId": "42be7a21-adec-4837-8061-9c8c76cd8e53",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader7",
+                    "designerId": "a7eb78ab-25e8-4867-ba85-d4362a46515b"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "surat_unit"
+            },
+            "name": "MySorter11",
+            "designerId": "3e4f99da-a4c0-4ecd-bf0e-2d3b901eba4c"
+        }
+    ]
+}

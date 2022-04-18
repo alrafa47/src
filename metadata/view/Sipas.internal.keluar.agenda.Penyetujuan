@@ -1,0 +1,178 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "sipas_internal_keluar_agenda_penyetujuan",
+        "designer|userClassName": "Sipas.internal.keluar.agenda.Penyetujuan",
+        "hideHeaders": true,
+        "itemId": "daftarPenyetujuan",
+        "store": "Sipas.internal.keluar.agenda.Popup",
+        "title": "DAFTAR PENYETUJUAN"
+    },
+    "name": "MyGridPanel",
+    "configAlternates": {
+        "associated": "boolean"
+    },
+    "designerId": "eea8a86d-7249-47ac-8cdb-cabc2934c0c6",
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "staf_nama",
+                "layout": "fit",
+                "menuDisabled": true,
+                "text": "Nama Penyetuju",
+                "width": 240
+            },
+            "name": "MyColumn4",
+            "designerId": "d2476e12-9d4d-4a0c-a503-dd6b9bf7f303"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "surat_stack_penyetuju_status",
+                "layout": "fit",
+                "menuDisabled": true,
+                "text": "Status",
+                "width": 160
+            },
+            "name": "MyColumn7",
+            "designerId": "79d8342c-479a-4783-a40d-40142cbed579",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "",
+                            "var modelDefault = Ext.ModelManager.getModel('SIPAS.model.Sipas.surat.StackPenyetuju');",
+                            "return modelDefault.genStatus(value, record);"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "2b255cc5-93bb-4b3a-9e62-7757e3355ca6"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "surat_stack_penyetuju_komentar",
+                "layout": "fit",
+                "menuDisabled": true,
+                "text": "Komentar",
+                "width": 200
+            },
+            "name": "MyColumn8",
+            "designerId": "899bb85f-6460-463d-bdae-e6e99ebfc26f",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(value !== null){",
+                            " return '<div style=\"white-space:normal !important;\">'+ value +'</div>';",
+                            "}else{",
+                            "    return '<span class=\"alternative\">Tidak Ada Komentar</span>';",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "195488a5-ee11-4f91-9ef6-3a7babf44745"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "unitkerja_nama",
+                "layout": "fit",
+                "menuDisabled": true,
+                "text": "Unit Kerja",
+                "width": 200
+            },
+            "name": "MyColumn9",
+            "designerId": "522805a7-fdff-4dc8-a82d-d3d2f6a29c99"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "jabatan_nama",
+                "layout": "fit",
+                "menuDisabled": true,
+                "text": "Jabatan",
+                "width": 200
+            },
+            "name": "MyColumn10",
+            "designerId": "61c0be69-a690-4e6d-a816-4f5a6be5219c"
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyGridView2",
+            "designerId": "80f71470-c602-457d-abc9-13a540a05306"
+        }
+    ]
+}

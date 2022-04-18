@@ -1,0 +1,65 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.session.notification.agenda.eksternal.keluar.blmkirim.Compact",
+        "model": "Sipas.Surat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.session.notification.agenda.eksternal.keluar.blmkirim.Compact"
+    },
+    "name": "Sipas.keluar.agenda.registrasi.List1",
+    "designerId": "52d4cf58-91d0-40f5-b759-2aae936315b9",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/notif_agenda/eksternal/keluar_blmkirim"
+            },
+            "name": "MyAjaxProxy28",
+            "designerId": "b7342eed-926d-46d7-b360-6143228e4328",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader28",
+                    "designerId": "33401122-3d35-4228-8e2b-d801c8f6ee8b"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "tanggal",
+                "direction": "DESC",
+                "property": "surat_tanggal",
+                "root": "data"
+            },
+            "name": "MySorter1",
+            "designerId": "172063bf-5003-4ac6-b294-ac175fb8ba0f"
+        }
+    ]
+}

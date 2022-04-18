@@ -1,0 +1,77 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.keluar.agenda.ekspedisi.List",
+        "model": "Sipas.surat.Log",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.keluar.agenda.ekspedisi.List"
+    },
+    "name": "Sipas.klasifikasi.List1",
+    "designerId": "12c4a02c-57b0-47a7-9d5e-25ba76b613bb",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat_log/ekspedisi"
+            },
+            "name": "MyAjaxProxy14",
+            "designerId": "148fed2a-3f87-4818-87ad-36f015b8817d",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader14",
+                    "designerId": "3e206261-bd1b-4ac6-bd0c-49edb45ff1a5"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_tanggal"
+            },
+            "name": "MySorter5",
+            "designerId": "a44bb8ab-8c91-492d-a2be-3a739dff409d"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "ekspedisi_nama"
+            },
+            "name": "MySorter2",
+            "designerId": "8ff8345c-a10d-413c-87ee-27937189b87d"
+        }
+    ]
+}

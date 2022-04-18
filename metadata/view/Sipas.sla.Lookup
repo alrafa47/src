@@ -1,0 +1,232 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "constrain": true,
+        "constrainHeader": true,
+        "designer|userAlias": "sipas_sla_lookup",
+        "designer|userClassName": "Sipas.sla.Lookup",
+        "height": 400,
+        "id": null,
+        "itemId": null,
+        "layout": "fit",
+        "maximizable": true,
+        "minHeight": 200,
+        "minWidth": 200,
+        "modal": true,
+        "title": "Daftar SLA",
+        "width": 700
+    },
+    "name": "Sipas.staf.Lookup1",
+    "designerId": "73d93576-97d1-4760-8a46-fd0fd790bd1a",
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "allowDeselect": true,
+                "border": false,
+                "emptyText": "Tidak Ada Data",
+                "frameHeader": false,
+                "id": null,
+                "itemId": null,
+                "store": "Sipas.sla.Lookup",
+                "title": null
+            },
+            "name": "MyGridPanel",
+            "designerId": "806a558e-a115-4a6f-b6e6-80afbcd4f34b",
+            "cn": [
+                {
+                    "type": "Ext.grid.View",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyGridView1",
+                    "designerId": "96c1c07e-232d-4f15-b24b-f577bdf3e55b"
+                },
+                {
+                    "type": "Ext.grid.RowNumberer",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "name": "MyRowNumberer8",
+                    "designerId": "f5044922-761e-4b09-b02b-5fbb4815a688"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "sla_id",
+                        "hidden": true,
+                        "text": "Id"
+                    },
+                    "name": "MyColumn33",
+                    "designerId": "61c4350c-bd14-4362-a702-936cae809d98"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "sla_nama",
+                        "filterable": true,
+                        "flex": 1,
+                        "items": [
+                            "{\r",
+                            "    xtype: 'textfield',\r",
+                            "    flex: 1,\r",
+                            "    margin: 2,\r",
+                            "    listeners: {\r",
+                            "        change: function(textfield, e, eOpts){\r",
+                            "            this.up('gridpanel').filterHeader(this);\r",
+                            "        }\r",
+                            "    }\r",
+                            "}"
+                        ],
+                        "text": "Nama",
+                        "width": 160
+                    },
+                    "name": "MyColumn35",
+                    "configAlternates": {
+                        "items": "object"
+                    },
+                    "designerId": "c5096084-84dd-4f41-9b26-1180450328aa",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "filterable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "items",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Paging",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayInfo": true,
+                        "dock": "bottom",
+                        "store": "Sipas.sla.Lookup",
+                        "width": 360
+                    },
+                    "name": "MyPagingToolbar8",
+                    "designerId": "d45ecc3a-63db-4b70-be2f-5a3cec021507"
+                },
+                {
+                    "type": "Ext.selection.CheckboxModel",
+                    "reference": {
+                        "name": "selModel",
+                        "type": "object"
+                    },
+                    "codeClass": "Ext.selection.CheckboxModel",
+                    "userConfig": {
+                        "mode": "SINGLE"
+                    },
+                    "name": "MyCheckboxSelectionModel1",
+                    "designerId": "8d66c9f2-0333-47f9-b17e-01bbaf8ecd44"
+                },
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processMyGridPanel",
+                        "implHandler": [
+                            "var filters = {\r",
+                            "    ftype: 'filters',\r",
+                            "    encode: true, \r",
+                            "    local: false \r",
+                            "};\r",
+                            "\r",
+                            "if (! config.features) {\r",
+                            "    config.features=filters;\r",
+                            "} else {\r",
+                            "    config.features.push(filters);\r",
+                            "}\r",
+                            "\r",
+                            "return config;"
+                        ]
+                    },
+                    "name": "processMyGridPanel",
+                    "designerId": "6e3d0ab0-76f0-4191-bf1c-9d5026bb0f34"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": null,
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "container|pack": "end",
+                "designer|uiInterfaceName": "footer",
+                "dock": "bottom",
+                "itemId": "toolbarControl",
+                "layout": "hbox",
+                "margin": null,
+                "ui": "footer"
+            },
+            "name": "MyContainer25",
+            "designerId": "31466695-97f4-4d70-92d1-a8b18f1476c0",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|uiInterfaceName": "default",
+                        "disabled": true,
+                        "id": null,
+                        "itemId": null,
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.putin24",
+                    "designerId": "c6d25a84-e1ed-45f0-9fd0-02efc6a1adfc",
+                    "masterInstanceId": "2a6a3c93-a982-4961-b600-192b59ee290e"
+                }
+            ]
+        }
+    ]
+}

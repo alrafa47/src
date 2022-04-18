@@ -1,0 +1,254 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "constrain": true,
+        "constrainHeader": true,
+        "designer|userAlias": "sipas_jabatan_wakil_lookup",
+        "designer|userClassName": "Sipas.jabatan.wakil.Lookup",
+        "height": 400,
+        "id": null,
+        "itemId": null,
+        "layout": "fit",
+        "maximizable": true,
+        "minHeight": 200,
+        "minWidth": 200,
+        "modal": true,
+        "title": "Daftar Jabatan",
+        "width": 640
+    },
+    "name": "Sipas.staf.wakil.Lookup1",
+    "designerId": "c6e0e0b8-487b-4ab4-beac-001002662be2",
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "allowDeselect": true,
+                "border": false,
+                "frameHeader": false,
+                "id": null,
+                "itemId": null,
+                "store": "Sipas.jabatan.wakil.Lookup",
+                "title": null
+            },
+            "name": "MyGridPanel",
+            "designerId": "e036c890-4c88-4d11-9892-840feab67197",
+            "cn": [
+                {
+                    "type": "Ext.grid.View",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "emptyText": "Tidak Ada Data"
+                    },
+                    "name": "MyGridView1",
+                    "designerId": "ba03711d-f446-43b6-ad63-8e5a5534e599"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "jabatan_nama",
+                        "filterable": true,
+                        "flex": null,
+                        "items": [
+                            "{",
+                            "    xtype: 'textfield',",
+                            "    emptyText: 'Cari Nama Jabatan',",
+                            "    flex: 1,",
+                            "    margin: 2,",
+                            "    listeners: {",
+                            "        change: function(textfield, e, eOpts){",
+                            "            this.up('gridpanel').filterHeader(this);",
+                            "        }",
+                            "    }",
+                            "}"
+                        ],
+                        "text": "Nama Jabatan",
+                        "width": 400
+                    },
+                    "name": "MyColumn35",
+                    "configAlternates": {
+                        "items": "object"
+                    },
+                    "designerId": "6b671ebf-375c-43ed-95a0-331eb8e765fd",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "filterable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "items",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "jabatan_kode",
+                        "filterable": true,
+                        "items": [
+                            "{",
+                            "    xtype: 'textfield',",
+                            "    emptyText: 'Cari Kode Jabatan',",
+                            "    flex: 1,",
+                            "    margin: 2,",
+                            "    listeners: {",
+                            "        change: function(textfield, e, eOpts){",
+                            "            this.up('gridpanel').filterHeader(this);",
+                            "        }",
+                            "    }",
+                            "}"
+                        ],
+                        "text": "Kode Jabatan",
+                        "width": 200
+                    },
+                    "name": "MyColumn23",
+                    "configAlternates": {
+                        "items": "object"
+                    },
+                    "designerId": "4385a1e5-6245-4092-80ae-f327ccd2e210",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "filterable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "items",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Paging",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayInfo": true,
+                        "dock": "bottom",
+                        "store": "Sipas.jabatan.wakil.Lookup",
+                        "width": 360
+                    },
+                    "name": "MyPagingToolbar8",
+                    "designerId": "fa8a3deb-231f-471a-adb8-a9add6011694"
+                },
+                {
+                    "type": "Ext.selection.CheckboxModel",
+                    "reference": {
+                        "name": "selModel",
+                        "type": "object"
+                    },
+                    "codeClass": "Ext.selection.CheckboxModel",
+                    "userConfig": {
+                        "mode": "SINGLE"
+                    },
+                    "name": "MyCheckboxSelectionModel1",
+                    "designerId": "c092e26a-da97-43ac-bd36-87e98d8e0436"
+                },
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processMyGridPanel",
+                        "implHandler": [
+                            "var filters = {\r",
+                            "    ftype: 'filters',\r",
+                            "    encode: true, \r",
+                            "    local: false \r",
+                            "};\r",
+                            "\r",
+                            "if (! config.features) {\r",
+                            "    config.features=filters;\r",
+                            "} else {\r",
+                            "    config.features.push(filters);\r",
+                            "}\r",
+                            "\r",
+                            "return config;"
+                        ]
+                    },
+                    "name": "processMyGridPanel",
+                    "designerId": "c13cc21f-9cfb-470f-8e2c-83e60476a148"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": null,
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "container|pack": "end",
+                "designer|uiInterfaceName": "footer",
+                "dock": "bottom",
+                "itemId": "toolbarControl",
+                "layout": "hbox",
+                "margin": null,
+                "ui": "footer"
+            },
+            "name": "MyContainer47",
+            "designerId": "42c83013-58a0-45ab-af2a-e93f855fb166",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|uiInterfaceName": "default",
+                        "disabled": true,
+                        "id": null,
+                        "itemId": null,
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.putin5",
+                    "designerId": "84fc5717-8706-4a87-975b-4ffb8ea03e78",
+                    "masterInstanceId": "2a6a3c93-a982-4961-b600-192b59ee290e"
+                }
+            ]
+        }
+    ]
+}

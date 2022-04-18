@@ -1,0 +1,442 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "allowDeselect": null,
+        "designer|userAlias": "sipas_session_profile_editor_wakil_list",
+        "designer|userClassName": "Sipas.session.profile.editor.wakil.List",
+        "disableSelection": true,
+        "emptyText": "Tidak ada Data",
+        "enableColumnHide": null,
+        "header": false,
+        "hideHeaders": null,
+        "store": "Sipas.staf.wakil.List",
+        "title": "Asisten"
+    },
+    "name": "Sipas.staf.wakil.List1",
+    "designerId": "30ea7c0d-fc58-4bdd-a63b-3a733b22a85c",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "title",
+                "dock": "top",
+                "hidden": true
+            },
+            "name": "MyToolbar3",
+            "designerId": "db3ea753-f0cf-4dac-9fb1-8e1a975e1c32",
+            "cn": [
+                {
+                    "type": "Ext.form.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": "alternative bold",
+                        "layout|flex": null,
+                        "padding": 4,
+                        "text": "Daftar Asisten "
+                    },
+                    "name": "MyLabel",
+                    "designerId": "9c3a2b35-ea5e-4d72-92c1-f30d8837eaf2"
+                }
+            ]
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "designer|displayName": "action",
+                "dock": "top",
+                "featureName": null,
+                "roleName": null,
+                "roleable": null
+            },
+            "name": "MyToolbar4",
+            "configAlternates": {
+                "roleable": "boolean",
+                "featureable": "boolean"
+            },
+            "designerId": "cb8ac632-8c25-435c-81ce-4fc9f0556b35",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "roleable",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "roleName",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureName",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "anyMatch": true,
+                        "cls": "x-field-search bold",
+                        "displayField": "staf_nama",
+                        "editable": null,
+                        "emptyText": "Tambah asisten",
+                        "enableKeyEvents": true,
+                        "enforceMaxLength": true,
+                        "featureName": "asistensi",
+                        "featureable": true,
+                        "forceSelection": true,
+                        "hideLabel": null,
+                        "hideTrigger": true,
+                        "itemId": "fieldSearch",
+                        "layout|flex": 1,
+                        "minChars": 1,
+                        "pageSize": null,
+                        "queryMode": "local",
+                        "roleName": "simpan_asisten_profile",
+                        "roleable": true,
+                        "selectOnFocus": null,
+                        "store": "Sipas.staf.wakil.asisten.Combo",
+                        "submitValue": null,
+                        "typeAhead": null,
+                        "validateOnChange": null,
+                        "valueField": "staf_id",
+                        "valueNotFoundText": null,
+                        "width": "100%"
+                    },
+                    "name": "MyComboBox",
+                    "configAlternates": {
+                        "featureable": "boolean",
+                        "roleable": "boolean"
+                    },
+                    "designerId": "becc3d60-5239-4b69-a980-34316db15368",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.view.BoundList",
+                            "reference": {
+                                "name": "listConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "emptyText": "Pencarian tidak ditemukan",
+                                "itemSelector": "div"
+                            },
+                            "name": "MyBoundList",
+                            "designerId": "b357704e-7f4e-404a-a0df-d00b98987136",
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "{staf_nama} <span class=\"alternative\">({unit_nama})</span>"
+                                        ]
+                                    },
+                                    "name": "itemTpl",
+                                    "designerId": "3560a5b2-b1a0-4f7e-b1e4-df487113290f"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": null,
+                        "featureName": "asistensi",
+                        "featureable": true,
+                        "iconCls": null,
+                        "itemId": "buttonManual",
+                        "layout|flex": null,
+                        "roleName": "simpan_asisten_profile",
+                        "roleable": true,
+                        "text": "Pilih Manual"
+                    },
+                    "name": "MyButton15",
+                    "configAlternates": {
+                        "featureable": "boolean",
+                        "roleable": "boolean"
+                    },
+                    "designerId": "7ce5052b-0e73-484f-87c7-6c38c8cd000e",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": true,
+                        "layout|flex": null
+                    },
+                    "name": "MyFill2",
+                    "designerId": "e5e00723-a739-4d2b-9e4d-216d019a43e6"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Action",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": "center",
+                "featureName": "asistensi",
+                "featureable": true,
+                "menuDisabled": true,
+                "roleName": "simpan_asisten_profile",
+                "roleable": true,
+                "width": 36
+            },
+            "name": "MyActionColumn",
+            "configAlternates": {
+                "featureable": "boolean",
+                "roleable": "boolean"
+            },
+            "designerId": "efc473a0-d44c-4979-bec4-2714dd95c85e",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureable",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureName",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "roleable",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "roleName",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "actioncolumnitem",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "removerecord",
+                        "iconCls": "x-action-col-icon-bin"
+                    },
+                    "name": "MyActionColumnItem",
+                    "designerId": "ad4b5a43-4f29-47a3-94bc-d547227a596a",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "staf_wakil_asisten_nama",
+                "filterable": false,
+                "flex": 1,
+                "items": null,
+                "minWidth": 200,
+                "sortable": true,
+                "text": "Daftar Asisten",
+                "width": 200
+            },
+            "name": "MyColumn",
+            "configAlternates": {
+                "items": "object"
+            },
+            "designerId": "c2d2f5b1-cf2d-4328-82a8-3bc777a5d202",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var id = record.getId(),",
+                            "    tpl = this.dataTpl || (",
+                            "        this.tpl =",
+                            "        \"<div class='cell-row'><div class='cell-visual cell-visual-left'>\"+",
+                            "        \"<img src='server.php/sipas/staf/get_image/foto?id=\"+record.get('staf_wakil_asisten')+\"' class='img img-circle img-16'>\"+",
+                            "        \"</div><div class='cell-text'>\"+value+\"</div></div>\"",
+                            "    );",
+                            "",
+                            "return (new Ext.Template(tpl)).apply(record.getData());"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "9a898ff7-df8b-4418-8fa7-c35d68d49072"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "emptyText": "Tidak Ada Data"
+            },
+            "name": "MyGridView",
+            "designerId": "327188ca-eab4-48bb-939b-61bf72128166"
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "processSipasstafwakilList",
+                "implHandler": [
+                    "var filters = {",
+                    "    ftype: 'filters',",
+                    "    encode: true,",
+                    "    local: true",
+                    "};",
+                    "",
+                    "if (! config.features) {",
+                    "    config.features=filters;",
+                    "} else {",
+                    "    config.features.push(filters);",
+                    "}",
+                    "",
+                    "return config;"
+                ]
+            },
+            "name": "processSipasstafwakilList",
+            "designerId": "9f506c3b-2864-4f8f-8074-3ab2f851a59f"
+        }
+    ]
+}

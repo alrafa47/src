@@ -1,0 +1,175 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoScroll": true,
+        "border": false,
+        "columnLines": null,
+        "designer|userAlias": "sipas_disposisi_riwayat_list",
+        "designer|userClassName": "Sipas.disposisi.riwayat.List",
+        "emptyText": "Tidak Ada Riwayat",
+        "hideHeaders": true,
+        "iconCls": null,
+        "id": null,
+        "itemId": null,
+        "store": "Sipas.disposisi.riwayat.List",
+        "title": "Riwayat Disposisi"
+    },
+    "name": "MyGridPanel13",
+    "designerId": "07fd507b-6c42-48fc-a41b-43063f54d191",
+    "cn": [
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyGridView16",
+            "designerId": "55adca26-408d-4ad0-9171-a8384dfb628f"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "disposisi_tgl",
+                "flex": 1,
+                "sortable": true,
+                "text": "Penerima",
+                "width": null
+            },
+            "name": "MyColumn3",
+            "designerId": "c8b3f1d5-5139-483f-abb6-ef35ea6f87ca",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(record.get('perintah_nama')){",
+                            "    if(record.get('disposisi_pesan')){",
+                            "        p = '<span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-md-quote grey-700\"></i></span>'+record.get('perintah_nama')+",
+                            "            ', '+record.get('disposisi_pesan')+'</span> ';",
+                            "    }else{",
+                            "        p = '<span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-md-quote grey-700\"></i></span>'+record.get('perintah_nama');",
+                            "    }",
+                            "}else{",
+                            "    p = '';",
+                            "}",
+                            "",
+                            "if(value){",
+                            "    d = '<span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-md-calendar grey-700\"></i></span>'+Ext.util.Format.date(value, 'd M Y H:i');",
+                            "}",
+                            "",
+                            "if (record.get('disposisi_jumlah_penerima') !== record.get('disposisi_jumlah_penerima_sdhproses')) {",
+                            "    t = '<span class=\"warning\"><span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-md-send orange-500-i\"></i></span>Proses pengiriman ke '+record.get('disposisi_jumlah_penerima_sdhproses')+'/'+record.get('disposisi_jumlah_penerima')+' orang</span>';",
+                            "} else {",
+                            "    if(record.get('disposisi_model_sub') === 1){",
+                            "        t = '<span class=\"info\"><span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-md-send green-500-i\"></i></span>Mengirim Nota Dinas ke '+record.get('disposisi_jumlah_penerima')+' orang</span>';",
+                            "    }else{",
+                            "        t = '<span class=\"info\"><span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-md-send green-500-i\"></i></span>Mengirim Disposisi ke '+record.get('disposisi_jumlah_penerima')+' orang</span>';",
+                            "    }",
+                            "}",
+                            "",
+                            "if(record.get('disposisi_iscabut') === 1){",
+                            "    return new Ext.XTemplate(['<div class=\"cell-row\"><div class=\"cell-text margin-left-12\">',",
+                            "                              '<div class=\"supporttext supporttext-black\">',",
+                            "                              '<span class=\"danger\">',",
+                            "                              '<span class=\"badge badge-solid margin-right-4\">',",
+                            "                              '<i class=\"icon {icon} {color}\"></i>',",
+                            "                              '</span>{cabut}',",
+                            "                              '</span>',",
+                            "                              '</div>',",
+                            "                              '<div class=\"supporttext supporttext-dark\">Pada {cabut_tgl}</div>',",
+                            "                              '<div class=\"supporttext supporttext-black\">{d}</div>',",
+                            "                              '<div class=\"supporttext supporttext-black\">{t}</div>',",
+                            "                              '<div class=\"supporttext supporttext-black\">{p}</div>',",
+                            "                              '</div></div>']).apply({",
+                            "        p: p,",
+                            "        d: d,",
+                            "        t: t,",
+                            "        icon: 'ion-md-document',",
+                            "        color: 'red-700-i',",
+                            "        cabut: 'Disposisi ini telah direvisi',",
+                            "        cabut_tgl: Ext.util.Format.date(record.get('disposisi_cabut_tgl'), 'd M Y H:i')",
+                            "    });",
+                            "}else{",
+                            "    return new Ext.XTemplate(['<div class=\"cell-text margin-left-12\">',",
+                            "                              '<div class=\"supporttext supporttext-black\">{d}</div>',",
+                            "                              '<div class=\"supporttext supporttext-black\">{t}</div>',",
+                            "                              '<div class=\"supporttext supporttext-black\">{p}</div>',",
+                            "                              '</div>']).apply({",
+                            "        p:p, d:d, t:t",
+                            "    });",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "eaaaba25-2a88-40b1-942d-dd57bb286f22"
+                }
+            ]
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "hidden": true,
+                "itemId": "toolbarControl"
+            },
+            "name": "MyToolbar3",
+            "designerId": "292cae45-08ff-49bf-8ea5-fca3036f352f",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "reload",
+                        "layout|flex": null,
+                        "text": null
+                    },
+                    "name": "sipas.com.button.refresh76",
+                    "designerId": "a8dcae0b-9a57-4a67-94cc-0e124f78dda6",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "e517a5ab-fc5b-441a-97a3-5c706738d092"
+                }
+            ]
+        }
+    ]
+}

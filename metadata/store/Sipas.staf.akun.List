@@ -1,0 +1,62 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.staf.akun.List",
+        "model": "Sipas.Akun",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.staf.akun.List"
+    },
+    "name": "Sipas.akun.List1",
+    "designerId": "c8e24161-3893-484a-b1fb-1f83901e27bf",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/akun/aktif"
+            },
+            "name": "MyAjaxProxy1",
+            "designerId": "a6b0e6af-10d0-49d4-9df0-578dec352212",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader1",
+                    "designerId": "3518f8be-c63f-486f-9e7d-4522f7d33227"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "akun_nama"
+            },
+            "name": "MySorter",
+            "designerId": "0d3dc10a-394a-4272-a456-2fe20f13e487"
+        }
+    ]
+}

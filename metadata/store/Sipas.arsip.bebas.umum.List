@@ -1,0 +1,62 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.arsip.bebas.umum.List",
+        "model": "Sipas.Arsip",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.arsip.bebas.umum.List"
+    },
+    "name": "Sipas.bebas.list.umum.List1",
+    "designerId": "373c82b5-280f-409f-b889-937d562b392f",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/arsip/umum"
+            },
+            "name": "MyAjaxProxy9",
+            "designerId": "9b0020cb-d74e-42e8-8f03-ee70aeeaf3fd",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader12",
+                    "designerId": "34fd87be-a438-46bb-a440-5e83b7ab00a5"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Grouper",
+            "reference": {
+                "name": "groupers",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "unit_nama"
+            },
+            "name": "MyGrouper",
+            "designerId": "b232e39d-e974-47c0-8299-42856af1d281"
+        }
+    ]
+}

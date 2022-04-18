@@ -1,0 +1,65 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.staf.wakil.monitoring.masuk.Blmbaca",
+        "model": "Sipas.disposisi.Masuk",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.staf.wakil.monitoring.masuk.Blmbaca"
+    },
+    "name": "Sipas.staf.wakil.monitoring.masuk.List1",
+    "designerId": "095b106d-2785-4924-93bb-e181809eae0b",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/account/asistensi/masuk_blmbaca"
+            },
+            "name": "MyAjaxProxy51",
+            "designerId": "a762ded2-7d24-4f2c-b2cf-5b1171c4e335",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader51",
+                    "designerId": "2af3dbda-93c3-464f-a838-3f47fa6f402c"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "tanggal",
+                "direction": "DESC",
+                "property": "disposisi_tgl",
+                "root": "data"
+            },
+            "name": "MySorter4",
+            "designerId": "aafed3d0-c5cf-411d-a887-8a33be502d6b"
+        }
+    ]
+}

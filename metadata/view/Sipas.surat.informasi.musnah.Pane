@@ -1,0 +1,131 @@
+{
+    "type": "Ext.form.FieldSet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "border": false,
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_surat_informasi_musnah_pane",
+        "designer|userClassName": "Sipas.surat.informasi.musnah.Pane",
+        "itemId": "textMusnahSurat",
+        "layout": "vbox",
+        "padding": 0,
+        "title": null,
+        "width": null
+    },
+    "name": "Sipas.surat.informasi.musnah.Pane",
+    "designerId": "70ffefd0-ce54-4497-97ae-8346e2c3f90b",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "constructor",
+                "implHandler": [
+                    "this.callParent(arguments);",
+                    "    return Ext.applyIf(this,{",
+                    "        form: new Ext.form.Basic(this)",
+                    "});"
+                ]
+            },
+            "name": "constructor",
+            "designerId": "a45579c8-e9e7-4d5d-8011-0f6eb0303f8b"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": "suratImage",
+                "height": 48,
+                "hidden": true,
+                "itemId": "suratImage",
+                "margin": "0 5 0 0",
+                "padding": null,
+                "width": 48
+            },
+            "name": "MyContainer13",
+            "designerId": "1a37f735-7074-4d39-9012-8e762062c637",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onSuratImageRender",
+                        "implHandler": [
+                            "Ext.create('Ext.tip.ToolTip',{",
+                            "    target: component.getEl(),",
+                            "    html: 'Keterangan Surat'",
+                            "});"
+                        ],
+                        "name": "render",
+                        "scope": "me"
+                    },
+                    "name": "onSuratImageRender",
+                    "designerId": "7c0efda8-dd96-4c80-92c0-6c5846d1785e"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "container|pack": "center",
+                "itemId": "containerMusnah",
+                "layout": "vbox",
+                "layout|flex": 1
+            },
+            "name": "MyContainer12",
+            "designerId": "e315463e-ece8-4c4a-bf19-d54fecf08984",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabledCls": "disabled",
+                        "fieldLabel": null,
+                        "fieldStyle": "display:flex",
+                        "id": null,
+                        "itemId": "textMusnah",
+                        "labelAlign": null,
+                        "labelClsExtra": "f11",
+                        "labelSeparator": "&nbsp;",
+                        "labelStyle": "color:gray;",
+                        "labelWidth": null,
+                        "layout|flex": null,
+                        "layout|margins": null,
+                        "maxWidth": 400,
+                        "name": null,
+                        "value": "Surat telah dimusnahkan",
+                        "width": 400
+                    },
+                    "name": "MyDisplayField5",
+                    "designerId": "e3585ab1-1fbf-474f-b2c3-0aa4a5e67a7a"
+                }
+            ]
+        }
+    ]
+}

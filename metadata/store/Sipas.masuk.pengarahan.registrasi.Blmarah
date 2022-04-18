@@ -1,0 +1,76 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.masuk.pengarahan.registrasi.Blmarah",
+        "model": "Sipas.Surat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.masuk.pengarahan.registrasi.Blmarah"
+    },
+    "name": "Sipas.masuk.pengarahan.registrasi.Arah1",
+    "designerId": "97b594d5-c7d2-48a0-8581-876e58ba74dd",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat_masuk/blm_arah"
+            },
+            "name": "MyAjaxProxy33",
+            "designerId": "0e1df970-ea58-4cdb-81a5-440babe35bf6",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader33",
+                    "designerId": "083eb03f-f5d9-4c5c-88b3-ff7add47e695"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_properti_buat_tgl"
+            },
+            "name": "MySorter8",
+            "designerId": "79000171-7630-42e4-b422-075512da1a5f"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "unit_nama"
+            },
+            "name": "MySorter10",
+            "designerId": "ec294e7d-4f83-45e0-bc57-48a7e27469f1"
+        }
+    ]
+}

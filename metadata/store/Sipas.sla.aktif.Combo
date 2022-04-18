@@ -1,0 +1,64 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userAlias": "sipas_sla_combo",
+        "designer|userClassName": "Sipas.sla.aktif.Combo",
+        "model": "Sipas.Sla",
+        "pageSize": 1000,
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.sla.aktif.Combo"
+    },
+    "name": "Sipas.unit.Combo1",
+    "designerId": "656b64b4-f099-4d44-aca5-6150eec446e4",
+    "cn": [
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "sla_nama"
+            },
+            "name": "MySorter3",
+            "designerId": "1922433f-b727-4f9d-b753-593245f1af02"
+        },
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/sla/aktif"
+            },
+            "name": "MyAjaxProxy5",
+            "designerId": "a0cb41a9-e29e-446b-a0d4-bc378347015a",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader5",
+                    "designerId": "1571f90a-ca01-468a-9903-aeded6bac895"
+                }
+            ]
+        }
+    ]
+}

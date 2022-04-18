@@ -1,0 +1,332 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "allowDeselect": null,
+        "designer|userAlias": "sipas_jenis_unit_list",
+        "designer|userClassName": "Sipas.jenis.unit.List",
+        "disableSelection": true,
+        "emptyText": "Tidak ada Data",
+        "header": false,
+        "store": "Sipas.jenis.unit.List",
+        "title": null
+    },
+    "name": "Sipas.unit.cakupan.List1",
+    "designerId": "f42fd7b9-afaa-408b-9fc5-cf1595e5dfbd",
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "unit_nama",
+                "filterable": true,
+                "flex": 1,
+                "items": [
+                    "{",
+                    "    xtype: 'textfield',",
+                    "    emptyText: 'Cari Unit',",
+                    "    flex: 1,",
+                    "    margin: 2,",
+                    "    listeners: {",
+                    "        change: function(textfield, e, eOpts){",
+                    "                this.up('gridpanel').filterHeader(this);",
+                    "            }",
+                    "    }",
+                    "}"
+                ],
+                "minWidth": 200,
+                "text": "Daftar Unit",
+                "width": 200
+            },
+            "name": "MyColumn",
+            "configAlternates": {
+                "items": "object"
+            },
+            "designerId": "9ae9cbdb-2682-420c-8ea8-737dc5c44ad3",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "unit_cakupan_jabatan",
+                "featureName": "unit",
+                "featureable": true,
+                "filterable": null,
+                "flex": 1,
+                "hidden": true,
+                "items": null,
+                "minWidth": 200,
+                "text": "Nama Unit Kerja",
+                "width": 200
+            },
+            "name": "MyColumn1",
+            "configAlternates": {
+                "items": "object"
+            },
+            "designerId": "2528aebc-5431-4c0e-9b12-d2cb0fddb10f",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureName",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureable",
+                    "type": "boolean"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Action",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": "center",
+                "itemId": "colDeleteUnit",
+                "menuDisabled": true,
+                "width": 36
+            },
+            "name": "MyActionColumn",
+            "designerId": "636a94cb-7f29-4098-9548-546813c8cc03",
+            "cn": [
+                {
+                    "type": "actioncolumnitem",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "removerecord",
+                        "iconCls": "x-action-col-icon-bin"
+                    },
+                    "name": "MyActionColumnItem",
+                    "designerId": "b7e9e291-443e-48c1-9fa7-507731ee308a",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyGridView",
+            "designerId": "fdea557f-0b83-4914-a335-994fc7391b59"
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "title",
+                "dock": "top",
+                "hidden": true
+            },
+            "name": "MyToolbar3",
+            "designerId": "8a69d5c2-bc82-4f6c-a401-cebe3105a7a5",
+            "cn": [
+                {
+                    "type": "Ext.form.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": "alternative bold",
+                        "layout|flex": null,
+                        "padding": 4,
+                        "text": "Unit Kerja Kewenangan"
+                    },
+                    "name": "MyLabel",
+                    "designerId": "6efc3745-47f4-4c6c-a833-1fdde991ca11"
+                }
+            ]
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "designer|displayName": "action",
+                "dock": "top"
+            },
+            "name": "MyToolbar4",
+            "designerId": "f4eece58-7a1f-4f5f-8b63-259494d6af11",
+            "cn": [
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "anyMatch": true,
+                        "cls": "x-field-search",
+                        "displayField": "unit_nama",
+                        "editable": null,
+                        "emptyText": "Tambahkan unit",
+                        "enableKeyEvents": null,
+                        "enforceMaxLength": true,
+                        "forceSelection": true,
+                        "hideLabel": null,
+                        "hideTrigger": true,
+                        "itemId": "fieldSearch",
+                        "layout|flex": 1,
+                        "pageSize": 15,
+                        "queryMode": "local",
+                        "selectOnFocus": null,
+                        "store": "Sipas.jenis.unit.Combo",
+                        "submitValue": null,
+                        "typeAhead": null,
+                        "validateOnChange": null,
+                        "valueField": "unit_id",
+                        "valueNotFoundText": null,
+                        "width": "100%"
+                    },
+                    "name": "MyComboBox",
+                    "designerId": "80c800f6-b993-4d1d-9ede-6921e34099c7",
+                    "cn": [
+                        {
+                            "type": "Ext.view.BoundList",
+                            "reference": {
+                                "name": "listConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "emptyText": "Pencarian tidak ditemukan",
+                                "itemSelector": "div"
+                            },
+                            "name": "MyBoundList",
+                            "designerId": "4db5a0ca-46f4-41d9-80cb-81faa2630172",
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "{unit_nama} ({unit_kode})"
+                                        ]
+                                    },
+                                    "name": "itemTpl",
+                                    "designerId": "f3bee4f4-65e7-48de-84b1-d687c6bda3e6"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": null,
+                        "iconCls": null,
+                        "itemId": "buttonManual",
+                        "layout|flex": null,
+                        "text": "Pilih Manual"
+                    },
+                    "name": "MyButton",
+                    "designerId": "1de0c161-366b-4d72-9c74-dddcbc9054c1"
+                }
+            ]
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "processSipasunitcakupanList",
+                "implHandler": [
+                    "var filters = {",
+                    "    ftype: 'filters',",
+                    "    encode: true,",
+                    "    local: true",
+                    "};",
+                    "",
+                    "if (! config.features) {",
+                    "    config.features=filters;",
+                    "} else {",
+                    "    config.features.push(filters);",
+                    "}",
+                    "",
+                    "return config;"
+                ]
+            },
+            "name": "processSipasunitcakupanList",
+            "designerId": "350a37f6-b75d-4219-a411-41ac836a0d7c"
+        }
+    ]
+}

@@ -1,0 +1,147 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "allowDeselect": null,
+        "associated": null,
+        "autoScroll": null,
+        "designer|userAlias": "sipas_staf_penerima_list",
+        "designer|userClassName": "Sipas.staf.penerima.List",
+        "disableSelection": true,
+        "emptyText": "Tidak ada Data",
+        "height": null,
+        "minHeight": null,
+        "store": "Sipas.staf.penerima.List",
+        "title": null
+    },
+    "name": "Sipas.unit.cakupan.List1",
+    "configAlternates": {
+        "associated": "boolean"
+    },
+    "designerId": "04bffaf3-c654-4114-9d81-d8072b476ab3",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "associated",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.grid.RowNumberer",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "draggable": null,
+                "hidden": true,
+                "lockable": null,
+                "width": 10
+            },
+            "name": "MyRowNumberer1",
+            "designerId": "8bccbd21-1ecc-45b4-bca8-7eaa0d2c5cb8"
+        },
+        {
+            "type": "Ext.grid.column.Action",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": "center",
+                "itemId": "colDelete",
+                "menuDisabled": true,
+                "width": 40
+            },
+            "name": "MyActionColumn",
+            "designerId": "76206863-8ca5-4625-9640-462e8fe4ab7e",
+            "cn": [
+                {
+                    "type": "actioncolumnitem",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "removerecord",
+                        "iconCls": "x-action-col-icon-bin"
+                    },
+                    "name": "MyActionColumnItem",
+                    "designerId": "cee76760-70b7-4ae7-a139-ed91be860118",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "staf_nama",
+                "flex": 1,
+                "height": 40,
+                "menuDisabled": true,
+                "minWidth": 160,
+                "sortable": false,
+                "text": "Daftar Pilihan"
+            },
+            "name": "MyColumn6",
+            "designerId": "b76c098a-5f4f-49d1-9307-d2f015ac6b7e",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "modelStaf = Ext.ModelManager.getModel('SIPAS.model.Sipas.Staf');",
+                            "return modelStaf.renderPegawai(value, record);"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "24126386-8e71-4309-828a-44f12d2afd8e"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyGridView",
+            "designerId": "78ca6fc8-77de-418e-a156-c31bb0d64a71"
+        }
+    ]
+}

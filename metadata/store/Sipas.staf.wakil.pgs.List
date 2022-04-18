@@ -1,0 +1,70 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": null,
+        "designer|userClassName": "Sipas.staf.wakil.pgs.List",
+        "model": "Sipas.staf.Wakil",
+        "remoteFilter": null,
+        "remoteGroup": null,
+        "remoteSort": null,
+        "storeId": "Sipas.staf.wakil.pgs.List"
+    },
+    "name": "Sipas.staf.wakil.atasan.List2",
+    "designerId": "9f679080-47b9-4eee-88e4-73d6b17a8901",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "api": [
+                    "{",
+                    "    read: 'server.php/sipas/staf_wakil_pgs/read',",
+                    "    create: 'server.php/sipas/staf_wakil_pgs/create',",
+                    "    update: 'server.php/sipas/staf_wakil_pgs/update',",
+                    "    destroy: 'server.php/sipas/staf_wakil_pgs/destroy'",
+                    "}"
+                ],
+                "url": null
+            },
+            "name": "MyAjaxProxy5",
+            "designerId": "3c3711bd-6d88-4a86-b4dd-fd7886b49e83",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader5",
+                    "designerId": "25a35eba-dce4-4120-881a-6a93b3bce756"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "staf_wakil_staf"
+            },
+            "name": "MySorter20",
+            "designerId": "7320c8cd-72ce-4ac6-abf0-48ef990ed61b"
+        }
+    ]
+}

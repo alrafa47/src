@@ -1,0 +1,61 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.kontak.List",
+        "model": "Sipas.Kontak",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.kontak.List"
+    },
+    "name": "MyJsonStore",
+    "designerId": "d99f0e42-5567-4e5c-87ab-0fc7d0e1d8dc",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/kontak/read"
+            },
+            "name": "MyAjaxProxy3",
+            "designerId": "8d8c4957-e307-4cf0-8427-b335f46d56c1",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader3",
+                    "designerId": "d2b6beb4-2019-4754-85c9-5fa518799810"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "kontak_nama"
+            },
+            "name": "MySorter1",
+            "designerId": "048f4b6f-46ee-4a2a-8635-e32a25be1401"
+        }
+    ]
+}

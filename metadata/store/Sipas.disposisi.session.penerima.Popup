@@ -1,0 +1,75 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.disposisi.session.penerima.Popup",
+        "model": "Sipas.disposisi.Masuk",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.disposisi.session.penerima.Popup"
+    },
+    "name": "Sipas.surat.tembusan.Popup2",
+    "designerId": "ebc4d733-f46f-43b5-8435-b1ca7d7a12c9",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/kotak_masuk/penerima"
+            },
+            "name": "MyAjaxProxy50",
+            "designerId": "40ce991c-62d1-4a3e-a51e-5fe854762772",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader50",
+                    "designerId": "d462aeae-4b68-41d6-8e34-feb2a490442e"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "surat_properti_buat_tgl"
+            },
+            "name": "MySorter19",
+            "designerId": "0c542295-2398-4b2a-921f-03c02ac3e244"
+        },
+        {
+            "type": "Ext.util.Grouper",
+            "reference": {
+                "name": "groupers",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "disposisi_masuk_istembusan"
+            },
+            "name": "MyGrouper1",
+            "designerId": "55f5e6d6-f160-416c-8a69-19351513fa24"
+        }
+    ]
+}

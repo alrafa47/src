@@ -1,0 +1,75 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.korespondensi.eksternal.List",
+        "groupField": "korespondensi_pengirim",
+        "model": "Sipas.Korespondensi",
+        "remoteFilter": true,
+        "remoteSort": true,
+        "storeId": "Sipas.korespondensi.eksternal.List"
+    },
+    "name": "Sipas.beranda.notification.List1",
+    "designerId": "7015411e-f690-40ba-8d5c-1f0460d5f260",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/korespondensi/eksternal"
+            },
+            "name": "MyAjaxProxy1",
+            "designerId": "4b8a4072-9928-4318-8beb-a4acc9c45200",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader1",
+                    "designerId": "ab85a942-b5f7-4ba5-906c-6ca46e74e0f2"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Grouper",
+            "reference": {
+                "name": "groupers",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "korespondensi_pengirim"
+            },
+            "name": "MyGrouper",
+            "designerId": "692594e9-5a6f-456a-80a6-dfc44c19a228"
+        },
+        {
+            "type": "Ext.util.Grouper",
+            "reference": {
+                "name": "groupers",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "korespondensi_perihal"
+            },
+            "name": "MyGrouper1",
+            "designerId": "8237dfbe-d39d-4f40-b813-9e3bb8fb9308"
+        }
+    ]
+}

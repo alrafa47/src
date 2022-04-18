@@ -1,0 +1,296 @@
+{
+    "type": "Ext.tree.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "clickToView": true,
+        "designer|userAlias": "sipas_unit_treelist",
+        "designer|userClassName": "Sipas.unit.Treelist",
+        "emptyText": "Tidak ada Data",
+        "height": null,
+        "itemId": null,
+        "requires": [
+            "SIPAS.store.Sipas.unit.aktif.Treelist"
+        ],
+        "rootVisible": false,
+        "rowLines": true,
+        "store": "Sipas.unit.aktif.Treelist",
+        "title": "Unit Kerja",
+        "useArrows": true,
+        "width": null
+    },
+    "name": "Sipas.jabatan.Treelist1",
+    "designerId": "5c71e9ab-cd81-4a99-8316-814d357c904c",
+    "isBuiltIn": true,
+    "iconCls": "icon-treegridpanel",
+    "autoName": "TreeGrid",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "clickToView",
+            "type": "boolean"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "dock": "top"
+            },
+            "name": "MyToolbar13",
+            "designerId": "e1dd6d33-4e23-45f5-963c-4870bf951309",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.refresh",
+                    "designerId": "81df77ef-d3c1-4be3-bb49-98c465101e21",
+                    "masterInstanceId": "e517a5ab-fc5b-441a-97a3-5c706738d092"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "roleName": "unitkerja_insert",
+                        "roleable": true
+                    },
+                    "name": "sipas.com.button.add",
+                    "designerId": "d523a0bf-76f9-4a7e-8005-61ff64e2a326",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "boolean"
+                        }
+                    ],
+                    "masterInstanceId": "420a71a2-f0ab-4b83-bf9b-b7cf567d6c9f"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true,
+                        "hidden": true,
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.view",
+                    "designerId": "dd1ad1d6-c626-43e1-85b3-ae90e7a79dc8",
+                    "masterInstanceId": "88073f46-f23e-4800-a045-344110bd18fc"
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "MyFill34",
+                    "designerId": "aaff6987-8688-41ac-ad88-12c094890ba5"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "sipas.unit.combo",
+                    "designerId": "03a9009a-526b-4868-b813-5095e8b5d492",
+                    "masterInstanceId": "3ff7e26c-be83-4791-892b-e8ee003b6e77"
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayField": "nama",
+                        "editable": false,
+                        "fieldLabel": null,
+                        "hideTrigger": true,
+                        "itemId": "Aktif",
+                        "labelAlign": null,
+                        "labelWidth": null,
+                        "layout|flex": null,
+                        "name": "tampilcombo",
+                        "store": [
+                            "{",
+                            "    fields: ['value','nama'],",
+                            "    data: [",
+                            "        {value:0,nama:'Semua Unit Kerja'},",
+                            "        {value:1,nama:'Unit Kerja Aktif'},",
+                            "        {value:2,nama:'Unit Kerja Tidak Aktif'}",
+                            "    ]",
+                            "}"
+                        ],
+                        "value": "Unit Kerja Aktif",
+                        "valueField": "value",
+                        "width": 175
+                    },
+                    "name": "MyComboBox32",
+                    "configAlternates": {
+                        "store": "array",
+                        "value": "string"
+                    },
+                    "designerId": "3dbe67fd-70ce-4582-b035-cf921549f9f6"
+                }
+            ]
+        },
+        {
+            "type": "Ext.tree.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyTreeView",
+            "designerId": "5d922086-95ff-4d9d-818a-abb232aa3327"
+        },
+        {
+            "type": "Ext.tree.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "unit_nama",
+                "flex": 1,
+                "text": "Unit Kerja"
+            },
+            "name": "MyTreeColumn",
+            "designerId": "d11e7913-3a6d-4ba2-b8b3-180771ca7515",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if (record.get('unit_isaktif') == '1'){",
+                            "    return (new Ext.Template('{unit_nama} <span class=\"alternative\">({unit_kode})</span>')).apply(record.getData());",
+                            "} else {",
+                            "    return (new Ext.Template('<span class=\"alternative\">{unit_nama}</span> <span class=\"alternative\">({unit_kode})</span>')).apply(record.getData());",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "4ca7a772-558b-40ab-9d76-5eea32463256"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyPadding": 10,
+                "collapseDirection": "right",
+                "collapsed": true,
+                "collapsible": true,
+                "dock": "right",
+                "frame": null,
+                "frameHeader": null,
+                "hidden": true,
+                "minWidth": 300,
+                "title": "Detail",
+                "titleCollapse": true,
+                "width": null
+            },
+            "name": "MyForm",
+            "designerId": "c621302d-9992-47c4-9ceb-3f83bcd4e5f6",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Kode Unitkerja",
+                        "labelAlign": "top",
+                        "layout|anchor": "100%",
+                        "name": "unit_kode",
+                        "readOnly": true
+                    },
+                    "name": "MyTextField",
+                    "designerId": "90b37d93-9517-43d1-9376-3fe91a72e563"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Nama Unitkerja",
+                        "labelAlign": "top",
+                        "layout|anchor": "100%",
+                        "name": "unit_nama",
+                        "readOnly": true
+                    },
+                    "name": "MyTextField1",
+                    "designerId": "20be323d-0461-49e6-872b-86b09470e60b"
+                }
+            ]
+        }
+    ]
+}

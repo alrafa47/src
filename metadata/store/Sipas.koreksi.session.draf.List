@@ -1,0 +1,113 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.koreksi.session.draf.List",
+        "model": "Sipas.koreksi.Masuk",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.koreksi.session.draf.List"
+    },
+    "name": "Sipas.koreksi.session.List1",
+    "designerId": "b7bbba26-04d8-430b-aea4-72b7f43de1bc",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/draft/read"
+            },
+            "name": "MyAjaxProxy51",
+            "designerId": "38a3f623-20a2-4bbf-91f3-70a08e963bd7",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader51",
+                    "designerId": "c3f62c66-c5ef-4b7d-8dfa-7beac0c3bd31"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "pengingat manual",
+                "direction": "DESC",
+                "property": "disposisi_masuk_ispengingat",
+                "root": "data"
+            },
+            "name": "MySorter2",
+            "designerId": "296e2959-706b-4c5c-bb7e-d04823e54a57"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "baca",
+                "direction": null,
+                "property": "disposisi_masuk_isbaca",
+                "root": "data"
+            },
+            "name": "MySorter9",
+            "designerId": "ef000dd2-f311-40f9-be3f-3271125b815d"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "pengingat otomatis",
+                "direction": "DESC",
+                "property": "disposisi_masuk_isprioritas",
+                "root": "data"
+            },
+            "name": "MySorter7",
+            "designerId": "34ba3a39-571f-475d-84b8-b7eaf862335b"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "tgl terima",
+                "direction": "DESC",
+                "property": "disposisi_masuk_terima_tgl",
+                "root": "data"
+            },
+            "name": "MySorter1",
+            "designerId": "f51827d0-2808-474a-afa9-d1cd69d6349e"
+        }
+    ]
+}

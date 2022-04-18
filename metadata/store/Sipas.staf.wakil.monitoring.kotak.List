@@ -1,0 +1,128 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.staf.wakil.monitoring.kotak.List",
+        "model": "Sipas.disposisi.Masuk",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.staf.wakil.monitoring.kotak.List"
+    },
+    "name": "Sipas.masuk.session.kotak.List1",
+    "designerId": "81347e16-bd8d-493c-a110-68d75a3fe3a5",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/kotak_masuk/asistensi/surat_all"
+            },
+            "name": "MyAjaxProxy51",
+            "designerId": "9acb5ee2-ac5c-4752-ac49-fae6c5d8cd56",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader51",
+                    "designerId": "a8b8cd77-d527-45c3-b9a8-d44834f37655"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "cabut",
+                "direction": null,
+                "property": "disposisi_masuk_iscabut",
+                "root": "data"
+            },
+            "name": "MySorter6",
+            "designerId": "caf756e1-6030-4e31-9f84-062153afbb10"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "pengingat manual",
+                "direction": "DESC",
+                "property": "disposisi_masuk_ispengingat",
+                "root": "data"
+            },
+            "name": "MySorter8",
+            "designerId": "af731d2d-7c91-4a74-a465-e9d76d5bc7ff"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "baca",
+                "property": "disposisi_masuk_isbaca",
+                "root": "data"
+            },
+            "name": "MySorter9",
+            "designerId": "78299aac-627d-4b80-912f-a8b864bca561"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "pengingat otomatis",
+                "direction": "DESC",
+                "property": "disposisi_masuk_isprioritas",
+                "root": "data"
+            },
+            "name": "MySorter10",
+            "designerId": "ddbf70e3-87ce-4aa1-986a-4068e8d1c2db"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "disposisi_tanggal",
+                "direction": "DESC",
+                "property": "disposisi_masuk_terima_tgl",
+                "root": "data"
+            },
+            "name": "MySorter1",
+            "designerId": "fd080ded-3056-4051-bf13-2a27422b4232"
+        }
+    ]
+}

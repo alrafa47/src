@@ -1,0 +1,194 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "sipas_jabatan_penerima_tim_lookup",
+        "designer|userClassName": "Sipas.jabatan.penerima.tim.Lookup",
+        "emptyText": "Tidak Ada Data",
+        "store": "Sipas.jabatan.penerima.tim.Lookup",
+        "title": "Kelompok",
+        "width": null
+    },
+    "name": "Sipas.staf.penerima.tim.Lookup1",
+    "designerId": "9b64c72f-09bb-4b26-a48d-bdebad89476b",
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "jabatan_tim_nama",
+                "featureName": "jabatan_kelompok",
+                "featureable": true,
+                "filterable": true,
+                "flex": null,
+                "items": [
+                    "{",
+                    "    xtype: 'textfield',",
+                    "    emptyText: 'Cari Kelompok',",
+                    "    flex: 1,",
+                    "    margin: 2,",
+                    "    listeners: {",
+                    "        change: function(textfield, e, eOpts){",
+                    "                this.up('gridpanel').filterHeader(this);",
+                    "            }",
+                    "    }",
+                    "}"
+                ],
+                "maxWidth": null,
+                "sortable": true,
+                "text": "Kelompok",
+                "width": 200
+            },
+            "name": "MyColumn3",
+            "configAlternates": {
+                "filterable": "boolean",
+                "items": "object"
+            },
+            "designerId": "670944e8-6b55-4ebf-be26-7ae5668ce5a9",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureName",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var jml = record.get('jabatan_tim_jumlah')?record.get('jabatan_tim_jumlah'):0;",
+                            "",
+                            "return value +' <span class=\"alternative\">('+jml+')</span>';"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "c0098378-038d-47b2-9332-ca7f9ac5267f"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "right",
+                "layout": "fit",
+                "maxWidth": null,
+                "minWidth": null,
+                "width": 320
+            },
+            "name": "MyContainer2",
+            "designerId": "ffcf1c13-3c26-4b1e-b727-1d6271cbb904",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true
+                    },
+                    "name": "sipas.jabatan.penerima.tim.anggota.list",
+                    "designerId": "6a97a5b6-6c9c-4ebc-b301-160fafe990ec",
+                    "masterInstanceId": "12a76584-cd33-40be-8b5c-78491aa121f7"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": null,
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "container|pack": "end",
+                "designer|uiInterfaceName": "footer",
+                "dock": "bottom",
+                "hidden": true,
+                "itemId": null,
+                "layout": "hbox",
+                "margin": null,
+                "ui": "footer"
+            },
+            "name": "MyContainer36",
+            "designerId": "bfe77a67-d0ed-4dd6-9a2a-8c38fb325c9d",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|uiInterfaceName": "default",
+                        "disabled": true,
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.putin3",
+                    "designerId": "e849b1da-45af-464e-b8d6-300974fedc48",
+                    "masterInstanceId": "2a6a3c93-a982-4961-b600-192b59ee290e"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyGridView2",
+            "designerId": "9dc05447-7ded-464a-9af6-a50dbea7eaba"
+        }
+    ]
+}

@@ -1,0 +1,70 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "defaultSortDirection": null,
+        "designer|userClassName": "Sipas.dashboard.board.surat.masuk.toplast.List",
+        "filterOnLoad": false,
+        "model": "Sipas.Surat",
+        "pageSize": 5,
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "sortOnFilter": false,
+        "sortOnLoad": false,
+        "sortRoot": null,
+        "storeId": "Sipas.dashboard.board.surat.masuk.toplast.List"
+    },
+    "name": "MyJsonStore",
+    "designerId": "16855af7-bb83-4417-9f9c-19279ef55dc2",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/dasbor/surat_masuk"
+            },
+            "name": "MyAjaxProxy2",
+            "designerId": "cc38da67-674a-40b8-b614-6e206c3b2401",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "record": null,
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader2",
+                    "designerId": "39850e17-08b3-45d6-8a2f-d8d383b97512"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_tanggal",
+                "root": null
+            },
+            "name": "MySorter2",
+            "designerId": "6dacf739-a2ae-4db1-8f3a-bc1ae049dae4"
+        }
+    ]
+}

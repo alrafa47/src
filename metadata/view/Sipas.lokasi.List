@@ -1,0 +1,500 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "allowDeselect": true,
+        "bodyPadding": null,
+        "clickToView": true,
+        "closable": null,
+        "columnLines": false,
+        "designer|userAlias": "sipas_lokasi_list",
+        "designer|userClassName": "Sipas.lokasi.List",
+        "disableSelection": true,
+        "emptyText": "Tidak ada Data",
+        "forceFit": null,
+        "height": null,
+        "id": null,
+        "itemId": null,
+        "languageCode": "lokasi_list",
+        "languageMode": "title",
+        "languageable": true,
+        "margin": null,
+        "maxHeight": null,
+        "maxWidth": null,
+        "minHeight": null,
+        "minWidth": null,
+        "padding": null,
+        "roleName": "lokasi",
+        "store": "Sipas.lokasi.aktif.List",
+        "title": "Daftar Lokasi Arsip",
+        "titleAlign": "left",
+        "width": null
+    },
+    "designerId": "82ff309b-4db8-4676-b1f0-2c5ccdcbaed2",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "roleName",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "clickToView",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageable",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageMode",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageCode",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top"
+            },
+            "name": "sipas.com.atribut.cascade.toolbar",
+            "designerId": "3208e6d6-5ab1-4b68-b02f-362553e09cc2",
+            "masterInstanceId": "5d6ffbeb-7d22-4cee-ac80-5d16d7009099"
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "dock": "top",
+                "id": null,
+                "itemId": "toolbarProperties"
+            },
+            "name": "MyToolbar23",
+            "designerId": "298b60d5-1a73-42dc-8633-08a3d103ad1d",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": null,
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.refresh69",
+                    "designerId": "d441da24-0a31-4542-a079-46e8e83f434e",
+                    "masterInstanceId": "e517a5ab-fc5b-441a-97a3-5c706738d092"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": null,
+                        "id": null,
+                        "layout|flex": null,
+                        "roleName": "lokasi_insert",
+                        "roleable": true
+                    },
+                    "name": "sipas.com.button.add27",
+                    "designerId": "d80b9a9d-d84b-4f80-ba98-7b1b9c069ca5",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "420a71a2-f0ab-4b83-bf9b-b7cf567d6c9f"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true,
+                        "hidden": true,
+                        "id": null,
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.view20",
+                    "designerId": "8740d140-0820-4aec-b5f9-b8b765d05d4d",
+                    "masterInstanceId": "88073f46-f23e-4800-a045-344110bd18fc"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "width": null
+                    },
+                    "name": "sipas.com.button.togglefilter29",
+                    "designerId": "a439d790-5460-45fa-98bb-2e8f8c1ecb77",
+                    "masterInstanceId": "6f699e21-9335-4237-9e49-37b207a20475",
+                    "cn": [
+                        {
+                            "type": "basicfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "button",
+                                    "state"
+                                ],
+                                "fn": "toggleHandler",
+                                "implHandler": [
+                                    "button.up('grid').query('gridcolumn textfield').forEach(function(field){",
+                                    "    state ? field.show():field.hide();",
+                                    "});"
+                                ]
+                            },
+                            "name": "toggleHandler",
+                            "designerId": "6cf4adc9-127f-409f-bb2d-92359addd20f"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "MyFill26",
+                    "designerId": "dcf9351f-3610-40e8-ad50-06ce46053740"
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayField": "nama",
+                        "editable": false,
+                        "fieldLabel": null,
+                        "hideTrigger": true,
+                        "itemId": "Aktif",
+                        "labelAlign": "right",
+                        "layout|flex": null,
+                        "store": [
+                            "{",
+                            "    fields: ['value','nama'],",
+                            "    data: [",
+                            "        {value:0,nama:'Semua'},",
+                            "        {value:1,nama:'Aktif'},",
+                            "        {value:2,nama:'Tidak Aktif'}",
+                            "    ]",
+                            "}"
+                        ],
+                        "value": "Aktif",
+                        "valueField": "value"
+                    },
+                    "name": "MyComboBox25",
+                    "configAlternates": {
+                        "value": "string",
+                        "store": "array"
+                    },
+                    "designerId": "f9d044f9-dbf4-408b-b0a9-df807264f115"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.RowNumberer",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "MyRowNumberer9",
+            "designerId": "d1841a3f-181a-4733-9c46-12f947d0f959"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "lokasi_nama",
+                "filterable": true,
+                "items": [
+                    "{",
+                    "xtype: 'textfield',",
+                    "emptyText: 'Cari Nama Lokasi',",
+                    "flex: 1,",
+                    "margin: 2,",
+                    "listeners: {",
+                    "change: function(textfield, e, eOpts){",
+                    "this.up('gridpanel').filterHeader(this);",
+                    "}",
+                    "}",
+                    "}"
+                ],
+                "minWidth": null,
+                "sortable": true,
+                "text": "Nama Lokasi",
+                "width": 400
+            },
+            "name": "MyColumn38",
+            "configAlternates": {
+                "filters": "object",
+                "filter": "object",
+                "items": "object"
+            },
+            "designerId": "c3d2f018-6013-45a5-88e0-b8f970bfa284",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var aktif = record.get('lokasi_isaktif');",
+                            "",
+                            "if(value){",
+                            "    return this.genAktif(value, aktif);",
+                            "}else{",
+                            "    return '<span class=\"alternative\">-</span>';",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "02f13061-e03e-46fd-b0ca-bb29fed3c46c"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "lokasi_kode",
+                "filterable": true,
+                "items": [
+                    "{",
+                    "xtype: 'textfield',",
+                    "emptyText: 'Cari Kode Lokasi',",
+                    "flex: 1,",
+                    "margin: 2,",
+                    "listeners: {",
+                    "change: function(textfield, e, eOpts){",
+                    "this.up('gridpanel').filterHeader(this);",
+                    "}",
+                    "}",
+                    "}"
+                ],
+                "sortable": true,
+                "text": "Kode Lokasi",
+                "width": 160
+            },
+            "name": "MyColumn20",
+            "configAlternates": {
+                "filters": "object",
+                "filter": "object",
+                "items": "object"
+            },
+            "designerId": "4987f9c1-6f40-44b8-8369-70f3df4dcdbe",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var aktif = record.get('lokasi_isaktif');",
+                            "",
+                            "if(value){",
+                            "    return this.genAktif(value, aktif);",
+                            "}else{",
+                            "    return '<span class=\"alternative\">-</span>';",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "2600c618-25f7-42e9-bebc-893334f81cad"
+                }
+            ]
+        },
+        {
+            "type": "Ext.toolbar.Paging",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "displayInfo": true,
+                "dock": "bottom",
+                "store": "Sipas.lokasi.aktif.List",
+                "width": 360
+            },
+            "name": "MyPagingToolbar9",
+            "designerId": "73176fd5-f69e-44bc-ab7d-53f40cd43db3"
+        },
+        {
+            "type": "Ext.selection.RowModel",
+            "reference": {
+                "name": "selModel",
+                "type": "object"
+            },
+            "codeClass": "Ext.selection.RowModel",
+            "userConfig": {
+                "allowDeselect": false
+            },
+            "name": "MyRowSelectionModel7",
+            "designerId": "9f235ee1-0518-4cc0-94cb-328e16ddc4e3"
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "processSipaslokasiList",
+                "implHandler": [
+                    "var filters = {\r",
+                    "    ftype: 'filters',\r",
+                    "    encode: true, \r",
+                    "    local: false \r",
+                    "};\r",
+                    "\r",
+                    "if (! config.features) {\r",
+                    "    config.features=filters;\r",
+                    "} else {\r",
+                    "    config.features.push(filters);\r",
+                    "}\r",
+                    "\r",
+                    "return config;"
+                ]
+            },
+            "name": "processSipaslokasiList",
+            "designerId": "1f5258a2-d0be-41a6-a7bd-cc61d7487d58"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "value",
+                    "aktif"
+                ],
+                "fn": "genAktif",
+                "implHandler": [
+                    "if(!aktif){",
+                    "    return '<span class=\"alternative\">'+value+'</span>';",
+                    "}else{",
+                    "    return value;",
+                    "}"
+                ]
+            },
+            "name": "genAktif",
+            "designerId": "9abca2ed-6466-4375-86ee-7161eeebe0a5"
+        }
+    ]
+}

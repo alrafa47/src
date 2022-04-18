@@ -1,0 +1,501 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "allowDeselect": true,
+        "bodyPadding": null,
+        "clickToView": true,
+        "columnLines": false,
+        "designer|userAlias": "sipas_retensi_list",
+        "designer|userClassName": "Sipas.retensi.List",
+        "disableSelection": true,
+        "emptyText": "Tidak ada Data",
+        "forceFit": null,
+        "height": null,
+        "id": null,
+        "itemId": null,
+        "languageCode": "retensi_list",
+        "languageMode": "title",
+        "languageable": true,
+        "margin": null,
+        "maxHeight": null,
+        "maxWidth": null,
+        "minHeight": null,
+        "minWidth": null,
+        "padding": null,
+        "store": "Sipas.retensi.aktif.List",
+        "title": "Daftar Masa Aktif Surat",
+        "titleAlign": null,
+        "width": null
+    },
+    "name": "Sipas.asal.List1",
+    "configAlternates": {
+        "languageable": "boolean"
+    },
+    "designerId": "f130cbb5-5f15-4cd7-b7a0-615560ccf42f",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "clickToView",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageable",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageMode",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageCode",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "dock": "top",
+                "id": null,
+                "itemId": "toolbarProperties"
+            },
+            "name": "MyToolbar6",
+            "designerId": "56e3d3f3-e123-4e9e-bc6c-00baefcd2ddd",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": null,
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.refresh118",
+                    "configAlternates": {
+                        "roleable": "boolean"
+                    },
+                    "designerId": "bb882beb-de01-4c84-84da-94a960a8901d",
+                    "masterInstanceId": "e517a5ab-fc5b-441a-97a3-5c706738d092"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": null,
+                        "layout|flex": null,
+                        "roleName": "retensi_insert",
+                        "roleable": true
+                    },
+                    "name": "sipas.com.button.add50",
+                    "configAlternates": {
+                        "roleable": "boolean"
+                    },
+                    "designerId": "72d58d10-372f-47d1-9fd6-1c66d4165490",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "420a71a2-f0ab-4b83-bf9b-b7cf567d6c9f"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true,
+                        "hidden": true,
+                        "id": null,
+                        "layout|flex": null,
+                        "roleName": "asal",
+                        "roleable": true
+                    },
+                    "name": "sipas.com.button.view43",
+                    "configAlternates": {
+                        "roleable": "boolean"
+                    },
+                    "designerId": "9bc3f8c2-f590-44dd-9a15-921d3788ee06",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "88073f46-f23e-4800-a045-344110bd18fc"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "width": null
+                    },
+                    "name": "sipas.com.button.togglefilter55",
+                    "designerId": "8d08f9e1-6e34-44b9-ab19-ed90ae1964be",
+                    "masterInstanceId": "6f699e21-9335-4237-9e49-37b207a20475",
+                    "cn": [
+                        {
+                            "type": "basicfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "button",
+                                    "state"
+                                ],
+                                "fn": "toggleHandler",
+                                "implHandler": [
+                                    "button.up('grid').query('gridcolumn textfield').forEach(function(field){",
+                                    "    state ? field.show():field.hide();",
+                                    "});"
+                                ]
+                            },
+                            "name": "toggleHandler",
+                            "designerId": "faa20836-fd15-4d03-85c1-c09e09a3a3ae"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "MyFill27",
+                    "designerId": "105ff112-51df-495c-adfd-ee44c38e34f3"
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayField": "nama",
+                        "editable": false,
+                        "fieldLabel": null,
+                        "hideTrigger": true,
+                        "itemId": "Aktif",
+                        "labelAlign": "right",
+                        "layout|flex": null,
+                        "store": [
+                            "{",
+                            "    fields: ['value','nama'],",
+                            "    data: [",
+                            "        {value:0,nama:'Semua'},",
+                            "        {value:1,nama:'Aktif'},",
+                            "        {value:2,nama:'Tidak Aktif'}",
+                            "    ]",
+                            "}"
+                        ],
+                        "value": "Aktif",
+                        "valueField": "value"
+                    },
+                    "name": "MyComboBox26",
+                    "configAlternates": {
+                        "value": "string",
+                        "store": "array"
+                    },
+                    "designerId": "5fc0839f-b6a0-440f-9ccd-859d4526df05"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.RowNumberer",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "MyRowNumberer1",
+            "designerId": "9f843610-6ad8-4431-8094-9cd15682e177"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "retensi_nama",
+                "filterable": true,
+                "flex": null,
+                "items": [
+                    "{",
+                    "xtype: 'textfield',",
+                    "emptyText: 'Cari Masa Aktif',",
+                    "flex: 1,",
+                    "margin: 2,",
+                    "listeners: {",
+                    "change: function(textfield, e, eOpts){",
+                    "this.up('gridpanel').filterHeader(this);",
+                    "}",
+                    "}",
+                    "}"
+                ],
+                "minWidth": null,
+                "sortable": true,
+                "text": "Masa Aktif",
+                "width": 400
+            },
+            "name": "MyColumn34",
+            "configAlternates": {
+                "filters": "object",
+                "filter": "object",
+                "items": "object"
+            },
+            "designerId": "6ece6004-335d-4856-988e-0badddebe2a4",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var aktif = record.get('retensi_isaktif');",
+                            "",
+                            "if(value){",
+                            "    return this.genAktif(value, aktif);",
+                            "}else{",
+                            "    return '<span class=\"alternative\">-</span>';",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "1f045a4b-5c53-42b4-acc3-8504b6dcb19d"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": "right",
+                "dataIndex": "retensi_hari",
+                "filterable": true,
+                "items": null,
+                "sortable": true,
+                "text": "Lama Masa Aktif (hari)",
+                "width": 160
+            },
+            "name": "MyColumn24",
+            "configAlternates": {
+                "filters": "object",
+                "filter": "object",
+                "items": "object"
+            },
+            "designerId": "ff0b5f3c-c0f9-4bc1-9593-29bb13d4f6b2",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var aktif = record.get('retensi_isaktif');",
+                            "val = value + \" Hari\";",
+                            "",
+                            "if(value){",
+                            "    return this.genAktif(val, aktif);",
+                            "}else{",
+                            "    return '<span class=\"alternative\">-</span>';",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "9d1f5248-b26c-498f-b676-5a93068af64f"
+                }
+            ]
+        },
+        {
+            "type": "Ext.selection.RowModel",
+            "reference": {
+                "name": "selModel",
+                "type": "object"
+            },
+            "codeClass": "Ext.selection.RowModel",
+            "userConfig": {
+                "allowDeselect": null
+            },
+            "name": "MyRowSelectionModel",
+            "designerId": "37a9bf53-4811-40f8-94b4-6cdaad287eb2"
+        },
+        {
+            "type": "Ext.toolbar.Paging",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "displayInfo": true,
+                "dock": "bottom",
+                "store": "Sipas.retensi.aktif.List",
+                "width": 360
+            },
+            "name": "MyPagingToolbar1",
+            "designerId": "c949304d-113d-4e16-9b00-e21b44987edf"
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "processSipasretensiList",
+                "implHandler": [
+                    "var filters = {",
+                    "    ftype: 'filters',",
+                    "    encode: true,",
+                    "    local: false",
+                    "};",
+                    "",
+                    "if (! config.features) {",
+                    "    config.features=filters;",
+                    "} else {",
+                    "    config.features.push(filters);",
+                    "}",
+                    "",
+                    "return config;"
+                ]
+            },
+            "name": "processSipasretensiList",
+            "designerId": "4644657b-a0d7-4718-87f9-c782b2f81159"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "value",
+                    "aktif"
+                ],
+                "fn": "genAktif",
+                "implHandler": [
+                    "if(!aktif){",
+                    "    return '<span class=\"alternative\">'+value+'</span>';",
+                    "}else{",
+                    "    return value;",
+                    "}"
+                ]
+            },
+            "name": "genAktif",
+            "designerId": "d179c653-d8bf-42d7-9e16-de549fbec15d"
+        }
+    ]
+}

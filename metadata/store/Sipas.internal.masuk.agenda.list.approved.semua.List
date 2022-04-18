@@ -1,0 +1,77 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.internal.masuk.agenda.list.approved.semua.List",
+        "model": "Sipas.Surat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.internal.masuk.agenda.list.approved.semua.List"
+    },
+    "name": "Sipas.memo.agenda.list.all.List1",
+    "designerId": "b5a3afe0-62a8-4584-87c0-5a2cfb51f6db",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat_imasuk/read/"
+            },
+            "name": "MyAjaxProxy42",
+            "designerId": "e09241e8-f711-41e8-9306-a856ed17affd",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "record": null,
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader42",
+                    "designerId": "85b9ace0-57ca-4ecf-95b5-3897b50dcd8f"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "surat_setuju"
+            },
+            "name": "MySorter30",
+            "designerId": "65654d12-3bf1-47a5-9f07-9cce031688cf"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_buat_tgl"
+            },
+            "name": "MySorter2",
+            "designerId": "9de072a4-247b-49bc-9bae-12e28a1534a7"
+        }
+    ]
+}

@@ -1,0 +1,183 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.Sifat",
+        "idProperty": "sifat_id"
+    },
+    "designerId": "523479b5-8475-4dc6-ab2f-df74ab0d5b27",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "sifat_id"
+            },
+            "name": "MyField42",
+            "designerId": "1bb10e5f-2979-4bff-98a3-146681278935"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "sifat_kode"
+            },
+            "name": "MyField43",
+            "designerId": "3c9ecb5b-4451-4796-a162-19e933c13fc3"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "sifat_color"
+            },
+            "name": "MyField1168",
+            "designerId": "fa3ad5ef-1e45-4063-80f1-2fc95cfb8a74"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "sifat_nama"
+            },
+            "name": "MyField44",
+            "designerId": "62f74de5-e54a-4ec6-b95c-a6d3bbc56d2f"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": [
+                    "1"
+                ],
+                "name": "sifat_isaktif",
+                "type": "boolean"
+            },
+            "name": "MyField45",
+            "designerId": "eb0c32db-dc49-480f-964c-b43d61130ace"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "sifat_display"
+            },
+            "name": "MyField508",
+            "designerId": "38c891d7-009c-4a60-a73a-5c0776fed15c",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "v",
+                            "rec"
+                        ],
+                        "fn": "convert",
+                        "implHandler": [
+                            "return (new Ext.Template('{sifat_nama} ({sifat_kode})')).apply(rec.getData());"
+                        ]
+                    },
+                    "name": "convert",
+                    "designerId": "fb18f1a6-3cce-41e0-a03b-6e01a1b960fe"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": null,
+                "name": "sifat_israhasia",
+                "type": "boolean"
+            },
+            "name": "MyField1069",
+            "designerId": "15b0e92f-49ad-45c6-b224-92187e8c2667"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "sifat_properti"
+            },
+            "name": "MyField56",
+            "designerId": "b7eaa97b-bb7a-4bfb-8c19-feebe093709c"
+        },
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "api": [
+                    "{",
+                    "    create\t: 'server.php/sipas/sifat/create',",
+                    "    read \t: 'server.php/sipas/sifat/read',",
+                    "    update \t: 'server.php/sipas/sifat/update',",
+                    "    destroy : 'server.php/sipas/sifat/destroy'",
+                    "}"
+                ]
+            },
+            "name": "MyAjaxProxy13",
+            "designerId": "19248590-4958-4987-8337-023b46056e9e",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "record": null,
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader13",
+                    "designerId": "bde7683e-ffa5-417c-a9ea-663ce7993069"
+                }
+            ]
+        }
+    ]
+}

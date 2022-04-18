@@ -1,0 +1,334 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "sipas_sla_unit_list",
+        "designer|userClassName": "Sipas.sla.unit.List",
+        "emptyText": "Tidak Ada Data",
+        "header": false,
+        "store": "Sipas.sla.unit.List",
+        "title": "SLA"
+    },
+    "name": "Sipas.unit.cakupan.List1",
+    "designerId": "401adb83-b236-4020-bf83-0e7ecac76f61",
+    "cn": [
+        {
+            "type": "Ext.grid.column.Action",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": "center",
+                "menuDisabled": true,
+                "width": 40
+            },
+            "name": "MyActionColumn",
+            "designerId": "8fde7c2c-98a2-4f4b-9fd0-48ccee149099",
+            "cn": [
+                {
+                    "type": "actioncolumnitem",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "removerecord",
+                        "iconCls": "x-action-col-icon-bin"
+                    },
+                    "name": "MyActionColumnItem",
+                    "designerId": "b5950156-a0fe-4f32-be74-e353a4caa7d5",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "sla_nama",
+                "filterable": true,
+                "flex": 1,
+                "items": [
+                    "{",
+                    "\t\t                        xtype: 'textfield',",
+                    "\t\t                        flex: 1,",
+                    "\t\t                        margin: 2,",
+                    "\t\t                        listeners: {",
+                    "\t\t                            change: function(textfield, e, eOpts){",
+                    "\t\t                                    this.up('gridpanel').filterHeader(this);",
+                    "\t\t                                }",
+                    "\t\t                        }",
+                    "\t\t                    }"
+                ],
+                "minWidth": 200,
+                "text": "Daftar SLA",
+                "width": 200
+            },
+            "name": "MyColumn",
+            "configAlternates": {
+                "items": "object"
+            },
+            "designerId": "d53123d2-5873-48e2-b040-a5f44c000db4",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "unit_nama",
+                "filterable": null,
+                "flex": 1,
+                "hidden": true,
+                "items": null,
+                "minWidth": 200,
+                "text": "Nama Unit Kerja",
+                "width": 200
+            },
+            "name": "MyColumn1",
+            "configAlternates": {
+                "items": "object"
+            },
+            "designerId": "f91fed95-37f2-44ed-bf48-ac4d4525d246",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.CheckColumn",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "sla_unit_default",
+                "text": "Default",
+                "width": 80
+            },
+            "name": "MyCheckColumn",
+            "designerId": "3dc06001-251f-4582-afed-0e4374732b5f"
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "disableSelection": true
+            },
+            "name": "MyGridView",
+            "designerId": "6e39c841-9267-42c4-9e33-bf30fb6c6607"
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "title",
+                "dock": "top",
+                "hidden": true
+            },
+            "name": "MyToolbar3",
+            "designerId": "2a940a9c-d26d-49c5-bac9-ba3144e3c353",
+            "cn": [
+                {
+                    "type": "Ext.form.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": "alternative bold",
+                        "layout|flex": null,
+                        "padding": 4,
+                        "text": "Daftar SLA"
+                    },
+                    "name": "MyLabel",
+                    "designerId": "363af8e5-ac24-47b4-b844-609c16c33904"
+                }
+            ]
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "designer|displayName": "action",
+                "dock": "top"
+            },
+            "name": "MyToolbar4",
+            "designerId": "1993c9f9-752b-47dd-9f29-f6bafadb19ec",
+            "cn": [
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "anyMatch": true,
+                        "cls": "x-field-search bold",
+                        "displayField": "sla_nama",
+                        "editable": null,
+                        "emptyText": "Tambah SLA",
+                        "enableKeyEvents": null,
+                        "enforceMaxLength": true,
+                        "forceSelection": true,
+                        "hideLabel": null,
+                        "hideTrigger": true,
+                        "itemId": "fieldSearch",
+                        "labelWidth": null,
+                        "layout|flex": 1,
+                        "queryMode": "local",
+                        "selectOnFocus": null,
+                        "store": "Sipas.sla.aktif.Combo",
+                        "submitValue": null,
+                        "typeAhead": null,
+                        "validateOnChange": null,
+                        "valueField": "sla_id",
+                        "valueNotFoundText": null,
+                        "width": null
+                    },
+                    "name": "MyComboBox",
+                    "designerId": "5a49d3a3-08ab-4229-bd38-2e0400ca294f",
+                    "cn": [
+                        {
+                            "type": "Ext.view.BoundList",
+                            "reference": {
+                                "name": "listConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "emptyText": "Pencarian tidak ditemukan",
+                                "itemSelector": "div"
+                            },
+                            "name": "MyBoundList",
+                            "designerId": "2861be7b-3b40-4f3e-82e4-00a5c7c40989",
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "{sla_nama}"
+                                        ]
+                                    },
+                                    "name": "itemTpl",
+                                    "designerId": "3c628f82-c615-4cf6-a8ea-f7695c94fdf1"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": null,
+                        "iconCls": null,
+                        "itemId": "buttonManual",
+                        "layout|flex": null,
+                        "text": "Pilih Manual"
+                    },
+                    "name": "MyButton",
+                    "designerId": "67c3495f-24e5-4c6e-9ac8-b16f94d08961"
+                }
+            ]
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "processSipasunitcakupanList",
+                "implHandler": [
+                    "var filters = {",
+                    "    ftype: 'filters',",
+                    "    encode: true,",
+                    "    local: true",
+                    "};",
+                    "",
+                    "if (! config.features) {",
+                    "    config.features=filters;",
+                    "} else {",
+                    "    config.features.push(filters);",
+                    "}",
+                    "",
+                    "return config;"
+                ]
+            },
+            "name": "processSipasunitcakupanList",
+            "designerId": "8b6fd400-72b3-407f-be8f-cd424e3a993d"
+        }
+    ]
+}

@@ -1,0 +1,63 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": null,
+        "designer|userClassName": "Sipas.bebas.unit.List",
+        "model": "Sipas.arsip.Bagi",
+        "pageSize": null,
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.bebas.unit.List"
+    },
+    "name": "Sipas.unit.aktif.List1",
+    "designerId": "1763f8a8-b950-404d-920e-44bb776528fc",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/arsip/bagi"
+            },
+            "name": "MyAjaxProxy5",
+            "designerId": "251011c0-2117-4fc6-bf8a-ebea01eed286",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader5",
+                    "designerId": "91a100a2-a3d9-4380-8a09-4699f15eb2bd"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "unit_nama"
+            },
+            "name": "MySorter2",
+            "designerId": "3701a44a-4590-4a09-9528-6aacf5713ed3"
+        }
+    ]
+}

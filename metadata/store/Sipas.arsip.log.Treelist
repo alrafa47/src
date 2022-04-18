@@ -1,0 +1,63 @@
+{
+    "type": "Ext.data.TreeStore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.arsip.log.Treelist",
+        "model": "Sipas.Dokumen",
+        "storeId": "Sipas.arsip.log.Treelist"
+    },
+    "name": "MyTreeStore",
+    "designerId": "b8429824-d15a-4179-af9d-2e5b1778a455",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/dokumen/riwayatdokumen"
+            },
+            "name": "MyAjaxProxy5",
+            "designerId": "a034267e-c23e-42bb-bcc6-4c0cee70f2a6",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyJsonReader8",
+                    "designerId": "55d1e46b-0788-44c6-9d9e-a686760eb7f1"
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onTreeStoreBeforeLoad",
+                "implHandler": [
+                    "if(store.isLoading()){",
+                    "    return false;",
+                    "}"
+                ],
+                "name": "beforeload",
+                "scope": "me"
+            },
+            "name": "onTreeStoreBeforeLoad",
+            "designerId": "19452733-eb4c-416f-849c-82ba23fddbb2"
+        }
+    ]
+}

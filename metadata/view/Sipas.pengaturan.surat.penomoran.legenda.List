@@ -1,0 +1,214 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "border": null,
+        "collapsible": null,
+        "designer|userAlias": "sipas_pengaturan_surat_penomoran_legenda_list",
+        "designer|userClassName": "Sipas.pengaturan.surat.penomoran.legenda.List",
+        "frame": true,
+        "header": null,
+        "height": 150,
+        "margin": 4,
+        "store": "Sipas.pengaturan.surat.penomoran.legenda.List",
+        "title": "Legenda"
+    },
+    "name": "MyGridPanel",
+    "designerId": "18b755fe-bc80-4a71-a0fa-f04d4e11f08a",
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": "x-column-header-notext",
+                "dataIndex": "legend_name",
+                "filterable": true,
+                "flex": 1,
+                "items": [
+                    "{",
+                    "    xtype: 'textfield',",
+                    "    emptyText: 'Cari Legenda Surat',",
+                    "    flex: 1,",
+                    "    margin: 2,",
+                    "    listeners: {",
+                    "        change: function(textfield, e, eOpts){",
+                    "            this.up('gridpanel').filterHeader(this);",
+                    "        }",
+                    "    }",
+                    "}"
+                ],
+                "sortable": true,
+                "text": "Nilai Inputan"
+            },
+            "name": "MyColumn",
+            "configAlternates": {
+                "items": "object"
+            },
+            "designerId": "4e9a854f-e532-4371-b881-fff597169e27",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "return '<div class=\"subtext\">'+value+'</div><div class=\"subtext alternative\">'+record.get('legend_code')+'</div>';"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "ea81ed0a-980c-4044-b767-79db3f0ae0f2"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "legend_group",
+                "filterable": true,
+                "flex": 1,
+                "hidden": true,
+                "items": [
+                    "{",
+                    "xtype: 'textfield',",
+                    "flex: 1,",
+                    "margin: 2,",
+                    "listeners: {",
+                    "change: function(textfield, e, eOpts){",
+                    "this.up('gridpanel').filterHeader(this);",
+                    "}",
+                    "}",
+                    "}"
+                ],
+                "sortable": true,
+                "text": "Kode"
+            },
+            "name": "MyColumn1",
+            "configAlternates": {
+                "items": "object"
+            },
+            "designerId": "dd8dd43f-4362-4117-be2a-c813fd779ef8",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyGridView",
+            "designerId": "9a47fda0-488b-4cd9-94c5-8d2ecf36d4bc"
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "processSipaspengaturansuratpenomoranlegendaList",
+                "implHandler": [
+                    "var filters = {",
+                    "    ftype: 'filters',",
+                    "    encode: true,",
+                    "    local: true",
+                    "};",
+                    "",
+                    "if (! config.features) {",
+                    "    config.features=filters;",
+                    "} else {",
+                    "    config.features.push(filters);",
+                    "}",
+                    "",
+                    "return config;"
+                ]
+            },
+            "name": "processSipaspengaturansuratpenomoranlegendaList",
+            "designerId": "7eaea050-1328-4853-a3f0-6b283aead725"
+        },
+        {
+            "type": "Ext.grid.feature.Grouping",
+            "reference": {
+                "name": "features",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "enableNoGroups": false
+            },
+            "name": "MyGroupingFeature1",
+            "designerId": "d92fbdfd-e3be-41c5-af13-34d27abfcd0e",
+            "cn": [
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "groupHeaderTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "groupHeaderTpl",
+                        "implHandler": [
+                            "{name}"
+                        ]
+                    },
+                    "name": "groupHeaderTpl",
+                    "designerId": "7c5db11a-1206-4f1e-8dc5-9bcf6ec9c132"
+                }
+            ]
+        }
+    ]
+}

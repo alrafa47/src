@@ -1,0 +1,990 @@
+{
+    "type": "Ext.form.FieldContainer",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_com_reportfilter_kewenangan_eksternal",
+        "designer|userClassName": "Sipas.com.reportfilter.kewenangan.Eksternal",
+        "enableFilterAfterDate": true,
+        "enableFilterBeforeDate": true,
+        "enableFilterDate": true,
+        "enableFilterDateRange": true,
+        "enableFilterMonth": true,
+        "enableFilterYear": true,
+        "fieldLabel": "",
+        "filterAfterDate": "Setelah Tanggal",
+        "filterBeforeDate": "Sebelum Tanggal",
+        "filterDate": "Pada Tanggal",
+        "filterDateRange": "Rentang Tanggal",
+        "filterMonth": "Pada Bulan",
+        "filterYear": "Pada Tahun",
+        "height": null,
+        "itemId": null,
+        "layout": "hbox",
+        "minWidth": null,
+        "width": null
+    },
+    "name": "Sipas.com.Reportfilter1",
+    "designerId": "56d43dd2-428a-4861-977e-88817b3681a1",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "filterDate",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterYear",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterMonth",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterDateRange",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterAfterDate",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterBeforeDate",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterDateConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterDateRangeConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterBeforeDateConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterAfterDateConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterMonthConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterYearConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "enableFilterDate",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "enableFilterDateRange",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "enableFilterBeforeDate",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "enableFilterAfterDate",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "enableFilterMonth",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "enableFilterYear",
+            "type": "boolean"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.form.field.Checkbox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "boxLabel": "Filter",
+                "boxLabelAlign": "before",
+                "checked": null,
+                "fieldLabel": "",
+                "hidden": true,
+                "itemId": "checkboxFilter",
+                "layout|margins": "0 4 0 0",
+                "name": "filter",
+                "padding": null
+            },
+            "name": "MyCheckbox",
+            "designerId": "d29ddad3-b985-4e59-baf4-32669ba5c9a9",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onCheckboxFilterChange",
+                        "implHandler": [
+                            "field.next('#comboFilter').setDisabled(oldValue);",
+                            "field.next('#comboUnit').setDisabled(oldValue);",
+                            "this.setFiltered(newValue);"
+                        ],
+                        "name": "change",
+                        "scope": "me"
+                    },
+                    "name": "onCheckboxFilterChange",
+                    "designerId": "d39adaca-8679-493f-92e4-62b217d71f5d"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.field.ComboBox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bootstrapProperty": "Sipas.unit.Prop",
+                "displayField": "unit_nama",
+                "editable": false,
+                "emptyText": "Pilih Unit Kewenangan",
+                "fieldLabel": "Unit Kerja",
+                "itemId": "comboUnit",
+                "labelWidth": 60,
+                "layout|flex": 1,
+                "matchFieldWidth": false,
+                "minChars": null,
+                "name": "staf_unit",
+                "padding": null,
+                "pageSize": null,
+                "store": "Sipas.surat.scope.Combo",
+                "tpl": null,
+                "typeAhead": null,
+                "valueField": "unit_id"
+            },
+            "name": "MyComboBox3",
+            "configAlternates": {
+                "associated": "boolean"
+            },
+            "designerId": "93f6c34b-6685-45ad-a3fa-5928a6970648",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "bootstrapProperty",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "tpl",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.view.BoundList",
+                    "reference": {
+                        "name": "listConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemSelector": "div"
+                    },
+                    "name": "MyBoundList1",
+                    "designerId": "ac447f71-e5de-475d-9995-a50227355830",
+                    "cn": [
+                        {
+                            "type": "Ext.XTemplate",
+                            "reference": {
+                                "name": "itemTpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "itemTpl",
+                                "implHandler": [
+                                    "{unit_nama} <span style=\"color: gray\">({unit_kode})</span>"
+                                ]
+                            },
+                            "name": "itemTpl",
+                            "designerId": "e31fd3bf-211d-4106-9389-9a18e8ac14a5"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.field.Hidden",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Label",
+                "itemId": "valueSet",
+                "layout|flex": 1
+            },
+            "name": "MyHiddenField",
+            "designerId": "ab7552f1-b40b-4f4b-b5cc-da8011df1786"
+        },
+        {
+            "type": "Ext.form.field.ComboBox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "disabled": null,
+                "displayField": "display",
+                "editable": false,
+                "emptyText": "Pilih Rentang Waktu",
+                "fieldLabel": "",
+                "hidden": null,
+                "hideLabel": true,
+                "itemId": "comboFilter",
+                "layout|flex": 1,
+                "name": null,
+                "store": [
+                    "[",
+                    "['date',this.filterDate],",
+                    "['daterange',this.filterDateRange],",
+                    "['beforedate',this.filterBeforeDate],",
+                    "['afterdate',this.filterAfterDate],",
+                    "['month',this.filterMonth],",
+                    "['year',this.filterYear]",
+                    "]"
+                ],
+                "valueField": "value"
+            },
+            "name": "MyComboBox",
+            "configAlternates": {
+                "store": "array"
+            },
+            "designerId": "ac573c01-c094-439e-ae9c-21ea19a98fcf",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onComboFilterSelect",
+                        "implHandler": [
+                            "var me = this;",
+                            "me.setFilter(records[0] && records[0].get('field1') );"
+                        ],
+                        "name": "select",
+                        "scope": "me"
+                    },
+                    "name": "onComboFilterSelect",
+                    "designerId": "00013c2c-e0ae-4c0a-8f5c-b53b255d75c0"
+                },
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processComboFilter",
+                        "implHandler": [
+                            "var config = config || {},",
+                            "    store = [];",
+                            "",
+                            "if(this.enableFilterDate) store.push(['date',this.filterDate]);",
+                            "if(this.enableFilterDateRange) store.push(['daterange',this.filterDateRange]);",
+                            "if(this.enableFilterBeforeDate) store.push(['beforedate',this.filterBeforeDate]);",
+                            "if(this.enableFilterAfterDate) store.push(['afterdate',this.filterAfterDate]);",
+                            "if(this.enableFilterMonth) store.push(['month',this.filterMonth]);",
+                            "if(this.enableFilterYear) store.push(['year',this.filterYear]);",
+                            "",
+                            "config.store = store;",
+                            "return config;"
+                        ]
+                    },
+                    "name": "processComboFilter",
+                    "designerId": "c4675daa-4803-4956-8461-330e7bcbc0ab"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.field.Date",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "editable": false,
+                "emptyText": "Tanggal",
+                "fieldLabel": null,
+                "format": "d-m-Y",
+                "hidden": true,
+                "hideLabel": true,
+                "itemId": "datefieldDate",
+                "labelAlign": "right",
+                "layout|flex": 1,
+                "name": null,
+                "submitFormat": "Y-m-d",
+                "width": 120
+            },
+            "name": "MyDateField",
+            "designerId": "98f9ebd4-6574-4f7c-a597-82298bcf6aeb",
+            "cn": [
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processDatefieldDate",
+                        "implHandler": [
+                            "var me = this;",
+                            "return Ext.apply(config, me.filterDateConfig);"
+                        ]
+                    },
+                    "name": "processDatefieldDate",
+                    "designerId": "471de564-29ed-4e6d-9f76-770c977cff01"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.field.Number",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "allowDecimals": false,
+                "allowExponential": false,
+                "emptyText": "Tahun",
+                "fieldLabel": null,
+                "hidden": true,
+                "hideLabel": true,
+                "hideTrigger": true,
+                "itemId": "textfieldYear",
+                "labelAlign": "right",
+                "layout|flex": 1,
+                "minValue": 0
+            },
+            "name": "MyNumberField",
+            "designerId": "5a1b5af5-9a88-4dfc-8dd5-203687b5c29e",
+            "cn": [
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processTextfieldYear",
+                        "implHandler": [
+                            "        var me = this;",
+                            "        return Ext.apply(config, me.filterYearConfig);"
+                        ]
+                    },
+                    "name": "processTextfieldYear",
+                    "designerId": "df2f60a4-08a7-44e9-8f56-22dbb1dfc40e"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.field.Date",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "editable": false,
+                "emptyText": "Sebelum Tanggal",
+                "fieldLabel": null,
+                "format": "d-m-Y",
+                "hidden": true,
+                "hideLabel": true,
+                "itemId": "datefieldBeforeDate",
+                "labelAlign": "right",
+                "layout|flex": 1,
+                "submitFormat": "Y-m-d",
+                "width": 120
+            },
+            "name": "MyDateField3",
+            "designerId": "ecb2a1b0-6efd-4835-8bef-660765a5f156",
+            "cn": [
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processDatefieldBeforeDate",
+                        "implHandler": [
+                            "        var me = this;",
+                            "        return Ext.apply(config, me.filterBeforeDateConfig);"
+                        ]
+                    },
+                    "name": "processDatefieldBeforeDate",
+                    "designerId": "e2543dc7-60ed-4289-9c6e-58311dc99d06"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.field.Date",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "editable": false,
+                "emptyText": "Setelah Tanggal",
+                "fieldLabel": null,
+                "format": "d-m-Y",
+                "hidden": true,
+                "hideLabel": true,
+                "itemId": "datefieldAfterDate",
+                "labelAlign": "right",
+                "layout|flex": 1,
+                "submitFormat": "Y-m-d",
+                "width": 120
+            },
+            "name": "MyDateField4",
+            "designerId": "9fb638dc-f34f-4a39-9df8-c37f644761f0",
+            "cn": [
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processDatefieldAfterDate",
+                        "implHandler": [
+                            "        var me = this;",
+                            "        return Ext.apply(config, me.filterAfterDateConfig);"
+                        ]
+                    },
+                    "name": "processDatefieldAfterDate",
+                    "designerId": "0113240f-cee7-45d9-93fb-9e4a0debd002"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.FieldContainer",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "hidden": true,
+                "hideLabel": true,
+                "itemId": "containerDateRange",
+                "layout": "hbox",
+                "layout|flex": null
+            },
+            "name": "MyFieldContainer1",
+            "designerId": "971fa017-dbe0-4c41-9983-cae779fc8c2b",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Date",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "editable": false,
+                        "emptyText": "Tanggal Mulai",
+                        "fieldLabel": null,
+                        "format": "d-m-Y",
+                        "hideLabel": true,
+                        "itemId": "datefieldStart",
+                        "labelAlign": "right",
+                        "submitFormat": "Y-m-d",
+                        "width": 120
+                    },
+                    "name": "MyDateField",
+                    "designerId": "a1f30ab1-cf8b-46a2-b114-8d6ef52585c8",
+                    "cn": [
+                        {
+                            "type": "processcfgfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "config"
+                                ],
+                                "fn": "processDatefieldStart",
+                                "implHandler": [
+                                    "        var me = this;",
+                                    "        return Ext.apply(config, me.filterDateRangeStartConfig);"
+                                ]
+                            },
+                            "name": "processDatefieldStart",
+                            "designerId": "28425443-07a7-495b-8cf4-b5888d706b8c"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.field.Date",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "editable": false,
+                        "emptyText": "Tanggal Selesai",
+                        "fieldLabel": null,
+                        "format": "d-m-Y",
+                        "hideLabel": true,
+                        "itemId": "datefieldEnd",
+                        "labelAlign": "right",
+                        "submitFormat": "Y-m-d",
+                        "width": 120
+                    },
+                    "name": "MyDateField1",
+                    "designerId": "026e1d92-4f8c-447a-9aa5-427b8427c110",
+                    "cn": [
+                        {
+                            "type": "processcfgfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "config"
+                                ],
+                                "fn": "processDatefieldEnd",
+                                "implHandler": [
+                                    "        var me = this;",
+                                    "        return Ext.apply(config, me.filterDateRangeEndConfig);"
+                                ]
+                            },
+                            "name": "processDatefieldEnd",
+                            "designerId": "6f3bdc33-54bc-40e9-a76a-ac37401fe38e"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "editable": false,
+                "emptyText": "Bulan",
+                "hidden": true,
+                "itemId": "datefieldMonth",
+                "labelAlign": "right",
+                "layout|flex": 1,
+                "readOnly": null,
+                "width": 120
+            },
+            "name": "sipas.com.form.field.month5",
+            "designerId": "854ba55b-d894-47bf-8767-f49f41f454a8",
+            "masterInstanceId": "86982c19-8a58-44c3-bfa8-112217dce165",
+            "cn": [
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processDatefieldMonth",
+                        "implHandler": [
+                            "var me = this;",
+                            "return Ext.apply(config, me.filterMonthConfig);"
+                        ]
+                    },
+                    "name": "processDatefieldMonth",
+                    "designerId": "476de9a1-e21d-4328-8bf3-8ef4de1f65a8"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|uiInterfaceName": "default-toolbar",
+                "layout|flex": null,
+                "ui": "default-toolbar"
+            },
+            "name": "sipas.com.button.minus4",
+            "designerId": "fceb04c8-e6e5-44f2-b691-b13d338cef7a",
+            "masterInstanceId": "fb4f6998-c149-482e-94bb-d550d135b31c",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onButtonClick",
+                        "implHandler": [
+                            "var comboUnit = this.down('#comboUnit'),",
+                            "    comboFilter = this.down('#comboFilter'),",
+                            "    datefieldDate = this.down('#datefieldDate'),",
+                            "    textfieldYear = this.down('#textfieldYear'),",
+                            "    datefieldBeforeDate = this.down('#datefieldBeforeDate'),",
+                            "    datefieldAfterDate = this.down('#datefieldAfterDate'),",
+                            "    containerDateRange = this.down('#containerDateRange'),",
+                            "    datefieldStart = this.down('#datefieldStart'),",
+                            "    datefieldEnd = this.down('#datefieldEnd'),",
+                            "    datefieldMonth = this.down('#datefieldMonth');",
+                            "",
+                            "comboUnit.setValue(null);",
+                            "comboFilter.setValue(null);",
+                            "datefieldDate.setValue(null);",
+                            "datefieldMonth.setValue(null);",
+                            "datefieldBeforeDate.setValue(null);",
+                            "datefieldAfterDate.setValue(null);",
+                            "textfieldYear.setValue(null);",
+                            "datefieldStart.setValue(null);",
+                            "datefieldEnd.setValue(null);",
+                            "",
+                            "datefieldDate.hide();",
+                            "datefieldMonth.hide();",
+                            "datefieldBeforeDate.hide();",
+                            "datefieldAfterDate.hide();",
+                            "textfieldYear.hide();",
+                            "containerDateRange.hide();"
+                        ],
+                        "name": "click",
+                        "scope": "me"
+                    },
+                    "name": "onButtonClick",
+                    "designerId": "85069ef6-5cc4-4589-8822-06d42b208564"
+                }
+            ]
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": null,
+                "iconCls": null,
+                "itemId": "buttonProcess",
+                "layout|flex": 1,
+                "text": "<b>PROSES</b>"
+            },
+            "name": "MyButton",
+            "designerId": "3c96f41f-9bcb-42de-a6eb-6ed32767f169",
+            "cn": [
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processButtonProcess",
+                        "implHandler": [
+                            "var me = this;",
+                            "return Ext.apply(config, me.filterProcessConfig);"
+                        ]
+                    },
+                    "name": "processButtonProcess",
+                    "designerId": "da042ede-be36-4e29-92d3-7063126f871f"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onButtonProcessClick",
+                        "implHandler": [
+                            "this.fireEventArgs('process',[this,this.getFilter(), this.getValue(), e, eOpts]);"
+                        ],
+                        "name": "click",
+                        "scope": "me"
+                    },
+                    "name": "onButtonProcessClick",
+                    "designerId": "07232ef1-7f8b-4f6b-bb38-b82458b8d49c"
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "isFiltered",
+                "implHandler": [
+                    "return this.down('#checkboxFilter').getValue();"
+                ]
+            },
+            "name": "isFiltered",
+            "designerId": "1e8702fe-9407-43f1-a249-27e41b604fa9"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getFilter",
+                "implHandler": [
+                    "return this.down('#comboFilter').getValue();"
+                ]
+            },
+            "name": "getFilter",
+            "designerId": "9f62ebcf-16de-4a96-a8d7-4263b1e93562"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "filter"
+                ],
+                "fn": "setFilter",
+                "implHandler": [
+                    "this.down('#comboFilter').setValue(filter);",
+                    "",
+                    "var me = this,",
+                    "\tcmpDate = me.down('#datefieldDate'),",
+                    "\tcmpBeforeDate = me.down('#datefieldBeforeDate'),",
+                    "\tcmpAfterDate = me.down('#datefieldAfterDate'),",
+                    "\tcmpDateRangeContainer = me.down('#containerDateRange'),",
+                    "\tcmpYear = me.down('#textfieldYear'),",
+                    "\tcmpMonth = me.down('#datefieldMonth'),",
+                    "\tcmpProcess = me.down('#buttonProcess');",
+                    "",
+                    "cmpDate && cmpDate.hide();",
+                    "cmpBeforeDate && cmpBeforeDate.hide();",
+                    "cmpAfterDate && cmpAfterDate.hide();",
+                    "cmpDateRangeContainer && cmpDateRangeContainer.hide();",
+                    "cmpYear && cmpYear.hide();",
+                    "cmpMonth && cmpMonth.hide();",
+                    "",
+                    "// if(Ext.Array.contains(['date','beforedate','afterdate','daterange','month','year'], filter)){",
+                    "// \tcmpProcess.show();",
+                    "// }else{",
+                    "// \tcmpProcess.hide();",
+                    "// }",
+                    "switch(filter){",
+                    "\tcase 'date': cmpDate.show(); break;",
+                    "\tcase 'beforedate': cmpBeforeDate.show(); break;",
+                    "\tcase 'afterdate': cmpAfterDate.show(); break;",
+                    "\tcase 'daterange': cmpDateRangeContainer.show(); break;",
+                    "\tcase 'month': cmpMonth.show(); break;",
+                    "\tcase 'year': cmpYear.show(); break;",
+                    "}"
+                ]
+            },
+            "name": "setFilter",
+            "designerId": "e63ab887-376d-466b-8767-35bade69d2d2"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "value"
+                ],
+                "fn": "setValue",
+                "implHandler": [
+                    "var me = this,",
+                    "\tcmpFilter = me.down('#comboboxFilter'),",
+                    "\tcmpDate = me.down('#datefieldDate'),",
+                    "\tcmpBeforeDate = me.down('#datefieldBeforeDate'),",
+                    "\tcmpAfterDate = me.down('#datefieldAfterDate'),",
+                    "\tcmpDateRangeStart = me.down('#containerDateRange #datefieldStart'),",
+                    "\tcmpDateRangeEnd = me.down('#containerDateRange #datefieldEnd'),",
+                    "\tcmpYear = me.down('#textfieldYear'),",
+                    "\tcmpMonth = me.down('#datefieldMonth');",
+                    "",
+                    "switch(me.getFilter()){",
+                    "\tcase 'date': return cmpDate.setValue(value);",
+                    "\tcase 'beforedate': return cmpBeforeDate.setValue(value);",
+                    "\tcase 'afterdate': return cmpAfterDate.setValue(value);",
+                    "\tcase 'daterange': value = Ext.Array.from(value); return [cmpDateRangeStart.setValue(value[0]), cmpDateRangeEnd.setValue(value[1])];",
+                    "\tcase 'month': return cmpMonth.setValue(value);",
+                    "\tcase 'year': return cmpYear.setValue(value);",
+                    "}"
+                ]
+            },
+            "name": "setValue",
+            "designerId": "6c5127e1-0b8f-4361-881b-a6b60e6a7a92"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getValue",
+                "implHandler": [
+                    "var me = this,",
+                    "    cmpValue = me.down('#valueSet'),",
+                    "    cmpFilter = me.down('#comboboxFilter'),",
+                    "    cmpDate = me.down('#datefieldDate'),",
+                    "    cmpBeforeDate = me.down('#datefieldBeforeDate'),",
+                    "    cmpAfterDate = me.down('#datefieldAfterDate'),",
+                    "    cmpDateRangeStart = me.down('#containerDateRange #datefieldStart'),",
+                    "    cmpDateRangeEnd = me.down('#containerDateRange #datefieldEnd'),",
+                    "    cmpYear = me.down('#textfieldYear'),",
+                    "    cmpMonth = me.down('#datefieldMonth');",
+                    "",
+                    "switch(me.getFilter()){",
+                    "    case 'date': cmpValue.setValue(Ext.util.Format.date(cmpDate.getValue(), cmpDate.submitFormat)); return Ext.util.Format.date(cmpDate.getValue(), cmpDate.submitFormat);",
+                    "    case 'beforedate': cmpValue.setValue(Ext.util.Format.date(cmpBeforeDate.getValue(), cmpBeforeDate.submitFormat)); return Ext.util.Format.date(cmpBeforeDate.getValue(), cmpBeforeDate.submitFormat);",
+                    "    case 'afterdate': cmpValue.setValue(Ext.util.Format.date(cmpAfterDate.getValue(), cmpAfterDate.submitFormat)); return Ext.util.Format.date(cmpAfterDate.getValue(), cmpAfterDate.submitFormat);",
+                    "    case 'daterange': cmpValue.setValue([Ext.util.Format.date(cmpDateRangeStart.getValue(), cmpDateRangeStart.submitFormat), Ext.util.Format.date(cmpDateRangeEnd.getValue(), cmpDateRangeEnd.submitFormat)]); return [Ext.util.Format.date(cmpDateRangeStart.getValue(), cmpDateRangeStart.submitFormat), Ext.util.Format.date(cmpDateRangeEnd.getValue(), cmpDateRangeEnd.submitFormat)];",
+                    "    case 'month': cmpValue.setValue(Ext.util.Format.date(cmpMonth.getValue(), cmpMonth.submitFormat)); return Ext.util.Format.date(cmpMonth.getValue(), cmpMonth.submitFormat);",
+                    "    case 'year': cmpValue.setValue(cmpYear.getValue()); return cmpYear.getValue();",
+                    "}"
+                ]
+            },
+            "name": "getValue",
+            "designerId": "8f5092ee-f204-4fba-b893-bdbafa70a053"
+        },
+        {
+            "type": "customevent",
+            "reference": {
+                "name": "customEvents",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "process",
+                "params": [
+                    "me",
+                    "filter",
+                    "value",
+                    "e",
+                    "eOpts"
+                ]
+            },
+            "name": "CustomEvent",
+            "designerId": "2ecfce72-8e77-4f43-89c7-07f2d7ba8a76"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "filtered"
+                ],
+                "fn": "setFiltered",
+                "implHandler": [
+                    "if(!filtered){",
+                    "    this.setFilter(null);",
+                    "}"
+                ]
+            },
+            "name": "setFiltered",
+            "designerId": "e4ab4796-076a-4b66-97d6-ef99c02408ca"
+        }
+    ]
+}

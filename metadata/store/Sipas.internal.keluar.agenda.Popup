@@ -1,0 +1,60 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.internal.keluar.agenda.Popup",
+        "model": "Sipas.Surat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.internal.keluar.agenda.Popup"
+    },
+    "name": "Sipas.internal.keluar.agenda.list.all.List1",
+    "designerId": "deda0658-6ca2-4352-9b2f-9c972cea7979",
+    "cn": [
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_stack_level"
+            },
+            "name": "MySorter2",
+            "designerId": "fc8ba6fa-2380-4a87-81cc-afa09f6b8629"
+        },
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyAjaxProxy14",
+            "designerId": "98d6ae70-17e5-4460-ab2c-9bd496052955",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader12",
+                    "designerId": "f0caeaba-830c-4a45-8a39-fb6a7772d1b4"
+                }
+            ]
+        }
+    ]
+}

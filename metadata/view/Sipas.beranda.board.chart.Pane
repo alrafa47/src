@@ -1,0 +1,488 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": null,
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_beranda_board_chart_pane",
+        "designer|userClassName": "Sipas.beranda.board.chart.Pane",
+        "filterMonth": "Bulan",
+        "header": false,
+        "height": null,
+        "layout": "hbox",
+        "markerConfig": null,
+        "title": "Grafik Surat Yang Diterima",
+        "width": null
+    },
+    "name": "Sipas.dashboard.board.chart.Pane1",
+    "configAlternates": {
+        "markerConfig": "object"
+    },
+    "designerId": "e6238bb2-3cef-4abb-9314-30fd9ad460b3",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "markerConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterMonth",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":8,\"left\":4}"
+                ],
+                "dock": "top",
+                "layout|flex": 1
+            },
+            "name": "MyToolbar4",
+            "designerId": "2e201d0d-b012-41a6-824d-5ff8dc80e6ce",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.TextItem",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": null,
+                        "layout|flex": null,
+                        "text": "<i></i><b style=\"color:#04408c\">Grafik notifikasi</b>"
+                    },
+                    "name": "MyTextItem2",
+                    "designerId": "b4affa1c-68a2-4882-8bbf-b263edd67af8"
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "MyFill3",
+                    "designerId": "1df0e621-49c6-40e5-a435-794c2c3d83c3"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "emptyText": "Bulan",
+                        "itemId": "datefieldMonth",
+                        "layout|flex": null,
+                        "matchFieldWidth": true,
+                        "width": 125
+                    },
+                    "name": "sipas.com.form.field.month6",
+                    "designerId": "d3c2ee97-4317-4501-a3a3-811476cd329d",
+                    "masterInstanceId": "86982c19-8a58-44c3-bfa8-112217dce165"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": null,
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.refresh52",
+                    "configAlternates": {
+                        "roleable": "boolean"
+                    },
+                    "designerId": "0a157945-aec6-47db-98fd-2fab9471c5f1",
+                    "masterInstanceId": "e517a5ab-fc5b-441a-97a3-5c706738d092"
+                }
+            ]
+        },
+        {
+            "type": "Ext.chart.Chart",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "animate": true,
+                "height": null,
+                "insetPadding": null,
+                "items": null,
+                "layout|flex": 1,
+                "padding": null,
+                "store": "Sipas.beranda.chart.Line",
+                "width": null
+            },
+            "name": "LineChart",
+            "configAlternates": {
+                "animate": "boolean"
+            },
+            "designerId": "73b9fd6e-5f7d-410b-84bd-a1e86ad92421",
+            "isBuiltIn": true,
+            "iconCls": "icon-line-chart",
+            "autoName": "LineChart",
+            "cn": [
+                {
+                    "type": "Ext.chart.axis.Numeric",
+                    "reference": {
+                        "name": "axes",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "adjustMaximumByMajorUnit": true,
+                        "adjustMinimumByMajorUnit": true,
+                        "decimals": 0,
+                        "fields": [
+                            "data1",
+                            "data2",
+                            "data3",
+                            "data4",
+                            "data5"
+                        ],
+                        "grid": true,
+                        "label": [
+                            "{",
+                            "    renderer: function(v) { return v; }",
+                            "}"
+                        ],
+                        "majorTickSteps": 2,
+                        "maximum": null,
+                        "minimum": 0,
+                        "minorTickSteps": 1,
+                        "title": "Jumlah"
+                    },
+                    "name": "MyNumericAxis",
+                    "configAlternates": {
+                        "grid": "boolean"
+                    },
+                    "designerId": "450fa950-1ec1-4fc6-a4ae-196d2abf4699"
+                },
+                {
+                    "type": "Ext.chart.axis.Category",
+                    "reference": {
+                        "name": "axes",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fields": [
+                            "week"
+                        ],
+                        "grid": true,
+                        "label": [
+                            "{",
+                            "    rotate: {",
+                            "        degrees: -45",
+                            "    }",
+                            "}"
+                        ],
+                        "title": "Minggu",
+                        "width": 400
+                    },
+                    "name": "MyCategoryAxis",
+                    "configAlternates": {
+                        "items": "object",
+                        "grid": "boolean"
+                    },
+                    "designerId": "9a705037-19cc-41cc-b463-8fdf73c430a0",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "items",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.chart.series.Line",
+                    "reference": {
+                        "name": "series",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "axis": [
+                            "left"
+                        ],
+                        "highlight": [
+                            "{",
+                            "    fill: '#000',",
+                            "    radius: 2,",
+                            "    'stroke-width': 1,",
+                            "    stroke: '#fff'",
+                            "}"
+                        ],
+                        "markerConfig": [
+                            "{",
+                            "    radius: 2",
+                            "}"
+                        ],
+                        "smooth": null,
+                        "style": [
+                            "{'stroke-width':2}"
+                        ],
+                        "tips": [
+                            "{",
+                            "    trackMouse: true,",
+                            "    style: 'background: #FFF',",
+                            "    height: 20,",
+                            "    width: 150,",
+                            "    renderer: function(storeItem, item) {",
+                            "        var title = item.series.title;",
+                            "        this.setTitle(title + ' ' + storeItem.get('week') + ' (' + storeItem.get(item.series.yField) +')');",
+                            "    }",
+                            "}"
+                        ],
+                        "title": [
+                            "Disposisi"
+                        ],
+                        "xField": "week",
+                        "yField": [
+                            "data1"
+                        ]
+                    },
+                    "name": "MyLineSeries1",
+                    "designerId": "10e19fb5-071b-4495-b453-bd466e1a6402"
+                },
+                {
+                    "type": "Ext.chart.series.Line",
+                    "reference": {
+                        "name": "series",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "axis": [
+                            "left"
+                        ],
+                        "highlight": [
+                            "{",
+                            "    fill: '#000',",
+                            "    radius: 2,",
+                            "    'stroke-width': 1,",
+                            "    stroke: '#fff'",
+                            "}"
+                        ],
+                        "markerConfig": [
+                            "{",
+                            "    radius: 2",
+                            "}"
+                        ],
+                        "smooth": null,
+                        "style": [
+                            "{'stroke-width':2}"
+                        ],
+                        "tips": [
+                            "{",
+                            "    trackMouse: true,",
+                            "    style: 'background: #FFF',",
+                            "    height: 20,",
+                            "    width: 150,",
+                            "    renderer: function(storeItem, item) {",
+                            "        var title = item.series.title;",
+                            "        this.setTitle(title + ' ' + storeItem.get('week') + ' (' + storeItem.get(item.series.yField) +')');",
+                            "    }",
+                            "}"
+                        ],
+                        "title": [
+                            "Surat Masuk"
+                        ],
+                        "xField": "week",
+                        "yField": [
+                            "data2"
+                        ]
+                    },
+                    "name": "MyLineSeries5",
+                    "designerId": "b3ab8fa3-8acc-4617-8f74-426e533e3963"
+                },
+                {
+                    "type": "Ext.chart.series.Line",
+                    "reference": {
+                        "name": "series",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "axis": [
+                            "left"
+                        ],
+                        "highlight": [
+                            "{",
+                            "fill: '#000',",
+                            "radius: 2,",
+                            "'stroke-width': 1,",
+                            "stroke: '#fff'",
+                            "}"
+                        ],
+                        "markerConfig": [
+                            "{",
+                            "    radius: 2",
+                            "}"
+                        ],
+                        "smooth": null,
+                        "style": [
+                            "{'stroke-width':2}"
+                        ],
+                        "tips": [
+                            "{",
+                            "    trackMouse: true,",
+                            "    style: 'background: #FFF',",
+                            "    height: 20,",
+                            "    width: 150,",
+                            "    renderer: function(storeItem, item) {",
+                            "        var title = item.series.title;",
+                            "        this.setTitle(title + ' ' + storeItem.get('week') + ' (' + storeItem.get(item.series.yField) +')');",
+                            "    }",
+                            "}"
+                        ],
+                        "title": [
+                            "Koreksi Surat"
+                        ],
+                        "xField": "week",
+                        "yField": [
+                            "data3"
+                        ]
+                    },
+                    "name": "MyLineSeries4",
+                    "designerId": "379caf2e-c0b7-46ad-8599-677d92336197"
+                },
+                {
+                    "type": "Ext.chart.series.Line",
+                    "reference": {
+                        "name": "series",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "axis": [
+                            "left"
+                        ],
+                        "highlight": [
+                            "{",
+                            "fill: '#000',",
+                            "radius: 2,",
+                            "'stroke-width': 1,",
+                            "stroke: '#fff'",
+                            "}"
+                        ],
+                        "markerConfig": [
+                            "{",
+                            "    radius: 2",
+                            "}"
+                        ],
+                        "smooth": null,
+                        "style": [
+                            "{'stroke-width':2}"
+                        ],
+                        "tips": [
+                            "{",
+                            "    trackMouse: true,",
+                            "    style: 'background: #FFF',",
+                            "    height: 20,",
+                            "    width: 150,",
+                            "    renderer: function(storeItem, item) {",
+                            "        var title = item.series.title;",
+                            "        this.setTitle(title + ' ' + storeItem.get('week') + ' (' + storeItem.get(item.series.yField) +')');",
+                            "    }",
+                            "}"
+                        ],
+                        "title": [
+                            "Status Koreksi"
+                        ],
+                        "xField": "week",
+                        "yField": [
+                            "data4"
+                        ]
+                    },
+                    "name": "MyLineSeries",
+                    "designerId": "f3e0c311-cf47-45f6-879b-624e69adf723"
+                },
+                {
+                    "type": "Ext.chart.series.Line",
+                    "reference": {
+                        "name": "series",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "axis": [
+                            "left"
+                        ],
+                        "highlight": [
+                            "{",
+                            "    fill: '#000',",
+                            "    radius: 2,",
+                            "    'stroke-width': 1,",
+                            "    stroke: '#fff'",
+                            "}"
+                        ],
+                        "markerConfig": [
+                            "{",
+                            "    radius: 2",
+                            "}"
+                        ],
+                        "smooth": null,
+                        "style": [
+                            "{'stroke-width':2}"
+                        ],
+                        "tips": [
+                            "{",
+                            "    trackMouse: true,",
+                            "    style: 'background: #FFF',",
+                            "    height: 20,",
+                            "    width: 150,",
+                            "    renderer: function(storeItem, item) {",
+                            "        var title = item.series.title;",
+                            "        this.setTitle(title + ' ' + storeItem.get('week') + ' (' + storeItem.get(item.series.yField) +')');",
+                            "    }",
+                            "}"
+                        ],
+                        "title": [
+                            "Nota Dinas"
+                        ],
+                        "xField": "week",
+                        "yField": [
+                            "data5"
+                        ]
+                    },
+                    "name": "MyLineSeries2",
+                    "designerId": "4b44bbf8-373c-4061-ac6b-1c9f656c956d"
+                },
+                {
+                    "type": "Ext.chart.Legend",
+                    "reference": {
+                        "name": "legend",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyLegend",
+                    "designerId": "cb74e5e7-fef6-4d0c-b0f4-bcd92309ca81"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,58 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.staf.Lookup",
+        "model": "Sipas.Staf",
+        "storeId": "Sipas.staf.Lookup"
+    },
+    "name": "MyJsonStore",
+    "designerId": "1dd887a4-32dc-4d71-a516-f0faa3d3a950",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/staf/aktif"
+            },
+            "name": "MyAjaxProxy7",
+            "designerId": "5e550be7-f431-40e8-b296-6dda075a84f5",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader7",
+                    "designerId": "763beb28-f271-487c-af58-9bdd743a8d04"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "staf_nama"
+            },
+            "name": "MySorter13",
+            "designerId": "ed0266ea-3f4e-4e82-8cbf-81aa833e9958"
+        }
+    ]
+}

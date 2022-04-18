@@ -1,0 +1,81 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.koreksi.session.List",
+        "model": "Sipas.koreksi.Masuk",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.koreksi.session.List"
+    },
+    "name": "Sipas.surat.pegawai.List1",
+    "designerId": "68ceb2bb-3168-4cf4-96f0-2617c866a6cf",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/account/koreksi"
+            },
+            "name": "MyAjaxProxy51",
+            "designerId": "dbd2ba10-ff10-4ce7-b71f-a25c08d8ade5",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader51",
+                    "designerId": "1da306e6-c3e7-405f-b842-ab2a94d42470"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "baca",
+                "direction": null,
+                "property": "disposisi_masuk_isbaca",
+                "root": "data"
+            },
+            "name": "MySorter4",
+            "designerId": "337a4086-3aa8-4646-95de-0a8ebf55a59c"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "tanggal",
+                "direction": "DESC",
+                "property": "disposisi_tgl",
+                "root": "data"
+            },
+            "name": "MySorter1",
+            "designerId": "d8341f78-2caa-4aff-bc59-8a41e7039dc8"
+        }
+    ]
+}

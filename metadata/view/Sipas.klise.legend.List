@@ -1,0 +1,213 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoScroll": null,
+        "designer|userAlias": "sipas_klise_legend_list",
+        "designer|userClassName": "Sipas.klise.legend.List",
+        "store": "Sipas.klise.legend.List",
+        "title": "Legenda"
+    },
+    "name": "MyGridPanel",
+    "designerId": "64c62036-f989-4969-a66a-467901402277",
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": "x-column-header-notext",
+                "dataIndex": "legend_description",
+                "filterable": true,
+                "flex": null,
+                "items": [
+                    "{",
+                    "xtype: 'textfield',",
+                    "emptyText: 'Cari Legenda Surat',",
+                    "flex: 1,",
+                    "margin: 2,",
+                    "listeners: {",
+                    "change: function(textfield, e, eOpts){",
+                    "this.up('gridpanel').filterHeader(this);",
+                    "}",
+                    "}",
+                    "}"
+                ],
+                "minWidth": null,
+                "sortable": true,
+                "text": "Inputan",
+                "width": 360
+            },
+            "name": "MyColumn2",
+            "configAlternates": {
+                "items": "object"
+            },
+            "designerId": "ee15be4e-242d-49b8-80c4-67debe983228",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "return '<div class=\"subtext\">'+value+'</div><div class=\"subtext alternative\">'+record.get('legend_code')+'</div>';"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "4cd626bb-92be-4ff5-95be-c304687187cc"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "legend_group",
+                "filterable": true,
+                "flex": null,
+                "hidden": true,
+                "items": [
+                    "{",
+                    "xtype: 'textfield',",
+                    "flex: 1,",
+                    "margin: 2,",
+                    "listeners: {",
+                    "change: function(textfield, e, eOpts){",
+                    "this.up('gridpanel').filterHeader(this);",
+                    "}",
+                    "}",
+                    "}"
+                ],
+                "minWidth": null,
+                "sortable": true,
+                "text": "Kode",
+                "width": 360
+            },
+            "name": "MyColumn3",
+            "configAlternates": {
+                "items": "object"
+            },
+            "designerId": "56a6c4bd-996d-4eb8-9780-3eefce5d1406",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyGridView",
+            "designerId": "77ef505f-ddc2-4a53-b626-c300bd284733"
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "processSipaskliselegendList",
+                "implHandler": [
+                    "var filters = {",
+                    "    ftype: 'filters',",
+                    "    encode: true,",
+                    "    local: true",
+                    "};",
+                    "",
+                    "if (! config.features) {",
+                    "    config.features=filters;",
+                    "} else {",
+                    "    config.features.push(filters);",
+                    "}",
+                    "",
+                    "return config;"
+                ]
+            },
+            "name": "processSipaskliselegendList",
+            "designerId": "cbe8d298-52b8-438c-9133-c4597fa86aa1"
+        },
+        {
+            "type": "Ext.grid.feature.Grouping",
+            "reference": {
+                "name": "features",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "enableNoGroups": false
+            },
+            "name": "MyGroupingFeature2",
+            "designerId": "1dc6e907-8154-4f51-9516-78c2f4f08b33",
+            "cn": [
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "groupHeaderTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "groupHeaderTpl",
+                        "implHandler": [
+                            "{name}"
+                        ]
+                    },
+                    "name": "groupHeaderTpl",
+                    "designerId": "0981f2e8-6135-4353-b30c-0278188f67b3"
+                }
+            ]
+        }
+    ]
+}

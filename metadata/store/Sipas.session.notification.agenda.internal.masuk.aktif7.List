@@ -1,0 +1,77 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.session.notification.agenda.internal.masuk.aktif7.List",
+        "model": "Sipas.Surat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.session.notification.agenda.internal.masuk.aktif7.List"
+    },
+    "name": "Sipas.session.notification.agenda.internal.masuk.aktif3.List1",
+    "designerId": "697217d9-b5c5-43f1-89ea-87e692515e2f",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/notif_agenda/internal/masuk_aktif7"
+            },
+            "name": "MyAjaxProxy42",
+            "designerId": "e1820085-3a80-4649-9ef6-079f6a536923",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "record": null,
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader42",
+                    "designerId": "e03801b0-1e54-40c0-b012-ac45de48c66e"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "surat_setuju"
+            },
+            "name": "MySorter30",
+            "designerId": "a66a940c-61ee-40a6-8f21-f0080d1902c3"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_tanggal"
+            },
+            "name": "MySorter2",
+            "designerId": "3c284c2d-cd4b-4331-8e82-384af4350a5c"
+        }
+    ]
+}

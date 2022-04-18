@@ -1,0 +1,63 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.surat.nomor.template.Combo",
+        "model": "Sipas.surat.nomor.Template",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.surat.nomor.template.Combo"
+    },
+    "name": "Sipas.surat.nomor.template.List1",
+    "designerId": "49efc2de-3d6f-4900-ad9f-83ffd72b20b0",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat_nomor_template/read"
+            },
+            "name": "MyAjaxProxy20",
+            "designerId": "6600beb4-8c75-4573-a920-87ba60a67445",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "idProperty": null,
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader20",
+                    "designerId": "5abea88d-85f5-4728-9ec2-c87a899ec146"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "sn_template_name"
+            },
+            "name": "MySorter15",
+            "designerId": "ed49d545-02f7-45a0-aa85-1df573e0bbd9"
+        }
+    ]
+}

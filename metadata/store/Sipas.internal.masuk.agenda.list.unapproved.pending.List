@@ -1,0 +1,64 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.internal.masuk.agenda.list.unapproved.pending.List",
+        "model": "Sipas.Surat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.internal.masuk.agenda.list.unapproved.pending.List"
+    },
+    "name": "Sipas.internal.masuk.agenda.list.scope.List1",
+    "designerId": "b31d5f3b-8e16-46ab-84f2-55c893f07948",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat_imasuk/pending/"
+            },
+            "name": "MyAjaxProxy42",
+            "designerId": "7771d8ae-3432-4bf6-82f7-d71c06bd95bc",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "record": null,
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader42",
+                    "designerId": "2ea4b7bd-1237-422e-a114-ee423e6dd004"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_tanggal"
+            },
+            "name": "MySorter4",
+            "designerId": "6176f03a-6b77-42d8-b248-7e95ce087621"
+        }
+    ]
+}

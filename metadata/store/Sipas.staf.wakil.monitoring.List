@@ -1,0 +1,65 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.staf.wakil.monitoring.List",
+        "model": "Sipas.staf.Wakil",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.staf.wakil.monitoring.List"
+    },
+    "name": "Sipas.surat.pegawai.List2",
+    "designerId": "64cd50fa-8bd3-48f7-a7e1-177e7ea1ee63",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/staf_wakil_monitoring/read"
+            },
+            "name": "MyAjaxProxy51",
+            "designerId": "02802bfa-b0a3-4f83-8972-d80241a38955",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader51",
+                    "designerId": "e0e2e690-8319-487e-ae76-a7162133ba56"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "tanggal",
+                "direction": "DESC",
+                "property": "surat_properti_buat_tgl",
+                "root": "data"
+            },
+            "name": "MySorter4",
+            "designerId": "362a177e-79ac-44c9-b7c1-856c0f97130b"
+        }
+    ]
+}

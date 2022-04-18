@@ -1,0 +1,152 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.Perintah",
+        "idProperty": "perintah_id"
+    },
+    "name": "Sipas.disposisi.Aksi1",
+    "designerId": "b53198b6-57d0-4f4a-941d-13ef2e640438",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "api": [
+                    "{",
+                    "    create\t: 'server.php/sipas/perintah/create',",
+                    "    read \t: 'server.php/sipas/perintah/read',",
+                    "    update \t: 'server.php/sipas/perintah/update',",
+                    "    destroy : 'server.php/sipas/perintah/destroy'",
+                    "}"
+                ]
+            },
+            "name": "MyAjaxProxy",
+            "designerId": "9d115aa4-c18e-4efb-9d29-f35bc5011e41",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "record": null,
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader",
+                    "designerId": "fc300977-51b3-4518-94d9-d001da3d532e"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "perintah_id"
+            },
+            "name": "MyField361",
+            "designerId": "4042b519-f48f-46ea-9348-14c2afba202a"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "perintah_nama"
+            },
+            "name": "MyField367",
+            "designerId": "9effa9f8-0dea-4ae4-87fc-9183d75b7567"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": null,
+                "name": "perintah_kode",
+                "type": null
+            },
+            "name": "MyField1014",
+            "designerId": "2102ac4b-b232-4ac9-bf28-f70368562fff"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": [
+                    "1"
+                ],
+                "name": "perintah_isaktif",
+                "type": "boolean"
+            },
+            "name": "MyField1013",
+            "designerId": "7a9441c7-36b1-419d-a712-134ff8da16f0"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": null,
+                "name": "perintah_properti",
+                "type": null
+            },
+            "name": "MyField379",
+            "designerId": "88b92f6a-41ac-4e76-b814-e3d761c6e3fe"
+        },
+        {
+            "type": "staticfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "isbaca",
+                    "value",
+                    "pesan"
+                ],
+                "fn": "renderBaca",
+                "implHandler": [
+                    "var val = (value)? \"<div class='subtext ellipsis'><span class='badge badge-solid margin-right-4'><i class='icon ion-md-text blue-500-i'></i></span>\"+value+\"</div>\" : \"<div class='subtext ellipsis'><span class='badge badge-solid margin-right-4'><i class='icon ion-md-text grey-500-i'></i></span><span class='alternative'>(Tidak ada perintah)</span></div>\";",
+                    "",
+                    "if(!isbaca){",
+                    "    return \"<span class='bold'>\"+val+\"</span>\";",
+                    "}else{",
+                    "    return val;",
+                    "}"
+                ]
+            },
+            "name": "renderBaca",
+            "designerId": "c691c850-330c-4b8e-bbe8-72514ec83bdd"
+        }
+    ]
+}

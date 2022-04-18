@@ -1,0 +1,438 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "clickToView": true,
+        "designer|userAlias": "sipas_surat_libnomor_list",
+        "designer|userClassName": "Sipas.surat.libnomor.List",
+        "disableSelection": true,
+        "emptyText": "Tidak ada data",
+        "filterable": true,
+        "height": null,
+        "languageCode": "surat_libnomor_list",
+        "languageMode": "title",
+        "languageable": true,
+        "store": "Sipas.surat.libnomor.List",
+        "title": "Penomoran",
+        "width": null
+    },
+    "name": "MyGridPanel",
+    "designerId": "8cd92bc1-ffa4-4688-bd02-b6e4e2c841ac",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "clickToView",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageable",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageCode",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageMode",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterable",
+            "type": "boolean"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "dock": "top"
+            },
+            "name": "MyToolbar",
+            "designerId": "2fcdb1a6-f610-42b0-b78c-8a92f1b33015",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.refresh3",
+                    "designerId": "0c9dda29-1e9f-40f2-b695-e47128cf9723",
+                    "masterInstanceId": "e517a5ab-fc5b-441a-97a3-5c706738d092"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.add2",
+                    "designerId": "a0d9fd1b-a37d-4ac8-9df5-c6718c146f3b",
+                    "masterInstanceId": "420a71a2-f0ab-4b83-bf9b-b7cf567d6c9f"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.RowNumberer",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "MyRowNumberer1",
+            "designerId": "8e8b3996-39a6-44a7-b323-4bb5dc46eaeb"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": "center",
+                "dataIndex": "surat_libnomor_value",
+                "filterable": true,
+                "items": [
+                    "{",
+                    "    xtype: 'textfield',",
+                    "    emptyText: 'Cari Nomor',",
+                    "    flex:1,",
+                    "    margin: 2,",
+                    "    listeners: {",
+                    "        change: function(textfield, e, eOpts){",
+                    "            this.up('gridpanel').filterHeader(this);",
+                    "        },",
+                    "        afterrender: function(){",
+                    "            this.show();",
+                    "        }",
+                    "    }\t",
+                    "}"
+                ],
+                "text": "No.Urut",
+                "width": 125
+            },
+            "name": "MyColumn14",
+            "configAlternates": {
+                "items": "object"
+            },
+            "designerId": "b9de53c4-f53d-45b1-ab34-7fe1bc061421",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": "center",
+                "dataIndex": "surat_libnomor_model",
+                "text": "Model",
+                "width": 200
+            },
+            "name": "MyColumn",
+            "designerId": "090e93dd-e3b3-4001-b5cc-20de6cc192ae",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var modelLibNomor = Ext.ModelManager.getModel('SIPAS.model.Sipas.surat.Libnomor');",
+                            "return modelLibNomor.renderModel(value);"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "8c8c80ab-489a-4c44-b9d6-085325c76ef6"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "surat_libnomor_tahun",
+                "filterable": true,
+                "items": [
+                    "{",
+                    "    xtype: 'textfield',",
+                    "    emptyText: 'Cari Tahun',",
+                    "    flex:1,",
+                    "    margin: 2,",
+                    "    listeners: {",
+                    "        change: function(textfield, e, eOpts){",
+                    "            this.up('gridpanel').filterHeader(this);",
+                    "        },",
+                    "        afterrender: function(){",
+                    "            this.show();",
+                    "        }",
+                    "    }\t",
+                    "}"
+                ],
+                "text": "Tahun",
+                "width": 130
+            },
+            "name": "MyColumn13",
+            "configAlternates": {
+                "items": "object"
+            },
+            "designerId": "550f86af-c953-4275-9e94-30bc94f47158",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "jenis_nama",
+                "items": [
+                    "{",
+                    "    xtype: 'textfield',",
+                    "    emptyText: 'Cari Nama Jenis',",
+                    "    flex:1,",
+                    "    margin: 2,",
+                    "    listeners: {",
+                    "        change: function(textfield, e, eOpts){",
+                    "            this.up('gridpanel').filterHeader(this);",
+                    "        }",
+                    "}",
+                    "}"
+                ],
+                "languageCode": null,
+                "languageMode": null,
+                "languageable": null,
+                "text": "Jenis",
+                "width": 220
+            },
+            "name": "MyColumn4",
+            "configAlternates": {
+                "items": "object",
+                "languageable": "boolean"
+            },
+            "designerId": "b9917e64-5d38-4344-9d79-f4532c0ab5c8",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "languageCode",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "languageable",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "languageMode",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "unit_pembuat_nama",
+                "filterable": true,
+                "items": [
+                    "{",
+                    "    xtype: 'textfield',",
+                    "    emptyText: 'Cari Nama Unit',",
+                    "    flex:1,",
+                    "    margin: 2,",
+                    "    listeners: {",
+                    "        change: function(textfield, e, eOpts){",
+                    "            this.up('gridpanel').filterHeader(this);",
+                    "        }\t",
+                    "    }",
+                    "}"
+                ],
+                "languageCode": null,
+                "languageMode": null,
+                "languageable": null,
+                "text": "Unit Pembuat",
+                "width": 220
+            },
+            "name": "MyColumn9",
+            "configAlternates": {
+                "items": "object",
+                "languageable": "boolean"
+            },
+            "designerId": "a1f28055-5463-4d76-ac61-53f352e79c79",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "languageCode",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "languageMode",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "languageable",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyGridView",
+            "designerId": "fb10df60-489c-4c8d-8fa7-2145cc221fd6",
+            "cn": [
+                {
+                    "type": "Ext.grid.plugin.DragDrop",
+                    "reference": {
+                        "name": "plugins",
+                        "type": "array"
+                    },
+                    "codeClass": "Ext.grid.plugin.DragDrop",
+                    "name": "MyGridDragDropPlugin",
+                    "designerId": "97def5e2-3a85-4f9c-99cc-010b285f4bae"
+                }
+            ]
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "processSipassuratlibnomorList",
+                "implHandler": [
+                    "var filters = {",
+                    "    ftype: 'filters',",
+                    "    encode: true,",
+                    "    local: false",
+                    "};",
+                    "",
+                    "if (! config.features) {",
+                    "    config.features=filters;",
+                    "} else {",
+                    "    config.features.push(filters);",
+                    "}",
+                    "",
+                    "return config;"
+                ]
+            },
+            "name": "processSipassuratlibnomorList",
+            "designerId": "753907e1-bea3-4473-addb-fe0c1644667f"
+        },
+        {
+            "type": "Ext.toolbar.Paging",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "displayInfo": true,
+                "dock": "bottom",
+                "store": "Sipas.surat.libnomor.List",
+                "width": 360
+            },
+            "name": "MyPagingToolbar",
+            "designerId": "6a7b5772-f6e4-4f6a-b2eb-542bb745b0b7"
+        }
+    ]
+}

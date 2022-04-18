@@ -1,0 +1,266 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "border": 0,
+        "designer|userAlias": "sipas_kelas_lookup",
+        "designer|userClassName": "Sipas.kelas.Lookup",
+        "height": 450,
+        "itemId": null,
+        "layout": "fit",
+        "modal": true,
+        "requires": [
+            "SIPAS.store.Sipas.kelas.Lookup"
+        ],
+        "title": "Klasifikasi Surat",
+        "width": 650
+    },
+    "name": "Sipas.jabatan.Lookup1",
+    "designerId": "6c2bf3ea-7a1f-43e0-b75a-80af8420938c",
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "store": "Sipas.kelas.Lookup",
+                "title": null
+            },
+            "name": "MyGridPanel1",
+            "designerId": "6b424cb3-5c41-4965-ba9d-9eee58896a7c",
+            "cn": [
+                {
+                    "type": "Ext.selection.CheckboxModel",
+                    "reference": {
+                        "name": "selModel",
+                        "type": "object"
+                    },
+                    "codeClass": "Ext.selection.CheckboxModel",
+                    "userConfig": {
+                        "allowDeselect": false
+                    },
+                    "name": "MyCheckboxSelectionModel1",
+                    "designerId": "540d258e-8353-428f-bfaf-2e71ab26a864"
+                },
+                {
+                    "type": "Ext.grid.RowNumberer",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "name": "MyRowNumberer2",
+                    "designerId": "ba4008a4-067c-4f4b-818f-b727ebf7f5b8"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "kelas_nama",
+                        "flex": 1,
+                        "items": [
+                            "{",
+                            "\t\t                        xtype: 'textfield',",
+                            "                                emptyText: 'Cari Nama Klasifikasi',",
+                            "\t\t                        flex: 1,",
+                            "\t\t                        margin: 2,",
+                            "\t\t                        listeners: {",
+                            "\t\t                            change: function(textfield, e, eOpts){",
+                            "\t\t                                    this.up('gridpanel').filterHeader(this);",
+                            "\t\t                                }",
+                            "\t\t                        }",
+                            "\t\t                    }"
+                        ],
+                        "text": "Nama Klasifikasi"
+                    },
+                    "name": "MyColumn25",
+                    "configAlternates": {
+                        "items": "object"
+                    },
+                    "designerId": "ca33cabf-d218-431f-b733-e3f57680a714",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "items",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "kelas_kode",
+                        "items": [
+                            "{",
+                            "\t\t                        xtype: 'textfield',",
+                            "                                emptyText: 'Cari Kode Klasifikasi',",
+                            "\t\t                        flex: 1,",
+                            "\t\t                        margin: 2,",
+                            "\t\t                        listeners: {",
+                            "\t\t                            change: function(textfield, e, eOpts){",
+                            "\t\t                                    this.up('gridpanel').filterHeader(this);",
+                            "\t\t                                }",
+                            "\t\t                        }",
+                            "\t\t                    }"
+                        ],
+                        "text": "Kode Klasifikasi",
+                        "width": 160
+                    },
+                    "name": "MyColumn31",
+                    "configAlternates": {
+                        "items": "object"
+                    },
+                    "designerId": "0ef4b81d-f707-4e56-a24e-3303398fdd3d",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "items",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "kelas_jenis_nama",
+                        "items": [
+                            "{",
+                            "\t\t                        xtype: 'textfield',",
+                            "                                emptyText: 'Cari Jenis',",
+                            "\t\t                        flex: 1,",
+                            "\t\t                        margin: 2,",
+                            "\t\t                        listeners: {",
+                            "\t\t                            change: function(textfield, e, eOpts){",
+                            "\t\t                                    this.up('gridpanel').filterHeader(this);",
+                            "\t\t                                }",
+                            "\t\t                        }",
+                            "\t\t                    }"
+                        ],
+                        "text": "Jenis",
+                        "width": 160
+                    },
+                    "name": "MyColumn32",
+                    "configAlternates": {
+                        "items": "object"
+                    },
+                    "designerId": "77124092-c4ac-4867-b9aa-5c0bf41badfd",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "items",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Paging",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayInfo": true,
+                        "dock": "bottom",
+                        "store": "Sipas.kelas.Lookup",
+                        "width": 360
+                    },
+                    "name": "MyPagingToolbar2",
+                    "designerId": "ad02f8f7-e85e-4822-ae07-a2cd79058a26"
+                },
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processMyGridPanel1",
+                        "implHandler": [
+                            "var filters = {",
+                            "    ftype: 'filters',",
+                            "    encode: true,",
+                            "    local: false",
+                            "};",
+                            "",
+                            "if (! config.features) {",
+                            "    config.features=filters;",
+                            "} else {",
+                            "    config.features.push(filters);",
+                            "}",
+                            "",
+                            "return config;"
+                        ]
+                    },
+                    "name": "processMyGridPanel1",
+                    "designerId": "7c0fdac5-5ea7-446c-befd-fa33ae1376c3"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": null,
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "container|pack": "end",
+                "designer|uiInterfaceName": "footer",
+                "dock": "bottom",
+                "itemId": "toolbarControl",
+                "layout": "hbox",
+                "margin": null,
+                "ui": "footer"
+            },
+            "name": "MyContainer58",
+            "designerId": "dbafe7b2-b572-4198-b019-462023125fba",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "layout|margins": "4 4 6 4"
+                    },
+                    "name": "sipas.com.button.putin18",
+                    "designerId": "eb69df1e-f9da-4437-8350-b75fbb8e39a2",
+                    "masterInstanceId": "2a6a3c93-a982-4961-b600-192b59ee290e"
+                }
+            ]
+        }
+    ]
+}

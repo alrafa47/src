@@ -1,0 +1,155 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.Lokasi",
+        "idProperty": "lokasi_id"
+    },
+    "designerId": "c1e7934c-48e2-4589-a3fc-534beeeb4224",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lokasi_id"
+            },
+            "name": "MyField46",
+            "designerId": "54415d79-ada5-460d-8140-f70d51d105d7"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lokasi_kode"
+            },
+            "name": "MyField47",
+            "designerId": "432f8d4f-5ab5-46a4-a04c-c00142a780cc"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lokasi_nama"
+            },
+            "name": "MyField48",
+            "designerId": "ae18afb4-c953-46e6-ac06-73cd19388b6c"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": [
+                    "1"
+                ],
+                "name": "lokasi_isaktif",
+                "type": "boolean"
+            },
+            "name": "MyField49",
+            "designerId": "58d3add9-dd61-45ef-b8a3-5b34356716fd"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lokasi_display"
+            },
+            "name": "MyField509",
+            "designerId": "0e24644e-4ba4-49a1-90fb-e6cb3b369b41",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "v",
+                            "rec"
+                        ],
+                        "fn": "convert",
+                        "implHandler": [
+                            "return (new Ext.Template('{lokasi_nama} ({lokasi_kode})')).apply(rec.getData());"
+                        ]
+                    },
+                    "name": "convert",
+                    "designerId": "2247b1d2-9343-48e7-bf2a-923f5bf3d0bf"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "api": [
+                    "{",
+                    "    create: 'server.php/sipas/lokasi/create',",
+                    "    read: 'server.php/sipas/lokasi/read',",
+                    "    update: 'server.php/sipas/lokasi/update',",
+                    "    destroy: 'server.php/sipas/lokasi/destroy'",
+                    "}"
+                ]
+            },
+            "name": "MyAjaxProxy19",
+            "designerId": "a8f07c65-721e-43ea-bc14-968269aea091",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "record": null,
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader19",
+                    "designerId": "d02a9993-1333-40ea-b3bd-7e34d3234f5c"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lokasi_properti"
+            },
+            "name": "MyField36",
+            "designerId": "0f21737f-e70b-4fe8-86ec-4fe7169a9f9f"
+        }
+    ]
+}

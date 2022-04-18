@@ -1,0 +1,12 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+$CI = get_instance();
+$CI->model('sipas/disposisi_riwayat_view', true);
+
+class Sipas_model_Disposisi_riwayat_aktif_view extends Sipas_model_Disposisi_riwayat_view {
+      
+    function __construct(){
+        parent::__construct();
+        $this->set_table_name('v_disposisi_riwayat_aktif');
+    }
+}

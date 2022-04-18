@@ -1,0 +1,62 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.kelas.semua.List",
+        "model": "Sipas.Kelas",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.kelas.semua.List"
+    },
+    "name": "Sipas.jenis.List1",
+    "designerId": "32703dda-de72-4a3c-8a12-ab7a6fadf553",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/kelas/read"
+            },
+            "name": "MyAjaxProxy12",
+            "designerId": "bb5a9fe0-3e26-4ee9-90e4-b091c502f5a1",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader12",
+                    "designerId": "edadb5c0-ebae-45dc-859f-49e5bd773797"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "kelas_nama"
+            },
+            "name": "MySorter9",
+            "designerId": "9bfe09c9-6de6-4585-afb1-416efe8db6fc"
+        }
+    ]
+}

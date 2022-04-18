@@ -1,0 +1,58 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.staf.tim.anggota.tim.List",
+        "model": "Sipas.staf.tim.Anggota",
+        "storeId": "Sipas.staf.tim.anggota.tim.List"
+    },
+    "name": "MyJsonStore",
+    "designerId": "13e153cf-0bb3-49ac-8a68-e336401a3a53",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/staf_tim_anggota/readKelompok"
+            },
+            "name": "MyAjaxProxy12",
+            "designerId": "7b8a31f1-72f8-42f1-966f-6c7b48a50b80",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader15",
+                    "designerId": "919c9b9b-4dd5-4505-8e03-18bfdc18d902"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "staf_tim_nama"
+            },
+            "name": "MySorter2",
+            "designerId": "fe1c9508-8241-49ed-b375-9dd3a98d822c"
+        }
+    ]
+}

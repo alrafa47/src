@@ -1,0 +1,689 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyBorder": false,
+        "designer|userAlias": "sipas_staf_wakil_monitoring_mainview",
+        "designer|userClassName": "Sipas.staf.wakil.monitoring.Mainview",
+        "height": null,
+        "languageCode": "monitoring_list",
+        "languageMode": "title",
+        "languageable": true,
+        "layout": "border",
+        "title": "Pelaksana Harian",
+        "width": null
+    },
+    "name": "Sipas.pegawai.asistensi.Pane1",
+    "designerId": "1f172edd-618f-4a37-8f81-610cfa0749e7",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "languageCode",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageMode",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageable",
+            "type": "boolean"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyPadding": "0 16",
+                "border": false,
+                "container|align": "middle",
+                "container|pack": null,
+                "container|padding": null,
+                "header": false,
+                "height": null,
+                "layout": "hbox",
+                "layout|region": "north",
+                "padding": 0,
+                "title": "Pegawai Yang Dimonitor"
+            },
+            "name": "MyForm13",
+            "designerId": "e1291a17-8537-4223-a47c-91768f9cb2ed",
+            "cn": [
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "defaultAlign": null,
+                        "height": 64,
+                        "itemId": "containerImage",
+                        "layout": "fit",
+                        "margin": "0 0 16 0",
+                        "width": 64
+                    },
+                    "name": "MyContainer19",
+                    "designerId": "4aed65cf-5044-4d77-94b2-28b7a7e20853"
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "containerProfile",
+                        "layout": "anchor",
+                        "layout|flex": 1,
+                        "layout|margins": "0 0 0 16",
+                        "margin": null,
+                        "width": 250
+                    },
+                    "name": "MyContainer2",
+                    "designerId": "4ae58886-90d5-4eb3-8058-a6cd1d08d397",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.ComboBox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "displayField": "staf_nama",
+                                "editable": false,
+                                "emptyText": "(Pilih Staf)",
+                                "fieldLabel": null,
+                                "itemId": "comboStaf",
+                                "labelAlign": null,
+                                "minWidth": null,
+                                "store": "Sipas.staf.wakil.monitor.Combo",
+                                "valueField": "staf_id",
+                                "width": 350
+                            },
+                            "name": "MyComboBox2",
+                            "designerId": "78595324-1a4e-4f7b-b6e5-0b225004bf66",
+                            "cn": [
+                                {
+                                    "type": "Ext.view.BoundList",
+                                    "reference": {
+                                        "name": "listConfig",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemSelector": "div"
+                                    },
+                                    "name": "MyBoundList",
+                                    "designerId": "acfd590a-17de-4eb9-b77b-3820e3d6e070",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.XTemplate",
+                                            "reference": {
+                                                "name": "itemTpl",
+                                                "type": "object"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|displayName": "itemTpl",
+                                                "implHandler": [
+                                                    "<tpl for=\".\">",
+                                                    "    <tpl if=\"values.staf_wakil_plt == true\">",
+                                                    "        {staf_nama} <span style=\"color: gray\">({staf_kode})</span> - Pengganti Sementara",
+                                                    "        <tpl else>",
+                                                    "            {staf_nama} <span style=\"color: gray\">({staf_kode})</span> - Pimpinan",
+                                                    "        </tpl>",
+                                                    "    </tpl>"
+                                                ]
+                                            },
+                                            "name": "itemTpl",
+                                            "designerId": "6eede1be-6083-4313-ad7f-a0dde7df28e2"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": null,
+                                "fieldStyle": "font-weight:bold;",
+                                "hidden": true,
+                                "labelAlign": "top",
+                                "labelStyle": null,
+                                "layout|anchor": "100%",
+                                "name": "staf_nama",
+                                "style": null,
+                                "value": "(nama pegawai)"
+                            },
+                            "name": "MyDisplayField12",
+                            "configAlternates": {
+                                "style": "string"
+                            },
+                            "designerId": "ce634729-c7d2-402f-ae31-69ca59c53fc4",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "value",
+                                            "displayField"
+                                        ],
+                                        "fn": "renderer",
+                                        "implHandler": [
+                                            "if(value){",
+                                            "    return '<b>'+Ext.util.Format.ellipsis(value,50)+'</b>';",
+                                            "}else{",
+                                            "    return '';",
+                                            "}"
+                                        ]
+                                    },
+                                    "name": "renderer",
+                                    "designerId": "03343961-4900-4564-9d27-a87cc16df8be"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": null,
+                                "hidden": true,
+                                "labelAlign": "top",
+                                "layout|anchor": "100%",
+                                "margin": 0,
+                                "name": "jabatan_nama",
+                                "padding": 0,
+                                "value": "(jabatan)"
+                            },
+                            "name": "MyDisplayField14",
+                            "designerId": "1564da54-4ad5-4596-8095-ee1bf298943d",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "value",
+                                            "displayField"
+                                        ],
+                                        "fn": "renderer",
+                                        "implHandler": [
+                                            "return Ext.util.Format.ellipsis(value,50);"
+                                        ]
+                                    },
+                                    "name": "renderer",
+                                    "designerId": "eaf8a9b9-42d6-423b-8faa-6097c5acad52"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": null,
+                                "labelAlign": "top",
+                                "layout|anchor": "100%",
+                                "margin": 0,
+                                "name": "unit_nama",
+                                "padding": 0,
+                                "value": null
+                            },
+                            "name": "MyDisplayField16",
+                            "designerId": "1966b8e2-87ed-4473-bda3-932e583a5fc3",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "value",
+                                            "displayField"
+                                        ],
+                                        "fn": "renderer",
+                                        "implHandler": [
+                                            "return Ext.util.Format.ellipsis(value,50);"
+                                        ]
+                                    },
+                                    "name": "renderer",
+                                    "designerId": "ab1f9190-4699-467c-bfd0-a3fc252c3e51"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": null,
+                                "hidden": true,
+                                "labelAlign": "top",
+                                "layout|anchor": "100%",
+                                "margin": 0,
+                                "name": "staf_wakil_plt",
+                                "padding": 0,
+                                "value": null
+                            },
+                            "name": "MyDisplayField13",
+                            "designerId": "f033ba32-52a3-4068-a3a1-af82dd2177a7",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "value",
+                                            "displayField"
+                                        ],
+                                        "fn": "renderer",
+                                        "implHandler": [
+                                            "return Ext.util.Format.ellipsis(value,50);"
+                                        ]
+                                    },
+                                    "name": "renderer",
+                                    "designerId": "e887d313-27bc-4e7e-8de0-935426e89ac0"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.tab.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "activeTab": 0,
+                "disabled": true,
+                "header": false,
+                "itemId": "panelMonitoring",
+                "layout|region": "center",
+                "title": "Monitoring",
+                "titleAlign": "center"
+            },
+            "name": "Sipas.pegawai.asistensi.monitoring.Pane1",
+            "designerId": "7b1dc280-3d78-4134-8bc7-21e8106819bd",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": "icon ion-md-list blue-700-i",
+                        "isAsistensi": null,
+                        "languageCode": "tugassaya_asisten_tab_list",
+                        "roleName": "asistensi_monitoring_tugassaya",
+                        "roleable": false,
+                        "store": "Sipas.staf.wakil.monitoring.tugassaya.List"
+                    },
+                    "name": "sipas.staf.wakil.monitoring.tugassaya.list",
+                    "configAlternates": {
+                        "roleable": "boolean",
+                        "tabConfig": "array"
+                    },
+                    "designerId": "02a9b1d1-361c-4c3d-ad09-a52e229cf3d6",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "e504c212-daaa-4ebb-a8c1-c2d073bbf25a",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "roleName": "asistensi_monitoring_tugassaya",
+                                "roleable": false
+                            },
+                            "name": "TabConfig2",
+                            "configAlternates": {
+                                "roleable": "boolean"
+                            },
+                            "designerId": "b67e61c8-6718-437b-8199-039f8221f2b4",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "roleable",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "roleName",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "featureName": "asistensi_masuk",
+                        "featureable": true,
+                        "iconCls": "icon ion-md-mail blue-700-i",
+                        "languageCode": "masuk_asisten_tab_list",
+                        "roleName": "asistensi_monitoring_masuk",
+                        "roleable": false,
+                        "store": "Sipas.staf.wakil.monitoring.kotak.List",
+                        "title": "Masuk"
+                    },
+                    "name": "sipas.staf.wakil.monitoring.masuk.list",
+                    "configAlternates": {
+                        "featureable": "boolean",
+                        "roleable": "boolean"
+                    },
+                    "designerId": "bd46de26-194d-47da-bfae-dde301b3a82b",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "5b36a8ed-bea4-4771-a299-8cb2e6e83bf8",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "TabConfig5",
+                            "designerId": "a5c69616-2dc6-4d0f-8b09-665eaf51ce84"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "featureName": "asistensi_riwayat",
+                        "featureable": true,
+                        "iconCls": "icon ion-md-send green-700-i",
+                        "languageCode": "terkirim_asisten_tab_list",
+                        "roleName": "asistensi_monitoring_riwayat",
+                        "roleable": false,
+                        "store": "Sipas.staf.wakil.monitoring.disposisi.riwayat.Aktif",
+                        "title": "Terkirim",
+                        "withoutControl": true
+                    },
+                    "name": "sipas.staf.wakil.monitoring.riwayat.list",
+                    "configAlternates": {
+                        "withoutControl": "boolean",
+                        "roleable": "boolean",
+                        "featureable": "boolean"
+                    },
+                    "designerId": "df72bb42-0d76-4e99-83a4-425a88fa3d81",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "withoutControl",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "51a9ce8f-1a2a-4baf-99a5-a415c82f25d0",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "closable": false,
+                                "featureName": "asistensi_riwayat",
+                                "featureable": true,
+                                "roleName": "asistensi_monitoring_riwayat"
+                            },
+                            "name": "TabConfig6",
+                            "configAlternates": {
+                                "featureable": "boolean",
+                                "roleable": "boolean"
+                            },
+                            "designerId": "015f99b5-df04-482e-9243-e23320e3c17a",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "featureable",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "featureName",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "roleable",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "roleName",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "featureName": "asistensi_koreksi",
+                        "featureable": true,
+                        "hidden": null,
+                        "iconCls": "con ion-md-document brown-500-i",
+                        "languageCode": "draft_asisten_tab_list",
+                        "roleName": "asistensi_monitoring_konsep",
+                        "roleable": false,
+                        "store": "Sipas.staf.wakil.monitoring.draf.List",
+                        "title": "Draf Untuk Dikoreksi",
+                        "withoutAsistensi": false,
+                        "withoutControl": true
+                    },
+                    "name": "sipas.staf.wakil.monitoring.koreksi.list",
+                    "configAlternates": {
+                        "roleable": "boolean",
+                        "withoutControl": "boolean",
+                        "withoutAsistensi": "boolean",
+                        "featureable": "boolean"
+                    },
+                    "designerId": "afed3c4f-d1ed-4c19-a440-44e827bc2c0d",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "withoutControl",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "withoutAsistensi",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "de7f5d9a-cd85-4721-9008-d7bdfe674887",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "featureName": "asistensi_koreksi",
+                                "featureable": true,
+                                "roleName": "asistensi_monitoring_riwayat"
+                            },
+                            "name": "TabConfig4",
+                            "configAlternates": {
+                                "featureable": "boolean",
+                                "roleable": "boolean"
+                            },
+                            "designerId": "98eb3c59-d012-4930-ab91-85e5b96bc83a",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "featureable",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "featureName",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "roleable",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "roleName",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

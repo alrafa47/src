@@ -1,0 +1,64 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.sistem.log.audit.List",
+        "model": "Sipas.properti.Log",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.sistem.log.audit.List",
+        "trailingBufferZone": 100
+    },
+    "name": "Sipas.jenis.semua.List1",
+    "designerId": "12c8b0c5-a535-4438-83b7-2856f92f50fb",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/properti_log/read"
+            },
+            "name": "MyAjaxProxy12",
+            "designerId": "dc32c982-43aa-46f9-a6e1-54f265e510a1",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader12",
+                    "designerId": "5d6f2b3b-5d8c-4358-a0a7-4d086b3af90d"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "properti_log_tgl"
+            },
+            "name": "MySorter9",
+            "designerId": "346cfa10-8a16-48ee-9839-4c571b8a198f"
+        }
+    ]
+}

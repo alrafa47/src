@@ -1,0 +1,94 @@
+{
+    "type": "Ext.data.TreeStore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": null,
+        "defaultRootText": null,
+        "designer|userClassName": "Sipas.akses.List",
+        "model": "Sipas.Akses",
+        "remoteFilter": true,
+        "remoteSort": true,
+        "storeId": "Sipas.akses.List"
+    },
+    "designerId": "794e23b3-6737-418e-850c-fc346b83ae23",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "api": null,
+                "extraParams": null,
+                "url": "rule.json"
+            },
+            "name": "MyAjaxProxy5",
+            "designerId": "fe7df2a3-1150-4566-a9b8-67cb899284a7",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": null
+                    },
+                    "name": "MyJsonReader5",
+                    "designerId": "32ec5bfc-09e4-43e4-acb3-7cbcd255a27a"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "fitur_level"
+            },
+            "name": "MySorter",
+            "designerId": "86142b95-d761-40e2-a422-32df2e20d8f5"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "fitur_nama"
+            },
+            "name": "MySorter3",
+            "designerId": "f6881e10-a7c3-438e-8065-939944a11f9b"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onTreeStoreBeforeLoad1",
+                "implHandler": [
+                    "if(store.isLoading()) return false;"
+                ],
+                "name": "beforeload",
+                "scope": "me"
+            },
+            "name": "onTreeStoreBeforeLoad1",
+            "designerId": "5aff28a6-6b7c-489f-9abf-84ac6f205352"
+        }
+    ]
+}

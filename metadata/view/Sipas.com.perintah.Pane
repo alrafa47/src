@@ -1,0 +1,238 @@
+{
+    "type": "Ext.form.FieldSet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": "sipas_com_disposisi_perintah_pane",
+        "container|align": "stretch",
+        "container|padding": null,
+        "designer|userAlias": "sipas_com_perintah_pane",
+        "designer|userClassName": "Sipas.com.perintah.Pane",
+        "enableButtonView": true,
+        "formConfig": [
+            "{}"
+        ],
+        "height": null,
+        "itemId": null,
+        "layout": "hbox",
+        "padding": null,
+        "title": null
+    },
+    "name": "Sipas.com.disposisi.pengirim.Pane2",
+    "configAlternates": {
+        "enableButtonView": "boolean",
+        "formConfig": "object"
+    },
+    "designerId": "bda54aaf-6b45-4858-afde-b07683fdefb4",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "enableButtonView",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "formConfig",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "constructor",
+                "implHandler": [
+                    "        this.callParent(arguments);",
+                    "        return Ext.applyIf(this,{",
+                    "            form: new Ext.form.Basic(this)",
+                    "        });"
+                ]
+            },
+            "name": "constructor",
+            "designerId": "67cfebc4-0d02-4604-81fe-91fdeb6e91f6"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": 1,
+                "margin": null
+            },
+            "name": "MyContainer30",
+            "designerId": "d50c02df-6ed1-4343-87bf-1a5885f31bdd",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": null,
+                        "itemId": "perintahDetail",
+                        "value": null
+                    },
+                    "name": "MyDisplayField19",
+                    "designerId": "e872e005-44ea-4125-a152-0ae3c8bd8c4d"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": "perintahImage",
+                "height": 48,
+                "hidden": true,
+                "itemId": "perintahImage",
+                "padding": null,
+                "width": 48
+            },
+            "name": "MyContainer32",
+            "designerId": "10fbf6b4-bfe3-4cb3-a9da-f8764b03e8bf",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onPerintahImageRender",
+                        "implHandler": [
+                            "Ext.create('Ext.tip.ToolTip',{",
+                            "    target: component.getEl(),",
+                            "    html: 'Perintah Disposisi'",
+                            "});"
+                        ],
+                        "name": "render",
+                        "scope": "me"
+                    },
+                    "name": "onPerintahImageRender",
+                    "designerId": "5d70f7d8-0044-4647-91c9-4401c232de55"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaults": [
+                    "{margin:0,margins:0,padding:0}"
+                ],
+                "hidden": true,
+                "itemId": "perintahData",
+                "layout|flex": 1,
+                "margin": "0 0 0 10"
+            },
+            "name": "MyContainer33",
+            "designerId": "26686741-eac8-4b36-8117-53aa6c22f633",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": null,
+                        "name": "perintah_nama",
+                        "value": null
+                    },
+                    "name": "MyDisplayField10",
+                    "designerId": "e1fff97a-d4e3-469f-b6c5-9bc3c265564f",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "displayField"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "if(value){",
+                                    "    return '<strong>'+value+'</strong>';",
+                                    "}else{",
+                                    "     return '<span style= \"color: grey;\">'+ 'Tidak Ada Perintah' + '</span>';",
+                                    "}"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "845369b5-eee2-49a9-9b72-41c3693df02b"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": null,
+                        "name": "disposisi_pesan",
+                        "value": null
+                    },
+                    "name": "MyDisplayField12",
+                    "designerId": "ebe07e1e-3838-4f89-9f09-84bb3f5522da",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "displayField"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    " if(value){",
+                                    "                                    return value;",
+                                    "                                }else{",
+                                    "                                    return '<span style= \"color: grey;\">'+ 'Tidak Ada Uraian Perintah'+'</span>';",
+                                    "                                }"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "fa0f134e-19b2-469a-9eec-177207e0d22b"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

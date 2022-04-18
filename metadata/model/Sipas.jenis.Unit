@@ -1,0 +1,260 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.jenis.Unit",
+        "idProperty": "jenis_unit_id"
+    },
+    "name": "Sipas.unit.Cakupan1",
+    "designerId": "bdce1b8c-7fd3-4444-9372-730ee1c8175a",
+    "cn": [
+        {
+            "type": "Ext.data.association.HasOne",
+            "reference": {
+                "name": "hasOne",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "getJenis",
+                "foreignKey": "jenis_unit_jenis",
+                "getterName": "getJenis",
+                "model": "Sipas.Jenis",
+                "primaryKey": "jenis_id",
+                "setterName": "setJenis"
+            },
+            "name": "MyHasOneAssociation4",
+            "designerId": "21ed78a5-8358-4b99-9bc8-5350fa4f2d4a"
+        },
+        {
+            "type": "Ext.data.association.HasOne",
+            "reference": {
+                "name": "hasOne",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "getUnit",
+                "foreignKey": "jenis_unit_unit",
+                "getterName": "getUnit",
+                "model": "Sipas.Unit",
+                "primaryKey": "unit_id",
+                "setterName": "setUnit"
+            },
+            "name": "MyHasOneAssociation5",
+            "designerId": "828adb85-7214-48dd-87f7-9cf22151596a"
+        },
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "api": [
+                    "{",
+                    "    create\t: 'server.php/sipas/jenis_unit/create',",
+                    "    read \t: 'server.php/sipas/jenis_unit/read',",
+                    "    update \t: 'server.php/sipas/jenis_unit/update',",
+                    "    destroy : 'server.php/sipas/jenis_unit/destroy'",
+                    "}"
+                ]
+            },
+            "name": "MyAjaxProxy3",
+            "designerId": "47d46c10-24e0-407b-bb2e-bdb496116113",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "record": null,
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader3",
+                    "designerId": "00836083-c49f-42e0-88f2-37822b659a20"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "jenis_unit_id"
+            },
+            "name": "MyField12",
+            "designerId": "f1c96e52-f0ed-457e-ac15-62488e32fb8e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "jenis_unit_unit"
+            },
+            "name": "MyField14",
+            "designerId": "3a0d9d7c-ffd7-4e59-a090-ef00da1d6ecf"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "jenis_unit_jenis"
+            },
+            "name": "MyField815",
+            "designerId": "dc68de9b-2811-42f4-95c6-bef4e1c07adc"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "jenis_id"
+            },
+            "name": "MyField27",
+            "designerId": "e1aa4226-2b53-49a0-b3db-56dbec6b9617"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "jenis_nama"
+            },
+            "name": "MyField42",
+            "designerId": "c7a3ed8f-c36f-457f-8358-aa49f11bf1ec"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "jenis_kode"
+            },
+            "name": "MyField43",
+            "designerId": "748b9853-089b-4764-be31-987162e5d4aa"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "unit_id"
+            },
+            "name": "MyField47",
+            "designerId": "19e76401-7a83-424d-ae4d-1d9543db3d15"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "unit_nama"
+            },
+            "name": "MyField48",
+            "designerId": "6d2a797a-0f63-427d-904c-9cd90baa41fc"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "unit_kode"
+            },
+            "name": "MyField49",
+            "designerId": "26cd883d-322d-4fcb-8afa-1697e4f5e918"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "unit_rubrik"
+            },
+            "name": "MyField50",
+            "designerId": "50b09125-47ad-4525-9de4-55de42530046"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "jenis_batasibackdate",
+                "type": "boolean"
+            },
+            "name": "MyField1285",
+            "designerId": "615ca7bb-fabd-4a25-a03f-c94b5ec0f0c3"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "jenis_batasipenerima",
+                "type": "boolean"
+            },
+            "name": "MyField1291",
+            "designerId": "a98aecee-ccd1-4911-94be-70b4d619e446"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "jenis_ttd",
+                "type": "boolean"
+            },
+            "name": "MyField1294",
+            "designerId": "19f7f764-f7a3-4452-9f09-56cd633dc2e5"
+        }
+    ]
+}

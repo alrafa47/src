@@ -1,0 +1,271 @@
+{
+    "type": "Ext.tab.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "sipas_pelaporan_pane",
+        "designer|userClassName": "Sipas.pelaporan.Pane",
+        "height": null,
+        "languageCode": "pelaporan_list",
+        "languageMode": "title",
+        "languageable": true,
+        "title": "Daftar Arsip Aktif",
+        "width": null
+    },
+    "name": "MyTabPanel",
+    "designerId": "387c7f2d-c80f-4eb1-8791-9bb002d5e75b",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "languageCode",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageMode",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageable",
+            "type": "boolean"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "paneList",
+                "store": "Sipas.pelaporan.List",
+                "title": "Daftar Arsip Aktif"
+            },
+            "name": "MyGridPanel",
+            "designerId": "6e937bf8-8c5d-40ce-8298-4bc0b6f9789f",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "style": [
+                            "{",
+                            "    \"font-weight\": \"500\"",
+                            "}"
+                        ]
+                    },
+                    "name": "TabConfig1",
+                    "designerId": "b77a453d-162c-47cd-8c10-ac1bc7f5c7ab"
+                },
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top",
+                        "hidden": true
+                    },
+                    "name": "MyToolbar5",
+                    "designerId": "362c4e12-2a56-4359-8b3d-ac0761a94ec9",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "<i class=\"icon ion-md-search\"><i>",
+                                "itemId": "textSearch",
+                                "labelSeparator": " ",
+                                "labelWidth": 16,
+                                "layout|flex": 1,
+                                "width": null
+                            },
+                            "name": "MyTextField3",
+                            "designerId": "6829ff13-3c2f-4607-a0e1-f0e91464fc0f"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "iconCls",
+                        "flex": null,
+                        "hidden": true,
+                        "text": "",
+                        "width": 32
+                    },
+                    "name": "MyColumn",
+                    "designerId": "c5424646-87b2-4584-a2d5-e4591549b97a"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": "x-column-header-notext",
+                        "dataIndex": "title",
+                        "emptyCellText": null,
+                        "flex": null,
+                        "items": [
+                            "{",
+                            "\t\t                        xtype: 'textfield',",
+                            "\t\t                        flex: 1,",
+                            "\t\t                        margin: 2,",
+                            "                                cls: 'x-field-toolbar',",
+                            "                                emptyText: 'Cari Arsip Aktif',",
+                            "\t\t                        listeners: {",
+                            "\t\t                            change: function(textfield, e, eOpts){",
+                            "\t\t                                    this.up('gridpanel').filterHeader(this);",
+                            "\t\t                                }",
+                            "\t\t                        }",
+                            "\t\t                    }"
+                        ],
+                        "padding": "12 40",
+                        "text": "",
+                        "width": 560
+                    },
+                    "name": "MyColumn3",
+                    "configAlternates": {
+                        "items": "array"
+                    },
+                    "designerId": "e5d5f074-79eb-471a-8fc7-b0a59d4a7b5f",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "items",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "metaData.style = \"padding: 16px 40px 16px 40px;\";",
+                                    "",
+                                    "var tpl = new Ext.XTemplate(['<div class=\"cell-row\"><div class=\"cell-visual cell-visual-left\">',",
+                                    "        '<div class=\"img img-circle img-32\">',",
+                                    "            '<i class=\"icon ion-md-clipboard\"></i>',",
+                                    "        '</div>',",
+                                    "    '</div>',",
+                                    "    '<div class=\"cell-text\">',",
+                                    "        '<div class=\"subtext\">{nama}</div>',",
+                                    "         '<div class=\"supporttext\">{ket}</div>',",
+                                    "    '</div></div>']);",
+                                    "",
+                                    "return tpl.apply({",
+                                    "    ket: record.get('subtitle'),",
+                                    "    nama: value",
+                                    "});"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "ef3b7806-23c1-40f6-b801-05f39ab527de"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.feature.Grouping",
+                    "reference": {
+                        "name": "features",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "collapsible": false
+                    },
+                    "name": "MyGroupingFeature",
+                    "designerId": "8810ee8e-0c5f-4e39-813c-5e2e0fc78841",
+                    "cn": [
+                        {
+                            "type": "Ext.XTemplate",
+                            "reference": {
+                                "name": "groupHeaderTpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "groupHeaderTpl",
+                                "implHandler": [
+                                    "{name}"
+                                ]
+                            },
+                            "name": "groupHeaderTpl",
+                            "designerId": "e6a723d0-5c17-4240-a6ca-b83ca179aec4"
+                        }
+                    ]
+                },
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processPaneList",
+                        "implHandler": [
+                            "var filters = {",
+                            "    ftype: 'filters',",
+                            "    encode: true,",
+                            "    local: true",
+                            "};",
+                            "",
+                            "if (! config.features) {",
+                            "    config.features=filters;",
+                            "} else {",
+                            "    config.features.push(filters);",
+                            "}",
+                            "",
+                            "return config;"
+                        ]
+                    },
+                    "name": "processPaneList",
+                    "designerId": "7552af50-fd7e-486a-8143-e9b7a0860211"
+                }
+            ]
+        }
+    ]
+}

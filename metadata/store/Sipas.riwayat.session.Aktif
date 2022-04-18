@@ -1,0 +1,76 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": null,
+        "designer|userClassName": "Sipas.riwayat.session.Aktif",
+        "model": "Sipas.disposisi.Riwayat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.riwayat.session.Aktif"
+    },
+    "name": "Sipas.riwayat.session.List1",
+    "designerId": "aadb1cd2-8107-4f9b-a525-e06c5eb69216",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/account/riwayat_aktif"
+            },
+            "name": "MyAjaxProxy5",
+            "designerId": "0fe2d6ce-f97c-47ce-a998-1a5409ef0ae6",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader5",
+                    "designerId": "9cf47aca-7eaa-4618-8b6c-112dbe4e0d28"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "disposisi_sorter"
+            },
+            "name": "MySorter28",
+            "designerId": "861f6a9f-3ead-4b4c-a0ce-135faf7ae20f"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "disposisi_tgl"
+            },
+            "name": "MySorter",
+            "designerId": "04ee1908-0a77-4ae1-8db5-32bf346252b9"
+        }
+    ]
+}

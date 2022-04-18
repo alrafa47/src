@@ -1,0 +1,226 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "border": false,
+        "designer|userAlias": "sipas_surat_ekspedisi_keluar_popup",
+        "designer|userClassName": "Sipas.surat.ekspedisi.keluar.Popup",
+        "height": 450,
+        "layout": "fit",
+        "maximizable": true,
+        "modal": true,
+        "title": "Ekspedisi Surat Keluar",
+        "width": 750
+    },
+    "name": "Sipas.surat.penyetuju.Popup1",
+    "designerId": "2766c9ae-7070-487a-a68c-e8f832a41a94",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "autoScroll": true,
+                "bodyPadding": null,
+                "border": false,
+                "cls": "sipas_disposisi_penerima_detail_form",
+                "header": false,
+                "layout": "fit",
+                "title": "My Form"
+            },
+            "name": "MyForm",
+            "designerId": "a00512fd-ac43-4a54-8d5c-054b15f7e0e4",
+            "cn": [
+                {
+                    "type": "Ext.grid.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "associated": true,
+                        "header": false,
+                        "itemId": "listEkspedisi",
+                        "margin": "0 10 10 10",
+                        "sortableColumns": false,
+                        "store": "Sipas.keluar.agenda.ekspedisi.List",
+                        "title": "My Grid Panel"
+                    },
+                    "name": "MyGridPanel",
+                    "designerId": "d43b6925-8102-4078-af0c-de1b36a079e1",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "associated",
+                            "type": "boolean"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "surat_log_tgl",
+                                "text": "Status",
+                                "width": 150
+                            },
+                            "name": "MyColumn12",
+                            "designerId": "97711920-6745-4f23-b6b7-69361452e738",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "value",
+                                            "metaData",
+                                            "record",
+                                            "rowIndex",
+                                            "colIndex",
+                                            "store",
+                                            "view"
+                                        ],
+                                        "fn": "renderer",
+                                        "implHandler": [
+                                            "return new Ext.XTemplate([",
+                                            "    '<div class=\"cell-text\">',",
+                                            "    '<div class=\"subtext\">{nama}</div>',",
+                                            "    '<div class=\"supporttext supporttext-dark\">{tgl}</div>',",
+                                            "    '</div>'",
+                                            "]).apply({",
+                                            "    nama: record.get('ekspedisi_nama'),",
+                                            "    tgl: 'Pada '+Ext.util.Format.date(value, 'd M Y')",
+                                            "});"
+                                        ]
+                                    },
+                                    "name": "renderer",
+                                    "designerId": "06303106-7938-44c8-a11a-1c5e28bd6139"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "surat_log_catatan",
+                                "flex": 1,
+                                "text": "Catatan",
+                                "width": null
+                            },
+                            "name": "MyColumn19",
+                            "designerId": "c63ffd5e-36ff-44d8-b6ae-e0f88c950a88",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "value",
+                                            "metaData",
+                                            "record",
+                                            "rowIndex",
+                                            "colIndex",
+                                            "store",
+                                            "view"
+                                        ],
+                                        "fn": "renderer",
+                                        "implHandler": [
+                                            "if (!value){",
+                                            "    return '<span class=\"alternative\">-</span>';",
+                                            "} else {",
+                                            "    return '<span class=\"ellipsis\">'+value+'</span>';",
+                                            "}"
+                                        ]
+                                    },
+                                    "name": "renderer",
+                                    "designerId": "c7a6d411-f49d-4285-bf42-02593341cfd2"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "surat_log_petugas",
+                                "flex": 1,
+                                "text": "Petugas",
+                                "width": null
+                            },
+                            "name": "MyColumn21",
+                            "designerId": "30e150a8-d31f-4431-bf6d-8689e7a5ad32",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "value",
+                                            "metaData",
+                                            "record",
+                                            "rowIndex",
+                                            "colIndex",
+                                            "store",
+                                            "view"
+                                        ],
+                                        "fn": "renderer",
+                                        "implHandler": [
+                                            "if (!value){",
+                                            "    return '<span class=\"alternative\">-</span>';",
+                                            "} else {",
+                                            "    return '<span class=\"ellipsis\">'+value+'</span>';",
+                                            "}"
+                                        ]
+                                    },
+                                    "name": "renderer",
+                                    "designerId": "9e440504-2821-4feb-9003-2a93c73df72f"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.grid.View",
+                            "reference": {
+                                "name": "viewConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "MyGridView",
+                            "designerId": "b61d9660-55f1-4017-8bb5-f8f7bd398e40"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

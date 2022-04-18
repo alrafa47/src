@@ -1,0 +1,62 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.itipe.aktif.List",
+        "model": "Sipas.Itipe",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.itipe.aktif.List"
+    },
+    "name": "Sipas.itipe.List1",
+    "designerId": "882c0322-43c9-46dd-9e45-5ec37d92f572",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/itipe/aktif"
+            },
+            "name": "MyAjaxProxy12",
+            "designerId": "270b7494-7e72-4667-a471-b2f9df8da10a",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader12",
+                    "designerId": "d04676d1-3ffa-44ee-b57b-64d616e19af8"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "itipe_nama"
+            },
+            "name": "MySorter9",
+            "designerId": "f9c154c7-fdb5-49f6-acc5-1a944e63795c"
+        }
+    ]
+}

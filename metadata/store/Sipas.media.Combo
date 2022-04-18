@@ -1,0 +1,62 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.media.Combo",
+        "model": "Sipas.Media",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.media.Combo"
+    },
+    "designerId": "1c0dc420-d5f2-4e80-ba16-2d364772a9ab",
+    "cn": [
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": null,
+                "property": "media_nama"
+            },
+            "name": "MySorter1",
+            "designerId": "d50e2a20-f01e-4687-ba15-2639d24b28d4"
+        },
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/media/aktif"
+            },
+            "name": "MyAjaxProxy20",
+            "designerId": "6ae7481e-9d10-413a-a23f-5b9390240680",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader20",
+                    "designerId": "93b1de55-34e2-4005-8a41-bf3ab9e501d6"
+                }
+            ]
+        }
+    ]
+}

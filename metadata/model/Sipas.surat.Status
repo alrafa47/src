@@ -1,0 +1,357 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.surat.Status",
+        "idProperty": "surat_status_id"
+    },
+    "name": "Sipas.surat.Stack1",
+    "designerId": "333243b7-79e9-4482-997c-6fb0a216b2b6",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "api": [
+                    "{",
+                    "    create\t: 'server.php/sipas/surat_status/create',",
+                    "    read\t: 'server.php/sipas/surat_status/read',",
+                    "    update\t: 'server.php/sipas/surat_status/update',",
+                    "    destroy\t: 'server.php/sipas/surat_status/destroy'",
+                    "}"
+                ]
+            },
+            "name": "MyAjaxProxy9",
+            "designerId": "8043ad18-9472-428b-93c6-f17b66139d13",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader22",
+                    "designerId": "81c6561b-ccee-4461-89cf-c8c1a2e24ee7"
+                }
+            ]
+        },
+        {
+            "type": "staticfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "status",
+                "implHandler": [
+                    "return {",
+                    "    DISTRIBUSI_INIT : 0,",
+                    "    DISTRIBUSI_DISTRIBUTE : 1,",
+                    "    PENYETUJUAN_INIT : 0,",
+                    "    PENYETUJUAN_PROCESS : 1,",
+                    "    PENYETUJUAN_APPROVE : 2,",
+                    "    PENYETUJUAN_DECLINE : 3,",
+                    "    SELESAI_INIT : 0,",
+                    "    SELESAI_DONE : 1",
+                    "};"
+                ]
+            },
+            "name": "status",
+            "designerId": "c8f08c34-3b91-4278-ac5c-d410346cd114"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "surat_status_id"
+            },
+            "name": "MyField107",
+            "designerId": "3db56e38-2616-4fb8-9de8-dec0bdfad53a"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "surat_status_surat"
+            },
+            "name": "MyField152",
+            "designerId": "ab69829d-0b8a-4142-9412-e947e4cea7ae"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "surat_status_distribusi"
+            },
+            "name": "MyField157",
+            "designerId": "7adbbaa3-3da3-4ccf-be43-dbf8521cc783"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "surat_status_distribusi_tanggal"
+            },
+            "name": "MyField165",
+            "designerId": "a0a6acd1-3865-4646-84ad-26b98a9447b8"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "surat_status_distribusi_staf"
+            },
+            "name": "MyField166",
+            "designerId": "f82db731-316b-4b70-ab97-e9f3b37ac5e8"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "surat_status_penyetujuan"
+            },
+            "name": "MyField167",
+            "designerId": "15a81b45-0e47-4283-b626-827c45aec2f3"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "surat_status_penyetujuan_tanggal"
+            },
+            "name": "MyField168",
+            "designerId": "5a7da7c8-42f6-467a-8a10-fa1f17382e87"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "surat_status_penyetujuan_staf"
+            },
+            "name": "MyField169",
+            "designerId": "bc3de3a5-ae32-4fa6-9496-43dfc60824f4"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "surat_status_selesai"
+            },
+            "name": "MyField170",
+            "designerId": "be2076ed-f9db-4941-af43-79a92327823c"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "surat_status_selesai_tanggal"
+            },
+            "name": "MyField353",
+            "designerId": "2ae026fa-39bd-430c-a278-6d82b05013df"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "surat_status_selesai_staf"
+            },
+            "name": "MyField354",
+            "designerId": "ae518e90-46d9-4e05-9af3-5bbfaca31a4f"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "surat_status_receive"
+            },
+            "name": "MyField355",
+            "designerId": "37ac957e-de92-4837-8b47-7ecdedaba943"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "surat_status_receive_tanggal"
+            },
+            "name": "MyField356",
+            "designerId": "d839669a-f862-4cbe-8011-7b9b6408a3be"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "surat_status_receive_staf"
+            },
+            "name": "MyField358",
+            "designerId": "89f9f7b2-cfaf-4117-a75c-0b69d854b499"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "distribute",
+                "implHandler": [
+                    "config = Ext.apply({",
+                    "    status: config.status,",
+                    "    distributor: null,",
+                    "    callback: Ext.emptyFn,",
+                    "    success: Ext.emptyFn,",
+                    "    failure: Ext.emptyFn,",
+                    "    scope: this",
+                    "}, config);",
+                    "",
+                    "this.set({",
+                    "    'surat_status_distribusi': config.status,",
+                    "    'surat_status_distribusi_staf': config.distributor,",
+                    "    'surat_status_distribusi_tgl': new Date()",
+                    "});",
+                    "this.save(config);"
+                ]
+            },
+            "name": "distribute",
+            "designerId": "fc78bf21-3323-47b7-8062-5a79e5e810cf"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "approve",
+                "implHandler": [
+                    "config = Ext.apply({",
+                    "    status: config.status,",
+                    "    approver: null,",
+                    "    callback: Ext.emptyFn,",
+                    "    success: Ext.emptyFn,",
+                    "    failure: Ext.emptyFn,",
+                    "    scope: this",
+                    "}, config);",
+                    "",
+                    "this.set({",
+                    "    'surat_status_penyetujuan': config.status,",
+                    "    'surat_status_penyetujuan_staf': config.approver,",
+                    "    'surat_status_penyetujuan_tgl': new Date()",
+                    "});",
+                    "this.save(config);"
+                ]
+            },
+            "name": "approve",
+            "designerId": "56a24ab7-a5f3-41a3-9ec9-0b9fe3d3d5ed"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "done",
+                "implHandler": [
+                    "config = Ext.apply({",
+                    "    status: config.status,",
+                    "    pic: null,",
+                    "    callback: Ext.emptyFn,",
+                    "    success: Ext.emptyFn,",
+                    "    failure: Ext.emptyFn,",
+                    "    scope: this",
+                    "}, config);",
+                    "",
+                    "this.set({",
+                    "    'surat_status_selesai': config.status,",
+                    "    'surat_status_selesai_staf': config.pic,",
+                    "    'surat_status_selesai_tgl': new Date()",
+                    "});",
+                    "this.save(config);"
+                ]
+            },
+            "name": "done",
+            "designerId": "3012b34c-8871-45e4-b9bc-ad2029fa6c97"
+        }
+    ]
+}

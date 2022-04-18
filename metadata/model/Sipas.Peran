@@ -1,0 +1,189 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.Peran",
+        "idProperty": "peran_id"
+    },
+    "designerId": "b0960b4f-ffff-4d71-bacc-17fc1c034900",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "peran_id"
+            },
+            "name": "MyField",
+            "designerId": "ccc7d583-ed64-43b6-a32a-27edfd90f908"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "peran_nama"
+            },
+            "name": "MyField2",
+            "designerId": "eac811af-6273-46c7-936b-ce34e4441a79"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "peran_akses"
+            },
+            "name": "MyField1117",
+            "designerId": "12b16527-900b-45b1-b0ad-7a9cafd9daff"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": [
+                    "1"
+                ],
+                "name": "peran_isaktif",
+                "type": "boolean"
+            },
+            "name": "MyField907",
+            "designerId": "1b0c0dbb-0cf4-46fd-8f5c-64f9d00dd07d"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "peran_staf_jumlah",
+                "type": "int"
+            },
+            "name": "MyField1166",
+            "designerId": "ff763a55-4e4a-4e44-a280-a77b30299646"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "peran_properti"
+            },
+            "name": "MyField1",
+            "designerId": "8afec477-5b91-4159-a7d1-62db1ed7d951"
+        },
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "api": [
+                    "{",
+                    "    \"create\"\t:\"server.php/sipas/peran/create\",",
+                    "    \"read\"\t\t:\"server.php/sipas/peran/read\",",
+                    "    \"update\"\t:\"server.php/sipas/peran/update\",",
+                    "    \"destroy\"\t:\"server.php/sipas/peran/destroy\"",
+                    "}"
+                ]
+            },
+            "name": "MyAjaxProxy",
+            "designerId": "d027f0ec-2b75-4a0d-b242-a2ca844c28ce",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "messageProperty": "message",
+                        "record": null,
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader",
+                    "designerId": "3d97f96b-29bb-4605-9582-96f9cb3d021f"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.association.HasMany",
+            "reference": {
+                "name": "hasMany",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "associationKey": null,
+                "designer|displayName": "akses",
+                "foreignKey": "akses_peran",
+                "model": "Sipas.Akses",
+                "name": "akses",
+                "primaryKey": "peran_id"
+            },
+            "name": "MyHasManyAssociation",
+            "designerId": "1bf1557f-e34e-4d39-be5d-dd683348973a"
+        },
+        {
+            "type": "Ext.data.association.HasMany",
+            "reference": {
+                "name": "hasMany",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "fetchStaf",
+                "foreignKey": "staf_peran",
+                "model": "Sipas.Staf",
+                "name": "fetchStaf",
+                "primaryKey": "peran_id",
+                "storeConfig": [
+                    "{",
+                    "    remoteFilter: false,",
+                    "    remoteSort: false,",
+                    "    remoteGroup: false,",
+                    "    proxy: {",
+                    "        type: 'ajax',",
+                    "        reader: {",
+                    "            root: 'data'",
+                    "        },",
+                    "        api: {",
+                    "            read: 'server.php/sipas/staf/read'",
+                    "        }",
+                    "    },",
+                    "    sorters: {",
+                    "        property: 'staf_nama'",
+                    "    }",
+                    "}"
+                ]
+            },
+            "name": "MyHasManyAssociation17",
+            "designerId": "d658165f-4215-4a9a-b778-f757d3ff9f48"
+        }
+    ]
+}

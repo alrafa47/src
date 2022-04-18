@@ -1,0 +1,60 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": null,
+        "designer|userClassName": "Sipas.buktikirim.Combo",
+        "model": "Sipas.Buktikirim",
+        "storeId": "Sipas.buktikirim.Combo"
+    },
+    "name": "Sipas.asal.Combo1",
+    "designerId": "2f5d4ef3-7ffc-499f-87a5-39f698311685",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/buktikirim/read"
+            },
+            "name": "MyAjaxProxy36",
+            "designerId": "90b31a81-79d7-491f-83f3-4e2a2491c52a",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader36",
+                    "designerId": "3ad870d6-7a30-47bb-b946-07a432ba2d9b"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": null,
+                "property": "buktikirim_nama"
+            },
+            "name": "MySorter1",
+            "designerId": "a3ce277e-3475-4af7-a76a-5c2ecdde8192"
+        }
+    ]
+}

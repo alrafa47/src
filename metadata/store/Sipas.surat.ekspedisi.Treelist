@@ -1,0 +1,65 @@
+{
+    "type": "Ext.data.TreeStore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.surat.ekspedisi.Treelist",
+        "model": "Sipas.surat.Ekspedisi",
+        "storeId": "Sipas.surat.ekspedisi.Treelist"
+    },
+    "designerId": "7f3ad631-0901-4dd1-853f-3cdf166b6127",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat_ekspedisi/read/tree"
+            },
+            "name": "MyAjaxProxy41",
+            "designerId": "c2188a08-1465-47ea-a60b-3c91c4ea8b65",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": null
+                    },
+                    "name": "MyJsonReader41",
+                    "designerId": "80f97fce-0552-43ca-9cb7-81dfc5f04bf1"
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onTreeStoreBeforeLoad",
+                "implHandler": [
+                    "if(store.isLoading()){",
+                    "    return false;",
+                    "}"
+                ],
+                "name": "beforeload",
+                "scope": "me"
+            },
+            "name": "onTreeStoreBeforeLoad",
+            "designerId": "54f82d8d-b31f-4319-b468-18aaf09efc28"
+        }
+    ]
+}

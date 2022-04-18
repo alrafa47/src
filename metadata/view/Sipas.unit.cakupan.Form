@@ -1,0 +1,150 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyBorder": false,
+        "bodyPadding": 10,
+        "border": false,
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_unit_cakupan_form",
+        "designer|userClassName": "Sipas.unit.cakupan.Form",
+        "layout": "vbox",
+        "padding": null,
+        "title": "Unit Kerja",
+        "width": null
+    },
+    "name": "Sipas.pegawai.asistensi.Form1",
+    "designerId": "58506e83-808c-4eb0-8cde-986cedce12d7",
+    "cn": [
+        {
+            "type": "Ext.form.field.Hidden",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Label",
+                "layout|flex": 1,
+                "name": "jabatan_id"
+            },
+            "name": "MyHiddenField",
+            "designerId": "8cfc98e4-bda6-4a68-8d1e-d52ec4b1633c"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "emptyText": "Cari jabatan",
+                "fieldLabel": "Jabatan",
+                "labelAlign": null,
+                "layout|flex": null,
+                "name": "jabatan_nama",
+                "readOnly": true
+            },
+            "name": "MyTextField4",
+            "designerId": "05cd8fa5-d37b-4aec-b8b4-e0c78d5ed364"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": 1
+            },
+            "name": "sipas.unit.cakupan.list",
+            "designerId": "9b440576-10ca-42dc-8ac4-fcf0b0c4ebbf",
+            "masterInstanceId": "b4c4d4d4-b6ca-498b-a44c-9f16d94de607"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": null,
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "container|pack": "end",
+                "designer|uiInterfaceName": "footer",
+                "dock": "bottom",
+                "itemId": null,
+                "layout": "hbox",
+                "layout|flex": 1,
+                "margin": null,
+                "ui": "footer"
+            },
+            "name": "MyContainer27",
+            "designerId": "81265c30-13ab-4a9c-9f48-13cde12685f3",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "roleName": "unitkerja_scope_insert",
+                        "roleable": true
+                    },
+                    "name": "sipas.com.button.save20",
+                    "designerId": "b778c769-ebd9-4da9-86e4-c0f2045758b2",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "feb6c6f9-7733-4b38-9254-091d0db2d3a9"
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "processSipasunitcakupanForm",
+                "implHandler": [
+                    "if (config.isProfile){",
+                    "    this.down('sipas_unit_cakupan_list').query('gridcolumn textfield').forEach(function(field){",
+                    "        field.hide();",
+                    "    });",
+                    "}",
+                    "",
+                    "return config;"
+                ]
+            },
+            "name": "processSipasunitcakupanForm",
+            "designerId": "ece582d3-0f33-4b0b-8372-6f36de4c8946"
+        }
+    ]
+}

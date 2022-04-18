@@ -1,0 +1,75 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.surat.penyetuju.jabatan.Popup",
+        "model": "Sipas.surat.Stack",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.surat.penyetuju.jabatan.Popup"
+    },
+    "name": "Sipas.surat.penyetuju.Popup2",
+    "designerId": "378966d5-7738-4d16-b1af-5fa888f7af38",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat_stack/tujuan_penerima"
+            },
+            "name": "MyAjaxProxy50",
+            "designerId": "136b5bbc-e534-4ec3-9510-682cb512a34e",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader50",
+                    "designerId": "eb032338-4361-45d9-ace8-d78d66739958"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "surat_properti_buat_tgl"
+            },
+            "name": "MySorter19",
+            "designerId": "d196d6f0-bfef-4189-8040-a4d160bd96c0"
+        },
+        {
+            "type": "Ext.util.Grouper",
+            "reference": {
+                "name": "groupers",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "jabatan_penerima_unit_nama"
+            },
+            "name": "MyGrouper",
+            "designerId": "3b69677c-e8a2-4c96-8a20-1ae1de33f6c9"
+        }
+    ]
+}

@@ -1,0 +1,97 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.staf.wakil.monitoring.disposisi.riwayat.Aktif",
+        "model": "Sipas.disposisi.Riwayat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.staf.wakil.monitoring.disposisi.riwayat.Aktif"
+    },
+    "name": "Sipas.pegawai.asistensi.monitoring.disposisi.riwayat.List1",
+    "designerId": "1b7f30eb-2f2f-4cbb-a029-f6884559b85f",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/terkirim/asistensi/read"
+            },
+            "name": "MyAjaxProxy51",
+            "designerId": "7c47a176-e063-4575-8a18-84ce73c1ea01",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader51",
+                    "designerId": "6553e88a-2dbe-440d-9905-870c9694f54c"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "sorter",
+                "direction": null,
+                "property": "disposisi_iscabut",
+                "root": null
+            },
+            "name": "MySorter15",
+            "designerId": "9a445ada-b4aa-4bb9-aee8-855672fe7a08"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "sorter",
+                "direction": null,
+                "property": "disposisi_sorter",
+                "root": null
+            },
+            "name": "MySorter4",
+            "designerId": "64bbc76a-874a-445d-bcf9-1bcf6288b0ce"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "tanggal",
+                "direction": "DESC",
+                "property": "disposisi_tgl",
+                "root": "data"
+            },
+            "name": "MySorter6",
+            "designerId": "ed7c3cfd-fe59-40be-a35f-626a4027c3f6"
+        }
+    ]
+}

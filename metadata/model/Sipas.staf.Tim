@@ -1,0 +1,143 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.staf.Tim",
+        "idProperty": "staf_tim_id"
+    },
+    "name": "MyModel",
+    "designerId": "5949df85-b50f-4a4b-83ea-faffbb733f37",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_tim_id"
+            },
+            "name": "MyField3",
+            "designerId": "340fcbef-cf08-4b32-b199-53c8d2cc1283"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_tim_nama"
+            },
+            "name": "MyField34",
+            "designerId": "350105ea-580d-4eae-aa7c-9d0bf6d97192"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_tim_jumlah"
+            },
+            "name": "MyField41",
+            "designerId": "4cc747fd-abe9-4f5e-b80c-8aee1ba10355"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_tim_properti"
+            },
+            "name": "MyField338",
+            "designerId": "0c702bac-5b39-4483-855f-d367e0187385"
+        },
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "api": [
+                    "{",
+                    "    create: 'server.php/sipas/staf_tim/create',",
+                    "    read: 'server.php/sipas/staf_tim/read',",
+                    "    update: 'server.php/sipas/staf_tim/update',",
+                    "    destroy: 'server.php/sipas/staf_tim/destroy'",
+                    "}"
+                ]
+            },
+            "name": "MyAjaxProxy1",
+            "designerId": "a10e5f3e-a35a-4807-bd33-6c48ccb040bf",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader1",
+                    "designerId": "b2a485e1-c758-47c4-89c7-088612f077a9"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.association.HasMany",
+            "reference": {
+                "name": "hasMany",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "fetchAnggota",
+                "foreignKey": "staf_tim_anggota_tim",
+                "model": "Sipas.staf.tim.Anggota",
+                "name": "fetchAnggota",
+                "primaryKey": "staf_tim_id",
+                "storeConfig": [
+                    "{",
+                    "remoteFilter: false,",
+                    "remoteSort: false,",
+                    "remoteGroup: false,",
+                    "pageSize: 1000,",
+                    "proxy: {",
+                    "type: 'ajax',",
+                    "reader: {",
+                    "root: 'data'",
+                    "},",
+                    "api: {",
+                    "read: 'server.php/sipas/staf_tim_anggota/read',",
+                    "create: 'server.php/sipas/staf_tim_anggota/create',",
+                    "update: 'server.php/sipas/staf_tim_anggota/update',",
+                    "destroy: 'server.php/sipas/staf_tim_anggota/destroy'",
+                    "}",
+                    "},",
+                    "sorters: {",
+                    "property: 'staf_tim_anggota_tim'",
+                    "}",
+                    "}"
+                ]
+            },
+            "name": "MyHasManyAssociation",
+            "designerId": "12c42307-1059-4ce5-84bd-306871053700"
+        }
+    ]
+}

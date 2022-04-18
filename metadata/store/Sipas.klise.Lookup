@@ -1,0 +1,92 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.klise.Lookup",
+        "model": "Sipas.Klise",
+        "pageSize": null,
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.klise.Lookup"
+    },
+    "name": "MyJsonStore",
+    "designerId": "191d8006-b495-496c-98bc-acbb07976652",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/klise/aktif"
+            },
+            "name": "MyAjaxProxy5",
+            "designerId": "e7cfbb77-176d-4029-b14b-5c62964ca86c",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader9",
+                    "designerId": "630fd585-48ae-4153-880a-526db517de51"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "klise_nama"
+            },
+            "name": "MySorter5",
+            "designerId": "822af405-15c9-40a0-b7cc-3d58c1987590"
+        },
+        {
+            "type": "Ext.util.Filter",
+            "reference": {
+                "name": "filters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "klise_isaktif",
+                "value": [
+                    "1"
+                ]
+            },
+            "name": "MyFilter",
+            "designerId": "5028320f-d09d-4e3d-ac25-cc0b32506f51"
+        },
+        {
+            "type": "Ext.util.Grouper",
+            "reference": {
+                "name": "groupers",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "klise_kelompok"
+            },
+            "name": "MyGrouper4",
+            "designerId": "6cfb4885-0acf-410f-8647-21d7c1ec731e"
+        }
+    ]
+}

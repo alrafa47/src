@@ -1,0 +1,63 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.surat.libnomor.List",
+        "model": "Sipas.surat.Libnomor",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.surat.libnomor.List"
+    },
+    "name": "Sipas.surat.tipe.List1",
+    "designerId": "1b0328e9-431d-486a-a0b5-4215513a2108",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat_libnomor/read"
+            },
+            "name": "MyAjaxProxy9",
+            "designerId": "0dfe4d0c-ea7b-45ac-bcd8-d020c5678ce8",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader7",
+                    "designerId": "341b1428-56f5-49e4-8315-254525ae29c2"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "surat_libnomor_model",
+                "root": "data"
+            },
+            "name": "MySorter10",
+            "designerId": "dc4f733a-bfa1-486e-94fb-91cc523e46fc"
+        }
+    ]
+}

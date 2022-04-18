@@ -1,0 +1,495 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.staf.Wakil",
+        "idProperty": "staf_wakil_id"
+    },
+    "name": "Sipas.Pegawai1",
+    "designerId": "bc819b78-a220-4d95-bd49-efae8b42d0ee",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "api": [
+                    "{",
+                    "    create\t: 'server.php/sipas/staf_wakil/create',",
+                    "    read \t: 'server.php/sipas/staf_wakil/read',",
+                    "    update \t: 'server.php/sipas/staf_wakil/update',",
+                    "    destroy : 'server.php/sipas/staf_wakil/destroy'",
+                    "}"
+                ]
+            },
+            "name": "MyAjaxProxy3",
+            "designerId": "fae0cecc-10c4-4df3-b16c-6a7f8a5d45da",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "record": null,
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader3",
+                    "designerId": "5ca50139-d43e-4904-b778-2762edb68288"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_wakil_id"
+            },
+            "name": "MyField12",
+            "designerId": "3c832a92-bf30-440e-b6a0-ff10893a7214"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_wakil_staf"
+            },
+            "name": "MyField13",
+            "designerId": "18b34a9b-e83b-420d-92e7-4e85f13da1ec"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_wakil_asisten"
+            },
+            "name": "MyField14",
+            "designerId": "78077344-5735-4811-a447-d16153632068"
+        },
+        {
+            "type": "Ext.data.association.HasOne",
+            "reference": {
+                "name": "hasOne",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "getPegawai",
+                "foreignKey": "staf_wakil_staf",
+                "getterName": "getPegawai",
+                "model": "Sipas.Staf",
+                "primaryKey": "staf_id",
+                "setterName": "setPegawai"
+            },
+            "name": "MyHasOneAssociation4",
+            "designerId": "25637ddb-dc48-4939-9c7c-6cd253e7ac86"
+        },
+        {
+            "type": "Ext.data.association.HasOne",
+            "reference": {
+                "name": "hasOne",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "getAsisten",
+                "foreignKey": "staf_wakil_asisten",
+                "getterName": "getAsisten",
+                "model": "Sipas.Staf",
+                "primaryKey": "staf_id",
+                "setterName": "setAsisten"
+            },
+            "name": "MyHasOneAssociation5",
+            "designerId": "42cd49e1-64ae-4039-bf8b-3b9409bf1778"
+        },
+        {
+            "type": "Ext.data.association.HasOne",
+            "reference": {
+                "name": "hasOne",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "getAtasan",
+                "foreignKey": "staf_wakil_staf",
+                "getterName": "getAtasan",
+                "model": "Sipas.Staf",
+                "primaryKey": "staf_id",
+                "setterName": "setAtasan"
+            },
+            "name": "MyHasOneAssociation35",
+            "designerId": "79ae7212-99c5-44c1-92b9-7a74149871f5"
+        },
+        {
+            "type": "Ext.data.association.HasOne",
+            "reference": {
+                "name": "hasOne",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "getPgs",
+                "foreignKey": "staf_wakil_asisten",
+                "getterName": "getPgs",
+                "model": "Sipas.Staf",
+                "primaryKey": "staf_id",
+                "setterName": "setPgs"
+            },
+            "name": "MyHasOneAssociation9",
+            "designerId": "319c1896-d434-4576-b956-93f74766bdbd"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_wakil_asisten_nama"
+            },
+            "name": "MyField",
+            "designerId": "912eefa4-09fa-4db1-8a3d-3f09fdd2bc5d"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_wakil_asisten_unit_nama"
+            },
+            "name": "MyField1",
+            "designerId": "9ec65e28-a6e8-4332-b8c4-8e5b7af46986"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_wakil_asisten_jabatan_nama"
+            },
+            "name": "MyField2",
+            "designerId": "f4b524a5-dc4e-4b2b-bacb-7be5b2d8d11c"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_wakil_asisten_status"
+            },
+            "name": "MyField103",
+            "designerId": "e8f7eec7-9d74-41d5-92ea-caaacafb7c63"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_wakil_properti"
+            },
+            "name": "MyField340",
+            "designerId": "a263fe04-99f2-4fd4-a1f6-9e446c3551a0"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_wakil_plt",
+                "type": "boolean"
+            },
+            "name": "MyField601",
+            "designerId": "c9ed26dc-705d-4a0b-89e9-15ae19e210ba"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_wakil_tgl_mulai",
+                "type": "date"
+            },
+            "name": "MyField602",
+            "designerId": "dbd666a1-83a5-4565-8ebd-7f79bc190f23"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_wakil_tgl_selesai",
+                "type": "date"
+            },
+            "name": "MyField604",
+            "designerId": "d017a300-8513-4d71-85c1-3d173669db61"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_id"
+            },
+            "name": "MyField1168",
+            "designerId": "9fdb634c-f308-46b7-9a5d-91970fe5be3d"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_kode"
+            },
+            "name": "MyField1169",
+            "designerId": "bb7301e4-6b97-4175-8bda-f0931a20fa33"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_nama"
+            },
+            "name": "MyField1170",
+            "designerId": "e22025e2-6725-4a0c-818b-5232fed3a709"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_status"
+            },
+            "name": "MyField104",
+            "designerId": "c559c74e-ba74-4c74-be1f-08c9f43a0d2b"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "jabatan_id"
+            },
+            "name": "MyField1171",
+            "designerId": "c276c1dd-16d5-4395-b74f-7f7ef22c3fab"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "jabatan_nama"
+            },
+            "name": "MyField1172",
+            "designerId": "acd1ee0a-5010-417d-80e1-dd38952cf9f7"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "unit_id"
+            },
+            "name": "MyField1173",
+            "designerId": "026827cb-590a-4f29-a178-adf88a363728"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "unit_nama"
+            },
+            "name": "MyField1174",
+            "designerId": "d2f6d7d9-4366-4b9d-8215-c41ec3f6091b"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_wakil_staf_nama"
+            },
+            "name": "MyField1186",
+            "designerId": "496aa39e-af07-48c5-bc88-b2c3a42983f2"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_wakil_staf_jabatan_nama"
+            },
+            "name": "MyField1187",
+            "designerId": "09510028-b1f6-424b-92fb-7af9b5355f90"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_wakil_staf_unit_nama"
+            },
+            "name": "MyField1188",
+            "designerId": "a97d305e-387c-4f56-a1e0-8dfd293b5557"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_wakil_konfirmasi_staf"
+            },
+            "name": "MyField1250",
+            "designerId": "7a1fcc27-f83a-4935-8ca6-cfbc45d5bccf"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_wakil_konfirmasi_staf_status",
+                "type": "int"
+            },
+            "name": "MyField1254",
+            "designerId": "2a32823c-2b33-4e5b-9f5e-92a58fb6ce6a"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_wakil_konfirmasi_staf_tgl",
+                "type": "date"
+            },
+            "name": "MyField1255",
+            "designerId": "91cde4b0-3f4b-4cfe-a82f-5987353e5a91"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_wakil_konfirmasi_asisten"
+            },
+            "name": "MyField1444",
+            "designerId": "3d6159f0-2480-4154-9f59-a1f329bdb93e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_wakil_konfirmasi_asisten_status",
+                "type": "int"
+            },
+            "name": "MyField1445",
+            "designerId": "1b17b9e5-aaa3-448f-924c-eaa42325f8f6"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "staf_wakil_konfirmasi_asisten_tgl",
+                "type": "date"
+            },
+            "name": "MyField1446",
+            "designerId": "ea101d83-c5c3-436b-b5b5-3533d19d3ef7"
+        }
+    ]
+}

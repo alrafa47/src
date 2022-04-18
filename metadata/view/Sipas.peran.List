@@ -1,0 +1,364 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "border": 0,
+        "clickToView": true,
+        "designer|userAlias": "sipas_peran_list",
+        "designer|userClassName": "Sipas.peran.List",
+        "emptyText": "Tidak ada Data",
+        "header": false,
+        "itemId": "listSipasPeran",
+        "requires": [
+            "Ext.ux.grid.FiltersFeature"
+        ],
+        "roleName": "hakakses",
+        "roleable": null,
+        "store": "Sipas.peran.aktif.List",
+        "title": "Daftar Hak Akses"
+    },
+    "designerId": "6ede78ee-2db1-417c-bbb0-f6163d48da12",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "roleable",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "roleName",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "clickToView",
+            "type": "boolean"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "dock": "top"
+            },
+            "name": "MyToolbar2",
+            "designerId": "cae76086-6fa8-41e5-9a87-1ed32762cb8a",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.refresh81",
+                    "designerId": "c55effde-f283-445b-81f7-bafe2ac94c30",
+                    "masterInstanceId": "e517a5ab-fc5b-441a-97a3-5c706738d092"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "roleName": "hakakses_insert",
+                        "roleable": true
+                    },
+                    "name": "sipas.com.button.add37",
+                    "designerId": "cf859dc3-edfa-427f-be0c-72606eaae5f8",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "420a71a2-f0ab-4b83-bf9b-b7cf567d6c9f"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true,
+                        "hidden": true,
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.view29",
+                    "designerId": "f1ba3b38-c2be-41c4-9b14-c84aeec502e6",
+                    "masterInstanceId": "88073f46-f23e-4800-a045-344110bd18fc"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "width": null
+                    },
+                    "name": "sipas.com.button.togglefilter40",
+                    "designerId": "704e6879-d0b3-44c2-ab00-a826d2ff2b45",
+                    "masterInstanceId": "6f699e21-9335-4237-9e49-37b207a20475",
+                    "cn": [
+                        {
+                            "type": "basicfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "button",
+                                    "state"
+                                ],
+                                "fn": "toggleHandler",
+                                "implHandler": [
+                                    "button.up('grid').query('gridcolumn textfield').forEach(function(field){",
+                                    "    state ? field.show():field.hide();",
+                                    "});"
+                                ]
+                            },
+                            "name": "toggleHandler",
+                            "designerId": "1c3c688a-8872-4ebc-ad63-1d04425ba180"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "MyFill2",
+                    "designerId": "0506fe66-0823-4c6f-aadc-6ab1427a7c94"
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayField": "nama",
+                        "editable": false,
+                        "fieldLabel": null,
+                        "hideTrigger": true,
+                        "itemId": "Aktif",
+                        "labelAlign": "right",
+                        "layout|flex": null,
+                        "store": [
+                            "{",
+                            "    fields: ['value','nama'],",
+                            "    data: [",
+                            "        {value:0,nama:'Semua'},",
+                            "        {value:1,nama:'Aktif'},",
+                            "        {value:2,nama:'Tidak Aktif'}",
+                            "    ]",
+                            "}"
+                        ],
+                        "value": "Aktif",
+                        "valueField": "value"
+                    },
+                    "name": "MyComboBox3",
+                    "configAlternates": {
+                        "value": "string",
+                        "store": "array"
+                    },
+                    "designerId": "905253fe-13d8-47a8-9241-6f312b20ad70"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.RowNumberer",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "width": 40
+            },
+            "name": "MyRowNumberer1",
+            "designerId": "097e3074-1203-4003-ae98-9c8a3a9631cb"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "peran_nama",
+                "filterable": true,
+                "flex": 1,
+                "items": [
+                    "{",
+                    "                        xtype: 'textfield',",
+                    "                        emptyText: 'Cari Nama Hak Akses',",
+                    "                        flex: 1,",
+                    "                        margin: 2,",
+                    "                        listeners: {",
+                    "                            change: function(textfield, e, eOpts){",
+                    "                                    this.up('gridpanel').filterHeader(this);",
+                    "                                }",
+                    "                        }",
+                    "                    }"
+                ],
+                "minWidth": 160,
+                "sortable": true,
+                "text": "Nama Hak Akses"
+            },
+            "name": "MyColumn6",
+            "configAlternates": {
+                "items": "object"
+            },
+            "designerId": "98bc7d9a-7f1f-4477-b0a5-eb4aa319b03e",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "peran_staf_jumlah",
+                "text": "<i class=\"iicon on-md-person\"></i>",
+                "tooltip": null,
+                "width": 60
+            },
+            "name": "MyColumn4",
+            "designerId": "df0aaf1b-746d-43fc-8ad6-1b41229dc7ec",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(value){",
+                            "    return '<i class=\"icon ion-md-person\"></i> '+ value;",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "f467d254-c036-4a22-96df-2f9e6169a8ea"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyGridView1",
+            "designerId": "535e0133-4919-45fe-90f1-f74d3dd1cc46"
+        },
+        {
+            "type": "Ext.toolbar.Paging",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "displayInfo": true,
+                "dock": "bottom",
+                "hidden": true,
+                "store": "Sipas.peran.aktif.List",
+                "width": 360
+            },
+            "name": "MyPagingToolbar1",
+            "designerId": "b891faba-8429-42e4-a634-0718fd9ea975"
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "processSipasperanList",
+                "implHandler": [
+                    "var filters = {\r",
+                    "            ftype: 'filters',\r",
+                    "            encode: true, \r",
+                    "            local: false \r",
+                    "        };\r",
+                    "\r",
+                    "        if (! config.features) {\r",
+                    "            config.features=filters;\r",
+                    "        } else {\r",
+                    "            config.features.push(filters);\r",
+                    "        }\r",
+                    "\r",
+                    "        return config;"
+                ]
+            },
+            "name": "processSipasperanList",
+            "designerId": "d067cb88-4973-4347-a166-ca5ae13c47d3"
+        }
+    ]
+}

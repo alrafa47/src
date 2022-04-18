@@ -1,0 +1,110 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": null,
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_dasboard_board_chart_pane",
+        "designer|userClassName": "Sipas.dashboard.board.chart.Pane",
+        "height": null,
+        "layout": "hbox",
+        "title": "Grafik Laporan Bulan Ini",
+        "width": null
+    },
+    "designerId": "ded3b4ca-71b0-4f86-80fc-3d865e48290c",
+    "cn": [
+        {
+            "type": "Ext.chart.Chart",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "animate": [
+                    "true"
+                ],
+                "dock": null,
+                "height": 250,
+                "hidden": null,
+                "insetPadding": 30,
+                "layout|flex": 1,
+                "padding": null,
+                "store": "Sipas.dashboard.board.chart.List",
+                "width": 400
+            },
+            "name": "PieChart1",
+            "designerId": "e8be5363-66d2-414b-a356-2bc812c02602",
+            "isBuiltIn": true,
+            "iconCls": "icon-pie-chart",
+            "autoName": "PieChart",
+            "cn": [
+                {
+                    "type": "Ext.chart.series.Pie",
+                    "reference": {
+                        "name": "series",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "angleField": "data",
+                        "highlight": [
+                            "{",
+                            "    segment:{",
+                            "        margin:20",
+                            "    }",
+                            "}"
+                        ],
+                        "label": [
+                            "{",
+                            "    field: 'name',",
+                            "    renderer: function(label, storeItem, item, i, display, animate, index){",
+                            "        var v = label;",
+                            "        switch(v){",
+                            "            case 'surat_masuk': v = 'Surat Masuk'; break;",
+                            "            case 'surat_keluar': v = 'Surat Keluar'; break;",
+                            "            case 'surat_edaran': v = 'Surat Edaran'; break;",
+                            "            case 'surat_pengajuan': v = 'Surat Pengajuan'; break;",
+                            "        }",
+                            "        return v;",
+                            "    },",
+                            "    display: 'rotate',",
+                            "    contrast: true,",
+                            "    font: '12px Arial'",
+                            "}"
+                        ],
+                        "lengthField": null,
+                        "showInLegend": true,
+                        "tips": [
+                            "{",
+                            "    width: 140,",
+                            "    renderer: function(storeItem, item){",
+                            "        var r = storeItem,",
+                            "            total = r.store.sum('data')",
+                            "            precentage = Math.round(r.get('data') / total * 100);",
+                            "        this.setTitle(r.get('data') +'/'+ total +' ('+ precentage + '%)');",
+                            "    }",
+                            "}"
+                        ]
+                    },
+                    "name": "MyPieSeries2",
+                    "designerId": "c82d8d16-af47-4972-adc5-5fd9e8fc26d3"
+                },
+                {
+                    "type": "Ext.chart.Legend",
+                    "reference": {
+                        "name": "legend",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyLegend",
+                    "designerId": "c786881a-1601-406f-a8f8-926f618ff32a"
+                }
+            ]
+        }
+    ]
+}

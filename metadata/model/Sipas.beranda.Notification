@@ -1,0 +1,538 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.beranda.Notification",
+        "idProperty": "notification_id"
+    },
+    "name": "Sipas.Asal1",
+    "designerId": "92633b47-f41b-4544-b782-792df8e4fec0",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "api": [
+                    "{",
+                    "    read \t: 'server.php/sipas/account/newmail'",
+                    "}"
+                ]
+            },
+            "name": "MyAjaxProxy",
+            "designerId": "931777cc-9350-42a5-8503-e2ac76d44d08",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "record": null,
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader",
+                    "designerId": "a4c7981f-6cef-4a8b-8b56-fde1a8f9fde7"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "notification_id"
+            },
+            "name": "MyField793",
+            "designerId": "9ea1bf23-4bd5-4a63-bef7-c3306552d43b"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "notification_id_penerima"
+            },
+            "name": "MyField184",
+            "designerId": "690cd286-05e3-42e2-9b30-ae5ec94329a8",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "v",
+                            "rec"
+                        ],
+                        "fn": "convert",
+                        "implHandler": [
+                            "var id = rec.get('notification_id'),",
+                            "    result = [];",
+                            "if(id){",
+                            "    result = id.split('/');",
+                            "}",
+                            "return result[1];"
+                        ]
+                    },
+                    "name": "convert",
+                    "designerId": "63a80ae9-30ec-4e90-b45e-5b913d8b7032"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "notification_disposisi"
+            },
+            "name": "MyField895",
+            "designerId": "164799e4-fbfc-45ee-a143-44b2d1f8041a"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "notification_masuk"
+            },
+            "name": "MyField896",
+            "designerId": "5a0322b5-1934-4b5b-a879-90c9abf7e86c"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "notification_koreksi"
+            },
+            "name": "MyField901",
+            "designerId": "30f2be73-aa37-4a07-97ee-3d986aa2f4b1"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "notification_kelompok"
+            },
+            "name": "MyField794",
+            "designerId": "e3faf48e-6c79-46d4-b912-fcd1a0cfca13"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "notification_kelompok_kode"
+            },
+            "name": "MyField795",
+            "designerId": "2cccc670-34e6-4971-9a94-51e50d872a8a"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dateFormat": "d-m-Y",
+                "name": "notification_tanggal",
+                "type": "date"
+            },
+            "name": "MyField796",
+            "designerId": "4eb40c70-802a-4bac-88c1-cc5f76909da0"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "notification_pengirim"
+            },
+            "name": "MyField797",
+            "designerId": "84b24058-dbaf-40a7-807b-39ed2d44f72a"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "notification_perihal"
+            },
+            "name": "MyField798",
+            "designerId": "7e91f5a1-d73f-4adf-afd4-1fe0c4d07fce"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "notification_isi"
+            },
+            "name": "MyField799",
+            "designerId": "d89dbcee-dcb6-40d2-88d3-3904bdef3d1f"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "notification_jenis"
+            },
+            "name": "MyField800",
+            "designerId": "1b412548-9b8b-4dd7-a564-03e6b37e7817"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "notification_prioritas"
+            },
+            "name": "MyField802",
+            "designerId": "8d0dec70-89d7-480a-880b-4e87c6d48b14"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "notification_penyetuju"
+            },
+            "name": "MyField1213",
+            "designerId": "a06a691b-a2d1-45fd-89ae-5ffd2076c475"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "notification_record"
+            },
+            "name": "MyField803",
+            "designerId": "f04934f7-c84b-4665-9c78-92dc58c80cca"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "notification_internal"
+            },
+            "name": "MyField610",
+            "designerId": "4850c9ed-d630-4304-b156-0aa14e07caef"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "notification_konsep"
+            },
+            "name": "MyField611",
+            "designerId": "5901f0e4-cafc-4dcd-b1c2-4faf1f59859a"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "isMasuk",
+                "implHandler": [
+                    "return !Ext.isEmpty(this.get('notification_masuk'));"
+                ]
+            },
+            "name": "isMasuk",
+            "designerId": "581e8ed6-9732-4560-a8a7-29403f4d8702"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "isInternal",
+                "implHandler": [
+                    "return !Ext.isEmpty(this.get('notification_internal'));"
+                ]
+            },
+            "name": "isInternal",
+            "designerId": "b63c09b4-d097-4852-8bec-d4bd30b7a734"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "isDisposisi",
+                "implHandler": [
+                    "return !Ext.isEmpty(this.get('notification_disposisi'));"
+                ]
+            },
+            "name": "isDisposisi",
+            "designerId": "659a132d-23e1-42a5-b7f3-7216c73ff9da"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "isKoreksi",
+                "implHandler": [
+                    "return !Ext.isEmpty(this.get('notification_koreksi'));"
+                ]
+            },
+            "name": "isKoreksi",
+            "designerId": "75c1d0cf-34e7-4311-ab90-e4a7701c66c9"
+        },
+        {
+            "type": "Ext.data.association.HasOne",
+            "reference": {
+                "name": "hasOne",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "getDisposisi",
+                "foreignKey": "notification_id_penerima",
+                "getterName": "getDisposisi",
+                "model": "Sipas.disposisi.Masuk",
+                "primaryKey": "disposisi_masuk_id",
+                "setterName": "setDisposisi"
+            },
+            "name": "MyHasOneAssociation51",
+            "designerId": "36598c8d-567b-4319-a932-ad0bad810838"
+        },
+        {
+            "type": "Ext.data.association.HasOne",
+            "reference": {
+                "name": "hasOne",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "getKoreksiMasuk",
+                "foreignKey": "notification_id_penerima",
+                "getterName": "getKoreksiMasuk",
+                "model": "Sipas.koreksi.Masuk",
+                "primaryKey": "disposisi_masuk_id",
+                "setterName": "setKoreksiMasuk"
+            },
+            "name": "MyHasOneAssociation54",
+            "designerId": "89b764fa-5739-49ec-91ad-4fbe3f0afeb2"
+        },
+        {
+            "type": "Ext.data.association.HasOne",
+            "reference": {
+                "name": "hasOne",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "getKoreksi",
+                "foreignKey": "notification_koreksi",
+                "getterName": "getKoreksi",
+                "model": "Sipas.Koreksi",
+                "primaryKey": "koreksi_id",
+                "setterName": "setKoreksi"
+            },
+            "name": "MyHasOneAssociation52",
+            "designerId": "73aa0c90-cc7c-43d0-b1f4-15d3b51eff51"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getDateFormat",
+                "implHandler": [
+                    "var tgl = this.get('notification_tanggal'),",
+                    "    date = tgl.getDate(),",
+                    "    day_name = ['Senin', 'Selasa', 'Rabu', 'Kamis', \"Jum'at\", 'Sabtu', 'Minggu'],",
+                    "    today = new Date(),",
+                    "    year_of_tgl = tgl.getFullYear(),",
+                    "    year_of_today = tgl.getFullYear(),",
+                    "    second_of_today = today.getSeconds(),",
+                    "    second_of_tgl = tgl.getSeconds(),",
+                    "    minutes_of_today = today.getMinutes(),",
+                    "    minutes_of_tgl = tgl.getMinutes(),",
+                    "    hours_of_today = today.getHours(),",
+                    "    hours_of_tgl = tgl.getHours(),",
+                    "    minutes = this.diffMinutes(today, tgl),",
+                    "    hours = this.diffHours(today, tgl),",
+                    "    is_yesterday = today.getDate() - 1,",
+                    "    is_two_da = today.getDate() - 2,",
+                    "    is_three_da = today.getDate() - 3,",
+                    "    is_four_da = today.getDate() - 4,",
+                    "    is_five_da = today.getDate() - 5,",
+                    "    is_six_da = today.getDate() - 6,",
+                    "    is_seven_da = today.getDate() - 7;",
+                    "",
+                    "if(!tgl) return;",
+                    "",
+                    "// still on this year",
+                    "if (year_of_today === year_of_tgl){",
+                    "    ",
+                    "    // on this minute (second)",
+                    "    // if (today.toDateString() == tgl.toDateString() && hours_of_today === hours_of_tgl && minutes_of_today === minutes_of_tgl){",
+                    "    //     return second_of_today+' detik yang lalu';",
+                    "    ",
+                    "    // on this hour (minutes)",
+                    "    if (today.toDateString() == tgl.toDateString() && hours_of_today === hours_of_tgl && minutes < 60){",
+                    "        return minutes+' menit yang lalu';",
+                    "        ",
+                    "    // on last 5 hours ago",
+                    "    // } else if (today.toDateString() == tgl.toDateString() && hours <= 5){",
+                    "    //     return hours+' jam yang lalu';",
+                    "        ",
+                    "    // today",
+                    "    } else if (today.toDateString() == tgl.toDateString()){",
+                    "        return Ext.util.Format.date(tgl,'H:i');",
+                    "    // yesterday",
+                    "    } else if (tgl.getDate() === is_yesterday){",
+                    "        return 'Kemarin, pukul '+Ext.util.Format.date(tgl,'H:i');",
+                    "    // yesterday (lusa)",
+                    "    } else if (tgl.getDate() === is_two_da){",
+                    "        return 'Kemarin lusa, pukul '+Ext.util.Format.date(tgl,'H:i');",
+                    "        ",
+                    "    // on this week",
+                    "    // } else if (date === is_two_da || date === is_three_da || date === is_four_da || date === is_five_da || date === is_six_da || date === is_seven_da){",
+                    "    //     var day = tgl.getDay() - 1;",
+                    "    //     return day_name[day]+', pukul '+Ext.util.Format.date(tgl,'H:i');",
+                    "        ",
+                    "    // more than a week or another, but still in this year",
+                    "    } else {",
+                    "        return Ext.util.Format.date(tgl,'d M');",
+                    "    }",
+                    "",
+                    "// not on this year",
+                    "} else {",
+                    "    return Ext.util.Format.date(tgl,'d M Y');",
+                    "}"
+                ]
+            },
+            "name": "getDateFormat",
+            "designerId": "13d1caad-37b4-4c5c-ba95-2e4f037acf20"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "now",
+                    "past"
+                ],
+                "fn": "diffMinutes",
+                "implHandler": [
+                    "var diff =(past.getTime() - now.getTime()) / 1000;",
+                    "diff /= 60;",
+                    "return Math.abs(Math.round(diff));"
+                ]
+            },
+            "name": "diffMinutes",
+            "designerId": "602c6ee6-b433-47ca-8fda-21bb06393ea7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "now",
+                    "past"
+                ],
+                "fn": "diffHours",
+                "implHandler": [
+                    "var hours = Math.abs(past - now) / 36e5;",
+                    "return Math.round(hours);"
+                ]
+            },
+            "name": "diffHours",
+            "designerId": "c23659dd-b631-4dbd-b5e0-13c9e0c4b9e2"
+        }
+    ]
+}

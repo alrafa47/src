@@ -1,0 +1,64 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.session.notification.agenda.eksternal.masuk.berkas.List",
+        "model": "Sipas.Surat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.session.notification.agenda.eksternal.masuk.berkas.List"
+    },
+    "name": "Sipas.session.notification.agenda.eksternal.masuk.aktif1.List1",
+    "designerId": "479be8ea-df31-4f24-89a3-7fd0bcce7f09",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/notif_agenda/eksternal/masuk_reqberkas"
+            },
+            "name": "MyAjaxProxy33",
+            "designerId": "f8bc1955-6e2f-4b20-8bff-94e556d82bd4",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader33",
+                    "designerId": "aa02d58f-4d0a-4c12-addc-e1b37eeb8711"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_properti_buat_tgl",
+                "root": null
+            },
+            "name": "MySorter2",
+            "designerId": "1189de23-9029-47bb-9d19-e313dc436fba"
+        }
+    ]
+}

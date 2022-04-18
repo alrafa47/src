@@ -1,0 +1,89 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": null,
+        "designer|userClassName": "Sipas.riwayat.session.terkirim.List",
+        "model": "Sipas.disposisi.Riwayat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.riwayat.session.terkirim.List"
+    },
+    "name": "Sipas.riwayat.session.Aktif1",
+    "designerId": "bc34db52-294c-4b50-86c1-4ac440efae30",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/terkirim/read"
+            },
+            "name": "MyAjaxProxy5",
+            "designerId": "0cfc0ca7-a078-444f-9c36-c24a562658c0",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader5",
+                    "designerId": "59a3273e-aa45-464d-8219-652545686b75"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "disposisi_iscabut"
+            },
+            "name": "MySorter3",
+            "designerId": "e6795941-1f8a-49b5-9d1b-8358246b7170"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "disposisi_sorter"
+            },
+            "name": "MySorter28",
+            "designerId": "c4bd149f-c61d-48c9-9d1d-30351c61e724"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "disposisi_tgl"
+            },
+            "name": "MySorter2",
+            "designerId": "17c45b7c-5c8e-43de-aae3-a01ff42cbb51"
+        }
+    ]
+}

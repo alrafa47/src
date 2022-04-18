@@ -1,0 +1,236 @@
+{
+    "type": "Ext.view.View",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": "sipas_archive",
+        "designer|userAlias": "sipas_arsip_dataview",
+        "designer|userClassName": "Sipas.arsip.Dataview",
+        "emptyText": "<div class=\"x-grid-empty\">Tidak ada berkas</div>",
+        "itemSelector": "div.image-wrap",
+        "overItemCls": "x-item-over",
+        "overflowY": "auto",
+        "padding": 2,
+        "trackOver": true
+    },
+    "name": "MyView",
+    "designerId": "6a8e4870-93a0-4e1b-8334-a516718b8a3e",
+    "cn": [
+        {
+            "type": "Ext.XTemplate",
+            "reference": {
+                "name": "tpl",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "tpl",
+                "implHandler": [
+                    "<tpl for=\".\">",
+                    "<div class=\"image-wrap\" id=\"{dokumen_id:stripTags}\" {[this.createTooltip(values.dokumen_nama)]}>",
+                    "    <div class=\"image-container\">",
+                    "        <tpl if=\"dokumen_progress == 1\">",
+                    "            <span class=\"loading loading-medium\"></span>",
+                    "        <tpl elseif=\"dokumen_progress == 2\">",
+                    "            <span class=\"image {imageCls}\" style=\"background-image: url({[this.findPreview(values)]});\"></span>",
+                    "        <tpl elseif=\"dokumen_progress == 3\">",
+                    "            <span class=\"tango-32 software-update-urgent\"></span>",
+                    "        <tpl else>",
+                    "            <tpl if=\"!dokumen_preview\">",
+                    "                <span class=\"image {imageCls}\" style=\"background-image: url({[this.findPreview(values)]});\"></span>",
+                    "            <tpl else>",
+                    "                <span class=\"image {imageCls}\" style=\"background-image: url({[this.findPreview(values)]}); max-width: 100%;\"></span>",
+                    "            </tpl>",
+                    "        </tpl>",
+                    "    </div>",
+                    "    <div class=\"x-editable image-title\">",
+                    "        <span>{[this.createTitle(values.dokumen_nama)]}</span>",
+                    "        <span class=\"desc\">",
+                    "        {[this.formatDate(values.properti_buat_tgl)]}, {[this.formatSize(values.dokumen_size)]}",
+                    "        </span>",
+                    "        {[this.formatReupload(values.dokumen_reupload)]}",
+                    "        {[this.formatArahan(values.dokumen_islihat)]}",
+                    "    </div>",
+                    "</div>",
+                    "</tpl>",
+                    "<div class=\"x-clear\"></div>"
+                ]
+            },
+            "name": "tpl",
+            "designerId": "2a30bb27-d86f-4e3f-9cb4-5d12b6cb97ef",
+            "cn": [
+                {
+                    "type": "templatefunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value"
+                        ],
+                        "fn": "createTitle",
+                        "implHandler": [
+                            "return Ext.String.ellipsis(value, 20, true);"
+                        ]
+                    },
+                    "name": "createTitle",
+                    "designerId": "1a5d2c40-61e3-4d30-90e2-f47499641410"
+                },
+                {
+                    "type": "templatefunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value"
+                        ],
+                        "fn": "createTooltip",
+                        "implHandler": [
+                            "return 'data-qtip=\"'+value+'\"';"
+                        ]
+                    },
+                    "name": "createTooltip",
+                    "designerId": "3802a291-3496-4309-821e-b93db18d272d"
+                },
+                {
+                    "type": "templatefunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value"
+                        ],
+                        "fn": "formatDate",
+                        "implHandler": [
+                            "return Ext.util.Format.date(value, 'd M Y H:i');"
+                        ]
+                    },
+                    "name": "formatDate",
+                    "designerId": "7157a1ce-047d-40d6-8c58-68be5fa0a1e7"
+                },
+                {
+                    "type": "templatefunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value"
+                        ],
+                        "fn": "formatSize",
+                        "implHandler": [
+                            "return Ext.util.Format.round(value, 0)+'kB';"
+                        ]
+                    },
+                    "name": "formatSize",
+                    "designerId": "d726a019-be86-4c2f-90de-7093faf7a16a"
+                },
+                {
+                    "type": "templatefunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": null,
+                        "designer|params": [
+                            "value"
+                        ],
+                        "fn": "formatExtension",
+                        "implHandler": [
+                            "return Ext.String.ellipsis(value, 20, true); "
+                        ]
+                    },
+                    "name": "formatExtension",
+                    "designerId": "37a0f0a9-ad53-4b2c-bafa-402ca4858d54"
+                },
+                {
+                    "type": "templatefunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value"
+                        ],
+                        "fn": "findPreview",
+                        "implHandler": [
+                            "var loc = window.location.href,",
+                            "    mime = value.dokumen_mime;",
+                            "",
+                            "return loc+'server.php/sipas/dokumen/preview?id='+value.dokumen_id;",
+                            "// if(value.dokumen_preview === null){",
+                            "//     return loc+'server/assets/surat_default/ext'+mime+'.png';",
+                            "// }",
+                            "// else{",
+                            "//     return loc+'server/data/surat/'+value.dokumen_arsip+'/'+value.dokumen_preview+'';",
+                            "// }"
+                        ]
+                    },
+                    "name": "findPreview",
+                    "designerId": "f54df070-fe20-41d0-95ca-d65700274fd0"
+                },
+                {
+                    "type": "templatefunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": null,
+                        "designer|params": [
+                            "value"
+                        ],
+                        "fn": "formatReupload",
+                        "implHandler": [
+                            "if(value === 1){",
+                            "    return '<div class=\"desc grey-400-i\">Reupload</div>';",
+                            "}"
+                        ]
+                    },
+                    "name": "formatReupload",
+                    "designerId": "b5b60238-01b2-4978-bfe4-a0031d58a3e2"
+                },
+                {
+                    "type": "templatefunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": null,
+                        "designer|params": [
+                            "islihat"
+                        ],
+                        "fn": "formatArahan",
+                        "implHandler": [
+                            "if(islihat === true){",
+                            "    return '<div class=\"desc grey-400-i\">Bukti Arahan</div>';",
+                            "}"
+                        ]
+                    },
+                    "name": "formatArahan",
+                    "designerId": "7de5af23-4170-4eb4-bbfe-5d3f7ba0141a"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,596 @@
+{
+    "type": "Ext.form.FieldSet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "sipas_com_surat_korespondensi_pane",
+        "designer|userClassName": "Sipas.com.surat.korespondensi.Pane",
+        "height": null,
+        "itemId": null,
+        "padding": null,
+        "propType": "default",
+        "title": "Korespondensi Surat"
+    },
+    "name": "MyFieldSet7",
+    "designerId": "5aeac696-2098-4808-9b34-6bd269b77502",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "propType",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.form.FieldContainer",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "hidden": true,
+                "itemId": "containerChooser",
+                "layout": "hbox"
+            },
+            "name": "MyFieldContainer2",
+            "designerId": "aa5bd003-80ce-418d-b094-334c7ad99006",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Label",
+                        "itemId": null,
+                        "layout|flex": 1,
+                        "name": "surat_korespondensi_surat"
+                    },
+                    "name": "MyHiddenField5",
+                    "designerId": "49e98273-7b07-4004-abad-93f9920a57d5"
+                },
+                {
+                    "type": "Ext.form.field.Trigger",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "editable": false,
+                        "fieldLabel": "No. Agenda",
+                        "itemId": null,
+                        "labelWidth": 150,
+                        "layout|flex": 1,
+                        "name": "korespondensi_surat_agenda",
+                        "propType": "default"
+                    },
+                    "name": "MyTriggerField",
+                    "designerId": "97a65d6c-b348-4723-b1a9-7acb8c7d9c74",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "propType",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "processcfgfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "config"
+                                ],
+                                "fn": "processKorespondensi_surat_agenda",
+                                "implHandler": [
+                                    "config.propType = this.propType;",
+                                    "return config;"
+                                ]
+                            },
+                            "name": "processKorespondensi_surat_agenda",
+                            "designerId": "05e857db-93ba-45b5-b01f-a145689200f6"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": null,
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.cross1",
+                    "designerId": "93bdb516-fae3-4e0e-916b-11002aeff24a",
+                    "masterInstanceId": "db795b19-c82a-4977-bdfe-9a4b7b5bc102",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onButtonAfterRender",
+                                "implHandler": [
+                                    "var combo = component.prev('combobox,triggerfield');",
+                                    "if(combo.readOnly){",
+                                    "    component.up('container').on('afterrender', function(parent){",
+                                    "        parent.remove(component);",
+                                    "    });",
+                                    "}"
+                                ],
+                                "name": "afterrender",
+                                "scope": "me"
+                            },
+                            "name": "onButtonAfterRender",
+                            "designerId": "3837eab2-72bd-4b9c-a7b9-e9bd0ff63194"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.FieldContainer",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "hidden": true,
+                "layout": "hbox"
+            },
+            "name": "MyFieldContainer3",
+            "designerId": "ed59bf37-1539-4ad3-bc0d-7398e67a51fb",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Label",
+                        "layout|flex": 1,
+                        "name": "surat_korespondensi"
+                    },
+                    "name": "MyHiddenField",
+                    "designerId": "1fbd3a6a-0041-4756-997c-012e04706d3a"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "No. Surat",
+                        "itemId": null,
+                        "labelWidth": 120,
+                        "layout|flex": 1,
+                        "margin": null,
+                        "name": "korespondensi_surat_nomor",
+                        "readOnly": true
+                    },
+                    "name": "MyTextField54",
+                    "designerId": "1aa88ca5-d876-4de7-86d9-55f172166e81"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": true,
+                        "layout|flex": null,
+                        "text": "Lihat Surat"
+                    },
+                    "name": "sipas.com.button.view17",
+                    "designerId": "bdb9f5bb-fdd2-4564-a5b4-c80c598cc9d7",
+                    "masterInstanceId": "88073f46-f23e-4800-a045-344110bd18fc"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Instansi Pengirim",
+                "hidden": true,
+                "labelWidth": 120,
+                "layout|anchor": "100%",
+                "name": "korespondensi_pengirim",
+                "readOnly": true
+            },
+            "name": "MyTextField5",
+            "designerId": "b4680feb-7f92-4f0a-ab0f-cd5aa0ab5cd5"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Instansi Penerima",
+                "hidden": true,
+                "labelWidth": 120,
+                "layout|anchor": "100%",
+                "name": "korespondensi_penerima",
+                "readOnly": true
+            },
+            "name": "MyTextField1",
+            "designerId": "0894c398-e5a7-45d9-8a65-b41355710b48"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Unit Pengirim",
+                "hidden": true,
+                "labelWidth": 120,
+                "layout|anchor": "100%",
+                "name": "korespondensi_unitpengirim",
+                "readOnly": true
+            },
+            "name": "MyTextField23",
+            "designerId": "971901d1-7c42-43cd-94ee-509a9f4350ba"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Unit Penerima",
+                "hidden": true,
+                "labelWidth": 120,
+                "layout|anchor": "100%",
+                "name": "korespondensi_unitpenerima",
+                "readOnly": true
+            },
+            "name": "MyTextField26",
+            "designerId": "64f5b694-30eb-4f63-b853-1f2d1227c096"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Kode Korespondensi",
+                "hidden": true,
+                "labelWidth": 120,
+                "layout|anchor": "100%",
+                "name": "korespondensi_nomor",
+                "readOnly": true
+            },
+            "name": "MyTextField3",
+            "designerId": "917bd0a3-44ec-430b-ab38-bde46535a412"
+        },
+        {
+            "type": "Ext.form.field.TextArea",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Perihal Korespondensi",
+                "hidden": true,
+                "labelWidth": 120,
+                "layout|anchor": "100%",
+                "name": "korespondensi_surat_perihal",
+                "readOnly": true,
+                "rows": 2
+            },
+            "name": "MyTextArea1",
+            "designerId": "f37f8404-15e9-4bfa-a6f5-4e7beab6da0c"
+        },
+        {
+            "type": "Ext.form.field.Display",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": null,
+                "itemId": null,
+                "layout|anchor": "100%",
+                "margin": null,
+                "name": "korespondensi_info",
+                "value": null
+            },
+            "name": "MyDisplayField9",
+            "designerId": "c0594c7e-258c-4aed-9ed0-e636bd60c56a"
+        },
+        {
+            "type": "Ext.form.field.Display",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": null,
+                "hidden": true,
+                "itemId": null,
+                "layout|anchor": "100%",
+                "name": "korespondensi_info_internal",
+                "value": null
+            },
+            "name": "MyDisplayField13",
+            "designerId": "a5f74985-1179-493b-9672-ca5d7677cdb8"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "container|padding": "0 0 0 45",
+                "layout": "hbox",
+                "margin": null
+            },
+            "name": "MyContainer1",
+            "designerId": "4184d154-75a3-4272-9f4d-3695e0229468",
+            "cn": [
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": "x-btn-bordered",
+                        "designer|uiInterfaceName": "default-toolbar-small",
+                        "featureName": "surat_atur_korespondensi",
+                        "featureable": true,
+                        "itemId": "buttonAturKorespondensi",
+                        "languageCode": "surat_atur_korespondensi",
+                        "languageMode": "text",
+                        "languageable": true,
+                        "layout|flex": null,
+                        "roleName": "surat_atur_korespondensi",
+                        "roleable": true,
+                        "text": "Atur Korespondensi",
+                        "ui": "default-toolbar"
+                    },
+                    "name": "MyButton21",
+                    "designerId": "bdcb370a-12bf-4cb8-9666-6c5ae5329742",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageCode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageMode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "korespondensi",
+                        "cls": "x-btn-bordered",
+                        "disabled": null,
+                        "featureName": "korespondensi",
+                        "featureable": true,
+                        "hidden": null,
+                        "id": null,
+                        "layout|flex": null,
+                        "roleName": "masuk_korespondensi",
+                        "roleable": true,
+                        "text": "Lihat Korespondensi",
+                        "ui": null
+                    },
+                    "name": "sipas.com.button.correspondent5",
+                    "designerId": "a0e7a7a0-2450-4d3f-b4af-3cb7a02a98b6",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "385692f0-cf93-4b86-8fde-e9f759722a35"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "pilihKorespondensi",
+                        "layout|flex": null,
+                        "margin": "0 5 0 0"
+                    },
+                    "name": "sipas.com.button.putin14",
+                    "designerId": "5cc498f4-66d2-4345-b71d-3d086b860e4b",
+                    "masterInstanceId": "2a6a3c93-a982-4961-b600-192b59ee290e",
+                    "cn": [
+                        {
+                            "type": "processcfgfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "config"
+                                ],
+                                "fn": "processPilihKorespondensi",
+                                "implHandler": [
+                                    "config.propType = this.propType;",
+                                    "return config;"
+                                ]
+                            },
+                            "name": "processPilihKorespondensi",
+                            "designerId": "5e93983f-699c-448d-b532-43d2cc94b3ff"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": "x-btn-bordered",
+                        "designer|uiInterfaceName": "default-toolbar",
+                        "itemId": "resetKorespondensi",
+                        "layout|flex": null,
+                        "text": "RESET",
+                        "ui": "default-toolbar"
+                    },
+                    "name": "sipas.com.button.close2",
+                    "designerId": "f19f3337-cdc0-4d43-9c69-c630d0c5e6c1",
+                    "masterInstanceId": "1fccff29-0e7c-4e45-9b62-49cc0ad2dbdc",
+                    "cn": [
+                        {
+                            "type": "processcfgfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "config"
+                                ],
+                                "fn": "processResetKorespondensi",
+                                "implHandler": [
+                                    "config.propType = this.propType;",
+                                    "return config;"
+                                ]
+                            },
+                            "name": "processResetKorespondensi",
+                            "designerId": "9fa66b71-182e-4207-a5e2-2ceb96d4e7b3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "processSipascomsuratkorespondensiPane",
+                "implHandler": [
+                    "config.propType = this.propType;",
+                    "return config;"
+                ]
+            },
+            "name": "processSipascomsuratkorespondensiPane",
+            "designerId": "856eeb0e-00ed-4177-88d9-994d6e8b7e11"
+        }
+    ]
+}

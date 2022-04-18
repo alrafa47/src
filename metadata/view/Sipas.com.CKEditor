@@ -1,0 +1,435 @@
+{
+    "type": "Ext.form.field.TextArea",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "CKConfig": [
+            "{",
+            "baseFloatZIndex: 100000,",
+            "removePlugins: 'resize',",
+            "imageUploadUrl: '/uploader/upload.php?type=Images',",
+            "uploadUrl: '/uploader/upload.php?type=Images',",
+            "",
+            "// Default setting.",
+            "toolbar: [",
+            "    { name: 'doc', items: [ 'Print', 'Preview', 'Maximize', 'Source' ] },",
+            "    { name: 'clipboard', items: ['Copy', 'Paste', 'Undo', 'Redo' ] },",
+            "    { name: 'styles', items: [ 'Format', 'Font', 'FontSize' ] },",
+            "    { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat', 'CopyFormatting', 'TextColor', 'BGColor' ] },",
+            "    { name: 'align', items: [ 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ] },",
+            "    { name: 'links', items: [ 'Link', 'Unlink' ] },",
+            "    { name: 'paragraph', items: [ 'NumberedList', 'BulletedList' ] },",
+            "    { name: 'indentation', items: [ 'Outdent', 'Indent' ] },",
+            "    { name: 'separator', items: [ 'HorizontalRule', 'PageBreak' ] },",
+            "    { name: 'quote', items: [ 'Blockquote' ] },",
+            "    { name: 'insert', items: [ 'Image', 'Table' ] }",
+            "    //{ name: 'editing', items: [ 'Scayt' ] }",
+            "],",
+            "",
+            "// readOnly: true,",
+            "",
+            "// Since we define all configuration options here, let's instruct CKEditor to not load config.js which it does by default.",
+            "// One HTTP request less will result in a faster startup time.",
+            "// For more information check http://docs.ckeditor.com/#!/api/CKEDITOR.config-cfg-customConfig",
+            "customConfig: '',",
+            "",
+            "// Sometimes applications that convert HTML to PDF prefer setting image width through attributes instead of CSS styles.",
+            "// For more information check:",
+            "//  - About Advanced Content Filter: http://docs.ckeditor.com/#!/guide/dev_advanced_content_filter",
+            "//  - About Disallowed Content: http://docs.ckeditor.com/#!/guide/dev_disallowed_content",
+            "//  - About Allowed Content: http://docs.ckeditor.com/#!/guide/dev_allowed_content_rules",
+            "disallowedContent: 'img{width,height,float}',",
+            "allowedContent: true,",
+            "extraAllowedContent: 'img[width,height,align] p[var]',",
+            "",
+            "// Enabling extra plugins, available in the full-all preset: http://ckeditor.com/presets-all",
+            "extraPlugins: 'tableresize,uploadimage,uploadfile,pastefromword',",
+            "",
+            "/********* File management support *********/",
+            "// In order to turn on support for file uploads, CKEditor has to be configured to use some server side",
+            "// solution with file upload/management capabilities, like for example CKFinder.",
+            "// For more information see http://docs.ckeditor.com/#!/guide/dev_ckfinder_integration",
+            "",
+            "// Uncomment and correct these lines after you setup your local CKFinder instance.",
+            "// filebrowserBrowseUrl: 'http://example.com/ckfinder/ckfinder.html',",
+            "// filebrowserUploadUrl: 'http://example.com/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',",
+            "/********* File management support *********/",
+            "",
+            "// An array of stylesheets to style the WYSIWYG area.",
+            "// Note: it is recommended to keep your own styles in a separate file in order to make future updates painless.",
+            "",
+            "contentsCss: [ 'resources/ckeditor/contents.css', 'resources/ckeditor/doceditor.css' ],",
+            "",
+            "// This is optional, but will let us define multiple different styles for multiple editors using the same CSS file.",
+            "bodyClass: 'document-editor a4-80 margin-moderate',",
+            "",
+            "// Reduce the list of block elements listed in the Format dropdown to the most commonly used.",
+            "format_tags: 'p;h1;h2;h3;pre',",
+            "",
+            "// Simplify the Image and Link dialog windows. The \"Advanced\" tab is not needed in most cases.",
+            "removeDialogTabs: 'image:advanced;link:advanced',",
+            "",
+            "// Define the list of styles which should be available in the Styles dropdown list.",
+            "// If the \"class\" attribute is used to style an element, make sure to define the style for the class in \"mystyles.css\"",
+            "// (and on your website so that it rendered in the same way).",
+            "// Note: by default CKEditor looks for styles.js file. Defining stylesSet inline (as below) stops CKEditor from loading",
+            "// that file, which means one HTTP request less (and a faster startup).",
+            "// For more information see http://docs.ckeditor.com/#!/guide/dev_styles",
+            "stylesSet: [",
+            "/* Inline Styles */",
+            "{ name: 'Marker', element: 'span', attributes: { 'class': 'marker' } },",
+            "{ name: 'Cited Work', element: 'cite' },",
+            "{ name: 'Inline Quotation', element: 'q' },",
+            "",
+            "/* Object Styles */",
+            "{",
+            "name: 'Special Container',",
+            "element: 'div',",
+            "styles: {",
+            "padding: '5px 10px',",
+            "background: '#eee',",
+            "border: '1px solid #ccc'",
+            "}",
+            "},",
+            "{",
+            "name: 'Compact table',",
+            "element: 'table',",
+            "attributes: {",
+            "cellpadding: '5',",
+            "cellspacing: '0',",
+            "border: '1',",
+            "bordercolor: '#ccc'",
+            "},",
+            "styles: {",
+            "'border-collapse': 'collapse'",
+            "}",
+            "},",
+            "{ name: 'Borderless Table', element: 'table', styles: { 'border-style': 'hidden', 'background-color': '#E6E6FA' } },",
+            "{ name: 'Square Bulleted List', element: 'ul', styles: { 'list-style-type': 'square' } }",
+            "]",
+            "}"
+        ],
+        "border": false,
+        "defaultListenerScope": true,
+        "designer|userAlias": "sipas_com_ckeditor",
+        "designer|userClassName": "Sipas.com.CKEditor",
+        "editor": null,
+        "editorConfig": [
+            "{",
+            "",
+            "}"
+        ],
+        "editorId": null,
+        "fieldLabel": null
+    },
+    "name": "MyTextArea2",
+    "configAlternates": {
+        "editorId": "string",
+        "editor": "object",
+        "CKConfig": "object",
+        "editorConfig": "object"
+    },
+    "designerId": "9b881d42-08c0-482f-a84a-7bbc32f0de2f",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "editorId",
+            "type": "number"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "editor",
+            "type": "number"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "CKConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "defaultListenerScope",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "editorConfig",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "constructor",
+                "implHandler": [
+                    "this.callParent(arguments);"
+                ]
+            },
+            "name": "constructor",
+            "designerId": "147ae421-2fe8-4955-8bf3-351a189be172"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "ct",
+                    "position"
+                ],
+                "fn": "onRender",
+                "implHandler": [
+                    "if (!this.el) {",
+                    "    this.defaultAutoCreate = {",
+                    "        tag: 'textarea',",
+                    "        autocomplete: 'off'",
+                    "    };",
+                    "}",
+                    "this.callParent(arguments);"
+                ]
+            },
+            "name": "onRender",
+            "designerId": "bbefb66d-69b4-4c95-98ff-f08d59882a78"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "value"
+                ],
+                "fn": "setValue",
+                "implHandler": [
+                    "this.callParent(arguments);",
+                    "if (this.editor) {",
+                    "    this.editor.setData(value);",
+                    "}"
+                ]
+            },
+            "name": "setValue",
+            "designerId": "1b1aa41a-d20b-4a6a-bfd1-358f06cd1892"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getValue",
+                "implHandler": [
+                    "if (this.editor) {",
+                    "    return this.editor.getData();",
+                    "}",
+                    "else {",
+                    "    return false;",
+                    "}"
+                ]
+            },
+            "name": "getValue",
+            "designerId": "8851e5e4-c218-4487-a285-fe6f2b1bbe7c"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "readonly"
+                ],
+                "fn": "setReadOnly",
+                "implHandler": [
+                    "",
+                    "// this.editor.setReadOnly(readonly);",
+                    "this.callParent(arguments);"
+                ]
+            },
+            "name": "setReadOnly",
+            "designerId": "6252e245-0cfb-4c7e-a90a-f4f820cf1dbb"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "print",
+                "implHandler": [
+                    "if(!this.editor) {return;}",
+                    "CKEDITOR.env.gecko?this.editor.window.$.print():this.editor.document.$.execCommand(\"Print\");"
+                ]
+            },
+            "name": "print",
+            "designerId": "e55040b7-7ef4-47b7-aef9-c54b1d80eaf0"
+        },
+        {
+            "type": "customevent",
+            "reference": {
+                "name": "customEvents",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "editorReady",
+                "params": [
+                    "textareafield",
+                    "editor"
+                ]
+            },
+            "name": "CustomEvent",
+            "designerId": "37726a4e-1b76-4e57-b77f-65a998c62106"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onTextareafieldAfterRender",
+                "implHandler": [
+                    "Ext.apply(this.CKConfig, {",
+                    "    height: this.getHeight(),",
+                    "    width: this.getWidth()",
+                    "});",
+                    "",
+                    "var CKConfig = Ext.applyIf(this.editorConfig || {}, this.CKConfig);",
+                    "",
+                    "this.editor = CKEDITOR.replace(this.inputEl.id, CKConfig);",
+                    "this.editorId = this.inputEl.id;",
+                    "this.editor.name = this.name;",
+                    "",
+                    "this.setLoading(true);",
+                    "this.editor.on(\"instanceReady\", function (ev) {",
+                    "    this.setLoading(false);",
+                    "    this.fireEvent(",
+                    "        \"editorReady\",",
+                    "        this,",
+                    "        this.editor",
+                    "    );",
+                    "}, this);"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "name": "onTextareafieldAfterRender",
+            "designerId": "de40cf89-7ccd-48d5-9105-a787b46e427b"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "textareafield"
+                ],
+                "fn": "onTextareafieldEditorReady",
+                "implHandler": [
+                    "// Set read only to false to avoid issue when created into or as a child of a disabled component.",
+                    "",
+                    "if(textareafield.viewOnly)",
+                    "{",
+                    "\tvar toolbarTop = Ext.query('.cke_top', textareafield.getEl().dom)[0];",
+                    "\t\ttoolbarTop && (toolbarTop.style.display = 'none');",
+                    "\tvar toolbarBottom = Ext.query('.cke_bottom', textareafield.getEl().dom)[0];",
+                    "\t\ttoolbarBottom && (toolbarBottom.style.display = 'none');",
+                    "    editor.setReadOnly(true);",
+                    "}",
+                    "",
+                    "textareafield.editor.resize(this.getWidth(), this.getHeight());"
+                ],
+                "name": "editorReady",
+                "scope": "me"
+            },
+            "name": "onTextareafieldEditorReady",
+            "designerId": "15531c8b-b831-4c1e-8e19-8e458a131fef"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onTextareafieldBoxReady",
+                "implHandler": [
+                    "// used to hook into the resize method"
+                ],
+                "name": "boxready",
+                "scope": "me"
+            },
+            "name": "onTextareafieldBoxReady",
+            "designerId": "80623c10-bba6-4670-8888-944e4bcfc447"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onTextareafieldResize",
+                "implHandler": [
+                    "var eid = this.editorId,",
+                    "    editor = CKEDITOR.instances[this.editorId];",
+                    "if (!Ext.isEmpty(editor) && editor.container){",
+                    "    editor.resize(width, height);",
+                    "} "
+                ],
+                "name": "resize",
+                "scope": "me"
+            },
+            "name": "onTextareafieldResize",
+            "designerId": "c85c6d08-5d95-4955-ab77-d31549302351"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onTextareafieldDestroy",
+                "implHandler": [
+                    "// delete instance",
+                    "if(!Ext.isEmpty(CKEDITOR.instances[this.editorId])){",
+                    "    delete CKEDITOR.instances[this.editorId];",
+                    "}"
+                ],
+                "name": "destroy",
+                "scope": "me"
+            },
+            "name": "onTextareafieldDestroy",
+            "designerId": "c2d25972-668d-4c2d-bc2b-b5c11fdc258e"
+        }
+    ]
+}

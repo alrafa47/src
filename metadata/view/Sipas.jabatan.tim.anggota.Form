@@ -1,0 +1,171 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyBorder": false,
+        "bodyPadding": 10,
+        "border": false,
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_jabatan_tim_anggota_form",
+        "designer|userClassName": "Sipas.jabatan.tim.anggota.Form",
+        "layout": "vbox",
+        "title": "Anggota",
+        "useDetail": false,
+        "width": null
+    },
+    "name": "Sipas.staf.tim.anggota.Form1",
+    "designerId": "c98e78cb-6084-4d5d-a02d-de2e7664c751",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "useDetail",
+            "type": "boolean"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "emptyText": "Masukkan nama kelompok",
+                "fieldLabel": "Nama Kelompok",
+                "itemId": null,
+                "labelAlign": null,
+                "labelWidth": 140,
+                "layout|flex": null,
+                "name": "jabatan_tim_nama",
+                "readOnly": true
+            },
+            "name": "MyTextField4",
+            "designerId": "c1a51aac-cfb1-462f-a51d-e1c5bd5dfbf0",
+            "cn": [
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processJabatan_tim_nama",
+                        "implHandler": [
+                            "if(!this.useDetail)",
+                            "{",
+                            "    return null;",
+                            "}",
+                            "return config;"
+                        ]
+                    },
+                    "name": "processJabatan_tim_nama",
+                    "designerId": "79e874de-8ffa-49bc-b122-0a41ae8cd48a"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.field.Hidden",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "ID Kelompok",
+                "layout|flex": null,
+                "name": "jabatan_tim_id"
+            },
+            "name": "MyHiddenField",
+            "designerId": "43ec88c0-5ce1-493d-8cb9-3882bdc6d8a3"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "associated": true,
+                "layout|flex": 1
+            },
+            "name": "sipas.jabatan.tim.anggota.list",
+            "configAlternates": {
+                "associated": "boolean"
+            },
+            "designerId": "ce28fedf-4c75-405d-b054-52b3628b6f1e",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "associated",
+                    "type": "string"
+                }
+            ],
+            "masterInstanceId": "c787692d-3b7b-4629-9cf4-63aa6898bc8e"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": null,
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "container|pack": "end",
+                "designer|uiInterfaceName": "footer",
+                "dock": "bottom",
+                "itemId": null,
+                "layout": "hbox",
+                "layout|flex": 1,
+                "margin": null,
+                "ui": "footer"
+            },
+            "name": "MyContainer39",
+            "designerId": "6b22360c-219b-4cd5-8cc2-dbc726638fbe",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|uiInterfaceName": "default",
+                        "layout|flex": null,
+                        "roleName": "jabatan_tim_insert",
+                        "roleable": true
+                    },
+                    "name": "sipas.com.button.save38",
+                    "designerId": "8e5d61be-384e-4011-90e6-b962ff4a342a",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "feb6c6f9-7733-4b38-9254-091d0db2d3a9"
+                }
+            ]
+        }
+    ]
+}

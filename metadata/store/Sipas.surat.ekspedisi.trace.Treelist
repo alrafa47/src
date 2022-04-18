@@ -1,0 +1,68 @@
+{
+    "type": "Ext.data.TreeStore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.surat.ekspedisi.trace.Treelist",
+        "model": "Sipas.surat.Ekspedisi",
+        "remoteFilter": null,
+        "remoteSort": null,
+        "storeId": "Sipas.surat.ekspedisi.trace.Treelist"
+    },
+    "name": "Sipas.surat.ekspedisi.Treelist1",
+    "designerId": "b0e1aa45-fa76-4848-99a3-14ff05ec0f2d",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat_ekspedisi/read/trace"
+            },
+            "name": "MyAjaxProxy41",
+            "designerId": "9df903cd-7d69-4e9f-bc6f-12a5a3158714",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": null
+                    },
+                    "name": "MyJsonReader41",
+                    "designerId": "f8039db6-d0f5-4e5b-a537-66e01f344347"
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onTreeStoreBeforeLoad",
+                "implHandler": [
+                    "if(store.isLoading()){",
+                    "    return false;",
+                    "}"
+                ],
+                "name": "beforeload",
+                "scope": "me"
+            },
+            "name": "onTreeStoreBeforeLoad",
+            "designerId": "883879fe-7885-4646-bc76-1d131744c3a2"
+        }
+    ]
+}

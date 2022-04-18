@@ -1,0 +1,310 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": null,
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_pelaporan_rekap_grafik_eksternal_pane",
+        "designer|userClassName": "Sipas.pelaporan.rekap.grafik.eksternal.Pane",
+        "filterMonth": "Bulan",
+        "header": false,
+        "height": null,
+        "layout": "hbox",
+        "markerConfig": null,
+        "title": "Grafik Surat Yang Diterima",
+        "width": null
+    },
+    "name": "Sipas.beranda.board.chart.Pane1",
+    "configAlternates": {
+        "markerConfig": "object"
+    },
+    "designerId": "cd93fc4f-a6c1-418e-8d0a-f3ba1e9c8087",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "markerConfig",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "filterMonth",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "layout|flex": 1
+            },
+            "name": "MyToolbar4",
+            "designerId": "c5a11a20-968b-43cc-a754-a2a3e0fb630c",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.reportfilter.rekap.bulanan3",
+                    "designerId": "de9ae76e-3877-4602-9754-c65bfa31f7c1",
+                    "masterInstanceId": "70f8453a-fd45-49cf-9aab-7447874a7b5a"
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "MyFill2",
+                    "designerId": "1012f0a9-4ec2-407c-aaef-694398c3e78b"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": null,
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.refresh53",
+                    "configAlternates": {
+                        "roleable": "boolean"
+                    },
+                    "designerId": "a0080d56-a1d8-4efd-b19f-4b7eb4fee66f",
+                    "masterInstanceId": "e517a5ab-fc5b-441a-97a3-5c706738d092"
+                }
+            ]
+        },
+        {
+            "type": "Ext.chart.Chart",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "animate": true,
+                "height": null,
+                "insetPadding": null,
+                "items": null,
+                "layout|flex": 1,
+                "padding": null,
+                "store": "Sipas.pelaporan.rekap.grafik.Line",
+                "width": null
+            },
+            "name": "LineChart",
+            "configAlternates": {
+                "animate": "boolean"
+            },
+            "designerId": "0c192255-f4d1-4ff5-bfd3-4fcdd10f0108",
+            "isBuiltIn": true,
+            "iconCls": "icon-line-chart",
+            "autoName": "LineChart",
+            "cn": [
+                {
+                    "type": "Ext.chart.axis.Numeric",
+                    "reference": {
+                        "name": "axes",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "adjustMaximumByMajorUnit": true,
+                        "adjustMinimumByMajorUnit": true,
+                        "decimals": 0,
+                        "fields": [
+                            "emasuk",
+                            "ekeluar"
+                        ],
+                        "grid": true,
+                        "label": [
+                            "{",
+                            "    renderer: function(v) { return v; }",
+                            "}"
+                        ],
+                        "majorTickSteps": 2,
+                        "maximum": null,
+                        "minimum": 0,
+                        "minorTickSteps": 1,
+                        "title": "Jumlah"
+                    },
+                    "name": "MyNumericAxis",
+                    "configAlternates": {
+                        "grid": "boolean"
+                    },
+                    "designerId": "0e20ce68-6b5f-4182-b685-cfc5a84fb134"
+                },
+                {
+                    "type": "Ext.chart.axis.Category",
+                    "reference": {
+                        "name": "axes",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fields": [
+                            "day"
+                        ],
+                        "grid": true,
+                        "label": [
+                            "{",
+                            "    rotate: {",
+                            "        degrees: -45",
+                            "    }",
+                            "}"
+                        ],
+                        "title": "Tanggal",
+                        "width": 400
+                    },
+                    "name": "MyCategoryAxis",
+                    "configAlternates": {
+                        "items": "object",
+                        "grid": "boolean"
+                    },
+                    "designerId": "e1c98675-1247-4ce9-bbea-2c68890aaa9a",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "items",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.chart.series.Line",
+                    "reference": {
+                        "name": "series",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "axis": [
+                            "left"
+                        ],
+                        "highlight": [
+                            "{",
+                            "    fill: '#000',",
+                            "    radius: 2,",
+                            "    'stroke-width': 1,",
+                            "    stroke: '#fff'",
+                            "}"
+                        ],
+                        "markerConfig": [
+                            "{",
+                            "    radius: 2",
+                            "}"
+                        ],
+                        "smooth": null,
+                        "style": [
+                            "{'stroke-width':2}"
+                        ],
+                        "tips": [
+                            "{",
+                            "    trackMouse: true,",
+                            "    style: 'background: #FFF',",
+                            "    height: 20,",
+                            "    width: 150,",
+                            "    renderer: function(storeItem, item) {",
+                            "        var title = item.series.title;",
+                            "        this.setTitle(title + ' ' + storeItem.get('day') + ' (' + storeItem.get(item.series.yField) +')');",
+                            "    }",
+                            "}"
+                        ],
+                        "title": [
+                            "Agenda Masuk"
+                        ],
+                        "xField": "day",
+                        "yField": [
+                            "emasuk"
+                        ]
+                    },
+                    "name": "MyLineSeries1",
+                    "designerId": "8bb1e2a5-2d75-45a7-bdcb-b733c37cc28e"
+                },
+                {
+                    "type": "Ext.chart.series.Line",
+                    "reference": {
+                        "name": "series",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "axis": [
+                            "left"
+                        ],
+                        "highlight": [
+                            "{",
+                            "    fill: '#000',",
+                            "    radius: 2,",
+                            "    'stroke-width': 1,",
+                            "    stroke: '#fff'",
+                            "}"
+                        ],
+                        "markerConfig": [
+                            "{",
+                            "    radius: 2",
+                            "}"
+                        ],
+                        "smooth": null,
+                        "style": [
+                            "{'stroke-width':2}"
+                        ],
+                        "tips": [
+                            "{",
+                            "    trackMouse: true,",
+                            "    style: 'background: #FFF',",
+                            "    height: 20,",
+                            "    width: 150,",
+                            "    renderer: function(storeItem, item) {",
+                            "        var title = item.series.title;",
+                            "        this.setTitle(title + ' ' + storeItem.get('day') + ' (' + storeItem.get(item.series.yField) +')');",
+                            "    }",
+                            "}"
+                        ],
+                        "title": [
+                            "Agenda Keluar"
+                        ],
+                        "xField": "day",
+                        "yField": [
+                            "ekeluar"
+                        ]
+                    },
+                    "name": "MyLineSeries5",
+                    "designerId": "77700cce-0201-45bc-ab66-d5606f66a3c4"
+                },
+                {
+                    "type": "Ext.chart.Legend",
+                    "reference": {
+                        "name": "legend",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyLegend",
+                    "designerId": "e12164b6-7dc4-4afa-8d3a-70a04c92750c"
+                }
+            ]
+        }
+    ]
+}

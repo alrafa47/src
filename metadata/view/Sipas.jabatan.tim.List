@@ -1,0 +1,221 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": null,
+        "clickToView": true,
+        "columnLines": false,
+        "designer|userAlias": "sipas_jabatan_tim_list",
+        "designer|userClassName": "Sipas.jabatan.tim.List",
+        "emptyText": "Tidak ada Data",
+        "forceFit": null,
+        "height": null,
+        "hidden": null,
+        "id": null,
+        "isProfile": false,
+        "itemId": null,
+        "margin": null,
+        "maxHeight": null,
+        "maxWidth": null,
+        "minHeight": null,
+        "minWidth": null,
+        "padding": null,
+        "store": "Sipas.jabatan.tim.List",
+        "title": "Daftar Kelompok Jabatan",
+        "titleAlign": null,
+        "width": null
+    },
+    "name": "Sipas.staf.tim.List1",
+    "designerId": "08d449e0-4d02-49cd-bdf1-adb9d5eb59a8",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "clickToView",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "isProfile",
+            "type": "boolean"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "dock": "top",
+                "id": null,
+                "itemId": "toolbarProperties"
+            },
+            "name": "MyToolbar20",
+            "designerId": "87c7cae8-5f3e-4ef7-b9a1-da072319c78b",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": null,
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.refresh121",
+                    "designerId": "435b4f30-1e45-4b84-90fe-5860cc733b16",
+                    "masterInstanceId": "e517a5ab-fc5b-441a-97a3-5c706738d092"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": null,
+                        "layout|flex": null,
+                        "roleName": "jabatan_tim_insert",
+                        "roleable": true
+                    },
+                    "name": "sipas.com.button.add52",
+                    "configAlternates": {
+                        "roleable": "boolean"
+                    },
+                    "designerId": "6040d0f7-e6f1-4d70-8a70-c3a79bd51919",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "420a71a2-f0ab-4b83-bf9b-b7cf567d6c9f"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true,
+                        "hidden": true,
+                        "id": null,
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.view45",
+                    "configAlternates": {
+                        "roleable": "boolean"
+                    },
+                    "designerId": "87f21fab-9434-46a7-97ba-bc2787ddc534",
+                    "masterInstanceId": "88073f46-f23e-4800-a045-344110bd18fc"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.RowNumberer",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "MyRowNumberer7",
+            "designerId": "c6f81899-d6f7-406e-bb23-d4171cc547b2"
+        },
+        {
+            "type": "Ext.selection.RowModel",
+            "reference": {
+                "name": "selModel",
+                "type": "object"
+            },
+            "codeClass": "Ext.selection.RowModel",
+            "userConfig": {
+                "allowDeselect": false
+            },
+            "name": "MyRowSelectionModel6",
+            "designerId": "86eac274-aa63-4ee0-8f00-5152a7addef6"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "jabatan_tim_nama",
+                "designer|displayName": "Nama Kelompok",
+                "flex": 1,
+                "sortable": true,
+                "text": "Nama Kelompok",
+                "width": 300
+            },
+            "name": "MyColumn2",
+            "designerId": "83851bca-2932-404e-aeec-de6fb5168b0b",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var jml = record.get('jabatan_tim_jumlah')?record.get('jabatan_tim_jumlah'):0;",
+                            "",
+                            "return value +' <span class=\"alternative\">('+jml+')</span>';"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "fd3335b5-3012-434c-a272-fbec94fa8b68"
+                }
+            ]
+        },
+        {
+            "type": "Ext.toolbar.Paging",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "displayInfo": true,
+                "dock": "bottom",
+                "store": "Sipas.jabatan.tim.List",
+                "width": 360
+            },
+            "name": "MyPagingToolbar7",
+            "designerId": "70f1b65c-9e26-4f84-831f-d2f52a1c1eb7"
+        }
+    ]
+}

@@ -1,0 +1,120 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "sipas_klise_requirement_input_list",
+        "designer|userClassName": "Sipas.klise.requirement.input.List",
+        "height": null,
+        "store": "Sipas.klise.requirement.input.List",
+        "title": "Data Keterangan",
+        "width": null
+    },
+    "name": "MyGridPanel",
+    "designerId": "f67c269f-0f4a-4a77-9e4c-0cd095482236",
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "name",
+                "flex": 2,
+                "menuDisabled": true,
+                "sortable": false,
+                "text": "Data Keterangan",
+                "width": 140
+            },
+            "name": "MyColumn1",
+            "designerId": "06097c4f-a8cf-4ac0-8080-942cafcbbbe2",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(record.get('required')){",
+                            "    value = value + \"<span class='danger bold'>*</span>\";",
+                            "}",
+                            "return value;"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "7aaaadef-2ea2-470e-84e7-a08258eb93ff"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "value",
+                "flex": 3,
+                "menuDisabled": null,
+                "text": "Isi <span class=\"alternative\">(silahkan klik untuk mengisi)</span>"
+            },
+            "name": "MyColumn4",
+            "designerId": "3e5b8449-7fc6-4977-9806-ca3fd608e581",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyTextField2",
+                    "designerId": "27a67019-6611-431c-a644-7a8cbd6af0cf"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyGridView2",
+            "designerId": "582a9357-3975-4ff8-9755-f6f69b56a789"
+        },
+        {
+            "type": "Ext.grid.plugin.CellEditing",
+            "reference": {
+                "name": "plugins",
+                "type": "array"
+            },
+            "codeClass": "Ext.grid.plugin.CellEditing",
+            "userConfig": {
+                "clicksToEdit": 1,
+                "pluginId": "celleditor"
+            },
+            "name": "MyCellEditingPlugin",
+            "designerId": "69573ae2-12be-4550-8fbc-42cf745274ed"
+        }
+    ]
+}

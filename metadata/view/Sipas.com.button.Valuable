@@ -1,0 +1,120 @@
+{
+    "type": "Ext.button.Button",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": "sipas_com_button_valuable",
+        "designer|userAlias": "sipas_com_button_valuable",
+        "designer|userClassName": "Sipas.com.button.Valuable",
+        "itemId": null,
+        "margin": null,
+        "minWidth": 60,
+        "scale": null,
+        "text": null,
+        "valueTemplate": null
+    },
+    "designerId": "4a394dbd-0dc5-4438-a50c-00b17ceb5c83",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "valueTemplate",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "value",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "value"
+                ],
+                "fn": "setValue",
+                "implHandler": [
+                    "var me = this,",
+                    "    newValue = value,",
+                    "    oldValue = me.value;",
+                    "",
+                    "me.value = value;",
+                    "me.setText((new Ext.XTemplate(me.valueTemplate)).apply(value));",
+                    "",
+                    "me.fireEventArgs('valuechange', [me, newValue, oldValue]);"
+                ]
+            },
+            "name": "setValue",
+            "designerId": "d43c5741-c2e3-413a-9d74-cf7ab2f63085"
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "processSipascombuttonValuable",
+                "implHandler": [
+                    "var me = this;\r",
+                    "me.addEvents('valuechange');"
+                ]
+            },
+            "name": "processSipascombuttonValuable",
+            "designerId": "487de284-5dc8-46be-a8c0-c44f05a3bde7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getValue",
+                "implHandler": [
+                    "return this.value;"
+                ]
+            },
+            "name": "getValue",
+            "designerId": "e17cde27-4a61-4e0d-9e9e-ee6f838233c7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "template"
+                ],
+                "fn": "setValueTemplate",
+                "implHandler": [
+                    "this.valueTemplate = template;",
+                    "",
+                    "var me = this,",
+                    "    value = me.value;",
+                    "",
+                    "me.setText((new Ext.XTemplate(me.valueTemplate)).apply(value));"
+                ]
+            },
+            "name": "setValueTemplate",
+            "designerId": "83f0979f-4892-4892-b061-8fb6be02c075"
+        }
+    ]
+}

@@ -1,0 +1,169 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyBorder": false,
+        "bodyPadding": 10,
+        "border": false,
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_staf_tim_anggota_form",
+        "designer|userClassName": "Sipas.staf.tim.anggota.Form",
+        "layout": "vbox",
+        "title": "Anggota",
+        "useDetail": false,
+        "width": null
+    },
+    "name": "Sipas.pegawai.asistensi.Form1",
+    "designerId": "6bc9f04b-ef35-4bcf-9f44-2b0e950ca9fc",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "useDetail",
+            "type": "boolean"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "emptyText": "Masukkan nama kelompok",
+                "fieldLabel": "Nama Kelompok",
+                "itemId": null,
+                "labelAlign": null,
+                "labelWidth": 140,
+                "layout|flex": null,
+                "name": "staf_tim_nama",
+                "readOnly": true
+            },
+            "name": "MyTextField4",
+            "designerId": "a722f727-d375-4ec2-9f1c-a2bb0274d1a5",
+            "cn": [
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processStaf_tim_nama",
+                        "implHandler": [
+                            "if(!this.useDetail)",
+                            "{",
+                            "    return null;",
+                            "}",
+                            "return config;"
+                        ]
+                    },
+                    "name": "processStaf_tim_nama",
+                    "designerId": "d8caf66e-6092-4097-b979-2bc7d6db018a"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.field.Hidden",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "ID Kelompok",
+                "layout|flex": null,
+                "name": "staf_tim_id"
+            },
+            "name": "MyHiddenField",
+            "designerId": "2c1561c3-3f2b-4e21-8ff4-81eb69d88529"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "associated": true,
+                "border": null,
+                "layout|flex": 1
+            },
+            "name": "sipas.staf.tim.anggota.list",
+            "designerId": "11dabc2a-483d-4ae9-98ac-4a5d989cb336",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "associated",
+                    "type": "boolean"
+                }
+            ],
+            "masterInstanceId": "c6427990-bdec-441c-b040-83d8af6ca0e6"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": null,
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "container|pack": "end",
+                "designer|uiInterfaceName": "footer",
+                "dock": "bottom",
+                "itemId": null,
+                "layout": "hbox",
+                "layout|flex": 1,
+                "margin": null,
+                "ui": "footer"
+            },
+            "name": "MyContainer39",
+            "designerId": "577e89c7-953e-44b6-8e86-4c3a344b7d18",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|uiInterfaceName": "default",
+                        "layout|flex": null,
+                        "roleName": "staf_tim_insert",
+                        "roleable": true
+                    },
+                    "name": "sipas.com.button.save37",
+                    "designerId": "2734a84f-318a-477b-9b77-516b434f3844",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "feb6c6f9-7733-4b38-9254-091d0db2d3a9"
+                }
+            ]
+        }
+    ]
+}

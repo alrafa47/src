@@ -1,0 +1,96 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.pengaturan.surat.penomoran.legenda.List",
+        "storeId": "Sipas.pengaturan.surat.penomoran.legenda.List"
+    },
+    "name": "MyJsonStore",
+    "designerId": "b6eaa0d0-93de-4067-9f24-9d3aaef5dec9",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/pengaturan/get_surat_penomoran_legenda"
+            },
+            "name": "MyAjaxProxy7",
+            "designerId": "37e646e4-b1b0-43d7-b235-6acee72fd628",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader7",
+                    "designerId": "28c06681-cc89-4475-88d7-d5e27234750f"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "legend_name"
+            },
+            "name": "MyField214",
+            "designerId": "d02f021a-2823-4700-a61d-925e2df70e10"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "legend_code"
+            },
+            "name": "MyField368",
+            "designerId": "65088474-f0a3-4b6b-abfe-deb9e0278728"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "legend_group"
+            },
+            "name": "MyField1200",
+            "designerId": "65181fa0-9754-4a5a-9924-cf222d497df1"
+        },
+        {
+            "type": "Ext.util.Grouper",
+            "reference": {
+                "name": "groupers",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "legend_group"
+            },
+            "name": "MyGrouper",
+            "designerId": "d9ccb7f8-bfcf-4cfb-b9e5-5ed03fb503ce"
+        }
+    ]
+}

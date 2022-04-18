@@ -1,0 +1,61 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.internal.masuk.agenda.distribusi.jabatan.List",
+        "model": "Sipas.Jabatan",
+        "pageSize": 1000,
+        "remoteFilter": true,
+        "storeId": "Sipas.internal.masuk.agenda.distribusi.jabatan.List"
+    },
+    "name": "Sipas.disposisi.forward.penerima.List2",
+    "designerId": "691c6232-43cc-44bd-a370-63e69ae0b890",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat_stack/disposisi/tembusan"
+            },
+            "name": "MyAjaxProxy48",
+            "designerId": "a1cd4652-7044-4c0d-8691-eccbba8c665e",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader48",
+                    "designerId": "07811620-e49e-4d01-8ef8-1657d9c17d0e"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "staf_nama"
+            },
+            "name": "MySorter11",
+            "designerId": "a8bb599d-6d10-4676-9ac9-2e7147064f5c"
+        }
+    ]
+}

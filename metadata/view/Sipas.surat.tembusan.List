@@ -1,0 +1,435 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "border": false,
+        "designer|userAlias": "sipas_surat_tembusan_list",
+        "designer|userClassName": "Sipas.surat.tembusan.List",
+        "emptyText": "Tidak ada Data",
+        "hideHeaders": true,
+        "iconCls": null,
+        "overlapHeader": null,
+        "store": "Sipas.surat.tembusan.List",
+        "title": "Daftar Tembusan"
+    },
+    "name": "Sipas.surat.petikan.List1",
+    "designerId": "7c1e5c3c-3235-4d3c-bcac-ff2b01fed0e7",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "itemId": "toolbarProperties",
+                "ui": null
+            },
+            "name": "MyToolbar28",
+            "designerId": "2aabcb17-99ba-47f3-bc47-493a5fc4b571",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.TextItem",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": null,
+                        "itemId": "textTembusan",
+                        "layout|flex": null,
+                        "text": "<b style=\"color:#04408c\">Tembusan</b>"
+                    },
+                    "name": "MyTextItem",
+                    "designerId": "a68d6617-90ec-4ead-a2ce-b9f0139781c6"
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "MyFill6",
+                    "designerId": "c5191114-627a-4367-b073-c80cba8454b9"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "tambahPetikan",
+                        "layout|flex": null,
+                        "roleable": false
+                    },
+                    "name": "sipas.com.button.add1",
+                    "designerId": "631b1588-6c15-4091-bb29-8e0a5f9ca5e9",
+                    "masterInstanceId": "420a71a2-f0ab-4b83-bf9b-b7cf567d6c9f"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.RowNumberer",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "draggable": true,
+                "height": 25,
+                "lockable": true
+            },
+            "name": "MyRowNumberer",
+            "designerId": "b3e5a42b-e98f-4573-ae7e-9b66db198852"
+        },
+        {
+            "type": "Ext.grid.column.Action",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": null,
+                "defaultWidth": null,
+                "designer|displayName": "Delete",
+                "disabled": null,
+                "height": 25,
+                "itemId": "columnDelete",
+                "menuDisabled": true,
+                "width": 36
+            },
+            "name": "MyActionColumn",
+            "designerId": "216ad92e-f0fd-4c1d-86cc-1635407d42ac",
+            "cn": [
+                {
+                    "type": "actioncolumnitem",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "rundelete",
+                        "iconCls": "x-action-col-icon-bin",
+                        "tooltip": "Hapus"
+                    },
+                    "name": "MyActionColumnItem",
+                    "designerId": "aefad8e3-da25-4538-a5df-a5aeafd60305",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "return value;"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "ef3de83e-b23f-4947-8fbe-fe9f36ad99b0"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Action",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": null,
+                "defaultWidth": null,
+                "designer|displayName": "MoveUp",
+                "disabled": null,
+                "height": 25,
+                "itemId": "columnMoveUp",
+                "menuDisabled": true,
+                "width": 36
+            },
+            "name": "MyActionColumn1",
+            "designerId": "f7effb15-5e38-4766-a66f-00068bd00e33",
+            "cn": [
+                {
+                    "type": "actioncolumnitem",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "runmoveup",
+                        "iconCls": "x-action-col-icon-up",
+                        "tooltip": "Naikkan"
+                    },
+                    "name": "MyActionColumnItem",
+                    "designerId": "b3f8196d-7cec-4000-8df3-e55b6662bd72",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "return value;"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "44f40e61-a0ad-466e-9ad2-9bb7bb7c7a09"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Action",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": null,
+                "defaultWidth": null,
+                "designer|displayName": "MoveDown",
+                "disabled": null,
+                "height": 25,
+                "itemId": "columnMoveDown",
+                "menuDisabled": true,
+                "width": 36
+            },
+            "name": "MyActionColumn2",
+            "designerId": "29707ab5-f934-4e82-92b0-a82cde78185d",
+            "cn": [
+                {
+                    "type": "actioncolumnitem",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "runmovedown",
+                        "iconCls": "x-action-col-icon-down",
+                        "tooltip": "Turunkan"
+                    },
+                    "name": "MyActionColumnItem",
+                    "designerId": "34040a87-8235-4f47-b11b-f6c1949ca53c",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "return value;"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "df6441de-ba0e-4362-b635-c2052c42a0ed"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "staf_nama",
+                "flex": 1,
+                "height": 25,
+                "items": null,
+                "menuDisabled": true,
+                "sortable": false,
+                "text": "Nama Petikan",
+                "width": 250
+            },
+            "name": "MyColumn25",
+            "configAlternates": {
+                "items": "object"
+            },
+            "designerId": "e9844add-6c92-4afe-aa5f-53b112b80c80",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyGridView1",
+            "designerId": "f82c585d-5755-4a5d-aef2-e000fa82f5c2",
+            "cn": [
+                {
+                    "type": "Ext.grid.plugin.DragDrop",
+                    "reference": {
+                        "name": "plugins",
+                        "type": "array"
+                    },
+                    "codeClass": "Ext.grid.plugin.DragDrop",
+                    "userConfig": {
+                        "ddGroup": "aps_filetype_requirement_list_dd",
+                        "dragGroup": "aps_filetype_requirement_list_drag",
+                        "dropGroup": "aps_filetype_requirement_list_drop",
+                        "pluginId": "dragdrop"
+                    },
+                    "name": "MyGridDragDropPlugin",
+                    "designerId": "7497db16-776e-40e4-b83c-2ad98324f567"
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "value",
+                    "aktif"
+                ],
+                "fn": "genAktif",
+                "implHandler": [
+                    "if(!aktif){",
+                    "    return '<span style=\"color:#9E9E9E;\">'+value+'</span>';",
+                    "}else{",
+                    "    return value;",
+                    "}"
+                ]
+            },
+            "name": "genAktif",
+            "designerId": "a6e11952-7346-435d-ac76-342bec814594"
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "bottom",
+                "hidden": true,
+                "itemId": "toolbarRiwayat"
+            },
+            "name": "MyToolbar2",
+            "designerId": "27d93a8a-9ef3-4f9d-9f52-ac9b5d9bf162",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "MyFill2",
+                    "designerId": "30b8ad65-32cc-4dae-9b42-f3944fa60823"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": null,
+                        "itemId": "btnRiwayatpersetujuan",
+                        "layout|flex": null,
+                        "text": "Riwayat persetujuan"
+                    },
+                    "name": "MyButton6",
+                    "designerId": "ed143c4d-0c08-4301-b755-fbafedfbf460"
+                }
+            ]
+        }
+    ]
+}

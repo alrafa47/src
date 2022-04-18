@@ -1,0 +1,59 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "sipas_korespondensi_instansi_combo",
+        "designer|userClassName": "Sipas.korespondensi.instansi.Combo",
+        "model": "Sipas.Korespondensi",
+        "storeId": "Sipas.korespondensi.instansi.Combo"
+    },
+    "name": "MyJsonStore",
+    "designerId": "9fd7f870-aad0-41a5-be61-7642d1eef808",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/korespondensi/read/combo"
+            },
+            "name": "MyAjaxProxy8",
+            "designerId": "1c8a7b6b-b2f5-4440-968b-f3084ab5dbbe",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader7",
+                    "designerId": "249da95b-1ddd-4c4d-a556-e58b4e0407c0"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "korespondensi_pengirim"
+            },
+            "name": "MySorter",
+            "designerId": "2499e3b7-99ff-4368-84ab-af274bf47188"
+        }
+    ]
+}

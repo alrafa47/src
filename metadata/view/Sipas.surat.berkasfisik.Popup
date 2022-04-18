@@ -1,0 +1,179 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "sipas_surat_berkasfisik_popup",
+        "designer|userClassName": "Sipas.surat.berkasfisik.Popup",
+        "height": 500,
+        "languageCode": "disposisi_masuk_request_berkas_popup",
+        "languageMode": "title",
+        "languageable": true,
+        "layout": "fit",
+        "maximizable": true,
+        "maximized": null,
+        "modal": true,
+        "title": "Permintaan Berkas Fisik",
+        "width": 600
+    },
+    "name": "Sipas.surat.penerima.tembusan.Popup1",
+    "configAlternates": {
+        "languageable": "boolean"
+    },
+    "designerId": "0c22e52d-8e6c-4b79-8da9-dabfa188c70b",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "languageable",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageCode",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageMode",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "allowDeselect": null,
+                "autoScroll": true,
+                "bodyBorder": false,
+                "border": null,
+                "disableSelection": true,
+                "emptyText": "Tidak ada Data",
+                "frameHeader": null,
+                "header": false,
+                "height": null,
+                "hideHeaders": null,
+                "id": null,
+                "itemId": "list",
+                "margin": null,
+                "maxHeight": null,
+                "padding": null,
+                "store": "Sipas.surat.berkasfisik.Popup",
+                "title": null
+            },
+            "name": "Sipas.disposisi.forward.penerima.List1",
+            "designerId": "d7012efa-55e6-45a2-8ee5-5768ff94d1a4",
+            "cn": [
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "disposisi_masuk_penerima_nama",
+                        "flex": 2,
+                        "maxWidth": null,
+                        "menuDisabled": true,
+                        "minWidth": null,
+                        "sortable": false,
+                        "text": "Pemohon Berkas Fisik",
+                        "width": null
+                    },
+                    "name": "MyColumn8",
+                    "designerId": "760654c0-0588-48db-b54c-7de1146ab73c",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "var modelStaf = Ext.ModelManager.getModel('SIPAS.model.Sipas.Staf'),",
+                                    "    modelJabatan = Ext.ModelManager.getModel('SIPAS.model.Sipas.Jabatan'),",
+                                    "    id = record.get('disposisi_masuk_penerima_id'),",
+                                    "    nama = record.get('disposisi_masuk_penerima_nama'),",
+                                    "    jabatan = record.get('disposisi_masuk_penerima_jabatan_nama'),",
+                                    "    unit = record.get('disposisi_masuk_penerima_unit_nama'),",
+                                    "    pelaku = record.get('berkas_id'),",
+                                    "    pelaku_nama = record.get('berkas_nama'),",
+                                    "    via_asistensi = '',",
+                                    "    jabatan_penerima = record.get('disposisi_masuk_jabatan') ? record.get('disposisi_masuk_jabatan') : '(Tidak Ada Jabatan)',",
+                                    "    berkas_jabatan_id = record.get('berkas_jabatan_id') ? record.get('berkas_jabatan_id') : '(Tidak Ada Jabatan)';",
+                                    "",
+                                    "if(record.get('disposisi_masuk_jabatan')){",
+                                    "    tpl = modelJabatan.renderJabatanAdditional(jabatan_penerima, record.get('jabatan_penerima_nama'), null);",
+                                    "}else{",
+                                    "    tpl = modelStaf.renderPegawaiList(id, nama, jabatan, unit);",
+                                    "}",
+                                    "",
+                                    "if((id != pelaku) && record.get('disposisi_induk')){",
+                                    "    via_asistensi = '<div class=\"supporttext supporttext-dark margin-bottom-8 margin-left-40\">Via asistensi oleh <span class=\"bold\">'+pelaku_nama+'</span></div>';",
+                                    "}else if(!record.get('disposisi_induk') && (jabatan_penerima != berkas_jabatan_id)){",
+                                    "    via_asistensi = '<div class=\"supporttext supporttext-dark margin-bottom-8 margin-left-40\">Via asistensi oleh <span class=\"bold\">'+pelaku_nama+'</span></div>';",
+                                    "}",
+                                    "",
+                                    "return '<div class=\"margin-left-8\">'+tpl+via_asistensi+'</div>';"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "a524f587-21ed-40d6-864a-796154edd054"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "disposisi_masuk_berkas_status",
+                        "flex": 1,
+                        "itemId": "status",
+                        "maxWidth": null,
+                        "menuDisabled": true,
+                        "minWidth": null,
+                        "sortable": false,
+                        "text": "Status",
+                        "width": null
+                    },
+                    "name": "MyColumn1",
+                    "designerId": "5decd331-60f5-4bd2-85c2-6b6326de150b"
+                },
+                {
+                    "type": "Ext.grid.View",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyGridView14",
+                    "designerId": "178b8b6a-4704-4a1d-aea8-42656ef223f3"
+                }
+            ]
+        }
+    ]
+}

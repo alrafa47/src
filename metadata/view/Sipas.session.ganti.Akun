@@ -1,0 +1,134 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoScroll": true,
+        "designer|userAlias": "sipas_session_ganti_akun",
+        "designer|userClassName": "Sipas.session.ganti.Akun",
+        "height": 300,
+        "languageCode": "user_pindah_akun",
+        "languageMode": "title",
+        "languageable": true,
+        "modal": true,
+        "title": "Ganti Akun",
+        "width": 450
+    },
+    "name": "MyWindow",
+    "designerId": "52818cc6-4e1b-417b-b7b3-99ddd5de9f9c",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "languageable",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageMode",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageCode",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "clickToView": true,
+                "header": false,
+                "hideHeaders": true,
+                "sortableColumns": false,
+                "store": "Sipas.session.Akun",
+                "title": null
+            },
+            "name": "MyGridPanel",
+            "designerId": "3b3ae55e-cd9c-48dc-a288-5bf65c35cd27",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "clickToView",
+                    "type": "boolean"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "staf_id",
+                        "flex": 1,
+                        "text": null
+                    },
+                    "name": "MyColumn",
+                    "designerId": "ca134837-9dd7-44c3-9d41-11c3f4bc8248",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "var jabatan = record.get('jabatan_nama') ? record.get('jabatan_nama') : '(Tidak ada jabatan)',",
+                                    "    unit = record.get('unit_nama') ? record.get('unit_nama') : '(Tidak ada unit)';",
+                                    "",
+                                    "if(record.get('isAktif')){",
+                                    "    val = \"<div class='margin-left-8'><div class='cell-row'><div class='cell-visual cell-visual-left'>\"+",
+                                    "    \"<img src='\"+record.get('staf_preview')+\"' class='img img-circle img-32'>\"+",
+                                    "    \"</div><div class='cell-text bold'><div class='subtext ellipsis'>\"+record.get('staf_nama')+\"</div><div class='supporttext supporttext-dark ellipsis'>\"+jabatan+\" - \"+unit+\"</div><div class='subtext ellipsis'><span class= 'badge badge-light bg-green-100-i margin-right-8'><span class='green-700'>aktif</span></span></div></div>\"+",
+                                    "    \"</div></div>\";",
+                                    "}else{",
+                                    "    val = \"<div class='margin-left-8'><div class='cell-row'><div class='cell-visual cell-visual-left'>\"+",
+                                    "    \"<img src='\"+record.get('staf_preview')+\"' class='img img-circle img-32'>\"+",
+                                    "    \"</div><div class='cell-text'><div class='subtext ellipsis'>\"+record.get('staf_nama')+\"</div><div class='supporttext supporttext-dark ellipsis'>\"+jabatan+\" - \"+unit+\"</div></div>\"+",
+                                    "    \"</div></div>\";",
+                                    "}",
+                                    "return val;"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "e00f44d4-cca0-4e07-a3ad-7d076baf9d39"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.View",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyGridView",
+                    "designerId": "16747bf1-26a2-4a6d-86b6-e68b19dd5aaa"
+                }
+            ]
+        }
+    ]
+}

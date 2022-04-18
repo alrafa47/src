@@ -1,0 +1,1511 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "allowDeselect": null,
+        "columnLines": false,
+        "designer|userAlias": "sipas_surat_penerima_keputusan_list",
+        "designer|userClassName": "Sipas.surat.penerima.keputusan.List",
+        "disableSelection": true,
+        "emptyText": "Tidak ada Data",
+        "enableColumnHide": null,
+        "header": false,
+        "hideHeaders": null,
+        "rowLines": null,
+        "store": "Sipas.surat.penerima.keputusan.List",
+        "title": "Daftar Penerima"
+    },
+    "name": "Sipas.session.profile.editor.pgs.List1",
+    "designerId": "534d97f2-fd91-4ca4-9058-f3b3da488239",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "designer|displayName": "action",
+                "dock": "top",
+                "itemId": "toolbarAction"
+            },
+            "name": "MyToolbar4",
+            "designerId": "3bb8aa40-15fd-44b8-8584-757ff0105a9a",
+            "cn": [
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "anyMatch": true,
+                        "cls": "x-field-search bold",
+                        "displayField": "staf_nama",
+                        "editable": null,
+                        "emptyText": "Tambah staf penerima",
+                        "enableKeyEvents": true,
+                        "enforceMaxLength": true,
+                        "featureName": null,
+                        "featureable": null,
+                        "forceSelection": true,
+                        "hideLabel": null,
+                        "hideTrigger": true,
+                        "itemId": "fieldSearch",
+                        "layout|flex": 1,
+                        "minChars": 1,
+                        "pageSize": null,
+                        "queryMode": "local",
+                        "roleName": null,
+                        "roleable": null,
+                        "selectOnFocus": null,
+                        "store": "Sipas.surat.penerima.keputusan.list.Combo",
+                        "submitValue": null,
+                        "typeAhead": null,
+                        "validateOnChange": null,
+                        "valueField": "staf_id",
+                        "valueNotFoundText": null,
+                        "width": "100%"
+                    },
+                    "name": "MyComboBox",
+                    "configAlternates": {
+                        "featureable": "boolean",
+                        "roleable": "boolean"
+                    },
+                    "designerId": "d6e26cae-1944-4cda-aa38-8eed7c52591c",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.view.BoundList",
+                            "reference": {
+                                "name": "listConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "emptyText": "Pencarian tidak ditemukan",
+                                "itemSelector": "div"
+                            },
+                            "name": "MyBoundList",
+                            "designerId": "b7d9b4d1-5c1f-41f0-b6e1-8e2d7d969c22",
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "{staf_nama} <span class=\"alternative\">({unit_nama})</span>"
+                                        ]
+                                    },
+                                    "name": "itemTpl",
+                                    "designerId": "2b5adc76-b15d-4b35-b147-fedf4b40862c"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": null,
+                        "featureName": null,
+                        "featureable": null,
+                        "iconCls": null,
+                        "itemId": "buttonManual",
+                        "layout|flex": null,
+                        "roleName": null,
+                        "roleable": null,
+                        "text": "Pilih Manual"
+                    },
+                    "name": "MyButton15",
+                    "configAlternates": {
+                        "featureable": "boolean",
+                        "roleable": "boolean"
+                    },
+                    "designerId": "3d1e7631-580e-4e7d-bffe-63a4f9d32ec6",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": true,
+                        "layout|flex": null
+                    },
+                    "name": "MyFill2",
+                    "designerId": "3762c874-34c3-4497-947f-7aab42817c2d"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "text": "Export"
+                    },
+                    "name": "sipas.com.button.download5",
+                    "designerId": "17d66fa2-797f-42bf-baea-bc47803905f3",
+                    "masterInstanceId": "57671838-a3d0-4dd9-89fa-8be31c5e1c88"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "text": "Import"
+                    },
+                    "name": "sipas.com.button.upload",
+                    "designerId": "6592e12e-58db-45c0-a6bc-23b44e53cdd0",
+                    "masterInstanceId": "542ae760-4f5f-42d8-9c6a-77dc789d93d5"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Action",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": "center",
+                "featureName": null,
+                "featureable": null,
+                "itemId": "columnDelete",
+                "lockable": null,
+                "locked": null,
+                "menuDisabled": true,
+                "roleName": null,
+                "roleable": null,
+                "width": 36
+            },
+            "name": "MyActionColumn",
+            "configAlternates": {
+                "featureable": "boolean",
+                "roleable": "boolean"
+            },
+            "designerId": "9c35851b-6a45-431c-841a-7b152b4cec00",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureable",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureName",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "roleable",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "roleName",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "actioncolumnitem",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "rundelete",
+                        "iconCls": "x-action-col-icon-bin"
+                    },
+                    "name": "MyActionColumnItem",
+                    "designerId": "39356a80-6888-4957-8245-e890b1f99def",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var popupView = view.up('sipas_surat_penerima_keputusan_popup');",
+                            "if(popupView.mode === 'view' || popupView.mode === 'ubah' || popupView.mode === 'bank') {",
+                            "    metaData.style = 'display: none';",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "ea141470-40f5-4613-9f66-2c22c4dfaa2e"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "staf_nama",
+                "filterable": null,
+                "flex": null,
+                "height": 25,
+                "itemId": "namaPegawai",
+                "items": null,
+                "lockable": null,
+                "locked": null,
+                "sortable": null,
+                "text": "Nama Pegawai",
+                "width": 250
+            },
+            "name": "MyColumn9",
+            "configAlternates": {
+                "items": "object"
+            },
+            "designerId": "f4f189e0-f8c3-4397-a80b-c5aa6081fa04",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var tpl = this.dataTpl || (",
+                            "    this.tpl =",
+                            "    \"<div class='cell-row'><div class='cell-visual cell-visual-left'>\"+",
+                            "    \"<img src='server.php/sipas/staf/get_image/foto?id={staf_id}' class='img img-16 img-circle'>\"+",
+                            "    \"</div><div class='cell-text'><div class='subtext ellipsis'>{staf_nama}</div></div>\"+",
+                            "    \"</div>\"",
+                            ");",
+                            "return (new Ext.Template(tpl)).apply(record.getData());"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "d9ffe20a-c888-4bac-9891-e36a4cd597ef"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "staf_kode",
+                "filterable": true,
+                "height": 25,
+                "itemId": "nip",
+                "items": null,
+                "lockable": null,
+                "locked": null,
+                "sortable": null,
+                "text": "NIP"
+            },
+            "name": "MyColumn12",
+            "configAlternates": {
+                "filters": "object",
+                "filter": "object",
+                "items": "object"
+            },
+            "designerId": "023daf5a-6bc7-4870-ac1f-1276b565c60a",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "",
+                            "if (!value){",
+                            "    return \"<span class='alternative'>-</span>\";",
+                            "}else{",
+                            "    return value;",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "54c97780-1f6b-4a21-b284-f6bbd0277f50"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "jabatan_lama_nama",
+                "featureName": "jabatan",
+                "featureable": true,
+                "filterable": null,
+                "height": 25,
+                "itemId": "jabatanLama",
+                "items": null,
+                "lockable": null,
+                "margin": "0 0 0 5",
+                "sortable": null,
+                "text": "Jabatan Lama",
+                "width": 170
+            },
+            "name": "MyColumn15",
+            "configAlternates": {
+                "items": "object"
+            },
+            "designerId": "e4fa66ec-14aa-42ef-9b70-7c6841eefc17",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureName",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(value){",
+                            "    return value;",
+                            "}else{",
+                            "    return \"<span class='alternative'>-</span>\";",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "79ff6d56-9139-4ae9-a84a-a06d886c83bb"
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "anyMatch": true,
+                        "displayField": "jabatan_nama",
+                        "emptyText": "Pilih jabatan",
+                        "featurName": null,
+                        "featureName": "jabatan",
+                        "featureable": true,
+                        "matchFieldWidth": false,
+                        "minChars": 2,
+                        "pageSize": 15,
+                        "store": "Sipas.jabatan.Combo",
+                        "typeAhead": true,
+                        "valueField": "jabatan_nama"
+                    },
+                    "name": "MyComboBox2",
+                    "configAlternates": {
+                        "featureable": "boolean"
+                    },
+                    "designerId": "93b6b214-88e5-4a57-8697-306b6f694cee",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featurName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "jabatan_baru_nama",
+                "featureName": "jabatan",
+                "featureable": false,
+                "filterable": null,
+                "height": 25,
+                "itemId": "jabatanBaru",
+                "items": null,
+                "sortable": null,
+                "text": "Jabatan Baru",
+                "width": 170
+            },
+            "name": "MyColumn16",
+            "configAlternates": {
+                "items": "object"
+            },
+            "designerId": "bc18dd56-f716-4b31-af93-85a25171f914",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureName",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(value){",
+                            "    return value;",
+                            "}else{",
+                            "    return \"<span class='alternative'>-</span>\";",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "bd14aa8b-f577-4516-80c9-7c2a78dd5ca3"
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "anyMatch": true,
+                        "associated": null,
+                        "displayField": "jabatan_nama",
+                        "emptyText": "Pilih jabatan baru",
+                        "featureName": "jabatan",
+                        "featureable": true,
+                        "featurename": null,
+                        "forceSelection": null,
+                        "itemId": null,
+                        "labelWidth": null,
+                        "matchFieldWidth": false,
+                        "minChars": 2,
+                        "minWidth": null,
+                        "name": null,
+                        "pageSize": 15,
+                        "store": "Sipas.jabatan.Combo",
+                        "typeAhead": true,
+                        "valueField": "jabatan_nama",
+                        "width": null
+                    },
+                    "name": "MyComboBox3",
+                    "configAlternates": {
+                        "featureable": "boolean",
+                        "associated": "boolean"
+                    },
+                    "designerId": "595582af-8ebb-4218-91b7-8935b2c3a78a",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featurename",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "associated",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": "center",
+                "dataIndex": "golongan_lama_level",
+                "featureName": null,
+                "featureable": null,
+                "filterable": null,
+                "height": 25,
+                "itemId": "golLama",
+                "items": null,
+                "sortable": null,
+                "text": "Gol Lama",
+                "width": 60
+            },
+            "name": "MyColumn14",
+            "configAlternates": {
+                "items": "object"
+            },
+            "designerId": "672aef70-e8d8-4ae2-b984-f7493f3188ea",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureName",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureable",
+                    "type": "boolean"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(value){",
+                            "    return value;",
+                            "}else{",
+                            "    return \"<span class='alternative'>-</span>\";",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "cbc707c3-d280-4e9f-a1fa-edae8215fb23"
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayField": "golongan_level",
+                        "emptyText": "-",
+                        "name": null,
+                        "store": "Sipas.golongan.Combo",
+                        "typeAhead": true,
+                        "valueField": "golongan_level"
+                    },
+                    "name": "MyComboBox11",
+                    "designerId": "768064ff-bdb1-4cfd-a827-6f3cff8c60ab"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": "center",
+                "dataIndex": "golongan_baru_level",
+                "featureName": null,
+                "featureable": null,
+                "filterable": null,
+                "height": 25,
+                "itemId": "golBaru",
+                "items": null,
+                "sortable": null,
+                "text": "Gol Baru",
+                "width": 60
+            },
+            "name": "MyColumn1",
+            "configAlternates": {
+                "items": "object"
+            },
+            "designerId": "47909554-b49e-46d8-9c83-3cfcb581ab69",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureName",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureable",
+                    "type": "boolean"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(value){",
+                            "    return value;",
+                            "}else{",
+                            "    return \"<span class='alternative'>-</span>\";",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "de230a32-c6dc-463d-92eb-198befcabb9e"
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayField": "golongan_level",
+                        "emptyText": "-",
+                        "name": null,
+                        "store": "Sipas.golongan.Combo",
+                        "typeAhead": true,
+                        "valueField": "golongan_level"
+                    },
+                    "name": "MyComboBox14",
+                    "designerId": "a52b3b4e-866b-4e3f-98ac-bf31af547c5d"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": "center",
+                "dataIndex": "surat_penerimask_sglama",
+                "filterable": null,
+                "flex": null,
+                "height": 25,
+                "itemId": "sgLama",
+                "items": null,
+                "sortable": null,
+                "text": "SGT  Lama",
+                "width": 67
+            },
+            "name": "MyColumn17",
+            "configAlternates": {
+                "items": "object",
+                "filterField": "object"
+            },
+            "designerId": "6f86220f-8e9f-40a3-b5ae-4306a04a017e",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(value){",
+                            "    return value;",
+                            "}else{",
+                            "    return \"<span class='alternative'>-</span>\";",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "977595d5-b6a1-45c4-bcbf-ba14425c6363"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyTextField12",
+                    "designerId": "b8082d14-0248-4b75-8644-937c92319b07"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": "center",
+                "dataIndex": "surat_penerimask_sgbaru",
+                "filterable": null,
+                "flex": null,
+                "height": 25,
+                "itemId": "sgBaru",
+                "items": null,
+                "sortable": null,
+                "text": "SGT Baru",
+                "width": 67
+            },
+            "name": "MyColumn20",
+            "configAlternates": {
+                "items": "object",
+                "filterField": "object"
+            },
+            "designerId": "37c1481f-633c-4b8d-969f-fd8428f7e648",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(value){",
+                            "    return value;",
+                            "}else{",
+                            "    return \"<span class='alternative'>-</span>\";",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "3e3e607e-29f4-4370-827c-9583f5c0e022"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyTextField10",
+                    "designerId": "7906197b-1c5e-4f73-a431-3ae527892e1e"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": "center",
+                "dataIndex": "surat_penerimask_gplama",
+                "emptyCellText": null,
+                "format": "0,000",
+                "height": 25,
+                "itemId": "gpLama",
+                "text": "Gaji Pokok Lama",
+                "width": 110
+            },
+            "name": "MyNumberColumn",
+            "designerId": "489c85a3-3e6d-4985-ade8-13c0c587495c",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "editRenderer",
+                        "implHandler": [
+                            "if(value){",
+                            "    return value;",
+                            "}else{",
+                            "    return \"<span class='alternative'>-</span>\";",
+                            "}"
+                        ]
+                    },
+                    "name": "editRenderer",
+                    "designerId": "8cfd850f-7bbe-4e5a-a355-3b2feabb3909"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyTextField2",
+                    "designerId": "3e4bb4a1-5ebe-42fd-8c95-c6ac3ea16898"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": "center",
+                "dataIndex": "surat_penerimask_gpbaru",
+                "emptyCellText": null,
+                "format": "0,000",
+                "height": 25,
+                "itemId": "gpBaru",
+                "text": "Gaji Pokok Baru",
+                "width": 100
+            },
+            "name": "MyNumberColumn1",
+            "designerId": "74acf6a9-6fb8-433e-829f-dd001e5d8d19",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "editRenderer",
+                        "implHandler": [
+                            "if(value){",
+                            "    return value;",
+                            "}else{",
+                            "    return \"<span class='alternative'>-</span>\";",
+                            "}"
+                        ]
+                    },
+                    "name": "editRenderer",
+                    "designerId": "39eb8b74-eb99-4e0b-ac4b-dae9e5d9729d"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyTextField11",
+                    "designerId": "8fe28bfe-d424-48f5-96c4-453ee09c9e79"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Date",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "surat_penerimask_tmt",
+                "format": "d M Y",
+                "height": 25,
+                "itemId": "tmtLama",
+                "text": "TMT Lama",
+                "width": 150
+            },
+            "name": "MyDateColumn",
+            "designerId": "d58748a7-198f-42fd-a7a9-13c3d83d87a5",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Date",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "editable": false,
+                        "format": "d M Y",
+                        "name": "surat_penerimask_tmt",
+                        "submitFormat": "d M Y"
+                    },
+                    "name": "MyDateField6",
+                    "designerId": "e36756c6-b419-44c4-80b5-f49c4121d7dc"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "surat_penerimask_jenjang_jabatan_lama",
+                "filterable": null,
+                "flex": null,
+                "height": 25,
+                "itemId": "jenjangLama",
+                "items": null,
+                "sortable": null,
+                "text": "Jenjang Lama",
+                "width": 150
+            },
+            "name": "MyColumn11",
+            "configAlternates": {
+                "items": "object",
+                "filterField": "object"
+            },
+            "designerId": "516201ae-26f4-4efb-a553-804073ad91fb",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(value){",
+                            "    return value;",
+                            "}else{",
+                            "    return \"<span class='alternative'>-</span>\";",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "f0c34ebc-4f2a-4377-bbd6-052fa4a42bdb"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyTextField12",
+                    "designerId": "d3ff4dce-28a6-4df3-9c2d-2042280e8da1"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "surat_penerimask_jenjang_jabatan_baru",
+                "filter": null,
+                "filterable": null,
+                "height": 25,
+                "hidden": null,
+                "itemId": "jenjangBaru",
+                "text": "Jenjang Baru",
+                "width": 150
+            },
+            "name": "MyColumn18",
+            "configAlternates": {
+                "filterable": "boolean",
+                "filter": "object"
+            },
+            "designerId": "15161d8f-5d93-4621-bf2b-f25cd423bead",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filter",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(value){",
+                            "    return value;",
+                            "}else{",
+                            "    return \"<span class='alternative'>-</span>\";",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "977affc3-defe-42ac-82bc-e927b15791f7"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "width": null
+                    },
+                    "name": "MyTextField13",
+                    "designerId": "43a566f0-955c-49c6-a41d-b72b30d203f2"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "surat_penerimask_keterangan",
+                "filter": null,
+                "filterable": null,
+                "height": 25,
+                "hidden": null,
+                "itemId": "keterangan",
+                "text": "Keterangan",
+                "width": 300
+            },
+            "name": "MyColumn19",
+            "configAlternates": {
+                "filterable": "boolean",
+                "filter": "object"
+            },
+            "designerId": "107fdb63-effa-42c5-849a-ab2df5388a70",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filter",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(value){",
+                            "    return value;",
+                            "}else{",
+                            "    return \"<span class='alternative'>-</span>\";",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "7c2347a8-66e4-4ba1-bea4-450deb27bba9"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyTextField14",
+                    "designerId": "3e485b1f-1b32-4096-b68f-221d65792547"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "emptyText": "Tidak Ada Data",
+                "loadMask": [
+                    "false"
+                ]
+            },
+            "name": "MyGridView",
+            "designerId": "11f33f38-d914-4c5b-9825-84464f7e4389"
+        },
+        {
+            "type": "Ext.grid.plugin.RowEditing",
+            "reference": {
+                "name": "plugins",
+                "type": "array"
+            },
+            "codeClass": "Ext.grid.plugin.RowEditing",
+            "userConfig": {
+                "clicksToEdit": null,
+                "pluginId": "rowEditorWakil"
+            },
+            "name": "MyRowEditingPlugin1",
+            "designerId": "ef48bc9f-225b-435f-bf9f-a8da674b8683"
+        }
+    ]
+}

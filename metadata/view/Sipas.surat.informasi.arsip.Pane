@@ -1,0 +1,131 @@
+{
+    "type": "Ext.form.FieldSet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "border": false,
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_surat_informasi_arsip_pane",
+        "designer|userClassName": "Sipas.surat.informasi.arsip.Pane",
+        "itemId": "textArsipSurat",
+        "layout": "vbox",
+        "padding": 0,
+        "title": null,
+        "width": null
+    },
+    "name": "Sipas.surat.informasi.musnah.Pane1",
+    "designerId": "74fbc365-fafc-49c4-9fa0-510e2484c039",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "constructor",
+                "implHandler": [
+                    "this.callParent(arguments);",
+                    "    return Ext.applyIf(this,{",
+                    "        form: new Ext.form.Basic(this)",
+                    "});"
+                ]
+            },
+            "name": "constructor",
+            "designerId": "0a26d1c3-b751-4eb2-9554-37e37dd728ad"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": "suratImage",
+                "height": 48,
+                "hidden": true,
+                "itemId": "suratImage",
+                "margin": "0 5 0 0",
+                "padding": null,
+                "width": 48
+            },
+            "name": "MyContainer13",
+            "designerId": "9c302357-8588-48e9-9fbf-88e0f7054901",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onSuratImageRender",
+                        "implHandler": [
+                            "Ext.create('Ext.tip.ToolTip',{",
+                            "    target: component.getEl(),",
+                            "    html: 'Keterangan Surat'",
+                            "});"
+                        ],
+                        "name": "render",
+                        "scope": "me"
+                    },
+                    "name": "onSuratImageRender",
+                    "designerId": "fee56200-9782-4348-9438-e31199c2de66"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "container|pack": "center",
+                "itemId": "containerArsip",
+                "layout": "vbox",
+                "layout|flex": 1
+            },
+            "name": "MyContainer12",
+            "designerId": "37fa55a8-1e4c-462c-a2e0-25f570d0c2ee",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabledCls": "disabled",
+                        "fieldLabel": null,
+                        "fieldStyle": "display:flex",
+                        "id": null,
+                        "itemId": "textArsip",
+                        "labelAlign": null,
+                        "labelClsExtra": "f11",
+                        "labelSeparator": "&nbsp;",
+                        "labelStyle": "color:gray;",
+                        "labelWidth": null,
+                        "layout|flex": null,
+                        "layout|margins": null,
+                        "maxWidth": 400,
+                        "name": null,
+                        "value": "Surat telah diarsipkan",
+                        "width": 400
+                    },
+                    "name": "MyDisplayField5",
+                    "designerId": "f4e0d531-90d9-4a77-a341-cff97a6c41e4"
+                }
+            ]
+        }
+    ]
+}

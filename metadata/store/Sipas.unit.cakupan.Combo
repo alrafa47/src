@@ -1,0 +1,63 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.unit.cakupan.Combo",
+        "model": "Sipas.Unit",
+        "pageSize": null,
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.unit.cakupan.Combo"
+    },
+    "name": "Sipas.unit.Combo2",
+    "designerId": "07786816-5ba8-481f-ac02-4fc57fc87464",
+    "cn": [
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "unit_nama"
+            },
+            "name": "MySorter3",
+            "designerId": "715c4fc3-9c2d-4da5-947d-84a8974ac75f"
+        },
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/unit/aktif"
+            },
+            "name": "MyAjaxProxy23",
+            "designerId": "936271b6-0c20-43cf-ab78-299241cd7d50",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader22",
+                    "designerId": "2275aedb-2b94-4215-8a78-183d0ef42288"
+                }
+            ]
+        }
+    ]
+}

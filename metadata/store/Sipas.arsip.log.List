@@ -1,0 +1,65 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "defaultSortDirection": "DESC",
+        "designer|userClassName": "Sipas.arsip.log.List",
+        "model": "Sipas.Dokumen",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": null,
+        "sortRoot": "properti_buat_tgl",
+        "storeId": "Sipas.arsip.log.List"
+    },
+    "name": "MyJsonStore",
+    "designerId": "5ca54872-d83e-4d66-a194-a1b628b8b762",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/dokumen_log/read/trace"
+            },
+            "name": "MyAjaxProxy12",
+            "designerId": "fc5bb5f0-7e04-4c51-936a-aa250861127f",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader13",
+                    "designerId": "87c49b21-9317-4bea-b2e7-1a70338c88be"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "dokumen_buat_tgl"
+            },
+            "name": "MySorter25",
+            "designerId": "acd70c2c-3036-44f6-8811-0de1565cf701"
+        }
+    ]
+}

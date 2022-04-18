@@ -1,0 +1,64 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.internal.masuk.agenda.list.unapproved.semua.List",
+        "model": "Sipas.Surat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.internal.masuk.agenda.list.unapproved.semua.List"
+    },
+    "name": "Sipas.internal.masuk.agenda.list.aktif.List1",
+    "designerId": "dd6313a8-193d-4709-a746-6705053e3a95",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat_imasuk/unapproved/"
+            },
+            "name": "MyAjaxProxy42",
+            "designerId": "6e56ee65-60a9-4506-96d7-508c2246debc",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "record": null,
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader42",
+                    "designerId": "729024c3-5771-48ae-b1dd-41465a53c637"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_tanggal"
+            },
+            "name": "MySorter4",
+            "designerId": "9f970fc5-4440-4c95-ad94-9680a534346f"
+        }
+    ]
+}

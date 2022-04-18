@@ -1,0 +1,435 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyBorder": null,
+        "bodyPadding": null,
+        "border": null,
+        "cls": "sipas_surat_informasi_pane",
+        "container|align": "stretch",
+        "container|padding": null,
+        "designer|userAlias": "sipas_surat_informasi_pane",
+        "designer|userClassName": "Sipas.surat.informasi.Pane",
+        "header": false,
+        "height": null,
+        "iconCls": null,
+        "id": null,
+        "itemId": null,
+        "layout": "vbox",
+        "padding": null,
+        "title": null
+    },
+    "name": "MyPanel",
+    "designerId": "dfe246bc-563f-4f1d-9b26-572c0823837c",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "associated": true,
+                "cls": null,
+                "dock": "top",
+                "html": null,
+                "itemId": "toolbarStatusSurat",
+                "layout|flex": 1,
+                "margin": "0 0 8 0",
+                "style": null
+            },
+            "name": "MyToolbar",
+            "configAlternates": {
+                "style": "string",
+                "html": "string",
+                "associated": "boolean"
+            },
+            "designerId": "11460405-68b1-4266-97b4-038929e36754",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "associated",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": null,
+                        "itemId": "suratStatus",
+                        "layout|flex": null,
+                        "value": null
+                    },
+                    "name": "MyDisplayField",
+                    "designerId": "990a604e-da2d-4775-ad2d-dbb6863bdf90"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "associated": true,
+                "itemId": "infoArsipSurat",
+                "layout|flex": null,
+                "margin": "0 0 8 0"
+            },
+            "name": "sipas.surat.informasi.arsip.pane",
+            "configAlternates": {
+                "associated": "boolean"
+            },
+            "designerId": "150093e3-dfec-410a-8590-d55d33c08689",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "associated",
+                    "type": "string"
+                }
+            ],
+            "masterInstanceId": "74fbc365-fafc-49c4-9fa0-510e2484c039"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "associated": true,
+                "itemId": "infoMusnahSurat",
+                "layout|flex": null,
+                "margin": "0 0 8 0"
+            },
+            "name": "sipas.surat.informasi.musnah.pane",
+            "configAlternates": {
+                "associated": "boolean"
+            },
+            "designerId": "56fb150b-8669-4049-9458-a44d265e4ebd",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "associated",
+                    "type": "string"
+                }
+            ],
+            "masterInstanceId": "70ffefd0-ce54-4497-97ae-8346e2c3f90b"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "associated": true,
+                "layout|flex": null,
+                "margin": "0 0 8 0",
+                "padding": null
+            },
+            "name": "sipas.surat.informasi.pembuatan.pane",
+            "designerId": "943b1d4f-5873-4653-a093-be7a09f8f5d1",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "associated",
+                    "type": "boolean"
+                }
+            ],
+            "masterInstanceId": "d6ee7af1-3bd6-4950-afed-54af129c7ba1"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "associated": true,
+                "itemId": "containerPenyetuju",
+                "layout|flex": null,
+                "margin": "0 0 8 0",
+                "propType": true
+            },
+            "name": "sipas.surat.informasi.penyetujuan.pane",
+            "designerId": "32a622af-5c03-4f01-ba13-67b0b4a46293",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "associated",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "propType",
+                    "type": "boolean"
+                }
+            ],
+            "masterInstanceId": "8fe9db6e-2a5e-4ad9-aa0a-cf51a3ec097a",
+            "cn": [
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processContainerPenyetuju",
+                        "implHandler": [
+                            "config.propType = this.propType;",
+                            "return config;"
+                        ]
+                    },
+                    "name": "processContainerPenyetuju",
+                    "designerId": "4c4e3e4b-5324-4c08-a763-273a0af7b97b"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "associated": true,
+                "itemId": "infoTerima",
+                "layout|flex": null,
+                "margin": "0 0 8 0"
+            },
+            "name": "sipas.surat.informasi.terima.pane",
+            "configAlternates": {
+                "associated": "boolean"
+            },
+            "designerId": "a6499988-877c-4e3c-9fb9-922c01a96c70",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "associated",
+                    "type": "string"
+                }
+            ],
+            "masterInstanceId": "c1bb3d26-7cc8-45a6-95c5-446b7dbe34c8"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "associated": true,
+                "itemId": "infoBatalNomor",
+                "layout|flex": null,
+                "margin": "0 0 8 0"
+            },
+            "name": "sipas.surat.informasi.batal.pane",
+            "configAlternates": {
+                "associated": "boolean"
+            },
+            "designerId": "7704f1f5-9caa-4488-b96b-4aed407e669d",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "associated",
+                    "type": "string"
+                }
+            ],
+            "masterInstanceId": "45394e5e-8501-486d-821c-5a2215705db4"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "associated": true,
+                "layout|flex": null,
+                "margin": "0 0 8 0"
+            },
+            "name": "sipas.surat.informasi.distribusi.pane",
+            "designerId": "9c96732a-59a2-4a3c-8164-aadd32c04bf8",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "associated",
+                    "type": "boolean"
+                }
+            ],
+            "masterInstanceId": "7243eb42-433b-415b-8ab3-9c6bcaa3d79b"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "associated": true,
+                "layout|flex": null,
+                "margin": "0 0 8 0"
+            },
+            "name": "sipas.surat.informasi.ekspedisi.keluar.pane",
+            "configAlternates": {
+                "associated": "boolean"
+            },
+            "designerId": "84d982e2-0d5c-46b7-b126-7885aaafb820",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "associated",
+                    "type": "string"
+                }
+            ],
+            "masterInstanceId": "30926194-4f01-487e-a6a3-7dab834b3828"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "associated": true,
+                "itemId": "comSuratSelesai",
+                "layout|flex": null,
+                "margin": "0 0 8 0"
+            },
+            "name": "sipas.surat.informasi.selesai.pane",
+            "configAlternates": {
+                "associated": "boolean"
+            },
+            "designerId": "65e343db-0b43-4674-99ae-a400b1f2f88a",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "associated",
+                    "type": "string"
+                }
+            ],
+            "masterInstanceId": "0eea4f5f-6ad4-412f-8c36-ae0effb8d17a"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "associated": true,
+                "featureName": "ratingreview",
+                "featureable": true,
+                "itemId": "infoRating",
+                "layout|flex": null,
+                "margin": "0 0 8 0"
+            },
+            "name": "sipas.surat.informasi.rating.pane",
+            "designerId": "78c7b811-088d-49ec-bc19-37e81921a5ee",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "associated",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureName",
+                    "type": "string"
+                }
+            ],
+            "masterInstanceId": "ad833c01-8324-47c4-9790-07a4ffb34fd4"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "associated": true,
+                "featureName": "disposisi_masuk_request_berkas",
+                "featureable": true,
+                "itemId": "infoBerkasFisik",
+                "layout|flex": null,
+                "margin": "0 0 8 0"
+            },
+            "name": "sipas.surat.informasi.berkas.pane",
+            "configAlternates": {
+                "associated": "boolean",
+                "featureable": "boolean"
+            },
+            "designerId": "57056d63-aac3-42e6-9a57-1c05621b11fa",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "associated",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureable",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureName",
+                    "type": "string"
+                }
+            ],
+            "masterInstanceId": "3c686ebc-de6b-4ba1-9910-f6fdb65bc743"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "constructor",
+                "implHandler": [
+                    "this.callParent(arguments);",
+                    "    return Ext.applyIf(this,{",
+                    "        form: new Ext.form.Basic(this)",
+                    "});"
+                ]
+            },
+            "name": "constructor",
+            "designerId": "2c6551ef-56a9-47af-a088-11925eb6c4f3"
+        }
+    ]
+}

@@ -1,0 +1,3471 @@
+$c1: #2196f3;
+$c1-50: #e3f2fd;
+$c1-100: #bbdefb;
+$c1-200: #90caf9;
+$c1-300: #64b5f6;
+$c1-400: #42a5f5;
+$c1-500: #2196f3;
+$c1-600: #1e88e5;
+$c1-700: #1976d2;
+$c1-800: #1565c0;
+$c1-900: #0d47a1;
+
+$c2: #ff9800;
+$c2-50: #fff3e0;
+$c2-100: #ffe0b2;
+$c2-200: #ffcc80;
+$c2-300: #ffb74d;
+$c2-400: #ffa726;
+$c2-500: #ff9800;
+$c2-600: #fb8c00;
+$c2-700: #f57c00;
+$c2-800: #ef6c00;
+$c2-900: #e65100;
+
+$c3: #9e9e9e;
+$c3-50: #fafafa;
+$c3-100: #f5f5f5;
+$c3-200: #eeeeee;
+$c3-300: #e0e0e0;
+$c3-400: #bdbdbd;
+$c3-500: #9e9e9e;
+$c3-600: #757575;
+$c3-700: #616161;
+$c3-800: #424242;
+$c3-900: #212121;
+
+$c5: #ffffff;
+$c6: #000000;
+
+$cl: #ffffff;
+$cd: #000000;
+
+$red-100: #ffcdd2;
+$red-300: #e57373;
+$red-500: #f44336;
+$red-700: #d32f2f;
+$red-900: #B71C1C;
+$pink-100: #f8bbd0;
+$pink-300: #f06292;
+$pink-500: #e91e63;
+$pink-700: #c2185b;
+$pink-900: #880E4F;
+$purple-100: #e1bee7;
+$purple-300: #ba68c8;
+$purple-500: #9c27b0;
+$purple-700: #7b1fa2;
+$purple-900: #4A148C;
+$deep-purple-100: #d1c4e9;
+$deep-purple-300: #9575cd;
+$deep-purple-500: #673ab7;
+$deep-purple-700: #512da8;
+$deep-purple-900: #311B92;
+$indigo-100: #c5cae9;
+$indigo-300: #7986cb;
+$indigo-500: #3f51b5;
+$indigo-700: #303f9f;
+$indigo-900: #1A237E;
+$blue-100: #bbdefb;
+$blue-300: #64b5f6;
+$blue-500: #2196f3;
+$blue-700: #1976d2;
+$blue-900: #0D47A1;
+$light-blue-100: #b3e5fc;
+$light-blue-300: #4fc3f7;
+$light-blue-500: #03a9f4;
+$light-blue-700: #0288d1;
+$light-blue-900: #01579B;
+$cyan-100: #b2ebf2;
+$cyan-300: #4dd0e1;
+$cyan-500: #00bcd4;
+$cyan-700: #0097a7;
+$cyan-900: #006064;
+$teal-100: #b2dfdb;
+$teal-300: #4db6ac;
+$teal-500: #009688;
+$teal-700: #00796b;
+$teal-900: #004D40;
+$green-100: #c8e6c9;
+$green-300: #81c784;
+$green-500: #4caf50;
+$green-700: #388e3c;
+$green-900: #1B5E20;
+$light-green-100: #dcedc8;
+$light-green-300: #aed581;
+$light-green-500: #8bc34a;
+$light-green-700: #689f38;
+$light-green-900: #33691E;
+$lime-100: #f0f4c3;
+$lime-300: #dce775;
+$lime-500: #cddc39;
+$lime-700: #afb42b;
+$lime-900: #827717;
+$yellow-100: #fff9c4;
+$yellow-300: #fff176;
+$yellow-500: #ffeb3b;
+$yellow-700: #fbc02d;
+$yellow-900: #F57F17;
+$amber-100: #ffecb3;
+$amber-300: #ffd54f;
+$amber-500: #ffc107;
+$amber-700: #ffa000;
+$amber-900: #FF6F00;
+$orange-100: #ffe0b2;
+$orange-300: #ffb74d;
+$orange-500: #ff9800;
+$orange-700: #f57c00;
+$orange-900: #E65100;
+$deep-orange-100: #ffccbc;
+$deep-orange-300: #ff8a65;
+$deep-orange-500: #ff5722;
+$deep-orange-700: #e64a19;
+$deep-orange-900: #BF360C;
+$brown-100: #d7ccc8;
+$brown-300: #a1887f;
+$brown-500: #795548;
+$brown-700: #5d4037;
+$brown-900: #3E2723;
+$grey-100: #f5f5f5;
+$grey-300: #e0e0e0;
+$grey-500: #9e9e9e;
+$grey-700: #616161;
+$grey-900: #212121;
+$blue-grey-100: #cfd8dc;
+$blue-grey-300: #90a4ae;
+$blue-grey-500: #607d8b;
+$blue-grey-700: #455a64;
+$blue-grey-900: #263238;
+
+@mixin color-ui($name: '*', $color: #fff)
+{
+    .#{$name}
+    {
+        color: $color;
+
+        &-i
+        {
+            color: $color !important;
+        }
+    }
+
+    .bg-#{$name}
+    {
+        background-color: $color;
+
+        &-i
+        {
+            background-color: $color !important;
+        }
+    }
+}
+
+*
+{
+    @include color-ui('c1', $c1-900);
+    @include color-ui('c1-50', $c1-50);
+    @include color-ui('c1-100', $c1-100);
+    @include color-ui('c1-200', $c1-200);
+    @include color-ui('c1-300', $c1-300);
+    @include color-ui('c1-400', $c1-400);
+    @include color-ui('c1-500', $c1-500);
+    @include color-ui('c1-600', $c1-600);
+    @include color-ui('c1-700', $c1-700);
+    @include color-ui('c1-800', $c1-800);
+    @include color-ui('c1-900', $c1-900);
+
+    @include color-ui('c2', $c2-500);
+    @include color-ui('c2-50', $c2-50);
+    @include color-ui('c2-100', $c2-100);
+    @include color-ui('c2-200', $c2-200);
+    @include color-ui('c2-300', $c2-300);
+    @include color-ui('c2-400', $c2-400);
+    @include color-ui('c2-500', $c2-500);
+    @include color-ui('c2-600', $c2-600);
+    @include color-ui('c2-700', $c2-700);
+    @include color-ui('c2-800', $c2-800);
+    @include color-ui('c2-900', $c2-900);
+
+    @include color-ui('c3', $c3-500);
+    @include color-ui('c3-50', $c3-50);
+    @include color-ui('c3-100', $c3-100);
+    @include color-ui('c3-200', $c3-200);
+    @include color-ui('c3-300', $c3-300);
+    @include color-ui('c3-400', $c3-400);
+    @include color-ui('c3-500', $c3-500);
+    @include color-ui('c3-600', $c3-600);
+    @include color-ui('c3-700', $c3-700);
+    @include color-ui('c3-800', $c3-800);
+    @include color-ui('c3-900', $c3-900);
+
+    @include color-ui('cl', $cl);
+    @include color-ui('cd', $cd);
+
+    @include color-ui('red-100', $red-100);
+    @include color-ui('red-300', $red-300);
+    @include color-ui('red-500', $red-500);
+    @include color-ui('red-700', $red-700);
+    @include color-ui('red-900', $red-900);
+    @include color-ui('pink-100', $pink-100);
+    @include color-ui('pink-300', $pink-300);
+    @include color-ui('pink-500', $pink-500);
+    @include color-ui('pink-700', $pink-700);
+    @include color-ui('pink-900', $pink-900);
+    @include color-ui('purple-100', $purple-100);
+    @include color-ui('purple-300', $purple-300);
+    @include color-ui('purple-500', $purple-500);
+    @include color-ui('purple-700', $purple-700);
+    @include color-ui('purple-900', $purple-900);
+    @include color-ui('deep-purple-100', $deep-purple-100);
+    @include color-ui('deep-purple-300', $deep-purple-300);
+    @include color-ui('deep-purple-500', $deep-purple-500);
+    @include color-ui('deep-purple-700', $deep-purple-700);
+    @include color-ui('deep-purple-900', $deep-purple-900);
+    @include color-ui('indigo-100', $indigo-100);
+    @include color-ui('indigo-300', $indigo-300);
+    @include color-ui('indigo-500', $indigo-500);
+    @include color-ui('indigo-700', $indigo-700);
+    @include color-ui('indigo-900', $indigo-900);
+    @include color-ui('blue-100', $blue-100);
+    @include color-ui('blue-300', $blue-300);
+    @include color-ui('blue-500', $blue-500);
+    @include color-ui('blue-700', $blue-700);
+    @include color-ui('blue-900', $blue-900);
+    @include color-ui('light-blue-100', $light-blue-100);
+    @include color-ui('light-blue-300', $light-blue-300);
+    @include color-ui('light-blue-500', $light-blue-500);
+    @include color-ui('light-blue-700', $light-blue-700);
+    @include color-ui('light-blue-900', $light-blue-900);
+    @include color-ui('cyan-100', $cyan-100);
+    @include color-ui('cyan-300', $cyan-300);
+    @include color-ui('cyan-500', $cyan-500);
+    @include color-ui('cyan-700', $cyan-700);
+    @include color-ui('cyan-900', $cyan-900);
+    @include color-ui('teal-100', $teal-100);
+    @include color-ui('teal-300', $teal-300);
+    @include color-ui('teal-500', $teal-500);
+    @include color-ui('teal-700', $teal-700);
+    @include color-ui('teal-900', $teal-900);
+    @include color-ui('green-100', $green-100);
+    @include color-ui('green-300', $green-300);
+    @include color-ui('green-500', $green-500);
+    @include color-ui('green-700', $green-700);
+    @include color-ui('green-900', $green-900);
+    @include color-ui('light-green-100', $light-green-100);
+    @include color-ui('light-green-300', $light-green-300);
+    @include color-ui('light-green-500', $light-green-500);
+    @include color-ui('light-green-700', $light-green-700);
+    @include color-ui('light-green-900', $light-green-900);
+    @include color-ui('lime-100', $lime-100);
+    @include color-ui('lime-300', $lime-300);
+    @include color-ui('lime-500', $lime-500);
+    @include color-ui('lime-700', $lime-700);
+    @include color-ui('lime-900', $lime-900);
+    @include color-ui('yellow-100', $yellow-100);
+    @include color-ui('yellow-300', $yellow-300);
+    @include color-ui('yellow-500', $yellow-500);
+    @include color-ui('yellow-700', $yellow-700);
+    @include color-ui('yellow-900', $yellow-900);
+    @include color-ui('amber-100', $amber-100);
+    @include color-ui('amber-300', $amber-300);
+    @include color-ui('amber-500', $amber-500);
+    @include color-ui('amber-700', $amber-700);
+    @include color-ui('amber-900', $amber-900);
+    @include color-ui('orange-100', $orange-100);
+    @include color-ui('orange-300', $orange-300);
+    @include color-ui('orange-500', $orange-500);
+    @include color-ui('orange-700', $orange-700);
+    @include color-ui('orange-900', $orange-900);
+    @include color-ui('deep-orange-100', $deep-orange-100);
+    @include color-ui('deep-orange-300', $deep-orange-300);
+    @include color-ui('deep-orange-500', $deep-orange-500);
+    @include color-ui('deep-orange-700', $deep-orange-700);
+    @include color-ui('deep-orange-900', $deep-orange-900);
+    @include color-ui('brown-100', $brown-100);
+    @include color-ui('brown-300', $brown-300);
+    @include color-ui('brown-500', $brown-500);
+    @include color-ui('brown-700', $brown-700);
+    @include color-ui('brown-900', $brown-900);
+    @include color-ui('grey-100', $grey-100);
+    @include color-ui('grey-300', $grey-300);
+    @include color-ui('grey-500', $grey-500);
+    @include color-ui('grey-700', $grey-700);
+    @include color-ui('grey-900', $grey-900);
+    @include color-ui('blue-grey-100', $blue-grey-100);
+    @include color-ui('blue-grey-300', $blue-grey-300);
+    @include color-ui('blue-grey-500', $blue-grey-500);
+    @include color-ui('blue-grey-700', $blue-grey-700);
+    @include color-ui('blue-grey-900', $blue-grey-900);
+}
+.x-viewport
+{
+    &,
+    body
+    {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+/************/
+/* UX 		*/
+/************/
+
+.ux
+{
+	/*
+	 * GridFilters Styles
+	 */
+	&-filtered-column
+	{
+	    font-style: italic;
+	    font-weight: bold;
+	}
+
+	&-gridfilter
+	{
+		&-text-icon
+		{
+		    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M337.509 305.372h-17.501l-6.571-5.486c20.791-25.232 33.922-57.054 33.922-93.257C347.358 127.632 283.896 64 205.135 64 127.452 64 64 127.632 64 206.629s63.452 142.628 142.225 142.628c35.011 0 67.831-13.167 92.991-34.008l6.561 5.487v17.551L415.18 448 448 415.086 337.509 305.372zm-131.284 0c-54.702 0-98.463-43.887-98.463-98.743 0-54.858 43.761-98.742 98.463-98.742 54.7 0 98.462 43.884 98.462 98.742 0 54.856-43.762 98.743-98.462 98.743z"/></svg>') !important;
+			background-position: center center;
+		}
+	}
+
+	/*
+	 * RangeMenu Styles
+	 */
+	&-rangemenu
+	{
+		&-icon {
+		    display: block;
+		    height: 20px;
+		    background: no-repeat 5px center;
+		}
+
+		&-gt {
+		    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">%0A    <path d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"/>%0A    <path fill="none" d="M0 0h24v24H0z"/>%0A</svg>') !important;
+		    // background-image: url('data:image/svg+xml,<?xml version="1.0" encoding="utf-8"?>%0A<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->%0A<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"%0A%09 width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">%0A<path d="M8.59,16.59L13.17,12L8.59,7.41L10,6l6,6l-6,6L8.59,16.59z"/>%0A<path fill="none" d="M0,0h24v24H0V0z"/>%0A</svg>') !important;
+			background-position: center center;
+		}
+
+		&-lt {
+		    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">%0A    <path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"/>%0A    <path fill="none" d="M0 0h24v24H0z"/>%0A</svg>') !important;
+		    // background-image: url('data:image/svg+xml,<?xml version="1.0" encoding="utf-8"?>%0A<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->%0A<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"%0A%09 width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">%0A<path d="M15.41,16.59L10.83,12l4.58-4.59L14,6l-6,6l6,6L15.41,16.59z"/>%0A<path fill="none" d="M0,0h24v24H0V0z"/>%0A</svg>') !important;
+			background-position: center center;
+		}
+
+		&-eq {
+			background-position: center center;
+		    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">%0A    <defs>%0A        <path id="a" d="M0 0h24v24H0V0z"/>%0A    </defs>%0A    <clipPath id="b">%0A        <use xlink:href="#a" overflow="visible"/>%0A    </clipPath>%0A    <path clip-path="url(#b)" d="M20 9H4v2h16V9zM4 15h16v-2H4v2z"/>%0A</svg>') !important;
+		}
+	}
+}
+
+
+
+/************/
+/* IMAGES   */
+/************/
+
+.x-column-header
+{
+	&-trigger
+	{
+		// background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">%0A    <path d="M7 10l5 5 5-5z"/>%0A    <path d="M0 0h24v24H0z" fill="none"/>%0A</svg>') !important;
+		background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">%0A    <path d="M0 0h24v24H0z" fill="none"/>%0A    <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>%0A</svg>') !important;
+		background-position: center center;
+	}
+
+	.x-field
+	{
+		.x-form-field.x-form-text
+		{
+			background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M337.509 305.372h-17.501l-6.571-5.486c20.791-25.232 33.922-57.054 33.922-93.257C347.358 127.632 283.896 64 205.135 64 127.452 64 64 127.632 64 206.629s63.452 142.628 142.225 142.628c35.011 0 67.831-13.167 92.991-34.008l6.561 5.487v17.551L415.18 448 448 415.086 337.509 305.372zm-131.284 0c-54.702 0-98.463-43.887-98.463-98.743 0-54.858 43.761-98.742 98.463-98.742 54.7 0 98.462 43.884 98.462 98.742 0 54.856-43.762 98.743-98.462 98.743z"/></svg>') !important;
+			background-position: center center;
+		}
+	}
+
+	&-sort
+	{
+		&-ASC
+		{
+			.x-column-header-text
+			{
+				background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">%0A    <path fill="none" d="M0 0h24v24H0V0z"/>%0A    <path fill="#010101" d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/>%0A</svg>') !important;
+				background-position: right right;
+			}
+		}
+		&-DESC
+		{
+			.x-column-header-text
+			{
+				background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">%0A    <path fill="none" d="M0 0h24v24H0V0z"/>%0A    <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/>%0A</svg>') !important;
+				background-position: right right;
+			}
+		}
+	}
+}
+
+.x-menu-item
+{
+	&-checked
+	{
+		.x-menu-item-icon,
+		.x-menu-item-icon-right
+		{
+			background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">%0A    <path d="M0 0h24v24H0z" fill="none"/>%0A    <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>%0A</svg>') !important;
+			background-position: center center;
+		}
+	}
+	&-unchecked
+	{
+		.x-menu-item-icon,
+		.x-menu-item-icon-right
+		{
+			background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">%0A    <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>%0A    <path d="M0 0h24v24H0z" fill="none"/>%0A</svg>') !important;
+			background-position: center center;
+		}
+	}
+}
+
+.x-cols-icon
+{
+	.x-menu-item-icon
+	{
+		background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">%0A    <path d="M10 18h5V5h-5v13zm-6 0h5V5H4v13zM16 5v13h5V5h-5z"/>%0A    <path d="M0 0h24v24H0z" fill="none"/>%0A</svg>') !important;
+		background-position: center center;
+	}
+}
+
+.x-hmenu-sort
+{
+	&-asc
+	{
+		.x-menu-item-icon
+		{
+			background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">%0A    <path fill="none" d="M0 0h24v24H0V0z"/>%0A    <path fill="#010101" d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/>%0A</svg>') !important;
+			background-position: center center;
+		}
+	}
+	&-desc
+	{
+		.x-menu-item-icon
+		{
+			background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">%0A    <path fill="none" d="M0 0h24v24H0V0z"/>%0A    <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/>%0A</svg>') !important;
+			background-position: center center;
+		}
+	}
+}
+
+.x-tbar
+{
+	&-loading
+	{
+		background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">%0A    <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>%0A    <path d="M0 0h24v24H0z" fill="none"/>%0A</svg>') !important;
+		background-position: center center;
+	}
+	&-page-first
+	{
+		background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">%0A    <path d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"/>%0A    <path fill="none" d="M24 24H0V0h24v24z"/>%0A</svg>') !important;
+		background-position: center center;
+	}
+	&-page-prev
+	{
+		background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">%0A    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>%0A    <path d="M0 0h24v24H0z" fill="none"/>%0A</svg>') !important;
+		background-position: center center;
+	}
+	&-page-next
+	{
+		background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">%0A    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>%0A    <path d="M0 0h24v24H0z" fill="none"/>%0A</svg>') !important;
+		background-position: center center;
+	}
+	&-page-last
+	{
+		background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">%0A    <path d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"/>%0A    <path fill="none" d="M0 0h24v24H0V0z"/>%0A</svg>') !important;
+		background-position: center center;
+	}
+}
+
+.x-toolbar
+{
+	&-more-icon
+	{
+		background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">%0A    <path d="M0 0h24v24H0z" fill="none"/>%0A    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>%0A</svg>') !important;
+		background-position: center center;
+	}
+}
+
+.x-form-type-checkbox
+{
+	.x-form-checkbox
+	{
+		background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">%0A    <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>%0A    <path d="M0 0h24v24H0z" fill="none"/>%0A</svg>') !important;
+		background-position: center center;
+	}
+	&.x-form-cb-checked
+	{
+		.x-form-checkbox
+		{
+			background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">%0A    <path d="M0 0h24v24H0z" fill="none"/>%0A    <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>%0A</svg>') !important;
+			background-position: center center;
+		}
+	}
+}
+
+.x-fieldset
+{
+	.x-tool-toggle
+	{
+		background-image: url('data:image/svg+xml,<?xml version="1.0" encoding="utf-8"?>%0A<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->%0A<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"%0A%09 width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">%0A<path d="M7.41,8.59L12,13.17l4.59-4.58L18,10l-6,6l-6-6L7.41,8.59z"/>%0A<path fill="none" d="M0,0h24v24H0V0z"/>%0A</svg>') !important;
+		background-position: center center;
+	}
+	&.x-fieldset-collapsed
+	{
+		.x-tool-toggle
+		{
+			background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">%0A    <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>%0A    <path d="M0 0h24v24H0z" fill="none"/>%0A</svg>') !important;
+			background-position: center center;
+		}
+	}
+}
+
+.x-menu-scroll
+{
+	&-top
+	{
+	    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">%0A    <path d="M7 14l5-5 5 5z"/>%0A    <path d="M0 0h24v24H0z" fill="none"/>%0A</svg>') !important;
+		background-position: center center;
+	}
+	&-bottom
+	{
+	    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">%0A    <path d="M7 10l5 5 5-5z"/>%0A    <path d="M0 0h24v24H0z" fill="none"/>%0A</svg>') !important;
+		background-position: center center;
+	}
+}
+.#{$prefix}toolbar
+{
+    &.#{$prefix}toolbar-inverse
+    {
+        background-color: #424242;
+
+        &.#{$prefix}toolbar-inverse-transparent
+        {
+            background-color: rgba(#424242, .93);
+        }
+        > .#{$prefix}btn .#{$prefix}btn-inner,
+        > .#{$prefix}btn .#{$prefix}btn-icon-el
+        {
+            color: rgba(255,255,255, .9);
+        }
+    }
+    &.#{$prefix}toolbar-bottomshadow
+    {
+    	box-shadow: 0px 2px 2px rgba(0, 0, 0, .5);
+    }
+    &.#{$prefix}toolbar-topshadow
+    {
+		box-shadow: 0px -2px 2px rgba(0, 0, 0, .5);
+    }
+
+    padding: 6px 4px 6px 8px;
+}
+.#{$prefix}window
+{
+    &-maximized
+    {
+        border-radius: 0px;
+    }
+}
+.#{$prefix}window-default,
+.#{$prefix}panel-default-framed
+{
+    padding: 0px;
+}
+.#{$prefix}window-default
+{
+    .#{$prefix}window-body
+    {
+        border-right-width: 0px;
+        border-left-width: 0px;
+    }
+}
+
+.#{$prefix}container-dynamic-overflow
+{
+    &-y
+    {
+        &:hover, &:active, &:focus
+        {
+            overflow-y: auto;
+        }
+    }
+
+    &-x
+    {
+        &:hover, &:active, &:focus
+        {
+            overflow-x: auto;
+        }
+    }
+}
+
+.#{$prefix}panel,
+.#{$prefix}window
+{
+    &.#{$prefix}panel-inverse
+    {
+        background-color: #424242;
+
+        &.#{$prefix}panel-inverse-transparent
+        {
+            background-color: rgba(#424242, .93);
+        }
+
+        > .#{$prefix}header .#{$prefix}header-text,
+        > .#{$prefix}header .#{$prefix}tool .#{$prefix}tool-img,
+        > .#{$prefix}window-body,
+        > .#{$prefix}panel-body,
+        > .#{$prefix}toolbar .#{$prefix}btn .#{$prefix}btn-inner,
+        > .#{$prefix}toolbar .#{$prefix}btn .#{$prefix}btn-icon-el
+        {
+            color: rgba(255,255,255, .9);
+        }
+        > .#{$prefix}header .#{$prefix}tool .#{$prefix}tool-img
+        {
+            background-image: none;
+            background-color: white;
+        }
+    }
+
+    &.#{$prefix}panel-transparentheader
+    {
+        > .#{$prefix}header
+        {
+            background-color: transparent;
+            border-color: transparent;
+        }
+    }
+    &.#{$prefix}panel-transparentheadertext
+    {
+    	> .#{$prefix}header
+        {
+            .#{$prefix}header-text
+	        {
+	        	color: transparent;
+	        }
+        }
+    }
+    &.#{$prefix}panel-transparentbody
+    {
+        > .#{$prefix}panel-body,
+        > .#{$prefix}window-body,
+        > .#{$prefix}toolbar
+        {
+            background-color: transparent;
+            border-color: transparent;
+        }
+    }
+}
+/*
+.#{$prefix}tool
+{
+.#{$prefix}tool
+{
+&-img
+{
+width: 13px;
+height: 13px;
+border-radius: 50%;
+background-image: none;
+}
+
+&-close {
+background-color: #F44336;
+border: 1px solid #E53935;
+opacity: 1;
+}
+
+&-maximize {
+background-color: #4CAF50;
+border: 1px solid #43A047;
+opacity: 1;
+}
+
+&-restore {
+background-color: #FFC107;
+border: 1px solid #FFB300;
+opacity: 1;
+}
+}
+}
+.#{$prefix}tool-over
+{
+.#{$prefix}tool
+{
+&-close {
+background-color: #E53935;
+}
+&-maximize {
+background-color: #43A047;
+}
+&-restore {
+background-color: #FFB300;
+}
+}
+}
+*/
+
+.#{$prefix}header
+{
+    .#{$prefix}tool
+    {
+        width: $tool-size !important;
+        height: $tool-size !important;
+
+        .#{$prefix}tool
+        {
+            /* 
+            &-img
+            {
+                width: $tool-size;
+                height: $tool-size;
+                font-size: $tool-size;
+            } 
+            */
+
+            &-maximize,
+            &-restore,
+            &-close
+            {
+                background-color: transparent;
+                background-size: round($tool-size + 4) round($tool-size + 4);
+            }
+
+            &-close
+            {
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>') no-repeat center center;
+                -webkit-mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>') no-repeat center center;
+                mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>') no-repeat center center;
+            }
+
+            &-restore
+            {
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>') no-repeat center center;
+                -webkit-mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>') no-repeat center center;
+                mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>') no-repeat center center;
+            }
+
+            &-maximize
+            {
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>') no-repeat center center;
+                -webkit-mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>') no-repeat center center;
+                mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>') no-repeat center center;
+            }
+        }
+    }
+}
+.#{$prefix}trigger-cell
+{
+    vertical-align: bottom;
+}
+
+.#{$prefix}form
+{
+    &-trigger
+    {
+        &-wrap
+        {
+            border-width: 0px;
+        }
+    }
+
+    &-cb-label
+    {
+        color: $form-label-font-color;
+    }
+
+    &-item
+    {
+        &-body,
+        {
+            font-size: 11px;
+            color: #9E9E9E;
+            font-weight: 300;
+        }
+        &-body,
+        &-label
+        {
+            .required {color: #F44336;}
+            .bigger {font-size: 12px;}
+            .bold {font-weight: 500;}
+            .italyc {font-style: italic;}
+            .primary {color: #1976D2;}
+            .info {color: #009688;}
+            .warning {color: #FFC107;}
+            .danger {color: #F44336;}
+
+            .#{$prefix}label-after
+            {
+                &.#{$prefix}label-paddedleft
+                {
+                    padding-left: 20px;
+                }
+            }
+        }
+
+        .#{$prefix}form
+        {
+            &-text,
+            &-email,
+            &-file-wrap .#{$prefix}form-trigger-wrap .#{$prefix}form-text,
+            &-trigger:not(.x-form-spinner-up)
+            {
+                border-style: solid;
+                border-color: #E0E0E0;
+                border-width: 0px 0px 1px 0px;
+                padding-bottom: 1px;
+
+                &.#{$prefix}form-focus
+                {
+                    border-bottom-width: 2px;
+                    padding-bottom: 0px;
+                    border-color: #1976D2;
+                    transition: border-color .3s ease;
+                }
+            }
+
+            &-trigger-wrap-focus
+            {
+                .#{$prefix}form-trigger:not(.x-form-spinner-up)
+                {
+                    border-bottom-width: 2px;
+                    padding-bottom: 0px;
+                    border-color: #1976D2;
+                }
+            }
+        }
+
+        &.#{$prefix}form-invalid
+        {
+            .#{$prefix}form
+            {
+                &-text,
+                &-email,
+                &-trigger:not(.#{$prefix}form-spinner-up)
+                {
+                    border-color: #D32F2F;
+                }
+            }
+        }
+
+        &.#{$prefix}form-readonly
+        {
+            .#{$prefix}form-field:not(.#{$prefix}form-radio):not(.#{$prefix}form-checkbox),
+            .#{$prefix}trigger-noedit,
+            .#{$prefix}form-cb-label
+            {
+                color: #96660C !important;
+                cursor: not-allowed;
+                border-color: #E0E0E0;
+            }
+        }
+    }
+}
+
+/* fieldset */
+.#{$prefix}fieldset
+{
+    // border-width: 1px 0px 0px 0px !important;
+    border-width: 0px;
+
+    &-collapsed
+    {
+        // border-width: 1px 0px 0px 0px !important;
+
+        &.#{$prefix}fieldset-noborder,
+        &.#{$prefix}fieldset-collapsed-noborder
+        {
+            border-width: 0px !important;
+        }
+    }
+
+    &.#{$prefix}fieldset-noborder
+    {
+        border-width: 0px !important;
+    }
+
+    &-header
+    {
+        &-text
+        {
+            // text-transform: uppercase;
+        }
+    }
+
+    &.#{$prefix}fieldset-notransformtext
+    {
+        .#{$prefix}fieldset-header-text
+        {
+            text-transform: none;
+            color: $form-label-font-color;
+            font-size: $form-label-font-size;
+            font-weight: $form-label-font-weight;
+        }
+    }
+
+    .#{$prefix}form-cb-wrap
+    {
+        height: auto;
+    }
+}
+
+/* htmleditor */
+.#{$prefix}html-editor
+{
+    &-tb
+    {
+        border-width: 0px 0px 1px 0px;
+    }
+}
+
+.#{$prefix}field-toolbar
+{
+    background-color: transparent;
+    border-radius: 2px;
+    
+    .#{$prefix}form-item-label 
+    {
+        margin-top: 8px;
+    }
+    
+    .#{$prefix}form-text 
+    {
+        height: 32px;
+        line-height: 16px;
+    }
+
+    .#{$prefix}form-trigger
+    {
+        &-wrap
+        {
+            border-width: 0px;
+        }
+        &.#{$prefix}form-arrow-trigger
+        {
+            border-color: transparent;
+            border-width: 0px;
+        }
+    }
+    .#{$prefix}trigger
+    {
+        &-noedit
+        {
+            background-color: transparent;
+            border-width: 1px;
+            border-color: #659fff;
+            padding: 1px 7px;
+            border-radius: 3px;
+            color: #333 !important;
+            font-size: 13px;
+        }
+        &-cell
+        {
+            background-color: transparent;
+        }
+    }
+    &:not(.#{$prefix}form-readonly)
+    {
+        .#{$prefix}trigger-noedit
+        {
+            background-image: url('data:image/svg+xml;utf8,<svg height="64px" width="64px" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M98.9,184.7l1.8,2.1l136,156.5c4.6,5.3,11.5,8.6,19.2,8.6c7.7,0,14.6-3.4,19.2-8.6L411,187.1l2.3-2.6 c1.7-2.5,2.7-5.5,2.7-8.7c0-8.7-7.4-15.8-16.6-15.8v0H112.6v0c-9.2,0-16.6,7.1-16.6,15.8C96,179.1,97.1,182.2,98.9,184.7z"/></svg>');
+            background-size: 12px;
+            background-repeat: no-repeat;
+            background-position: right 6px center;
+            padding-right: 20px;
+        }
+    }
+}
+
+.#{$prefix}field
+{
+    &.#{$prefix}field-nopadding
+    {
+        .#{$prefix}form-field
+        {
+            font-weight: bold;
+        }
+    }
+
+    &.#{$prefix}field-nopaddingtop
+    {
+
+    }
+
+    &.#{$prefix}field-nopaddingbottom
+    {
+        margin-bottom: 1px;
+    }
+
+    &.#{$prefix}field-smallertext
+    {
+        .#{$prefix}form-field
+        {
+            font-size: 12px;
+        }
+    }
+
+    &.#{$prefix}field-smallestext
+    {
+        .#{$prefix}form-field
+        {
+            font-size: 11px;
+        }
+    }
+
+    &.#{$prefix}field-biggertext
+    {
+        .#{$prefix}form-field
+        {
+            font-size: 14px;
+        }
+    }
+
+    &.#{$prefix}field-biggesttext
+    {
+        .#{$prefix}form-field
+        {
+            font-size: 15px;
+        }
+    }
+
+    &.#{$prefix}field-boldertext
+    {
+        .#{$prefix}form-field
+        {
+            font-weight: 600;
+        }
+    }
+
+    &.#{$prefix}field-thinnertext
+    {
+        .#{$prefix}form-field
+        {
+            font-weight: 200;
+        }
+    }
+
+    &.#{$prefix}field-outline
+    {
+        .#{$prefix}form-field
+        {
+            border: 1px solid #9E9E9E;
+            border-radius: 4px;
+            padding: 4px;
+        }
+    }
+
+    &.#{$prefix}field-transparent
+    {
+        .#{$prefix}form
+        {
+            &-field,
+            &-field.#{$prefix}form-invalid-field,
+            &-display-field,
+            &-item-label,
+            &-cb-label,
+            &-trigger-wrap .#{$prefix}trigger-cell
+            {
+                background-color: transparent;
+            }
+        }
+    }
+
+    &.#{$prefix}field-inverse
+    {
+        .#{$prefix}form
+        {
+            &-field,
+            &-field.#{$prefix}form-invalid-field,
+            &-display-field,
+            &-item-label,
+            &-cb-label,
+            &-trigger-wrap .#{$prefix}trigger-cell
+            {
+                background-color: transparent;
+                color: white !important;
+            }
+        }
+    }
+
+    &-flat
+    {
+
+    }
+}
+.#{$prefix}grid
+{
+    .#{$prefix}column-header
+    {
+        .#{$prefix}field
+        {
+            .#{$prefix}form-field
+            {
+                &.#{$prefix}form-text
+                {
+                    /* &.#{$prefix}field-form-focus */
+                    &
+                    {
+                        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAARBJREFUOI3Vj61OA1EUhGfGIuoLgjdA1ZJ6kr5J721SGurahpCQCtLdi8cia3kCbNMXwGHoBoHeO1hY+hMEgk+enJnzHeDfw+YgpdSu6/pGUi/n3JK0zjnPB4PB47YCNcO2nyVtbJ+RPCJ5BWBWluX4oMFisXiQtAkhjLZYrSV1QggvOw0k9WwXzSv9fv+V5BLAxd4Xcs4tAG9bVcmN7dbeAklrSefNJdsE0CW5OmQwr+v6PqXU/hpOKY0AnFRV9fTDrDkoy3Kcc74kuSS5AdAFcALg2PYsxjjdaQAAIYRbSR2SK9sfAK6rqjq1PSM5KYriW8EPg30URTElObE9jDHebTXYR4xxanso6f03ub/lE7OOenGQzQC8AAAAAElFTkSuQmCC');
+                        background-position: center left;
+                        background-size: 16px;
+                        padding-left: 20px;
+                        background-repeat: no-repeat;
+                    }
+                }
+            }
+        }
+
+        &-first:not(.x-row-numberer)
+        {
+            .#{$prefix}column-header
+            {
+                &-inner
+                {
+                    padding-left: 12px;
+                }
+            }
+        }
+        &.#{$prefix}item-disabled
+        {
+            .#{$prefix}column-header
+            {
+                &-text {
+                    color: #E0E0E0;
+                }
+            }
+            .#{$prefix}mask
+            {
+                background-color: transparent;
+            }
+        }
+    }
+
+    &-row
+    {
+        &-over
+        {
+            .#{$prefix}grid-cell-special
+            {
+                .#{$prefix}grid-cell-inner
+                {
+                    color: $grid-row-cell-over-color;
+                }
+            }
+        }
+
+        &-before-focused
+        {
+            .#{$prefix}grid-td
+            {
+                border-bottom-style: solid;
+            }
+        }
+    }
+
+    &-cell
+    {
+        &-inner
+        {
+            font-size: 13px;
+
+            &-row-numberer
+            {
+                color: #616161;
+                font-weight: 300;
+                font-size: 12px;
+            }
+        }
+
+        &-first
+        {
+            .#{$prefix}grid-cell-inner
+            {
+                padding-left: 12px;
+            }
+        }
+    }
+
+    &-empty
+    {
+        height: 100%;
+        text-align: center;
+    }
+}
+.#{$prefix}boundlist
+{
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+
+    &-item
+    {
+        &-over
+        {
+            color: $grid-row-cell-over-color;
+        }
+    }
+}
+.x-view-selector {
+    position: absolute;
+    border: 1px dotted #3399BB;
+}
+
+
+.#{$prefix}grid-cell-inner,
+.#{$prefix}boundlist-item,
+.#{$prefix}menu-item-text,
+.#{$prefix}btn-inner,
+.#{$prefix}form-display-field
+{
+    .bold { font-weight: bold; }
+    .italic { font-style: italic; }
+    .strikethrough { text-decoration: line-through; }
+    .underline { text-decoration: underscore; }
+    .overline { text-decoration: overline;   }
+
+    .bigger { font-size: 1.125em; }
+    .smaller { font-size: .875em; }
+
+    .padded-left { padding-left: 8px; }
+    .padded-left-8 { padding-left: 8px; }
+    .padded-left-12 { padding-left: 12px; }
+    .padded-left-16 { padding-left: 16px; }
+    .padded-left-20 { padding-left: 20px; }
+    .padded-left-24 { padding-left: 24px; }
+    .padded-left-32 { padding-left: 32px; }
+    .padded-left-40 { padding-left: 40px; }
+    .padded-left-48 { padding-left: 48px; }
+
+    .primary { color: #2196f3; }
+    .info { color: #4caf50; }
+    .danger { color: #f44336; }
+    .warning { color: #FF9800; }
+    .alternative { color: #9E9E9E; }
+    .inverse { color: white; }
+
+    .bullet
+    {
+        width: 0.75em;
+        height: .75em;
+        content: " ";
+        line-height: 1;
+        vertical-align: middle;
+        display: inline-block;
+        border-radius: 50%;
+    }
+
+    .badge
+    {
+        display: inline;
+        padding: 2px 4px;
+        border-radius: 2px;
+        font-size: .875em;
+        font-weight: normal;
+        line-height: 1;
+        background-color: transparent;
+        // color: white;
+
+        &.badge-primary { background-color: #2196f3; color: white; }
+        &.badge-info { background-color: #4caf50; color: white; }
+        &.badge-danger { background-color: #f44336; color: white; }
+        &.badge-warning { background-color: #FF9800; color: white; }
+        &.badge-alternative { background-color: #9E9E9E; color: white; }
+        &.badge-inverse { background-color: white; color: #9E9E9E; }
+        &.badge-transparent { background-color: transparent; }
+        &.badge-light { color: white; }
+
+        &.badge-outline
+        {
+            background-color: transparent;
+            border: 1px solid #9E9E9E;
+            color: #9E9E9E;
+
+            &.badge-primary { border-color: #2196f3; color: #2196f3; }
+            &.badge-info { border-color: #4caf50; color: #4caf50; }
+            &.badge-danger { border-color: #f44336; color: #f44336; }
+            &.badge-warning { border-color: #FF9800; color: #FF9800; }
+            &.badge-alternative { border-color: #9E9E9E; color: #9E9E9E; }
+            &.badge-inverse { border-color: white; color: white; }
+            &.badge-transparent { border-color: transparent; color: transparent; }
+        }
+
+        &.badge-circle,
+        &.badge-square
+        {
+            padding: 0px;
+            display: inline-block;
+            font-size: 1em;
+            width: 1.5em;
+            height: 1.5em;
+
+            &.badge-circle
+            {
+                border-radius: 50%;
+            }
+            &.badge-square
+            {
+                border-radius: 1px;
+            }
+
+            i
+            {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+            }
+        }
+    }
+
+    .maintext,
+    .subtext,
+    .titletext,
+    .supporttext
+    {
+        display: block;
+    }
+
+    .maintext
+    {
+        font-size: 1em;
+        line-height: 24px;
+    }
+
+    .subtext
+    {
+        font-size: 1em;
+        line-height: 16px;
+    }
+
+    .titletext
+    {
+        font-size: 1.125em;
+        font-weight: 600;
+        line-height: 24px;
+    }
+
+    .supporttext
+    {
+        font-size: .875em;
+        line-height: 16px;
+        color: #9E9E9E;
+    }
+
+    .ellipsis
+    {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .cell-visual
+    {
+        display: inline-block;
+        vertical-align: top; /* important */
+        margin: 0;
+        margin-right: 4px;
+
+        .img,img
+        {
+            display: block;
+            padding: 0px;
+
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+            font-size: 24px;
+            text-align: center;
+            color: #616161;
+
+            margin: 0 auto;
+            background-color: #E0E0E0;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+
+            position: relative;
+
+            .badge
+            {
+                width: 16px;
+                height: 16px;
+                line-height: 16px;
+                font-size: 12px;
+                text-align: center;
+                color: white;
+
+                background-color: #9E9E9E;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: contain;
+
+                top: auto;
+                right: auto;
+                bottom: auto;
+                left: auto;
+                margin: auto;
+                position: absolute;
+
+                border-radius: 50%;
+                padding: 0px;
+
+                &.badge-top { top: 0; }
+                &.badge-right { right: 0; }
+                &.badge-bottom { bottom: 0; }
+                &.badge-left { left: 0; }
+            }
+
+            &.img-circle { border-radius: 50%; }
+            &.img-square { border-radius: 0px; }
+            &.img-square-round { border-radius: 2px; }
+            &.img-square-round-2 { border-radius: 2px; }
+            &.img-square-round-4 { border-radius: 4px; }
+            &.img-square-round-6 { border-radius: 6px; }
+            &.img-square-round-8 { border-radius: 8px; }
+            &.img-square-round-10 { border-radius: 10px; }
+            &.img-square-round-12 { border-radius: 12px; }
+
+            &.img,
+            .badge.badge
+            {
+                &-4 { width: 4px; height: 4px; line-height: 4px; font-size: 2px; }
+                &-6 { width: 6px; height: 6px; line-height: 6px; font-size: 3px; }
+                &-8 { width: 8px; height: 8px; line-height: 8px; font-size: 4px; }
+                &-10 { width: 10px; height: 10px; line-height: 10px; font-size: 5px; }
+                &-12 { width: 12px; height: 12px; line-height: 12px; font-size: 6px; }
+                &-16 { width: 16px; height: 16px; line-height: 16px; font-size: 8px; }
+                &-18 { width: 18px; height: 18px; line-height: 18px; font-size: 8px; }
+                &-20 { width: 20px; height: 20px; line-height: 20px; font-size: 10px; }
+                &-24 { width: 24px; height: 24px; line-height: 24px; font-size: 12px; }
+                &-28 { width: 28px; height: 28px; line-height: 28px; font-size: 14px; }
+                &-32 { width: 32px; height: 32px; line-height: 32px; font-size: 16px; }
+                &-36 { width: 36px; height: 36px; line-height: 36px; font-size: 18px; }
+                &-40 { width: 40px; height: 40px; line-height: 40px; font-size: 20px; }
+                &-44 { width: 40px; height: 40px; line-height: 40px; font-size: 22px; }
+                &-48 { width: 48px; height: 48px; line-height: 48px; font-size: 24px; }
+                &-52 { width: 52px; height: 52px; line-height: 52px; font-size: 26px; }
+                &-56 { width: 56px; height: 56px; line-height: 56px; font-size: 28px; }
+                &-60 { width: 60px; height: 60px; line-height: 60px; font-size: 30px; }
+                &-64 { width: 64px; height: 64px; line-height: 64px; font-size: 32px; }
+            }
+        }
+
+        .img-text
+        {
+            line-height: 24px;
+            font-size: .875em;
+            text-align: center;
+            display: block;
+            color: #9E9E9E;
+        }
+
+        &.cell-visual-top
+        {
+            margin-bottom: 8px;
+
+            &.cell-visual-top-4 { margin-bottom: 4px; }
+            &.cell-visual-top-6 { margin-bottom: 6px; }
+            &.cell-visual-top-8 { margin-bottom: 8px; }
+            &.cell-visual-top-10 { margin-bottom: 10px; }
+            &.cell-visual-top-12 { margin-bottom: 12px; }
+            &.cell-visual-top-16 { margin-bottom: 16px; }
+            &.cell-visual-top-20 { margin-bottom: 20px; }
+            &.cell-visual-top-24 { margin-bottom: 24px; }
+        }
+
+        &.cell-visual-left
+        {
+            margin-right: 8px;
+
+            &.cell-visual-left-4 { margin-right: 4px; }
+            &.cell-visual-left-6 { margin-right: 6px; }
+            &.cell-visual-left-8 { margin-right: 8px; }
+            &.cell-visual-left-10 { margin-right: 10px; }
+            &.cell-visual-left-12 { margin-right: 12px; }
+            &.cell-visual-left-16 { margin-right: 16px; }
+            &.cell-visual-left-20 { margin-right: 20px; }
+            &.cell-visual-left-24 { margin-right: 24px; }
+        }
+
+        &.cell-visual-right
+        {
+            margin-left: 8px;
+
+            &.cell-visual-right-4 { margin-left: 84x; }
+            &.cell-visual-right-6 { margin-left: 86x; }
+            &.cell-visual-right-8 { margin-left: 8px; }
+            &.cell-visual-right-10 { margin-left: 10px; }
+            &.cell-visual-right-12 { margin-left: 12px; }
+            &.cell-visual-right-16 { margin-left: 16px; }
+            &.cell-visual-right-20 { margin-left: 20px; }
+            &.cell-visual-right-24 { margin-left: 24px; }
+        }
+    }
+
+    .cell-text
+    {
+        display: inline-block;
+        vertical-align: top; /* important */
+    }
+}
+.#{$prefix}badge
+{
+    color: white;
+    font-weight: bold;
+    background-color: #D32F2F;
+    padding: 4px 8px;
+    min-width: 38px;
+    text-align: center;
+    line-height: normal;
+    vertical-align: middle;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 1px;
+
+    &-primary
+    {
+        background-color: #1E88E5;
+    }
+    &-danger
+    {
+        background-color: #E53935;
+    }
+    &-info
+    {
+        background-color: #43A047;
+    }
+    &-warning
+    {
+        background-color: #FB8C00;
+    }
+}
+.#{$prefix}menu
+{
+    > .x-panel-header
+    {
+        padding: 4px 16px;
+
+        .x-panel-header-text
+        {
+            color: #757575;
+        }
+    }
+    
+    &-scroll
+    {
+        &-top,
+        &-bottom
+        {
+            height: 16px;
+            background-size: 16px !important;
+
+            &-disabled
+            {
+                opacity: .3;
+            }
+        }
+    }
+
+    &-body
+    {
+        padding: 8px 0px;
+
+        &.#{$prefix}vertical-scroller
+        {
+            padding: 0px 0px;
+        }
+    }
+
+    &-icon-separator
+    {
+        display: none;
+    }
+
+    &-item
+    {
+        &-icon
+        {
+            font-size: $menu-item-icon-size;
+            line-height: 1;
+            text-align: center;
+            vertical-align: middle;
+            color: rgba($color, .6);
+            background-position: center center;
+        }
+
+        &-separator
+        {
+            &-spacer
+            {
+                height: 8px;
+                margin: 4px 0px;
+                // half of height
+                border-width: 0px;
+            }
+        }
+
+        &-active
+        {
+            .#{$prefix}menu-item-text
+            {
+                color: $grid-row-cell-over-color;
+            }
+        }
+
+        /* menu header disabled */
+        &-disabled-header
+        {
+            cursor: auto;
+
+            .#{$prefix}menu-item
+            {
+                &-text
+                {
+                    color: #757575;
+                    font-size: $panel-header-font-size;
+                    font-weight: $panel-header-font-weight;
+                }
+                &-link
+                {
+                    padding: 0 0 0 16px;
+                }
+            }
+
+            &:last-child
+            {
+                display: none;
+            }
+        }
+    }
+
+    &-body
+    {
+        border: 0px;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .#{$prefix}badge
+    {
+        top: 10px;
+        right: 8px;
+        bottom: auto;
+        left: auto;
+     }
+
+    // variant
+    &-navbar
+    {
+        .#{$prefix}menu-item
+        {
+            &-link
+            {
+                line-height: 44px;
+                font-weight: 500;
+            }
+            &-text
+            {
+                padding-left: 16px;
+            }
+            &-icon
+            {
+                font-size: 24px;
+                height: 24px;
+                width: 24px;
+                top: 9px;
+            }
+            &-noicon
+            {
+                .#{$prefix}menu-item
+                {
+                    &-link
+                    {
+                        padding: 0 16px;
+                    }
+                    &-text
+                    {
+                        padding-left: 0;
+                    }
+                    &-icon
+                    {
+                        display: none;
+                    }
+                }
+            }
+            &-notext
+            {
+            	.#{$prefix}badge
+				{
+					font-size: 0 !important;
+    				line-height: 0 !important;
+					padding: 0px 0px 0px 0px;
+					width: 12px;
+					height: 12px;
+					min-width: 12px;
+					min-height: 12px;
+					border-radius: 50%;
+					position: absolute;
+					top: auto; right: 12px; bottom: 8px; left: auto;
+					color: transparent;
+				}
+				.#{$prefix}menu-item
+                {
+                    &-text
+                    {
+                 		font-size: 0 !important;
+    					line-height: 0 !important;
+                    }
+                 }
+            }
+            &-secondary
+            {
+                .#{$prefix}menu-item
+                {
+                    &-text
+                    {
+                        color: #9E9E9E;
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.x-btn-profile
+{
+	&,
+	&-toolbar
+	{
+		&-small,&-medium,&-large
+		{
+			.x-btn-icon-el
+			{
+			    border-radius: 50%;
+			    background-repeat: no-repeat;
+			    background-size: contain;
+			}
+		}
+
+		&-small
+		{
+			.x-btn-inner
+			{
+			    padding-top: 36px;
+			}
+			.x-btn-icon-el
+			{
+                width: 36px;
+                height: 36px;
+            }
+		}
+
+		&-medium
+		{
+			.x-btn-inner
+			{
+			    padding-top: 44px;
+			}
+			.x-btn-icon-el
+			{
+                width: 44px;
+                height: 44px;
+            }
+		}
+
+		&-large
+		{
+			.x-btn-inner
+			{
+			    padding-top: 52px;
+			}
+			.x-btn-icon-el
+			{
+                width: 52px;
+                height: 52px;
+            }
+		}
+	}
+}
+.#{$prefix}btn
+{
+    .#{$prefix}btn
+    {
+        &-inner
+        {
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        &-icon-el
+        {
+            color: rgba($color, .6);
+            line-height: 1;
+            text-align: center;
+            vertical-align: middle;
+
+            &:before
+            {
+                position: absolute;
+                margin: auto;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+        }
+    }
+
+    .x-badge
+    {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: auto;
+    }
+    
+    &.#{$prefix}btn-notext
+    {
+        .#{$prefix}btn-inner
+        {
+            font-size: 0px;
+            line-height: 0;
+        }
+    }
+
+    &.#{$prefix}btn-noboldtext
+    {
+        .#{$prefix}btn-inner
+        {
+            font-weight: 400;
+        }
+    }
+
+    &.#{$prefix}btn-notransformtext
+    {
+        .#{$prefix}btn-inner
+        {
+            text-transform: none;
+        }
+    }
+
+    &.#{$prefix}btn-circle
+    {
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        -o-border-radius: 100%;
+        border-radius: 100%;
+    }
+
+    &.#{$prefix}btn-raised
+    {
+        -webkit-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+        -moz-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+        -o-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+        box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    }
+
+    &.#{$prefix}btn-raisedover
+    {
+        -webkit-transition: box-shadow 0.2s ease-in-out;
+        -moz-transition: box-shadow 0.2s ease-in-out;
+        -o-transition: box-shadow 0.2s ease-in-out;
+        transition: box-shadow 0.2s ease-in-out;
+
+        &.#{$prefix}btn-over
+        {
+            -webkit-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+            -moz-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+            -o-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+            box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+        }
+    }
+
+    &-default, &-default-toolbar,
+    &-alternative, &-alternative-toolbar,
+    &-inverse, &-inverse-toolbar,
+    &-primary, &-primary-toolbar,
+    &-danger, &-danger-toolbar,
+    &-info, &-info-toolbar,
+    &-warning, &-warning-toolbar
+    {
+        &-small .#{$prefix}btn-icon-el
+        {
+            font-size: $button-small-icon-size;
+        }
+        &-medium .#{$prefix}btn-icon-el
+        {
+            font-size: $button-medium-icon-size;
+        }
+        &-large .#{$prefix}btn-icon-el
+        {
+            font-size: $button-large-icon-size
+        }
+    }
+
+    &-inverse,
+    &-primary,
+    &-danger,
+    &-info,
+    &-warning
+    {
+        &-small,&-medium,&-large
+        {
+            .x-btn-icon-el
+            {
+                color: #fff; //bugfix
+            }
+        }
+    }
+
+    &-default-toolbar
+    {
+        &-small,&-medium,&-large
+        {
+            .x-btn-icon-el
+            {
+                // color: #1976D2;
+            }
+
+            &.#{$prefix}btn-bordered
+            {
+                border: 1px solid #E0E0E0;
+            }
+        }
+    }
+    &-alternative-toolbar
+    {
+        &-small,&-medium,&-large
+        {
+            .x-btn-icon-el
+            {
+                // color: #1976D2;
+            }
+
+            &.#{$prefix}btn-bordered
+            {
+                border: 1px solid #9E9E9E;
+            }
+        }
+    }
+    &-inverse-toolbar
+    {
+        &-small,&-medium,&-large
+        {
+            .x-btn-icon-el
+            {
+                color: #FFFFFF;
+            }
+
+            &.#{$prefix}btn-bordered
+            {
+                // special case
+                border: 1px solid #fff;
+            }
+        }
+    }
+    &-primary-toolbar
+    {
+        &-small,&-medium,&-large
+        {
+            .x-btn-icon-el
+            {
+                color: #1976D2;
+            }
+
+            &.#{$prefix}btn-bordered
+            {
+                border: 1px solid #2196F3;
+            }
+        }
+    }
+    &-danger-toolbar
+    {
+        &-small,&-medium,&-large
+        {
+            .x-btn-icon-el
+            {
+                color: #D32F2F;
+            }
+
+            &.#{$prefix}btn-bordered
+            {
+                border: 1px solid #F44336;
+            }
+        }
+    }
+    &-info-toolbar
+    {
+        &-small,&-medium,&-large
+        {
+            .x-btn-icon-el
+            {
+                color: #388E3C;
+            }
+
+            &.#{$prefix}btn-bordered
+            {
+                border: 1px solid #4caf50;
+            }
+        }
+    }
+    &-warning-toolbar
+    {
+        &-small,&-medium,&-large
+        {
+            .x-btn-icon-el
+            {
+                color: #FFA000;
+            }
+
+            &.#{$prefix}btn-bordered
+            {
+                border: 1px solid #ffc107;
+            }
+        }
+    }
+
+    &.#{$prefix}btn-nobackgroundchangeover
+    {
+        &:not(.#{$prefix}btn-pressed)
+    {
+        &.#{$prefix}btn
+        {
+            &-default-toolbar,
+            &-alternative-toolbar,
+            &-primary-toolbar,
+            &-danger-toolbar,
+            &-info-toolbar,
+            &-warning-toolbar
+            {
+                &-small,&-medium,&-large
+                {
+                    background-color: #ffffff;
+
+                    &:not(.#{$prefix}btn-bordered)
+                {
+                    border-color: #ffffff;
+                }
+            }
+        }
+        &-inverse-toolbar // special case for inverse
+        {
+            &-small,&-medium,&-large
+            {
+                background-color: rgba(66,66,66,0);
+
+                &:not(.#{$prefix}btn-bordered)
+            {
+                border-color: rgba(66,66,66,0);
+            }
+        }
+    }
+    &-default
+    {
+        &-small,&-medium,&-large
+        {
+            background-color: #ffffff;
+
+            &:not(.#{$prefix}btn-bordered)
+        {
+            border-color: #ffffff;
+        }
+    }
+}
+&-alternative
+{
+    &-small,&-medium,&-large
+    {
+        background-color: #e0e0e0;
+
+        &:not(.#{$prefix}btn-bordered)
+    {
+        border-color: #e0e0e0;
+    }
+}
+}
+&-inverse
+{
+    &-small,&-medium,&-large
+    {
+        background-color: #757575;
+
+        &:not(.#{$prefix}btn-bordered)
+    {
+        border-color: #757575;
+    }
+}
+}
+&-primary
+{
+    &-small,&-medium,&-large
+    {
+        background-color: #2196f3;
+
+        &:not(.#{$prefix}btn-bordered)
+    {
+        border-color: #2196f3;
+    }
+}
+}
+&-danger
+{
+    &-small,&-medium,&-large
+    {
+        background-color: #f44336;
+
+        &:not(.#{$prefix}btn-bordered)
+    {
+        border-color: #f44336;
+    }
+}
+}
+&-info
+{
+    &-small,&-medium,&-large
+    {
+        background-color: #4caf50;
+
+        &:not(.#{$prefix}btn-bordered)
+    {
+        border-color: #4caf50;
+    }
+}
+}
+&-warning
+{
+    &-small,&-medium,&-large
+    {
+        background-color: #ffc107;
+
+        &:not(.#{$prefix}btn-bordered)
+    {
+        border-color: #ffc107;
+    }
+}
+}
+}
+}
+}
+}
+.#{$prefix}tab
+{
+    &:not(.#{$prefix}tab-active)
+    {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+
+    &-bar
+    {
+        &-default
+        {
+            &-top
+            {
+                &:not(.#{$prefix}tab-bar-plain)
+                {
+                    box-shadow: 0 2px 5px rgba(0,0,0,.26);
+                    z-index: 2;
+                }
+            }
+            &-bottom
+            {
+                &:not(.#{$prefix}tab-bar-plain)
+                {
+                    box-shadow: 0 -2px 5px rgba(0,0,0,.26);
+                    z-index: 2;
+                }
+            }
+        }
+    }
+
+    .#{$prefix}tab
+    {
+        &-icon-el
+        {
+            top: auto;
+            bottom: 6px;
+            font-size: 16px;
+            color: $tab-color;
+        }
+    }
+
+    &-default
+    {
+        .#{$prefix}tab
+        {
+            &-inner
+            {
+                line-height: $tab-line-height !important;
+            }
+        }
+    }
+
+    &-active
+    {
+        transition: box-shadow .2s ease;
+
+        .#{$prefix}tab
+        {
+            &-icon-el
+            {
+                color: $tab-color-active;
+            }
+        }
+    }
+}
+
+[id^=tabpanel]
+{
+    > .#{$prefix}panel-body
+    {
+        border: {
+            top: 0px;
+            left: 0px;
+            right: 0px;
+        }
+    }
+}
+.#{$prefix}splitter
+{
+    background-color: $neutral-color;
+}
+.#{$prefix}toolbar[id$=-paging-toolbar],
+.#{$prefix}toolbar[id^=pagingtoolbar]
+{
+    background-color: white;
+    border-style: solid;
+    border-color: $neutral-color;
+
+    .#{$prefix}docked
+    {
+        &-bottom
+        {
+            border-top-width: 1px !important;
+        }
+    }
+
+    .#{$prefix}btn-default-toolbar-small-disabled
+    {
+        border-color: transparent;
+        display: none;
+    }
+    .#{$prefix}toolbar-separator
+    {
+        display: none;
+    }
+    
+    .#{$prefix}tbar-page-number
+    {
+        .#{$prefix}form-text
+        {
+            text-align: center;
+        }
+    }
+}
+$datepicker-inner-padding: 8px;
+$datepicker-width: 7 * $datepicker-item-width + 2 * $datepicker-inner-padding;
+
+.#{$prefix}datepicker
+{
+    border-width: 0px !important;
+    width: $datepicker-width;
+
+    &-header
+    {
+        .#{$prefix}btn
+        {
+            box-shadow: none;
+
+            &-inner
+            {
+                color: $color;
+                font-size: $font-size + 1;
+                text-transform: none !important;
+            }
+        }
+    }
+
+    &-arrow
+    {
+        background-color: $datepicker-header-background-color;
+    }
+
+    &-inner
+    {
+        padding: $datepicker-inner-padding;
+    }
+
+	&-column-header
+	{
+		&-inner
+		{
+			text-align: center;
+			padding: 0px;
+			color: #9E9E9E;
+            font-weight: 400;
+		}
+	}
+
+	&-date
+	{
+		text-align: center;
+		padding: 0px;
+        border-radius: 50%;
+	}
+
+	&-today
+	{
+		.#{$prefix}datepicker
+        {
+            &-date
+            {
+	            font-size: $font-size + 1;
+	            font-weight: 500;
+				color: $base-color;
+			}
+		}
+	}
+
+    &-prevday,
+    &-nextday
+    {
+        .#{$prefix}datepicker
+        {
+            &-date
+            {
+                font-size: $font-size - 2;
+                font-weight: 300;
+            }
+        }
+    }
+
+    &-selected
+	{
+		.#{$prefix}datepicker
+        {
+            &-date
+            {
+				border-radius: 50%;
+	            color: white;
+			}
+		}
+	}
+
+    &-footer
+    {
+        .#{$prefix}btn
+        {
+            box-shadow: none;
+            background-color: transparent;
+            margin: 0px;
+
+            &-inner
+            {
+                color: $base-color;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+a.#{$prefix}datepicker-date:hover
+{
+  border-radius: 50px;
+}
+$monthpicker-width: $datepicker-width;
+
+.#{$prefix}monthpicker
+{
+    border-width: 0px !important;
+    top: 0 !important;
+    left: 0 !important;
+
+    display: flex;
+    flex-direction: column;
+
+    &-body
+    {
+        flex: 1;
+        height: auto;
+    }
+
+	&-months,
+	&-years
+  	{
+        width: round($monthpicker-width / 2);
+
+        .#{$prefix}monthpicker
+        {
+            &-item
+            {
+                width: round($monthpicker-width / 4) - 1;
+            }
+        }
+	}
+
+    &-item
+    {
+        margin: 0px;
+
+        &-inner
+        {
+            margin: 3px 3px 3px 3px !important;
+        }
+
+        .#{$prefix}monthpicker
+        {
+            &-selected
+            {
+                color: white;
+            }
+        }
+    }
+
+    &-buttons
+    {
+        position: relative;
+        
+        .#{$prefix}btn
+        {
+            box-shadow: none;
+            background-color: transparent;
+            margin: 0px;
+
+            &-inner
+            {
+                color: $base-color;
+                font-weight: 500;
+            }
+        }
+    }
+}
+a.#{$prefix}monthpicker-item-inner:hover
+{
+    color: $color;
+}
+/** tooltip: fix invalid size of tooltips **/
+/* unused on extjs 4.2.2 */
+/* remove !important css */
+.x-tip { width: auto;} 
+.x-tip-body { width: auto;}
+.x-tip-body span { width: auto; }
+.#{$prefix}window-notification
+{
+    background-color: rgba(66,66,66,0.93);
+    max-width: 640px;
+
+    .#{$prefix}window
+    {
+        &-header
+        {
+            padding: 10px 16px 0px;
+        }
+        
+        &-header,
+        &-body
+        {
+            background-color: transparent;
+            border-color: transparent;
+        }
+        
+        &-header-text,
+        &-body
+        {
+            color: white;
+        }
+    }
+}
+/* ui mixin: alternative-toolbar-small for of type: extjs-button-ui */
+@if $include-ext-button-button != false {
+  $_arch_color: #212121;
+  @include extjs-button-ui(
+    $ui:"alternative-toolbar-small",
+    $arrow-height: $button-small-arrow-height,
+    $arrow-width: $button-small-arrow-width,
+    $background-color: transparent,
+    $background-color-disabled: transparent,
+    $background-color-focus: #BDBDBD,
+    $background-color-over: #BDBDBD,
+    $background-color-pressed: #9E9E9E,
+    $background-gradient: none,
+    $background-gradient-disabled: none,
+    $background-gradient-focus: none,
+    $background-gradient-over: none,
+    $background-gradient-pressed: none,
+    $border-color: transparent,
+    $border-color-disabled: transparent,
+    $border-color-focus: #BDBDBD,
+    $border-color-over: #BDBDBD,
+    $border-color-pressed: #9E9E9E,
+    $border-radius: $button-small-border-radius,
+    $border-width: $button-small-border-width,
+    $color: $_arch_color,
+    $color-disabled: $_arch_color,
+    $color-focus: $_arch_color ,
+    $color-over: $_arch_color ,
+    $color-pressed: $_arch_color ,
+    $font-family: $button-small-font-family,
+    $font-family-disabled: $button-small-font-family-disabled,
+    $font-family-focus: $button-small-font-family-focus,
+    $font-family-over: $button-small-font-family-over,
+    $font-family-pressed: $button-small-font-family-pressed,
+    $font-size: $button-small-font-size,
+    $font-size-disabled: $button-small-font-size-disabled,
+    $font-size-focus: $button-small-font-size-focus,
+    $font-size-over: $button-small-font-size-over,
+    $font-size-pressed: $button-small-font-size-pressed,
+    $font-weight: $button-small-font-weight,
+    $font-weight-disabled: $button-small-font-weight-disabled,
+    $font-weight-focus: $button-small-font-weight-focus,
+    $font-weight-over: $button-small-font-weight-over,
+    $font-weight-pressed: $button-small-font-weight-pressed,
+    $glyph-color: $_arch_color ,
+    $glyph-opacity: $button-toolbar-glyph-opacity,
+    $icon-size: $button-small-icon-size,
+    $include-split-noline-arrows: $button-toolbar-include-split-noline-arrows,
+    $include-split-over-arrows: $button-include-split-over-arrows,
+    $include-ui-menu-arrows: $button-include-ui-menu-arrows,
+    $include-ui-split-arrows: $button-include-ui-split-arrows,
+    $inner-opacity-disabled: $button-toolbar-inner-opacity-disabled,
+    $opacity-disabled: $button-toolbar-opacity-disabled,
+    $padding: $button-small-padding,
+    $split-height: $button-small-split-height,
+    $split-width: $button-small-split-width,
+    $text-padding: $button-small-text-padding
+  );
+}
+/* ui mixin: alternative-small for of type: extjs-button-ui */
+@if $include-ext-button-button != false {
+  
+  @include extjs-button-ui(
+    $ui:"alternative-small",
+    $arrow-height: $button-small-arrow-height,
+    $arrow-width: $button-small-arrow-width,
+    $background-color: #E0E0E0,
+    $background-color-disabled: #E0E0E0,
+    $background-color-focus: #BDBDBD,
+    $background-color-over: #BDBDBD,
+    $background-color-pressed: #9E9E9E,
+    $background-gradient: none,
+    $background-gradient-disabled: none,
+    $background-gradient-focus: none,
+    $background-gradient-over: none,
+    $background-gradient-pressed: none,
+    $border-color: #E0E0E0,
+    $border-color-disabled: #E0E0E0,
+    $border-color-focus: #BDBDBD,
+    $border-color-over: #BDBDBD,
+    $border-color-pressed: #9E9E9E,
+    $border-radius: $button-small-border-radius,
+    $border-width: $button-small-border-width,
+    $color: $button-default-color,
+    $color-disabled: $button-default-color-disabled,
+    $color-focus: $button-default-color-focus,
+    $color-over: $button-default-color-over,
+    $color-pressed: $button-default-color-pressed,
+    $font-family: $button-small-font-family,
+    $font-family-disabled: $button-small-font-family-disabled,
+    $font-family-focus: $button-small-font-family-focus,
+    $font-family-over: $button-small-font-family-over,
+    $font-family-pressed: $button-small-font-family-pressed,
+    $font-size: $button-small-font-size,
+    $font-size-disabled: $button-small-font-size-disabled,
+    $font-size-focus: $button-small-font-size-focus,
+    $font-size-over: $button-small-font-size-over,
+    $font-size-pressed: $button-small-font-size-pressed,
+    $font-weight: $button-small-font-weight,
+    $font-weight-disabled: $button-small-font-weight-disabled,
+    $font-weight-focus: $button-small-font-weight-focus,
+    $font-weight-over: $button-small-font-weight-over,
+    $font-weight-pressed: $button-small-font-weight-pressed,
+    $glyph-color: $button-default-glyph-color,
+    $glyph-opacity: $button-default-glyph-opacity,
+    $icon-size: $button-small-icon-size,
+    $include-split-noline-arrows: false,
+    $include-split-over-arrows: $button-include-split-over-arrows,
+    $include-ui-menu-arrows: $button-include-ui-menu-arrows,
+    $include-ui-split-arrows: $button-include-ui-split-arrows,
+    $inner-opacity-disabled: $button-inner-opacity-disabled,
+    $opacity-disabled: $button-opacity-disabled,
+    $padding: $button-small-padding,
+    $split-height: $button-small-split-height,
+    $split-width: $button-small-split-width,
+    $text-padding: $button-small-text-padding
+  );
+}
+/* ui mixin: info-toolbar-small for of type: extjs-button-ui */
+@if $include-ext-button-button != false {
+  $_arch_background-color: transparent;
+$_arch_background-color-disabled: transparent;
+$_arch_background-color-focus: #E8F5E9;
+$_arch_background-color-over: #E8F5E9;
+$_arch_background-color-pressed: #C8E6C9;
+$_arch_color: #388E3C;
+  @include extjs-button-ui(
+    $ui:"info-toolbar-small",
+    $arrow-height: $button-small-arrow-height,
+    $arrow-width: $button-small-arrow-width,
+    $background-color: $_arch_background-color,
+    $background-color-disabled: $_arch_background-color-disabled,
+    $background-color-focus: $_arch_background-color-focus,
+    $background-color-over: $_arch_background-color-over,
+    $background-color-pressed: $_arch_background-color-pressed,
+    $background-gradient: none,
+    $background-gradient-disabled: none,
+    $background-gradient-focus: none,
+    $background-gradient-over: none,
+    $background-gradient-pressed: none,
+    $border-color: $_arch_background-color,
+    $border-color-disabled: $_arch_background-color-disabled,
+    $border-color-focus: $_arch_background-color-focus,
+    $border-color-over: $_arch_background-color-over,
+    $border-color-pressed: $_arch_background-color-pressed,
+    $border-radius: $button-small-border-radius,
+    $border-width: $button-small-border-width,
+    $color: $_arch_color,
+    $color-disabled: $_arch_color ,
+    $color-focus: $_arch_color ,
+    $color-over: $_arch_color ,
+    $color-pressed: $_arch_color ,
+    $font-family: $button-small-font-family,
+    $font-family-disabled: $button-small-font-family-disabled,
+    $font-family-focus: $button-small-font-family-focus,
+    $font-family-over: $button-small-font-family-over,
+    $font-family-pressed: $button-small-font-family-pressed,
+    $font-size: $button-small-font-size,
+    $font-size-disabled: $button-small-font-size-disabled,
+    $font-size-focus: $button-small-font-size-focus,
+    $font-size-over: $button-small-font-size-over,
+    $font-size-pressed: $button-small-font-size-pressed,
+    $font-weight: $button-small-font-weight,
+    $font-weight-disabled: $button-small-font-weight-disabled,
+    $font-weight-focus: $button-small-font-weight-focus,
+    $font-weight-over: $button-small-font-weight-over,
+    $font-weight-pressed: $button-small-font-weight-pressed,
+    $glyph-color: $_arch_color ,
+    $glyph-opacity: $button-toolbar-glyph-opacity,
+    $icon-size: $button-small-icon-size,
+    $include-split-noline-arrows: $button-toolbar-include-split-noline-arrows,
+    $include-split-over-arrows: $button-include-split-over-arrows,
+    $include-ui-menu-arrows: $button-include-ui-menu-arrows,
+    $include-ui-split-arrows: $button-include-ui-split-arrows,
+    $inner-opacity-disabled: $button-toolbar-inner-opacity-disabled,
+    $opacity-disabled: $button-toolbar-opacity-disabled,
+    $padding: $button-small-padding,
+    $split-height: $button-small-split-height,
+    $split-width: $button-small-split-width,
+    $text-padding: $button-small-text-padding
+  );
+}
+/* ui mixin: primary-small for of type: extjs-button-ui */
+@if $include-ext-button-button != false {
+  $_arch_background-color: #2196F3;
+$_arch_background-color-disabled: #2196F3;
+$_arch_background-color-focus: #1E88E5;
+$_arch_background-color-over: #1E88E5;
+$_arch_background-color-pressed: #1565C0;
+$_arch_color: #fff;
+  @include extjs-button-ui(
+    $ui:"primary-small",
+    $arrow-height: $button-small-arrow-height,
+    $arrow-width: $button-small-arrow-width,
+    $background-color: $_arch_background-color,
+    $background-color-disabled: $_arch_background-color-disabled,
+    $background-color-focus: $_arch_background-color-focus,
+    $background-color-over: $_arch_background-color-over,
+    $background-color-pressed: $_arch_background-color-pressed,
+    $background-gradient: none,
+    $background-gradient-disabled: none,
+    $background-gradient-focus: none,
+    $background-gradient-over: none,
+    $background-gradient-pressed: none,
+    $border-color: $_arch_background-color ,
+    $border-color-disabled: $_arch_background-color-disabled,
+    $border-color-focus: $_arch_background-color-focus,
+    $border-color-over: $_arch_background-color-over,
+    $border-color-pressed: $_arch_background-color-pressed,
+    $border-radius: $button-small-border-radius,
+    $border-width: $button-small-border-width,
+    $color: $_arch_color,
+    $color-disabled: $_arch_color,
+    $color-focus: $_arch_color ,
+    $color-over: $_arch_color ,
+    $color-pressed: $_arch_color ,
+    $font-family: $button-small-font-family,
+    $font-family-disabled: $button-small-font-family-disabled,
+    $font-family-focus: $button-small-font-family-focus,
+    $font-family-over: $button-small-font-family-over,
+    $font-family-pressed: $button-small-font-family-pressed,
+    $font-size: $button-small-font-size,
+    $font-size-disabled: $button-small-font-size-disabled,
+    $font-size-focus: $button-small-font-size-focus,
+    $font-size-over: $button-small-font-size-over,
+    $font-size-pressed: $button-small-font-size-pressed,
+    $font-weight: $button-small-font-weight,
+    $font-weight-disabled: $button-small-font-weight-disabled,
+    $font-weight-focus: $button-small-font-weight-focus,
+    $font-weight-over: $button-small-font-weight-over,
+    $font-weight-pressed: $button-small-font-weight-pressed,
+    $glyph-color: $_arch_color ,
+    $glyph-opacity: $button-default-glyph-opacity,
+    $icon-size: $button-small-icon-size,
+    $include-split-noline-arrows: false,
+    $include-split-over-arrows: $button-include-split-over-arrows,
+    $include-ui-menu-arrows: $button-include-ui-menu-arrows,
+    $include-ui-split-arrows: $button-include-ui-split-arrows,
+    $inner-opacity-disabled: $button-inner-opacity-disabled,
+    $opacity-disabled: $button-opacity-disabled,
+    $padding: $button-small-padding,
+    $split-height: $button-small-split-height,
+    $split-width: $button-small-split-width,
+    $text-padding: $button-small-text-padding
+  );
+}
+/* ui mixin: danger-small for of type: extjs-button-ui */
+@if $include-ext-button-button != false {
+  
+  @include extjs-button-ui(
+    $ui:"danger-small",
+    $arrow-height: $button-small-arrow-height,
+    $arrow-width: $button-small-arrow-width,
+    $background-color: #F44336,
+    $background-color-disabled: #F44336,
+    $background-color-focus: #E53935,
+    $background-color-over: #E53935,
+    $background-color-pressed: #C62828,
+    $background-gradient: none,
+    $background-gradient-disabled: none,
+    $background-gradient-focus: none,
+    $background-gradient-over: none,
+    $background-gradient-pressed: none,
+    $border-color: #F44336,
+    $border-color-disabled: #F44336,
+    $border-color-focus: #E53935,
+    $border-color-over: #E53935,
+    $border-color-pressed: #C62828,
+    $border-radius: $button-small-border-radius,
+    $border-width: $button-small-border-width,
+    $color: #fff,
+    $color-disabled: #fff,
+    $color-focus: #fff,
+    $color-over: #fff,
+    $color-pressed: #fff,
+    $font-family: $button-small-font-family,
+    $font-family-disabled: $button-small-font-family-disabled,
+    $font-family-focus: $button-small-font-family-focus,
+    $font-family-over: $button-small-font-family-over,
+    $font-family-pressed: $button-small-font-family-pressed,
+    $font-size: $button-small-font-size,
+    $font-size-disabled: $button-small-font-size-disabled,
+    $font-size-focus: $button-small-font-size-focus,
+    $font-size-over: $button-small-font-size-over,
+    $font-size-pressed: $button-small-font-size-pressed,
+    $font-weight: $button-small-font-weight,
+    $font-weight-disabled: $button-small-font-weight-disabled,
+    $font-weight-focus: $button-small-font-weight-focus,
+    $font-weight-over: $button-small-font-weight-over,
+    $font-weight-pressed: $button-small-font-weight-pressed,
+    $glyph-color: #fff,
+    $glyph-opacity: $button-default-glyph-opacity,
+    $icon-size: $button-small-icon-size,
+    $include-split-noline-arrows: false,
+    $include-split-over-arrows: $button-include-split-over-arrows,
+    $include-ui-menu-arrows: $button-include-ui-menu-arrows,
+    $include-ui-split-arrows: $button-include-ui-split-arrows,
+    $inner-opacity-disabled: $button-inner-opacity-disabled,
+    $opacity-disabled: $button-opacity-disabled,
+    $padding: $button-small-padding,
+    $split-height: $button-small-split-height,
+    $split-width: $button-small-split-width,
+    $text-padding: $button-small-text-padding
+  );
+}
+/* ui mixin: warning-small for of type: extjs-button-ui */
+@if $include-ext-button-button != false {
+  
+  @include extjs-button-ui(
+    $ui:"warning-small",
+    $arrow-height: $button-small-arrow-height,
+    $arrow-width: $button-small-arrow-width,
+    $background-color: #FFC107,
+    $background-color-disabled: #FFC107,
+    $background-color-focus: #FFB300,
+    $background-color-over: #FFB300,
+    $background-color-pressed: #FFA000,
+    $background-gradient: none,
+    $background-gradient-disabled: none,
+    $background-gradient-focus: none,
+    $background-gradient-over: none,
+    $background-gradient-pressed: none,
+    $border-color: #FFC107,
+    $border-color-disabled: #FFC107,
+    $border-color-focus: #FFB300,
+    $border-color-over: #FFB300,
+    $border-color-pressed: #FFA000,
+    $border-radius: $button-small-border-radius,
+    $border-width: $button-small-border-width,
+    $color: #fff,
+    $color-disabled: #fff,
+    $color-focus: #fff,
+    $color-over: #fff,
+    $color-pressed: #fff,
+    $font-family: $button-small-font-family,
+    $font-family-disabled: $button-small-font-family-disabled,
+    $font-family-focus: $button-small-font-family-focus,
+    $font-family-over: $button-small-font-family-over,
+    $font-family-pressed: $button-small-font-family-pressed,
+    $font-size: $button-small-font-size,
+    $font-size-disabled: $button-small-font-size-disabled,
+    $font-size-focus: $button-small-font-size-focus,
+    $font-size-over: $button-small-font-size-over,
+    $font-size-pressed: $button-small-font-size-pressed,
+    $font-weight: $button-small-font-weight,
+    $font-weight-disabled: $button-small-font-weight-disabled,
+    $font-weight-focus: $button-small-font-weight-focus,
+    $font-weight-over: $button-small-font-weight-over,
+    $font-weight-pressed: $button-small-font-weight-pressed,
+    $glyph-color: #fff,
+    $glyph-opacity: $button-default-glyph-opacity,
+    $icon-size: $button-small-icon-size,
+    $include-split-noline-arrows: false,
+    $include-split-over-arrows: $button-include-split-over-arrows,
+    $include-ui-menu-arrows: $button-include-ui-menu-arrows,
+    $include-ui-split-arrows: $button-include-ui-split-arrows,
+    $inner-opacity-disabled: $button-inner-opacity-disabled,
+    $opacity-disabled: $button-opacity-disabled,
+    $padding: $button-small-padding,
+    $split-height: $button-small-split-height,
+    $split-width: $button-small-split-width,
+    $text-padding: $button-small-text-padding
+  );
+}
+/* ui mixin: info-small for of type: extjs-button-ui */
+@if $include-ext-button-button != false {
+  
+  @include extjs-button-ui(
+    $ui:"info-small",
+    $arrow-height: $button-small-arrow-height,
+    $arrow-width: $button-small-arrow-width,
+    $background-color: #4CAF50,
+    $background-color-disabled: #4CAF50,
+    $background-color-focus: #43A047,
+    $background-color-over: #43A047,
+    $background-color-pressed: #2E7D32,
+    $background-gradient: none,
+    $background-gradient-disabled: none,
+    $background-gradient-focus: none,
+    $background-gradient-over: none,
+    $background-gradient-pressed: none,
+    $border-color: #4CAF50,
+    $border-color-disabled: #4CAF50,
+    $border-color-focus: #43A047,
+    $border-color-over: #43A047,
+    $border-color-pressed: #2E7D32,
+    $border-radius: $button-small-border-radius,
+    $border-width: $button-small-border-width,
+    $color: #fff,
+    $color-disabled: #fff,
+    $color-focus: #fff,
+    $color-over: #fff,
+    $color-pressed: #fff,
+    $font-family: $button-small-font-family,
+    $font-family-disabled: $button-small-font-family-disabled,
+    $font-family-focus: $button-small-font-family-focus,
+    $font-family-over: $button-small-font-family-over,
+    $font-family-pressed: $button-small-font-family-pressed,
+    $font-size: $button-small-font-size,
+    $font-size-disabled: $button-small-font-size-disabled,
+    $font-size-focus: $button-small-font-size-focus,
+    $font-size-over: $button-small-font-size-over,
+    $font-size-pressed: $button-small-font-size-pressed,
+    $font-weight: $button-small-font-weight,
+    $font-weight-disabled: $button-small-font-weight-disabled,
+    $font-weight-focus: $button-small-font-weight-focus,
+    $font-weight-over: $button-small-font-weight-over,
+    $font-weight-pressed: $button-small-font-weight-pressed,
+    $glyph-color: $button-default-glyph-color,
+    $glyph-opacity: $button-default-glyph-opacity,
+    $icon-size: $button-small-icon-size,
+    $include-split-noline-arrows: false,
+    $include-split-over-arrows: $button-include-split-over-arrows,
+    $include-ui-menu-arrows: $button-include-ui-menu-arrows,
+    $include-ui-split-arrows: $button-include-ui-split-arrows,
+    $inner-opacity-disabled: $button-inner-opacity-disabled,
+    $opacity-disabled: $button-opacity-disabled,
+    $padding: $button-small-padding,
+    $split-height: $button-small-split-height,
+    $split-width: $button-small-split-width,
+    $text-padding: $button-small-text-padding
+  );
+}
+/* ui mixin: warning-toolbar-small for of type: extjs-button-ui */
+@if $include-ext-button-button != false {
+  $_arch_background-color: transparent;
+$_arch_background-color-disabled: transparent;
+$_arch_background-color-focus: #FFF3E0;
+$_arch_background-color-over: #FFF3E0;
+$_arch_background-color-pressed: #FFE0B2;
+$_arch_color: #FFA000;
+  @include extjs-button-ui(
+    $ui:"warning-toolbar-small",
+    $arrow-height: $button-small-arrow-height,
+    $arrow-width: $button-small-arrow-width,
+    $background-color: $_arch_background-color,
+    $background-color-disabled: $_arch_background-color-disabled,
+    $background-color-focus: $_arch_background-color-focus,
+    $background-color-over: $_arch_background-color-over,
+    $background-color-pressed: $_arch_background-color-pressed,
+    $background-gradient: $button-toolbar-background-gradient,
+    $background-gradient-disabled: $button-toolbar-background-gradient-disabled,
+    $background-gradient-focus: $button-toolbar-background-gradient-focus,
+    $background-gradient-over: $button-toolbar-background-gradient-over,
+    $background-gradient-pressed: $button-toolbar-background-gradient-pressed,
+    $border-color: $_arch_background-color,
+    $border-color-disabled: $_arch_background-color-disabled,
+    $border-color-focus: $_arch_background-color-focus,
+    $border-color-over: $_arch_background-color-over,
+    $border-color-pressed: $_arch_background-color-pressed,
+    $border-radius: $button-small-border-radius,
+    $border-width: $button-small-border-width,
+    $color: $_arch_color,
+    $color-disabled: $_arch_color ,
+    $color-focus: $_arch_color ,
+    $color-over: $_arch_color ,
+    $color-pressed: $_arch_color ,
+    $font-family: $button-small-font-family,
+    $font-family-disabled: $button-small-font-family-disabled,
+    $font-family-focus: $button-small-font-family-focus,
+    $font-family-over: $button-small-font-family-over,
+    $font-family-pressed: $button-small-font-family-pressed,
+    $font-size: $button-small-font-size,
+    $font-size-disabled: $button-small-font-size-disabled,
+    $font-size-focus: $button-small-font-size-focus,
+    $font-size-over: $button-small-font-size-over,
+    $font-size-pressed: $button-small-font-size-pressed,
+    $font-weight: $button-small-font-weight,
+    $font-weight-disabled: $button-small-font-weight-disabled,
+    $font-weight-focus: $button-small-font-weight-focus,
+    $font-weight-over: $button-small-font-weight-over,
+    $font-weight-pressed: $button-small-font-weight-pressed,
+    $glyph-color: $_arch_color ,
+    $glyph-opacity: $button-toolbar-glyph-opacity,
+    $icon-size: $button-small-icon-size,
+    $include-split-noline-arrows: $button-toolbar-include-split-noline-arrows,
+    $include-split-over-arrows: $button-include-split-over-arrows,
+    $include-ui-menu-arrows: $button-include-ui-menu-arrows,
+    $include-ui-split-arrows: $button-include-ui-split-arrows,
+    $inner-opacity-disabled: $button-toolbar-inner-opacity-disabled,
+    $opacity-disabled: $button-toolbar-opacity-disabled,
+    $padding: $button-small-padding,
+    $split-height: $button-small-split-height,
+    $split-width: $button-small-split-width,
+    $text-padding: $button-small-text-padding
+  );
+}
+/* ui mixin: danger-toolbar-small for of type: extjs-button-ui */
+@if $include-ext-button-button != false {
+  $_arch_background-color: transparent;
+$_arch_background-color-disabled: transparent;
+$_arch_background-color-focus: #FFEBEE;
+$_arch_background-color-over: #FFEBEE;
+$_arch_background-color-pressed: #FFCDD2;
+$_arch_color: #D32F2F;
+  @include extjs-button-ui(
+    $ui:"danger-toolbar-small",
+    $arrow-height: $button-small-arrow-height,
+    $arrow-width: $button-small-arrow-width,
+    $background-color: $_arch_background-color,
+    $background-color-disabled: $_arch_background-color-disabled,
+    $background-color-focus: $_arch_background-color-focus,
+    $background-color-over: $_arch_background-color-over,
+    $background-color-pressed: $_arch_background-color-pressed,
+    $background-gradient: $button-toolbar-background-gradient,
+    $background-gradient-disabled: $button-toolbar-background-gradient-disabled,
+    $background-gradient-focus: $button-toolbar-background-gradient-focus,
+    $background-gradient-over: $button-toolbar-background-gradient-over,
+    $background-gradient-pressed: $button-toolbar-background-gradient-pressed,
+    $border-color: $_arch_background-color,
+    $border-color-disabled: $_arch_background-color-disabled,
+    $border-color-focus: $_arch_background-color-focus,
+    $border-color-over: $_arch_background-color-over,
+    $border-color-pressed: $_arch_background-color-pressed,
+    $border-radius: $button-small-border-radius,
+    $border-width: $button-small-border-width,
+    $color: $_arch_color,
+    $color-disabled: $_arch_color ,
+    $color-focus: $_arch_color ,
+    $color-over: $_arch_color ,
+    $color-pressed: $_arch_color ,
+    $font-family: $button-small-font-family,
+    $font-family-disabled: $button-small-font-family-disabled,
+    $font-family-focus: $button-small-font-family-focus,
+    $font-family-over: $button-small-font-family-over,
+    $font-family-pressed: $button-small-font-family-pressed,
+    $font-size: $button-small-font-size,
+    $font-size-disabled: $button-small-font-size-disabled,
+    $font-size-focus: $button-small-font-size-focus,
+    $font-size-over: $button-small-font-size-over,
+    $font-size-pressed: $button-small-font-size-pressed,
+    $font-weight: $button-small-font-weight,
+    $font-weight-disabled: $button-small-font-weight-disabled,
+    $font-weight-focus: $button-small-font-weight-focus,
+    $font-weight-over: $button-small-font-weight-over,
+    $font-weight-pressed: $button-small-font-weight-pressed,
+    $glyph-color: $_arch_color ,
+    $glyph-opacity: $button-toolbar-glyph-opacity,
+    $icon-size: $button-small-icon-size,
+    $include-split-noline-arrows: $button-toolbar-include-split-noline-arrows,
+    $include-split-over-arrows: $button-include-split-over-arrows,
+    $include-ui-menu-arrows: $button-include-ui-menu-arrows,
+    $include-ui-split-arrows: $button-include-ui-split-arrows,
+    $inner-opacity-disabled: $button-toolbar-inner-opacity-disabled,
+    $opacity-disabled: $button-toolbar-opacity-disabled,
+    $padding: $button-small-padding,
+    $split-height: $button-small-split-height,
+    $split-width: $button-small-split-width,
+    $text-padding: $button-small-text-padding
+  );
+}
+/* ui mixin: primary-toolbar-small for of type: extjs-button-ui */
+@if $include-ext-button-button != false {
+  $_arch_background-color: transparent;
+$_arch_background-color-disabled: transparent;
+$_arch_background-color-focus: #E3F2FD;
+$_arch_background-color-over: #E3F2FD;
+$_arch_background-color-pressed: #BBDEFB;
+$_arch_color: #1976D2;
+  @include extjs-button-ui(
+    $ui:"primary-toolbar-small",
+    $arrow-height: $button-small-arrow-height,
+    $arrow-width: $button-small-arrow-width,
+    $background-color: $_arch_background-color,
+    $background-color-disabled: $_arch_background-color-disabled,
+    $background-color-focus: $_arch_background-color-focus,
+    $background-color-over: $_arch_background-color-over,
+    $background-color-pressed: $_arch_background-color-pressed,
+    $background-gradient: $button-toolbar-background-gradient,
+    $background-gradient-disabled: $button-toolbar-background-gradient-disabled,
+    $background-gradient-focus: $button-toolbar-background-gradient-focus,
+    $background-gradient-over: $button-toolbar-background-gradient-over,
+    $background-gradient-pressed: $button-toolbar-background-gradient-pressed,
+    $border-color: $_arch_background-color,
+    $border-color-disabled: $_arch_background-color-disabled,
+    $border-color-focus: $_arch_background-color-focus,
+    $border-color-over: $_arch_background-color-over,
+    $border-color-pressed: $_arch_background-color-pressed,
+    $border-radius: $button-small-border-radius,
+    $border-width: $button-small-border-width,
+    $color: $_arch_color,
+    $color-disabled: $_arch_color ,
+    $color-focus: $_arch_color ,
+    $color-over: $_arch_color ,
+    $color-pressed: $_arch_color ,
+    $font-family: $button-small-font-family,
+    $font-family-disabled: $button-small-font-family-disabled,
+    $font-family-focus: $button-small-font-family-focus,
+    $font-family-over: $button-small-font-family-over,
+    $font-family-pressed: $button-small-font-family-pressed,
+    $font-size: $button-small-font-size,
+    $font-size-disabled: $button-small-font-size-disabled,
+    $font-size-focus: $button-small-font-size-focus,
+    $font-size-over: $button-small-font-size-over,
+    $font-size-pressed: $button-small-font-size-pressed,
+    $font-weight: $button-small-font-weight,
+    $font-weight-disabled: $button-small-font-weight-disabled,
+    $font-weight-focus: $button-small-font-weight-focus,
+    $font-weight-over: $button-small-font-weight-over,
+    $font-weight-pressed: $button-small-font-weight-pressed,
+    $glyph-color: $_arch_color ,
+    $glyph-opacity: $button-toolbar-glyph-opacity,
+    $icon-size: $button-small-icon-size,
+    $include-split-noline-arrows: $button-toolbar-include-split-noline-arrows,
+    $include-split-over-arrows: $button-include-split-over-arrows,
+    $include-ui-menu-arrows: $button-include-ui-menu-arrows,
+    $include-ui-split-arrows: $button-include-ui-split-arrows,
+    $inner-opacity-disabled: $button-toolbar-inner-opacity-disabled,
+    $opacity-disabled: $button-toolbar-opacity-disabled,
+    $padding: $button-small-padding,
+    $split-height: $button-small-split-height,
+    $split-width: $button-small-split-width,
+    $text-padding: $button-small-text-padding
+  );
+}
+/* ui mixin: inverse-toolbar-small for of type: extjs-button-ui */
+@if $include-ext-button-button != false {
+  $_arch_background-color-focus: rgba(66,66,66,0.3);
+$_arch_background-color-over: rgba(66,66,66,0.3);
+$_arch_background-color-pressed: rgba(66,66,66,0.5);
+$_arch_color: #FFF;
+  @include extjs-button-ui(
+    $ui:"inverse-toolbar-small",
+    $arrow-height: $button-small-arrow-height,
+    $arrow-width: $button-small-arrow-width,
+    $background-color: transparent,
+    $background-color-disabled: transparent,
+    $background-color-focus: $_arch_background-color-focus,
+    $background-color-over: $_arch_background-color-over,
+    $background-color-pressed: $_arch_background-color-pressed,
+    $background-gradient: $button-toolbar-background-gradient,
+    $background-gradient-disabled: $button-toolbar-background-gradient-disabled,
+    $background-gradient-focus: $button-toolbar-background-gradient-focus,
+    $background-gradient-over: $button-toolbar-background-gradient-over,
+    $background-gradient-pressed: $button-toolbar-background-gradient-pressed,
+    $border-color: transparent,
+    $border-color-disabled: transparent,
+    $border-color-focus: transparent,
+    $border-color-over: transparent,
+    $border-color-pressed: transparent,
+    $border-radius: $button-small-border-radius,
+    $border-width: $button-small-border-width,
+    $color: $_arch_color,
+    $color-disabled: $_arch_color ,
+    $color-focus: $_arch_color ,
+    $color-over: $_arch_color ,
+    $color-pressed: $_arch_color ,
+    $font-family: $button-small-font-family,
+    $font-family-disabled: $button-small-font-family-disabled,
+    $font-family-focus: $button-small-font-family-focus,
+    $font-family-over: $button-small-font-family-over,
+    $font-family-pressed: $button-small-font-family-pressed,
+    $font-size: $button-small-font-size,
+    $font-size-disabled: $button-small-font-size-disabled,
+    $font-size-focus: $button-small-font-size-focus,
+    $font-size-over: $button-small-font-size-over,
+    $font-size-pressed: $button-small-font-size-pressed,
+    $font-weight: $button-small-font-weight,
+    $font-weight-disabled: $button-small-font-weight-disabled,
+    $font-weight-focus: $button-small-font-weight-focus,
+    $font-weight-over: $button-small-font-weight-over,
+    $font-weight-pressed: $button-small-font-weight-pressed,
+    $glyph-color: $_arch_color ,
+    $glyph-opacity: $button-toolbar-glyph-opacity,
+    $icon-size: $button-small-icon-size,
+    $include-split-noline-arrows: $button-toolbar-include-split-noline-arrows,
+    $include-split-over-arrows: $button-include-split-over-arrows,
+    $include-ui-menu-arrows: $button-include-ui-menu-arrows,
+    $include-ui-split-arrows: $button-include-ui-split-arrows,
+    $inner-opacity-disabled: $button-toolbar-inner-opacity-disabled,
+    $opacity-disabled: $button-toolbar-opacity-disabled,
+    $padding: $button-small-padding,
+    $split-height: $button-small-split-height,
+    $split-width: $button-small-split-width,
+    $text-padding: $button-small-text-padding
+  );
+}
+/* ui mixin: inverse-small for of type: extjs-button-ui */
+@if $include-ext-button-button != false {
+  $_arch_background-color: #757575;
+$_arch_background-color-disabled: #757575;
+$_arch_background-color-focus: #616161;
+$_arch_background-color-over: #616161;
+$_arch_background-color-pressed: #424242;
+  @include extjs-button-ui(
+    $ui:"inverse-small",
+    $arrow-height: $button-small-arrow-height,
+    $arrow-width: $button-small-arrow-width,
+    $background-color: $_arch_background-color,
+    $background-color-disabled: $_arch_background-color-disabled,
+    $background-color-focus: $_arch_background-color-focus,
+    $background-color-over: $_arch_background-color-over,
+    $background-color-pressed: $_arch_background-color-pressed,
+    $background-gradient: none,
+    $background-gradient-disabled: none,
+    $background-gradient-focus: none,
+    $background-gradient-over: none,
+    $background-gradient-pressed: none,
+    $border-color: $_arch_background-color ,
+    $border-color-disabled: $_arch_background-color-disabled,
+    $border-color-focus: $_arch_background-color-focus,
+    $border-color-over: $_arch_background-color-over,
+    $border-color-pressed: $_arch_background-color-pressed,
+    $border-radius: $button-small-border-radius,
+    $border-width: $button-small-border-width,
+    $color: #fff,
+    $color-disabled: #fff,
+    $color-focus: #fff,
+    $color-over: #fff,
+    $color-pressed: #fff,
+    $font-family: $button-small-font-family,
+    $font-family-disabled: $button-small-font-family-disabled,
+    $font-family-focus: $button-small-font-family-focus,
+    $font-family-over: $button-small-font-family-over,
+    $font-family-pressed: $button-small-font-family-pressed,
+    $font-size: $button-small-font-size,
+    $font-size-disabled: $button-small-font-size-disabled,
+    $font-size-focus: $button-small-font-size-focus,
+    $font-size-over: $button-small-font-size-over,
+    $font-size-pressed: $button-small-font-size-pressed,
+    $font-weight: $button-small-font-weight,
+    $font-weight-disabled: $button-small-font-weight-disabled,
+    $font-weight-focus: $button-small-font-weight-focus,
+    $font-weight-over: $button-small-font-weight-over,
+    $font-weight-pressed: $button-small-font-weight-pressed,
+    $glyph-color: #fff,
+    $glyph-opacity: $button-default-glyph-opacity,
+    $icon-size: $button-small-icon-size,
+    $include-split-noline-arrows: false,
+    $include-split-over-arrows: $button-include-split-over-arrows,
+    $include-ui-menu-arrows: $button-include-ui-menu-arrows,
+    $include-ui-split-arrows: $button-include-ui-split-arrows,
+    $inner-opacity-disabled: $button-inner-opacity-disabled,
+    $opacity-disabled: $button-opacity-disabled,
+    $padding: $button-small-padding,
+    $split-height: $button-small-split-height,
+    $split-width: $button-small-split-width,
+    $text-padding: $button-small-text-padding
+  );
+}
+/* ui mixin: default-bordered-toolbar-small for of type: extjs-button-ui */
+@if $include-ext-button-button != false {
+  
+  @include extjs-button-ui(
+    $ui:"default-bordered-toolbar-small",
+    $arrow-height: $button-small-arrow-height,
+    $arrow-width: $button-small-arrow-width,
+    $background-color: $button-toolbar-background-color,
+    $background-color-disabled: $button-toolbar-background-color-disabled,
+    $background-color-focus: $button-toolbar-background-color-focus,
+    $background-color-over: $button-toolbar-background-color-over,
+    $background-color-pressed: $button-toolbar-background-color-pressed,
+    $background-gradient: $button-toolbar-background-gradient,
+    $background-gradient-disabled: $button-toolbar-background-gradient-disabled,
+    $background-gradient-focus: $button-toolbar-background-gradient-focus,
+    $background-gradient-over: $button-toolbar-background-gradient-over,
+    $background-gradient-pressed: $button-toolbar-background-gradient-pressed,
+    $border-color: $button-toolbar-border-color,
+    $border-color-disabled: $button-toolbar-border-color-disabled,
+    $border-color-focus: $button-toolbar-border-color-focus,
+    $border-color-over: $button-toolbar-border-color-over,
+    $border-color-pressed: $button-toolbar-border-color-pressed,
+    $border-radius: $button-small-border-radius,
+    $border-width: $button-small-border-width,
+    $color: $button-toolbar-color,
+    $color-disabled: $button-toolbar-color-disabled,
+    $color-focus: $button-toolbar-color-focus,
+    $color-over: $button-toolbar-color-over,
+    $color-pressed: $button-toolbar-color-pressed,
+    $font-family: $button-small-font-family,
+    $font-family-disabled: $button-small-font-family-disabled,
+    $font-family-focus: $button-small-font-family-focus,
+    $font-family-over: $button-small-font-family-over,
+    $font-family-pressed: $button-small-font-family-pressed,
+    $font-size: $button-small-font-size,
+    $font-size-disabled: $button-small-font-size-disabled,
+    $font-size-focus: $button-small-font-size-focus,
+    $font-size-over: $button-small-font-size-over,
+    $font-size-pressed: $button-small-font-size-pressed,
+    $font-weight: $button-small-font-weight,
+    $font-weight-disabled: $button-small-font-weight-disabled,
+    $font-weight-focus: $button-small-font-weight-focus,
+    $font-weight-over: $button-small-font-weight-over,
+    $font-weight-pressed: $button-small-font-weight-pressed,
+    $glyph-color: $button-toolbar-glyph-color,
+    $glyph-opacity: $button-toolbar-glyph-opacity,
+    $icon-size: $button-small-icon-size,
+    $include-split-noline-arrows: $button-toolbar-include-split-noline-arrows,
+    $include-split-over-arrows: $button-include-split-over-arrows,
+    $include-ui-menu-arrows: $button-include-ui-menu-arrows,
+    $include-ui-split-arrows: $button-include-ui-split-arrows,
+    $inner-opacity-disabled: $button-toolbar-inner-opacity-disabled,
+    $opacity-disabled: $button-toolbar-opacity-disabled,
+    $padding: $button-small-padding,
+    $split-height: $button-small-split-height,
+    $split-width: $button-small-split-width,
+    $text-padding: $button-small-text-padding
+  );
+}
+/* ui mixin: profile-small for of type: extjs-button-ui */
+@if $include-ext-button-button != false {
+  $_arch_background-color-focus: rgba(66,66,66,0.3);
+$_arch_background-color-over: rgba(66,66,66,0.3);
+$_arch_background-color-pressed: rgba(66,66,66,0.5);
+  @include extjs-button-ui(
+    $ui:"profile-small",
+    $arrow-height: $button-small-arrow-height,
+    $arrow-width: $button-small-arrow-width,
+    $background-color: transparent,
+    $background-color-disabled: transparent,
+    $background-color-focus: $_arch_background-color-focus,
+    $background-color-over: $_arch_background-color-over,
+    $background-color-pressed: $_arch_background-color-pressed,
+    $background-gradient: none,
+    $background-gradient-disabled: none,
+    $background-gradient-focus: none,
+    $background-gradient-over: none,
+    $background-gradient-pressed: none,
+    $border-color: transparent,
+    $border-color-disabled: transparent,
+    $border-color-focus: transparent,
+    $border-color-over: transparent,
+    $border-color-pressed: transparent,
+    $border-radius: $button-small-border-radius,
+    $border-width: $button-small-border-width,
+    $color: #fff,
+    $color-disabled: #fff,
+    $color-focus: #fff,
+    $color-over: #fff,
+    $color-pressed: #fff,
+    $font-family: $button-small-font-family,
+    $font-family-disabled: $button-small-font-family-disabled,
+    $font-family-focus: $button-small-font-family-focus,
+    $font-family-over: $button-small-font-family-over,
+    $font-family-pressed: $button-small-font-family-pressed,
+    $font-size: $button-small-font-size,
+    $font-size-disabled: $button-small-font-size-disabled,
+    $font-size-focus: $button-small-font-size-focus,
+    $font-size-over: $button-small-font-size-over,
+    $font-size-pressed: $button-small-font-size-pressed,
+    $font-weight: $button-small-font-weight,
+    $font-weight-disabled: $button-small-font-weight-disabled,
+    $font-weight-focus: $button-small-font-weight-focus,
+    $font-weight-over: $button-small-font-weight-over,
+    $font-weight-pressed: $button-small-font-weight-pressed,
+    $glyph-color: #fff,
+    $glyph-opacity: $button-default-glyph-opacity,
+    $icon-size: 36px,
+    $include-split-noline-arrows: false,
+    $include-split-over-arrows: $button-include-split-over-arrows,
+    $include-ui-menu-arrows: $button-include-ui-menu-arrows,
+    $include-ui-split-arrows: $button-include-ui-split-arrows,
+    $inner-opacity-disabled: $button-inner-opacity-disabled,
+    $opacity-disabled: $button-opacity-disabled,
+    $padding: 9px,
+    $split-height: $button-small-split-height,
+    $split-width: $button-small-split-width,
+    $text-padding: 0px
+  );
+}
+/* ui mixin: profile-medium for of type: extjs-button-ui */
+@if $include-ext-button-button != false {
+  $_arch_background-color-focus: rgba(66,66,66,0.3);
+$_arch_background-color-over: rgba(66,66,66,0.3);
+$_arch_background-color-pressed: rgba(66,66,66,0.5);
+  @include extjs-button-ui(
+    $ui:"profile-medium",
+    $arrow-height: $button-medium-arrow-height,
+    $arrow-width: $button-medium-arrow-width,
+    $background-color: transparent,
+    $background-color-disabled: transparent,
+    $background-color-focus: $_arch_background-color-focus,
+    $background-color-over: $_arch_background-color-over,
+    $background-color-pressed: $_arch_background-color-pressed,
+    $background-gradient: none,
+    $background-gradient-disabled: none,
+    $background-gradient-focus: none,
+    $background-gradient-over: none,
+    $background-gradient-pressed: none,
+    $border-color: transparent,
+    $border-color-disabled: transparent,
+    $border-color-focus: transparent,
+    $border-color-over: transparent,
+    $border-color-pressed: transparent,
+    $border-radius: $button-medium-border-radius,
+    $border-width: $button-medium-border-width,
+    $color: #fff,
+    $color-disabled: #fff,
+    $color-focus: #fff,
+    $color-over: #fff,
+    $color-pressed: #fff,
+    $font-family: $button-medium-font-family,
+    $font-family-disabled: $button-medium-font-family-disabled,
+    $font-family-focus: $button-medium-font-family-focus,
+    $font-family-over: $button-medium-font-family-over,
+    $font-family-pressed: $button-medium-font-family-pressed,
+    $font-size: $button-small-font-size,
+    $font-size-disabled: $button-small-font-size-disabled,
+    $font-size-focus: $button-small-font-size-focus,
+    $font-size-over: $button-small-font-size-over,
+    $font-size-pressed: $button-small-font-size-pressed,
+    $font-weight: $button-medium-font-weight,
+    $font-weight-disabled: $button-medium-font-weight-disabled,
+    $font-weight-focus: $button-medium-font-weight-focus,
+    $font-weight-over: $button-medium-font-weight-over,
+    $font-weight-pressed: $button-medium-font-weight-pressed,
+    $glyph-color: #fff,
+    $glyph-opacity: $button-default-glyph-opacity,
+    $icon-size: 44px,
+    $include-split-noline-arrows: false,
+    $include-split-over-arrows: $button-include-split-over-arrows,
+    $include-ui-menu-arrows: $button-include-ui-menu-arrows,
+    $include-ui-split-arrows: $button-include-ui-split-arrows,
+    $inner-opacity-disabled: $button-inner-opacity-disabled,
+    $opacity-disabled: $button-opacity-disabled,
+    $padding: 12px,
+    $split-height: $button-medium-split-height,
+    $split-width: $button-medium-split-width,
+    $text-padding: 0px
+  );
+}
+/* ui mixin: profile-large for of type: extjs-button-ui */
+@if $include-ext-button-button != false {
+  $_arch_background-color-focus: rgba(66,66,66,0.3);
+$_arch_background-color-over: rgba(66,66,66,0.3);
+$_arch_background-color-pressed: rgba(66,66,66,0.5);
+  @include extjs-button-ui(
+    $ui:"profile-large",
+    $arrow-height: $button-large-arrow-height,
+    $arrow-width: $button-large-arrow-width,
+    $background-color: transparent,
+    $background-color-disabled: transparent,
+    $background-color-focus: $_arch_background-color-focus,
+    $background-color-over: $_arch_background-color-over,
+    $background-color-pressed: $_arch_background-color-pressed,
+    $background-gradient: none,
+    $background-gradient-disabled: none,
+    $background-gradient-focus: none,
+    $background-gradient-over: none,
+    $background-gradient-pressed: none,
+    $border-color: transparent,
+    $border-color-disabled: transparent,
+    $border-color-focus: transparent,
+    $border-color-over: transparent,
+    $border-color-pressed: transparent,
+    $border-radius: $button-large-border-radius,
+    $border-width: $button-large-border-width,
+    $color: #fff,
+    $color-disabled: #fff,
+    $color-focus: #fff,
+    $color-over: #fff,
+    $color-pressed: #fff,
+    $font-family: $button-large-font-family,
+    $font-family-disabled: $button-large-font-family-disabled,
+    $font-family-focus: $button-large-font-family-focus,
+    $font-family-over: $button-large-font-family-over,
+    $font-family-pressed: $button-large-font-family-pressed,
+    $font-size: $button-small-font-size,
+    $font-size-disabled: $button-small-font-size-disabled,
+    $font-size-focus: $button-small-font-size-focus,
+    $font-size-over: $button-small-font-size-over,
+    $font-size-pressed: $button-small-font-size-pressed,
+    $font-weight: $button-large-font-weight,
+    $font-weight-disabled: $button-large-font-weight-disabled,
+    $font-weight-focus: $button-large-font-weight-focus,
+    $font-weight-over: $button-large-font-weight-over,
+    $font-weight-pressed: $button-large-font-weight-pressed,
+    $glyph-color: #fff,
+    $glyph-opacity: $button-default-glyph-opacity,
+    $icon-size: 52px,
+    $include-split-noline-arrows: false,
+    $include-split-over-arrows: $button-include-split-over-arrows,
+    $include-ui-menu-arrows: $button-include-ui-menu-arrows,
+    $include-ui-split-arrows: $button-include-ui-split-arrows,
+    $inner-opacity-disabled: $button-inner-opacity-disabled,
+    $opacity-disabled: $button-opacity-disabled,
+    $padding: 16px,
+    $split-height: $button-large-split-height,
+    $split-width: $button-large-split-width,
+    $text-padding: 0px
+  );
+}

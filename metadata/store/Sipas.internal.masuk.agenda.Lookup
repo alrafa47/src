@@ -1,0 +1,79 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.internal.masuk.agenda.Lookup",
+        "model": "Sipas.Surat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.internal.masuk.agenda.Lookup"
+    },
+    "name": "Sipas.keluar.agenda.Lookup2",
+    "designerId": "cc9ccd24-f42c-45d5-9a8e-f6ede6d21cc5",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat_imasuk/aktif?scope={scope}"
+            },
+            "name": "MyAjaxProxy32",
+            "designerId": "ed282345-690d-4a51-99f2-d857b858c674",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader32",
+                    "designerId": "6b03ef73-c17d-410c-ab16-fae50073b37d"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_tanggal"
+            },
+            "name": "MySorter38",
+            "designerId": "e1dcbc0d-0620-41e1-a9b8-64862bc618de"
+        },
+        {
+            "type": "Ext.util.Filter",
+            "reference": {
+                "name": "filters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "surat_setuju",
+                "value": [
+                    "2"
+                ]
+            },
+            "name": "MyFilter3",
+            "designerId": "88ae6922-7834-434b-9129-5d7e800914cd"
+        }
+    ]
+}

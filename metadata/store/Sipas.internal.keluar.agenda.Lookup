@@ -1,0 +1,77 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.internal.keluar.agenda.Lookup",
+        "model": "Sipas.Surat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.internal.keluar.agenda.Lookup"
+    },
+    "name": "Sipas.internal.masuk.agenda.Lookup2",
+    "designerId": "c2a9e244-b6fd-4597-8938-181537f6ecab",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat_ikeluar/referensi"
+            },
+            "name": "MyAjaxProxy32",
+            "designerId": "2e89af99-32f3-4aba-8792-4aabd9dabc8d",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader32",
+                    "designerId": "8cc78633-98ad-42eb-b642-44b5cae0ef93"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_tanggal"
+            },
+            "name": "MySorter38",
+            "designerId": "1d2ebf15-12ce-41ca-9e3a-a77059f01de5"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_nomor_urut"
+            },
+            "name": "MySorter",
+            "designerId": "96c23f9d-5274-45c8-9513-3175cb32c56c"
+        }
+    ]
+}

@@ -1,0 +1,327 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_bebas_compact",
+        "designer|userClassName": "Sipas.bebas.Compact",
+        "height": null,
+        "languageCode": "agenda_arsip_bebas_list",
+        "languageMode": "title",
+        "languageable": true,
+        "layout": "vbox",
+        "title": "Daftar Agenda Arsip Bebas",
+        "width": null
+    },
+    "name": "Sipas.internal.masuk.agenda.list.Compact1",
+    "designerId": "b357822d-9ae1-4562-8f6b-e3b863aff3e1",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "languageable",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageMode",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageCode",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "dock": "top",
+                "layout|flex": 1
+            },
+            "name": "MyToolbar2",
+            "designerId": "0996c605-7dfa-44a8-8fc8-0bffb720ad34",
+            "cn": [
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clickToView": true,
+                        "displayField": "unit_nama",
+                        "editable": false,
+                        "fieldLabel": "",
+                        "hideTrigger": true,
+                        "itemId": "comboScope",
+                        "labelAlign": null,
+                        "layout|flex": null,
+                        "minWidth": 300,
+                        "store": "Sipas.surat.scope.Combo",
+                        "valueField": "unit_id"
+                    },
+                    "name": "MyComboBox15",
+                    "designerId": "a0982446-fdde-45d4-b18a-e8369333891e",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "clickToView",
+                            "type": "boolean"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.view.BoundList",
+                            "reference": {
+                                "name": "listConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemSelector": "div"
+                            },
+                            "name": "MyBoundList",
+                            "designerId": "ba8be581-cf28-45a3-a3b6-dd1615970e5b",
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "{unit_nama} <span style=\"color: gray\">({unit_kode})</span>"
+                                        ]
+                                    },
+                                    "name": "itemTpl",
+                                    "designerId": "2c40276e-91d2-4f2c-a70e-0339c2bae5f7"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.tab.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "activeTab": 0,
+                "border": false,
+                "layout|flex": 1
+            },
+            "name": "MyTabPanel",
+            "designerId": "d06995cb-8fa8-4a2e-80b4-4a32890588c6",
+            "cn": [
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "border": false,
+                        "languageCode": "arsip_bebas_list_unit",
+                        "languageMode": "title",
+                        "languageable": true,
+                        "layout": "fit",
+                        "title": "Folder Unit"
+                    },
+                    "name": "MyPanel",
+                    "designerId": "628cec46-361e-4063-9959-d43828b2f188",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageCode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageMode",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "TabConfig",
+                            "designerId": "3a28f73c-3e3d-4257-8863-228c060d7d96"
+                        },
+                        {
+                            "type": "linkedinstance",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "border": false,
+                                "header": false,
+                                "title": null
+                            },
+                            "name": "sipas.bebas.list",
+                            "designerId": "3abf5cc2-8bb6-44d0-a7a4-4acada017d36",
+                            "masterInstanceId": "54e091e4-85ec-4f25-b224-87f72c2ca5ef"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "border": false,
+                        "languageCode": "arsip_bebas_list_unitlain",
+                        "languageMode": "title",
+                        "languageable": true,
+                        "layout": "fit",
+                        "title": "Folder Unit Lain"
+                    },
+                    "name": "MyPanel1",
+                    "designerId": "95fa26eb-e61e-41c0-9f22-879a074b8d3b",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageCode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageMode",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "TabConfig1",
+                            "designerId": "43d0e810-7815-4bf4-9a43-f2609ce00233"
+                        },
+                        {
+                            "type": "linkedinstance",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "border": false,
+                                "header": false
+                            },
+                            "name": "sipas.bebas.list.bagi.list",
+                            "designerId": "97cf5103-3021-4600-9976-7d7c550d26da",
+                            "masterInstanceId": "3724fe3b-1228-4dfc-97aa-249379703426"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "border": false,
+                        "languageCode": "arsip_bebas_list_umum",
+                        "languageMode": "title",
+                        "languageable": true,
+                        "layout": "fit",
+                        "title": "Folder Umum"
+                    },
+                    "name": "MyPanel2",
+                    "designerId": "3a07cab0-8281-4eab-bbcb-828348420032",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageCode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageMode",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "TabConfig2",
+                            "designerId": "a4f255f2-b3b0-4970-9eda-53b2f4f0e58d"
+                        },
+                        {
+                            "type": "linkedinstance",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "border": false,
+                                "header": false
+                            },
+                            "name": "sipas.bebas.list.umum.list",
+                            "designerId": "554cb5ff-49e4-4a14-8a81-a71902d1ab37",
+                            "masterInstanceId": "2c353b18-8113-4e76-9fea-19e1b938ade3"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.sistem.restore.running.List",
+        "model": "Sipas.sistem.restore.Running",
+        "storeId": "Sipas.sistem.restore.running.List"
+    },
+    "name": "Sipas.sistem.backup.running.List1",
+    "designerId": "3e18d2c6-0a2a-4bf6-8569-e3502b983d05",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/restore/read/running"
+            },
+            "name": "MyAjaxProxy",
+            "designerId": "298e374a-a256-43e1-b8f8-da31a564894d",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader",
+                    "designerId": "73aed29f-4091-4e44-91ed-d5349e4d93b7"
+                }
+            ]
+        }
+    ]
+}

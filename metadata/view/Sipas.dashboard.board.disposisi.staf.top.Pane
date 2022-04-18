@@ -1,0 +1,162 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "sipas_dashboard_board_board_disposisi_staf_top_pane",
+        "designer|userClassName": "Sipas.dashboard.board.disposisi.staf.top.Pane",
+        "frame": null,
+        "height": null,
+        "hideHeaders": true,
+        "itemId": null,
+        "store": "Sipas.dashboard.board.disposisi.penerima.top.List",
+        "title": "Top 10 Penerima Disposisi Bulan Ini",
+        "width": null
+    },
+    "name": "Sipas.dash.surat.masuk.topten.Pane1",
+    "designerId": "2ba56e23-c60f-4857-aa2e-2573ba707d1b",
+    "cn": [
+        {
+            "type": "Ext.grid.RowNumberer",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "MyRowNumberer2",
+            "designerId": "f11546d8-f1e1-42bf-ac08-b78750d508ca"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "penerima_nip",
+                "hidden": true,
+                "sortable": true,
+                "text": "NIP"
+            },
+            "name": "MyColumn27",
+            "designerId": "5543454d-1f65-429c-a526-3d165164ecbe"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "penerima_nama",
+                "flex": 2,
+                "sortable": true,
+                "text": "Pegawai"
+            },
+            "name": "MyColumn1",
+            "designerId": "4fed8973-b45d-4eaa-b5d4-16422bbc55ff",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "",
+                            "var val = [",
+                            "    \"<span>\",",
+                            "    record.get('penerima_nama')+\" \",",
+                            "    \"<span class='alternative'>(\",",
+                            "    record.get('pengirim_unitkerja_nama'),",
+                            "    \")</span>\",",
+                            "    \"</span>\"",
+                            "].join('');",
+                            "return val;"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "356a7b04-9a68-4443-ad52-b54ff8e3ae97"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "penerima_nama",
+                "flex": 2,
+                "hidden": true,
+                "sortable": true,
+                "text": "Nama Pegawai"
+            },
+            "name": "MyColumn",
+            "designerId": "27e23027-39b3-4b10-ba3a-a54d1227ebbc"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "penerima_jabatan_nama",
+                "flex": 1,
+                "hidden": true,
+                "sortable": true,
+                "text": "Jabatan"
+            },
+            "name": "MyColumn2",
+            "designerId": "893fa958-f5c3-4858-afc9-4156b405045e"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "penerima_jabatan_nama",
+                "flex": 1,
+                "hidden": true,
+                "sortable": true,
+                "text": "Unit Kerja"
+            },
+            "name": "MyColumn4",
+            "designerId": "826decdc-7076-48ac-b269-35aed9c928ca"
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyGridView4",
+            "designerId": "0e2b8c4a-561b-4b67-b20e-4b9099878f9e"
+        }
+    ]
+}

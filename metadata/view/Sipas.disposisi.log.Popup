@@ -1,0 +1,259 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "sipas_disposisi_log_popup",
+        "designer|userClassName": "Sipas.disposisi.log.Popup",
+        "height": 400,
+        "layout": "fit",
+        "maximizable": true,
+        "modal": true,
+        "title": "Log Aktivitas",
+        "width": 700
+    },
+    "name": "MyWindow",
+    "designerId": "bdfa8ce4-d4ab-40b6-8015-e76bcc536e6c",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "autoScroll": true,
+                "bodyPadding": null,
+                "border": false,
+                "frameHeader": false,
+                "header": false,
+                "layout": "fit",
+                "title": "My Form"
+            },
+            "name": "MyForm15",
+            "designerId": "46ba2c3a-42aa-4d41-8c25-6cfd5126e85d",
+            "cn": [
+                {
+                    "type": "Ext.grid.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "associated": true,
+                        "border": false,
+                        "disableSelection": true,
+                        "header": false,
+                        "height": null,
+                        "hideHeaders": true,
+                        "itemId": "listLog",
+                        "store": "Sipas.disposisi.masuk.log.Popup",
+                        "title": "My Grid Panel"
+                    },
+                    "name": "MyGridPanel1",
+                    "designerId": "74f0d3ec-3e79-495f-ad53-1964f620d0e8",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "associated",
+                            "type": "boolean"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "penerima_nama",
+                                "flex": 1,
+                                "text": "ID"
+                            },
+                            "name": "MyColumn85",
+                            "designerId": "8960ce7a-d34e-4f49-9a14-a55e7fc05d15",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "value",
+                                            "metaData",
+                                            "record",
+                                            "rowIndex",
+                                            "colIndex",
+                                            "store",
+                                            "view"
+                                        ],
+                                        "fn": "renderer",
+                                        "implHandler": [
+                                            "modelStaf = Ext.ModelManager.getModel('SIPAS.model.Sipas.Staf');",
+                                            "return '<div class=\"margin-left-8\">'+modelStaf.renderPegawai(value, record)+'</div>';"
+                                        ]
+                                    },
+                                    "name": "renderer",
+                                    "designerId": "fb14dda7-5d0d-4955-bb4b-32d8b85097ef"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "penerima_nama",
+                                "flex": 1,
+                                "text": "Nama"
+                            },
+                            "name": "MyColumn94",
+                            "designerId": "cdace9a5-666d-4cde-885e-f2864b9f9f3e",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "value",
+                                            "metaData",
+                                            "record",
+                                            "rowIndex",
+                                            "colIndex",
+                                            "store",
+                                            "view"
+                                        ],
+                                        "fn": "renderer",
+                                        "implHandler": [
+                                            "var isbaca = record.get('disposisi_masuk_log_isbaca'),",
+                                            "    isberkasterima = record.get('disposisi_masuk_log_isberkasterima'),",
+                                            "    isterus = record.get('disposisi_masuk_log_isterus'),",
+                                            "    iscabut = record.get('disposisi_masuk_log_iscabut'),",
+                                            "    isaksi = record.get('disposisi_masuk_log_isaksi'),",
+                                            "    tipe = record.get('disposisi_masuk_log_tipe'),",
+                                            "    tgl = Ext.util.Format.date(record.get('disposisi_masuk_log_tgl'), 'd M Y H:i'),",
+                                            "    aksi = record.get('aksi_nama'),",
+                                            "    pesan = record.get('disposisi_masuk_log_pesan'),",
+                                            "    berkas_status = record.get('disposisi_masuk_log_berkas_status'),",
+                                            "    uraian = '',",
+                                            "    tpl = new Ext.Template([",
+                                            "        '<div class=\"margin-left-8\"><div class=\"cell-text\">',",
+                                            "        '<div class=\"subtext {color}\">',",
+                                            "        '<span class=\"badge badge-solid margin-right-4\">',",
+                                            "        '<i class=\"{icon}\"></i>',",
+                                            "        '</span> {word}',",
+                                            "        '</div>',",
+                                            "        '<div class=\"supporttext supporttext-dark\">{uraian}</div>',",
+                                            "        '<div class=\"supporttext supporttext-dark\">Pada '+tgl+'</div>',",
+                                            "        '</div></div>'",
+                                            "    ]);",
+                                            "",
+                                            "if(pesan){",
+                                            "    pesan = pesan;",
+                                            "}else{",
+                                            "    pesan = '<span class=\"supporttext\">(Tidak ada uraian)</span>';",
+                                            "}",
+                                            "",
+                                            "if (isbaca == 1){",
+                                            "    return tpl.apply({",
+                                            "        color: 'primary',",
+                                            "        icon: 'icon ion-md-mail-open blue-700-i',",
+                                            "        word: 'Membaca'",
+                                            "    });",
+                                            "} else if (isberkasterima == 1){",
+                                            "    return tpl.apply({",
+                                            "        color: 'info',",
+                                            "        icon: 'icon ion-md-copy green-700-i',",
+                                            "        word: 'Menerima berkas'",
+                                            "    });",
+                                            "} else if (isterus == 1){",
+                                            "    return tpl.apply({",
+                                            "        color: 'info',",
+                                            "        icon: 'icon ion-md-send green-700-i',",
+                                            "        word: 'Mendisposisikan'",
+                                            "    });",
+                                            "} else if (iscabut == 1){",
+                                            "    return tpl.apply({",
+                                            "        color: 'danger',",
+                                            "        icon: 'icon ion-md-document red-700-i',",
+                                            "        word: 'Merevisi'",
+                                            "    });",
+                                            "} else if (isaksi == 1){",
+                                            "    return tpl.apply({",
+                                            "        color: '',",
+                                            "        icon: 'icon ion-md-text supporttext-dark',",
+                                            "        word: 'Memperbarui respon \"'+aksi+'\"',",
+                                            "        uraian: pesan",
+                                            "    });",
+                                            "} else if (tipe == 7){",
+                                            "    return tpl.apply({",
+                                            "        color: '',",
+                                            "        icon: 'icon ion-md-text supporttext-dark',",
+                                            "        word: 'Di ingatkan oleh asisten'",
+                                            "    });",
+                                            "} else if (tipe == 8){",
+                                            "    return tpl.apply({",
+                                            "        color: '',",
+                                            "        icon: 'icon ion-md-text supporttext-dark',",
+                                            "        word: 'Membaca pesan yang di ingatkan asisten'",
+                                            "    });",
+                                            "} else if (tipe == 9){",
+                                            "    switch(berkas_status){",
+                                            "        default:",
+                                            "        case record.berkasLogStatus().BERKAS_REQUEST:",
+                                            "            return tpl.apply({",
+                                            "                color: 'warning',",
+                                            "                icon: 'icon ion-md-copy',",
+                                            "                word: 'Meminta berkas fisik'",
+                                            "            });",
+                                            "        case record.berkasLogStatus().BERKAS_APPROVE:",
+                                            "            return tpl.apply({",
+                                            "                color: 'info',",
+                                            "                icon: 'icon ion-md-checkmark green-700-i',",
+                                            "                word: 'Mengirim berkas fisik'",
+                                            "            });",
+                                            "        case record.berkasLogStatus().BERKAS_CANCEL:",
+                                            "            return tpl.apply({",
+                                            "                color: 'danger',",
+                                            "                icon: 'icon ion-md-copy',",
+                                            "                word: 'Membatalkan permintaan berkas fisik'",
+                                            "            });",
+                                            "        case record.berkasLogStatus().BERKAS_DECLINE:",
+                                            "            return tpl.apply({",
+                                            "                color: 'danger',",
+                                            "                icon: 'icon ion-md-close red-700-i',",
+                                            "                word: 'Menolak permintaan berkas fisik',",
+                                            "                uraian: pesan",
+                                            "            });",
+                                            "    }",
+                                            "}"
+                                        ]
+                                    },
+                                    "name": "renderer",
+                                    "designerId": "e9af56dd-e43a-463a-af15-7c274b09f267"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

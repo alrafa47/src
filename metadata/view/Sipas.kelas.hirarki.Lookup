@@ -1,0 +1,195 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "border": 0,
+        "designer|userAlias": "sipas_kelas_hirarki_lookup",
+        "designer|userClassName": "Sipas.kelas.hirarki.Lookup",
+        "height": 450,
+        "itemId": null,
+        "layout": "fit",
+        "modal": true,
+        "requires": [
+            "SIPAS.store.Sipas.kelas.hirarki.Lookup"
+        ],
+        "title": "Klasifikasi Surat",
+        "width": 650
+    },
+    "name": "Sipas.kelas.Lookup1",
+    "designerId": "c0e19a8f-41f8-46dd-8c57-cb4464cd5f53",
+    "cn": [
+        {
+            "type": "Ext.tree.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "allowDeselect": true,
+                "folderSort": null,
+                "height": 250,
+                "hideHeaders": false,
+                "rootVisible": false,
+                "rowLines": true,
+                "store": "Sipas.kelas.hirarki.Lookup",
+                "title": null,
+                "useArrows": true,
+                "width": 400
+            },
+            "name": "TreeGrid",
+            "designerId": "fb4c8d66-e86b-4674-a215-3d7a1d66eaa4",
+            "isBuiltIn": true,
+            "iconCls": "icon-treegridpanel",
+            "autoName": "TreeGrid",
+            "cn": [
+                {
+                    "type": "Ext.tree.View",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyTreeView2",
+                    "designerId": "4491d0d3-211d-42cc-9af3-1d227b1a0a1a"
+                },
+                {
+                    "type": "Ext.tree.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "kelas_nama",
+                        "flex": 1,
+                        "items": [
+                            "{",
+                            "    xtype: 'textfield',",
+                            "    emptyText: 'Cari Nama Klasifikasi',",
+                            "    flex: 1,",
+                            "    margin: 2,",
+                            "    listeners: {",
+                            "        change: function(textfield, e, eOpts){",
+                            "            if(e){",
+                            "                textfield.up('treepanel').getStore().filters.add('filtersId', new Ext.util.Filter({",
+                            "                  value:e,",
+                            "                  property:'kelas_nama'",
+                            "                }));",
+                            "                textfield.up('treepanel').getStore().load();",
+                            "            }else{",
+                            "                textfield.up('treepanel').getStore().filters.removeAtKey('filtersId');",
+                            "                textfield.up('treepanel').getStore().load();",
+                            "            }",
+                            "        }",
+                            "    }",
+                            "}"
+                        ],
+                        "sortable": false,
+                        "text": null
+                    },
+                    "name": "MyTreeColumn1",
+                    "configAlternates": {
+                        "items": "object"
+                    },
+                    "designerId": "62f54c0c-4ef1-4ddd-95e9-4e5af9168723",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "items",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "if (record.get('kelas_isaktif') == '1'){",
+                                    "    return (new Ext.Template('{kelas_kode} {kelas_nama}')).apply(record.getData());",
+                                    "} else {",
+                                    "    return (new Ext.Template('<span class=\"alternative\">{kelas_kode} {kelas_nama}</span>')).apply(record.getData());",
+                                    "}"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "d475803e-aec0-4d6f-a45d-a8ab15b055ca"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.selection.CheckboxModel",
+                    "reference": {
+                        "name": "selModel",
+                        "type": "object"
+                    },
+                    "codeClass": "Ext.selection.CheckboxModel",
+                    "userConfig": {
+                        "allowDeselect": false
+                    },
+                    "name": "MyCheckboxSelectionModel",
+                    "designerId": "e312e423-8e7f-47d0-a8da-757196019ebb"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": null,
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "container|pack": "end",
+                "designer|uiInterfaceName": "footer",
+                "dock": "bottom",
+                "itemId": "toolbarControl",
+                "layout": "hbox",
+                "margin": null,
+                "ui": "footer"
+            },
+            "name": "MyContainer58",
+            "designerId": "a22a0040-ade0-4b46-9bf6-93cabce84037",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "layout|margins": "4 4 6 4"
+                    },
+                    "name": "sipas.com.button.putin9",
+                    "designerId": "57b82c56-0269-472c-996c-148e9cd60a3c",
+                    "masterInstanceId": "2a6a3c93-a982-4961-b600-192b59ee290e"
+                }
+            ]
+        }
+    ]
+}

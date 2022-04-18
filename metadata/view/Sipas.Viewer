@@ -1,0 +1,774 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyStyle": [
+            "{",
+            "\"background-color\":\"#ffffff\"",
+            "}"
+        ],
+        "cls": "sipas_viewer",
+        "designer|userAlias": "sipas_viewer",
+        "designer|userClassName": "Sipas.Viewer",
+        "enableDownload": null,
+        "enablePrint": true,
+        "enableReload": true,
+        "enableZoom": null,
+        "height": null,
+        "layout": "fit",
+        "title": "",
+        "useImageStyle": true,
+        "width": null
+    },
+    "name": "MyWindow",
+    "configAlternates": {
+        "enablePrint": "boolean",
+        "enableReload": "boolean",
+        "enableZoom": "boolean",
+        "reqDownload": "boolean"
+    },
+    "designerId": "3b444e80-ccee-4ce0-b248-94b564be100d",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "enableReload",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "enableDownload",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "enableZoom",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "enablePrint",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "url",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "downloadUrl",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "useImageStyle",
+            "type": "boolean"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultButtonUI": null,
+                "dock": "top",
+                "itemId": "toolbarControl"
+            },
+            "name": "MyToolbar1",
+            "designerId": "129472cd-c655-4f15-bac9-dc08f90419ca",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "baseCls": null,
+                        "focusCls": null,
+                        "layout|flex": null,
+                        "ui": null
+                    },
+                    "name": "sipas.com.button.refresh100",
+                    "designerId": "28ff190c-8fd4-4c77-a355-abdbfb1168e3",
+                    "masterInstanceId": "e517a5ab-fc5b-441a-97a3-5c706738d092",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onReload",
+                                "implHandler": [
+                                    "this.reload();"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "name": "onReload",
+                            "designerId": "e23cd32c-f2a0-4925-9fc0-978d146f0b2f"
+                        },
+                        {
+                            "type": "processcfgfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "config"
+                                ],
+                                "fn": "processButtonRefresh",
+                                "implHandler": [
+                                    "return Ext.apply(config,{",
+                                    "    hidden: !this.enableReload",
+                                    "});"
+                                ]
+                            },
+                            "name": "processButtonRefresh",
+                            "designerId": "c39dc507-ea7f-4b47-8c90-5bebdbf61965"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "ui": null
+                    },
+                    "name": "sipas.com.button.print42",
+                    "designerId": "691643bb-7073-45a4-850a-3cdf7694d27f",
+                    "masterInstanceId": "4acde223-fe77-4a4b-8394-07ccd10e338e",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onPrint",
+                                "implHandler": [
+                                    "this.print();"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "name": "onPrint",
+                            "designerId": "df6e0fd3-e9fc-42fc-86d7-34999ef2c3fe"
+                        },
+                        {
+                            "type": "processcfgfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "config"
+                                ],
+                                "fn": "processButtonPrint",
+                                "implHandler": [
+                                    "return Ext.apply(config,{",
+                                    "    hidden: !this.enablePrint",
+                                    "});"
+                                ]
+                            },
+                            "name": "processButtonPrint",
+                            "designerId": "ab665f38-a513-4cbb-8788-52ad8a683d33"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "ui": null
+                    },
+                    "name": "sipas.com.button.download52",
+                    "designerId": "d8c5b4af-375f-4768-b35b-70fcc2dadd7c",
+                    "masterInstanceId": "57671838-a3d0-4dd9-89fa-8be31c5e1c88",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onDownload",
+                                "implHandler": [
+                                    "this.download();"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "name": "onDownload",
+                            "designerId": "f6db3930-73ef-4b74-8aae-05a427e3da7a"
+                        },
+                        {
+                            "type": "processcfgfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "config"
+                                ],
+                                "fn": "processButtonDownload",
+                                "implHandler": [
+                                    "return Ext.apply(config,{",
+                                    "    hidden: !this.enableDownload",
+                                    "});"
+                                ]
+                            },
+                            "name": "processButtonDownload",
+                            "designerId": "7025ffc3-f7bf-4ff3-8f6d-82f1af005656"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "ui": null
+                    },
+                    "name": "sipas.com.button.zoom2",
+                    "designerId": "f8fa6b18-d743-4849-8ce8-876cda52e899",
+                    "masterInstanceId": "d313fdcd-8ba8-4890-a154-ee234e2e3fa1",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onZoom",
+                                "implHandler": [
+                                    "this.zoom();"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "name": "onZoom",
+                            "designerId": "46d095aa-10a4-45c7-a26c-598c04ddb465"
+                        },
+                        {
+                            "type": "processcfgfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "config"
+                                ],
+                                "fn": "processButtonZoom",
+                                "implHandler": [
+                                    "return Ext.apply(config,{",
+                                    "    hidden: !this.enableZoom",
+                                    "});"
+                                ]
+                            },
+                            "name": "processButtonZoom",
+                            "designerId": "8fbc2902-f6b6-4104-8c62-7e2645444508"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": null,
+                        "layout|flex": null,
+                        "ui": null
+                    },
+                    "name": "sipas.com.button.zoomin2",
+                    "designerId": "4d43a072-1f26-41fc-a362-25bd3933f5ed",
+                    "masterInstanceId": "7bf0b373-68ef-40f7-a68b-c725f2980209",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onZoomIn",
+                                "implHandler": [
+                                    "this.zoomIn();"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "name": "onZoomIn",
+                            "designerId": "80413bd5-8fc5-4350-b2a1-fdbe5de3a535"
+                        },
+                        {
+                            "type": "processcfgfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "config"
+                                ],
+                                "fn": "processButtonZoomin",
+                                "implHandler": [
+                                    "return Ext.apply(config,{",
+                                    "    hidden: !this.enableZoom",
+                                    "});"
+                                ]
+                            },
+                            "name": "processButtonZoomin",
+                            "designerId": "5eb6829e-af92-40a2-bd7f-375ed734a787"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "baseCls": null,
+                        "cls": null,
+                        "layout|flex": null,
+                        "ui": null
+                    },
+                    "name": "sipas.com.button.zoomout2",
+                    "designerId": "446fd8f6-8de6-4bae-89e9-f1f4fe3198c6",
+                    "masterInstanceId": "ddf8073f-db33-4230-a222-1ef65c899e66",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onZoomOut",
+                                "implHandler": [
+                                    "this.zoomOut();"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "name": "onZoomOut",
+                            "designerId": "3d8e929f-ae72-4ffd-a737-48dd6afbb423"
+                        },
+                        {
+                            "type": "processcfgfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "config"
+                                ],
+                                "fn": "processButtonZoomout",
+                                "implHandler": [
+                                    "return Ext.apply(config,{",
+                                    "    hidden: !this.enableZoom",
+                                    "});"
+                                ]
+                            },
+                            "name": "processButtonZoomout",
+                            "designerId": "02112047-95e6-42ab-9aa3-ab34f302e3c8"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "iframe"
+            },
+            "name": "sipas.com.iframe27",
+            "designerId": "f7fad9f8-4a5e-4a17-b932-9796c903a965",
+            "masterInstanceId": "a7c0f8fc-2b77-4dae-a6f7-a8dcd7ba84e5"
+        },
+        {
+            "type": "customevent",
+            "reference": {
+                "name": "customEvents",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "load"
+            },
+            "name": "CustomEvent3",
+            "designerId": "7feeeb71-754c-429f-a05f-37d00e4170c7"
+        },
+        {
+            "type": "customevent",
+            "reference": {
+                "name": "customEvents",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "print"
+            },
+            "name": "CustomEvent5",
+            "designerId": "463f92c6-be8f-4ece-95c6-f508c4845e3c"
+        },
+        {
+            "type": "customevent",
+            "reference": {
+                "name": "customEvents",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "download"
+            },
+            "name": "CustomEvent6",
+            "designerId": "241619dd-f22b-4c10-ade2-fa981e483b38"
+        },
+        {
+            "type": "customevent",
+            "reference": {
+                "name": "customEvents",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "zoom"
+            },
+            "name": "CustomEvent7",
+            "designerId": "eac4f574-2b0b-4045-9c49-4f66466d019a"
+        },
+        {
+            "type": "customevent",
+            "reference": {
+                "name": "customEvents",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "zoomin"
+            },
+            "name": "CustomEvent8",
+            "designerId": "60ffcc53-ec73-4e92-8941-78b199be72b3"
+        },
+        {
+            "type": "customevent",
+            "reference": {
+                "name": "customEvents",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "zoomout"
+            },
+            "name": "CustomEvent9",
+            "designerId": "0a9191b0-5ec1-4a38-8d30-36c61c97dda9"
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "processSipasViewer",
+                "implHandler": [
+                    "Ext.applyIf(config,{",
+                    "    downloadUrl: config && config.url",
+                    "},{});",
+                    "return config;"
+                ]
+            },
+            "name": "processSipasViewer",
+            "designerId": "17e80bfd-18f6-43aa-8436-0455cc3259f2"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getFrame",
+                "implHandler": [
+                    "return this.down('#iframe');"
+                ]
+            },
+            "name": "getFrame",
+            "designerId": "f48bb15c-9d0a-4808-a15a-196113a036f2"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "url",
+                    "callback",
+                    "scope"
+                ],
+                "fn": "load",
+                "implHandler": [
+                    "if(!this.rendered) {",
+                    "    this.url = url;",
+                    "    return;",
+                    "}",
+                    "var me = this, frame = this.getFrame();",
+                    "frame.load(url, function(){",
+                    "    this.fireEventArgs('load',[me]);",
+                    "    me.afterLoad();",
+                    "    Ext.callback(callback, scope, [me]);",
+                    "}, this);",
+                    "return this;"
+                ]
+            },
+            "name": "load",
+            "designerId": "5163ce66-61fa-482e-a5da-4c69466afc93"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "callback",
+                    "scope"
+                ],
+                "fn": "reload",
+                "implHandler": [
+                    "return this.load(this.url, callback, scope);"
+                ]
+            },
+            "name": "reload",
+            "designerId": "e2ecd586-938c-4cb8-a267-7a00429aedf1"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "print",
+                "implHandler": [
+                    "this.getFrame().print();",
+                    "this.fireEvent('print',this);"
+                ]
+            },
+            "name": "print",
+            "designerId": "aae91a10-8907-4ec7-89af-6e9a8caf9949"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "download",
+                "implHandler": [
+                    "this.getFrame().getWindow().location.replace(this.downloadUrl);",
+                    "this.fireEvent('download',this,this.downloadUrl);"
+                ]
+            },
+            "name": "download",
+            "designerId": "c4f06456-6fb0-4e75-af5f-1f1c62f09727"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "value"
+                ],
+                "fn": "zoom",
+                "implHandler": [
+                    "this.getFrame().zoom(value);",
+                    "this.fireEvent('zoom', this, this.getFrame().zoomState);"
+                ]
+            },
+            "name": "zoom",
+            "designerId": "4d3ab461-0f7a-4582-b0ef-6b0d6712bb96"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "increase"
+                ],
+                "fn": "zoomIn",
+                "implHandler": [
+                    "this.getFrame().zoomIn(increase);",
+                    "this.fireEvent('zoomin', this, this.getFrame().zoomState);"
+                ]
+            },
+            "name": "zoomIn",
+            "designerId": "cd486df0-53d5-4a4c-bf48-3cddb1993cf1"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "decrease"
+                ],
+                "fn": "zoomOut",
+                "implHandler": [
+                    "this.getFrame().zoomOut(decrease);",
+                    "this.fireEvent('zoomout', this, this.getFrame().zoomState);"
+                ]
+            },
+            "name": "zoomOut",
+            "designerId": "2c8025eb-423c-415c-949e-359112965f1a"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "afterLoad",
+                "implHandler": [
+                    "var d = this.getFrame().getDocument();",
+                    "var useImageStyle = this.useImageStyle;",
+                    "var style = d.getElementById(\"iframestyle\") || (function(){",
+                    "    var s = d.createElement('style');",
+                    "    s.setAttribute('id','iframestyle');",
+                    "\ts.type = \"text/css\";",
+                    "\ts.innerHTML = useImageStyle ? [",
+                    "        'html, body {',",
+                    "            'height: 100%;',",
+                    "            'width: 100%;',",
+                    "        '}',",
+                    "        'html {',",
+                    "             'display: table;',",
+                    "             'margin: auto;',",
+                    "        '}',",
+                    "        '@media screen{',",
+                    "            'body {',",
+                    "                'background-color: #ccc;',",
+                    "                'position: relative;',",
+                    "                'display: table-cell;',",
+                    "                'padding: 20px;',",
+                    "            '}',",
+                    "            'body > img,',",
+                    "            'body > .img,',",
+                    "            'body > .paper',",
+                    "            '{',",
+                    "                'margin: 0 auto;',",
+                    "                'top: 0;',",
+                    "                'right: 0;',",
+                    "                'bottom: 0;',",
+                    "                'left: 0;',",
+                    "                'padding-bottom: 20px;',",
+                    "                'padding-top: 20px;',",
+                    "                'padding-right: 5px;',",
+                    "                'padding-left: 10px;',",
+                    "                'box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);',",
+                    "                'background-color: white;',",
+                    "            '}',",
+                    "        '}'",
+                    "    ].join('') : [",
+                    "        'html, body {',",
+                    "            'height: 100%;',",
+                    "            'width: 100%;',",
+                    "        '}',",
+                    "        'html {',",
+                    "             'display: table;',",
+                    "             'margin: auto;',",
+                    "        '}'",
+                    "    ].join('');",
+                    "\td.body.appendChild(s);",
+                    "\treturn s;",
+                    "})();"
+                ]
+            },
+            "name": "afterLoad",
+            "designerId": "acd5ce87-9e87-4fa3-9d1c-ff586ce67b27"
+        }
+    ]
+}

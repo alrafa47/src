@@ -1,0 +1,403 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "sipas_sla_list",
+        "designer|userClassName": "Sipas.sla.List",
+        "emptyText": "Tidak Ada Data",
+        "height": null,
+        "languageCode": "sla_list",
+        "languageMode": "title",
+        "languageable": true,
+        "store": "Sipas.sla.aktif.List",
+        "title": "Daftar SLA",
+        "width": null
+    },
+    "name": "MyGridPanel",
+    "designerId": "a90c5753-e368-439e-a5fe-6059cbef2de0",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "languageCode",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageMode",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "languageable",
+            "type": "boolean"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "dock": "top"
+            },
+            "name": "MyToolbar2",
+            "designerId": "690b0e8a-ccf6-41bc-a062-74167a6f779b",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.refresh183",
+                    "designerId": "619e9395-5521-4ffe-ac49-cefca2b9ed84",
+                    "masterInstanceId": "e517a5ab-fc5b-441a-97a3-5c706738d092"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "roleName": "sla_insert",
+                        "roleable": true
+                    },
+                    "name": "sipas.com.button.add58",
+                    "designerId": "f6e72d11-13fd-49d0-9db0-ea33788ef059",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "420a71a2-f0ab-4b83-bf9b-b7cf567d6c9f"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "width": null
+                    },
+                    "name": "sipas.com.button.togglefilter67",
+                    "designerId": "8de84022-faf5-4265-a54a-ee24cb9621c7",
+                    "masterInstanceId": "6f699e21-9335-4237-9e49-37b207a20475",
+                    "cn": [
+                        {
+                            "type": "basicfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "button",
+                                    "state"
+                                ],
+                                "fn": "toggleHandler",
+                                "implHandler": [
+                                    "button.up('grid').query('gridcolumn textfield').forEach(function(field){",
+                                    "    state ? field.show():field.hide();",
+                                    "});"
+                                ]
+                            },
+                            "name": "toggleHandler",
+                            "designerId": "1ae718d3-7b29-46d2-936f-1b3b8fd19a5a"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "MyFill37",
+                    "designerId": "d4214dc3-f36d-4632-950d-f98a5a06b713"
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayField": "nama",
+                        "editable": false,
+                        "fieldLabel": null,
+                        "hideTrigger": true,
+                        "itemId": "Aktif",
+                        "labelAlign": "right",
+                        "layout|flex": null,
+                        "store": [
+                            "{",
+                            "    fields: ['value','nama'],",
+                            "    data: [",
+                            "        {value:0,nama:'Semua'},",
+                            "        {value:1,nama:'Aktif'},",
+                            "        {value:2,nama:'Tidak Aktif'}",
+                            "    ]",
+                            "}"
+                        ],
+                        "value": "Aktif",
+                        "valueField": "value"
+                    },
+                    "name": "MyComboBox22",
+                    "configAlternates": {
+                        "value": "string",
+                        "store": "array"
+                    },
+                    "designerId": "9e74ba76-deb8-47f2-a922-b191637d7d02"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.RowNumberer",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "MyRowNumberer",
+            "designerId": "9760aa73-64d7-46dc-8c23-908fa29162b0"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "sla_nama",
+                "filterable": true,
+                "flex": null,
+                "items": [
+                    "{",
+                    "xtype: 'textfield',",
+                    "flex: 1,",
+                    "margin: 2,",
+                    "listeners: {",
+                    "change: function(textfield, e, eOpts){",
+                    "this.up('gridpanel').filterHeader(this);",
+                    "}",
+                    "}",
+                    "}"
+                ],
+                "sortable": true,
+                "text": "Nama SLA",
+                "width": 400
+            },
+            "name": "MyColumn1",
+            "configAlternates": {
+                "items": "array"
+            },
+            "designerId": "3ac7340b-fe82-4b79-af72-5b750f9aef8d",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var aktif = record.get('sla_isaktif');",
+                            "",
+                            "if(value){",
+                            "    return this.genAktif(value, aktif);",
+                            "}else{",
+                            "    return \"<span class='alternative'>-</span>\";",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "02abdcd0-61da-49d0-b1cc-db58dec627ed"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "sla_unit_jumlah",
+                "text": "<i class=\"icon ion-md-business\"></i>",
+                "tooltip": "Jumlah Unit",
+                "width": 60
+            },
+            "name": "MyColumn10",
+            "designerId": "c46d5157-bf36-48df-973f-6b2dc2331288",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "metaData.tdAttr = 'data-qtip=\"Jumlah Unit\"';",
+                            "",
+                            "var aktif = record.get('sla_isaktif'),",
+                            "    val = '<span class=\"alternative\">-</span>';",
+                            "",
+                            "if(value){",
+                            "    val = '<i class=\"icon ion-md-business\"></i> '+ value;",
+                            "}",
+                            "return this.genAktif(val, aktif);"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "d2332084-732c-4dfe-992f-4ceedee22fef"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyGridView1",
+            "designerId": "865bb7a8-535e-4d17-9e28-55dd65a78fa0"
+        },
+        {
+            "type": "Ext.toolbar.Paging",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "displayInfo": true,
+                "dock": "bottom",
+                "store": "Sipas.sla.aktif.List",
+                "width": 360
+            },
+            "name": "MyPagingToolbar",
+            "designerId": "e7f7e553-e913-47bd-914d-7ad50d5fd465"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "value",
+                    "aktif"
+                ],
+                "fn": "genAktif",
+                "implHandler": [
+                    "if(!aktif){",
+                    "    return '<span class=\"alternative\">'+value+'</span>';",
+                    "}else{",
+                    "    return value;",
+                    "}"
+                ]
+            },
+            "name": "genAktif",
+            "designerId": "76135e44-d6f5-4747-8421-bba6c0e4f6ef"
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "processSipasslaList",
+                "implHandler": [
+                    "var filters = {",
+                    "    ftype: 'filters',",
+                    "    encode: true,",
+                    "    local: true",
+                    "};",
+                    "",
+                    "if (! config.features) {",
+                    "    config.features=filters;",
+                    "} else {",
+                    "    config.features.push(filters);",
+                    "}",
+                    "",
+                    "return config;"
+                ]
+            },
+            "name": "processSipasslaList",
+            "designerId": "998ce7b3-090a-43fb-9af2-736105e48599"
+        }
+    ]
+}

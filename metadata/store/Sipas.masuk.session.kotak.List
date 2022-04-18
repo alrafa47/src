@@ -1,0 +1,127 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.masuk.session.kotak.List",
+        "model": "Sipas.disposisi.Masuk",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.masuk.session.kotak.List"
+    },
+    "name": "Sipas.masuk.session.List2",
+    "designerId": "6fdb932e-e008-4023-b020-60f05fb23aa9",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/kotak_masuk/surat_all"
+            },
+            "name": "MyAjaxProxy51",
+            "designerId": "4c979efa-e007-4745-ae6d-749e9dd02289",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader51",
+                    "designerId": "cc8f8eeb-00f1-4d01-9367-1860b21f505d"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "cabut",
+                "property": "disposisi_masuk_iscabut",
+                "root": "data"
+            },
+            "name": "MySorter",
+            "designerId": "4c28f5e1-fdd9-4fd4-8f37-31d1005f28d7"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "pengingat manual",
+                "direction": "DESC",
+                "property": "disposisi_masuk_ispengingat",
+                "root": "data"
+            },
+            "name": "MySorter10",
+            "designerId": "7604b0ea-101a-49d9-a026-cdc84ecda656"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "baca",
+                "property": "disposisi_masuk_isbaca",
+                "root": "data"
+            },
+            "name": "MySorter3",
+            "designerId": "00494398-dade-4307-8beb-af66ce4b074a"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "prioritas",
+                "direction": "DESC",
+                "property": "disposisi_masuk_isprioritas",
+                "root": "data"
+            },
+            "name": "MySorter5",
+            "designerId": "85675e6b-6d0d-4aca-b30e-a256cb16100b"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "disposisi_tanggal",
+                "direction": "DESC",
+                "property": "disposisi_masuk_terima_tgl",
+                "root": "data"
+            },
+            "name": "MySorter1",
+            "designerId": "cb469aa9-de8d-4abd-ad4e-7289721b3edc"
+        }
+    ]
+}

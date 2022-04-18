@@ -1,0 +1,849 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoScroll": true,
+        "bodyPadding": 5,
+        "border": false,
+        "collapsed": false,
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_disposisi_forward_form",
+        "designer|userClassName": "Sipas.disposisi.forward.Form",
+        "header": false,
+        "height": 450,
+        "iconCls": null,
+        "id": null,
+        "itemId": null,
+        "layout": "hbox",
+        "manageHeight": false,
+        "maxHeight": null,
+        "maxWidth": null,
+        "minHeight": null,
+        "minWidth": null,
+        "title": "Form Meneruskan Disposisi",
+        "width": 900,
+        "withSender": true,
+        "withSurat": true
+    },
+    "name": "Sipas.disposisi.Form1",
+    "designerId": "4c616698-7ed8-4a8e-bb6e-82e241b755d9",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "withSurat",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "withSender",
+            "type": "boolean"
+        }
+    ],
+    "cn": [
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "associated": true,
+                "autoScroll": true,
+                "cls": "sipas_arsip_pane x-dataview-plainemptytext",
+                "collapseDirection": "top",
+                "designer|createAlias": null,
+                "isSession": true,
+                "layout|flex": null,
+                "margin": "0 15 4 4",
+                "maxWidth": 170,
+                "overflowX": "auto",
+                "style": null
+            },
+            "name": "sipas.arsip.pane2",
+            "configAlternates": {
+                "style": "string",
+                "associated": "boolean"
+            },
+            "designerId": "dd228580-5d28-4050-ba51-1ae1ca84dd98",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "associated",
+                    "type": "string"
+                }
+            ],
+            "masterInstanceId": "328047cc-622e-42c0-8c7d-5c288e56baf5"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "autoScroll": true,
+                "container|align": "stretch",
+                "layout": "vbox",
+                "layout|flex": 1
+            },
+            "name": "MyContainer3",
+            "designerId": "5e71e85a-667d-47dc-bd2a-b7ac803be3f6",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Kode Disposisi",
+                        "hidden": true,
+                        "itemId": "fieldCode",
+                        "labelWidth": 120,
+                        "name": "disposisi_kode",
+                        "readOnly": true,
+                        "width": 360
+                    },
+                    "name": "MyTextField5",
+                    "designerId": "3ed40a3e-5a3b-4946-bb56-557191be1729"
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "stretch",
+                        "featureName": "nota_dinas",
+                        "featureable": true,
+                        "layout": "vbox",
+                        "layout|flex": null
+                    },
+                    "name": "MyContainer4",
+                    "designerId": "44c68c36-2a44-456e-a3e5-9b4e7de76504",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Radio",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "boxLabel": "Kirim Sebagai Disposisi",
+                                "fieldLabel": null,
+                                "inputValue": "0",
+                                "itemId": "radioDisposisi",
+                                "layout|flex": 1,
+                                "name": "disposisi_model_sub",
+                                "value": null
+                            },
+                            "name": "MyRadio",
+                            "designerId": "21cfd8be-740e-4f73-b2e5-eba0e1bd5f2f"
+                        },
+                        {
+                            "type": "Ext.form.field.Radio",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "boxLabel": "Kirim Sebagai Nota Dinas",
+                                "fieldLabel": null,
+                                "inputValue": "1",
+                                "itemId": "radioNota",
+                                "layout|flex": 1,
+                                "name": "disposisi_model_sub",
+                                "value": null
+                            },
+                            "name": "MyRadio1",
+                            "designerId": "076463fe-ffa0-4c19-8520-5a38723d9941"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "featureName": "perintahtindakan",
+                        "featureable": true,
+                        "itemId": "containerPerintah",
+                        "layout": "anchor",
+                        "layout|flex": null
+                    },
+                    "name": "MyContainer",
+                    "designerId": "1155874f-5f75-4308-849a-b0a276a4ca1a",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "boolean"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.ComboBox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "displayField": "perintah_nama",
+                                "emptyText": "Silahkan Pilih Arahan",
+                                "fieldLabel": "Perintah",
+                                "forceSelection": true,
+                                "labelAlign": "top",
+                                "languageCode": "perintah_combo",
+                                "languageMode": "fieldLabel",
+                                "languageable": true,
+                                "layout|anchor": "100%",
+                                "name": "disposisi_perintah",
+                                "queryMode": "local",
+                                "store": "Sipas.perintah.Combo",
+                                "valueField": "perintah_id",
+                                "width": 360
+                            },
+                            "name": "MyComboBox5",
+                            "designerId": "346c5c35-5431-48bb-a4a8-548f988ad901",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageCode",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageMode",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageable",
+                                    "type": "boolean"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.field.TextArea",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "emptyText": "Uraian",
+                                "fieldLabel": null,
+                                "frame": false,
+                                "grow": true,
+                                "height": null,
+                                "id": null,
+                                "itemId": null,
+                                "labelAlign": null,
+                                "layout|anchor": "100%",
+                                "minHeight": null,
+                                "name": "disposisi_pesan",
+                                "preventScrollbars": true,
+                                "rows": null
+                            },
+                            "name": "MyTextArea",
+                            "designerId": "8200b020-57b5-4fc8-b8ad-f9f09a8aba30"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "checkboxName": "disposisi_israhasia",
+                        "checkboxToggle": true,
+                        "collapsed": null,
+                        "languageCode": "disposisi_israhasia",
+                        "languageMode": "title",
+                        "languageable": true,
+                        "layout|flex": null,
+                        "padding": null,
+                        "title": "Rahasiakan arahan dan uraian disposisi"
+                    },
+                    "name": "MyFieldSet1",
+                    "designerId": "635324ab-8102-41cf-aff8-fc7ff7ad9f7e",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageCode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageMode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageable",
+                            "type": "boolean"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": "text-description",
+                                "fieldLabel": null,
+                                "hidden": null,
+                                "languageCode": "disposisi_israhasia_desc",
+                                "languageMode": "value",
+                                "languageable": true,
+                                "layout|anchor": "100%",
+                                "margin": "-5 0 0 0",
+                                "name": "disposisi_israhasia_ket",
+                                "padding": null,
+                                "value": "<span class=\"alternative\">Perintah disposisi yang bersifat rahasia tidak dapat tampil pada ekspedisi surat dan disposisi</span>"
+                            },
+                            "name": "MyDisplayField13",
+                            "configAlternates": {
+                                "languageable": "boolean"
+                            },
+                            "designerId": "903900a0-64dc-45a7-90a7-f21cf9063ea7",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageable",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageCode",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageMode",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "checkboxName": "disposisi_useprioritas",
+                        "checkboxToggle": true,
+                        "collapsed": null,
+                        "featureName": "disposisi_prioritas",
+                        "featureable": true,
+                        "languageCode": "prioritas_disposisi_masuk_forward_popup",
+                        "languageMode": "title",
+                        "languageable": true,
+                        "layout|flex": null,
+                        "margin": "-10 0 -5 0",
+                        "padding": null,
+                        "title": "Prioritas"
+                    },
+                    "name": "MyFieldSet7",
+                    "configAlternates": {
+                        "featureable": "boolean"
+                    },
+                    "designerId": "99aa7839-b25c-4f4e-831b-dbb895e4829a",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageCode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageMode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.form.FieldContainer",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "stretch",
+                                "fieldLabel": "",
+                                "height": null,
+                                "itemId": "containerPrioritas",
+                                "layout": "hbox",
+                                "width": null
+                            },
+                            "name": "MyFieldContainer1",
+                            "designerId": "52d342aa-ee1c-4202-96ef-1f24ec4c7ada",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.field.ComboBox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "associated": true,
+                                        "bootstrapProperty": "Sipas.prioritas.Popup",
+                                        "displayField": "prioritas_nama",
+                                        "emptyText": "Pilih Prioritas Surat",
+                                        "fieldLabel": "Urgensi Surat",
+                                        "forceSelection": true,
+                                        "itemId": "prioritas_kode",
+                                        "labelWidth": 120,
+                                        "languageCode": "prioritas_disposisi_masuk_forward_popup_text",
+                                        "languageMode": "fieldLabel",
+                                        "languageable": true,
+                                        "layout|flex": null,
+                                        "minChars": 2,
+                                        "name": "disposisi_prioritas",
+                                        "queryMode": null,
+                                        "store": "Sipas.prioritas.Combo",
+                                        "typeAhead": true,
+                                        "valueField": "prioritas_id",
+                                        "width": 360
+                                    },
+                                    "name": "MyComboBox8",
+                                    "designerId": "ffad686a-f8d3-4cbc-bb77-6840535fb95e",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "bootstrapProperty",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "associated",
+                                            "type": "boolean"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "languageable",
+                                            "type": "boolean"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "languageMode",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "languageCode",
+                                            "type": "string"
+                                        }
+                                    ],
+                                    "cn": [
+                                        {
+                                            "type": "Ext.view.BoundList",
+                                            "reference": {
+                                                "name": "listConfig",
+                                                "type": "object"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "itemSelector": "div"
+                                            },
+                                            "name": "MyBoundList3",
+                                            "designerId": "84becdfc-6ebd-4666-98f7-811595848807",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.XTemplate",
+                                                    "reference": {
+                                                        "name": "itemTpl",
+                                                        "type": "object"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "designer|displayName": "itemTpl",
+                                                        "implHandler": [
+                                                            "{prioritas_nama} ({prioritas_kode}) - {prioritas_retensi} hari"
+                                                        ]
+                                                    },
+                                                    "name": "itemTpl",
+                                                    "designerId": "ba07438b-86d9-4b64-b88a-25aa98a0da3d"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|uiInterfaceName": "default-toolbar",
+                                        "iconCls": "icon ion-md-open",
+                                        "itemId": "btnGear",
+                                        "layout|flex": null,
+                                        "roleName": "prioritas",
+                                        "roleable": true,
+                                        "ui": "default-toolbar"
+                                    },
+                                    "name": "sipas.com.button.gear6",
+                                    "designerId": "6644043c-2da1-45cb-895a-70de57b2bee6",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "roleName",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "roleable",
+                                            "type": "boolean"
+                                        }
+                                    ],
+                                    "masterInstanceId": "cd04827e-6bd0-42d5-a76f-20327eef1163"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.field.Date",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Label",
+                                "hidden": true,
+                                "name": "disposisi_prioritas_tgl"
+                            },
+                            "name": "MyDateField",
+                            "designerId": "83840bbe-5ab2-4488-8d07-852b9ae2d3ce"
+                        },
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": "text-description",
+                                "fieldLabel": null,
+                                "hidden": null,
+                                "languageCode": "disposisi_forward_prop_prioritas_desc",
+                                "languageMode": "value",
+                                "languageable": true,
+                                "layout|anchor": "100%",
+                                "margin": "-5 0 0 0",
+                                "name": "disposisi_israhasia_ket",
+                                "padding": null,
+                                "value": ""
+                            },
+                            "name": "MyDisplayField20",
+                            "configAlternates": {
+                                "languageable": "boolean"
+                            },
+                            "designerId": "f42e5f82-d258-4166-b9f6-7e504923c540",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageable",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageCode",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageMode",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "collapsed": true,
+                        "collapsible": true,
+                        "height": null,
+                        "hidden": true,
+                        "layout|flex": 1,
+                        "title": "Rincian"
+                    },
+                    "name": "MyFieldSet3",
+                    "designerId": "0259e1de-ee50-4ef6-8604-460b9c9d6b61",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Date",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "editable": false,
+                                "fieldLabel": "Tgl.pengiriman disposisi",
+                                "format": "d-M-Y H:i",
+                                "id": null,
+                                "itemId": "disposisi_tanggal",
+                                "labelWidth": 150,
+                                "layout|anchor": null,
+                                "name": "disposisi_tanggal",
+                                "readOnly": true,
+                                "submitFormat": "d-M-Y H:i",
+                                "width": null
+                            },
+                            "name": "MyDateField15",
+                            "designerId": "e685ac1a-9e53-43fc-a65c-d9b79f977b9d"
+                        },
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Nama Pengirim",
+                                "layout|anchor": "100%",
+                                "name": "pengirim_nama",
+                                "readOnly": true
+                            },
+                            "name": "MyTextField22",
+                            "designerId": "98ea2a16-2721-4f27-8e63-a28ba2aa0063"
+                        },
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "No.Surat",
+                                "layout|anchor": "100%",
+                                "name": "surat_nomor",
+                                "readOnly": true
+                            },
+                            "name": "MyTextField24",
+                            "designerId": "ddaba368-a167-44d8-aca0-1dba7bac2f3b"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "autoScroll": true,
+                "container|align": "stretch",
+                "layout": "vbox",
+                "layout|flex": 1,
+                "layout|margins": "0 0 0 15"
+            },
+            "name": "MyContainer8",
+            "designerId": "cce024d3-e832-44d9-ac9d-d88e5b6ee6c0",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": null,
+                        "layout|flex": 1
+                    },
+                    "name": "sipas.disposisi.forward.penerima.list1",
+                    "designerId": "396cd316-2355-42c8-ab03-15216497e849",
+                    "masterInstanceId": "174ba5c3-eb28-41de-8e2c-82af5d4588f8"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "container|pack": "end",
+                "designer|uiInterfaceName": "footer",
+                "dock": "bottom",
+                "itemId": "toolbarAction",
+                "layout": "hbox",
+                "layout|flex": null,
+                "margin": null,
+                "ui": "footer"
+            },
+            "name": "MyContainer29",
+            "designerId": "d05ed8c6-7393-4d43-9899-bca8dfab2e27",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": "x-btn-bordered",
+                        "designer|uiInterfaceName": "default",
+                        "hidden": true,
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.refperdis",
+                    "designerId": "a229e043-f1a2-4ca6-813c-917c34a3c389",
+                    "masterInstanceId": "8522a42a-f5de-4945-a06c-e21dc8e57ff0"
+                },
+                {
+                    "type": "Ext.form.field.Checkbox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "boxLabel": "Cetak <b>Lembar Disposisi</b>",
+                        "boxLabelAlign": null,
+                        "fieldLabel": "",
+                        "hidden": true,
+                        "itemId": "printDisposisi",
+                        "layout|flex": null,
+                        "layout|margins": "2"
+                    },
+                    "name": "MyCheckbox",
+                    "designerId": "3672ce47-034d-4aeb-aa84-5515f8c8fd15"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "dosaveprint",
+                        "designer|uiInterfaceName": "default",
+                        "itemId": "savePrint",
+                        "layout|flex": null,
+                        "text": "KIRIM DAN CETAK"
+                    },
+                    "name": "sipas.com.button.disposisi10",
+                    "designerId": "d1894fb7-3c8d-4bad-8ad6-cabde714a0cb",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "d5669cd3-61be-4bbb-80a9-bd9f521250ee"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "dosave",
+                        "designer|uiInterfaceName": "default",
+                        "itemId": "save",
+                        "layout|flex": null,
+                        "text": "KIRIM"
+                    },
+                    "name": "sipas.com.button.disposisi11",
+                    "designerId": "bd20490d-fdb8-4963-a85c-3ce9a39227fc",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "d5669cd3-61be-4bbb-80a9-bd9f521250ee"
+                }
+            ]
+        }
+    ]
+}

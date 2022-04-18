@@ -1,0 +1,242 @@
+{
+    "type": "Ext.form.FieldSet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": "sipas_com_disposisi_pengirim_pane",
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_com_surat_pembuat_pane",
+        "designer|userClassName": "Sipas.com.surat.pembuat.Pane",
+        "enableButtonView": true,
+        "formConfig": [
+            "{}"
+        ],
+        "height": null,
+        "itemId": null,
+        "layout": "hbox",
+        "padding": null,
+        "title": null
+    },
+    "name": "Sipas.com.disposisi.pengirim.Pane1",
+    "configAlternates": {
+        "enableButtonView": "boolean",
+        "formConfig": "object"
+    },
+    "designerId": "094b3bb6-3ff6-4d26-9e4b-ddf14ba7bb8e",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "enableButtonView",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "formConfig",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "constructor",
+                "implHandler": [
+                    "this.callParent(arguments);",
+                    "return Ext.applyIf(this,{",
+                    "    form: new Ext.form.Basic(this)",
+                    "});"
+                ]
+            },
+            "name": "constructor",
+            "designerId": "d3682d7b-6a88-4ff0-93c3-b14329eb75e9"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": null,
+                "width": null
+            },
+            "name": "MyContainer34",
+            "designerId": "a6e83411-e7b5-415c-8a96-d710f45c3c80",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": null,
+                        "itemId": "pembuatDetail",
+                        "value": null
+                    },
+                    "name": "MyDisplayField16",
+                    "designerId": "cfbe4bb1-fe48-4a04-922e-620678ecee0d"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "layout|flex": null
+            },
+            "name": "MyContainer50",
+            "designerId": "6743e4ea-da11-41f9-a71b-b06e2202a0b1",
+            "cn": [
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 48,
+                        "itemId": "pengirimImg",
+                        "width": 48
+                    },
+                    "name": "MyContainer11",
+                    "designerId": "d6ceff37-c6a4-4340-b42e-cf8d00994262",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onPengirimImgRender",
+                                "implHandler": [
+                                    "Ext.create('Ext.tip.ToolTip',{",
+                                    "    target: component.getEl(),",
+                                    "    html: 'Pengirim'",
+                                    "});"
+                                ],
+                                "name": "render",
+                                "scope": "me"
+                            },
+                            "name": "onPengirimImgRender",
+                            "designerId": "3f947b2c-852c-4482-9dc4-f3b22e9b4200"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaults": [
+                    "{margin:0,margins:0,padding:0}"
+                ],
+                "hidden": true,
+                "itemId": "pengirimData",
+                "layout|flex": 1,
+                "margin": "0 0 0 10"
+            },
+            "name": "MyContainer33",
+            "designerId": "9a7d5bf8-6f03-494b-bfd6-241fa6787366",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": null,
+                        "margin": null,
+                        "name": "surat_properti_pembuat_nama",
+                        "padding": null,
+                        "value": null
+                    },
+                    "name": "MyDisplayField10",
+                    "designerId": "dd915fbc-962c-4c94-842a-049209379b37",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "displayField"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "if(value){",
+                                    "    return '<strong>'+value+'</strong>';",
+                                    "}else{",
+                                    "    return '';",
+                                    "}"
+                                ]
+                            },
+                            "name": "renderer",
+                            "designerId": "6442c3ef-60d1-401c-bc22-d8a88d045fef"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": null,
+                        "name": "surat_properti_pembuat_jabatan_nama",
+                        "padding": null,
+                        "value": null
+                    },
+                    "name": "MyDisplayField12",
+                    "designerId": "365c240e-5de0-401e-a37c-d976a440d1d1"
+                },
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": null,
+                        "name": "surat_properti_pembuat_unit_nama",
+                        "value": null
+                    },
+                    "name": "MyDisplayField11",
+                    "designerId": "912ccfd9-4c3e-4abb-a254-c33dad6f524d"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,59 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.aksi.Combo",
+        "model": "Sipas.Aksi",
+        "pageSize": 1000,
+        "storeId": "Sipas.aksi.Combo"
+    },
+    "name": "MyJsonStore",
+    "designerId": "a2b54a4e-42ef-4584-bee9-d51396e83f55",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/aksi/aktif"
+            },
+            "name": "MyAjaxProxy46",
+            "designerId": "4bbc6834-8471-461f-9353-0d4b1ceb5821",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader46",
+                    "designerId": "3e63dc19-92eb-4b40-8191-81a17f067617"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "aksi_nama"
+            },
+            "name": "MySorter8",
+            "designerId": "0d340951-e07d-4abd-8617-732f232d96ac"
+        }
+    ]
+}

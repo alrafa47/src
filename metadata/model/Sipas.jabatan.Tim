@@ -1,0 +1,143 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.jabatan.Tim",
+        "idProperty": "jabatan_tim_id"
+    },
+    "name": "Sipas.staf.Tim1",
+    "designerId": "d8809771-4915-4bf0-9a74-271d586bd829",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "jabatan_tim_id"
+            },
+            "name": "MyField3",
+            "designerId": "7ae34750-0c72-400d-a118-4a3d1a95c0e6"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "jabatan_tim_nama"
+            },
+            "name": "MyField34",
+            "designerId": "94114dde-a39f-4348-84a7-6e57715f8bfa"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "jabatan_tim_jumlah"
+            },
+            "name": "MyField41",
+            "designerId": "4ddc1f77-6d82-4004-aa7d-6a5a3e1780e8"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "jabatan_tim_properti"
+            },
+            "name": "MyField338",
+            "designerId": "0d5662dd-c9aa-4fe6-8e5b-3f9ff8978391"
+        },
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "api": [
+                    "{",
+                    "    create: 'server.php/sipas/jabatan_tim/create',",
+                    "    read: 'server.php/sipas/jabatan_tim/read',",
+                    "    update: 'server.php/sipas/jabatan_tim/update',",
+                    "    destroy: 'server.php/sipas/jabatan_tim/destroy'",
+                    "}"
+                ]
+            },
+            "name": "MyAjaxProxy1",
+            "designerId": "fe770616-4682-4185-9fb1-32c52fb5b6ca",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader1",
+                    "designerId": "b05ec344-b0be-4c18-babb-fe3e133521c8"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.association.HasMany",
+            "reference": {
+                "name": "hasMany",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "fetchAnggota",
+                "foreignKey": "jabatan_tim_anggota_tim",
+                "model": "Sipas.jabatan.tim.Anggota",
+                "name": "fetchAnggota",
+                "primaryKey": "jabatan_tim_id",
+                "storeConfig": [
+                    "{",
+                    "remoteFilter: false,",
+                    "remoteSort: false,",
+                    "remoteGroup: false,",
+                    "pageSize: 1000,",
+                    "proxy: {",
+                    "type: 'ajax',",
+                    "reader: {",
+                    "root: 'data'",
+                    "},",
+                    "api: {",
+                    "read: 'server.php/sipas/jabatan_tim_anggota/read',",
+                    "create: 'server.php/sipas/jabatan_tim_anggota/create',",
+                    "update: 'server.php/sipas/jabatan_tim_anggota/update',",
+                    "destroy: 'server.php/sipas/jabatan_tim_anggota/destroy'",
+                    "}",
+                    "},",
+                    "sorters: {",
+                    "property: 'jabatan_tim_anggota_tim'",
+                    "}",
+                    "}"
+                ]
+            },
+            "name": "MyHasManyAssociation",
+            "designerId": "dd0e76cf-0b70-4501-9540-c06258514eed"
+        }
+    ]
+}

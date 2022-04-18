@@ -1,0 +1,78 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.surat.agenda.log.Popup",
+        "model": "Sipas.surat.agenda.Log",
+        "pageSize": 1000,
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.surat.agenda.log.Popup"
+    },
+    "name": "Sipas.disposisi.masuk.log.Popup1",
+    "designerId": "52b14b60-25ce-4862-b1c2-660541370662",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat_log/read"
+            },
+            "name": "MyAjaxProxy51",
+            "designerId": "b9cd803a-c3f0-45b8-bc68-83958f5eeaf7",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader51",
+                    "designerId": "bf1ff41a-46e2-41e3-92da-d01bc8580318"
+                },
+                {
+                    "type": "Ext.data.writer.Json",
+                    "reference": {
+                        "name": "writer",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "encode": true
+                    },
+                    "name": "MyJsonWriter",
+                    "designerId": "02774211-be53-40a2-a1d2-2631ab8d6417"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_log_tgl",
+                "root": "data"
+            },
+            "name": "MySorter1",
+            "designerId": "c11c9797-1117-429b-85b1-2f9e878613a2"
+        }
+    ]
+}

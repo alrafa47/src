@@ -1,0 +1,492 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoScroll": null,
+        "border": false,
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_internal_masuk_agenda_approval_popup",
+        "designer|userClassName": "Sipas.internal.masuk.agenda.approval.Popup",
+        "height": null,
+        "layout": "vbox",
+        "maxHeight": null,
+        "maxWidth": null,
+        "modal": true,
+        "title": "Penerimaan Surat Masuk Internal",
+        "width": 500
+    },
+    "name": "MyWindow",
+    "designerId": "ba85bd1f-6c2e-4595-b383-ce53393c9e9e",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "autoScroll": true,
+                "bodyPadding": 5,
+                "border": null,
+                "cls": "sipas_disposisi_penerima_detail_form",
+                "header": false,
+                "maxHeight": 500,
+                "title": "My Form"
+            },
+            "name": "MyForm",
+            "designerId": "3207a47d-11e4-492d-9a88-593668cbce89",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": null,
+                        "languageCode": "imasuk_approval_desc",
+                        "languageMode": "value",
+                        "languageable": true,
+                        "layout|anchor": "100%",
+                        "margin": "0 7 0 7",
+                        "value": null
+                    },
+                    "name": "MyDisplayField8",
+                    "configAlternates": {
+                        "languageable": "boolean"
+                    },
+                    "designerId": "b89cadab-d6e2-444b-aff2-f17e918de042",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageCode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageMode",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "middle",
+                        "container|pack": null,
+                        "itemId": "tanggalContainer",
+                        "layout": "hbox"
+                    },
+                    "name": "MyContainer11",
+                    "designerId": "e0fe5b5e-6b42-42a4-abfb-ea3d8b37a931",
+                    "cn": [
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 1
+                            },
+                            "name": "MyContainer49",
+                            "designerId": "e519db26-3cfc-4596-998b-c3a7ed4881aa"
+                        },
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": "tanggalImage",
+                                "height": 25,
+                                "itemId": "tanggalImage",
+                                "layout|margins": "0 0 0 10",
+                                "width": 25
+                            },
+                            "name": "MyContainer3",
+                            "designerId": "18e76517-0d9a-4146-918a-1a646d23afc9",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onTanggalImageRender1",
+                                        "implHandler": [
+                                            "Ext.create('Ext.tip.ToolTip',{",
+                                            "    target: component.getEl(),",
+                                            "    html: 'Tanggal Kirim Surat Internal'",
+                                            "});"
+                                        ],
+                                        "name": "render",
+                                        "scope": "me"
+                                    },
+                                    "name": "onTanggalImageRender1",
+                                    "designerId": "ab014f41-50d2-4f1f-9d12-99fa462cfe4f"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.field.Date",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": null,
+                                "fieldCls": "x-form-field text-right",
+                                "fieldLabel": null,
+                                "format": "d M Y",
+                                "id": null,
+                                "itemId": null,
+                                "labelWidth": 150,
+                                "layout|flex": null,
+                                "margin": "0 7 0 10",
+                                "name": "surat_tanggal",
+                                "readOnly": true,
+                                "width": null
+                            },
+                            "name": "MyDateField1",
+                            "designerId": "5bbda6d4-2736-4ee0-a55f-d86e73c21ee6"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "associated": true,
+                        "border": false,
+                        "margin": "0 7 0 7"
+                    },
+                    "name": "sipas.com.surat.pane7",
+                    "designerId": "b481fd02-d479-40f9-8e9e-7983ba90d8f9",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "associated",
+                            "type": "boolean"
+                        }
+                    ],
+                    "masterInstanceId": "c1fd3830-bcc3-4456-af88-20830148a44e"
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "border": false,
+                        "padding": 10,
+                        "title": null
+                    },
+                    "name": "MyFieldSet23",
+                    "designerId": "7fc6275c-2e8f-4719-b1ad-320c2657743d",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": null,
+                                "itemId": "statusKeterangan",
+                                "layout|anchor": null,
+                                "value": null
+                            },
+                            "name": "MyDisplayField2",
+                            "designerId": "3b79f9b9-3407-4924-9490-98f0d6aecce6"
+                        },
+                        {
+                            "type": "Ext.form.CheckboxGroup",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "stretch",
+                                "fieldLabel": null,
+                                "itemId": "status",
+                                "layout": "vbox"
+                            },
+                            "name": "MyCheckboxGroup1",
+                            "designerId": "fd195a48-ea7d-4341-89e1-9a9cbc2e61b4",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.field.Checkbox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "boxLabel": "Menerima surat <i class=\"icon ion-md-checkmark green-600-i\"></i>",
+                                        "fieldLabel": null,
+                                        "inputValue": "2",
+                                        "itemId": "setuju",
+                                        "layout|flex": 1,
+                                        "name": "cbPersetujuan"
+                                    },
+                                    "name": "MyCheckbox13",
+                                    "designerId": "eb195383-4213-497d-890b-00acfce04bd3",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onSetujuChange",
+                                                "implHandler": [
+                                                    "var status = field.up('#status'),",
+                                                    "    tolak = status.down('#tolak');",
+                                                    "",
+                                                    "if(newValue){",
+                                                    "    tolak.setValue(false);",
+                                                    "}"
+                                                ],
+                                                "name": "change",
+                                                "scope": "me"
+                                            },
+                                            "name": "onSetujuChange",
+                                            "designerId": "1672ccf0-ece4-4828-97fc-d6a07c467895"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.field.Checkbox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "boxLabel": "Menolak surat <i class=\"icon ion-md-close red-600-i\"></i>",
+                                        "fieldLabel": null,
+                                        "inputValue": "4",
+                                        "itemId": "tolak",
+                                        "name": "cbPersetujuan"
+                                    },
+                                    "name": "MyCheckbox12",
+                                    "designerId": "5d4b78a3-6c1f-428c-8a1d-e554b277e794",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onCheckboxfieldChange",
+                                                "implHandler": [
+                                                    "var status = field.up('#status'),",
+                                                    "    setuju = status.down('#setuju');",
+                                                    "",
+                                                    "if(newValue){",
+                                                    "    setuju.setValue(false);",
+                                                    "}"
+                                                ],
+                                                "name": "change",
+                                                "scope": "me"
+                                            },
+                                            "name": "onCheckboxfieldChange",
+                                            "designerId": "161b9019-0c4a-4371-bf07-b5279cb53f05"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.field.TextArea",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "emptyText": "Masukkan Komentar",
+                                "fieldLabel": "Komentar",
+                                "labelAlign": "top",
+                                "layout|anchor": "100%",
+                                "margin": null,
+                                "name": "surat_setuju_komentar",
+                                "rows": null
+                            },
+                            "name": "MyTextArea",
+                            "designerId": "d48c5265-90d6-43ed-869d-aa61990ed526"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "margin": "0 7 0 7"
+                    },
+                    "name": "sipas.retensi.pane1",
+                    "designerId": "fd4abb4d-bbd5-480b-9226-b1f5f2d4f664",
+                    "masterInstanceId": "16bac2de-febd-430f-b340-0561a2376c17"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "associate": true,
+                        "featureName": "sla",
+                        "featureable": true,
+                        "margin": "0 7 0 7"
+                    },
+                    "name": "sipas.sla.pane",
+                    "designerId": "611281ec-e72c-438d-b9da-2a44fd1be830",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "associate",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "d7984b57-ae51-4db9-8962-eb3aa70578f6"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "associated": true,
+                        "featureName": "ratingreview",
+                        "featureable": true,
+                        "margin": "0 7 0 7",
+                        "roleName": "surat_internal_masuk_rating",
+                        "roleable": true
+                    },
+                    "name": "sipas.surat.ulasan.pane",
+                    "designerId": "418d0ef1-5e11-4bf5-bedd-d6045d5043f8",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "associated",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "7ebcb138-5237-4be4-b29c-57effc320548"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": null,
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "container|pack": "end",
+                "designer|uiInterfaceName": "footer",
+                "dock": "bottom",
+                "itemId": "toolbarControll",
+                "layout": "hbox",
+                "margin": null,
+                "ui": "footer"
+            },
+            "name": "MyContainer46",
+            "designerId": "380c5156-4649-47ae-8b89-bceee575ba5d",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.save68",
+                    "designerId": "baf3a344-a158-4b4d-ad05-0d3a5230a98d",
+                    "masterInstanceId": "feb6c6f9-7733-4b38-9254-091d0db2d3a9"
+                }
+            ]
+        }
+    ]
+}

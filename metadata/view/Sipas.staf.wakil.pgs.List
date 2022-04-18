@@ -1,0 +1,665 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "allowDeselect": null,
+        "designer|userAlias": "sipas_staf_wakil_pgs_list",
+        "designer|userClassName": "Sipas.staf.wakil.pgs.List",
+        "disableSelection": true,
+        "emptyText": "Tidak ada Data",
+        "enableColumnHide": null,
+        "header": false,
+        "hideHeaders": null,
+        "itemId": "namaPgs",
+        "store": "Sipas.staf.wakil.pgs.List",
+        "title": "Pengganti Sementara"
+    },
+    "name": "Sipas.staf.wakil.atasan.List1",
+    "designerId": "b2eb0159-891c-4e3a-a420-98e8b4ba2f05",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "title",
+                "dock": "top",
+                "hidden": true
+            },
+            "name": "MyToolbar3",
+            "designerId": "16d050b1-67a6-431e-b24a-03e3c97a3095",
+            "cn": [
+                {
+                    "type": "Ext.form.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": "alternative bold",
+                        "layout|flex": null,
+                        "padding": 4,
+                        "text": "Daftar Asisten "
+                    },
+                    "name": "MyLabel",
+                    "designerId": "2d1f2144-360c-42e9-ad83-cb8d6cde0938"
+                }
+            ]
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "designer|displayName": "action",
+                "dock": "top"
+            },
+            "name": "MyToolbar4",
+            "designerId": "b9d2ca5b-cc32-4ec7-9dff-183b0e2692bb",
+            "cn": [
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "anyMatch": true,
+                        "cls": "x-field-search",
+                        "displayField": "staf_nama",
+                        "editable": null,
+                        "emptyText": "Tambah pengganti sementara",
+                        "enableKeyEvents": null,
+                        "enforceMaxLength": true,
+                        "featureName": "asistensi",
+                        "featureable": true,
+                        "forceSelection": true,
+                        "hideLabel": null,
+                        "hideTrigger": true,
+                        "itemId": "fieldSearch",
+                        "layout|flex": 1,
+                        "minChars": 2,
+                        "pageSize": null,
+                        "queryMode": "local",
+                        "roleName": "staf_pgs_monitoring_save",
+                        "roleable": true,
+                        "selectOnFocus": null,
+                        "store": "Sipas.staf.wakil.asisten.Combo",
+                        "submitValue": null,
+                        "typeAhead": null,
+                        "validateOnChange": null,
+                        "valueField": "staf_id",
+                        "valueNotFoundText": null,
+                        "width": "100%"
+                    },
+                    "name": "MyComboBox",
+                    "configAlternates": {
+                        "roleable": "boolean",
+                        "featureable": "boolean"
+                    },
+                    "designerId": "c35c3685-a928-46b8-ac0a-e76c515fc6ee",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.view.BoundList",
+                            "reference": {
+                                "name": "listConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "emptyText": "Pencarian tidak ditemukan",
+                                "itemSelector": "div"
+                            },
+                            "name": "MyBoundList",
+                            "designerId": "9af78156-5b90-4993-adef-8cf25648e661",
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "{staf_nama} <span class=\"alternative\">({unit_nama})</span>"
+                                        ]
+                                    },
+                                    "name": "itemTpl",
+                                    "designerId": "fa7eefeb-4275-4340-9502-07ba1e256780"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": null,
+                        "featureName": "asistensi",
+                        "featureable": true,
+                        "iconCls": null,
+                        "itemId": "buttonManual",
+                        "layout|flex": null,
+                        "roleName": "staf_pgs_monitoring_save",
+                        "roleable": true,
+                        "text": "Pilih Manual"
+                    },
+                    "name": "MyButton15",
+                    "configAlternates": {
+                        "roleable": "boolean",
+                        "featureable": "boolean"
+                    },
+                    "designerId": "0cfd55f3-dd9f-4e8d-86ba-8b3c7bf1f9a9",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": true,
+                        "layout|flex": null
+                    },
+                    "name": "MyFill2",
+                    "designerId": "434fcaad-32d3-46c2-bcaf-6a528f230cdc"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Action",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": "center",
+                "featureName": "asistensi",
+                "featureable": true,
+                "itemId": "btnHapus",
+                "menuDisabled": true,
+                "roleName": "staf_pgs_monitoring_save",
+                "roleable": true,
+                "width": 36
+            },
+            "name": "MyActionColumn",
+            "configAlternates": {
+                "roleable": "boolean",
+                "featureable": "boolean"
+            },
+            "designerId": "3c43f597-68df-4fd6-82f7-3c12304dd33e",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "roleable",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "roleName",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureable",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureName",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "actioncolumnitem",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "removerecord",
+                        "iconCls": "x-action-col-icon-bin"
+                    },
+                    "name": "MyActionColumnItem",
+                    "designerId": "9b4c094e-ef60-42a9-bad3-4a9305e7f73d",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "staf_nama",
+                "filterable": false,
+                "flex": 1,
+                "itemId": "namaPgs",
+                "items": null,
+                "languageable": true,
+                "minWidth": 200,
+                "sortable": true,
+                "text": "Daftar Pengganti",
+                "width": 200
+            },
+            "name": "MyColumn3",
+            "configAlternates": {
+                "items": "object",
+                "languageable": "boolean"
+            },
+            "designerId": "372afb68-80f0-48c4-b568-986afd0a4f42",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "languageable",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "languageMode",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "languageCode",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var id = record.get('staf_id'),",
+                            "    tpl = this.dataTpl || (",
+                            "        this.tpl =",
+                            "        \"<div class='cell-row'><div class='cell-visual cell-visual-left'>\"+",
+                            "        \"<img src='server.php/sipas/staf/get_image/foto?id=\"+id+\"' class='img img-circle img-16'>\"+",
+                            "        \"</div><div class='cell-text'>\"+value+\"</div></div>\"",
+                            "    );",
+                            "",
+                            "return (new Ext.Template(tpl)).apply(record.getData());"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "259b2d2c-c0d5-4cf3-bdd4-ec8f96035f29"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Date",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "staf_wakil_tgl_mulai",
+                "format": "d M Y",
+                "text": "Tgl Mulai"
+            },
+            "name": "MyDateColumn",
+            "designerId": "cc76b3de-280f-4af9-bc60-2d157fddbde9",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Date",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "allowBlank": null,
+                        "format": null,
+                        "name": "staf_wakil_tgl_mulai",
+                        "submitFormat": null
+                    },
+                    "name": "MyDateField",
+                    "designerId": "b9fe3fe7-faeb-4e27-987a-eb14bf6ee5ba"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Date",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "staf_wakil_tgl_selesai",
+                "format": "d M Y",
+                "itemId": null,
+                "text": "Tgl Selesai"
+            },
+            "name": "MyDateColumn1",
+            "designerId": "3b8bb224-61d0-42ae-9ce3-2c02db611679",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Date",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "allowBlank": null,
+                        "name": "staf_wakil_tgl_selesai"
+                    },
+                    "name": "MyDateField",
+                    "designerId": "0494f56e-c8fa-4c63-aa80-553e84bd3c36"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Action",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": "center",
+                "featureName": "asistensi",
+                "featureable": true,
+                "itemId": "btnKonfirm",
+                "menuDisabled": true,
+                "roleName": "staf_pgs_monitoring_save",
+                "roleable": true,
+                "text": "Konfirmasi",
+                "tooltip": null,
+                "width": 80
+            },
+            "name": "MyActionColumn5",
+            "configAlternates": {
+                "roleable": "boolean",
+                "featureable": "boolean"
+            },
+            "designerId": "761414ec-b8e6-4e63-a9a8-3913739dbf1e",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "roleable",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "roleName",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureable",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "featureName",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "actioncolumnitem",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "konfirm"
+                    },
+                    "name": "MyActionColumnItem4",
+                    "designerId": "aee4897b-2c03-48a4-95d0-fc9b757fc359",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "v",
+                                    "metadata",
+                                    "r",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store"
+                                ],
+                                "fn": "getClass",
+                                "implHandler": [
+                                    "var status = r.get('staf_wakil_konfirmasi_asisten_status');",
+                                    "",
+                                    "if(status == 2){",
+                                    "    metadata.tdAttr = 'data-qtip=\"Sudah Terkonfirmasi\"';",
+                                    "    return 'x-action-col-icon-checkmark';",
+                                    "}else{",
+                                    "    metadata.tdAttr = 'data-qtip=\"Anda Perlu Konfirmasi\"';",
+                                    "    return 'x-action-col-icon-compose';",
+                                    "}"
+                                ]
+                            },
+                            "name": "getClass",
+                            "designerId": "e665135a-39d8-48c6-8668-8fb4af3035d9"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": "center",
+                "dataIndex": "staf_wakil_konfirmasi_asisten_status",
+                "filterable": null,
+                "flex": 1,
+                "itemId": "statusKonfirm",
+                "items": null,
+                "minWidth": null,
+                "sortable": null,
+                "text": "Konfirmasi",
+                "width": 80
+            },
+            "name": "MyColumn9",
+            "configAlternates": {
+                "items": "object"
+            },
+            "designerId": "b1c992f7-d3aa-4d7f-b84f-e8c6ff13b5b3",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var val = '';",
+                            "",
+                            "if(value == 2){",
+                            "    metaData.tdAttr = 'data-qtip=\"Sudah Terkonfirmasi\"';",
+                            "    val = \"<span class='badge badge-solid'><i class='icon ion-md-checkmark-circle green-500-i'></i></span>\";",
+                            "}else{",
+                            "    metaData.tdAttr = 'data-qtip=\"Belum Terkonfirmasi\"';",
+                            "    val = \"<span class='badge badge-solid'><i class='icon ion-md-timer orange-500-i'></i></span>\";",
+                            "}",
+                            "",
+                            "return val;"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "44d5db0a-b093-42b9-9896-9d84f38bd9e4"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "loadMask": [
+                    "false"
+                ]
+            },
+            "name": "MyGridView",
+            "designerId": "a45671db-5b16-4cc6-b09e-86d4a980131a"
+        },
+        {
+            "type": "Ext.grid.plugin.RowEditing",
+            "reference": {
+                "name": "plugins",
+                "type": "array"
+            },
+            "codeClass": "Ext.grid.plugin.RowEditing",
+            "userConfig": {
+                "pluginId": "rowEditorWakil"
+            },
+            "name": "MyRowEditingPlugin1",
+            "designerId": "1cee1e0c-d9fb-48da-84ae-ff8b6456c4de"
+        }
+    ]
+}

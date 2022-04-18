@@ -1,0 +1,61 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.lokasi.Combo",
+        "model": "Sipas.Lokasi",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.lokasi.Combo"
+    },
+    "designerId": "16601039-9460-4e0d-8789-7663640b7f14",
+    "cn": [
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "lokasi_nama"
+            },
+            "name": "MySorter14",
+            "designerId": "9a5d2700-8c95-4a31-a55d-f43929d995e9"
+        },
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/lokasi/aktif"
+            },
+            "name": "MyAjaxProxy18",
+            "designerId": "419f7281-f0f1-439d-9db5-ed1e3cf4b865",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader18",
+                    "designerId": "a0e10728-89c6-4486-a279-6facef5eb055"
+                }
+            ]
+        }
+    ]
+}

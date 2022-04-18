@@ -1,0 +1,107 @@
+{
+    "type": "Ext.menu.Item",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "clickHideDelay": null,
+        "designer|userAlias": "sipas_com_menuitem_valueable",
+        "designer|userClassName": "Sipas.com.menuitem.Valueable",
+        "iconCls": null,
+        "menuHideDelay": null,
+        "singleton": null,
+        "text": null
+    },
+    "name": "MyMenuItem36",
+    "designerId": "5666ef67-0cdf-4479-a0ac-89256fc32d1c",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "value"
+                ],
+                "fn": "setValue",
+                "implHandler": [
+                    "var me = this,",
+                    "    newValue = value,",
+                    "    oldValue = me.value;",
+                    "",
+                    "me.value = value;",
+                    "me.setText((new Ext.XTemplate(me.valueTemplate)).apply(value));",
+                    "",
+                    "me.fireEventArgs('valuechange', [me, newValue, oldValue]);"
+                ]
+            },
+            "name": "setValue",
+            "designerId": "23fa55cd-def0-462e-8216-141651d7226d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getValue",
+                "implHandler": [
+                    "return this.value;"
+                ]
+            },
+            "name": "getValue",
+            "designerId": "f49c21a2-65b3-4bb2-ba2f-f2513f4967e8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "template"
+                ],
+                "fn": "setValueTemplate",
+                "implHandler": [
+                    "this.valueTemplate = template;",
+                    "",
+                    "var me = this,",
+                    "    value = me.value;",
+                    "",
+                    "me.setText((new Ext.XTemplate(me.valueTemplate)).apply(value));"
+                ]
+            },
+            "name": "setValueTemplate",
+            "designerId": "fdaeff6d-3aa0-4bb6-9a1c-b8bf4bac3563"
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "processSipascommenuitemValueable",
+                "implHandler": [
+                    "var me = this;",
+                    "me.addEvents('valuechange');"
+                ]
+            },
+            "name": "processSipascommenuitemValueable",
+            "designerId": "f5d785ea-cfd0-459b-8c29-9f80d289ffaf"
+        }
+    ]
+}

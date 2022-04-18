@@ -1,0 +1,354 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "allowDeselect": true,
+        "border": false,
+        "designer|userAlias": "sipas_koreksi_session_riwayat_list",
+        "designer|userClassName": "Sipas.koreksi.session.riwayat.List",
+        "disableSelection": true,
+        "header": null,
+        "hideHeaders": true,
+        "iconCls": null,
+        "overlapHeader": null,
+        "store": "Sipas.koreksi.session.riwayat.List",
+        "title": "Daftar Riwayat Penyetujuan"
+    },
+    "name": "Sipas.konsep.penerima.List1",
+    "designerId": "e000e18d-a46e-40b9-8213-88e3af98bb21",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "height": 35,
+                "hidden": true,
+                "itemId": "toolbarProperties"
+            },
+            "name": "MyToolbar28",
+            "designerId": "406cad7b-f935-4643-8984-4e6e0454443a",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.TextItem",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": null,
+                        "layout|flex": null,
+                        "text": "<b style=\"color:#04408c\">Daftar Riwayat Penyetujuan</b>"
+                    },
+                    "name": "MyTextItem6",
+                    "designerId": "3dd04b53-ec89-481e-83e8-802752bb22b4"
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "MyFill6",
+                    "designerId": "d58938af-bbe5-4be0-a9ad-0b7c75d6ecd0"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "disposisi_masuk_penerima_nama",
+                "flex": 1,
+                "items": null,
+                "menuDisabled": true,
+                "sortable": true,
+                "text": "Nama Penyetuju",
+                "width": 160
+            },
+            "name": "MyColumn",
+            "configAlternates": {
+                "items": "object"
+            },
+            "designerId": "6cfef235-8bca-474e-a3de-2c200c8bb6a6",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var id = record.getId(),",
+                            "\tjabatan = record.get('disposisi_masuk_penerima_jabatan_nama') ? record.get('disposisi_masuk_penerima_jabatan_nama') : '(Tidak ada jabatan)',",
+                            "\tunit = record.get('disposisi_masuk_penerima_unit_nama') ? record.get('disposisi_masuk_penerima_unit_nama') : '(Tidak ada unit)',",
+                            "    tpl = this.dataTpl || (",
+                            "        this.tpl =",
+                            "        \"<div class='cell-row margin-left-8'>\"+",
+                            "        \"<div class='cell-visual cell-visual-left'>\"+",
+                            "        \"<img src='server.php/sipas/staf/get_image/foto?id={disposisi_masuk_penerima_id}' class='img img-circle img-32'>\"+",
+                            "        \"</div><div class='cell-text'>\"+",
+                            "        \"<div class='subtext ellipsis'>\"+record.get('disposisi_masuk_penerima_nama')+\"</div>\"+",
+                            "        \"<div class='supporttext supporttext-dark ellipsis'>\"+jabatan+\" - \"+unit+\"</div>\"+",
+                            "        \"</div>\"+",
+                            "        \"</div></div>\"",
+                            "    );",
+                            "return (new Ext.Template(tpl)).apply(record.getData());"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "09a87851-84db-45be-928e-30977cbea178"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "disposisi_masuk_status",
+                "flex": 1,
+                "itemId": "columnStatus",
+                "sortable": true,
+                "text": "Status",
+                "width": 160
+            },
+            "name": "MyColumn13",
+            "designerId": "a3ec70e2-9625-475c-b9c8-6c2fecd2eb15",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var modelDefault = Ext.ModelManager.getModel('SIPAS.model.Sipas.disposisi.Masuk');",
+                            "return '<div class=\"margin-left-8\">'+modelDefault.renderStatusRiwayat(value, record.get('disposisi_masuk_isbaca'), record.get('disposisi_masuk_pesan'), record.get('disposisi_masuk_status_tgl'), record.get('disposisi_masuk_baca_tgl'), record)+'</div>';"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "76041312-7498-45de-acfd-5563f4ac31e3"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "surat_stack_penyetuju_komentar",
+                "hidden": true,
+                "itemId": "columnKomentar",
+                "sortable": true,
+                "text": "Komentar",
+                "width": 200
+            },
+            "name": "MyColumn14",
+            "designerId": "f83754c7-e97f-4e1b-852a-32a8ee52a87d",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(value !== null){",
+                            " return '<span style=\"white-space:normal !important;\">'+ value +'</span>';",
+                            "}else{",
+                            "    return '<span class=\"alternative\">(Tidak Ada Komentar)</span>';",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "a816fb92-8670-4cb1-b9bb-d70562042cbc"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "unitkerja_nama",
+                "hidden": true,
+                "sortable": true,
+                "text": "Unit Kerja",
+                "width": 200
+            },
+            "name": "MyColumn5",
+            "designerId": "0a78d166-7f18-47ce-aa54-0c9fbb6f4a96"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "jabatan_nama",
+                "hidden": true,
+                "sortable": true,
+                "text": "Jabatan",
+                "width": 200
+            },
+            "name": "MyColumn6",
+            "designerId": "727d6113-2ee1-4868-9608-d8b83a52615d"
+        },
+        {
+            "type": "Ext.grid.column.Boolean",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": null,
+                "dataIndex": "required",
+                "falseText": null,
+                "hidden": true,
+                "menuDisabled": true,
+                "text": "Wajib Diisi ?",
+                "trueText": null,
+                "width": 80
+            },
+            "name": "MyBooleanColumn",
+            "designerId": "d3e5a8d4-fcd1-444c-a1eb-7e77b6f9e430",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Checkbox",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyCheckbox",
+                    "designerId": "1416a513-e419-4eea-9c67-c10f844c59b8"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyGridView1",
+            "designerId": "b59f27d3-e823-4f7e-9447-049435066d51",
+            "cn": [
+                {
+                    "type": "Ext.grid.plugin.DragDrop",
+                    "reference": {
+                        "name": "plugins",
+                        "type": "array"
+                    },
+                    "codeClass": "Ext.grid.plugin.DragDrop",
+                    "userConfig": {
+                        "ddGroup": "aps_filetype_requirement_list_dd",
+                        "dragGroup": "aps_filetype_requirement_list_drag",
+                        "dropGroup": "aps_filetype_requirement_list_drop",
+                        "pluginId": "dragdrop"
+                    },
+                    "name": "MyGridDragDropPlugin",
+                    "designerId": "5333a180-f34f-411e-b1a6-691095616e97"
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "value",
+                    "aktif"
+                ],
+                "fn": "genAktif",
+                "implHandler": [
+                    "if(!aktif){",
+                    "    return '<span style=\"color:#9E9E9E;\">'+value+'</span>';",
+                    "}else{",
+                    "    return value;",
+                    "}"
+                ]
+            },
+            "name": "genAktif",
+            "designerId": "e39eca62-e91f-438a-a876-acaacb31f75a"
+        }
+    ]
+}

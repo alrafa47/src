@@ -1,0 +1,343 @@
+{
+    "type": "Ext.form.FieldSet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "checkboxName": "surat_useretensi",
+        "checkboxToggle": true,
+        "collapsed": true,
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_retensi_pane",
+        "designer|userClassName": "Sipas.retensi.Pane",
+        "height": null,
+        "layout": "vbox",
+        "title": "Masa Aktif",
+        "width": null
+    },
+    "name": "Sipas.retensi.Pane1",
+    "designerId": "16bac2de-febd-430f-b340-0561a2376c17",
+    "cn": [
+        {
+            "type": "Ext.form.field.Display",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": null,
+                "hidden": true,
+                "itemId": "txtRetensi",
+                "layout|flex": 1,
+                "value": null
+            },
+            "name": "MyDisplayField4",
+            "designerId": "98f7d8f8-30ad-435b-83a7-9f5ef8ebd53e"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "itemId": "containerRetensi",
+                "layout": "hbox",
+                "layout|flex": 1
+            },
+            "name": "MyContainer41",
+            "designerId": "3ca166c3-9f28-46ae-b39c-c319e3cc10aa",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Date",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": null,
+                        "fieldLabel": null,
+                        "format": "d M Y",
+                        "itemId": null,
+                        "labelWidth": 200,
+                        "languageCode": "use_retensi_fieldlabel",
+                        "languageMode": "fieldLabel",
+                        "languageable": true,
+                        "layout|flex": null,
+                        "minValue": [
+                            "new Date()"
+                        ],
+                        "name": "surat_retensi_tgl",
+                        "padding": null,
+                        "submitFormat": "Y-m-d",
+                        "width": 350
+                    },
+                    "name": "MyDateField5",
+                    "configAlternates": {
+                        "minValue": "object",
+                        "languageable": "boolean"
+                    },
+                    "designerId": "544d94ae-f2cd-4e4f-b7f8-31ac93665d59",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageCode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageMode",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "anyMatch": true,
+                        "cls": "x-field-triggeronly",
+                        "designer|displayName": "Retensi",
+                        "displayField": "retensi_nama",
+                        "editable": false,
+                        "emptyText": "Pilih masa aktif",
+                        "fieldLabel": null,
+                        "forceSelection": true,
+                        "formItemCls": "comboRetensi",
+                        "itemId": "comboRetensi",
+                        "labelWidth": null,
+                        "layout|flex": null,
+                        "matchFieldWidth": false,
+                        "name": null,
+                        "padding": null,
+                        "pageSize": 15,
+                        "queryMode": null,
+                        "store": "Sipas.retensi.Combo",
+                        "submitValue": false,
+                        "valueField": "retensi_hari",
+                        "width": 20
+                    },
+                    "name": "MyComboBox12",
+                    "designerId": "e6a08d78-0cb2-43b1-b44a-7948afc1a6f3",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onRetensiAfterRender",
+                                "implHandler": [
+                                    "var c = component.up('fieldset').down('[name=surat_retensi_tgl]') || {};",
+                                    "if(c.readOnly) {",
+                                    "    component.hide();",
+                                    "}else{",
+                                    "    component.getStore().reload();",
+                                    "    component.setValue(30);",
+                                    "    c.setValue(Ext.Date.add(new Date(), Ext.Date.DAY, 30));",
+                                    "",
+                                    "}"
+                                ],
+                                "name": "afterrender",
+                                "scope": "me"
+                            },
+                            "name": "onRetensiAfterRender",
+                            "designerId": "8dc0c78d-66a9-4476-afed-1135deec7941"
+                        },
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onRetensiSelect",
+                                "implHandler": [
+                                    "datefield = combo.up('fieldset').down('[name=surat_retensi_tgl]');",
+                                    "",
+                                    "if(!datefield.readOnly){",
+                                    "    datefield.setValue(Ext.Date.add(new Date(), Ext.Date.DAY, combo.getValue()));",
+                                    "}"
+                                ],
+                                "name": "select",
+                                "scope": "me"
+                            },
+                            "name": "onRetensiSelect",
+                            "designerId": "1cd8bca9-b283-4dbe-818c-729ff3e88a18"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "itemId": "containerInaktif",
+                "layout": "hbox",
+                "layout|flex": 1
+            },
+            "name": "MyContainer20",
+            "designerId": "b3d8e598-007d-4981-95c7-cb86d5498d60",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Date",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": null,
+                        "editable": null,
+                        "emptyText": "Tidak memiliki masa inaktif",
+                        "fieldLabel": null,
+                        "format": "d M Y",
+                        "itemId": null,
+                        "labelWidth": 180,
+                        "languageCode": "use_inaktif_fieldlabel",
+                        "languageMode": "fieldLabel",
+                        "languageable": true,
+                        "layout|flex": null,
+                        "minValue": [
+                            "new Date()"
+                        ],
+                        "name": "surat_inaktif_tgl",
+                        "padding": null,
+                        "readOnly": true,
+                        "submitFormat": "Y-m-d",
+                        "width": 350
+                    },
+                    "name": "MyDateField5",
+                    "configAlternates": {
+                        "minValue": "object",
+                        "languageable": "boolean"
+                    },
+                    "designerId": "ecfa431b-bda3-4033-8856-4daef1115a0f",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageCode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageMode",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "layout": "hbox",
+                "layout|flex": 1
+            },
+            "name": "MyContainer42",
+            "designerId": "046fbbdb-4c6c-44f9-96fd-308f34ea1880",
+            "cn": [
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": "x-btn-bordered",
+                        "designer|uiInterfaceName": "default-toolbar-small",
+                        "featureName": "surat_reaktifasi",
+                        "featureable": true,
+                        "iconCls": null,
+                        "itemId": "btnAktifasi",
+                        "languageCode": "surat_aktifasi",
+                        "languageMode": "text",
+                        "languageable": true,
+                        "layout|flex": null,
+                        "layout|margins": "4 4 6 45",
+                        "margin": null,
+                        "roleName": null,
+                        "roleable": null,
+                        "text": "Aktifasi Ulang",
+                        "ui": "default-toolbar"
+                    },
+                    "name": "MyButton22",
+                    "designerId": "6cfdeee8-feb5-4f05-b7fc-d5f7f586cb9a",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageMode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageCode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "featureable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

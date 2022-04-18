@@ -1,0 +1,58 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.jabatan.Lookup",
+        "model": "Sipas.Jabatan",
+        "storeId": "Sipas.jabatan.Lookup"
+    },
+    "name": "Sipas.staf.Lookup1",
+    "designerId": "632f629d-0539-4903-b42d-b1f910c2fc4b",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/jabatan/read"
+            },
+            "name": "MyAjaxProxy7",
+            "designerId": "8f106ff3-df7f-4049-a3bd-8a3ad34f97d2",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader7",
+                    "designerId": "29b5334f-d1c9-47a7-b3ae-bdf007125c27"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "jabatan_nama"
+            },
+            "name": "MySorter13",
+            "designerId": "ecb729c6-0bae-447c-b004-28742e95fb4c"
+        }
+    ]
+}

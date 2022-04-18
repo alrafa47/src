@@ -1,0 +1,376 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyBorder": false,
+        "bodyPadding": 10,
+        "border": false,
+        "container|align": "stretch",
+        "defaults": [
+            "{",
+            "labelWidth: 160",
+            "}"
+        ],
+        "designer|userAlias": "sipas_keluar_agenda_registrasi_form",
+        "designer|userClassName": "Sipas.keluar.agenda.registrasi.Form",
+        "height": null,
+        "layout": "vbox",
+        "title": "Form Registrasi Surat Keluar",
+        "useDetail": false,
+        "width": null
+    },
+    "name": "Sipas.surat.masuk.registrasi.Form1",
+    "designerId": "f9432ff4-4fcc-4748-a622-256bddedadaa",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "useDetail",
+            "type": "boolean"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout": "anchor",
+                "layout|flex": null,
+                "padding": 5
+            },
+            "name": "MyContainer34",
+            "designerId": "1b38579a-b8dd-444c-af12-3a3bb0aba9f4",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "emptyText": "Masukkan nomor surat",
+                        "fieldCls": "x-form-field bold",
+                        "fieldLabel": "No.Surat ",
+                        "itemId": null,
+                        "labelClsExtra": "bold",
+                        "labelWidth": 120,
+                        "layout|anchor": "100%",
+                        "name": "surat_nomor",
+                        "readOnly": true
+                    },
+                    "name": "MyTextField6",
+                    "designerId": "c9d0c997-cd3a-4608-a122-3bbb9ec4bb38"
+                },
+                {
+                    "type": "Ext.form.FieldContainer",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "combineLabels": true,
+                        "container|align": "stretch",
+                        "fieldLabel": null,
+                        "labelConnector": " ",
+                        "labelWidth": 120,
+                        "layout": "hbox",
+                        "margin": null,
+                        "padding": 0
+                    },
+                    "name": "MyFieldContainer1",
+                    "designerId": "2b3f0e35-ac6f-4680-bbf8-1388232bec49",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Number",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "emptyText": "Masukkan nomor agenda",
+                                "fieldLabel": "No.Agenda",
+                                "hideTrigger": true,
+                                "itemId": null,
+                                "labelPad": 3,
+                                "labelWidth": null,
+                                "layout|flex": 1,
+                                "name": "surat_agenda",
+                                "readOnly": true,
+                                "value": null,
+                                "width": null
+                            },
+                            "name": "MyNumberField",
+                            "designerId": "05e40a41-2f61-47cd-8253-a6f2c1f0f762"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Pembuat",
+                        "hidden": true,
+                        "labelWidth": 120,
+                        "layout|anchor": "100%",
+                        "name": "surat_properti_pembuat_nama",
+                        "readOnly": true
+                    },
+                    "name": "MyTextField4",
+                    "designerId": "f76e3bc3-1989-4756-b8f6-4525605ed49f"
+                },
+                {
+                    "type": "Ext.form.field.Date",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "editable": false,
+                        "emptyText": "Masukkan tanggal surat",
+                        "fieldLabel": "Tgl.Surat",
+                        "format": "d M Y",
+                        "hidden": null,
+                        "labelWidth": 120,
+                        "layout|anchor": "100%",
+                        "name": "surat_tanggal",
+                        "readOnly": true,
+                        "submitFormat": "d-M-Y H:i"
+                    },
+                    "name": "MyDateField",
+                    "designerId": "9ecfbacc-537b-4c2d-a9ba-dbab31914f07",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onDatefieldAfterRender",
+                                "implHandler": [
+                                    "component.setMaxValue(new Date());"
+                                ],
+                                "name": "afterrender",
+                                "scope": "me"
+                            },
+                            "name": "onDatefieldAfterRender",
+                            "designerId": "465fa88e-038c-4c36-8c0d-e90c196fac40"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "emptyText": "Masukkan kepada",
+                        "fieldLabel": "Kepada",
+                        "labelWidth": 120,
+                        "layout|anchor": "100%",
+                        "name": "surat_tujuan",
+                        "readOnly": true
+                    },
+                    "name": "MyTextField32",
+                    "designerId": "8beb2486-1bd6-4e30-a792-5de488758943"
+                },
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "emptyText": "Masukkan perihal",
+                        "fieldLabel": "Perihal",
+                        "growAppend": "-",
+                        "labelWidth": 120,
+                        "layout|anchor": "100%",
+                        "name": "surat_perihal",
+                        "readOnly": true,
+                        "rows": 2
+                    },
+                    "name": "MyTextArea3",
+                    "designerId": "05866aa8-5a9c-4539-8165-dd2e19261488"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Status Ekspedisi",
+                        "hidden": true,
+                        "labelWidth": 120,
+                        "layout|anchor": "100%",
+                        "name": "ekspedisi_nama",
+                        "readOnly": true
+                    },
+                    "name": "MyTextField5",
+                    "designerId": "b63380b6-e5f3-432f-9847-43399eb3f436"
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "stretch",
+                        "layout": "hbox"
+                    },
+                    "name": "MyContainer4",
+                    "designerId": "a365763b-fdc0-4021-b331-ea6ae6d57c2d",
+                    "cn": [
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 1
+                            },
+                            "name": "MyContainer7",
+                            "designerId": "8e09e98d-9e4c-47c9-9ec3-f4ed0357578c"
+                        }
+                    ]
+                },
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processMyContainer34",
+                        "implHandler": [
+                            "if(!this.useDetail)",
+                            "{",
+                            "    return null;",
+                            "}",
+                            "return config;"
+                        ]
+                    },
+                    "name": "processMyContainer34",
+                    "designerId": "7e9f5269-3ef1-4776-b155-7adfad761386"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "associated": true,
+                "layout|flex": 1,
+                "width": null
+            },
+            "name": "sipas.keluar.agenda.ekspedisi.list",
+            "designerId": "f7b26e83-9c69-478d-b2f1-1500b44cab71",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "associated",
+                    "type": "boolean"
+                }
+            ],
+            "masterInstanceId": "2d8501c1-37b7-4dbd-81af-2ef02e1c1d54"
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|padding": null,
+                "defaultButtonUI": "default",
+                "dock": "bottom",
+                "hidden": true,
+                "itemId": "toolbarAction"
+            },
+            "name": "MyToolbar",
+            "designerId": "92e7beb6-9a89-40e1-97a3-d2fed1738197",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "MyFill",
+                    "designerId": "785205fa-76af-4043-9dfc-ede3a773e84a"
+                },
+                {
+                    "type": "Ext.form.field.Checkbox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "boxLabel": "Cetak Resi",
+                        "fieldLabel": null,
+                        "itemId": "CbResi",
+                        "layout|flex": null,
+                        "name": "surat_masuk_resi"
+                    },
+                    "name": "MyCheckbox2",
+                    "designerId": "bd63f833-4ee1-443c-bb49-79861749a612"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|uiInterfaceName": "default",
+                        "layout|flex": null,
+                        "scale": null
+                    },
+                    "name": "sipas.com.button.save19",
+                    "designerId": "02c6b3b1-3293-476b-b2fe-b5098877e46f",
+                    "masterInstanceId": "feb6c6f9-7733-4b38-9254-091d0db2d3a9"
+                }
+            ]
+        }
+    ]
+}

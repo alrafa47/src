@@ -1,0 +1,316 @@
+{
+    "type": "Ext.tree.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoScroll": null,
+        "border": 0,
+        "columnLines": false,
+        "designer|userAlias": "sipas_surat_ekspedisi_trace_treelist",
+        "designer|userClassName": "Sipas.surat.ekspedisi.trace.Treelist",
+        "header": null,
+        "id": null,
+        "itemId": null,
+        "rowLines": true,
+        "store": "Sipas.surat.ekspedisi.trace.Treelist",
+        "title": "Referensi Perintah dan Tindakan Disposisi"
+    },
+    "name": "TreeGrid",
+    "designerId": "3a13bf4e-e7e4-4a4e-bb3a-b89e8f557b85",
+    "isBuiltIn": true,
+    "iconCls": "icon-treegridpanel",
+    "autoName": "TreeGrid",
+    "cn": [
+        {
+            "type": "Ext.tree.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "autoScroll": null
+            },
+            "name": "MyTreeView2",
+            "designerId": "036e39ab-b77b-4e94-8347-9588a0fe8f72"
+        },
+        {
+            "type": "Ext.tree.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "disposisi_masuk_penerima_nama",
+                "flex": 2,
+                "menuDisabled": true,
+                "minWidth": 400,
+                "text": "Alur Surat",
+                "width": null
+            },
+            "name": "MyTreeColumn2",
+            "designerId": "c39c3756-b5a3-428b-aeaf-3dabc8323ed2",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(record.isRoot()){",
+                            "    record.set('iconCls','icon ion-md-add-circle green-700-i');",
+                            "    return \"\";",
+                            "}",
+                            "",
+                            "if(record.isDisposisiMasuk()){",
+                            "    record.set('iconCls','icon ion-md-person blue-700-i');",
+                            "    return (new Ext.Template([",
+                            "        \"{disposisi_masuk_penerima_nama} \",",
+                            "        \"<span class='alternative'>({disposisi_masuk_penerima_unit_nama})</span>\"",
+                            "    ])).apply(record.get('disposisi_masuk_record'));",
+                            "}",
+                            "",
+                            "if(record.isDisposisi()){",
+                            "    record.set('iconCls','icon ion-md-clipboard green-700-i');",
+                            "    return (new Ext.Template([",
+                            "        \"<span style='color:#379EF7;font-weight:bold;'>{disposisi_tgl:date('d-m-Y H:i')}</span>\"",
+                            "    ])).apply(record.get('disposisi_record'));",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "350ddcc2-7cbf-4c08-90ae-b953f78be90a"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": "center",
+                "dataIndex": "disposisi_tgl",
+                "menuDisabled": true,
+                "text": "Tanggal",
+                "width": null
+            },
+            "name": "MyColumn1",
+            "designerId": "ba919aab-0fe0-4b54-9bca-f799e64c8eff",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(record.isRoot()) return \"\";",
+                            "",
+                            "if(record.isDisposisi()){",
+                            "    var data = record.get('disposisi_record') || {};",
+                            "    return [",
+                            "    \tExt.Date.format(new Date(data.disposisi_tgl), 'd M Y H:i')",
+                            "    ].join('');",
+                            "}",
+                            "",
+                            "return \"\";"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "1114208d-3e77-4833-8ff0-244655a8114a"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "perintah_nama",
+                "flex": null,
+                "minWidth": 200,
+                "text": "Perintah",
+                "width": 200
+            },
+            "name": "MyColumn3",
+            "designerId": "35f9ba25-a350-4b06-917f-b2f1533ddecb",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(record.isRoot()) return \"\";",
+                            "",
+                            "if(record.isDisposisi()){",
+                            "\tvar data = record.get('disposisi_record');",
+                            "\treturn [",
+                            "\t\tExt.isEmpty(data.perintah_nama) ? '': data.perintah_nama",
+                            "\t].join('');",
+                            "}",
+                            "",
+                            "return \"\";",
+                            ""
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "cecf5f0f-8430-492d-938a-ec2df1aa2bc0"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "disposisi_masuk_status",
+                "minWidth": 120,
+                "text": "Status"
+            },
+            "name": "MyColumn175",
+            "designerId": "8ceb9a45-10cf-4fda-b6df-6a32d3356320",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(record.isRoot()) return \"\";",
+                            "",
+                            "if(record.isDisposisiPenerima()){",
+                            "\tvar recdata = record.get('disposisi_masuk_record'),",
+                            "\t\tvaldata = recdata && parseInt(recdata.disposisi_masuk_status);",
+                            "\tswitch(valdata){",
+                            "\t}",
+                            "}",
+                            "",
+                            "return \"\";"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "b8e99253-2344-47a7-a6a0-609b4db25672"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "aksi_nama",
+                "flex": null,
+                "minWidth": 200,
+                "text": "Tindakan",
+                "width": 200
+            },
+            "name": "MyColumn5",
+            "designerId": "f64bcf16-1272-4054-9b9d-482f0e43c8dc",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(record.isRoot()) return \"\";",
+                            "",
+                            "if(record.isDisposisiPenerima()){",
+                            "    var data = record.get('disposisi_masuk_record');",
+                            "\treturn [",
+                            "\t\tExt.isEmpty(data.aksi_nama) ? '': data.aksi_nama",
+                            "\t].join('');",
+                            "}",
+                            "",
+                            "return \"\";",
+                            ""
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "1bc144e5-ce7d-4c4a-85da-f367b1301f89"
+                }
+            ]
+        }
+    ]
+}

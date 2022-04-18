@@ -1,0 +1,62 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.klise.List",
+        "model": "Sipas.Klise",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.klise.List"
+    },
+    "name": "MyJsonStore",
+    "designerId": "33850a5e-d987-4cdf-bf78-fb8fe95d78c3",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/klise/read"
+            },
+            "name": "MyAjaxProxy15",
+            "designerId": "6f326dcf-79be-4d35-a916-4b5aff785c06",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader15",
+                    "designerId": "aa377fcd-2b54-403b-9ab9-4a90e3b8f1f1"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "klise_nama"
+            },
+            "name": "MySorter1",
+            "designerId": "681d9336-12c0-486b-b542-9a641e41895f"
+        }
+    ]
+}

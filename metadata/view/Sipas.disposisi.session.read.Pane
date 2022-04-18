@@ -1,0 +1,153 @@
+{
+    "type": "Ext.container.ButtonGroup",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": "sipas_surat_penyetujuan_info_pane",
+        "columns": 1,
+        "designer|userAlias": "sipas_disposisi_session_read_pane",
+        "designer|userClassName": "Sipas.disposisi.session.read.Pane",
+        "frame": false,
+        "itemId": null,
+        "padding": 3,
+        "requires": [
+            "Ext.form.Basic"
+        ],
+        "shrinkWrapDock": null,
+        "title": "Informasi Disposisi"
+    },
+    "name": "Sipas.surat.pegawai.read.info.Pane1",
+    "designerId": "3d1408df-16cf-42b3-9f95-5cee933b5b39",
+    "cn": [
+        {
+            "type": "Ext.form.field.Display",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": null,
+                "fieldCls": "x-form-field",
+                "fieldLabel": "Perintah:",
+                "fieldStyle": null,
+                "id": null,
+                "itemId": "textfieldUnread",
+                "labelAlign": "top",
+                "labelSeparator": " ",
+                "name": "perintah_text",
+                "readOnlyCls": null,
+                "width": 160
+            },
+            "name": "MyDisplayField8",
+            "designerId": "d25bd182-621f-46e8-9edd-b5089cbe09ee",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "displayField"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(value){",
+                            "    if (value.length > 27){",
+                            "        return value.substring(0,27)+'...';",
+                            "    }",
+                            "    else{",
+                            "        return value;",
+                            "    }",
+                            "}else{",
+                            "    return '';",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "62082762-1a25-474a-9e14-325dfd71100d"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.field.Display",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": null,
+                "fieldCls": "x-form-field",
+                "fieldLabel": "Tindakan:",
+                "fieldStyle": null,
+                "id": null,
+                "itemId": "textfieldRead",
+                "labelAlign": "top",
+                "labelSeparator": " ",
+                "name": "aksi_text",
+                "readOnlyCls": null,
+                "width": 160
+            },
+            "name": "MyDisplayField9",
+            "designerId": "4ab27205-6287-417e-b339-dfbb3b4539ab",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "displayField"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(value){",
+                            "    if (value.length > 27){",
+                            "        return value.substring(0,27)+'...';",
+                            "    }",
+                            "    else{",
+                            "        return value;",
+                            "    }",
+                            "}else{",
+                            "    return '';",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "dbc0c509-b96d-4a65-8327-64f547b3631c"
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "constructor",
+                "implHandler": [
+                    "        this.callParent(arguments);",
+                    "        return Ext.applyIf(this,{",
+                    "            form: new Ext.form.Basic(this)",
+                    "        });"
+                ]
+            },
+            "name": "constructor",
+            "designerId": "6002b8ba-77b4-4688-acf1-a9323030716c"
+        }
+    ]
+}

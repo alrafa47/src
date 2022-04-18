@@ -1,0 +1,62 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.disposisi.session.penerima.jabatan.Popup",
+        "model": "Sipas.disposisi.Masuk",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.disposisi.session.penerima.jabatan.Popup"
+    },
+    "name": "Sipas.disposisi.session.penerima.Popup2",
+    "designerId": "34799b75-e20e-4bc3-93d8-1e46f19e35b5",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/kotak_masuk/penerima"
+            },
+            "name": "MyAjaxProxy50",
+            "designerId": "ba74caa6-db58-472e-b958-5c8bc2e0fef2",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader50",
+                    "designerId": "40586c98-3489-4528-929b-c16915b1247d"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "surat_properti_buat_tgl"
+            },
+            "name": "MySorter19",
+            "designerId": "375b6ad7-b9f9-4dd7-a8d0-c5ac975ae639"
+        }
+    ]
+}

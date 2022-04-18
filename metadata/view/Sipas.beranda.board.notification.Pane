@@ -1,0 +1,497 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "sipas_beranda_board_notification_pane",
+        "designer|userClassName": "Sipas.beranda.board.notification.Pane",
+        "emptyText": "Tidak ada Data",
+        "frame": null,
+        "header": false,
+        "height": null,
+        "hideHeaders": true,
+        "itemId": null,
+        "store": "Sipas.beranda.notification.List",
+        "title": "Notifikasi Belum Dibaca dan Belum Ditanggapi",
+        "width": null
+    },
+    "name": "Sipas.dashboard.board.disposisi.pegawai.top.Pane1",
+    "designerId": "97a54389-5120-49a9-8f0e-ec6217102fe7",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":8,\"left\":4}"
+                ],
+                "dock": "top"
+            },
+            "name": "MyToolbar2",
+            "designerId": "2f51d6dd-ad3e-4bf7-a2f8-873f7b10cca0",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.TextItem",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": null,
+                        "layout|flex": null,
+                        "text": "<b style=\"color:#04408c\">Belum dibaca dan ditanggapi<b>"
+                    },
+                    "name": "MyTextItem",
+                    "designerId": "b56547e9-450b-48c6-8203-4b7b929ecc3d"
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "MyFill1",
+                    "designerId": "d4b22501-3db4-45ad-93c3-ecdb83a3834d"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": null,
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.refresh55",
+                    "configAlternates": {
+                        "roleable": "boolean"
+                    },
+                    "designerId": "94bf09ae-770a-4ead-8096-79cd6b9a9ddb",
+                    "masterInstanceId": "e517a5ab-fc5b-441a-97a3-5c706738d092"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Date",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "notification_tanggal",
+                "flex": null,
+                "format": "d M Y H:i",
+                "hidden": true,
+                "menuDisabled": true,
+                "sortable": true,
+                "text": "Tgl.Terima",
+                "width": 120
+            },
+            "name": "MyDateColumn1",
+            "designerId": "87237e39-53ff-403c-ae93-3f09916ad6a3"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "notification_perihal",
+                "flex": 2,
+                "hidden": null,
+                "menuDisabled": true,
+                "sortable": true,
+                "text": "Perihal",
+                "width": null
+            },
+            "name": "MyColumn2",
+            "designerId": "e1740965-52e3-4d7c-89f0-6afbee56a47e",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var notif_kode = record.get('notification_kelompok_kode'),",
+                            "    // notif_tgl = Ext.util.Format.date(record.get('notification_tanggal'), 'd M Y H:i'),",
+                            "    notif_tgl = record.getDateFormat(),",
+                            "    notif_pengirim = record.get('notification_pengirim'),",
+                            "    notif_record = record.get('notification_record'),",
+                            "    notif_perihal = value,",
+                            "    surat_nomor = notif_record.surat_nomor,",
+                            "    surat_jenis = record.get('notification_jenis'),",
+                            "    surat_prioritas = record.get('notification_prioritas'),",
+                            "    surat_model = notif_record.surat_model,",
+                            "    sifat_kode = notif_record.sifat_kode,",
+                            "    sifat_color = notif_record.sifat_color,",
+                            "    sifat_label = '',",
+                            "    notif = '';",
+                            "",
+                            "if (!value || value === null || value === ''){",
+                            "    notif_perihal = '<span class=\"alternative\">(Tidak ada perihal)</span>';",
+                            "}",
+                            "",
+                            "if (!surat_nomor || surat_nomor === null || surat_nomor === ''){",
+                            "    surat_nomor = '<span class=\"alternative\">(Tidak ada nomor surat)</span>';",
+                            "}",
+                            "",
+                            "if (!surat_jenis || surat_jenis === null || surat_jenis === ''){",
+                            "    surat_jenis = '<span class=\"alternative\">(Tidak ada jenis surat)</span>';",
+                            "}",
+                            "",
+                            "if (!surat_prioritas || surat_prioritas === null || surat_prioritas === ''){",
+                            "    surat_prioritas = '<span class=\"alternative\">(Tidak ada prioritas)</span>';",
+                            "}",
+                            "",
+                            "if (sifat_color){",
+                            "    sifat_label = '<span class=\"badge badge-light margin-right-4\" style=\"background-color:'+sifat_color+';\">'+sifat_kode+'</span>';",
+                            "}",
+                            "",
+                            "if (notif_kode === 'disposisi'){",
+                            "    return new Ext.XTemplate([",
+                            "        '<span style=\"float:right;\" class=\"supporttext alternative\">{notif_tgl}</span>'+",
+                            "        '<div class=\"cell-visual cell-visual-left\" data-qtip=\"Pengirim\">'+",
+                            "        '<img class=\"img img-circle img-32\" src=\"server.php/sipas/staf/get_image/foto?id={id}\">'+",
+                            "        '</div>'+",
+                            "        '<div class=\"cell-text\">'+",
+                            "        '<div class=\"subtext\" data-qtip=\"Nama pengirim\">{pengirim}</div>'+",
+                            "        '<div class=\"supporttext\" data-qtip=\"Perihal surat\">{sifat_label}{surat_perihal}</div>'+",
+                            "        '<div class=\"supporttext margin-top-4\">'+",
+                            "        '<span class=\"margin-right-8\" data-qtip=\"Jenis surat\">'+",
+                            "        '<span class=\"badge badge-solid margin-right-4\">'+",
+                            "        '<i class=\"icon ion-md-pricetag grey-500-i\"></i>'+",
+                            "        '</span>{surat_jenis}'+",
+                            "        '</span>'+",
+                            "        '<span data-qtip=\"Prioritas surat\">'+",
+                            "        '<span class=\"badge badge-solid margin-right-4\">'+",
+                            "        '<i class=\"icon ion-md-alert grey-500-i\"></i>'+",
+                            "        '</span>{surat_prioritas}'+",
+                            "        '</span>'+",
+                            "        '</div>'+",
+                            "        '</div>'",
+                            "    ]).apply({",
+                            "        id: notif_record.disposisi_pengirim_id,",
+                            "        pengirim: notif_record.disposisi_pengirim_nama,",
+                            "        surat_perihal: notif_perihal,",
+                            "        surat_jenis: surat_jenis,",
+                            "        surat_prioritas: surat_prioritas,",
+                            "        sifat_label: sifat_label,",
+                            "        notif_tgl: notif_tgl",
+                            "    });",
+                            "} else if (notif_kode === 'notadinas'){",
+                            "    return new Ext.XTemplate([",
+                            "        '<span style=\"float:right;\" class=\"supporttext alternative\">{notif_tgl}</span>'+",
+                            "        '<div class=\"cell-visual cell-visual-left\" data-qtip=\"Pengirim\">'+",
+                            "        '<img class=\"img img-circle img-32\" src=\"server.php/sipas/staf/get_image/foto?id={id}\">'+",
+                            "        '</div>'+",
+                            "        '<div class=\"cell-text\">'+",
+                            "        '<div class=\"subtext\" data-qtip=\"Nama pengirim\">{pengirim}</div>'+",
+                            "        '<div class=\"supporttext\" data-qtip=\"Perihal surat\">{sifat_label}{surat_perihal}</div>'+",
+                            "        '<div class=\"supporttext margin-top-4\">'+",
+                            "        '<span class=\"margin-right-8\" data-qtip=\"Jenis surat\">'+",
+                            "        '<span class=\"badge badge-solid margin-right-4\">'+",
+                            "        '<i class=\"icon ion-md-pricetag grey-500-i\"></i>'+",
+                            "        '</span>{surat_jenis}'+",
+                            "        '</span>'+",
+                            "        '<span data-qtip=\"Prioritas surat\">'+",
+                            "        '<span class=\"badge badge-solid margin-right-4\">'+",
+                            "        '<i class=\"icon ion-md-alert grey-500-i\"></i>'+",
+                            "        '</span>{surat_prioritas}'+",
+                            "        '</span>'+",
+                            "        '</div>'+",
+                            "        '</div>'",
+                            "    ]).apply({",
+                            "        id: notif_record.disposisi_pengirim_id,",
+                            "        pengirim: notif_record.disposisi_pengirim_nama,",
+                            "        surat_perihal: notif_perihal,",
+                            "        surat_jenis: surat_jenis,",
+                            "        surat_prioritas: surat_prioritas,",
+                            "        sifat_label: sifat_label,",
+                            "        notif_tgl: notif_tgl",
+                            "    });",
+                            "} else if (notif_kode === 'koreksi'){",
+                            "    return new Ext.XTemplate([",
+                            "        '<span style=\"float:right;\" class=\"supporttext alternative\">{notif_tgl}</span>'+",
+                            "        '<div class=\"cell-visual cell-visual-left\" data-qtip=\"Pengirim\">'+",
+                            "        '<img class=\"img img-circle img-32\" src=\"server.php/sipas/staf/get_image/foto?id={id}\">'+",
+                            "        '</div>'+",
+                            "        '<div class=\"cell-text\">'+",
+                            "        '<div class=\"subtext\" data-qtip=\"Nama pengirim\">{pengirim}</div>'+",
+                            "        '<div class=\"supporttext\" data-qtip=\"Perihal surat\">{sifat_label}{surat_perihal}</div>'+",
+                            "        '<div class=\"supporttext margin-top-4\">'+",
+                            "        '<span class=\"margin-right-8\" data-qtip=\"Jenis surat\">'+",
+                            "        '<span class=\"badge badge-solid margin-right-4\">'+",
+                            "        '<i class=\"icon ion-md-pricetag grey-500-i\"></i>'+",
+                            "        '</span>{surat_jenis}'+",
+                            "        '</span>'+",
+                            "        '<span data-qtip=\"Prioritas surat\">'+",
+                            "        '<span class=\"badge badge-solid margin-right-4\">'+",
+                            "        '<i class=\"icon ion-md-alert grey-500-i\"></i>'+",
+                            "        '</span>{surat_prioritas}'+",
+                            "        '</span>'+",
+                            "        '</div>'+",
+                            "        '</div>'",
+                            "    ]).apply({",
+                            "        id: notif_record.disposisi_pengirim_id,",
+                            "        pengirim: notif_record.disposisi_pengirim_nama,",
+                            "        surat_perihal: notif_perihal,",
+                            "        surat_jenis: surat_jenis,",
+                            "        surat_prioritas: surat_prioritas,",
+                            "        sifat_label: sifat_label,",
+                            "        notif_tgl: notif_tgl",
+                            "    });",
+                            "} else if (notif_kode === 'koreksi_status'){",
+                            "    var setuju = notif_record.surat_setuju,",
+                            "        r_setuju = '',",
+                            "        penyetuju = record.get('notification_penyetuju');",
+                            "",
+                            "    if (setuju === '1'){",
+                            "        r_setuju = '<span class=\"margin-left-8 warning\"><span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-md-warning\"></i></span>Dalam proses</span>';",
+                            "    } else if (setuju === '2'){",
+                            "        r_setuju = '<span class=\"margin-left-8 info\"><span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-md-checkmark\"></i></span>Disetujui</span>';",
+                            "    } else if (setuju === '3'){",
+                            "        r_setuju = '<span class=\"margin-left-8 danger\"><span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-md-close\"></i></span>Revisi</span>';",
+                            "    } else if (setuju === '4'){",
+                            "        r_setuju = '<span class=\"margin-left-8 danger\"><span class=\"badge badge-solid margin-right-4\"><i class=\"icon ion-md-close\"></i></span>Ditolak</span>';",
+                            "    } else {",
+                            "        r_setuju = '<span class=\"margin-left-8 alternative\">Unknown</span>';",
+                            "    }",
+                            "",
+                            "    return new Ext.XTemplate([",
+                            "        '<span style=\"float:right;\" class=\"supporttext alternative\">{notif_tgl}</span>'+",
+                            "        '<div class=\"cell-visual cell-visual-left\" data-qtip=\"Penyetuju\">'+",
+                            "        '<img class=\"img img-circle img-32\" src=\"server.php/sipas/staf/get_image/foto?id={id}\">'+",
+                            "        '</div>'+",
+                            "        '<div class=\"cell-text\">'+",
+                            "        '<div class=\"subtext\" data-qtip=\"Nama penyetuju\">{penyetuju}{setuju}</div>'+",
+                            "        '<div class=\"supporttext\" data-qtip=\"Perihal surat\">{sifat_label}{surat_perihal}</div>'+",
+                            "        '<div class=\"supporttext margin-top-4\">'+",
+                            "        '<span class=\"margin-right-8\" data-qtip=\"Jenis surat\">'+",
+                            "        '<span class=\"badge badge-solid margin-right-4\">'+",
+                            "        '<i class=\"icon ion-md-pricetag grey-500-i\"></i>'+",
+                            "        '</span>{surat_jenis}'+",
+                            "        '</span>'+",
+                            "        '<span data-qtip=\"Prioritas surat\">'+",
+                            "        '<span class=\"badge badge-solid margin-right-4\">'+",
+                            "        '<i class=\"icon ion-md-alert grey-500-i\"></i>'+",
+                            "        '</span>{surat_prioritas}'+",
+                            "        '</span>'+",
+                            "        '</div>'+",
+                            "        '</div>'",
+                            "    ]).apply({",
+                            "        id: penyetuju.staf_id,",
+                            "        penyetuju: penyetuju.staf_nama,",
+                            "        surat_perihal: notif_perihal,",
+                            "        surat_jenis: surat_jenis,",
+                            "        surat_prioritas: surat_prioritas,",
+                            "        notif_tgl: notif_tgl,",
+                            "        sifat_label: sifat_label,",
+                            "        setuju: r_setuju",
+                            "    });",
+                            "} else {",
+                            "    // Surat masuk",
+                            "",
+                            "    if (surat_model === '1' || surat_model === '2'){",
+                            "        // Eksternal",
+                            "        var tpl = new Ext.XTemplate([",
+                            "            '<span style=\"float:right;\" class=\"supporttext alternative\">{notif_tgl}</span>'+",
+                            "            '<div class=\"cell-visual cell-visual-left\" data-qtip=\"{jenis_surat}\">'+",
+                            "            '<div class=\"img img-circle img-36\">'+",
+                            "            '<i class=\"bigger-1-25 icon ion-md-mail grey-600-i\"></i>'+",
+                            "            '</div>'+",
+                            "            '</div>'+",
+                            "            '<div class=\"cell-text\">'+",
+                            "            '<div class=\"subtext\" data-qtip=\"Nama pengirim\">{pengirim}</div>'+",
+                            "            '<div class=\"supporttext\" data-qtip=\"Perihal surat\">{sifat_label}{perihal}</div>'+",
+                            "            '<div class=\"supporttext margin-top-4\">'+",
+                            "            '<span class=\"margin-right-8\" data-qtip=\"Jenis surat\">'+",
+                            "            '<span class=\"badge badge-solid margin-right-4\">'+",
+                            "            '<i class=\"icon ion-md-pricetag grey-500-i\"></i>'+",
+                            "            '</span>{surat_jenis}'+",
+                            "            '</span>'+",
+                            "            '<span data-qtip=\"Prioritas surat\">'+",
+                            "            '<span class=\"badge badge-solid margin-right-4\">'+",
+                            "            '<i class=\"icon ion-md-alert grey-500-i\"></i>'+",
+                            "            '</span>{surat_prioritas}'+",
+                            "            '</span>'+",
+                            "            '</div>'+",
+                            "            '</div>'",
+                            "        ]).apply({",
+                            "            perihal: notif_perihal,",
+                            "            pengirim: record.get('notification_pengirim'),",
+                            "            jenis_surat : 'Surat Masuk Eksternal',",
+                            "            surat_jenis: surat_jenis,",
+                            "            surat_prioritas: surat_prioritas,",
+                            "            sifat_label: sifat_label,",
+                            "            notif_tgl: notif_tgl",
+                            "        });",
+                            "    } else if (surat_model === '3' || surat_model === '4'){",
+                            "        // Internal",
+                            "        var tpl = new Ext.XTemplate([",
+                            "            '<span style=\"float:right;\" class=\"supporttext alternative\">{notif_tgl}</span>'+",
+                            "            '<div class=\"cell-visual cell-visual-left\" data-qtip=\"Pengirim\">'+",
+                            "            '<img class=\"img img-circle img-36\" src=\"server.php/sipas/staf/get_image/foto?id={id}\">'+",
+                            "            '</div>'+",
+                            "            '<div class=\"cell-text\">'+",
+                            "            '<div class=\"subtext\" data-qtip=\"Nama pengirim\">{pengirim_nama}</div>'+",
+                            "            '<div class=\"supporttext\" data-qtip=\"Perihal surat\">{sifat_label}{perihal}</div>'+",
+                            "            '<div class=\"supporttext margin-top-4\">'+",
+                            "            '<span class=\"margin-right-8\" data-qtip=\"Jenis surat\">'+",
+                            "            '<span class=\"badge badge-solid margin-right-4\">'+",
+                            "            '<i class=\"icon ion-md-pricetag grey-500-i\"></i>'+",
+                            "            '</span>{surat_jenis}'+",
+                            "            '</span>'+",
+                            "            '<span data-qtip=\"Prioritas surat\">'+",
+                            "            '<span class=\"badge badge-solid margin-right-4\">'+",
+                            "            '<i class=\"icon ion-md-alert grey-500-i\"></i>'+",
+                            "            '</span>{surat_prioritas}'+",
+                            "            '</span>'+",
+                            "            '</div>'+",
+                            "            '</div>'",
+                            "        ]).apply({",
+                            "            id: notif_record.disposisi_pengirim_id,",
+                            "            perihal: notif_perihal,",
+                            "            surat_nomor: surat_nomor,",
+                            "            surat_prioritas: surat_prioritas,",
+                            "            pengirim_nama: notif_record.disposisi_pengirim_nama,",
+                            "            jenis_surat : 'Surat Masuk Internal',",
+                            "            surat_jenis: surat_jenis,",
+                            "            sifat_label: sifat_label,",
+                            "            notif_tgl: notif_tgl",
+                            "        });",
+                            "    }",
+                            "",
+                            "    return tpl;",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "1529274c-2c83-4890-b29b-85d2465ef23a"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "notification_pengirim",
+                "flex": 1,
+                "hidden": true,
+                "menuDisabled": true,
+                "sortable": true,
+                "text": "Dari",
+                "width": null
+            },
+            "name": "MyColumn",
+            "designerId": "960c0734-1f0f-4219-80cf-5d3ef86fc8a6",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if(value !== null){",
+                            "    return value;",
+                            "//     return '<div style=\"white-space:normal !important;\">'+ Ext.util.Format.ellipsis(value,20) +'</div>';",
+                            "}else{",
+                            "    return '<span style=\"color:lightgray;\">Tidak ada pengirim</span>';",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "1f193fe5-e66b-4a81-a80a-d9e1f95e6720"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyGridView4",
+            "designerId": "d071d91a-db0c-4418-b445-8181b84a1df4"
+        },
+        {
+            "type": "Ext.grid.feature.Grouping",
+            "reference": {
+                "name": "features",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hideGroupedHeader": true
+            },
+            "name": "MyGroupingFeature",
+            "designerId": "c6ab6cf7-64f1-49f3-84b9-ecfb8f9ff0a8",
+            "cn": [
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "groupHeaderTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "groupHeaderTpl",
+                        "implHandler": [
+                            "{name}"
+                        ]
+                    },
+                    "name": "groupHeaderTpl",
+                    "designerId": "c35fc510-3b8c-4968-8ccb-d35a594e8c4c"
+                }
+            ]
+        }
+    ]
+}

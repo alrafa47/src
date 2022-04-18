@@ -1,0 +1,77 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.disposisi.masuk.log.Popup",
+        "model": "Sipas.disposisi.masuk.Log",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.disposisi.masuk.log.Popup"
+    },
+    "name": "Sipas.disposisi.session.baca.List2",
+    "designerId": "bdd9ffea-23f1-421f-852f-265038e3ebd1",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/disposisi_masuk_log/read"
+            },
+            "name": "MyAjaxProxy51",
+            "designerId": "cdf06745-d8f5-410c-9d31-921763f68d2f",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader51",
+                    "designerId": "4283dd0c-4c5c-4a9f-82aa-fae4e6e13366"
+                },
+                {
+                    "type": "Ext.data.writer.Json",
+                    "reference": {
+                        "name": "writer",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "encode": true
+                    },
+                    "name": "MyJsonWriter",
+                    "designerId": "8240207c-f76e-4d16-8ab6-06160a5af746"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "disposisi_masuk_log_tgl",
+                "root": "data"
+            },
+            "name": "MySorter1",
+            "designerId": "0c4e03e0-89cf-4f4c-96c9-6542850caa78"
+        }
+    ]
+}

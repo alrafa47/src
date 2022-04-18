@@ -1,0 +1,214 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.Akses",
+        "idProperty": "fitur_id"
+    },
+    "designerId": "1ddb1849-0174-4fe9-85e7-a15a62d532a1",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "api": [
+                    "{",
+                    "    \"create\"\t:\"server.php/sipas/fitur/create\",",
+                    "    \"read\"\t\t:\"server.php/sipas/fitur/read\",",
+                    "    \"update\"\t:\"server.php/sipas/fitur/update\",",
+                    "    \"destroy\"\t:\"server.php/sipas/fitur/destroy\"",
+                    "}"
+                ]
+            },
+            "name": "MyAjaxProxy4",
+            "designerId": "a996521a-2c44-4f79-b0bd-718b93386584",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "messageProperty": "message",
+                        "record": null,
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader4",
+                    "designerId": "53b448cf-f87c-46d0-b7ec-efc0f58a9f60"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "akses_id"
+            },
+            "name": "MyField28",
+            "designerId": "ede53eb3-3b02-4cbd-90d1-8e36da3faf4f"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "akses_peran"
+            },
+            "name": "MyField29",
+            "designerId": "63493f7e-2e17-405a-b2c6-4a2587aee1d9"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "akses_fitur"
+            },
+            "name": "MyField30",
+            "designerId": "9d752077-b40e-4089-8e2c-424ce27c53da"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "akses_isboleh",
+                "type": "boolean"
+            },
+            "name": "MyField31",
+            "designerId": "becf72cf-539f-4b89-b44a-ed93e8148ad0"
+        },
+        {
+            "type": "Ext.data.association.HasOne",
+            "reference": {
+                "name": "hasOne",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "hasOne.HakaksesPeran",
+                "foreignKey": "akses_peran",
+                "getterName": "getPeran",
+                "model": "Sipas.Peran",
+                "primaryKey": "peran_id",
+                "setterName": "setPeran"
+            },
+            "name": "MyHasOneAssociation1",
+            "designerId": "34900f59-c434-4b28-a983-f5264b08788a"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "fitur_id"
+            },
+            "name": "MyField15",
+            "designerId": "340d8c45-0cb0-483c-9698-5aded122b7d5"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "fitur_induk"
+            },
+            "name": "MyField16",
+            "designerId": "058cbc0f-62bf-4449-b5d8-76a79621a78f"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "fitur_nama"
+            },
+            "name": "MyField17",
+            "designerId": "69a4ba53-4444-4785-9ea7-777395646109"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "fitur_kode"
+            },
+            "name": "MyField18",
+            "designerId": "0e4844b7-68d3-4b3b-a946-bbd105d7ef9e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "rule_desc"
+            },
+            "name": "MyField4",
+            "designerId": "28394613-8829-45de-b8e0-bfa2e794677b"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "fitur_featureable"
+            },
+            "name": "MyField3",
+            "designerId": "59c4add0-1f39-4885-a937-494fc35ac888"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "fitur_featureName"
+            },
+            "name": "MyField5",
+            "designerId": "e8d83947-82dc-4787-9d11-f9cfcfedf673"
+        }
+    ]
+}

@@ -1,0 +1,62 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.disposisi.riwayat.detail.penerima.List",
+        "model": "Sipas.disposisi.Masuk",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.disposisi.riwayat.detail.penerima.List"
+    },
+    "name": "Sipas.disposisi.forward.penerima.List1",
+    "designerId": "55325c4e-1aa6-4dd6-acd6-dddb9bed6c9e",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/disposisi_masuk/read"
+            },
+            "name": "MyAjaxProxy48",
+            "designerId": "92a13f73-11b3-4902-bdb9-7ebda8913fb2",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader48",
+                    "designerId": "f0e9e316-1c30-4fce-bfca-cd05c56e4ca5"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "disposisi_masuk_penerima_nama"
+            },
+            "name": "MySorter9",
+            "designerId": "8754668f-bd30-4167-9871-bbe809adf68b"
+        }
+    ]
+}

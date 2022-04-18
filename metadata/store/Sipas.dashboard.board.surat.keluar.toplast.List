@@ -1,0 +1,63 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.dashboard.board.surat.keluar.toplast.List",
+        "model": "Sipas.Surat",
+        "pageSize": 5,
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.dashboard.board.surat.keluar.toplast.List"
+    },
+    "name": "MyJsonStore",
+    "designerId": "8d1c6d25-7d2f-41a4-979f-21ca9af72876",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/dasbor/surat_keluar"
+            },
+            "name": "MyAjaxProxy9",
+            "designerId": "bfa24505-d4aa-40ce-89f6-1f89339c86d6",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader9",
+                    "designerId": "4af77cc8-b07f-4ded-a8a4-cd2ef43d135e"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_tanggal"
+            },
+            "name": "MySorter4",
+            "designerId": "92073601-0419-4022-9a32-1ff20608e09f"
+        }
+    ]
+}

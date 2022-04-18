@@ -1,0 +1,62 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.perintah.aktif.List",
+        "model": "Sipas.Perintah",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.perintah.aktif.List"
+    },
+    "name": "Sipas.perintah.semua.List1",
+    "designerId": "48f9a071-269c-4237-b9b9-135926c9e035",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/perintah/aktif"
+            },
+            "name": "MyAjaxProxy1",
+            "designerId": "e12f7309-855a-4fe9-9bc5-67b613fe4bc2",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader1",
+                    "designerId": "07b2d3ba-05e0-4398-b912-b208da6a30d3"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "perintah_nama"
+            },
+            "name": "MySorter",
+            "designerId": "fe1fbab5-c67c-461d-bdad-17a9292cdb6f"
+        }
+    ]
+}

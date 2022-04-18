@@ -1,0 +1,65 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.surat.berkasfisik.Popup",
+        "model": "Sipas.disposisi.Masuk",
+        "pageSize": 1000,
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.surat.berkasfisik.Popup"
+    },
+    "name": "Sipas.masuk.session.kotak.List1",
+    "designerId": "e9d8b2be-7cc5-4c2d-acf6-9c515c52074c",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/disposisi_masuk/request_berkas"
+            },
+            "name": "MyAjaxProxy51",
+            "designerId": "be43875d-eee2-44c6-8be5-d25f4b64d3a3",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader51",
+                    "designerId": "df0073fe-3e73-4e34-9e65-dee18329178e"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "disposisi_masuk_berkas_status_tgl",
+                "root": "data"
+            },
+            "name": "MySorter27",
+            "designerId": "e14a1e63-490c-4368-bb2d-6011214f261e"
+        }
+    ]
+}

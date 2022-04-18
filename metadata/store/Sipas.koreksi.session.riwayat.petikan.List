@@ -1,0 +1,60 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": null,
+        "designer|userClassName": "Sipas.koreksi.session.riwayat.petikan.List",
+        "model": "Sipas.koreksi.Riwayat",
+        "storeId": "Sipas.koreksi.session.riwayat.petikan.List"
+    },
+    "name": "Sipas.koreksi.session.riwayat.List2",
+    "designerId": "ab4cc306-dcee-4b08-a192-4fe6d92a4b94",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/koreksi_masuk/riwayat_petikan"
+            },
+            "name": "MyAjaxProxy5",
+            "designerId": "5124e529-8517-4033-b9ed-d71f6e4e92fe",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader5",
+                    "designerId": "2ed29760-235d-4c37-9828-1e20ea6657d7"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "disposisi_masuk_tgl"
+            },
+            "name": "MySorter4",
+            "designerId": "b648fd22-9ae3-4767-9999-ba24771e9f21"
+        }
+    ]
+}

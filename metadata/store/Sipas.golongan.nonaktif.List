@@ -1,0 +1,62 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.golongan.nonaktif.List",
+        "model": "Sipas.Golongan",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.golongan.nonaktif.List"
+    },
+    "name": "Sipas.prioritas.nonaktif.List1",
+    "designerId": "1f1849ba-5d5e-41dc-a154-0d150cc19315",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/golongan/nonaktif"
+            },
+            "name": "MyAjaxProxy7",
+            "designerId": "1d5d53ec-9691-434e-b852-0e5012715393",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader7",
+                    "designerId": "7b5fd143-cab4-4117-939e-8b9b85b58575"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "golongan_level"
+            },
+            "name": "MySorter5",
+            "designerId": "fdf2e7ad-5e82-44f1-b0b8-bdb5473859e6"
+        }
+    ]
+}

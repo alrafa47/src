@@ -1,0 +1,61 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.prioritas.semua.List",
+        "model": "Sipas.Prioritas",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.prioritas.semua.List"
+    },
+    "designerId": "ba961a32-cc9c-470e-a53e-c671f082dd01",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/prioritas/read"
+            },
+            "name": "MyAjaxProxy7",
+            "designerId": "89adbcd7-7b6e-46c8-b0e3-e631d1d7f020",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader7",
+                    "designerId": "63b94e70-3e29-4404-a23c-5a1b758d8062"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "prioritas_nama"
+            },
+            "name": "MySorter5",
+            "designerId": "bd4c369d-471d-453f-941c-87f50bee5f80"
+        }
+    ]
+}

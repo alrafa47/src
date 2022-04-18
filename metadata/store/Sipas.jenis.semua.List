@@ -1,0 +1,61 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.jenis.semua.List",
+        "model": "Sipas.Jenis",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.jenis.semua.List"
+    },
+    "designerId": "5adb4211-0be7-4b4f-ad30-056b05642221",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/jenis/read"
+            },
+            "name": "MyAjaxProxy12",
+            "designerId": "400ce46f-14e0-4012-aebb-0344b62f95ab",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader12",
+                    "designerId": "6fa4d311-8e02-44b0-8872-be63f01886a6"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "jenis_nama"
+            },
+            "name": "MySorter9",
+            "designerId": "c0f1b8da-a563-4aa6-a893-b0e414248e5c"
+        }
+    ]
+}

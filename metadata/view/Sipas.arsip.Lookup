@@ -1,0 +1,237 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "sipas_arsip_lookup",
+        "designer|userClassName": "Sipas.arsip.Lookup",
+        "height": 550,
+        "id": null,
+        "itemId": null,
+        "layout": "fit",
+        "maximizable": true,
+        "minHeight": 100,
+        "minWidth": 200,
+        "modal": true,
+        "title": "Daftar Arsip Bebas",
+        "width": 720
+    },
+    "name": "Sipas.internal.masuk.agenda.Lookup1",
+    "designerId": "16020d6a-f953-40ed-ad93-a064af825e9b",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "dock": "top"
+            },
+            "name": "MyToolbar",
+            "designerId": "8c484c0e-17c1-4da3-9079-4624bb81c5b5",
+            "cn": [
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clickToView": true,
+                        "displayField": "unit_nama",
+                        "editable": false,
+                        "fieldLabel": "",
+                        "hideTrigger": true,
+                        "itemId": "comboScope",
+                        "labelAlign": null,
+                        "layout|flex": null,
+                        "minWidth": 300,
+                        "store": "Sipas.surat.scope.Combo",
+                        "valueField": "unit_id"
+                    },
+                    "name": "MyComboBox15",
+                    "designerId": "ce992e2b-8b53-421e-b6de-76c487a3f971",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "clickToView",
+                            "type": "boolean"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.view.BoundList",
+                            "reference": {
+                                "name": "listConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemSelector": "div"
+                            },
+                            "name": "MyBoundList",
+                            "designerId": "dfa7fb0d-de2b-4ff3-a572-d62c4520fe94",
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "{unit_nama} <span style=\"color: gray\">({unit_kode})</span>"
+                                        ]
+                                    },
+                                    "name": "itemTpl",
+                                    "designerId": "4a875597-87c9-481e-98ad-4be0b0154c25"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.togglefilter54",
+                    "designerId": "3303f9c0-e5ce-4716-ab4d-c987bd1e9317",
+                    "masterInstanceId": "6f699e21-9335-4237-9e49-37b207a20475",
+                    "cn": [
+                        {
+                            "type": "basicfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "button",
+                                    "state"
+                                ],
+                                "fn": "toggleHandler",
+                                "implHandler": [
+                                    "var window = button.up('window');",
+                                    "window.down('sipas_arsip_lookup_list').query('gridcolumn textfield').forEach(function(field){",
+                                    "    state ? field.show():field.hide();",
+                                    "});",
+                                    "window.down('sipas_arsip_lookup_bagi_list').query('gridcolumn textfield').forEach(function(field){",
+                                    "    state ? field.show():field.hide();",
+                                    "});",
+                                    "window.down('sipas_arsip_lookup_umum_list').query('gridcolumn textfield').forEach(function(field){",
+                                    "    state ? field.show():field.hide();",
+                                    "});"
+                                ]
+                            },
+                            "name": "toggleHandler",
+                            "designerId": "a81e2327-c1f5-4404-871b-f114e424f6eb"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.tab.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "activeTab": 0,
+                "margin": null
+            },
+            "name": "MyTabPanel4",
+            "designerId": "ee642125-9851-4487-b490-53a9c3e11f1a",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "name": "sipas.arsip.lookup.list",
+                    "designerId": "8d6a79a0-c019-4576-a6ef-22272206ced5",
+                    "masterInstanceId": "ec74106c-5e52-4caa-8daa-97f3e7d06e08",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "TabConfig19",
+                            "designerId": "f5190715-48a2-4897-ad22-68584b5dab43"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "name": "sipas.arsip.lookup.bagi.list",
+                    "designerId": "a2e3cccd-4424-49ed-9a9d-49ae7de5a2e4",
+                    "masterInstanceId": "3763e3a8-ff45-47aa-89de-17059b53b383",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "TabConfig20",
+                            "designerId": "6c406c2b-6f77-44bf-8498-4efacf3face5"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "name": "sipas.arsip.lookup.umum.list",
+                    "designerId": "86657ba4-4f8e-4f71-a8c7-ceadb032aaa7",
+                    "masterInstanceId": "71c0d1c1-f821-4f4d-944b-ce914e394f45",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "TabConfig21",
+                            "designerId": "7cc47fb8-0447-4612-ae6d-979b439c5a35"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

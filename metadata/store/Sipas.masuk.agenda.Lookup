@@ -1,0 +1,78 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.masuk.agenda.Lookup",
+        "model": "Sipas.Surat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.masuk.agenda.Lookup"
+    },
+    "designerId": "4eb1ad05-27ca-4687-a973-6a5d731a6b77",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat_masuk/distribusi"
+            },
+            "name": "MyAjaxProxy37",
+            "designerId": "608b8f79-8522-4df4-817c-d5e74580036d",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader37",
+                    "designerId": "d31c5e47-7d69-4edd-9465-5ba02d97ace6"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_tanggal"
+            },
+            "name": "MySorter40",
+            "designerId": "c47cc474-b5d8-401d-a474-22e40c06f67c"
+        },
+        {
+            "type": "Ext.util.Filter",
+            "reference": {
+                "name": "filters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "surat_isdistribusi",
+                "value": [
+                    "1"
+                ]
+            },
+            "name": "MyFilter2",
+            "designerId": "d359093a-8931-4098-8cbb-62ca2dac9aa3"
+        }
+    ]
+}

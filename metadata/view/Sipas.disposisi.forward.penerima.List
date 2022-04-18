@@ -1,0 +1,373 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "allowDeselect": true,
+        "autoScroll": true,
+        "bodyBorder": false,
+        "border": null,
+        "designer|userAlias": "sipas_disposisi_forward_penerima_list",
+        "designer|userClassName": "Sipas.disposisi.forward.penerima.List",
+        "frameHeader": false,
+        "header": false,
+        "height": null,
+        "hideHeaders": null,
+        "id": null,
+        "itemId": "Sipas.disposisi.forward.penerima.List",
+        "margin": null,
+        "maxHeight": null,
+        "padding": null,
+        "store": "Sipas.disposisi.forward.penerima.List",
+        "title": "Daftar Penerima"
+    },
+    "name": "MyGridPanel11",
+    "designerId": "174ba5c3-eb28-41de-8e2c-82af5d4588f8",
+    "cn": [
+        {
+            "type": "Ext.form.field.Hidden",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "left",
+                "fieldLabel": "Label",
+                "itemId": "disposisi_penerima",
+                "name": "disposisi_penerima_penerima",
+                "width": 100
+            },
+            "name": "MyHiddenField1",
+            "designerId": "11309630-f72c-494c-a2fe-68cf64a533c5"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "designer|uiInterfaceName": "default-toolbar",
+                "dock": "top",
+                "itemId": "toolbarControl",
+                "layout": "hbox",
+                "ui": "default-toolbar",
+                "width": 100
+            },
+            "name": "MyContainer25",
+            "designerId": "80587ae9-5c75-4e7f-96cf-6d7ffcf5bfa4",
+            "cn": [
+                {
+                    "type": "Ext.form.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": "alternative bold",
+                        "layout|flex": null,
+                        "layout|margins": null,
+                        "padding": 10,
+                        "text": "Penerima"
+                    },
+                    "name": "MyLabel",
+                    "designerId": "7b368bcc-b254-407a-a9d4-6e22455b0710",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onLabelAfterRender",
+                                "implHandler": [
+                                    "component.setText(component.up('panel').title);"
+                                ],
+                                "name": "afterrender",
+                                "scope": "me"
+                            },
+                            "name": "onLabelAfterRender",
+                            "designerId": "d3d7643e-eb38-4f5e-9e44-f5dea8673195"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 1
+                    },
+                    "name": "MyContainer28",
+                    "designerId": "ef8b3faa-5600-41bf-8653-2a23d4ceee11"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|uiInterfaceName": "default-toolbar",
+                        "hidden": true,
+                        "itemId": null,
+                        "layout|flex": null,
+                        "roleable": false,
+                        "ui": "default-toolbar"
+                    },
+                    "name": "sipas.com.button.add",
+                    "designerId": "5e008b01-463d-4925-849b-49778f1189c9",
+                    "masterInstanceId": "420a71a2-f0ab-4b83-bf9b-b7cf567d6c9f"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": "x-btn-danger",
+                        "designer|uiInterfaceName": "default-toolbar",
+                        "hidden": true,
+                        "itemId": null,
+                        "layout|flex": null,
+                        "roleable": false,
+                        "ui": "default-toolbar"
+                    },
+                    "name": "sipas.com.button.delete",
+                    "designerId": "f485c3ae-6f6e-4036-8441-c7835e2dc6d9",
+                    "masterInstanceId": "3715315e-7ae6-4239-80e7-cf81a5ce1662"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": "x-btn-info",
+                        "designer|uiInterfaceName": "default",
+                        "iconCls": null,
+                        "layout|flex": null,
+                        "text": "Tambah Penerima"
+                    },
+                    "name": "sipas.com.button.plus",
+                    "designerId": "b7644646-40f4-45be-9296-9798c50c1b95",
+                    "masterInstanceId": "1e3da24f-ec71-4451-b5d3-e8c2b16d9f44"
+                }
+            ]
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "hidden": true,
+                "itemId": "toolbarControl1"
+            },
+            "name": "MyToolbar54",
+            "designerId": "ae8fa104-066c-46df-8e00-1d4213d13615",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "MyFill1",
+                    "designerId": "e07621bc-efab-4e19-beea-f4336f75b554"
+                },
+                {
+                    "type": "Ext.toolbar.Separator",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "MySeparator",
+                    "designerId": "2b51e4ff-5472-4612-bfc3-eef65daa0111"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Action",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "columnDelete",
+                "menuDisabled": true,
+                "width": 36
+            },
+            "name": "MyActionColumn6",
+            "designerId": "0c427e17-5e80-4d96-a7e0-bb07953c867f",
+            "cn": [
+                {
+                    "type": "actioncolumnitem",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "rundelete",
+                        "iconCls": "x-action-col-icon-bin",
+                        "tooltip": "Hapus"
+                    },
+                    "name": "MyActionColumnItem2",
+                    "designerId": "424939ae-cff2-4248-8d98-0fb6950ff8a0",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "staf_nama",
+                "flex": 1,
+                "maxWidth": null,
+                "menuDisabled": true,
+                "minWidth": null,
+                "sortable": true,
+                "text": null,
+                "width": null
+            },
+            "name": "MyColumn8",
+            "designerId": "f2106b10-9068-4b5c-a13c-1dedb5e9236e",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "modelStaf = Ext.ModelManager.getModel('SIPAS.model.Sipas.Staf');",
+                            "return modelStaf.renderPegawai(value, record);"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "27afc008-89ad-4214-828c-2e3c56d10b51"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.CheckColumn",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "disposisi_masuk_istembusan",
+                "designer|displayName": null,
+                "emptyCellText": null,
+                "itemId": "tembusan",
+                "menuDisabled": true,
+                "menuText": null,
+                "sortable": false,
+                "text": "Tembusan",
+                "width": 80
+            },
+            "name": "MyCheckColumn2",
+            "designerId": "3db0bda6-0949-41f5-9070-ad9a98b09ca4"
+        },
+        {
+            "type": "Ext.grid.column.CheckColumn",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "disposisi_masuk_isberkas",
+                "flex": null,
+                "hidden": true,
+                "itemId": null,
+                "menuDisabled": true,
+                "sortable": false,
+                "text": "Disertai Berkas Fisik",
+                "width": 140
+            },
+            "name": "MyCheckColumn1",
+            "designerId": "fadfdd40-75b3-4fe8-88bd-320dc18e86d4"
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyGridView14",
+            "designerId": "d57a29f5-9e8a-477e-a1ad-2b942582b496"
+        },
+        {
+            "type": "Ext.grid.plugin.RowEditing",
+            "reference": {
+                "name": "plugins",
+                "type": "array"
+            },
+            "codeClass": "Ext.grid.plugin.RowEditing",
+            "userConfig": {
+                "pluginId": "roweditor"
+            },
+            "name": "MyRowEditingPlugin",
+            "designerId": "643f0b3d-1e20-4fe5-aee8-89eb54d1bd98"
+        }
+    ]
+}

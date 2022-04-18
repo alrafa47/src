@@ -1,0 +1,131 @@
+{
+    "type": "Ext.form.FieldSet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "border": false,
+        "container|align": "stretch",
+        "designer|userAlias": "sipas_surat_informasi_batal_pane",
+        "designer|userClassName": "Sipas.surat.informasi.batal.Pane",
+        "itemId": "textBatalNomor",
+        "layout": "vbox",
+        "padding": null,
+        "title": null,
+        "width": null
+    },
+    "name": "Sipas.surat.informasi.terima.Pane1",
+    "designerId": "45394e5e-8501-486d-821c-5a2215705db4",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "constructor",
+                "implHandler": [
+                    "this.callParent(arguments);",
+                    "    return Ext.applyIf(this,{",
+                    "        form: new Ext.form.Basic(this)",
+                    "});"
+                ]
+            },
+            "name": "constructor",
+            "designerId": "a0986700-215c-4f6b-ad26-e87220b775b8"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": "suratImage",
+                "height": 48,
+                "hidden": true,
+                "itemId": "suratImage",
+                "margin": "0 5 0 0",
+                "padding": null,
+                "width": 48
+            },
+            "name": "MyContainer13",
+            "designerId": "6a193ada-8e6a-416c-af70-68bb4d12a432",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onSuratImageRender",
+                        "implHandler": [
+                            "Ext.create('Ext.tip.ToolTip',{",
+                            "    target: component.getEl(),",
+                            "    html: 'Keterangan Surat'",
+                            "});"
+                        ],
+                        "name": "render",
+                        "scope": "me"
+                    },
+                    "name": "onSuratImageRender",
+                    "designerId": "d331dbcd-ee29-4d78-a7a5-c2a8108fcc45"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "container|pack": "center",
+                "itemId": "containerBatalNomor",
+                "layout": "vbox",
+                "layout|flex": 1
+            },
+            "name": "MyContainer12",
+            "designerId": "ad162fa9-3c10-48b0-a283-59aa04bc3df1",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabledCls": "disabled",
+                        "fieldLabel": null,
+                        "fieldStyle": "display:flex",
+                        "id": null,
+                        "itemId": "textBatalNomor",
+                        "labelAlign": null,
+                        "labelClsExtra": "f11",
+                        "labelSeparator": "&nbsp;",
+                        "labelStyle": "color:gray;",
+                        "labelWidth": null,
+                        "layout|flex": null,
+                        "layout|margins": null,
+                        "maxWidth": 400,
+                        "name": null,
+                        "value": "Surat ini dibatalkan oleh",
+                        "width": 400
+                    },
+                    "name": "MyDisplayField5",
+                    "designerId": "2c05d22f-72d5-46a8-8757-7b86046315a7"
+                }
+            ]
+        }
+    ]
+}

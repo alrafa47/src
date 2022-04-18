@@ -1,0 +1,118 @@
+{
+    "type": "Ext.button.Button",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "sipas_com_button_toogle",
+        "designer|userClassName": "Sipas.com.button.Toogle",
+        "itemId": null,
+        "scale": "large",
+        "text": "",
+        "textTpl": "<i class=\"{iconCls}\"></i>",
+        "toogleIconCls": "tango-32 go-last",
+        "toogled": false,
+        "toogledIconCls": "tango-32 go-first"
+    },
+    "name": "MyButton13",
+    "configAlternates": {
+        "toogled": "boolean"
+    },
+    "designerId": "4e2ba2b5-ef30-4c45-8a0c-8e381a8940dd",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "textTpl",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "toogled",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "toogledIconCls",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "toogleIconCls",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "toogle",
+                "implHandler": [
+                    "var button = this;",
+                    "button.toogled = !button.toogled;",
+                    "button.initIcon();",
+                    "button.fireEvent('toogle',button, button.toogled);"
+                ]
+            },
+            "name": "toogle",
+            "designerId": "38f3de76-fb48-4a2b-9c43-1ddd045127b6"
+        },
+        {
+            "type": "customevent",
+            "reference": {
+                "name": "customEvents",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "toogle"
+            },
+            "name": "CustomEvent",
+            "designerId": "d46638c3-6e2c-432f-82f3-14af83856909"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initIcon",
+                "implHandler": [
+                    "var button = this;",
+                    "var iconCls = button.toogled ? button.toogledIconCls : button.toogleIconCls;",
+                    "button.setText((new Ext.Template(button.textTpl)).apply({",
+                    "    iconCls: iconCls",
+                    "}));"
+                ]
+            },
+            "name": "initIcon",
+            "designerId": "8747e63b-3e13-4dfc-99bc-1d11e777e2dd"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onButtonToogleAfterRender",
+                "implHandler": [
+                    "component.initIcon();"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "name": "onButtonToogleAfterRender",
+            "designerId": "41d936f8-a04f-4c90-9c23-7b16cea42b16"
+        }
+    ]
+}

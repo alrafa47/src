@@ -1,0 +1,78 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": null,
+        "designer|userClassName": "Sipas.arsip.ListAbstract",
+        "model": "Sipas.Dokumen",
+        "pageSize": 1000,
+        "remoteFilter": null,
+        "remoteGroup": null,
+        "remoteSort": null,
+        "storeId": "Sipas.arsip.ListAbstract"
+    },
+    "designerId": "9235db3b-8697-40fe-97c5-af244deff9d7",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/dokumen/read"
+            },
+            "name": "MyAjaxProxy38",
+            "designerId": "ae05e33e-ee14-47b6-8dd7-5d51f0050afd",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader38",
+                    "designerId": "90de960b-78c9-4c1d-a1f2-b48838464b67"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Filter",
+            "reference": {
+                "name": "filters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "dokumen_isactive",
+                "value": [
+                    "1"
+                ]
+            },
+            "name": "MyFilter",
+            "designerId": "534f11b2-3e57-47a9-bd06-9b15de198b9a"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "properti_buat_tgl"
+            },
+            "name": "MySorter2",
+            "designerId": "e0935e41-5b40-4af7-8600-ca8ec4159b33"
+        }
+    ]
+}

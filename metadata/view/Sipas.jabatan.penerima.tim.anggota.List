@@ -1,0 +1,130 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "sipas_jabatan_penerima_tim_anggota_list",
+        "designer|userClassName": "Sipas.jabatan.penerima.tim.anggota.List",
+        "emptyText": "Tidak Ada Data",
+        "height": null,
+        "store": "Sipas.jabatan.penerima.tim.anggota.List",
+        "title": "Anggota Kelompok",
+        "width": null
+    },
+    "name": "Sipas.staf.penerima.tim.anggota.List1",
+    "designerId": "12a76584-cd33-40be-8b5c-78491aa121f7",
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "anggota_nama",
+                "flex": null,
+                "sortable": true,
+                "text": "Nama",
+                "width": 400
+            },
+            "name": "MyColumn1",
+            "designerId": "24894497-8924-4dda-8c1e-d31dd68a386b",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var id = record.getId(),",
+                            "    tpl = this.dataTpl || (",
+                            "        this.tpl =",
+                            "        \"<div class='cell-row'><div class='cell-visual cell-visual-left'>\"+",
+                            "        \"<div class='img img-circle img-16'><i class='bigger-1-25 icon ion-md-ribbon grey-600-i'></i></div>\"+",
+                            "        \"</div><div class='cell-text'>\"+value+\"</div></div>\"",
+                            "    );",
+                            "return (new Ext.Template(tpl)).apply(record.getData());"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "7f2163b2-0b02-4288-a6f2-6dff32399fd3"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "anggota_unit_nama",
+                "flex": null,
+                "sortable": true,
+                "text": "Unit Kerja",
+                "width": 200
+            },
+            "name": "MyColumn2",
+            "designerId": "ed0a2951-9f6d-4aae-9aeb-306afbca9e39",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "if (!value){",
+                            "    return \"<span class='alternative'>-</span>\";",
+                            "}else{",
+                            "    return value;",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "9b9dfc5a-c7c2-4b2d-a143-6e3537b30a57"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyGridView",
+            "designerId": "8bc39b3d-0890-416d-b046-233b8b664e8a"
+        }
+    ]
+}

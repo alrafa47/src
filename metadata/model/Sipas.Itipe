@@ -1,0 +1,194 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.Itipe",
+        "idProperty": "itipe_id"
+    },
+    "name": "Sipas.Jenis1",
+    "designerId": "f8085d51-2e98-4b8f-8f61-a2e5cfe57a10",
+    "cn": [
+        {
+            "type": "staticfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "isbaca",
+                    "value"
+                ],
+                "fn": "renderItipe",
+                "implHandler": [
+                    "var val = (value)? value : '<div class=\"subtext\">Eksternal</div><div class=\"supporttext supporttext-dark\">Keluar</div>';",
+                    "if(!isbaca){",
+                    "    return '<span class=\"bold\">'+val+'</span>';",
+                    "}else{",
+                    "    return val;",
+                    "}"
+                ]
+            },
+            "name": "renderItipe",
+            "designerId": "5317ea95-fd11-4de7-a6b9-9762d5577a20"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "itipe_id"
+            },
+            "name": "MyField38",
+            "designerId": "6a8de44d-4973-4cac-ac8d-598584f580b5"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "itipe_kode"
+            },
+            "name": "MyField39",
+            "designerId": "94008f04-11fb-4ac0-822b-0e7108da05ac"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "itipe_nama"
+            },
+            "name": "MyField40",
+            "designerId": "ba16a439-f684-428b-9b9f-5efee2e68470"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "itipe_keterangan"
+            },
+            "name": "MyField41",
+            "designerId": "47e22fcb-b546-437d-ad86-4d061eeb92f6"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "itipe_display"
+            },
+            "name": "MyField507",
+            "designerId": "897e634c-77f4-4ca8-8b4a-4594c253db28",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "v",
+                            "rec"
+                        ],
+                        "fn": "convert",
+                        "implHandler": [
+                            "return (new Ext.Template('{itipe_nama} ({itipe_kode})')).apply(rec.getData());"
+                        ]
+                    },
+                    "name": "convert",
+                    "designerId": "d1119fbe-b366-4a52-9adf-6f471f5eea93"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": [
+                    "1"
+                ],
+                "name": "itipe_isaktif",
+                "type": "boolean"
+            },
+            "name": "MyField395",
+            "designerId": "60d3c1a5-4d02-401c-ab87-b6786d30813b"
+        },
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "api": [
+                    "{",
+                    "    create\t: 'server.php/sipas/itipe/create',",
+                    "    read \t: 'server.php/sipas/itipe/read',",
+                    "    update \t: 'server.php/sipas/itipe/update',",
+                    "    destroy : 'server.php/sipas/itipe/destroy'",
+                    "}"
+                ]
+            },
+            "name": "MyAjaxProxy11",
+            "designerId": "0fcc6cea-505e-4a92-a3c7-7afc51635a62",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "record": null,
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader11",
+                    "designerId": "f3a89bc6-f3c1-4a04-9df0-eb4630de692e"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "itipe_properti"
+            },
+            "name": "MyField58",
+            "designerId": "9480cadd-3fb4-43ed-8102-f78893a2fe72"
+        }
+    ]
+}

@@ -1,0 +1,61 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.jabatan.tim.List",
+        "model": "Sipas.jabatan.Tim",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.jabatan.tim.List"
+    },
+    "name": "Sipas.staf.tim.List2",
+    "designerId": "31d545b0-8eef-4419-a176-9eff242c230b",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/jabatan_tim/read"
+            },
+            "name": "MyAjaxProxy1",
+            "designerId": "2d243032-98d3-4902-8e4d-4385349f15ba",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader1",
+                    "designerId": "d62da32a-d104-43b6-b826-25f7ba95a031"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "jabatan_tim_nama"
+            },
+            "name": "MySorter23",
+            "designerId": "2a054b1e-a143-4d75-a09b-332a01471ed8"
+        }
+    ]
+}

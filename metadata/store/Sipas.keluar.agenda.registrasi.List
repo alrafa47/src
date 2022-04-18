@@ -1,0 +1,65 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.keluar.agenda.registrasi.List",
+        "model": "Sipas.Surat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.keluar.agenda.registrasi.List"
+    },
+    "name": "Sipas.surat.keluar.List2",
+    "designerId": "b6a9f098-d9f8-4366-b763-c134186ad143",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat_keluar/setuju"
+            },
+            "name": "MyAjaxProxy28",
+            "designerId": "e8cda05f-0dc7-43e5-a297-2dda5993f770",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader28",
+                    "designerId": "b13cddf5-4f27-4b1e-96c9-272570e4f35b"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "tanggal",
+                "direction": "DESC",
+                "property": "surat_tanggal",
+                "root": "data"
+            },
+            "name": "MySorter1",
+            "designerId": "f846efd6-2b0c-4a30-a128-8b9685da1c2f"
+        }
+    ]
+}

@@ -1,0 +1,894 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "border": false,
+        "closable": null,
+        "cls": "sipas_arsip_pane",
+        "designer|userAlias": "sipas_arsip_pane",
+        "designer|userClassName": "Sipas.arsip.Pane",
+        "header": false,
+        "layout": "fit",
+        "minWidth": 180,
+        "title": "Berkas",
+        "toolbarControl": true
+    },
+    "name": "MyPanel",
+    "configAlternates": {
+        "toolbarControl": "boolean",
+        "isSession": "boolean"
+    },
+    "designerId": "328047cc-622e-42c0-8c7d-5c288e56baf5",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "toolbarControl",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "isSession",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "autoScroll": null,
+                "overflowY": null,
+                "store": null,
+                "viewConfig": [
+                    "{",
+                    "    preserveScrollOnRefresh: true",
+                    "}"
+                ]
+            },
+            "name": "sipas.arsip.dataview1",
+            "configAlternates": {
+                "viewConfig": "object"
+            },
+            "designerId": "7bbba42a-6d98-4e33-a686-b1eea769c408",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "viewConfig",
+                    "type": "string"
+                }
+            ],
+            "masterInstanceId": "6a8e4870-93a0-4e1b-8334-a516718b8a3e",
+            "cn": [
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processSipasarsipdataview",
+                        "implHandler": [
+                            "Ext.apply(config, this.dataviewConfig);",
+                            "return config;"
+                        ]
+                    },
+                    "name": "processSipasarsipdataview",
+                    "designerId": "ec8b5ca4-6978-4d2c-8468-710745b4c39c"
+                }
+            ]
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "border": null,
+                "container|padding": null,
+                "dock": "top",
+                "itemId": "toolbarControl",
+                "padding": 0
+            },
+            "name": "MyToolbar",
+            "designerId": "f2339a20-663c-42cb-9347-b3eed222e290",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": null,
+                        "hidden": null,
+                        "layout|flex": null,
+                        "layout|margins": "0 0 0 16",
+                        "margin": null,
+                        "padding": null,
+                        "value": "<b style=\"color:#04408c\">Berkas</b>"
+                    },
+                    "name": "MyDisplayField3",
+                    "designerId": "a6b80bf7-8845-4fb7-9872-65e827d3fd62"
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": null,
+                        "layout|flex": null
+                    },
+                    "name": "MyFill",
+                    "designerId": "05459116-907c-4ad7-9b4a-a7c89711e277"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "arrowCls": "arrow-down",
+                        "cls": "x-btn-info x-btn-circle",
+                        "iconCls": "icon ion-md-add-circle",
+                        "itemId": "buttonAdd",
+                        "layout|flex": null,
+                        "text": null,
+                        "ui": null
+                    },
+                    "name": "MyButton5",
+                    "designerId": "413e89b6-af38-43fe-9ace-80211a42e868",
+                    "cn": [
+                        {
+                            "type": "Ext.menu.Menu",
+                            "reference": {
+                                "name": "menu",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "bodyPadding": null,
+                                "showSeparator": false,
+                                "width": null
+                            },
+                            "name": "MyMenu1",
+                            "designerId": "b8eeb7cf-efb7-4595-b324-35ad9694fc9f",
+                            "cn": [
+                                {
+                                    "type": "Ext.menu.Item",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "action": "upload",
+                                        "hidden": true,
+                                        "iconCls": null,
+                                        "text": "Unggah Berkas"
+                                    },
+                                    "name": "MyMenuItem2",
+                                    "designerId": "42a8eedd-3702-4bef-b801-feac77a25ac3",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "action",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.menu.Item",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "action": "upload_scan",
+                                        "iconCls": "icon ion-md-folder amber-700-i",
+                                        "languageCode": "upload_berkas_button_pane",
+                                        "languageMode": "text",
+                                        "languageable": true,
+                                        "text": "Unggah Dokumen"
+                                    },
+                                    "name": "MyMenuItem",
+                                    "designerId": "5454ceba-1adb-4c89-a32a-8ebfe9d24f83",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "action",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "languageable",
+                                            "type": "boolean"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "languageMode",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "languageCode",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.menu.Item",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "action": "scan_image",
+                                        "hidden": true,
+                                        "iconCls": null,
+                                        "scanFormat": "jpg",
+                                        "text": "Pindai Gambar"
+                                    },
+                                    "name": "MyMenuItem3",
+                                    "designerId": "0a983fce-6dd3-4195-91e7-eaa33de0a653",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "action",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "scanFormat",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.menu.Item",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "action": "scan_pdf",
+                                        "hidden": true,
+                                        "iconCls": null,
+                                        "scanFormat": "pdf",
+                                        "text": "Pindai PDF"
+                                    },
+                                    "name": "MyMenuItem4",
+                                    "designerId": "dc691ffc-f9aa-43ef-b629-a0ba1d4cea88",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "action",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "scanFormat",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.menu.Item",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "action": "link",
+                                        "featureName": "berkas_link",
+                                        "featureable": true,
+                                        "iconCls": "icon ion-md-link",
+                                        "languageCode": "tautan_button_pane",
+                                        "languageMode": "text",
+                                        "languageable": true,
+                                        "text": "Tautan"
+                                    },
+                                    "name": "MyMenuItem5",
+                                    "designerId": "465d0117-4c60-4f4e-bda8-0894dd25c09c",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "action",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "languageCode",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "languageMode",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "languageable",
+                                            "type": "boolean"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "featureName",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "featureable",
+                                            "type": "boolean"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.menu.Item",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "action": "sdoc",
+                                        "featureName": "berkas_sdoc",
+                                        "featureable": true,
+                                        "iconCls": "icon ion-md-paper blue-700-i",
+                                        "text": "Online Dokumen"
+                                    },
+                                    "name": "MyMenuItem6",
+                                    "designerId": "cd09458b-b672-4c81-acf7-a7c42779f961",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "action",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "featureName",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "featureable",
+                                            "type": "boolean"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "showall",
+                        "designer|displayName": "view",
+                        "hidden": true,
+                        "iconCls": null,
+                        "layout|flex": null,
+                        "text": " ",
+                        "tooltip": [
+                            "Lihat"
+                        ]
+                    },
+                    "name": "sipas.com.button.view16",
+                    "designerId": "9b497512-8f42-4151-a48d-9d0b16126bca",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "88073f46-f23e-4800-a045-344110bd18fc",
+                    "cn": [
+                        {
+                            "type": "processcfgfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "config"
+                                ],
+                                "fn": "processView",
+                                "implHandler": [
+                                    "config.text = null;",
+                                    "return config;"
+                                ]
+                            },
+                            "name": "processView",
+                            "designerId": "ab3f9bac-5429-44f1-843a-11d4aeca22ab"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "reload",
+                        "cls": "x-btn-primary x-btn-circle",
+                        "designer|displayName": "refresh",
+                        "disabled": null,
+                        "hidden": null,
+                        "iconCls": "icon ion-md-refresh",
+                        "itemId": "buttonRefresh",
+                        "layout|flex": null,
+                        "text": " ",
+                        "tooltip": [
+                            "Muat Ulang"
+                        ]
+                    },
+                    "name": "sipas.com.button.refresh67",
+                    "designerId": "f93c900a-d0df-4a91-836e-7ed9bb89eb1a",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "e517a5ab-fc5b-441a-97a3-5c706738d092",
+                    "cn": [
+                        {
+                            "type": "processcfgfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "config"
+                                ],
+                                "fn": "processRefresh",
+                                "implHandler": [
+                                    "config.text = null;",
+                                    "return config;"
+                                ]
+                            },
+                            "name": "processRefresh",
+                            "designerId": "42b326cd-2841-470c-9cdc-35693f93200b"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "autoRender": null,
+                        "bodyBorder": false,
+                        "bodyPadding": null,
+                        "border": 0,
+                        "designer|displayName": "formUpload - please do not remove this",
+                        "designer|uiInterfaceName": "footer",
+                        "height": null,
+                        "hidden": true,
+                        "itemId": "formUpload",
+                        "layout": "fit",
+                        "layout|flex": null,
+                        "title": "",
+                        "ui": "footer",
+                        "width": null
+                    },
+                    "name": "MyForm",
+                    "designerId": "94758ad2-a853-4cbf-9a81-8766a72ed8de",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.File",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "autoRender": null,
+                                "buttonOnly": true,
+                                "buttonText": "Upload Berkas",
+                                "enableKeyEvents": true,
+                                "fieldLabel": "",
+                                "hideLabel": true,
+                                "itemId": "fileUpload",
+                                "name": "userfile"
+                            },
+                            "name": "MyFileUpload",
+                            "designerId": "3f412b68-3bab-4f15-8c85-10d301240c49",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.field.FileButton",
+                                    "reference": {
+                                        "name": "buttonConfig",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "iconCls": null,
+                                        "text": "Unggah"
+                                    },
+                                    "name": "MyFileButton",
+                                    "designerId": "a3b08032-3072-44f6-af12-91063c158ebc"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true,
+                        "hidden": true,
+                        "layout|flex": null,
+                        "text": " ",
+                        "tooltip": [
+                            "Unduh"
+                        ]
+                    },
+                    "name": "sipas.com.button.download48",
+                    "designerId": "4b06d8ea-d4d9-46f9-93cd-44cb19c900fa",
+                    "masterInstanceId": "57671838-a3d0-4dd9-89fa-8be31c5e1c88"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": true,
+                        "iconCls": null,
+                        "itemId": "buttonViewAll",
+                        "layout|flex": null,
+                        "text": "Lihat Semua Berkas"
+                    },
+                    "name": "MyButton",
+                    "designerId": "d31956b4-2e3d-43ab-a6d2-198474633c60"
+                },
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "config"
+                        ],
+                        "fn": "processToolbarControl",
+                        "implHandler": [
+                            "if(!this.toolbarControl)",
+                            "{",
+                            "    return null;",
+                            "}",
+                            "return config;"
+                        ]
+                    },
+                    "name": "processToolbarControl",
+                    "designerId": "fb96d704-b4bd-4334-b0a3-043b83025423"
+                }
+            ]
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "arrowCls": "arrow_hidden",
+                "hidden": true,
+                "iconCls": null,
+                "itemId": "buttonMenuArsip",
+                "text": null
+            },
+            "name": "MyButton7",
+            "designerId": "36b09ae7-d5b6-4c36-9e97-c5542479d64c",
+            "cn": [
+                {
+                    "type": "Ext.menu.Menu",
+                    "reference": {
+                        "name": "menu",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "bodyPadding": null,
+                        "showSeparator": false,
+                        "width": null
+                    },
+                    "name": "MyMenu1",
+                    "designerId": "4d869c0f-96dc-477c-8dbc-652a86ea3efe",
+                    "cn": [
+                        {
+                            "type": "Ext.menu.Item",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "open",
+                                "iconCls": "icon ion-md-search blue-500-i",
+                                "itemId": "buttonOpen",
+                                "text": "Buka"
+                            },
+                            "name": "MyMenuItem2",
+                            "designerId": "8264deb9-bcdc-4272-bf2a-889e46e2be07",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.menu.Item",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "download",
+                                "iconCls": "icon ion-md-download green-700-i",
+                                "itemId": "buttonDownload",
+                                "languageCode": "download_berkas",
+                                "languageMode": "text",
+                                "languageable": true,
+                                "text": "Unduh"
+                            },
+                            "name": "MyMenuItem4",
+                            "designerId": "5e68e4fd-d14d-453c-b956-8eeccee21e95",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageable",
+                                    "type": "boolean"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageMode",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "languageCode",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.menu.Item",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "delete",
+                                "iconCls": "icon ion-md-trash",
+                                "itemId": "buttonHapus",
+                                "text": "Hapus"
+                            },
+                            "name": "MyMenuItem5",
+                            "designerId": "7273b05b-3d2f-4ac4-9047-00132c598302",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.menu.Separator",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "berkasSeparator"
+                            },
+                            "name": "MySeparator1",
+                            "designerId": "3933a07e-03c2-4add-ac3a-8deb1f4af927"
+                        },
+                        {
+                            "type": "Ext.menu.Item",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "edit",
+                                "iconCls": "icon ion-md-list-box orange-700-i",
+                                "itemId": "buttonEdit",
+                                "text": "Perubahan"
+                            },
+                            "name": "MyMenuItem3",
+                            "designerId": "c611b64e-943f-45ab-87d8-375e457a38ab",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.menu.Item",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "log",
+                                "iconCls": "icon ion-md-menu blue-700-i",
+                                "itemId": "buttonHistory",
+                                "text": "Riwayat Perubahan"
+                            },
+                            "name": "MyMenuItem6",
+                            "designerId": "2762fc8f-ee08-4941-ac87-df7fd4422a63",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "hidden": null
+            },
+            "name": "MyToolbar7",
+            "designerId": "797f71c0-7326-4d26-9377-7e738284fd48",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.TextItem",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": true,
+                        "layout|flex": null,
+                        "text": "Unggah hanya untuk file <b>.doc</b>, <b>.docx</b>, <b>.xls</b>, <b>.xlsx</b>, <b>.pdf</b>, <b>.ppt</b>, <b>.pps</b>,<br/><b>.pptx</b>, <b>.zip</b>, <b>.rar</b>, <b>.7z</b>, <b>.gif</b>, <b>.jpg</b>, <b>.jpeg</b>, <b>.bmp</b> dan <b>.png</b>"
+                    },
+                    "name": "MyTextItem2",
+                    "designerId": "336094a3-1b62-4ab5-8104-b3de0463bde2"
+                },
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": null,
+                        "hidden": true,
+                        "layout|flex": null,
+                        "value": "<b>*</b> Klik <b>2x</b> untuk <b>Melihat</b>"
+                    },
+                    "name": "MyDisplayField9",
+                    "designerId": "6213a5d4-ade3-4aac-aac2-60c38cdfd3c6"
+                },
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": "x-field-boxed x-field-boxed-warning",
+                        "fieldLabel": null,
+                        "hidden": null,
+                        "itemId": "reuploadWarning",
+                        "labelSeparator": null,
+                        "labelWidth": null,
+                        "languageCode": "berkas_reupload_warning",
+                        "languageMode": "value",
+                        "languageable": true,
+                        "layout|flex": null,
+                        "margin": "0 0 8 0",
+                        "value": null,
+                        "width": "100%"
+                    },
+                    "name": "MyDisplayField8",
+                    "configAlternates": {
+                        "languageabe": "boolean",
+                        "languageable": "boolean"
+                    },
+                    "designerId": "1fc6b7d0-a4af-47bc-81ac-646ac03bedc7",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageable",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageCode",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "languageMode",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

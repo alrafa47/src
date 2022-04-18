@@ -1,0 +1,59 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Sipas.staf.penerima.disposisi.recent.Lookup",
+        "model": "Sipas.Staf",
+        "storeId": "Sipas.staf.penerima.disposisi.recent.Lookup"
+    },
+    "name": "Sipas.staf.penerima.recent.Lookup1",
+    "designerId": "ac56199c-b560-45d0-a3eb-0fe0fa098f57",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/staf/penerima_disposisi/recent"
+            },
+            "name": "MyAjaxProxy7",
+            "designerId": "2715e2e9-a428-4452-b54d-41f93d64115e",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader7",
+                    "designerId": "addcf841-06c7-49c3-89c1-8bdf43031929"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "staf_aktual_tgl"
+            },
+            "name": "MySorter13",
+            "designerId": "36596e3c-151b-49d8-a42f-e0601023f24b"
+        }
+    ]
+}

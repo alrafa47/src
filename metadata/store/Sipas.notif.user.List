@@ -1,0 +1,63 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.notif.user.List",
+        "model": "Sipas.notif.User",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.notif.user.List"
+    },
+    "name": "Sipas.notif.akun.Combo1",
+    "designerId": "26f7dfed-a649-425f-aebc-2df640ae1c8a",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/notif_user/all"
+            },
+            "name": "MyAjaxProxy1",
+            "designerId": "da61b220-c100-4162-ac93-ff09196cfbd1",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader1",
+                    "designerId": "451ca2f6-9f41-4270-b232-27a37f63f157"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "notif_user_tgl"
+            },
+            "name": "MySorter",
+            "designerId": "c7590b00-f265-49f9-93eb-968ce7a749aa"
+        }
+    ]
+}

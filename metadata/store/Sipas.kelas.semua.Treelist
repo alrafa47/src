@@ -1,0 +1,81 @@
+{
+    "type": "Ext.data.TreeStore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.kelas.semua.Treelist",
+        "model": "Sipas.Kelas",
+        "remoteFilter": null,
+        "remoteSort": null,
+        "storeId": "Sipas.kelas.semua.Treelist"
+    },
+    "name": "Sipas.jabatan.Treelist2",
+    "designerId": "61fcd846-6558-4131-8d18-672c04b52d4f",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/kelas/read/tree"
+            },
+            "name": "MyAjaxProxy9",
+            "designerId": "deea5baa-6f4c-48e2-b4ae-402b2258a207",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": null
+                    },
+                    "name": "MyJsonReader9",
+                    "designerId": "fa14c23c-0ab4-405a-b49d-e408c75afa7e"
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onTreeStoreBeforeLoad",
+                "implHandler": [
+                    "if(store.isLoading()){\r",
+                    "    return false;\r",
+                    "}"
+                ],
+                "name": "beforeload",
+                "scope": "me"
+            },
+            "name": "onTreeStoreBeforeLoad",
+            "designerId": "6b82dec9-314b-4d4e-91e4-1d8a16627b76"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "kelas_kode"
+            },
+            "name": "MySorter7",
+            "designerId": "52d705d2-3689-4d9a-8ea0-d50f956d05a1"
+        }
+    ]
+}

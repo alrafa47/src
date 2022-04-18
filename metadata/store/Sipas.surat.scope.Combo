@@ -1,0 +1,70 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.surat.scope.Combo",
+        "model": "Sipas.Unit",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.surat.scope.Combo",
+        "urlFallback": "server.php/sipas/unit/read/1"
+    },
+    "name": "Sipas.internal.session.list.masuk.List1",
+    "designerId": "001f8ea3-dfca-4556-85cd-da42008c10e5",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "urlFallback",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/account/scope/1"
+            },
+            "name": "MyAjaxProxy51",
+            "designerId": "6c654df8-b104-4ce8-b932-1a0c1a884174",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader51",
+                    "designerId": "4f67e9b1-2cd6-475a-b0db-2114d93fdb8c"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "unit_nama"
+            },
+            "name": "MySorter29",
+            "designerId": "1f19d9f8-2d37-485a-81e8-cd6fb46393ec"
+        }
+    ]
+}

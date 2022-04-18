@@ -1,0 +1,413 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "constrain": true,
+        "constrainHeader": true,
+        "defaultFocus": null,
+        "designer|userAlias": "sipas_sifat_prop",
+        "designer|userClassName": "Sipas.sifat.Prop",
+        "height": null,
+        "id": null,
+        "itemId": null,
+        "layout": "fit",
+        "maximizable": true,
+        "minHeight": null,
+        "minWidth": 400,
+        "modal": true,
+        "title": "Sifat Surat",
+        "width": 460
+    },
+    "designerId": "3cffa955-cf2b-41e1-8ea5-e3142ffec936",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyPadding": "8 16 8 16",
+                "border": false,
+                "header": false,
+                "id": null,
+                "itemId": null,
+                "title": "Sifat Surat",
+                "titleAlign": null
+            },
+            "name": "MyForm6",
+            "designerId": "7e9fd30b-40d8-4d1b-b31b-7dabc6809a2a",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "emptyText": "Masukkan nama sifat",
+                        "fieldLabel": "Nama Sifat",
+                        "itemId": "sifat_nama",
+                        "layout|anchor": "100%",
+                        "name": "sifat_nama"
+                    },
+                    "name": "MyTextField11",
+                    "designerId": "df18d624-9a83-4a7e-8378-b973ff1b65e5"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "emptyText": "Masukkan kode",
+                        "fieldLabel": "Kode Sifat",
+                        "itemId": "sifat_kode",
+                        "layout|anchor": null,
+                        "name": "sifat_kode",
+                        "width": 240
+                    },
+                    "name": "MyTextField10",
+                    "designerId": "6f8ead02-8822-492a-b2d3-25671700444b"
+                },
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Keterangan",
+                        "hidden": true,
+                        "itemId": "sifat_keterangan",
+                        "labelAlign": "top",
+                        "layout|anchor": "100%",
+                        "name": "sifat_keterangan",
+                        "rows": 3
+                    },
+                    "name": "MyTextArea6",
+                    "designerId": "7658edc5-46b8-45b8-ad47-392085d5a570"
+                },
+                {
+                    "type": "Ext.form.FieldContainer",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Warna",
+                        "height": null,
+                        "width": null
+                    },
+                    "name": "MyFieldContainer",
+                    "designerId": "21fd38ac-f88a-4209-8a1b-c3b6c8bbfa18",
+                    "cn": [
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "stretch",
+                                "layout": "hbox",
+                                "width": 100
+                            },
+                            "name": "MyContainer1",
+                            "designerId": "60bb6340-2c82-4913-a20d-fb4079f3e5a0",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "emptyText": "Pilih warna",
+                                        "fieldLabel": "",
+                                        "itemId": "sifatColor",
+                                        "layout|flex": 1,
+                                        "name": "sifat_color",
+                                        "value": null
+                                    },
+                                    "name": "MyTextField2",
+                                    "designerId": "c8bcd481-f2a8-457a-9157-a177f797f3a8",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onSifatColorChange",
+                                                "implHandler": [
+                                                    "var containerColorDisplay = field.next('#containerColorDisplay');",
+                                                    "",
+                                                    "containerColorDisplay && containerColorDisplay.getEl().setStyle('background-color',newValue);"
+                                                ],
+                                                "name": "change",
+                                                "scope": "me"
+                                            },
+                                            "name": "onSifatColorChange",
+                                            "designerId": "1bc7801c-f16b-41ba-8fdc-e639cfa2121a"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.container.Container",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "height": 22,
+                                        "itemId": "containerColorDisplay",
+                                        "style": "border:1px solid gray;",
+                                        "width": 22
+                                    },
+                                    "name": "MyContainer",
+                                    "configAlternates": {
+                                        "style": "string"
+                                    },
+                                    "designerId": "7f9e20fc-bb6e-4343-8291-cb70aaf06a46"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "height": 190,
+                                "itemId": "containerColor",
+                                "overflowY": "scroll",
+                                "width": 250
+                            },
+                            "name": "MyContainer2",
+                            "designerId": "c87b1366-3ff9-4f59-aec7-c52a93d09553",
+                            "cn": [
+                                {
+                                    "type": "Ext.menu.ColorPicker",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "border": false,
+                                        "floating": false,
+                                        "height": null,
+                                        "itemId": "color",
+                                        "manageHeight": false,
+                                        "margin": null,
+                                        "minHeight": 450,
+                                        "overflowY": null,
+                                        "title": null,
+                                        "width": 230
+                                    },
+                                    "name": "MyColorMenu",
+                                    "designerId": "adea1741-ef28-45b0-a1d6-e93c11db0c95",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onColorBeforeRender",
+                                                "implHandler": [
+                                                    "component.picker.colors = ['FFCDD2','EF9A9A','E57373','EF5350','F44336','E53935','D32F2F','C62828','B71C1C','F8BBD0','F48FB1','F06292','EC407A','E91E63','D81B60','C2185B','AD1457','880E4F','E1BEE7','CE93D8','BA68C8','AB47BC','9C27B0','8E24AA','7B1FA2','6A1B9A','4A148C','D1C4E9','B39DDB','9575CD','7E57C2','673AB7','5E35B1','512DA8','4527A0','311B92','C5CAE9','9FA8DA','7986CB','5C6BC0','3F51B5','3949AB','303F9F','283593','1A237E','BBDEFB','90CAF9','64B5F6','42A5F5','2196F3','1E88E5','1976D2','1565C0','0D47A1','B3E5FC','81D4FA','4FC3F7','29B6F6','03A9F4','039BE5','0288D1','0277BD','01579B','B2EBF2','80DEEA','4DD0E1','26C6DA','00BCD4','00ACC1','0097A7','00838F','006064','B2DFDB','80CBC4','4DB6AC','26A69A','009688','00897B','00796B','00695C','004D40','C8E6C9','A5D6A7','81C784','66BB6A','4CAF50','43A047','388E3C','2E7D32','1B5E20','DCEDC8','C5E1A5','AED581','9CCC65','8BC34A','7CB342','689F38','558B2F','33691E','F0F4C3','E6EE9C','DCE775','D4E157','CDDC39','C0CA33','AFB42B','9E9D24','827717','FFF9C4','FFF59D','FFF176','FFEE58','FFEB3B','FDD835','FBC02D','F9A825','F57F17','FFECB3','FFE082','FFD54F','FFCA28','FFC107','FFB300','FFA000','FF8F00','FF6F00','FFE0B2','FFCC80','FFB74D','FFA726','FF9800','FB8C00','F57C00','EF6C00','E65100','FFCCBC','FFAB91','FF8A65','FF7043','FF5722','F4511E','E64A19','D84315','BF360C','D7CCC8','BCAAA4','A1887F','8D6E63','795548','6D4C41','5D4037','4E342E','3E2723','F5F5F5','EEEEEE','E0E0E0','BDBDBD','9E9E9E','757575','616161','424242','212121','CFD8DC','B0BEC5','90A4AE','78909C','607D8B','546E7A','455A64','37474F','263238'];"
+                                                ],
+                                                "name": "beforerender",
+                                                "scope": "me"
+                                            },
+                                            "name": "onColorBeforeRender",
+                                            "designerId": "fb990cec-1d94-4e8d-acf3-603e2ba086fa"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.field.Checkbox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "boxLabel": "Penanda Berkas Rahasia",
+                        "fieldLabel": null,
+                        "inputValue": "1",
+                        "layout|anchor": "100%",
+                        "name": "sifat_israhasia"
+                    },
+                    "name": "MyCheckbox1",
+                    "configAlternates": {
+                        "languageable": "boolean"
+                    },
+                    "designerId": "34523a3c-7d53-4d96-aa79-6219906c4457",
+                    "cn": [
+                        {
+                            "type": "Ext.XTemplate",
+                            "reference": {
+                                "name": "afterBoxLabelTpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "afterBoxLabelTpl",
+                                "implHandler": [
+                                    "<div class='alternative margin-left-24'>Jika diaktifkan, maka berkas surat akan dikunci</div>"
+                                ]
+                            },
+                            "name": "afterBoxLabelTpl",
+                            "designerId": "a9ed0a32-72d5-4874-90dc-2a05598158ca"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "padding": 0,
+                        "title": "Status Aktif"
+                    },
+                    "name": "MyFieldSet38",
+                    "designerId": "04e97ec7-f2ab-464c-8640-183e4702340e",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Checkbox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "boxLabel": "Aktif",
+                                "fieldLabel": null,
+                                "inputValue": "1",
+                                "layout|anchor": "100%",
+                                "name": "sifat_isaktif"
+                            },
+                            "name": "MyCheckbox9",
+                            "designerId": "3881dcba-f2b9-4f0f-b25a-98ae625bd658"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": null,
+                "container|defaultMargins": [
+                    "{\"top\":4,\"right\":4,\"bottom\":6,\"left\":4}"
+                ],
+                "container|pack": "end",
+                "designer|uiInterfaceName": "footer",
+                "dock": "bottom",
+                "itemId": "toolbarAction",
+                "layout": "hbox",
+                "margin": null,
+                "ui": "footer"
+            },
+            "name": "MyContainer10",
+            "designerId": "0a50337f-12c8-48ba-a53e-6077290c1c29",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "roleName": "sifat_delete",
+                        "roleable": true
+                    },
+                    "name": "sipas.com.button.delete34",
+                    "designerId": "4c4a86a0-509c-4258-a9de-411c6f90db3d",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "3715315e-7ae6-4239-80e7-cf81a5ce1662"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "roleName": "sifat_update",
+                        "roleable": true
+                    },
+                    "name": "sipas.com.button.edit35",
+                    "designerId": "0a20f35a-6212-4f1a-a556-44d62a0a6f44",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "be261aa1-046c-471a-86a7-50d2783a6919"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": null,
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.save36",
+                    "designerId": "87d2a1de-a688-4683-a879-e76d2c59ef79",
+                    "masterInstanceId": "feb6c6f9-7733-4b38-9254-091d0db2d3a9"
+                }
+            ]
+        }
+    ]
+}

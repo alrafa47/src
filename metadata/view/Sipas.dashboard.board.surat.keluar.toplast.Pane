@@ -1,0 +1,170 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "sipas_dashboard_board_surat_keluar_toplast_pane",
+        "designer|userClassName": "Sipas.dashboard.board.surat.keluar.toplast.Pane",
+        "frame": null,
+        "header": null,
+        "height": null,
+        "hideHeaders": true,
+        "itemId": null,
+        "store": "Sipas.dashboard.board.surat.keluar.toplast.List",
+        "title": "5 Surat Keluar Terbaru Bulan Ini",
+        "width": null
+    },
+    "name": "Sipas.informasi.surat.topten.Pane1",
+    "designerId": "581ce08c-117b-4380-abf3-e50d942f7b58",
+    "cn": [
+        {
+            "type": "Ext.grid.RowNumberer",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "MyRowNumberer4",
+            "designerId": "32b310b3-b6da-42eb-ba18-93c75126c14a"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "surat_keluar_perihal",
+                "flex": 1,
+                "sortable": true,
+                "text": "Surat"
+            },
+            "name": "MyColumn3",
+            "designerId": "4394fa06-282e-4084-beaf-f532117f14cf",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "",
+                            "var val = [",
+                            "    \"<span>\",",
+                            "    Ext.Date.format(record.get('surat_pembuatan_tanggal'), 'd M Y H:i'),",
+                            "    \"<span class='bold margin-left-4 margin-right-4'>\",",
+                            "    record.get('surat_nomor'),",
+                            "    \"</span>\",",
+                            "    \"<span>\",",
+                            "    record.get('surat_keluar_tujuan'),",
+                            "    \"</span> - \",",
+                            "    \"<span class='alternative italic'>\",",
+                            "    record.get('surat_keluar_perihal'),",
+                            "    \"</span>\",",
+                            "    \"</span>\"",
+                            "].join('');",
+                            "return val;"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "53e15c3b-1afb-44a0-9a4d-2502e4601a97"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Date",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "align": "center",
+                "dataIndex": "surat_keluar_backdate",
+                "format": "d M Y H:i",
+                "hidden": true,
+                "sortable": true,
+                "text": "Tanggal Surat"
+            },
+            "name": "MyDateColumn2",
+            "designerId": "4b9029c3-144b-4f06-b363-74cbb88adf0c"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "surat_keluar_agenda",
+                "hidden": true,
+                "sortable": true,
+                "text": "No. Agenda"
+            },
+            "name": "MyColumn7",
+            "designerId": "e9305ea7-e417-42d9-a1cf-e346a724e025"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "surat_keluar_tujuan",
+                "flex": null,
+                "hidden": true,
+                "sortable": true,
+                "text": "Tujuan"
+            },
+            "name": "MyColumn9",
+            "designerId": "89f4953f-8400-4f0f-930a-cf19514a1cb5"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "surat_keluar_perihal",
+                "flex": 1,
+                "hidden": true,
+                "sortable": true,
+                "text": "Perihal"
+            },
+            "name": "MyColumn27",
+            "designerId": "439e841b-0c80-4764-9819-12e49496e1cc"
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyGridView4",
+            "designerId": "a1f1ce5a-a2f8-4cfe-a9cf-935d16c9436c"
+        }
+    ]
+}

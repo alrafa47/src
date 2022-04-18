@@ -1,0 +1,64 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.beranda.notification.List",
+        "groupField": "notification_kelompok",
+        "model": "Sipas.beranda.Notification",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.beranda.notification.List"
+    },
+    "name": "Sipas.asal.List1",
+    "designerId": "a6af28cc-fee9-44e4-88d8-dd8f597ea5cd",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/account/newmail"
+            },
+            "name": "MyAjaxProxy1",
+            "designerId": "dced7071-ccbc-4219-ba14-855e99af7fd1",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader1",
+                    "designerId": "356f2b85-ca10-48b5-ab91-adc78c579c9b"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "notification_tanggal"
+            },
+            "name": "MySorter",
+            "designerId": "f7afd8f7-bcff-41dd-be66-4c56737d1cb6"
+        }
+    ]
+}

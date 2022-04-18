@@ -1,0 +1,64 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.masuk.agenda.Combo",
+        "model": "Sipas.Surat",
+        "remoteFilter": true,
+        "remoteGroup": true,
+        "remoteSort": true,
+        "storeId": "Sipas.masuk.agenda.Combo"
+    },
+    "name": "Sipas.surat.masuk.List1",
+    "designerId": "4f207e35-8053-4a6e-9d95-224a76292845",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/surat_masuk/read"
+            },
+            "name": "MyAjaxProxy33",
+            "designerId": "68bf41b2-153c-4dbf-9edf-95a83121de71",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader33",
+                    "designerId": "51fe4127-dfd4-4b2a-85bd-48914a4e72e9"
+                }
+            ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": "DESC",
+                "property": "surat_pembuatan_tanggal",
+                "root": null
+            },
+            "name": "MySorter2",
+            "designerId": "152a1e43-960b-4466-8c76-39e0dceeb5e2"
+        }
+    ]
+}
