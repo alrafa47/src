@@ -6011,6 +6011,7 @@ CREATE OR REPLACE VIEW `v_r_rekap_surat_retensi` AS
 SELECT 
   `unit`.`unit_nama` AS `unit_nama`,
   `unit`.`unit_kode` AS `unit_kode`,
+  `unit`.`unit_induk` AS `unit_induk`,
   COUNT(`surat`.`surat_id`) AS `jumlah_surat`,
   YEAR(`surat`.`surat_retensi_tgl`) AS `tahun`,
   MONTH(`surat`.`surat_retensi_tgl`) AS `bulan`,
@@ -6092,6 +6093,8 @@ CREATE OR REPLACE VIEW v_r_rekap_surat_keluar AS
 SELECT 
   `unit`.`unit_nama` AS `unit_nama`,
   `unit`.`unit_kode` AS `unit_kode`,
+  `unit`.`unit_induk` AS `unit_induk`,
+  `uInduk`.`unit_nama` AS `unit_induk_nama`,
   COUNT(`surat`.`surat_id`) AS `jumlah_surat`,
   YEAR(`surat`.`surat_tanggal`) AS `tahun`,
   MONTH(`surat`.`surat_tanggal`) AS `bulan`,
@@ -6111,6 +6114,8 @@ LEFT JOIN `properti` `pro`
     ON `pro`.`properti_id` = `surat`.`surat_properti`
 LEFT JOIN `unit`
     ON `unit`.`unit_id` = `surat`.`surat_unit`
+LEFT JOIN `unit` `uInduk`
+    ON `uInduk`.`unit_id` = `unit`.`unit_induk`
 LEFT JOIN `properti` `pUnit`
     ON `pUnit`.`properti_id` = `unit`.`unit_properti`
 WHERE 
@@ -6174,6 +6179,8 @@ SELECT
   ) AS `surat_model`,
   `unit`.`unit_nama` AS `unit_nama`,
   `unit`.`unit_kode` AS `unit_kode`,
+  `unit`.`unit_induk` AS `unit_induk`,
+  `uInduk`.`unit_nama` AS `unit_induk_nama`,
   COUNT(`surat`.`surat_id`) AS `surat_jumlah` 
 FROM
   `surat` 
@@ -6181,6 +6188,8 @@ LEFT JOIN `properti` `pro`
     ON `pro`.`properti_id` = `surat`.`surat_properti`
 LEFT JOIN `unit`
     ON `unit`.`unit_id` = `surat`.`surat_unit`
+LEFT JOIN `unit` `uInduk`
+    ON `uInduk`.`unit_id` = `unit`.`unit_induk`
 LEFT JOIN `properti` `pUnit`
     ON `pUnit`.`properti_id` = `unit`.`unit_properti`
 WHERE 

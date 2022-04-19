@@ -2,7 +2,8 @@
 	exit('No direct script access allowed');
 }
 
-class Account extends Base_Controller {
+class Account extends Base_Controller
+{
 
 	protected $messages = array(
 		'login_success' => 'Login berhasil. Selamat datang {user_display}',
@@ -19,7 +20,8 @@ class Account extends Base_Controller {
 	protected $limit_delay = 10; // in second
 	protected $sess_limit_timer = 'login_timer';
 	protected $sess_limit_counter = 'login_counter';
-	function __construct() {
+	function __construct()
+	{
 		parent::__construct();
 
 		// please do not remove these lines, ci doesnt recognize any override of our own email
@@ -108,11 +110,13 @@ class Account extends Base_Controller {
 		$this->m_setting = $this->model('sipas/pengaturan', true);
 	}
 
-	function index() {
+	function index()
+	{
 		$this->info();
 	}
 
-	public function profile_update() {
+	public function profile_update()
+	{
 		$user = $this->m_user;
 		$user_view = $this->m_user_view;
 		$account = $this->m_account;
@@ -149,12 +153,10 @@ class Account extends Base_Controller {
 					} else {
 						$properti->updated($idProp, $akun, $updated_data, $updated_data['akun_nama']);
 					}
-
 				});
 				if ($operation[$user->successProperty]) {
 					$operation[$user->dataProperty] = $user->read($id);
 				}
-
 			} else {
 				$operation = array('success' => false, 'message' => 'Password Lama Yang Anda Masukan Tidak Sesuai');
 			}
@@ -174,18 +176,17 @@ class Account extends Base_Controller {
 				} else {
 					$properti->updated($idProp, $akun, $updated_data, $updated_data['akun_nama']);
 				}
-
 			});
 			if ($operation[$user->successProperty]) {
 				$operation[$user->dataProperty] = $user->read($id);
 			}
-
 		}
 
 		$this->response($operation);
 	}
 
-	public function surat_keluar($section = null) {
+	public function surat_keluar($section = null)
+	{
 		$model_keluar = $this->m_surat_keluar_hidup_view;
 		$scope = $this->m_unit_cakupan_view;
 		$account = $this->m_account;
@@ -208,146 +209,146 @@ class Account extends Base_Controller {
 				$scopeid = $profile['staf_unit'];
 			}
 			switch ($section) {
-			case 'read':
-				$model = $this->m_surat_keluar_hidup_view;
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
+				case 'read':
+					$model = $this->m_surat_keluar_hidup_view;
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
 
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
-			case 'draft':
-				$model = $this->m_surat_keluar_draft_view;
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
+				case 'draft':
+					$model = $this->m_surat_keluar_draft_view;
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
 
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
-			case 'dlm_setuju':
-				$model = $this->m_surat_keluar_dlm_setuju_view;
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
+				case 'dlm_setuju':
+					$model = $this->m_surat_keluar_dlm_setuju_view;
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
 
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
-			case 'setuju':
-				$model = $this->m_surat_keluar_setuju_list_view;
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
+				case 'setuju':
+					$model = $this->m_surat_keluar_setuju_list_view;
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
 
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
-			case 'revisi':
-				$model = $this->m_surat_keluar_revisi_view;
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
+				case 'revisi':
+					$model = $this->m_surat_keluar_revisi_view;
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
 
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
-			case 'tolak':
-				$model = $this->m_surat_keluar_tolak_view;
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
+				case 'tolak':
+					$model = $this->m_surat_keluar_tolak_view;
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
 
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
-			case 'blm_nomor':
-				$model = $this->m_surat_keluar_blm_nomor_view;
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
+				case 'blm_nomor':
+					$model = $this->m_surat_keluar_blm_nomor_view;
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
 
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
-			case 'blm_ekspedisi':
-				$model = $this->m_surat_keluar_blm_ekspedisi_view;
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
+				case 'blm_ekspedisi':
+					$model = $this->m_surat_keluar_blm_ekspedisi_view;
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
 
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
-			case 'ekspedisi':
-				$model = $this->m_surat_keluar_ekspedisi_view;
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
+				case 'ekspedisi':
+					$model = $this->m_surat_keluar_ekspedisi_view;
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
 
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
-			default:
-				$model = $this->m_surat_keluar_aktif_view;
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
+				default:
+					$model = $this->m_surat_keluar_aktif_view;
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
 
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
 			}
 
 			$records = $model->select(array(
@@ -361,7 +362,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	public function surat_ikeluar($section = null) {
+	public function surat_ikeluar($section = null)
+	{
 		$me = $this;
 
 		$model_ikeluar = $me->m_surat_ikeluar_hidup_view;
@@ -389,229 +391,228 @@ class Account extends Base_Controller {
 			$id = varGet('id', varGet('surat_id'));
 			$record = $model_ikeluar->read($id);
 			$me->response_record($record);
-
 		} else {
 			switch ($section) {
-			case 'read':
-				$surat_internal_view = $me->m_surat_ikeluar_hidup_view;
-				// if($tipeid !== 'all' && !is_null($tipeid)){
-				//     array_unshift($filter, (object)array(
-				//         'type'  => 'exact',
-				//         'field' => 'surat_itipe',
-				//         'value' => $tipeid
-				//     ));
-				// }
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
-			case 'draft':
-				$surat_internal_view = $me->m_surat_ikeluar_draft_view;
-				// if($tipeid !== 'all' && !is_null($tipeid)){
-				//     array_unshift($filter, (object)array(
-				//         'type'  => 'exact',
-				//         'field' => 'surat_itipe',
-				//         'value' => $tipeid
-				//     ));
-				// }
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
-			case 'dlm_setuju':
-				$surat_internal_view = $me->m_surat_ikeluar_dlm_setuju_view;
-				// if($tipeid !== 'all' && !is_null($tipeid)){
-				//     array_unshift($filter, (object)array(
-				//         'type'  => 'exact',
-				//         'field' => 'surat_itipe',
-				//         'value' => $tipeid
-				//     ));
-				// }
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
-			case 'setuju':
-				$surat_internal_view = $me->m_surat_ikeluar_setuju_list_view;
-				// if($tipeid !== 'all' && !is_null($tipeid)){
-				//     array_unshift($filter, (object)array(
-				//         'type'  => 'exact',
-				//         'field' => 'surat_itipe',
-				//         'value' => $tipeid
-				//     ));
-				// }
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
-			case 'revisi':
-				$surat_internal_view = $me->m_surat_ikeluar_revisi_view;
-				// if($tipeid !== 'all' && !is_null($tipeid)){
-				//     array_unshift($filter, (object)array(
-				//         'type'  => 'exact',
-				//         'field' => 'surat_itipe',
-				//         'value' => $tipeid
-				//     ));
-				// }
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
-			case 'blm_nomor':
-				$surat_internal_view = $me->m_surat_ikeluar_blm_nomor_view;
-				// if($tipeid !== 'all' && !is_null($tipeid)){
-				//     array_unshift($filter, (object)array(
-				//         'type'  => 'exact',
-				//         'field' => 'surat_itipe',
-				//         'value' => $tipeid
-				//     ));
-				// }
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
-			case 'blm_kirim':
-				$surat_internal_view = $me->m_surat_ikeluar_blm_kirim_view;
-				// if($tipeid !== 'all' && !is_null($tipeid)){
-				//     array_unshift($filter, (object)array(
-				//         'type'  => 'exact',
-				//         'field' => 'surat_itipe',
-				//         'value' => $tipeid
-				//     ));
-				// }
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
-			case 'blm_terima':
-				$surat_internal_view = $me->m_surat_ikeluar_blm_terima_view;
-				// if($tipeid !== 'all' && !is_null($tipeid)){
-				//     array_unshift($filter, (object)array(
-				//         'type'  => 'exact',
-				//         'field' => 'surat_itipe',
-				//         'value' => $tipeid
-				//     ));
-				// }
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
-			case 'terima':
-				$surat_internal_view = $me->m_surat_ikeluar_terima_view;
-				// if($tipeid !== 'all' && !is_null($tipeid)){
-				//     array_unshift($filter, (object)array(
-				//         'type'  => 'exact',
-				//         'field' => 'surat_itipe',
-				//         'value' => $tipeid
-				//     ));
-				// }
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
-			case 'tolak':
-				$surat_internal_view = $me->m_surat_ikeluar_tolak_view;
-				// if($tipeid !== 'all' && !is_null($tipeid)){
-				//     array_unshift($filter, (object)array(
-				//         'type'  => 'exact',
-				//         'field' => 'surat_itipe',
-				//         'value' => $tipeid
-				//     ));
-				// }
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
-			default:
-				$surat_internal_view = $me->m_surat_ikeluar_aktif_view;
-				// if($tipeid !== 'all' && !is_null($tipeid)){
-				//     array_unshift($filter, (object)array(
-				//         'type'  => 'exact',
-				//         'field' => 'surat_itipe',
-				//         'value' => $tipeid
-				//     ));
-				// }
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_unit',
-					'value' => $scopeid,
-				));
-				array_unshift($filter, (object) array(
-					'type' => 'exact',
-					'field' => 'surat_properti_pembuat_id',
-					'value' => $pegawai,
-				));
-				break;
+				case 'read':
+					$surat_internal_view = $me->m_surat_ikeluar_hidup_view;
+					// if($tipeid !== 'all' && !is_null($tipeid)){
+					//     array_unshift($filter, (object)array(
+					//         'type'  => 'exact',
+					//         'field' => 'surat_itipe',
+					//         'value' => $tipeid
+					//     ));
+					// }
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
+				case 'draft':
+					$surat_internal_view = $me->m_surat_ikeluar_draft_view;
+					// if($tipeid !== 'all' && !is_null($tipeid)){
+					//     array_unshift($filter, (object)array(
+					//         'type'  => 'exact',
+					//         'field' => 'surat_itipe',
+					//         'value' => $tipeid
+					//     ));
+					// }
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
+				case 'dlm_setuju':
+					$surat_internal_view = $me->m_surat_ikeluar_dlm_setuju_view;
+					// if($tipeid !== 'all' && !is_null($tipeid)){
+					//     array_unshift($filter, (object)array(
+					//         'type'  => 'exact',
+					//         'field' => 'surat_itipe',
+					//         'value' => $tipeid
+					//     ));
+					// }
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
+				case 'setuju':
+					$surat_internal_view = $me->m_surat_ikeluar_setuju_list_view;
+					// if($tipeid !== 'all' && !is_null($tipeid)){
+					//     array_unshift($filter, (object)array(
+					//         'type'  => 'exact',
+					//         'field' => 'surat_itipe',
+					//         'value' => $tipeid
+					//     ));
+					// }
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
+				case 'revisi':
+					$surat_internal_view = $me->m_surat_ikeluar_revisi_view;
+					// if($tipeid !== 'all' && !is_null($tipeid)){
+					//     array_unshift($filter, (object)array(
+					//         'type'  => 'exact',
+					//         'field' => 'surat_itipe',
+					//         'value' => $tipeid
+					//     ));
+					// }
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
+				case 'blm_nomor':
+					$surat_internal_view = $me->m_surat_ikeluar_blm_nomor_view;
+					// if($tipeid !== 'all' && !is_null($tipeid)){
+					//     array_unshift($filter, (object)array(
+					//         'type'  => 'exact',
+					//         'field' => 'surat_itipe',
+					//         'value' => $tipeid
+					//     ));
+					// }
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
+				case 'blm_kirim':
+					$surat_internal_view = $me->m_surat_ikeluar_blm_kirim_view;
+					// if($tipeid !== 'all' && !is_null($tipeid)){
+					//     array_unshift($filter, (object)array(
+					//         'type'  => 'exact',
+					//         'field' => 'surat_itipe',
+					//         'value' => $tipeid
+					//     ));
+					// }
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
+				case 'blm_terima':
+					$surat_internal_view = $me->m_surat_ikeluar_blm_terima_view;
+					// if($tipeid !== 'all' && !is_null($tipeid)){
+					//     array_unshift($filter, (object)array(
+					//         'type'  => 'exact',
+					//         'field' => 'surat_itipe',
+					//         'value' => $tipeid
+					//     ));
+					// }
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
+				case 'terima':
+					$surat_internal_view = $me->m_surat_ikeluar_terima_view;
+					// if($tipeid !== 'all' && !is_null($tipeid)){
+					//     array_unshift($filter, (object)array(
+					//         'type'  => 'exact',
+					//         'field' => 'surat_itipe',
+					//         'value' => $tipeid
+					//     ));
+					// }
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
+				case 'tolak':
+					$surat_internal_view = $me->m_surat_ikeluar_tolak_view;
+					// if($tipeid !== 'all' && !is_null($tipeid)){
+					//     array_unshift($filter, (object)array(
+					//         'type'  => 'exact',
+					//         'field' => 'surat_itipe',
+					//         'value' => $tipeid
+					//     ));
+					// }
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
+				default:
+					$surat_internal_view = $me->m_surat_ikeluar_aktif_view;
+					// if($tipeid !== 'all' && !is_null($tipeid)){
+					//     array_unshift($filter, (object)array(
+					//         'type'  => 'exact',
+					//         'field' => 'surat_itipe',
+					//         'value' => $tipeid
+					//     ));
+					// }
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_unit',
+						'value' => $scopeid,
+					));
+					array_unshift($filter, (object) array(
+						'type' => 'exact',
+						'field' => 'surat_properti_pembuat_id',
+						'value' => $pegawai,
+					));
+					break;
 			}
 
 			$records = $surat_internal_view->select(array(
@@ -624,7 +625,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function masuk() {
+	function masuk()
+	{
 		$me = $this;
 		$account = $me->m_account;
 		$surat = $me->m_surat;
@@ -689,7 +691,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function masuk_blmbaca() {
+	function masuk_blmbaca()
+	{
 		$me = $this;
 		$account = $me->m_account;
 		$surat = $me->m_surat;
@@ -754,7 +757,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function masuk_baca() {
+	function masuk_baca()
+	{
 		$me = $this;
 		$account = $me->m_account;
 		$surat = $me->m_surat;
@@ -819,7 +823,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function masuk_terus() {
+	function masuk_terus()
+	{
 		$me = $this;
 		$account = $me->m_account;
 		$surat = $me->m_surat;
@@ -884,7 +889,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function koreksi() {
+	function koreksi()
+	{
 		$me = $this;
 
 		$koreksi = $me->m_disposisi;
@@ -917,7 +923,6 @@ class Account extends Base_Controller {
 
 			$record = $penerima_view->read($id);
 			$this->response_record($record);
-
 		} else {
 			array_unshift($filter, (object) array(
 				'property' => 'disposisi_masuk_staf',
@@ -942,7 +947,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function koreksi_blmtindak() {
+	function koreksi_blmtindak()
+	{
 		$me = $this;
 
 		$koreksi = $me->m_disposisi;
@@ -974,7 +980,6 @@ class Account extends Base_Controller {
 
 			$record = $penerima_view->read($id);
 			$this->response_record($record);
-
 		} else {
 			array_unshift($filter, (object) array(
 				'property' => 'disposisi_masuk_staf',
@@ -999,7 +1004,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function koreksi_setuju() {
+	function koreksi_setuju()
+	{
 		$me = $this;
 
 		$koreksi = $me->m_disposisi;
@@ -1031,7 +1037,6 @@ class Account extends Base_Controller {
 
 			$record = $penerima_view->read($id);
 			$this->response_record($record);
-
 		} else {
 			array_unshift($filter, (object) array(
 				'property' => 'disposisi_masuk_staf',
@@ -1056,7 +1061,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function koreksi_tolak() {
+	function koreksi_tolak()
+	{
 		$me = $this;
 
 		$koreksi = $me->m_disposisi;
@@ -1088,7 +1094,6 @@ class Account extends Base_Controller {
 
 			$record = $penerima_view->read($id);
 			$this->response_record($record);
-
 		} else {
 			array_unshift($filter, (object) array(
 				'property' => 'disposisi_masuk_staf',
@@ -1113,7 +1118,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function disposisi($section = null) {
+	function disposisi($section = null)
+	{
 		$me = $this;
 
 		$account = $me->m_account;
@@ -1146,7 +1152,6 @@ class Account extends Base_Controller {
 			}
 			$record = $disposisi_masuk_view->read($id);
 			$me->response_record($record);
-
 		} else {
 
 			array_unshift($filter, (object) array(
@@ -1177,7 +1182,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function disposisi_blmbaca($section = null) {
+	function disposisi_blmbaca($section = null)
+	{
 		$me = $this;
 
 		$account = $me->m_account;
@@ -1210,7 +1216,6 @@ class Account extends Base_Controller {
 			}
 			$record = $disposisi_masuk_view->read($id);
 			$me->response_record($record);
-
 		} else {
 
 			array_unshift($filter, (object) array(
@@ -1241,7 +1246,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function disposisi_baca($section = null) {
+	function disposisi_baca($section = null)
+	{
 		$me = $this;
 
 		$account = $me->m_account;
@@ -1274,7 +1280,6 @@ class Account extends Base_Controller {
 			}
 			$record = $disposisi_masuk_view->read($id);
 			$me->response_record($record);
-
 		} else {
 
 			array_unshift($filter, (object) array(
@@ -1305,7 +1310,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function disposisi_terus($section = null) {
+	function disposisi_terus($section = null)
+	{
 		$me = $this;
 
 		$account = $me->m_account;
@@ -1338,7 +1344,6 @@ class Account extends Base_Controller {
 			}
 			$record = $disposisi_masuk_view->read($id);
 			$me->response_record($record);
-
 		} else {
 
 			array_unshift($filter, (object) array(
@@ -1369,7 +1374,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function disposisi_nonaktif($section = null) {
+	function disposisi_nonaktif($section = null)
+	{
 		$me = $this;
 
 		$account = $me->m_account;
@@ -1402,7 +1408,6 @@ class Account extends Base_Controller {
 			}
 			$record = $disposisi_masuk_view->read($id);
 			$me->response_record($record);
-
 		} else {
 
 			array_unshift($filter, (object) array(
@@ -1433,7 +1438,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function notadinas($section = null) {
+	function notadinas($section = null)
+	{
 		$me = $this;
 
 		$account = $me->m_account;
@@ -1466,7 +1472,6 @@ class Account extends Base_Controller {
 			}
 			$record = $disposisi_masuk_view->read($id);
 			$me->response_record($record);
-
 		} else {
 
 			array_unshift($filter, (object) array(
@@ -1497,7 +1502,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function notadinas_blmbaca($section = null) {
+	function notadinas_blmbaca($section = null)
+	{
 		$me = $this;
 
 		$account = $me->m_account;
@@ -1530,7 +1536,6 @@ class Account extends Base_Controller {
 			}
 			$record = $disposisi_masuk_view->read($id);
 			$me->response_record($record);
-
 		} else {
 
 			array_unshift($filter, (object) array(
@@ -1561,7 +1566,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function notadinas_baca($section = null) {
+	function notadinas_baca($section = null)
+	{
 		$me = $this;
 
 		$account = $me->m_account;
@@ -1594,7 +1600,6 @@ class Account extends Base_Controller {
 			}
 			$record = $disposisi_masuk_view->read($id);
 			$me->response_record($record);
-
 		} else {
 
 			array_unshift($filter, (object) array(
@@ -1625,7 +1630,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function notadinas_terus($section = null) {
+	function notadinas_terus($section = null)
+	{
 		$me = $this;
 
 		$account = $me->m_account;
@@ -1658,7 +1664,6 @@ class Account extends Base_Controller {
 			}
 			$record = $disposisi_masuk_view->read($id);
 			$me->response_record($record);
-
 		} else {
 
 			array_unshift($filter, (object) array(
@@ -1689,7 +1694,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function notadinas_nonaktif($section = null) {
+	function notadinas_nonaktif($section = null)
+	{
 		$me = $this;
 
 		$account = $me->m_account;
@@ -1722,7 +1728,6 @@ class Account extends Base_Controller {
 			}
 			$record = $disposisi_masuk_view->read($id);
 			$me->response_record($record);
-
 		} else {
 
 			array_unshift($filter, (object) array(
@@ -1753,7 +1758,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function pengajuan_koreksi() {
+	function pengajuan_koreksi()
+	{
 		$me = $this;
 
 		$surat = $me->m_surat;
@@ -1784,7 +1790,6 @@ class Account extends Base_Controller {
 
 			$record = $pengajuan_koreksi_view->read($id);
 			$this->response_record($record);
-
 		} else {
 			array_unshift($filter, (object) array(
 				'property' => $koreksi::$field_staf,
@@ -1805,7 +1810,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function monitored_staf($id = null) {
+	function monitored_staf($id = null)
+	{
 		$me = $this;
 		$account = $me->m_account;
 		$staf_monitor = $me->m_staf_wakil;
@@ -1825,7 +1831,8 @@ class Account extends Base_Controller {
 		$this->response_records($records);
 	}
 
-	function asistensi($section = null) {
+	function asistensi($section = null)
+	{
 		$me = $this;
 		$account = $me->m_account;
 		$surat = $me->m_surat;
@@ -1890,549 +1897,549 @@ class Account extends Base_Controller {
 		$start = varGet('start', 0);
 
 		switch ($section) {
-		case 'masuk':
-			array_unshift($filter, (object) array(
-				'property' => $disposisi_masuk::$field_receiver_id,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'property' => $surat::$field_distribusi_lookup,
-				'value' => $surat::DISTRIBUSI_DISTRIBUSI,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'type' => 'custom',
-				'value' => $disposisi::$field_induk . ' IS NULL',
-			));
-			array_unshift($filter, (object) array(
-				'type' => 'custom',
-				'value' => 'IFNULL(' . $disposisi_view::$field_iscabut . ', 0) = ' . $disposisi_view::AKTIF,
-			));
-
-			$filter = json_encode($filter);
-			$records = $disposisi_masuk_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'masuk_blmbaca':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi_masuk::$field_receiver_id,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'property' => $surat::$field_distribusi_lookup,
-				'value' => $surat::DISTRIBUSI_DISTRIBUSI,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'type' => 'custom',
-				'value' => $disposisi::$field_induk . ' IS NULL',
-			));
-			array_unshift($filter, (object) array(
-				'type' => 'custom',
-				'value' => 'IFNULL(' . $disposisi_view::$field_iscabut . ', 0) = ' . $disposisi_view::AKTIF,
-			));
-
-			$filter = json_encode($filter);
-			$records = $disposisi_masuk_blmbaca_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'masuk_baca':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi_masuk::$field_receiver_id,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'property' => $surat::$field_distribusi_lookup,
-				'value' => $surat::DISTRIBUSI_DISTRIBUSI,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'type' => 'custom',
-				'value' => $disposisi::$field_induk . ' IS NULL',
-			));
-			array_unshift($filter, (object) array(
-				'type' => 'custom',
-				'value' => 'IFNULL(' . $disposisi_view::$field_iscabut . ', 0) = ' . $disposisi_view::AKTIF,
-			));
-
-			$filter = json_encode($filter);
-			$records = $disposisi_masuk_baca_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'masuk_terus':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi_masuk::$field_receiver_id,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'property' => $surat::$field_distribusi_lookup,
-				'value' => $surat::DISTRIBUSI_DISTRIBUSI,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'type' => 'custom',
-				'value' => $disposisi::$field_induk . ' IS NULL',
-			));
-			array_unshift($filter, (object) array(
-				'type' => 'custom',
-				'value' => 'IFNULL(' . $disposisi_view::$field_iscabut . ', 0) = ' . $disposisi_view::AKTIF,
-			));
-
-			$filter = json_encode($filter);
-			$records = $disposisi_masuk_terus_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'disposisi':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi_masuk::$field_receiver_id,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'property' => $surat::$field_distribusi_lookup,
-				'value' => $surat::DISTRIBUSI_DISTRIBUSI,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'type' => 'custom',
-				'value' => $disposisi::$field_induk . ' IS NOT NULL',
-			));
-
-			$filter = json_encode($filter);
-			$records = $disposisi_masuk_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'disposisi_blmbaca':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi_masuk::$field_receiver_id,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'property' => $surat::$field_distribusi_lookup,
-				'value' => $surat::DISTRIBUSI_DISTRIBUSI,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'type' => 'custom',
-				'value' => $disposisi::$field_induk . ' IS NOT NULL',
-			));
-
-			$filter = json_encode($filter);
-			$records = $disposisi_masuk_blmbaca_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'disposisi_baca':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi_masuk::$field_receiver_id,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'property' => $surat::$field_distribusi_lookup,
-				'value' => $surat::DISTRIBUSI_DISTRIBUSI,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'type' => 'custom',
-				'value' => $disposisi::$field_induk . ' IS NOT NULL',
-			));
-
-			$filter = json_encode($filter);
-			$records = $disposisi_masuk_baca_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'disposisi_terus':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi_masuk::$field_receiver_id,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'property' => $surat::$field_distribusi_lookup,
-				'value' => $surat::DISTRIBUSI_DISTRIBUSI,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'type' => 'custom',
-				'value' => $disposisi::$field_induk . ' IS NOT NULL',
-			));
-
-			$filter = json_encode($filter);
-			$records = $disposisi_masuk_terus_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'notadinas':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi_masuk::$field_receiver_id,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'property' => $surat::$field_distribusi_lookup,
-				'value' => $surat::DISTRIBUSI_DISTRIBUSI,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'type' => 'custom',
-				'value' => $disposisi::$field_induk . ' IS NOT NULL',
-			));
-			array_unshift($filter, (object) array(
-				'type' => 'custom',
-				'value' => 'IFNULL(' . $disposisi_view::$field_iscabut . ', 0) = ' . $disposisi_view::AKTIF,
-			));
-
-			$filter = json_encode($filter);
-			$records = $notadinas_masuk_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'disposisi_nonaktif':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi_masuk::$field_receiver_id,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'property' => $surat::$field_distribusi_lookup,
-				'value' => $surat::DISTRIBUSI_DISTRIBUSI,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'type' => 'custom',
-				'value' => $disposisi::$field_induk . ' IS NOT NULL',
-			));
-
-			$filter = json_encode($filter);
-			$records = $disposisi_masuk_nonaktif_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'notadinas':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi_masuk::$field_receiver_id,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'property' => $surat::$field_distribusi_lookup,
-				'value' => $surat::DISTRIBUSI_DISTRIBUSI,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'type' => 'custom',
-				'value' => $disposisi::$field_induk . ' IS NOT NULL',
-			));
-
-			$filter = json_encode($filter);
-			$records = $notadinas_masuk_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'notadinas_blmbaca':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi_masuk::$field_receiver_id,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'property' => $surat::$field_distribusi_lookup,
-				'value' => $surat::DISTRIBUSI_DISTRIBUSI,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'type' => 'custom',
-				'value' => $disposisi::$field_induk . ' IS NOT NULL',
-			));
-
-			$filter = json_encode($filter);
-			$records = $notadinas_masuk_blmbaca_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'notadinas_baca':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi_masuk::$field_receiver_id,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'property' => $surat::$field_distribusi_lookup,
-				'value' => $surat::DISTRIBUSI_DISTRIBUSI,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'type' => 'custom',
-				'value' => $disposisi::$field_induk . ' IS NOT NULL',
-			));
-
-			$filter = json_encode($filter);
-			$records = $notadinas_masuk_baca_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'notadinas_nonaktif':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi_masuk::$field_receiver_id,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'property' => $surat::$field_distribusi_lookup,
-				'value' => $surat::DISTRIBUSI_DISTRIBUSI,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'type' => 'custom',
-				'value' => $disposisi::$field_induk . ' IS NOT NULL',
-			));
-
-			$filter = json_encode($filter);
-			$records = $notadinas_masuk_nonaktif_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'notadinas_terus':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi_masuk::$field_receiver_id,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'property' => $surat::$field_distribusi_lookup,
-				'value' => $surat::DISTRIBUSI_DISTRIBUSI,
-				'type' => 'exact',
-			));
-			array_unshift($filter, (object) array(
-				'type' => 'custom',
-				'value' => $disposisi::$field_induk . ' IS NOT NULL',
-			));
-
-			$filter = json_encode($filter);
-			$records = $notadinas_masuk_terus_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'riwayat':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi::$field_staf,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-
-			$filter = json_encode($filter);
-			$records = $riwayat_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'riwayat_aktif':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi::$field_staf,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-
-			$filter = json_encode($filter);
-			$records = $riwayat_aktif_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'riwayat_nonaktif':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi::$field_staf,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-
-			$filter = json_encode($filter);
-			$records = $riwayat_nonaktif_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'koreksi':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi_masuk::$field_receiver_id,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-			array_push($filter, array(
-				'type' => 'custom',
-				'value' => $surat::$field_approval_lookup . ' <> ' . $surat::SETUJU_INIT,
-			));
-
-			$filter = json_encode($filter);
-			$records = $koreksi_masuk_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'koreksi_blmtindak':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi_masuk::$field_receiver_id,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-			array_push($filter, array(
-				'type' => 'custom',
-				'value' => $surat::$field_approval_lookup . ' <> ' . $surat::SETUJU_INIT,
-			));
-
-			$filter = json_encode($filter);
-			$records = $koreksi_masuk_blmtindak_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'koreksi_setuju':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi_masuk::$field_receiver_id,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-			array_push($filter, array(
-				'type' => 'custom',
-				'value' => $surat::$field_approval_lookup . ' <> ' . $surat::SETUJU_INIT,
-			));
-
-			$filter = json_encode($filter);
-			$records = $koreksi_masuk_setuju_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
-
-		case 'koreksi_tolak':
-
-			array_unshift($filter, (object) array(
-				'property' => $disposisi_masuk::$field_receiver_id,
-				'value' => $pegawai,
-				'type' => 'exact',
-			));
-			array_push($filter, array(
-				'type' => 'custom',
-				'value' => $surat::$field_approval_lookup . ' <> ' . $surat::SETUJU_INIT,
-			));
-
-			$filter = json_encode($filter);
-			$records = $koreksi_masuk_tolak_view->select(array(
-				'limit' => $limit,
-				'start' => $start,
-				'filter' => $filter,
-				'sorter' => $sorter,
-			));
-			break;
+			case 'masuk':
+				array_unshift($filter, (object) array(
+					'property' => $disposisi_masuk::$field_receiver_id,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'property' => $surat::$field_distribusi_lookup,
+					'value' => $surat::DISTRIBUSI_DISTRIBUSI,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'type' => 'custom',
+					'value' => $disposisi::$field_induk . ' IS NULL',
+				));
+				array_unshift($filter, (object) array(
+					'type' => 'custom',
+					'value' => 'IFNULL(' . $disposisi_view::$field_iscabut . ', 0) = ' . $disposisi_view::AKTIF,
+				));
+
+				$filter = json_encode($filter);
+				$records = $disposisi_masuk_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'masuk_blmbaca':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi_masuk::$field_receiver_id,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'property' => $surat::$field_distribusi_lookup,
+					'value' => $surat::DISTRIBUSI_DISTRIBUSI,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'type' => 'custom',
+					'value' => $disposisi::$field_induk . ' IS NULL',
+				));
+				array_unshift($filter, (object) array(
+					'type' => 'custom',
+					'value' => 'IFNULL(' . $disposisi_view::$field_iscabut . ', 0) = ' . $disposisi_view::AKTIF,
+				));
+
+				$filter = json_encode($filter);
+				$records = $disposisi_masuk_blmbaca_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'masuk_baca':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi_masuk::$field_receiver_id,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'property' => $surat::$field_distribusi_lookup,
+					'value' => $surat::DISTRIBUSI_DISTRIBUSI,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'type' => 'custom',
+					'value' => $disposisi::$field_induk . ' IS NULL',
+				));
+				array_unshift($filter, (object) array(
+					'type' => 'custom',
+					'value' => 'IFNULL(' . $disposisi_view::$field_iscabut . ', 0) = ' . $disposisi_view::AKTIF,
+				));
+
+				$filter = json_encode($filter);
+				$records = $disposisi_masuk_baca_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'masuk_terus':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi_masuk::$field_receiver_id,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'property' => $surat::$field_distribusi_lookup,
+					'value' => $surat::DISTRIBUSI_DISTRIBUSI,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'type' => 'custom',
+					'value' => $disposisi::$field_induk . ' IS NULL',
+				));
+				array_unshift($filter, (object) array(
+					'type' => 'custom',
+					'value' => 'IFNULL(' . $disposisi_view::$field_iscabut . ', 0) = ' . $disposisi_view::AKTIF,
+				));
+
+				$filter = json_encode($filter);
+				$records = $disposisi_masuk_terus_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'disposisi':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi_masuk::$field_receiver_id,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'property' => $surat::$field_distribusi_lookup,
+					'value' => $surat::DISTRIBUSI_DISTRIBUSI,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'type' => 'custom',
+					'value' => $disposisi::$field_induk . ' IS NOT NULL',
+				));
+
+				$filter = json_encode($filter);
+				$records = $disposisi_masuk_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'disposisi_blmbaca':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi_masuk::$field_receiver_id,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'property' => $surat::$field_distribusi_lookup,
+					'value' => $surat::DISTRIBUSI_DISTRIBUSI,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'type' => 'custom',
+					'value' => $disposisi::$field_induk . ' IS NOT NULL',
+				));
+
+				$filter = json_encode($filter);
+				$records = $disposisi_masuk_blmbaca_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'disposisi_baca':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi_masuk::$field_receiver_id,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'property' => $surat::$field_distribusi_lookup,
+					'value' => $surat::DISTRIBUSI_DISTRIBUSI,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'type' => 'custom',
+					'value' => $disposisi::$field_induk . ' IS NOT NULL',
+				));
+
+				$filter = json_encode($filter);
+				$records = $disposisi_masuk_baca_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'disposisi_terus':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi_masuk::$field_receiver_id,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'property' => $surat::$field_distribusi_lookup,
+					'value' => $surat::DISTRIBUSI_DISTRIBUSI,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'type' => 'custom',
+					'value' => $disposisi::$field_induk . ' IS NOT NULL',
+				));
+
+				$filter = json_encode($filter);
+				$records = $disposisi_masuk_terus_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'notadinas':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi_masuk::$field_receiver_id,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'property' => $surat::$field_distribusi_lookup,
+					'value' => $surat::DISTRIBUSI_DISTRIBUSI,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'type' => 'custom',
+					'value' => $disposisi::$field_induk . ' IS NOT NULL',
+				));
+				array_unshift($filter, (object) array(
+					'type' => 'custom',
+					'value' => 'IFNULL(' . $disposisi_view::$field_iscabut . ', 0) = ' . $disposisi_view::AKTIF,
+				));
+
+				$filter = json_encode($filter);
+				$records = $notadinas_masuk_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'disposisi_nonaktif':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi_masuk::$field_receiver_id,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'property' => $surat::$field_distribusi_lookup,
+					'value' => $surat::DISTRIBUSI_DISTRIBUSI,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'type' => 'custom',
+					'value' => $disposisi::$field_induk . ' IS NOT NULL',
+				));
+
+				$filter = json_encode($filter);
+				$records = $disposisi_masuk_nonaktif_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'notadinas':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi_masuk::$field_receiver_id,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'property' => $surat::$field_distribusi_lookup,
+					'value' => $surat::DISTRIBUSI_DISTRIBUSI,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'type' => 'custom',
+					'value' => $disposisi::$field_induk . ' IS NOT NULL',
+				));
+
+				$filter = json_encode($filter);
+				$records = $notadinas_masuk_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'notadinas_blmbaca':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi_masuk::$field_receiver_id,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'property' => $surat::$field_distribusi_lookup,
+					'value' => $surat::DISTRIBUSI_DISTRIBUSI,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'type' => 'custom',
+					'value' => $disposisi::$field_induk . ' IS NOT NULL',
+				));
+
+				$filter = json_encode($filter);
+				$records = $notadinas_masuk_blmbaca_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'notadinas_baca':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi_masuk::$field_receiver_id,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'property' => $surat::$field_distribusi_lookup,
+					'value' => $surat::DISTRIBUSI_DISTRIBUSI,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'type' => 'custom',
+					'value' => $disposisi::$field_induk . ' IS NOT NULL',
+				));
+
+				$filter = json_encode($filter);
+				$records = $notadinas_masuk_baca_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'notadinas_nonaktif':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi_masuk::$field_receiver_id,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'property' => $surat::$field_distribusi_lookup,
+					'value' => $surat::DISTRIBUSI_DISTRIBUSI,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'type' => 'custom',
+					'value' => $disposisi::$field_induk . ' IS NOT NULL',
+				));
+
+				$filter = json_encode($filter);
+				$records = $notadinas_masuk_nonaktif_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'notadinas_terus':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi_masuk::$field_receiver_id,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'property' => $surat::$field_distribusi_lookup,
+					'value' => $surat::DISTRIBUSI_DISTRIBUSI,
+					'type' => 'exact',
+				));
+				array_unshift($filter, (object) array(
+					'type' => 'custom',
+					'value' => $disposisi::$field_induk . ' IS NOT NULL',
+				));
+
+				$filter = json_encode($filter);
+				$records = $notadinas_masuk_terus_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'riwayat':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi::$field_staf,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+
+				$filter = json_encode($filter);
+				$records = $riwayat_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'riwayat_aktif':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi::$field_staf,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+
+				$filter = json_encode($filter);
+				$records = $riwayat_aktif_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'riwayat_nonaktif':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi::$field_staf,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+
+				$filter = json_encode($filter);
+				$records = $riwayat_nonaktif_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'koreksi':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi_masuk::$field_receiver_id,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+				array_push($filter, array(
+					'type' => 'custom',
+					'value' => $surat::$field_approval_lookup . ' <> ' . $surat::SETUJU_INIT,
+				));
+
+				$filter = json_encode($filter);
+				$records = $koreksi_masuk_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'koreksi_blmtindak':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi_masuk::$field_receiver_id,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+				array_push($filter, array(
+					'type' => 'custom',
+					'value' => $surat::$field_approval_lookup . ' <> ' . $surat::SETUJU_INIT,
+				));
+
+				$filter = json_encode($filter);
+				$records = $koreksi_masuk_blmtindak_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'koreksi_setuju':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi_masuk::$field_receiver_id,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+				array_push($filter, array(
+					'type' => 'custom',
+					'value' => $surat::$field_approval_lookup . ' <> ' . $surat::SETUJU_INIT,
+				));
+
+				$filter = json_encode($filter);
+				$records = $koreksi_masuk_setuju_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
+
+			case 'koreksi_tolak':
+
+				array_unshift($filter, (object) array(
+					'property' => $disposisi_masuk::$field_receiver_id,
+					'value' => $pegawai,
+					'type' => 'exact',
+				));
+				array_push($filter, array(
+					'type' => 'custom',
+					'value' => $surat::$field_approval_lookup . ' <> ' . $surat::SETUJU_INIT,
+				));
+
+				$filter = json_encode($filter);
+				$records = $koreksi_masuk_tolak_view->select(array(
+					'limit' => $limit,
+					'start' => $start,
+					'filter' => $filter,
+					'sorter' => $sorter,
+				));
+				break;
 		}
 
 		if ($pegawai === null) {
@@ -2454,7 +2461,8 @@ class Account extends Base_Controller {
 		$this->response($records);
 	}
 
-	function riwayat($section = null, $id = null) {
+	function riwayat($section = null, $id = null)
+	{
 		$me = $this;
 		$account = $me->m_account;
 		$user = $account->get_profile();
@@ -2491,7 +2499,8 @@ class Account extends Base_Controller {
 		}
 	}
 
-	function riwayat_aktif($section = null, $id = null) {
+	function riwayat_aktif($section = null, $id = null)
+	{
 		$me = $this;
 		$account = $me->m_account;
 		$user = $account->get_profile();
@@ -2522,7 +2531,8 @@ class Account extends Base_Controller {
 		$this->response($operation);
 	}
 
-	function riwayat_nonaktif($section = null, $id = null) {
+	function riwayat_nonaktif($section = null, $id = null)
+	{
 		$me = $this;
 		$account = $me->m_account;
 		$user = $account->get_profile();
@@ -2553,7 +2563,8 @@ class Account extends Base_Controller {
 		$this->response($operation);
 	}
 
-	function login($useToken = null) {
+	function login($useToken = null)
+	{
 		$model = $this->m_account;
 		$setting = $this->m_setting;
 
@@ -2580,25 +2591,24 @@ class Account extends Base_Controller {
 
 			if ($response['success'] == true) {
 				$auth = $model->login($username, false, $useToken);
-				if(!empty($auth['success']) == 'false'){
+				if (!empty($auth['success']) == 'false') {
 					$pesan = $auth['message'];
 					$auth = null;
-				}else{
+				} else {
 					$pesan = $this->get_message($auth ? 'login_success' : 'login_failed');
 				}
 			} else {
 				$pesan = 'Login gagal, username/password anda salah. Jika terjadi 5 kali silahkan hubungi Administrator';
 			}
-
 		} else {
 			// some hack for compatibility with client
 			$auth = $model->login($username, $password, $useToken);
 
-			if(!empty($auth['success']) == 'false'){
+			if (!empty($auth['success']) == 'false') {
 				$pesan = $auth['message'];
 				$auth = null;
-			}else{
-				$pesan = $this->get_message($auth ? 'login_success' : 'login_failed');				
+			} else {
+				$pesan = $this->get_message($auth ? 'login_success' : 'login_failed');
 			}
 		}
 
@@ -2607,9 +2617,9 @@ class Account extends Base_Controller {
 			'message' => $pesan,
 		);
 		$user = $model->read(array(
-            $model->field_username => $username,
-            $model->field_isactive => 1
-        ));
+			$model->field_username => $username,
+			$model->field_isactive => 1
+		));
 		if ($response[$model->successProperty]) {
 			if ($useToken) {
 				$response['token'] = $auth;
@@ -2625,25 +2635,26 @@ class Account extends Base_Controller {
 				// 	);
 			} else {
 				// if (!empty($auth['profiles'])) {
-					$response['session'] = $auth;
-					$response['session']['profile'] = $auth['profiles'][$user['akun_staf']]['profile'] ? $auth['profiles'][$user['akun_staf']]['profile'] : [];
-					$response['session']['rules'] = $auth['profiles'][$user['akun_staf']]['rules'] ? $auth['profiles'][$user['akun_staf']]['rules'] : [];
-					$response['islogin'] = !!$auth;
-					$response['account-login'] = $model->islogin();
-					// we need to carry on settings values to patch
-					if (is_array($response['session'])) {
-						$response['session'] = array_merge(
-							$response['session'],
-							$model->get_info_setting()
-						);
-					}
+				$response['session'] = $auth;
+				$response['session']['profile'] = $auth['profiles'][$user['akun_staf']]['profile'] ? $auth['profiles'][$user['akun_staf']]['profile'] : [];
+				$response['session']['rules'] = $auth['profiles'][$user['akun_staf']]['rules'] ? $auth['profiles'][$user['akun_staf']]['rules'] : [];
+				$response['islogin'] = !!$auth;
+				$response['account-login'] = $model->islogin();
+				// we need to carry on settings values to patch
+				if (is_array($response['session'])) {
+					$response['session'] = array_merge(
+						$response['session'],
+						$model->get_info_setting()
+					);
+				}
 				// }
 			}
 		}
 		$this->response($response);
 	}
 
-	function verify_token() {
+	function verify_token()
+	{
 		$this->response(array(
 			'success' => false,
 		));
@@ -2653,7 +2664,8 @@ class Account extends Base_Controller {
 	// DEVICES //
 	/////////////
 
-	function requestDevice() {
+	function requestDevice()
+	{
 		$account = $this->m_account;
 		$deviceModel = $this->model('sipas/alat', true);
 		$deviceModelView = $this->model('sipas/alat_view', true);
@@ -2677,7 +2689,8 @@ class Account extends Base_Controller {
 		$this->response($operation);
 	}
 
-	function registerToken() {
+	function registerToken()
+	{
 		$account = $this->m_account;
 		$deviceModel = $this->model('sipas/alat', true);
 		$deviceModelView = $this->model('sipas/alat_view', true);
@@ -2692,7 +2705,8 @@ class Account extends Base_Controller {
 		$this->response($operation);
 	}
 
-	function refreshToken() {
+	function refreshToken()
+	{
 		$account = $this->m_account;
 		$deviceModel = $this->model('sipas/alat', true);
 		$deviceModelView = $this->model('sipas/alat_view', true);
@@ -2702,11 +2716,12 @@ class Account extends Base_Controller {
 		$tokenFcm = varReq('newToken');
 
 		$operation = $deviceModel->update($alatId, array('alat_data' => $tokenFcm));
-		
+
 		$this->response($operation);
 	}
-	
-	function removeToken() {
+
+	function removeToken()
+	{
 		$account = $this->m_account;
 		$deviceModel = $this->model('sipas/alat', true);
 		$deviceModelView = $this->model('sipas/alat_view', true);
@@ -2722,48 +2737,49 @@ class Account extends Base_Controller {
 		$this->response($operation);
 	}
 
-	function reset_login($section = null, $id = null){
+	function reset_login($section = null, $id = null)
+	{
 		$queueTube = Config()->item('queueServer_notifTube');
 		$queueTubeRedis = Config()->item('queueServer_notifTubeRedis');
-				
+
 		$id = varReq('id', $id);
 		$model = $this->m_account;
 		$akun = $this->m_user;
 		$account_id = $model->get_profile_id();
 		$deviceModel = $this->model('sipas/alat', true);
 
-		if($section == 'web'){
+		if ($section == 'web') {
 			// if(!$id){
 			// 	$id = $user['akun_id'];
 			// }
-			$query = "SELECT * FROM session WHERE data LIKE '%".$id."%' LIMIT 1";
-			
+			$query = "SELECT * FROM session WHERE data LIKE '%" . $id . "%' LIMIT 1";
+
 			$hasil = $this->db->query($query);
 			$data = $hasil->result_array();
-			if(!$data){
+			if (!$data) {
 				$response = array(
 					'success' => false,
 					'message' => 'Akun ini belum login ke perangkat'
 				);
-			}else{
-				$queryDelete = "DELETE FROM session WHERE data LIKE '%".$id."%'";
+			} else {
+				$queryDelete = "DELETE FROM session WHERE data LIKE '%" . $id . "%'";
 				$result = $this->db->query($queryDelete);
 				$response = array(
 					'success' => true,
 					'message' => 'Akun berhasil dilepas dari perangkat'
 				);
 			}
-		}else{
-			$query = "SELECT * FROM alat WHERE alat_data IS NOT NULL AND alat_akun = '".$id."' LIMIT 1";
-			
+		} else {
+			$query = "SELECT * FROM alat WHERE alat_data IS NOT NULL AND alat_akun = '" . $id . "' LIMIT 1";
+
 			$hasil = $this->db->query($query);
 			$data = $hasil->result_array();
-			if(!$data){
+			if (!$data) {
 				$response = array(
 					'success' => false,
 					'message' => 'Akun ini belum login ke perangkat'
 				);
-			}else{
+			} else {
 				$deviceModel->delete(array(
 					'alat_akun' => $id,
 					'alat_data IS NOT NULL' => null
@@ -2778,7 +2794,7 @@ class Account extends Base_Controller {
 					);
 					$addJob = create_job($queueTube, $data_fcm);
 				}
-                
+
 				$response = array(
 					'success' => true,
 					'message' => 'Akun berhasil dilepas dari perangkat'
@@ -2788,7 +2804,8 @@ class Account extends Base_Controller {
 		$this->response($response);
 	}
 
-	function checkToken() {
+	function checkToken()
+	{
 		$account = $this->m_account;
 		$deviceModel = $this->model('sipas/alat', true);
 		$deviceModelView = $this->model('sipas/alat_view', true);
@@ -2797,21 +2814,21 @@ class Account extends Base_Controller {
 		$token = [];
 		$deviceId = varGet('device_data') ? varGet('device_data') : false;
 
-		if($deviceId){
+		if ($deviceId) {
 			$token = $deviceModel->find(array(
 				'alat_akun' => $userId,
 				'alat_data' => $deviceId,
 			));
-			if(empty($token)){
-			$response = array(
-				'forcelogout' => true
+			if (empty($token)) {
+				$response = array(
+					'forcelogout' => true
 				);
-			}else{
+			} else {
 				$response = array(
 					'forcelogout' => false
 				);
 			}
-		}else{
+		} else {
 			$response = array(
 				'forcelogout' => false
 			);
@@ -2819,18 +2836,19 @@ class Account extends Base_Controller {
 		$this->response($response);
 	}
 
-	function removeDevice(){
+	function removeDevice()
+	{
 		$deviceId = varGet('alat_id');
 		$deviceData = varGet('device_data') ? varGet('device_data') : false;
 
 		$deviceModel = $this->model('sipas/alat', true);
 		$deviceModelView = $this->model('sipas/alat_view', true); //no idea
-		
-		if(!$deviceData){
+
+		if (!$deviceData) {
 			$operation = $deviceModel->delete(array(
 				'alat_id' => $deviceId
 			));
-		}else{
+		} else {
 			$operation = $deviceModel->delete(array(
 				'alat_data' => $deviceData
 			));
@@ -2839,8 +2857,9 @@ class Account extends Base_Controller {
 		$this->response($operation);
 	}
 
-	
-	function deviceLogin($id = null) {
+
+	function deviceLogin($id = null)
+	{
 		$id = varReq('id', $id);
 		$model = $this->m_account;
 		$setting = $this->m_setting;
@@ -2904,13 +2923,15 @@ class Account extends Base_Controller {
 		$this->response($response);
 	}
 
-	function logout() {
+	function logout()
+	{
 		$this->response(array(
 			'success' => $this->m_account->logout(),
 		));
 	}
 
-	function changepassword() {
+	function changepassword()
+	{
 		$model = $this->m_account;
 		$oldpassword = varReq('oldpassword');
 		$newpassword = varReq('newpassword');
@@ -2933,14 +2954,16 @@ class Account extends Base_Controller {
 		$this->response($response);
 	}
 
-	function info($type = null) {
+	function info($type = null)
+	{
 		$model = $this->m_account;
 		$res = $model->get_info($type);
 		$res['status-login'] = $model->islogin();
 		$this->response($res);
 	}
 
-	function gen_password($pass = null, $md5 = true) {
+	function gen_password($pass = null, $md5 = true)
+	{
 		if ($md5) {
 			$pass = md5($pass);
 		}
@@ -2953,7 +2976,8 @@ class Account extends Base_Controller {
 		return $password;
 	}
 
-	function scope($withCurrent = true) {
+	function scope($withCurrent = true)
+	{
 		$account = $this->m_account;
 		$scope = $this->m_unit_cakupan;
 		$scopeView = $this->m_unit_cakupan_hidup_view;
@@ -2983,7 +3007,8 @@ class Account extends Base_Controller {
 		));
 	}
 
-	function owner() {
+	function owner()
+	{
 		$account = $this->m_account;
 		$modelUnit = $this->m_unit;
 		$scope = $this->m_unit_cakupan;
@@ -2997,9 +3022,9 @@ class Account extends Base_Controller {
 
 		$currentUnitId = $account->get_unitkerja_id();
 		$currentUnit = $modelUnit->read(array(
-						'unit_id' => $currentUnitId,
-						'unit_isbuatsurat' => 1
-					));
+			'unit_id' => $currentUnitId,
+			'unit_isbuatsurat' => 1
+		));
 
 		if ($currentUnit) {
 			array_unshift($data, $currentUnit);
@@ -3021,8 +3046,8 @@ class Account extends Base_Controller {
 	//	$profile = $account->get_profile();
 	//	$profile_id = $account->get_profile_id();
 	//
-		// $record = $wakil->find(array('staf_wakil_asisten' => $profile_id, 'IFNULL(staf_wakil_plt, 0) = 0' => null));
-		//find pimpinan
+	// $record = $wakil->find(array('staf_wakil_asisten' => $profile_id, 'IFNULL(staf_wakil_plt, 0) = 0' => null));
+	//find pimpinan
 	//	$pimpinan = array();
 	//	$find = $jabatan_wakil->find(array('jabatan_wakil_asisten' => $profile['jabatan_id']));
 	//	foreach ($find as $key => &$value) {
@@ -3057,8 +3082,9 @@ class Account extends Base_Controller {
 	//		'count' => count($data),
 	//	));
 	//}
-	
-	function wakil() {
+
+	function wakil()
+	{
 		$account = $this->m_account;
 		$wakil = $this->m_staf_wakil_aktif_view;
 		$staf_model = $this->m_staf_view;
@@ -3066,9 +3092,10 @@ class Account extends Base_Controller {
 
 		$record = $wakil->find(array('staf_wakil_asisten' => $profile_id, 'IFNULL(staf_wakil_plt, 0) = 0' => null));
 
-		$records = $wakil->find(array('staf_wakil_asisten' => $profile_id, 'IFNULL(staf_wakil_plt, 0) = 1' => null,
-					'staf_wakil_konfirmasi_asisten_status' => 2
-				));
+		$records = $wakil->find(array(
+			'staf_wakil_asisten' => $profile_id, 'IFNULL(staf_wakil_plt, 0) = 1' => null,
+			'staf_wakil_konfirmasi_asisten_status' => 2
+		));
 		$r['records'] = array_merge($record, $records);
 		$data = $r['records'];
 
@@ -3078,22 +3105,24 @@ class Account extends Base_Controller {
 		));
 	}
 
-	function pimpinan() { //tom
-		$staf_id = varGet('id'); 		
+	function pimpinan()
+	{ //tom
+		$staf_id = varGet('id');
 		$wakil = $this->m_staf_wakil_aktif_view;
 		$staf_model = $this->m_staf_view;
 
-		$param = "('".implode("','",json_decode($staf_id))."')";
-		$query = $this->db->query("select staf_wakil_staf from v_staf_wakil_aktif where staf_wakil_asisten in ".$param);
+		$param = "('" . implode("','", json_decode($staf_id)) . "')";
+		$query = $this->db->query("select staf_wakil_staf from v_staf_wakil_aktif where staf_wakil_asisten in " . $param);
 		$result = $query->result_array();
-		
+
 		$this->response(array(
 			'data' => $result,
 			'count' => count($result),
 		));
 	}
 
-	function notification($section = null) {
+	function notification($section = null)
+	{
 		$model = $this->m_notification;
 		$m_account = $this->m_account;
 		$wakil = $this->m_staf_wakil_aktif_view;
@@ -3108,60 +3137,60 @@ class Account extends Base_Controller {
 			'name' => 'notification',
 			'data' => array(),
 		);
-	// $redis = new Redis(); 
- //        $redis->connect('127.0.0.1', 6379);
- //        $redis->auth("password");
+		// $redis = new Redis(); 
+		//        $redis->connect('127.0.0.1', 6379);
+		//        $redis->auth("password");
 
 		$setting = $this->m_setting;
 
 		/*notif agenda*/
 		if ($section === 'mobile') {
 			// $notif_user = $redis->get(Config()->item('redisPrefix').'notif_staf:'.$staf_id);
-	  //       if($notif_user){
-	  //           $notif_user = json_decode($notif_user, true);
-	  // 	       $notif_panel = $model->get_notif_of_user('notif_user', $staf_id);
-	  //       }else{
-	        	$notif_disposisi = $model->get_notif_of_user('disposisi', $staf_id);
-	        	$notif_panel = $model->get_notif_of_user('notif_user', $staf_id);
-	        	$notif_disposisi_masuk = $model->get_notif_of_user('disposisi_masuk', $staf_id);
-	            
-	            $notif_user = array(
-	               'notif_user'         				=> $notif_panel,
-	               'disposisi_status_baca_tindakan'   	=> $notif_disposisi['disposisi_status_baca_tindakan'],
-	               'kotakmasuk_belumditindak'         	=> $notif_disposisi_masuk['kotakmasuk_belumdibaca'],
-	               'draft_belumditindak'            	=> $notif_disposisi_masuk['draft_belumdibaca'],
-	               'tugassaya_belumditindak'         	=> $notif_disposisi_masuk['draft_belumditindak'] + $notif_disposisi_masuk['kotakmasuk_belumditindak']
-	            );
+			//       if($notif_user){
+			//           $notif_user = json_decode($notif_user, true);
+			// 	       $notif_panel = $model->get_notif_of_user('notif_user', $staf_id);
+			//       }else{
+			$notif_disposisi = $model->get_notif_of_user('disposisi', $staf_id);
+			$notif_panel = $model->get_notif_of_user('notif_user', $staf_id);
+			$notif_disposisi_masuk = $model->get_notif_of_user('disposisi_masuk', $staf_id);
 
-	            // $redis->set(Config()->item('redisPrefix').'notif_staf:'.$staf_id, json_encode($notif_user));
-	        // }
-	        $pimpinan = $wakil->find(array('staf_wakil_asisten' => $staf_id));
-	        $notif_asisten = array();
+			$notif_user = array(
+				'notif_user'         				=> $notif_panel,
+				'disposisi_status_baca_tindakan'   	=> $notif_disposisi['disposisi_status_baca_tindakan'],
+				'kotakmasuk_belumditindak'         	=> $notif_disposisi_masuk['kotakmasuk_belumdibaca'],
+				'draft_belumditindak'            	=> $notif_disposisi_masuk['draft_belumdibaca'],
+				'tugassaya_belumditindak'         	=> $notif_disposisi_masuk['draft_belumditindak'] + $notif_disposisi_masuk['kotakmasuk_belumditindak']
+			);
 
-	        foreach ($pimpinan as $key => $val) {
+			// $redis->set(Config()->item('redisPrefix').'notif_staf:'.$staf_id, json_encode($notif_user));
+			// }
+			$pimpinan = $wakil->find(array('staf_wakil_asisten' => $staf_id));
+			$notif_asisten = array();
 
-	            // $notif_asisten_redis = $redis->get(Config()->item('redisPrefix').'notif_staf:'.$val['staf_wakil_staf']);
+			foreach ($pimpinan as $key => $val) {
 
-	            // if($notif_asisten_redis){
-	            //     $notif_asisten_redis = json_decode($notif_asisten_redis, true);
-	            //     array_push($notif_asisten, $notif_asisten_redis);
-	            // }else{
-	            	$notif_disposisi = $model->get_notif_of_user('disposisi', $val['staf_wakil_staf']);
-	        		$notif_disposisi_masuk = $model->get_notif_of_user('disposisi_masuk', $val['staf_wakil_staf']);
-	                $notif_asisten_redis = array(
-	                   'disposisi_status_baca_tindakan'   	=> $notif_disposisi['disposisi_status_baca_tindakan'],
-		               'kotakmasuk_belumditindak'         	=> $notif_disposisi_masuk['kotakmasuk_belumdibaca'],
-		               'draft_belumditindak'            	=> $notif_disposisi_masuk['draft_belumdibaca'],
-		               'tugassaya_belumditindak'         	=> $notif_disposisi_masuk['draft_belumditindak'] + $notif_disposisi_masuk['kotakmasuk_belumditindak']
-	                );
-	                // $redis->set(Config()->item('redisPrefix').'notif_staf:'.$val['staf_wakil_staf'], json_encode($notif_asisten_redis));
-	                array_push($notif_asisten, $notif_asisten_redis);
-	            // }
-	        }
-	        $asistensi_all = 0 ;
-	        if($notif_asisten){
-	        	$asistensi_all = array_sum(array_column($notif_asisten,'tugassaya_belumditindak'));
-	        }
+				// $notif_asisten_redis = $redis->get(Config()->item('redisPrefix').'notif_staf:'.$val['staf_wakil_staf']);
+
+				// if($notif_asisten_redis){
+				//     $notif_asisten_redis = json_decode($notif_asisten_redis, true);
+				//     array_push($notif_asisten, $notif_asisten_redis);
+				// }else{
+				$notif_disposisi = $model->get_notif_of_user('disposisi', $val['staf_wakil_staf']);
+				$notif_disposisi_masuk = $model->get_notif_of_user('disposisi_masuk', $val['staf_wakil_staf']);
+				$notif_asisten_redis = array(
+					'disposisi_status_baca_tindakan'   	=> $notif_disposisi['disposisi_status_baca_tindakan'],
+					'kotakmasuk_belumditindak'         	=> $notif_disposisi_masuk['kotakmasuk_belumdibaca'],
+					'draft_belumditindak'            	=> $notif_disposisi_masuk['draft_belumdibaca'],
+					'tugassaya_belumditindak'         	=> $notif_disposisi_masuk['draft_belumditindak'] + $notif_disposisi_masuk['kotakmasuk_belumditindak']
+				);
+				// $redis->set(Config()->item('redisPrefix').'notif_staf:'.$val['staf_wakil_staf'], json_encode($notif_asisten_redis));
+				array_push($notif_asisten, $notif_asisten_redis);
+				// }
+			}
+			$asistensi_all = 0;
+			if ($notif_asisten) {
+				$asistensi_all = array_sum(array_column($notif_asisten, 'tugassaya_belumditindak'));
+			}
 			/*notif session*/
 			$output['data']['notif_user'] = (int) $notif_panel;  //tom
 			$output['data']['disposisi_status_baca_tindakan'] = (int) $notif_user['disposisi_status_baca_tindakan'];
@@ -3176,209 +3205,214 @@ class Account extends Base_Controller {
 			$notif_unit_cakupan = array();
 
 			$unit  = $unit_cakupan_aktif_view->find(array(
-	                    'unit_cakupan_jabatan' => $staf['staf_jabatan']
-	                ));
+				'unit_cakupan_jabatan' => $staf['staf_jabatan']
+			));
 
 			foreach ($unit as $key => $value) {
-	            // $notif_unit_cakupan_redis = array();
-	            // if($staf['staf_unit'] != $value['unit_cakupan_unit']){
-	            //     $notif_unit_cakupan_redis = $redis->get(Config()->item('redisPrefix').'notif_unit:'.$value['unit_cakupan_unit']);
-	            // }
-	            // if(!empty($notif_unit_cakupan_redis)){
-	            //     $notif_unit_cakupan_redis = json_decode($notif_unit_cakupan_redis, true);
-	            //     array_push($notif_unit_cakupan, $notif_unit_cakupan_redis);
-	            // }else{
-	            	$notif_unit_cakupan_db = $model->get_notif_of_unit('notif_unit', $value['unit_cakupan_unit']);
-	                $notif_unit_cakupan_redis = array(
-	                   'agmasuk_pendistribusian' 		=> $notif_unit_cakupan_db['agmasuk_pendistribusian'],
-	                   'agmasuk_request_berkas'     	=> $notif_unit_cakupan_db['agmasuk_request_berkas'],
-	                   'agkeluar_blmekspedisi'   		=> $notif_unit_cakupan_db['agkeluar_blmekspedisi'],
-	                   'agkeluar_blmnomor'       		=> $notif_unit_cakupan_db['agkeluar_blmnomor'],
-	                   'agkeluar_request_berkas' 		=> $notif_unit_cakupan_db['agkeluar_request_berkas'],
-	                   'agmasukinternal_pending' 		=> $notif_unit_cakupan_db['agmasukinternal_pending'],
-	                   'agmasukinternal_request_berkas' => $notif_unit_cakupan_db['agmasukinternal_request_berkas'],
-	                   'agkeluarinternal_tolak'   		=> $notif_unit_cakupan_db['agkeluarinternal_tolak'],
-	                   //'agkeluarinternal_ulasan'   		=> $notif_unit_cakupan_db['agkeluarinternal_ulasan'],
-	                   'agkeluarinternal_blmnomor' 		=> $notif_unit_cakupan_db['agkeluarinternal_blmnomor'],
-	                   'agmasuk_reminder_7' 			=> $notif_unit_cakupan_db['agmasuk_reminder_7'],
-	                   'agmasuk_reminder_3' 			=> $notif_unit_cakupan_db['agmasuk_reminder_3'],
-	                   'agmasuk_reminder_1' 			=> $notif_unit_cakupan_db['agmasuk_reminder_1'],
-	                   'agmasukinternal_reminder_7' 	=> $notif_unit_cakupan_db['agmasukinternal_reminder_7'],
-	                   'agmasukinternal_reminder_3' 	=> $notif_unit_cakupan_db['agmasukinternal_reminder_3'],
-	                   'agmasukinternal_reminder_1' 	=> $notif_unit_cakupan_db['agmasukinternal_reminder_1']
-	                );
-	                // $redis->set(Config()->item('redisPrefix').'notif_unit:'.$value['unit_cakupan_unit'], json_encode($notif_unit_cakupan_redis));
-	                array_push($notif_unit_cakupan, $notif_unit_cakupan_redis);
-	            // }
-	        }
-
-	        // $notif_unit_redis = $redis->get(Config()->item('redisPrefix').'notif_unit:'.$staf['staf_unit']);
-
-	    //     if($notif_unit_redis){
-	    //     	$notif_unit_redis = json_decode($notif_unit_redis, true);
-	    //     	if($notif_unit_cakupan){
-	    //     		$notif_unit = array(
-					//    'agmasuk_pendistribusian'   	=> $notif_unit_redis['agmasuk_pendistribusian'] + array_sum(array_column($notif_unit_cakupan,'agmasuk_pendistribusian')),
-					//    'agmasuk_request_berkas'   	=> $notif_unit_redis['agmasuk_request_berkas'] + array_sum(array_column($notif_unit_cakupan,'agmasuk_request_berkas')),
-					//    'agkeluar_blmekspedisi'     	=> $notif_unit_redis['agkeluar_blmekspedisi'] + array_sum(array_column($notif_unit_cakupan,'agkeluar_blmekspedisi')),
-					//    'agkeluar_blmnomor'         	=> $notif_unit_redis['agkeluar_blmnomor'] + array_sum(array_column($notif_unit_cakupan,'agkeluar_blmnomor')),
-					//    'agkeluar_request_berkas'     => $notif_unit_redis['agkeluar_request_berkas'] + array_sum(array_column($notif_unit_cakupan,'agkeluar_request_berkas')),
-					//    'agmasukinternal_pending'   	=> $notif_unit_redis['agmasukinternal_pending'] + array_sum(array_column($notif_unit_cakupan,'agmasukinternal_pending')),
-					//    'agmasukinternal_request_berkas' => $notif_unit_redis['agmasukinternal_request_berkas'] + array_sum(array_column($notif_unit_cakupan,'agmasukinternal_request_berkas')),
-					//    'agkeluarinternal_tolak'     	=> $notif_unit_redis['agkeluarinternal_tolak'] + array_sum(array_column($notif_unit_cakupan,'agkeluarinternal_tolak')),
-					//    'agkeluarinternal_ulasan'   	=> $notif_unit_redis['agkeluarinternal_ulasan'] + array_sum(array_column($notif_unit_cakupan,'agkeluarinternal_ulasan')),
-					//    'agkeluarinternal_blmnomor' 	=> $notif_unit_redis['agkeluarinternal_blmnomor'] + array_sum(array_column($notif_unit_cakupan,'agkeluarinternal_blmnomor')),
-					//    'agmasuk_reminder_7' 			=> $notif_unit_redis['agmasuk_reminder_7'] + array_sum(array_column($notif_unit_cakupan,'agmasuk_reminder_7')),
-					//    'agmasuk_reminder_3' 			=> $notif_unit_redis['agmasuk_reminder_3'] + array_sum(array_column($notif_unit_cakupan,'agmasuk_reminder_3')),
-					//    'agmasuk_reminder_1' 			=> $notif_unit_redis['agmasuk_reminder_1'] + array_sum(array_column($notif_unit_cakupan,'agmasuk_reminder_1')),
-					//    'agmasukinternal_reminder_7' 	=> $notif_unit_redis['agmasukinternal_reminder_7'] + array_sum(array_column($notif_unit_cakupan,'agmasukinternal_reminder_7')),
-					//    'agmasukinternal_reminder_3' 	=> $notif_unit_redis['agmasukinternal_reminder_3'] + array_sum(array_column($notif_unit_cakupan,'agmasukinternal_reminder_3')),
-					//    'agmasukinternal_reminder_1' 	=> $notif_unit_redis['agmasukinternal_reminder_1'] + array_sum(array_column($notif_unit_cakupan,'agmasukinternal_reminder_1'))
-					// );
-	    //     	}else{
-	    //     		$notif_unit = array(
-					//    'agmasuk_pendistribusian'   		=> $notif_unit_redis['agmasuk_pendistribusian'],
-					//    'agmasuk_request_berkas'   		=> $notif_unit_redis['agmasuk_request_berkas'],
-					//    'agkeluar_blmekspedisi'     		=> $notif_unit_redis['agkeluar_blmekspedisi'],
-					//    'agkeluar_blmnomor'         		=> $notif_unit_redis['agkeluar_blmnomor'],
-					//    'agkeluar_request_berkas'         => $notif_unit_redis['agkeluar_request_berkas'],
-					//    'agmasukinternal_pending'   		=> $notif_unit_redis['agmasukinternal_pending'],
-					//    'agmasukinternal_request_berkas'  => $notif_unit_redis['agmasukinternal_request_berkas'],
-					//    'agkeluarinternal_tolak'    		=> $notif_unit_redis['agkeluarinternal_tolak'],
-					//    'agkeluarinternal_ulasan'   		=> $notif_unit_redis['agkeluarinternal_ulasan'],
-					//    'agkeluarinternal_blmnomor' 		=> $notif_unit_redis['agkeluarinternal_blmnomor'],
-					//    'agmasuk_reminder_7' 				=> $notif_unit_redis['agmasuk_reminder_7'],
-					//    'agmasuk_reminder_3' 				=> $notif_unit_redis['agmasuk_reminder_3'],
-					//    'agmasuk_reminder_1' 				=> $notif_unit_redis['agmasuk_reminder_1'],
-					//    'agmasukinternal_reminder_7' 		=> $notif_unit_redis['agmasukinternal_reminder_7'],
-					//    'agmasukinternal_reminder_3' 		=> $notif_unit_redis['agmasukinternal_reminder_3'],
-					//    'agmasukinternal_reminder_1' 		=> $notif_unit_redis['agmasukinternal_reminder_1']
-					// );
-	    //     	}
-	    //     }else{
-	        	$notif_unit_db = $model->get_notif_of_unit('notif_unit', $staf['staf_unit']);
-	        	$notif_unit_redis = array(
-	               'agmasuk_pendistribusian' 	=> $notif_unit_db['agmasuk_pendistribusian'],
-	               'agmasuk_request_berkas' 	=> $notif_unit_db['agmasuk_request_berkas'],
-	               'agkeluar_blmekspedisi'   	=> $notif_unit_db['agkeluar_blmekspedisi'],
-	               'agkeluar_blmnomor'       	=> $notif_unit_db['agkeluar_blmnomor'],
-	               'agkeluar_request_berkas'    => $notif_unit_db['agkeluar_request_berkas'],
-	               'agmasukinternal_pending' 	=> $notif_unit_db['agmasukinternal_pending'],
-	               'agmasukinternal_request_berkas' => $notif_unit_db['agmasukinternal_request_berkas'],
-	               'agkeluarinternal_tolak'   	=> $notif_unit_db['agkeluarinternal_tolak'],
-	               //'agkeluarinternal_ulasan'   	=> $notif_unit_db['agkeluarinternal_ulasan'],
-	               'agkeluarinternal_blmnomor' 	=> $notif_unit_db['agkeluarinternal_blmnomor'],
-	               'agmasuk_reminder_7' 		=> $notif_unit_db['agmasuk_reminder_7'],
-	               'agmasuk_reminder_3' 		=> $notif_unit_db['agmasuk_reminder_3'],
-	               'agmasuk_reminder_1' 		=> $notif_unit_db['agmasuk_reminder_1'],
-	               'agmasukinternal_reminder_7' => $notif_unit_db['agmasukinternal_reminder_7'],
-	               'agmasukinternal_reminder_3' => $notif_unit_db['agmasukinternal_reminder_3'],
-	               'agmasukinternal_reminder_1' => $notif_unit_db['agmasukinternal_reminder_1']
-	            );
-	            // $redis->set(Config()->item('redisPrefix').'notif_unit:'.$staf['staf_unit'], json_encode($notif_unit_redis));
-
-	            if($notif_unit_cakupan){
-	        		$notif_unit = array(
-					   'agmasuk_pendistribusian'   	=> $notif_unit_redis['agmasuk_pendistribusian'] + array_sum(array_column($notif_unit_cakupan,'agmasuk_pendistribusian')),
-					   'agmasuk_request_berkas'   	=> $notif_unit_redis['agmasuk_request_berkas'] + array_sum(array_column($notif_unit_cakupan,'agmasuk_request_berkas')),
-					   'agkeluar_blmekspedisi'     	=> $notif_unit_redis['agkeluar_blmekspedisi'] + array_sum(array_column($notif_unit_cakupan,'agkeluar_blmekspedisi')),
-					   'agkeluar_blmnomor'         	=> $notif_unit_redis['agkeluar_blmnomor'] + array_sum(array_column($notif_unit_cakupan,'agkeluar_blmnomor')),
-					   'agkeluar_request_berkas'    => $notif_unit_redis['agkeluar_request_berkas'] + array_sum(array_column($notif_unit_cakupan,'agkeluar_request_berkas')),
-					   'agmasukinternal_pending'   	=> $notif_unit_redis['agmasukinternal_pending'] + array_sum(array_column($notif_unit_cakupan,'agmasukinternal_pending')),
-					   'agmasukinternal_request_berkas' => $notif_unit_redis['agmasukinternal_request_berkas'] + array_sum(array_column($notif_unit_cakupan,'agmasukinternal_request_berkas')),
-					   'agkeluarinternal_tolak'     => $notif_unit_redis['agkeluarinternal_tolak'] + array_sum(array_column($notif_unit_cakupan,'agkeluarinternal_tolak')),
-					   //'agkeluarinternal_ulasan'   	=> $notif_unit_redis['agkeluarinternal_ulasan'] + array_sum(array_column($notif_unit_cakupan,'agkeluarinternal_ulasan')),
-					   'agkeluarinternal_blmnomor' 	=> $notif_unit_redis['agkeluarinternal_blmnomor'] + array_sum(array_column($notif_unit_cakupan,'agkeluarinternal_blmnomor')),
-					   'agmasuk_reminder_7' 	=> $notif_unit_redis['agmasuk_reminder_7'] + array_sum(array_column($notif_unit_cakupan,'agmasuk_reminder_7')),
-					   'agmasuk_reminder_3' 	=> $notif_unit_redis['agmasuk_reminder_3'] + array_sum(array_column($notif_unit_cakupan,'agmasuk_reminder_3')),
-					   'agmasuk_reminder_1' 	=> $notif_unit_redis['agmasuk_reminder_1'] + array_sum(array_column($notif_unit_cakupan,'agmasuk_reminder_1')),
-					   'agmasukinternal_reminder_7' => $notif_unit_redis['agmasukinternal_reminder_7'] + array_sum(array_column($notif_unit_cakupan,'agmasukinternal_reminder_7')),
-					   'agmasukinternal_reminder_3' => $notif_unit_redis['agmasukinternal_reminder_3'] + array_sum(array_column($notif_unit_cakupan,'agmasukinternal_reminder_3')),
-					   'agmasukinternal_reminder_1' => $notif_unit_redis['agmasukinternal_reminder_1'] + array_sum(array_column($notif_unit_cakupan,'agmasukinternal_reminder_1'))
+				// $notif_unit_cakupan_redis = array();
+				// if($staf['staf_unit'] != $value['unit_cakupan_unit']){
+				//     $notif_unit_cakupan_redis = $redis->get(Config()->item('redisPrefix').'notif_unit:'.$value['unit_cakupan_unit']);
+				// }
+				// if(!empty($notif_unit_cakupan_redis)){
+				//     $notif_unit_cakupan_redis = json_decode($notif_unit_cakupan_redis, true);
+				//     array_push($notif_unit_cakupan, $notif_unit_cakupan_redis);
+				// }else{
+				$notif_unit_cakupan_db = $model->get_notif_of_unit('notif_unit', $value['unit_cakupan_unit']);
+				if ($notif_unit_cakupan_db) {
+					$notif_unit_cakupan_redis = array(
+						'agmasuk_pendistribusian' 		=> $notif_unit_cakupan_db['agmasuk_pendistribusian'],
+						'agmasuk_request_berkas'     	=> $notif_unit_cakupan_db['agmasuk_request_berkas'],
+						'agkeluar_blmekspedisi'   		=> $notif_unit_cakupan_db['agkeluar_blmekspedisi'],
+						'agkeluar_blmnomor'       		=> $notif_unit_cakupan_db['agkeluar_blmnomor'],
+						'agkeluar_request_berkas' 		=> $notif_unit_cakupan_db['agkeluar_request_berkas'],
+						'agmasukinternal_pending' 		=> $notif_unit_cakupan_db['agmasukinternal_pending'],
+						'agmasukinternal_request_berkas' => $notif_unit_cakupan_db['agmasukinternal_request_berkas'],
+						'agkeluarinternal_tolak'   		=> $notif_unit_cakupan_db['agkeluarinternal_tolak'],
+						//'agkeluarinternal_ulasan'   		=> $notif_unit_cakupan_db['agkeluarinternal_ulasan'],
+						'agkeluarinternal_blmnomor' 		=> $notif_unit_cakupan_db['agkeluarinternal_blmnomor'],
+						'agmasuk_reminder_7' 			=> $notif_unit_cakupan_db['agmasuk_reminder_7'],
+						'agmasuk_reminder_3' 			=> $notif_unit_cakupan_db['agmasuk_reminder_3'],
+						'agmasuk_reminder_1' 			=> $notif_unit_cakupan_db['agmasuk_reminder_1'],
+						'agmasukinternal_reminder_7' 	=> $notif_unit_cakupan_db['agmasukinternal_reminder_7'],
+						'agmasukinternal_reminder_3' 	=> $notif_unit_cakupan_db['agmasukinternal_reminder_3'],
+						'agmasukinternal_reminder_1' 	=> $notif_unit_cakupan_db['agmasukinternal_reminder_1']
 					);
-	        	}else{
-	        		$notif_unit = array(
-					   'agmasuk_pendistribusian'   	=> $notif_unit_redis['agmasuk_pendistribusian'],
-					   'agmasuk_request_berkas'   	=> $notif_unit_redis['agmasuk_request_berkas'],
-					   'agkeluar_blmekspedisi'     	=> $notif_unit_redis['agkeluar_blmekspedisi'],
-					   'agkeluar_blmnomor'         	=> $notif_unit_redis['agkeluar_blmnomor'],
-					   'agkeluar_request_berkas'    => $notif_unit_redis['agkeluar_request_berkas'],
-					   'agmasukinternal_pending'   	=> $notif_unit_redis['agmasukinternal_pending'],
-					   'agmasukinternal_request_berkas' => $notif_unit_redis['agmasukinternal_request_berkas'],
-					   'agkeluarinternal_tolak'     => $notif_unit_redis['agkeluarinternal_tolak'],
-					   //'agkeluarinternal_ulasan'   	=> $notif_unit_redis['agkeluarinternal_ulasan'],
-					   'agkeluarinternal_blmnomor' 	=> $notif_unit_redis['agkeluarinternal_blmnomor'],
-					   'agmasuk_reminder_7' 		=> $notif_unit_redis['agmasuk_reminder_7'],
-					   'agmasuk_reminder_3' 		=> $notif_unit_redis['agmasuk_reminder_3'],
-					   'agmasuk_reminder_1' 		=> $notif_unit_redis['agmasuk_reminder_1'],
-					   'agmasukinternal_reminder_7' => $notif_unit_redis['agmasukinternal_reminder_7'],
-					   'agmasukinternal_reminder_3' => $notif_unit_redis['agmasukinternal_reminder_3'],
-					   'agmasukinternal_reminder_1' => $notif_unit_redis['agmasukinternal_reminder_1']
+					# code...
+				}
+				// $redis->set(Config()->item('redisPrefix').'notif_unit:'.$value['unit_cakupan_unit'], json_encode($notif_unit_cakupan_redis));
+				array_push($notif_unit_cakupan, $notif_unit_cakupan_redis);
+				// }
+			}
+
+			// $notif_unit_redis = $redis->get(Config()->item('redisPrefix').'notif_unit:'.$staf['staf_unit']);
+
+			//     if($notif_unit_redis){
+			//     	$notif_unit_redis = json_decode($notif_unit_redis, true);
+			//     	if($notif_unit_cakupan){
+			//     		$notif_unit = array(
+			//    'agmasuk_pendistribusian'   	=> $notif_unit_redis['agmasuk_pendistribusian'] + array_sum(array_column($notif_unit_cakupan,'agmasuk_pendistribusian')),
+			//    'agmasuk_request_berkas'   	=> $notif_unit_redis['agmasuk_request_berkas'] + array_sum(array_column($notif_unit_cakupan,'agmasuk_request_berkas')),
+			//    'agkeluar_blmekspedisi'     	=> $notif_unit_redis['agkeluar_blmekspedisi'] + array_sum(array_column($notif_unit_cakupan,'agkeluar_blmekspedisi')),
+			//    'agkeluar_blmnomor'         	=> $notif_unit_redis['agkeluar_blmnomor'] + array_sum(array_column($notif_unit_cakupan,'agkeluar_blmnomor')),
+			//    'agkeluar_request_berkas'     => $notif_unit_redis['agkeluar_request_berkas'] + array_sum(array_column($notif_unit_cakupan,'agkeluar_request_berkas')),
+			//    'agmasukinternal_pending'   	=> $notif_unit_redis['agmasukinternal_pending'] + array_sum(array_column($notif_unit_cakupan,'agmasukinternal_pending')),
+			//    'agmasukinternal_request_berkas' => $notif_unit_redis['agmasukinternal_request_berkas'] + array_sum(array_column($notif_unit_cakupan,'agmasukinternal_request_berkas')),
+			//    'agkeluarinternal_tolak'     	=> $notif_unit_redis['agkeluarinternal_tolak'] + array_sum(array_column($notif_unit_cakupan,'agkeluarinternal_tolak')),
+			//    'agkeluarinternal_ulasan'   	=> $notif_unit_redis['agkeluarinternal_ulasan'] + array_sum(array_column($notif_unit_cakupan,'agkeluarinternal_ulasan')),
+			//    'agkeluarinternal_blmnomor' 	=> $notif_unit_redis['agkeluarinternal_blmnomor'] + array_sum(array_column($notif_unit_cakupan,'agkeluarinternal_blmnomor')),
+			//    'agmasuk_reminder_7' 			=> $notif_unit_redis['agmasuk_reminder_7'] + array_sum(array_column($notif_unit_cakupan,'agmasuk_reminder_7')),
+			//    'agmasuk_reminder_3' 			=> $notif_unit_redis['agmasuk_reminder_3'] + array_sum(array_column($notif_unit_cakupan,'agmasuk_reminder_3')),
+			//    'agmasuk_reminder_1' 			=> $notif_unit_redis['agmasuk_reminder_1'] + array_sum(array_column($notif_unit_cakupan,'agmasuk_reminder_1')),
+			//    'agmasukinternal_reminder_7' 	=> $notif_unit_redis['agmasukinternal_reminder_7'] + array_sum(array_column($notif_unit_cakupan,'agmasukinternal_reminder_7')),
+			//    'agmasukinternal_reminder_3' 	=> $notif_unit_redis['agmasukinternal_reminder_3'] + array_sum(array_column($notif_unit_cakupan,'agmasukinternal_reminder_3')),
+			//    'agmasukinternal_reminder_1' 	=> $notif_unit_redis['agmasukinternal_reminder_1'] + array_sum(array_column($notif_unit_cakupan,'agmasukinternal_reminder_1'))
+			// );
+			//     	}else{
+			//     		$notif_unit = array(
+			//    'agmasuk_pendistribusian'   		=> $notif_unit_redis['agmasuk_pendistribusian'],
+			//    'agmasuk_request_berkas'   		=> $notif_unit_redis['agmasuk_request_berkas'],
+			//    'agkeluar_blmekspedisi'     		=> $notif_unit_redis['agkeluar_blmekspedisi'],
+			//    'agkeluar_blmnomor'         		=> $notif_unit_redis['agkeluar_blmnomor'],
+			//    'agkeluar_request_berkas'         => $notif_unit_redis['agkeluar_request_berkas'],
+			//    'agmasukinternal_pending'   		=> $notif_unit_redis['agmasukinternal_pending'],
+			//    'agmasukinternal_request_berkas'  => $notif_unit_redis['agmasukinternal_request_berkas'],
+			//    'agkeluarinternal_tolak'    		=> $notif_unit_redis['agkeluarinternal_tolak'],
+			//    'agkeluarinternal_ulasan'   		=> $notif_unit_redis['agkeluarinternal_ulasan'],
+			//    'agkeluarinternal_blmnomor' 		=> $notif_unit_redis['agkeluarinternal_blmnomor'],
+			//    'agmasuk_reminder_7' 				=> $notif_unit_redis['agmasuk_reminder_7'],
+			//    'agmasuk_reminder_3' 				=> $notif_unit_redis['agmasuk_reminder_3'],
+			//    'agmasuk_reminder_1' 				=> $notif_unit_redis['agmasuk_reminder_1'],
+			//    'agmasukinternal_reminder_7' 		=> $notif_unit_redis['agmasukinternal_reminder_7'],
+			//    'agmasukinternal_reminder_3' 		=> $notif_unit_redis['agmasukinternal_reminder_3'],
+			//    'agmasukinternal_reminder_1' 		=> $notif_unit_redis['agmasukinternal_reminder_1']
+			// );
+			//     	}
+			//     }else{
+			$notif_unit_db = $model->get_notif_of_unit('notif_unit', $staf['staf_unit']);
+			$notif_unit_redis = array(
+				'agmasuk_pendistribusian' 	=> $notif_unit_db['agmasuk_pendistribusian'],
+				'agmasuk_request_berkas' 	=> $notif_unit_db['agmasuk_request_berkas'],
+				'agkeluar_blmekspedisi'   	=> $notif_unit_db['agkeluar_blmekspedisi'],
+				'agkeluar_blmnomor'       	=> $notif_unit_db['agkeluar_blmnomor'],
+				'agkeluar_request_berkas'    => $notif_unit_db['agkeluar_request_berkas'],
+				'agmasukinternal_pending' 	=> $notif_unit_db['agmasukinternal_pending'],
+				'agmasukinternal_request_berkas' => $notif_unit_db['agmasukinternal_request_berkas'],
+				'agkeluarinternal_tolak'   	=> $notif_unit_db['agkeluarinternal_tolak'],
+				//'agkeluarinternal_ulasan'   	=> $notif_unit_db['agkeluarinternal_ulasan'],
+				'agkeluarinternal_blmnomor' 	=> $notif_unit_db['agkeluarinternal_blmnomor'],
+				'agmasuk_reminder_7' 		=> $notif_unit_db['agmasuk_reminder_7'],
+				'agmasuk_reminder_3' 		=> $notif_unit_db['agmasuk_reminder_3'],
+				'agmasuk_reminder_1' 		=> $notif_unit_db['agmasuk_reminder_1'],
+				'agmasukinternal_reminder_7' => $notif_unit_db['agmasukinternal_reminder_7'],
+				'agmasukinternal_reminder_3' => $notif_unit_db['agmasukinternal_reminder_3'],
+				'agmasukinternal_reminder_1' => $notif_unit_db['agmasukinternal_reminder_1']
+			);
+			// $redis->set(Config()->item('redisPrefix').'notif_unit:'.$staf['staf_unit'], json_encode($notif_unit_redis));
+
+			if ($notif_unit_cakupan) {
+				$notif_unit = array(
+					'agmasuk_pendistribusian'   	=> $notif_unit_redis['agmasuk_pendistribusian'] + array_sum(array_column($notif_unit_cakupan, 'agmasuk_pendistribusian')),
+					'agmasuk_request_berkas'   	=> $notif_unit_redis['agmasuk_request_berkas'] + array_sum(array_column($notif_unit_cakupan, 'agmasuk_request_berkas')),
+					'agkeluar_blmekspedisi'     	=> $notif_unit_redis['agkeluar_blmekspedisi'] + array_sum(array_column($notif_unit_cakupan, 'agkeluar_blmekspedisi')),
+					'agkeluar_blmnomor'         	=> $notif_unit_redis['agkeluar_blmnomor'] + array_sum(array_column($notif_unit_cakupan, 'agkeluar_blmnomor')),
+					'agkeluar_request_berkas'    => $notif_unit_redis['agkeluar_request_berkas'] + array_sum(array_column($notif_unit_cakupan, 'agkeluar_request_berkas')),
+					'agmasukinternal_pending'   	=> $notif_unit_redis['agmasukinternal_pending'] + array_sum(array_column($notif_unit_cakupan, 'agmasukinternal_pending')),
+					'agmasukinternal_request_berkas' => $notif_unit_redis['agmasukinternal_request_berkas'] + array_sum(array_column($notif_unit_cakupan, 'agmasukinternal_request_berkas')),
+					'agkeluarinternal_tolak'     => $notif_unit_redis['agkeluarinternal_tolak'] + array_sum(array_column($notif_unit_cakupan, 'agkeluarinternal_tolak')),
+					//'agkeluarinternal_ulasan'   	=> $notif_unit_redis['agkeluarinternal_ulasan'] + array_sum(array_column($notif_unit_cakupan,'agkeluarinternal_ulasan')),
+					'agkeluarinternal_blmnomor' 	=> $notif_unit_redis['agkeluarinternal_blmnomor'] + array_sum(array_column($notif_unit_cakupan, 'agkeluarinternal_blmnomor')),
+					'agmasuk_reminder_7' 	=> $notif_unit_redis['agmasuk_reminder_7'] + array_sum(array_column($notif_unit_cakupan, 'agmasuk_reminder_7')),
+					'agmasuk_reminder_3' 	=> $notif_unit_redis['agmasuk_reminder_3'] + array_sum(array_column($notif_unit_cakupan, 'agmasuk_reminder_3')),
+					'agmasuk_reminder_1' 	=> $notif_unit_redis['agmasuk_reminder_1'] + array_sum(array_column($notif_unit_cakupan, 'agmasuk_reminder_1')),
+					'agmasukinternal_reminder_7' => $notif_unit_redis['agmasukinternal_reminder_7'] + array_sum(array_column($notif_unit_cakupan, 'agmasukinternal_reminder_7')),
+					'agmasukinternal_reminder_3' => $notif_unit_redis['agmasukinternal_reminder_3'] + array_sum(array_column($notif_unit_cakupan, 'agmasukinternal_reminder_3')),
+					'agmasukinternal_reminder_1' => $notif_unit_redis['agmasukinternal_reminder_1'] + array_sum(array_column($notif_unit_cakupan, 'agmasukinternal_reminder_1'))
+				);
+			} else {
+				$notif_unit = array(
+					'agmasuk_pendistribusian'   	=> $notif_unit_redis['agmasuk_pendistribusian'],
+					'agmasuk_request_berkas'   	=> $notif_unit_redis['agmasuk_request_berkas'],
+					'agkeluar_blmekspedisi'     	=> $notif_unit_redis['agkeluar_blmekspedisi'],
+					'agkeluar_blmnomor'         	=> $notif_unit_redis['agkeluar_blmnomor'],
+					'agkeluar_request_berkas'    => $notif_unit_redis['agkeluar_request_berkas'],
+					'agmasukinternal_pending'   	=> $notif_unit_redis['agmasukinternal_pending'],
+					'agmasukinternal_request_berkas' => $notif_unit_redis['agmasukinternal_request_berkas'],
+					'agkeluarinternal_tolak'     => $notif_unit_redis['agkeluarinternal_tolak'],
+					//'agkeluarinternal_ulasan'   	=> $notif_unit_redis['agkeluarinternal_ulasan'],
+					'agkeluarinternal_blmnomor' 	=> $notif_unit_redis['agkeluarinternal_blmnomor'],
+					'agmasuk_reminder_7' 		=> $notif_unit_redis['agmasuk_reminder_7'],
+					'agmasuk_reminder_3' 		=> $notif_unit_redis['agmasuk_reminder_3'],
+					'agmasuk_reminder_1' 		=> $notif_unit_redis['agmasuk_reminder_1'],
+					'agmasukinternal_reminder_7' => $notif_unit_redis['agmasukinternal_reminder_7'],
+					'agmasukinternal_reminder_3' => $notif_unit_redis['agmasukinternal_reminder_3'],
+					'agmasukinternal_reminder_1' => $notif_unit_redis['agmasukinternal_reminder_1']
+				);
+			}
+			// }
+
+			// $notif_arah_redis = $redis->get(Config()->item('redisPrefix').'notif_unit_pengarahan');
+			// if($notif_arah_redis){
+			//     $notif_arah_redis = json_decode($notif_arah_redis, true);
+			//     $notif_arah = array(
+			//         'agmasuk_pengarahan' => $notif_arah_redis['agmasuk_pengarahan']
+			//     );
+			// }else{
+			$notif_arah = array(
+				'agmasuk_pengarahan' => $model->get_notif_of_unit('agmasuk_pengarahan', $staf['staf_unit'])
+			);
+			// $redis->set(Config()->item('redisPrefix').'notif_unit_pengarahan', json_encode($notif_arah));
+			// }
+
+			// $notif_user = $redis->get(Config()->item('redisPrefix').'notif_staf:'.$staf_id);
+			// if($notif_user){
+			//     $notif_user = json_decode($notif_user, true);
+			//     $notif_panel = $model->get_notif_of_user('notif_user', $staf_id);
+			// }else{
+
+			$notif_panel = $model->get_notif_of_user('notif_user', $staf_id);
+			$notif_disposisi = $model->get_notif_of_user('disposisi', $staf_id);
+			$notif_disposisi_masuk = $model->get_notif_of_user('disposisi_masuk', $staf_id);
+
+			$notif_user = array(
+				'notif_user'         				=> $notif_panel,
+				'disposisi_status_baca_tindakan'   	=> $notif_disposisi['disposisi_status_baca_tindakan'],
+				'kotakmasuk_belumditindak'         	=> $notif_disposisi_masuk['kotakmasuk_belumdibaca'],
+				'draft_belumditindak'            	=> $notif_disposisi_masuk['draft_belumdibaca'],
+				'tugassaya_belumditindak'         	=> $notif_disposisi_masuk['draft_belumditindak'] + $notif_disposisi_masuk['kotakmasuk_belumditindak']
+			);
+
+			//     $redis->set(Config()->item('redisPrefix').'notif_staf:'.$staf_id, json_encode($notif_user));
+			// }
+			$pimpinan = $wakil->find(array('staf_wakil_asisten' => $staf_id));
+			$notif_asisten = array();
+
+			foreach ($pimpinan as $key => $val) {
+
+				// $notif_asisten_redis = $redis->get(Config()->item('redisPrefix').'notif_staf:'.$val['staf_wakil_staf']);
+
+				// if($notif_asisten_redis){
+				//     $notif_asisten_redis = json_decode($notif_asisten_redis, true);
+				//     array_push($notif_asisten, $notif_asisten_redis);
+				// }else{
+				$notif_disposisi = $model->get_notif_of_user('disposisi', $val['staf_wakil_staf']);
+				$notif_disposisi_masuk = $model->get_notif_of_user('disposisi_masuk', $val['staf_wakil_staf']);
+				if ($notif_disposisi && $notif_disposisi_masuk) {
+					$notif_asisten_redis = array(
+						'disposisi_status_baca_tindakan'   	=> $notif_disposisi['disposisi_status_baca_tindakan'],
+						'kotakmasuk_belumditindak'         	=> $notif_disposisi_masuk['kotakmasuk_belumdibaca'],
+						'draft_belumditindak'            	=> $notif_disposisi_masuk['draft_belumdibaca'],
+						'tugassaya_belumditindak'         	=> $notif_disposisi_masuk['draft_belumditindak'] + $notif_disposisi_masuk['kotakmasuk_belumditindak']
 					);
-	        	}
-	        // }
+					// $redis->set(Config()->item('redisPrefix').'notif_staf:'.$val['staf_wakil_staf'], json_encode($notif_asisten_redis));
+					array_push($notif_asisten, $notif_asisten_redis);
+					// }
+				}
+			}
+			$asistensi_all = 0;
+			if ($notif_asisten) {
+				$asistensi_all = array_sum(array_column($notif_asisten, 'tugassaya_belumditindak'));
+			}
 
-	        // $notif_arah_redis = $redis->get(Config()->item('redisPrefix').'notif_unit_pengarahan');
-	        // if($notif_arah_redis){
-	        //     $notif_arah_redis = json_decode($notif_arah_redis, true);
-	        //     $notif_arah = array(
-	        //         'agmasuk_pengarahan' => $notif_arah_redis['agmasuk_pengarahan']
-	        //     );
-	        // }else{
-	            $notif_arah = array(
-	                'agmasuk_pengarahan' => $model->get_notif_of_unit('agmasuk_pengarahan', $staf['staf_unit'])
-	            );
-	            // $redis->set(Config()->item('redisPrefix').'notif_unit_pengarahan', json_encode($notif_arah));
-	        // }
-
-	        // $notif_user = $redis->get(Config()->item('redisPrefix').'notif_staf:'.$staf_id);
-	        // if($notif_user){
-	        //     $notif_user = json_decode($notif_user, true);
-	        //     $notif_panel = $model->get_notif_of_user('notif_user', $staf_id);
-	        // }else{
-
-	        	$notif_panel = $model->get_notif_of_user('notif_user', $staf_id);
-	        	$notif_disposisi = $model->get_notif_of_user('disposisi', $staf_id);
-	        	$notif_disposisi_masuk = $model->get_notif_of_user('disposisi_masuk', $staf_id);
-	            
-	            $notif_user = array(
-	               'notif_user'         				=> $notif_panel,
-	               'disposisi_status_baca_tindakan'   	=> $notif_disposisi['disposisi_status_baca_tindakan'],
-	               'kotakmasuk_belumditindak'         	=> $notif_disposisi_masuk['kotakmasuk_belumdibaca'],
-	               'draft_belumditindak'            	=> $notif_disposisi_masuk['draft_belumdibaca'],
-	               'tugassaya_belumditindak'         	=> $notif_disposisi_masuk['draft_belumditindak'] + $notif_disposisi_masuk['kotakmasuk_belumditindak']
-	            );
-
-	        //     $redis->set(Config()->item('redisPrefix').'notif_staf:'.$staf_id, json_encode($notif_user));
-	        // }
-	         $pimpinan = $wakil->find(array('staf_wakil_asisten' => $staf_id));
-	        $notif_asisten = array();
-
-	        foreach ($pimpinan as $key => $val) {
-
-	            // $notif_asisten_redis = $redis->get(Config()->item('redisPrefix').'notif_staf:'.$val['staf_wakil_staf']);
-
-	            // if($notif_asisten_redis){
-	            //     $notif_asisten_redis = json_decode($notif_asisten_redis, true);
-	            //     array_push($notif_asisten, $notif_asisten_redis);
-	            // }else{
-	            	$notif_disposisi = $model->get_notif_of_user('disposisi', $val['staf_wakil_staf']);
-	        		$notif_disposisi_masuk = $model->get_notif_of_user('disposisi_masuk', $val['staf_wakil_staf']);
-	                $notif_asisten_redis = array(
-	                   'disposisi_status_baca_tindakan'   	=> $notif_disposisi['disposisi_status_baca_tindakan'],
-		               'kotakmasuk_belumditindak'         	=> $notif_disposisi_masuk['kotakmasuk_belumdibaca'],
-		               'draft_belumditindak'            	=> $notif_disposisi_masuk['draft_belumdibaca'],
-		               'tugassaya_belumditindak'         	=> $notif_disposisi_masuk['draft_belumditindak'] + $notif_disposisi_masuk['kotakmasuk_belumditindak']
-	                );
-	                // $redis->set(Config()->item('redisPrefix').'notif_staf:'.$val['staf_wakil_staf'], json_encode($notif_asisten_redis));
-	                array_push($notif_asisten, $notif_asisten_redis);
-	            // }
-	        }
-	        $asistensi_all = 0 ;
-	        if($notif_asisten){
-	        	$asistensi_all = array_sum(array_column($notif_asisten,'tugassaya_belumditindak'));
-	        }
-			
 			$output['data']['agmasuk_pengarahan'] = (int) $notif_arah['agmasuk_pengarahan'];
 			$output['data']['agmasuk_pendistribusian'] = (int) $notif_unit['agmasuk_pendistribusian'];
 			$output['data']['agmasuk_request_berkas'] = (int) $notif_unit['agmasuk_request_berkas'];
@@ -3414,7 +3448,8 @@ class Account extends Base_Controller {
 		$this->response($output);
 	}
 
-	function newmail($section = null) {
+	function newmail($section = null)
+	{
 		$model = $this->m_notification;
 		$records = array();
 
