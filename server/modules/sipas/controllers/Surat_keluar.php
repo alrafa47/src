@@ -3559,39 +3559,74 @@ class Surat_keluar extends Base_Controller
         $download   = (bool) $download;
         $user       = $account_model->get_profile();
 
-        $_filter = $report_model->generateSelectField($filter, $filterValue);
-        if ($param_unitkerja) array_unshift($_filter, array('type' => 'exact', 'field' => 'unit_id', 'value' => $param_unitkerja));
+        // =========================================================
+        $_filter_date = $report_model->generateSelectField($filter, $filterValue);
 
-        array_unshift($_filter, array('type' => 'exact', 'field' => 'surat_model', 'value' => $surat::MODEL_KELUAR));
-        $sort = array();
-        array_unshift($sort, array('property' => 'unit_nama', 'direction' => 'ASC'));
-        $data = $surat_ekeluar_rekap->select(
-            array(
-                'filter'    => json_encode($_filter),
-                'sort'      => json_encode($sort),
-            )
-        );
+        // if ($param_unitkerja) array_unshift($_filter, array('type' => 'exact', 'field' => 'unit_id', 'value' => $param_unitkerja));
+
+        // array_unshift($_filter, array('type' => 'exact', 'field' => 'surat_model', 'value' => $surat::MODEL_KELUAR));
+        // $sort = array();
+        // array_unshift($sort, array('property' => 'unit_nama', 'direction' => 'ASC'));
+        // $data = $surat_ekeluar_rekap->select(
+        //     array(
+        //         'filter'    => json_encode($_filter),
+        //         'sort'      => json_encode($sort),
+        //     )
+        // );
+        // =============================================================
+
+        // echo '<pre>';
+        // print_r($data);
+        // echo '</pre>';
+        // die;
+        $this->db->select("
+        unit_id, unit_kode, unit_nama, unit_induk, unit_induk_nama,
+        SUM(terdistribusi_count) as terdistribusi_count,  
+        SUM(blm_distribusi_count) as blm_distribusi_count,  
+        SUM(onprocess_count) as onprocess_count,  
+        SUM(setuju_count) as setuju_count,  
+        SUM(revisi_count) as revisi_count,
+        SUM(tolak_count) as tolak_count,
+        SUM(tercatat_count) as tercatat_count,
+        SUM(process_done_count) as process_done_count,
+        SUM(proses) as onprocess_count");
+        $this->db->from("v_r_rekap_surat_by_model");
+        if ($param_unitkerja) $this->db->where('unit_induk', $param_unitkerja);
+        if (isset($_filter_date[0]['value'])) $this->db->where($_filter_date[0]['value']);
+        $this->db->group_by("unit_kode");
+        $query = $this->db->get()->result_array();
 
         $grouped = array();
-        if ($data['total'] > 0) {
-            $no = 1;
-            foreach ($data['data'] as $kdata => $vdata) {
-                $kunit = $vdata['unit_kode'];
-                $grouped[$kunit]['unit_nama'] = $vdata['unit_nama'];
-                if (!array_key_exists('no', $grouped[$kunit])) {
-                    $grouped[$kunit]['no'] = $no;
-                    $grouped[$kunit]['bg_color'] = ($no % 2 == 0) ? $this::$bg_color_item_laporan['odd'] : $this::$bg_color_item_laporan['even'];
-                    $no++;
+        if (count($query) > 0) {
+            $temp = null;
+            $tempUnitKode = null;
+            foreach ($query as $kdata => $vdata) {
+                if ($vdata['unit_induk'] != null) {
+                    $groupName =  $vdata['unit_induk_nama'];
+                } else {
+                    $groupName =  $vdata['unit_nama'];
                 }
-                foreach ($vdata as $key => $val) {
-                    if ($key !== 'unit_nama' && $key !== 'unit_kode' && $key !== 'surat_tanggal' && $key !== 'surat_model' && $key !== 'unit_id' && $key !== 'jenis_id' && $key !== 'jenis_nama') {
-                        if (!array_key_exists($key, $grouped[$kunit])) {
-                            $grouped[$kunit][$key] = $val;
-                        } else {
-                            $grouped[$kunit][$key] += $val;
-                        }
-                    }
+                $grouped[$groupName]['groupName'] = $groupName;
+
+                if ($temp != $groupName || $tempUnitKode != $vdata['unit_kode']) {
+                    $temp = $groupName;
+                    $tempUnitKode = $vdata['unit_kode'];
                 }
+                $grouped[$groupName]['data'][$tempUnitKode] = [
+                    'unit_id' => $vdata['unit_id'],
+                    'unit_kode' => $vdata['unit_kode'],
+                    'unit_nama' =>  $vdata['unit_nama'],
+                    'unit_induk' => $vdata['unit_induk'],
+                    'unit_induk_nama' => $vdata['unit_induk_nama'],
+                    'terdistribusi_count' => $vdata['terdistribusi_count'],
+                    'blm_distribusi_count' => $vdata['blm_distribusi_count'],
+                    'onprocess_count' => $vdata['onprocess_count'],
+                    'setuju_count' => $vdata['setuju_count'],
+                    'revisi_count' => $vdata['revisi_count'],
+                    'tolak_count' => $vdata['tolak_count'],
+                    'tercatat_count' => $vdata['tercatat_count'],
+                    'process_done_count' => $vdata['process_done_count'],
+                ];
             }
         } else {
             $unit_nama  = ($param_unitkerja) ? $unitkerja_model->read($param_unitkerja)['unit_nama'] : $this::$default_value['nodata'];

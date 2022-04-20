@@ -6214,6 +6214,8 @@ SELECT
   `unit`.`unit_id`						AS `unit_id`,
   `unit`.`unit_nama`					AS `unit_nama`,
   `unit`.`unit_kode`					AS `unit_kode`,
+  `unit`.`unit_induk` AS `unit_induk`,
+  `uInduk`.`unit_nama` AS `unit_induk_nama`,
   `jenis`.`jenis_id`					AS `jenis_id`,
   `jenis`.`jenis_nama` 					AS `jenis_nama`,
   `surat`.`surat_tanggal`				AS `surat_tanggal`,
@@ -6238,6 +6240,8 @@ LEFT JOIN `properti` `pro`
     ON `pro`.`properti_id` = `surat`.`surat_properti`
 LEFT JOIN `unit`
     ON `unit`.`unit_id` = `surat`.`surat_unit`
+LEFT JOIN `unit` `uInduk`
+    ON `uInduk`.`unit_id` = `unit`.`unit_induk`
 LEFT JOIN `properti` `pUnit`
     ON `pUnit`.`properti_id` = `unit`.`unit_properti`
 LEFT JOIN `jenis`
