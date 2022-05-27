@@ -120,7 +120,7 @@
                         "id": null,
                         "layout|flex": null
                     },
-                    "name": "sipas.com.button.refresh77",
+                    "name": "sipas.com.button.refresh1",
                     "designerId": "9ec1e5fe-ce01-49c4-bab2-58e1b9db1cae",
                     "customConfigs": [
                         {
@@ -145,7 +145,7 @@
                         "layout|flex": null,
                         "roleName": "surat_draft_insert"
                     },
-                    "name": "sipas.com.button.add33",
+                    "name": "sipas.com.button.add1",
                     "designerId": "89a6acdf-09c0-4440-a2cc-a4e4af5aa82d",
                     "customConfigs": [
                         {
@@ -175,7 +175,7 @@
                         "id": null,
                         "layout|flex": null
                     },
-                    "name": "sipas.com.button.view26",
+                    "name": "sipas.com.button.view1",
                     "designerId": "495fe12c-a098-4fad-8ba6-b41d4eebea1d",
                     "customConfigs": [
                         {
@@ -201,7 +201,7 @@
                         "layout|flex": null,
                         "roleName": "surat_draft_update"
                     },
-                    "name": "sipas.com.button.edit28",
+                    "name": "sipas.com.button.edit",
                     "designerId": "7a0685bd-e211-4060-b4ed-2f18f06ee622",
                     "customConfigs": [
                         {
@@ -232,7 +232,7 @@
                         "layout|flex": null,
                         "roleName": "surat_draft_delete"
                     },
-                    "name": "sipas.com.button.delete27",
+                    "name": "sipas.com.button.delete",
                     "designerId": "05818450-6c6c-4b3a-adc0-30e1670d31df",
                     "customConfigs": [
                         {
@@ -276,7 +276,7 @@
                         "layout|flex": null,
                         "roleName": "surat_masuk_approve"
                     },
-                    "name": "sipas.com.button.approve8",
+                    "name": "sipas.com.button.approve",
                     "designerId": "49ea87c4-2868-4a6b-adf2-618d5cf4aeb5",
                     "customConfigs": [
                         {
@@ -306,7 +306,7 @@
                         "layout|flex": null,
                         "roleName": "surat_masuk_approve"
                     },
-                    "name": "sipas.com.button.revision1",
+                    "name": "sipas.com.button.revision",
                     "designerId": "8d998f17-287c-4565-8afb-18c3d40b647c",
                     "customConfigs": [
                         {
@@ -334,7 +334,7 @@
                         "hidden": true,
                         "layout|flex": null
                     },
-                    "name": "sipas.com.button.revision.list3",
+                    "name": "sipas.com.button.revision.list",
                     "designerId": "ec942514-7718-4045-b2a0-a263f9473c89",
                     "masterInstanceId": "18bce4d8-25eb-4b78-aea7-095d7e2fe82f"
                 },
@@ -349,7 +349,7 @@
                         "layout|flex": null,
                         "width": null
                     },
-                    "name": "sipas.com.button.togglefilter36",
+                    "name": "sipas.com.button.togglefilter",
                     "designerId": "5b589641-e47b-4837-9bf3-ad3d682525ad",
                     "masterInstanceId": "6f699e21-9335-4237-9e49-37b207a20475",
                     "cn": [
@@ -409,8 +409,8 @@
                         "layout|flex": null,
                         "store": [
                             "{",
-                            "    fields: ['value','nama'],",
-                            "    data: []",
+                            "fields: ['value','nama'],",
+                            "data: []",
                             "}"
                         ],
                         "value": null,
@@ -448,6 +448,69 @@
                             "designerId": "6ae6c74a-a3d1-43c6-8916-523289346d31"
                         }
                     ]
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayField": "nama",
+                        "editable": false,
+                        "emptyText": null,
+                        "fieldLabel": null,
+                        "hideTrigger": true,
+                        "itemId": "tipe_surat",
+                        "labelAlign": null,
+                        "labelWidth": null,
+                        "layout|flex": null,
+                        "store": [
+                            "{",
+                            "    fields: ['value','nama'],",
+                            "    data: [",
+                            "        {value:0, nama:\"semua Jenis Pengiriman\"},",
+                            "        {value:'luar', nama:\"luar Perusahaan\"},",
+                            "        {value:'dalam', nama:\"dalamperusahaan\"},",
+                            "    ]",
+                            "}"
+                        ],
+                        "value": null,
+                        "valueField": "value",
+                        "width": 200
+                    },
+                    "name": "MyComboBox",
+                    "configAlternates": {
+                        "store": "array",
+                        "value": "string"
+                    },
+                    "designerId": "b68cd0df-3b97-42ed-8a79-62b2042c7230",
+                    "cn": [
+                        {
+                            "type": "processcfgfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "config"
+                                ],
+                                "fn": "processTipe_surat",
+                                "implHandler": [
+                                    "if(this.isAsistensi)",
+                                    "{",
+                                    "    return null;",
+                                    "}",
+                                    "return config;"
+                                ]
+                            },
+                            "name": "processTipe_surat",
+                            "designerId": "19fa4fb1-d4d2-4d59-ac97-446eab96dda6"
+                        }
+                    ]
                 }
             ]
         },
@@ -481,7 +544,7 @@
                         "itemId": null,
                         "layout|flex": null
                     },
-                    "name": "sipas.surat.penyetujuan.detail.pane6",
+                    "name": "sipas.surat.penyetujuan.detail.pane",
                     "designerId": "913582a9-fb83-4027-98cd-1ef5209f8e92",
                     "masterInstanceId": "bd7b3567-3932-412e-9cb0-ebff1f2b4717"
                 },

@@ -19,6 +19,8 @@ Ext.define('SIPAS.view.Sipas.unit.Combo', {
 
     itemId: 'comboUnit',
     emptyText: 'Unit',
+    editable: false,
+    hideTrigger: true,
     displayField: 'unit_nama',
     store: 'Sipas.unit.Combo',
     valueField: 'unit_id',

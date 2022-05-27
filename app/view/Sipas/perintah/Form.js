@@ -21,7 +21,7 @@ Ext.define('SIPAS.view.Sipas.perintah.Form', {
         'SIPAS.view.Sipas.com.button.Delete',
         'SIPAS.view.Sipas.com.button.Edit',
         'SIPAS.view.Sipas.com.button.Save',
-        'Ext.form.field.Text',
+        'Ext.form.field.Number',
         'Ext.form.FieldSet',
         'Ext.form.field.Checkbox',
         'Ext.button.Button'
@@ -48,6 +48,16 @@ Ext.define('SIPAS.view.Sipas.perintah.Form', {
                     name: 'perintah_nama',
                     allowBlank: false,
                     emptyText: 'Masukkan respon disposisi'
+                },
+                {
+                    xtype: 'numberfield',
+                    anchor: '100%',
+                    width: 240,
+                    fieldLabel: 'Level',
+                    labelWidth: 120,
+                    name: 'perintah_level',
+                    allowBlank: false,
+                    emptyText: 'Masukan Level'
                 },
                 {
                     xtype: 'fieldset',

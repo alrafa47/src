@@ -22,6 +22,7 @@ Ext.define('SIPAS.view.Sipas.lokasi.Prop', {
         'SIPAS.view.Sipas.com.button.Edit',
         'SIPAS.view.Sipas.com.button.Save',
         'Ext.form.Panel',
+        'Ext.form.field.ComboBox',
         'Ext.form.FieldSet',
         'Ext.form.field.Checkbox',
         'Ext.form.field.TextArea',
@@ -66,6 +67,15 @@ Ext.define('SIPAS.view.Sipas.lokasi.Prop', {
                             fieldLabel: 'Kode Lokasi',
                             name: 'lokasi_kode',
                             emptyText: 'Masukkan Kode Lokasi'
+                        },
+                        {
+                            xtype: 'combobox',
+                            anchor: '100%',
+                            fieldLabel: 'Unit',
+                            name: 'lokasi_unit_id',
+                            displayField: 'unit_nama',
+                            store: 'Sipas.unit.Combo',
+                            valueField: 'unit_id'
                         },
                         {
                             xtype: 'fieldset',

@@ -269,8 +269,8 @@ Ext.define("SIPAS.controller.Sipas.staf.List", {
     } else {
       comboUnit.setDisabled(true);
     }
-    comboUnit.setValue(profile.unit_id);
+    comboUnit.setValue(profile.unit_induk);
 
-    this.updateList(comboStatus.getValue(), profile.unit_id, mainview);
+    this.updateList(comboStatus.getValue(), profile.unit_induk, mainview);
   },
 });

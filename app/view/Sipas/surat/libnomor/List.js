@@ -149,6 +149,23 @@ Ext.define('SIPAS.view.Sipas.surat.libnomor.List', {
                 },
                 {
                     xtype: 'gridcolumn',
+                    items: {
+                        xtype: 'textfield',
+                        emptyText: 'Cari Nama Jenis',
+                        flex: 1,
+                        margin: 2,
+                        listeners: {
+                            change: function(textfield, e, eOpts){
+                                    this.up('gridpanel').filterHeader(this);
+                                }
+                        }
+                    },
+                    width: 220,
+                    dataIndex: 'jenis_nama',
+                    text: 'Klasifikasi'
+                },
+                {
+                    xtype: 'gridcolumn',
                     filterable: true,
                     items: {
                         xtype: 'textfield',
@@ -164,6 +181,60 @@ Ext.define('SIPAS.view.Sipas.surat.libnomor.List', {
                     width: 220,
                     dataIndex: 'unit_pembuat_nama',
                     text: 'Unit Pembuat'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    filterable: true,
+                    items: {
+                        xtype: 'textfield',
+                        emptyText: 'Cari Nama Unit',
+                        flex: 1,
+                        margin: 2,
+                        listeners: {
+                            change: function(textfield, e, eOpts){
+                                    this.up('gridpanel').filterHeader(this);
+                                }
+                        }
+                    },
+                    width: 220,
+                    dataIndex: 'unit_pembuat_nama',
+                    text: 'Unit Penyetuju'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    filterable: true,
+                    items: {
+                        xtype: 'textfield',
+                        emptyText: 'Cari Nama Unit',
+                        flex: 1,
+                        margin: 2,
+                        listeners: {
+                            change: function(textfield, e, eOpts){
+                                    this.up('gridpanel').filterHeader(this);
+                                }
+                        }
+                    },
+                    width: 220,
+                    dataIndex: 'unit_pembuat_nama',
+                    text: 'Jabatan Pembuat'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    filterable: true,
+                    items: {
+                        xtype: 'textfield',
+                        emptyText: 'Cari Nama Unit',
+                        flex: 1,
+                        margin: 2,
+                        listeners: {
+                            change: function(textfield, e, eOpts){
+                                    this.up('gridpanel').filterHeader(this);
+                                }
+                        }
+                    },
+                    width: 220,
+                    dataIndex: 'unit_pembuat_nama',
+                    text: 'Jabatan Penyetuju'
                 }
             ],
             viewConfig: {

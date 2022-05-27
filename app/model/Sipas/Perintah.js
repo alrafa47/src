@@ -67,6 +67,10 @@ Ext.define('SIPAS.model.Sipas.Perintah', {
         },
         {
             name: 'perintah_properti'
+        },
+        {
+            name: 'perintah_level',
+            type: 'int'
         }
     ]
 });

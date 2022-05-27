@@ -173,7 +173,7 @@ Ext.define('SIPAS.view.Sipas.jenis.setting.Popup', {
                             },
                             width: 200,
                             align: 'center',
-                            dataIndex: 'jenis_terpusat',
+                            dataIndex: 'jenis_unit_id',
                             text: 'Pernomoran'
                         },
                         {

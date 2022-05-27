@@ -66,6 +66,10 @@ Ext.define('SIPAS.model.Sipas.Aksi', {
         },
         {
             name: 'aksi_properti'
+        },
+        {
+            name: 'aksi_level',
+            type: 'int'
         }
     ]
 });

@@ -276,6 +276,57 @@
                                                     ]
                                                 },
                                                 {
+                                                    "type": "Ext.form.RadioGroup",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "fieldLabel": "Jenis Pengiriman",
+                                                        "itemId": "radio_jenis_pengiriman"
+                                                    },
+                                                    "name": "MyRadioGroup",
+                                                    "designerId": "231672d9-aa4e-4c16-ae73-c1f0f97afe90",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.form.field.Radio",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "boxLabel": "Luar Perusahaan",
+                                                                "checked": true,
+                                                                "fieldLabel": null,
+                                                                "inputValue": "0",
+                                                                "itemId": "pengiriman_luar",
+                                                                "name": "surat_keluar_type"
+                                                            },
+                                                            "name": "MyRadio1",
+                                                            "designerId": "2eafa8e1-860d-4f70-be0a-476024e7691e"
+                                                        },
+                                                        {
+                                                            "type": "Ext.form.field.Radio",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "boxLabel": "Dalam Perusahaan",
+                                                                "fieldLabel": null,
+                                                                "inputValue": "1",
+                                                                "itemId": "pengiriman_dalam",
+                                                                "name": "surat_keluar_type"
+                                                            },
+                                                            "name": "MyRadio",
+                                                            "designerId": "f98a7d73-b74a-4abb-b357-033ae8487e3f"
+                                                        }
+                                                    ]
+                                                },
+                                                {
                                                     "type": "Ext.form.field.ComboBox",
                                                     "reference": {
                                                         "name": "items",
@@ -3410,7 +3461,7 @@
                                         "propType": "default",
                                         "useToolbarTitle": true
                                     },
-                                    "name": "sipas.surat.penerima.list1",
+                                    "name": "sipas.surat.penerima.list",
                                     "configAlternates": {
                                         "associated": "boolean",
                                         "useToolbarTitle": "boolean"
@@ -3563,7 +3614,7 @@
                                         "propType": "default",
                                         "useToolbarTitle": true
                                     },
-                                    "name": "sipas.surat.petikan.list1",
+                                    "name": "sipas.surat.petikan.list",
                                     "configAlternates": {
                                         "associated": "boolean",
                                         "useToolbarTitle": "boolean"
@@ -3622,11 +3673,12 @@
                                         "collapseDirection": "bottom",
                                         "collapsed": false,
                                         "collapsible": true,
+                                        "id": null,
                                         "itemId": "panePenerima",
                                         "propType": "default",
                                         "useToolbarTitle": true
                                     },
-                                    "name": "sipas.surat.penerima.list2",
+                                    "name": "sipas.surat.penerima.list1",
                                     "configAlternates": {
                                         "associated": "boolean",
                                         "useToolbarTitle": "boolean"
@@ -3670,6 +3722,73 @@
                                             },
                                             "name": "processPanePenerima1",
                                             "designerId": "fadebb1d-fb72-4e3a-abdc-2711562873a3"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "associated": true,
+                                        "collapseDirection": "bottom",
+                                        "collapsed": false,
+                                        "collapsible": true,
+                                        "hidden": true,
+                                        "id": null,
+                                        "itemId": "panePenerimaKeluar",
+                                        "propType": "default",
+                                        "store": "Sipas.surat.penerimakeluar.List",
+                                        "title": "Daftar Penerima",
+                                        "useToolbarTitle": true
+                                    },
+                                    "name": "sipas.surat.penerima.list2",
+                                    "configAlternates": {
+                                        "associated": "boolean",
+                                        "useToolbarTitle": "boolean"
+                                    },
+                                    "designerId": "390ce843-9261-4d0f-9401-e892888504ac",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "associated",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "propType",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "useToolbarTitle",
+                                            "type": "string"
+                                        }
+                                    ],
+                                    "masterInstanceId": "9cde2c34-c0a0-4f3c-a8ce-08ccfd557dbe",
+                                    "cn": [
+                                        {
+                                            "type": "processcfgfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "config"
+                                                ],
+                                                "fn": "processPanePenerimaKeluar",
+                                                "implHandler": [
+                                                    "config.propType = this.propType;",
+                                                    "return config;"
+                                                ]
+                                            },
+                                            "name": "processPanePenerimaKeluar",
+                                            "designerId": "c6a2ef9f-5953-4563-9af1-20bcdfaf602a"
                                         }
                                     ]
                                 }
@@ -3776,7 +3895,7 @@
                         "roleable": true,
                         "text": null
                     },
-                    "name": "sipas.com.button.delete9",
+                    "name": "sipas.com.button.delete",
                     "designerId": "2310b6a7-1211-4605-be06-5cb3a4a9f92c",
                     "customConfigs": [
                         {
@@ -3841,7 +3960,7 @@
                         "roleable": true,
                         "text": "Hapus Permanen"
                     },
-                    "name": "sipas.com.button.delete10",
+                    "name": "sipas.com.button.delete1",
                     "designerId": "7cec8736-67c4-4f01-967a-d28b7c158650",
                     "customConfigs": [
                         {
@@ -4130,7 +4249,7 @@
                         "roleable": true,
                         "text": "Balas Surat"
                     },
-                    "name": "sipas.com.button.putin15",
+                    "name": "sipas.com.button.putin1",
                     "designerId": "6f6c9f4c-3ab7-4762-b884-47747ea9e833",
                     "customConfigs": [
                         {
@@ -4174,7 +4293,7 @@
                         "text": "Cetak Resi",
                         "ui": null
                     },
-                    "name": "sipas.com.button.print30",
+                    "name": "sipas.com.button.print1",
                     "configAlternates": {
                         "roleable": "boolean"
                     },
@@ -4216,7 +4335,7 @@
                         "roleable": true,
                         "text": "Perubahan"
                     },
-                    "name": "sipas.com.button.edit8",
+                    "name": "sipas.com.button.edit",
                     "designerId": "5d50b049-3489-4bcc-8619-dbe37672058e",
                     "customConfigs": [
                         {
@@ -4275,7 +4394,7 @@
                         "roleable": true,
                         "text": "Distribusikan"
                     },
-                    "name": "sipas.com.button.disposisi7",
+                    "name": "sipas.com.button.disposisi",
                     "designerId": "0b25d849-e24f-46d6-a836-2f2d108c84f8",
                     "customConfigs": [
                         {
@@ -4330,7 +4449,7 @@
                         "propType": "default",
                         "text": "SIMPAN DRAFT"
                     },
-                    "name": "sipas.com.button.save25",
+                    "name": "sipas.com.button.save1",
                     "designerId": "72f3496f-ef59-4867-b874-82425079a896",
                     "customConfigs": [
                         {
@@ -4495,7 +4614,7 @@
                         "roleable": true,
                         "text": null
                     },
-                    "name": "sipas.com.button.delete11",
+                    "name": "sipas.com.button.delete2",
                     "designerId": "bbfe4bd8-5514-4764-ab80-60bf2ff8b8ff",
                     "customConfigs": [
                         {
@@ -4560,7 +4679,7 @@
                         "roleable": true,
                         "text": "Hapus Permanen"
                     },
-                    "name": "sipas.com.button.delete12",
+                    "name": "sipas.com.button.delete3",
                     "designerId": "18e6c5ba-732d-4005-8aa0-1a42c0091bf4",
                     "customConfigs": [
                         {
@@ -4989,7 +5108,7 @@
                         "roleable": true,
                         "text": "Perubahan"
                     },
-                    "name": "sipas.com.button.edit9",
+                    "name": "sipas.com.button.edit1",
                     "designerId": "2d65680b-9d93-4425-97bf-ba17b6dabe17",
                     "customConfigs": [
                         {
@@ -5050,7 +5169,7 @@
                         "roleable": true,
                         "text": "Perubahan"
                     },
-                    "name": "sipas.com.button.edit10",
+                    "name": "sipas.com.button.edit2",
                     "designerId": "0540673a-1af7-4fe5-b164-4b450ee77755",
                     "customConfigs": [
                         {
@@ -5105,7 +5224,7 @@
                         "propType": "default",
                         "text": "SIMPAN DRAFT"
                     },
-                    "name": "sipas.com.button.save26",
+                    "name": "sipas.com.button.save2",
                     "designerId": "b1836abc-4a23-48a3-8a97-0945bee550d2",
                     "customConfigs": [
                         {
@@ -5229,7 +5348,7 @@
                         "roleable": true,
                         "text": "Ubah Surat"
                     },
-                    "name": "sipas.com.button.edit11",
+                    "name": "sipas.com.button.edit3",
                     "designerId": "329b7c51-308b-407e-b600-42d4dc50cd13",
                     "customConfigs": [
                         {
@@ -5287,7 +5406,7 @@
                         "roleable": true,
                         "text": "KIRIM"
                     },
-                    "name": "sipas.com.button.approve1",
+                    "name": "sipas.com.button.approve",
                     "designerId": "3e57f204-b248-4908-be69-a996123a7702",
                     "customConfigs": [
                         {
@@ -5358,6 +5477,66 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "disabled": null,
+                        "hidden": null,
+                        "itemId": "btnDistribusiSuratKeluar",
+                        "layout|flex": null,
+                        "propType": "default",
+                        "roleName": "surat_internal_masuk_distribusi",
+                        "roleable": true,
+                        "text": "Distribusikan"
+                    },
+                    "name": "sipas.com.button.disposisi4",
+                    "designerId": "6481371e-3289-484b-9562-50c0c3dcae99",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleable",
+                            "type": "boolean"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "roleName",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "propType",
+                            "type": "string"
+                        }
+                    ],
+                    "masterInstanceId": "d5669cd3-61be-4bbb-80a9-bd9f521250ee",
+                    "cn": [
+                        {
+                            "type": "processcfgfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "config"
+                                ],
+                                "fn": "processBtnDistribusiSuratKeluar",
+                                "implHandler": [
+                                    "config.propType = this.propType;",
+                                    "return config;"
+                                ]
+                            },
+                            "name": "processBtnDistribusiSuratKeluar",
+                            "designerId": "a4307ccf-6c51-4b3b-807a-c6624a34d686"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
                         "cls": "x-btn-info",
                         "featureName": "agenda_keluar_eksternal_kirim_tembusan",
                         "featureable": true,
@@ -5371,7 +5550,7 @@
                         "roleable": true,
                         "text": "KIRIM tembusan"
                     },
-                    "name": "sipas.com.button.approve2",
+                    "name": "sipas.com.button.approve1",
                     "designerId": "19fbf192-28cc-4507-ab9c-fae22697e08c",
                     "customConfigs": [
                         {
@@ -5521,7 +5700,7 @@
                         "roleable": true,
                         "text": null
                     },
-                    "name": "sipas.com.button.delete13",
+                    "name": "sipas.com.button.delete4",
                     "designerId": "46c74d1d-1cdd-4068-8582-ea6144bcbfbc",
                     "customConfigs": [
                         {
@@ -5935,7 +6114,7 @@
                         "roleable": true,
                         "text": "Perubahan"
                     },
-                    "name": "sipas.com.button.edit12",
+                    "name": "sipas.com.button.edit4",
                     "designerId": "e3b28b72-7f18-4668-81b3-6e75afc8101d",
                     "customConfigs": [
                         {
@@ -5990,7 +6169,7 @@
                         "propType": "default",
                         "text": "SIMPAN DRAFT"
                     },
-                    "name": "sipas.com.button.save27",
+                    "name": "sipas.com.button.save3",
                     "designerId": "e5da8253-bc7d-43d1-bd72-c6ffc89a12ce",
                     "customConfigs": [
                         {
@@ -6114,7 +6293,7 @@
                         "roleable": true,
                         "text": "Ubah Surat"
                     },
-                    "name": "sipas.com.button.edit13",
+                    "name": "sipas.com.button.edit5",
                     "designerId": "d05816f8-377d-458e-a259-f8dba9366c84",
                     "customConfigs": [
                         {
@@ -6172,7 +6351,7 @@
                         "roleable": true,
                         "text": "KIRIM"
                     },
-                    "name": "sipas.com.button.approve3",
+                    "name": "sipas.com.button.approve2",
                     "designerId": "f004ec1c-1e95-40b4-9b53-aa787327a826",
                     "customConfigs": [
                         {
@@ -6256,7 +6435,7 @@
                         "roleable": true,
                         "text": "KIRIM tembusan"
                     },
-                    "name": "sipas.com.button.approve4",
+                    "name": "sipas.com.button.approve3",
                     "designerId": "1359479b-c2fb-4962-a62b-5ec020540e7e",
                     "customConfigs": [
                         {
@@ -6406,7 +6585,7 @@
                         "roleable": true,
                         "text": null
                     },
-                    "name": "sipas.com.button.delete14",
+                    "name": "sipas.com.button.delete5",
                     "designerId": "1cb1b7d6-afb5-4077-889a-d9f15bb683b7",
                     "customConfigs": [
                         {
@@ -6471,7 +6650,7 @@
                         "roleable": true,
                         "text": "Hapus Permanen"
                     },
-                    "name": "sipas.com.button.delete15",
+                    "name": "sipas.com.button.delete6",
                     "designerId": "50a27952-da8c-4e4a-8b3c-fd3148c09810",
                     "customConfigs": [
                         {
@@ -6900,7 +7079,7 @@
                         "roleable": true,
                         "text": "Perubahan"
                     },
-                    "name": "sipas.com.button.edit14",
+                    "name": "sipas.com.button.edit6",
                     "designerId": "9f151b34-2de5-4e7f-b9c1-302292c4debc",
                     "customConfigs": [
                         {
@@ -6961,7 +7140,7 @@
                         "roleable": true,
                         "text": "Perubahan"
                     },
-                    "name": "sipas.com.button.edit15",
+                    "name": "sipas.com.button.edit7",
                     "designerId": "e60c19cf-0d17-491a-96e5-0a62bd4710a0",
                     "customConfigs": [
                         {
@@ -7016,7 +7195,7 @@
                         "propType": "default",
                         "text": "SIMPAN DRAFT"
                     },
-                    "name": "sipas.com.button.save28",
+                    "name": "sipas.com.button.save4",
                     "designerId": "2dc22f29-8600-42ce-9c22-c82b55fed7d1",
                     "customConfigs": [
                         {
@@ -7128,7 +7307,7 @@
                         "roleable": true,
                         "text": "Ubah Surat"
                     },
-                    "name": "sipas.com.button.edit16",
+                    "name": "sipas.com.button.edit8",
                     "designerId": "e736b6cd-9bc2-4937-b905-450883e0a788",
                     "customConfigs": [
                         {
@@ -7186,7 +7365,7 @@
                         "roleable": true,
                         "text": "KIRIM"
                     },
-                    "name": "sipas.com.button.approve5",
+                    "name": "sipas.com.button.approve4",
                     "configAlternates": {
                         "featureable": "boolean"
                     },
@@ -7339,7 +7518,7 @@
                         "roleable": true,
                         "text": null
                     },
-                    "name": "sipas.com.button.delete16",
+                    "name": "sipas.com.button.delete7",
                     "designerId": "77f4801a-62ff-4086-870f-0b6f62af0409",
                     "customConfigs": [
                         {
@@ -7753,7 +7932,7 @@
                         "roleable": true,
                         "text": "Perubahan"
                     },
-                    "name": "sipas.com.button.edit17",
+                    "name": "sipas.com.button.edit9",
                     "designerId": "576974d6-2e47-4868-85c4-7eddd3a79952",
                     "customConfigs": [
                         {
@@ -7808,7 +7987,7 @@
                         "propType": "default",
                         "text": "SIMPAN DRAFT"
                     },
-                    "name": "sipas.com.button.save29",
+                    "name": "sipas.com.button.save5",
                     "designerId": "aae5adae-1855-4b85-a4dd-484f8ee08add",
                     "customConfigs": [
                         {
@@ -7920,7 +8099,7 @@
                         "roleable": true,
                         "text": "Ubah Surat"
                     },
-                    "name": "sipas.com.button.edit18",
+                    "name": "sipas.com.button.edit10",
                     "designerId": "6c21e930-9a77-4c3a-b593-dd19a862a8ed",
                     "customConfigs": [
                         {
@@ -7978,7 +8157,7 @@
                         "roleable": true,
                         "text": "KIRIM"
                     },
-                    "name": "sipas.com.button.approve6",
+                    "name": "sipas.com.button.approve5",
                     "designerId": "c3d1f6f3-f43f-4ea4-ba7e-60d3f6ff0477",
                     "customConfigs": [
                         {
@@ -8130,7 +8309,7 @@
                         "roleable": true,
                         "text": null
                     },
-                    "name": "sipas.com.button.delete17",
+                    "name": "sipas.com.button.delete8",
                     "configAlternates": {
                         "featureable": "boolean"
                     },
@@ -8208,7 +8387,7 @@
                         "roleable": true,
                         "text": "Hapus Permanen"
                     },
-                    "name": "sipas.com.button.delete18",
+                    "name": "sipas.com.button.delete9",
                     "designerId": "02436f19-0665-4c9f-be8e-d769a6d8c038",
                     "customConfigs": [
                         {
@@ -8501,7 +8680,7 @@
                         "roleable": true,
                         "text": "Perubahan"
                     },
-                    "name": "sipas.com.button.edit19",
+                    "name": "sipas.com.button.edit11",
                     "configAlternates": {
                         "featureable": "boolean"
                     },
@@ -8570,7 +8749,7 @@
                         "text": "SIMPAN DRAFT",
                         "ui": null
                     },
-                    "name": "sipas.com.button.save30",
+                    "name": "sipas.com.button.save6",
                     "configAlternates": {
                         "featureable": "boolean"
                     },
@@ -8666,7 +8845,7 @@
                         "roleable": true,
                         "text": "Transfer Surat"
                     },
-                    "name": "sipas.com.button.process5",
+                    "name": "sipas.com.button.process1",
                     "designerId": "7a452af0-0121-466b-8c22-6e77eeabaa24",
                     "customConfigs": [
                         {
@@ -8720,7 +8899,7 @@
                         "roleable": true,
                         "text": "Distribusikan"
                     },
-                    "name": "sipas.com.button.disposisi8",
+                    "name": "sipas.com.button.disposisi1",
                     "designerId": "2c0a26ed-527e-44a3-9b72-41dde8e64ecd",
                     "customConfigs": [
                         {
@@ -8942,7 +9121,7 @@
                         "roleable": true,
                         "text": null
                     },
-                    "name": "sipas.com.button.delete19",
+                    "name": "sipas.com.button.delete10",
                     "designerId": "e12f964c-54c7-47c9-b9a5-5c456bf9600d",
                     "customConfigs": [
                         {
@@ -9007,7 +9186,7 @@
                         "roleable": true,
                         "text": "Hapus Permanen"
                     },
-                    "name": "sipas.com.button.delete20",
+                    "name": "sipas.com.button.delete11",
                     "designerId": "4b323796-177a-4e29-9ed5-fd74c2f98945",
                     "customConfigs": [
                         {
@@ -9436,7 +9615,7 @@
                         "roleable": true,
                         "text": "Perubahan"
                     },
-                    "name": "sipas.com.button.edit20",
+                    "name": "sipas.com.button.edit12",
                     "designerId": "6678783d-3604-4481-ae7f-d8b8465348c9",
                     "customConfigs": [
                         {
@@ -9497,7 +9676,7 @@
                         "roleable": true,
                         "text": "Perubahan"
                     },
-                    "name": "sipas.com.button.edit21",
+                    "name": "sipas.com.button.edit13",
                     "designerId": "635d296e-650a-4d0b-9565-dbd87c8b22ea",
                     "customConfigs": [
                         {
@@ -9552,7 +9731,7 @@
                         "propType": "default",
                         "text": "SIMPAN DRAFT"
                     },
-                    "name": "sipas.com.button.save31",
+                    "name": "sipas.com.button.save7",
                     "designerId": "07da8f5d-1390-449d-9cb7-5154a89374da",
                     "customConfigs": [
                         {
@@ -9664,7 +9843,7 @@
                         "roleable": true,
                         "text": "Distribusikan"
                     },
-                    "name": "sipas.com.button.disposisi9",
+                    "name": "sipas.com.button.disposisi2",
                     "designerId": "1ecb8dff-bb5d-4d5d-83ee-3f29a687cc13",
                     "customConfigs": [
                         {
@@ -9782,7 +9961,7 @@
                         "roleable": true,
                         "text": "Ubah Surat"
                     },
-                    "name": "sipas.com.button.edit22",
+                    "name": "sipas.com.button.edit14",
                     "designerId": "55a5d77a-1595-4ffd-8245-10b0b2ff3910",
                     "customConfigs": [
                         {
@@ -9840,7 +10019,7 @@
                         "roleable": true,
                         "text": "KIRIM"
                     },
-                    "name": "sipas.com.button.approve7",
+                    "name": "sipas.com.button.approve6",
                     "configAlternates": {
                         "featureable": "boolean"
                     },

@@ -155,6 +155,14 @@ Ext.define('SIPAS.view.Sipas.perintah.List', {
                     minWidth: 400,
                     dataIndex: 'perintah_nama',
                     text: 'Perintah'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    filterable: true,
+                    languageMode: 'text',
+                    minWidth: 400,
+                    dataIndex: 'perintah_level',
+                    text: 'level'
                 }
             ],
             selModel: Ext.create('Ext.selection.RowModel', {

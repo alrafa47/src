@@ -682,9 +682,13 @@ HAVING
 CREATE OR REPLACE VIEW `v_staf_tim` AS
 SELECT
 	`st`.*,
-	`stast`.`staf_tim_jumlah` AS `staf_tim_jumlah`
+	`stast`.`staf_tim_jumlah` AS `staf_tim_jumlah`,
+	`u`.`unit_nama` AS `staf_tim_unit_nama`,
+	`u`.`unit_induk` AS `staf_tim_unit_induk`,
+	`u`.`unit_parent_path` AS `staf_tim_unit_parent_path`
 FROM `staf_tim` `st`
 LEFT JOIN `staf_tim_anggota_jumlah` `stast` FORCE INDEX(PRIMARY) ON `st`.`staf_tim_id` = `stast`.`staf_tim_anggota_tim`
+LEFT JOIN `unit` `u` ON `st`.`staf_tim_unit` = `u`.`unit_id`
 ;
 
 /*==================================================================*/
@@ -1008,6 +1012,7 @@ SELECT
     `u`.`unit_id` AS `unit_id`,
     `u`.`unit_nama` AS `unit_nama`,
     `u`.`unit_kode` AS `unit_kode`,
+    `u`.`unit_parent_path` AS `unit_parent_path`,
     `u`.`unit_rubrik` AS `unit_rubrik`,
     IFNULL(`u`.`unit_isaktif`, 0) AS `unit_isaktif`,
     `u`.`unit_manager` AS `unit_manager`,
@@ -1220,8 +1225,11 @@ SELECT
 	`k`.`kontak_id`,
 	`k`.`kontak_nama`,
 	`k`.`kontak_properti`,
-	IFNULL(`k`.`kontak_ishapus`, 0) AS `kontak_ishapus`
+	IFNULL(`k`.`kontak_ishapus`, 0) AS `kontak_ishapus`,
+	`k`.`kontak_unit_id`,
+	`u`.`unit_nama` AS `kontak_unit_nama`
 FROM `kontak` `k`
+LEFT JOIN `unit` `u` ON `k`.`kontak_unit_id` = `u`.`unit_id`
 ;
 
 CREATE OR REPLACE VIEW `v_kontak_musnah` AS
@@ -1263,11 +1271,31 @@ SELECT
 	`j`.`jenis_ttd`,
 	`j`.`jenis_tipe`,
 	`j`.`jenis_retensi`,
+	`j`.`jenis_nomor_unit_pembuat`,
+	`j`.`jenis_nomor_unit_penyetuju`,
+	`j`.`jenis_nomor_jabatan_pembuat`,
+	`j`.`jenis_nomor_jabatan_penyetuju`,
+	`j`.`jenis_nomor_tahun`,
+	`j`.`jenis_nomor_jenis`,
+	`j`.`jenis_nomor_kelas`,
+	`j`.`jenis_nomor_model`,
+	`j`.`jenis_nomor_sifat`,
+	`j`.`jenis_nomor_lokasi`,
+	`j`.`jenis_format`,
+	`j`.`jenis_formateks`,
+	`j`.`jenis_formateksbackdate`,
+	`j`.`jenis_formatint`,
+	`j`.`jenis_formatintbackdate`,
+	`j`.`jenis_digiteks`,
+	`j`.`jenis_digitint`,
+	`j`.`jenis_unit_id`,
+	`u`.`unit_nama`								AS `jenis_unit_nama`,
 	IFNULL(`j`.`jenis_ishapus`,0)				AS `jenis_ishapus`,
 	`j`.`jenis_properti`,
 	IFNULL(`j`.`jenis_isbatas`,0)				AS `jenis_isbatas`,
 	`j`.`jenis_batas_jumlah`
 FROM `jenis` `j`
+LEFT JOIN `unit` `u` ON `u`.`unit_id` = `j`.`jenis_unit_id`
 ;
 
 CREATE OR REPLACE VIEW `v_jenis_musnah` AS
@@ -1745,8 +1773,11 @@ SELECT
 	IFNULL(`l`.`lokasi_ishapus`,0)				AS `lokasi_ishapus`,
 	`l`.`lokasi_properti`,
 	`induk`.`lokasi_id` AS `lokasi_induk_id`,
-	`induk`.`lokasi_nama` AS `lokasi_induk_nama`
+	`induk`.`lokasi_nama` AS `lokasi_induk_nama`,
+	`l`.`lokasi_unit_id` AS `lokasi_unit_id`,
+	`u`.`unit_nama` AS `lokasi_unit_nama`
 FROM `lokasi` `l`
+LEFT JOIN `unit` `u` ON `u`.`unit_id` = `l`.`lokasi_unit_id`
 LEFT JOIN `lokasi` `induk` ON `induk`.`lokasi_id` = `l`.`lokasi_induk`
 ;
 
@@ -1895,8 +1926,12 @@ SELECT
 	IFNULL(`k`.`klise_ispetikan`,0)				AS `klise_ispetikan`,
 	IFNULL(`k`.`klise_isaktif`,0)				AS `klise_isaktif`,
 	IFNULL(`k`.`klise_ishapus`,0)				AS `klise_ishapus`,
-	`k`.`klise_properti`
+	`k`.`klise_properti`,
+	`k`.`klise_unit_id`,
+	`u`.`unit_nama` AS `klise_unit_nama`,
+	`u`.`unit_induk` AS `klise_unit_induk`
 FROM `klise` `k`
+LEFT join `unit` `u` ON `k`.`klise_unit_id` = `u`.`unit_id`
 ;
 
 CREATE OR REPLACE VIEW `v_klise_musnah` AS
@@ -1990,6 +2025,8 @@ SELECT
 	`u`.`unit_id` 			AS `unit_id`,
 	`u`.`unit_kode` 		AS `unit_kode`,
 	`u`.`unit_nama` 		AS `unit_nama`,
+	`u`.`unit_induk` 		AS `unit_induk`,
+	`u`.`unit_parent_path` 	AS `unit_parent_path`,
 	`s`.`staf_id` 			AS `staf_id`,
 	`s`.`staf_kode` 		AS `staf_kode`,
 	`s`.`staf_nama` 		AS `staf_nama`,
@@ -2160,6 +2197,8 @@ CREATE OR REPLACE VIEW v_r_rekap_staf AS
 SELECT 
   `unit`.`unit_nama` AS `unit_nama`,
   `unit`.`unit_kode` AS `unit_kode`,
+  `unit`.`unit_induk` AS `unit_induk`,
+  `uInduk`.`unit_nama` AS `unit_induk_nama`,
   COUNT(`staf`.`staf_id`) AS `jumlah_staf`,
   SUM((
     CASE
@@ -2174,9 +2213,11 @@ SELECT
   FROM `staf` 
 LEFT JOIN `unit` 
   ON `staf`.`staf_unit` = `unit`.`unit_id`
+LEFT JOIN `unit` `uInduk`
+	ON `uInduk`.`unit_id` = `unit`.`unit_induk`
   WHERE 
     IFNULL(`staf`.`staf_ishapus`,0) = 0
-  GROUP BY `unit_id`
+  GROUP BY `unit`.`unit_id`
   ORDER BY `unit_nama`;
 
 /*==================================================================*/
@@ -2355,6 +2396,7 @@ SELECT
 	`s`.`surat_agenda_sub`,
 	`s`.`surat_tanggal`,
 	`s`.`surat_berlaku_tgl`,
+	`s`.`surat_keluar_type`,
 	`s`.`surat_perihal`,
 	`s`.`surat_pengirim`,
 	`s`.`surat_tujuan`,
@@ -2525,6 +2567,7 @@ SELECT
 	`surat_unit`.`unit_id` 									AS `unit_id`,
 	`surat_unit`.`unit_kode` 								AS `unit_kode`,
 	`surat_unit`.`unit_nama` 								AS `unit_nama`,
+	`surat_unit`.`unit_parent_path` 						AS `unit_parent_path`,
 
 	`surat_unit_source`.`unit_id` 							AS `unit_source_id`,
 	`surat_unit_source`.`unit_kode` 						AS `unit_source_kode`,
@@ -2583,6 +2626,8 @@ SELECT
 
 	`iunit`.`unit_id` 										AS `surat_induk_unit`,
 	`iunit`.`unit_nama` 									AS `surat_induk_unit_nama`,
+	`iunit`.`unit_parent_path` 								AS `surat_induk_unit_parent_path`,
+	`iunit`.`unit_isbuatsurat`    							AS `surat_induk_unit_isbuatsurat`,
 	
 	IFNULL(`sdj`.`surat_jumlah_dokumen`, 0) 				AS `surat_jumlah_dokumen`,
 	IFNULL(`sdj`.`surat_jumlah_dokumen_reupload`, 0) 		AS `surat_jumlah_dokumen_reupload`,
@@ -2750,6 +2795,8 @@ SELECT
 	`s`.`surat_distribusi_tgl`,
 	`s`.`surat_distribusi_staf`,
 	`s`.`surat_distribusi_profil`,
+
+	`s`.`surat_keluar_type`,
 	-- `s`.`surat_distribusi_otomatis`,
 	-- (`s`.`surat_arah_tgl` IS NOT NULL)AS `surat_isarah`,
 	-- `s`.`surat_arah_tgl`,
@@ -4539,7 +4586,8 @@ SELECT
 	`a`.`aksi_kode`,
 	IFNULL(`a`.`aksi_isaktif`,0)				AS `aksi_isaktif`,
 	`a`.`aksi_ishapus`,
-	`a`.`aksi_properti`
+	`a`.`aksi_properti`,
+	`a`.`aksi_level`
 FROM `aksi` `a`
 ;
 
@@ -4594,7 +4642,8 @@ SELECT
 	`p`.`perintah_kode`,
 	IFNULL(`p`.`perintah_isaktif`,0)				AS `perintah_isaktif`,
 	`p`.`perintah_ishapus`,
-	`p`.`perintah_properti`
+	`p`.`perintah_properti`, 
+	`p`.`perintah_level`
 FROM `perintah` `p`
 ;
 
@@ -6053,6 +6102,7 @@ CREATE OR REPLACE VIEW v_r_rekap_surat_masuk AS
 SELECT 
   `unit`.`unit_nama` AS `unit_nama`,
   `unit`.`unit_kode` AS `unit_kode`,
+  `unit`.`unit_induk` AS `unit_induk`,
   COUNT(`surat`.`surat_id`) AS `jumlah_surat`,
   YEAR(`surat`.`surat_tanggal`) AS `tahun`,
   MONTH(`surat`.`surat_tanggal`) AS `bulan`,
@@ -6215,6 +6265,7 @@ SELECT
   `unit`.`unit_nama`					AS `unit_nama`,
   `unit`.`unit_kode`					AS `unit_kode`,
   `unit`.`unit_induk` AS `unit_induk`,
+  `unit`.`unit_parent_path` AS `unit_parent_path`,
   `uInduk`.`unit_nama` AS `unit_induk_nama`,
   `jenis`.`jenis_id`					AS `jenis_id`,
   `jenis`.`jenis_nama` 					AS `jenis_nama`,
@@ -6302,7 +6353,9 @@ SELECT
 	`j`.`jenis_id`						AS `jenis_id`,
 	`j`.`jenis_nama`					AS `jenis_nama`,
 	`u`.`unit_id`						AS `unit_id`,
+	`u`.`unit_induk`					AS `unit_induk`,
 	`u`.`unit_nama`						AS `unit_nama`,
+	`u`.`unit_parent_path`				AS `unit_parent_path`,
   	COUNT(`s`.`surat_jenis`)			AS `surat_jenis_count`
 FROM `surat` `s`
 LEFT JOIN `properti` `pro`

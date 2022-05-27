@@ -95,6 +95,31 @@ Ext.define('SIPAS.view.Sipas.com.reportfilter.Internal', {
                 },
                 {
                     xtype: 'combobox',
+                    bootstrapProperty: 'Sipas.unit.Prop',
+                    flex: 1,
+                    disabled: true,
+                    itemId: 'comboBagian',
+                    fieldLabel: 'Unit Bagian',
+                    labelWidth: 60,
+                    name: 'staf_unit',
+                    emptyText: 'Pilih Unit Kerja',
+                    matchFieldWidth: false,
+                    displayField: 'unit_nama',
+                    minChars: 2,
+                    pageSize: 15,
+                    store: 'Sipas.unit.ComboBagian',
+                    typeAhead: true,
+                    valueField: 'unit_id',
+                    listConfig: {
+                        xtype: 'boundlist',
+                        itemSelector: 'div',
+                        itemTpl: [
+                            '{unit_nama} <span style="color: gray">({unit_kode})</span>'
+                        ]
+                    }
+                },
+                {
+                    xtype: 'combobox',
                     bootstrapProperty: 'Sipas.staf.Prop',
                     flex: 1,
                     itemId: 'comboStaf',

@@ -35,6 +35,12 @@ Ext.define('SIPAS.model.Sipas.Lokasi', {
             name: 'lokasi_nama'
         },
         {
+            name: 'lokasi_unit_id'
+        },
+        {
+            name: 'lokasi_unit_nama'
+        },
+        {
             defaultValue: 1,
             name: 'lokasi_isaktif',
             type: 'boolean'

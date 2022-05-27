@@ -302,6 +302,27 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "displayField": "unit_nama",
+                        "editable": false,
+                        "emptyText": "Unit",
+                        "fieldLabel": null,
+                        "hideTrigger": true,
+                        "itemId": "comboUnit",
+                        "layout|flex": null,
+                        "store": "Sipas.unit.Combo",
+                        "valueField": "unit_id"
+                    },
+                    "name": "MyComboBox2",
+                    "designerId": "33204022-77c2-4cad-8caa-94d07733cfd1"
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
                         "displayField": "nama",
                         "editable": false,
                         "fieldLabel": null,
@@ -510,8 +531,76 @@
             },
             "codeClass": null,
             "userConfig": {
+                "dataIndex": "jenis_unit_nama",
+                "filterable": true,
+                "items": null,
+                "sortable": true,
+                "text": "Unit",
+                "width": 85
+            },
+            "name": "MyColumn7",
+            "configAlternates": {
+                "filters": "object",
+                "filter": "object",
+                "items": "object"
+            },
+            "designerId": "2bf4c313-3d04-4e66-a7c4-a1426c3e42ba",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "filterable",
+                    "type": "boolean"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "items",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var aktif = record.get('jenis_isaktif');",
+                            "",
+                            "if(value){",
+                            "    return this.genAktif(value, aktif);",
+                            "}else{",
+                            "    return '<span class=\"alternative\">-</span>';",
+                            "}"
+                        ]
+                    },
+                    "name": "renderer",
+                    "designerId": "a0008d1c-e634-4312-97f9-3d5db1accb8d"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "align": "center",
-                "dataIndex": "jenis_terpusat",
+                "dataIndex": "jenis_unit_id",
                 "text": "Penomoran",
                 "width": 200
             },
@@ -1026,7 +1115,7 @@
             "codeClass": null,
             "userConfig": {
                 "align": "center",
-                "dataIndex": "jenis_ttd",
+                "dataIndex": "jenis_unit_parent_path",
                 "featureName": null,
                 "text": "Perlu<br/>Tanda Tangan"
             },

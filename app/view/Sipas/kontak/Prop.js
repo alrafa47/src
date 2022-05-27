@@ -22,7 +22,7 @@ Ext.define('SIPAS.view.Sipas.kontak.Prop', {
         'SIPAS.view.Sipas.com.button.Edit',
         'SIPAS.view.Sipas.com.button.Save',
         'Ext.form.Panel',
-        'Ext.form.field.Text',
+        'Ext.form.field.ComboBox',
         'Ext.button.Button'
     ],
 
@@ -54,6 +54,16 @@ Ext.define('SIPAS.view.Sipas.kontak.Prop', {
                             fieldLabel: 'Kontak',
                             name: 'kontak_nama',
                             emptyText: 'Masukkan nama kontak'
+                        },
+                        {
+                            xtype: 'combobox',
+                            anchor: '100%',
+                            fieldLabel: 'Unit',
+                            name: 'kontak_unit_id',
+                            emptyText: 'Masukkan nama unit',
+                            displayField: 'unit_nama',
+                            store: 'Sipas.unit.Combo',
+                            valueField: 'unit_id'
                         }
                     ]
                 }

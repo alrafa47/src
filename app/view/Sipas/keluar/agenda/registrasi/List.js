@@ -62,10 +62,31 @@ Ext.define('SIPAS.view.Sipas.keluar.agenda.registrasi.List', {
                             xtype: 'combobox',
                             itemId: 'comboScope',
                             minWidth: 300,
+                            width: 300,
+                            emptyText: 'Unit',
                             editable: false,
                             hideTrigger: true,
                             displayField: 'unit_nama',
                             store: 'Sipas.surat.scope.Combo',
+                            valueField: 'unit_id',
+                            listConfig: {
+                                xtype: 'boundlist',
+                                itemSelector: 'div',
+                                itemTpl: [
+                                    '{unit_nama} <span style="color: gray">({unit_kode})</span>'
+                                ]
+                            }
+                        },
+                        {
+                            xtype: 'combobox',
+                            itemId: 'comboBagian',
+                            minWidth: 300,
+                            width: 300,
+                            emptyText: 'Bagian Unit',
+                            editable: false,
+                            hideTrigger: true,
+                            displayField: 'unit_nama',
+                            store: 'Sipas.unit.ComboBagian',
                             valueField: 'unit_id',
                             listConfig: {
                                 xtype: 'boundlist',

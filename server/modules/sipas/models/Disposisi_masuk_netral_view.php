@@ -1,17 +1,19 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 $CI = get_instance();
 $CI->model('sipas/disposisi_masuk', true);
 
-class Sipas_model_Disposisi_masuk_netral_view extends Sipas_model_Disposisi_masuk {
-    
+class Sipas_model_Disposisi_masuk_netral_view extends Sipas_model_Disposisi_masuk
+{
+
     public $table = 'v_disposisi_masuk_netral';
 
     static $field_isbaca = 'disposisi_masuk_isbaca';
     static $field_isterus = 'disposisi_masuk_isterus';
     static $field_iscabut = 'disposisi_masuk_iscabut';
 
-    function __construct(){
+    function __construct()
+    {
         parent::__construct();
         $this->set_table_name('v_disposisi_masuk_netral');
         $this->set_primary('disposisi_masuk_id');
@@ -75,7 +77,7 @@ class Sipas_model_Disposisi_masuk_netral_view extends Sipas_model_Disposisi_masu
             array('name' => 'disposisi_masuk_iscabut'),
             array('name' => 'disposisi_masuk_ispulih'),
             array('name' => 'disposisi_masuk_isprioritas'),
-            
+
             array('name' => 'disposisi_id'),
             array('name' => 'disposisi_staf'),
             array('name' => 'disposisi_profil'),
@@ -136,7 +138,7 @@ class Sipas_model_Disposisi_masuk_netral_view extends Sipas_model_Disposisi_masu
             array('name' => 'disposisi_masuk_pengingat_tgl'),
             array('name' => 'disposisi_masuk_pengingat_staf'),
             array('name' => 'disposisi_masuk_pengingat_profil'),
-            
+
             array('name' => 'jabatan_penerima_id'),
             array('name' => 'jabatan_penerima_nama'),
             array('name' => 'jabatan_penerima_unit_id'),
@@ -201,6 +203,7 @@ class Sipas_model_Disposisi_masuk_netral_view extends Sipas_model_Disposisi_masu
             array('name' => 'surat_pengirim'),
             array('name' => 'surat_tujuan'),
             array('name' => 'surat_kepada'),
+            array('name' => 'surat_keluar_type'),
             array('name' => 'surat_lampiran'),
             // array('name' => 'surat_ringkasan'),
             // array('name' => 'surat_catatan'),
@@ -235,7 +238,7 @@ class Sipas_model_Disposisi_masuk_netral_view extends Sipas_model_Disposisi_masu
             // array('name' => 'surat_selesai_staf'),
             // array('name' => 'surat_selesai_profil'),
             // array('name' => 'surat_terima_staf'),
-            
+
             array('name' => 'surat_distribusi_tgl'),
             array('name' => 'surat_distribusi_staf'),
             array('name' => 'surat_distribusi_profil'),
@@ -245,7 +248,7 @@ class Sipas_model_Disposisi_masuk_netral_view extends Sipas_model_Disposisi_masu
             array('name' => 'surat_setuju_tolak'),
             array('name' => 'surat_setuju_pending'),
             array('name' => 'surat_setuju_total'),
-            
+
             array('name' => 'surat_imasuk_setuju'),
             array('name' => 'surat_imasuk_tolak'),
             array('name' => 'surat_imasuk_total'),
@@ -272,13 +275,13 @@ class Sipas_model_Disposisi_masuk_netral_view extends Sipas_model_Disposisi_masu
             array('name' => 'jenis_kode'),
             array('name' => 'jenis_nomor_awal'),
             array('name' => 'jenis_ttd'),
-            
+
             array('name' => 'sifat_id'),
             array('name' => 'sifat_nama'),
             array('name' => 'sifat_kode'),
             array('name' => 'sifat_color'),
             array('name' => 'sifat_israhasia'),
-            
+
             array('name' => 'kelas_id'),
             array('name' => 'kelas_nama'),
             array('name' => 'kelas_kode'),
@@ -286,7 +289,7 @@ class Sipas_model_Disposisi_masuk_netral_view extends Sipas_model_Disposisi_masu
             array('name' => 'lokasi_id'),
             array('name' => 'lokasi_nama'),
             array('name' => 'lokasi_kode'),
-            
+
             // array('name' => 'itipe_id'),
             // array('name' => 'itipe_nama'),
             // array('name' => 'itipe_kode'),
@@ -310,16 +313,15 @@ class Sipas_model_Disposisi_masuk_netral_view extends Sipas_model_Disposisi_masu
             array('name' => 'surat_properti_pembuat_jabatan_nama')
         ));
     }
-    function select($config = NULL, $fn = NULL){
+    function select($config = NULL, $fn = NULL)
+    {
         $records = call_user_func_array("parent::select", func_get_args());
         $query = $this->get_lastquery();
 
-        if(is_array($records) and !empty($records['data']))
-        {
-            foreach ($records['data'] as $key => &$value)
-            {
-                $value['pengirim_image_preview'] = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'].'/sipas/staf/get_image/foto?id='.$value['disposisi_pengirim_id'];
-                $value['penerima_image_preview'] = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'].'/sipas/staf/get_image/foto?id='.$value['disposisi_masuk_staf'];
+        if (is_array($records) and !empty($records['data'])) {
+            foreach ($records['data'] as $key => &$value) {
+                $value['pengirim_image_preview'] = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'] . '/sipas/staf/get_image/foto?id=' . $value['disposisi_pengirim_id'];
+                $value['penerima_image_preview'] = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'] . '/sipas/staf/get_image/foto?id=' . $value['disposisi_masuk_staf'];
             }
         }
 
@@ -327,7 +329,8 @@ class Sipas_model_Disposisi_masuk_netral_view extends Sipas_model_Disposisi_masu
         return $records;
     }
 
-    public function readInfo(){
+    public function readInfo()
+    {
         $response = array();
 
         $CI = get_instance();
@@ -337,36 +340,36 @@ class Sipas_model_Disposisi_masuk_netral_view extends Sipas_model_Disposisi_masu
         $filter = array(
             $this->field_receiver_id    => $user['akun_staf'],
             $this->field_status_surat   => 3,
-            $this->field_konsep          => NULL,            
+            $this->field_konsep          => NULL,
             'disposisi_isdisposisi' => 1
         );
-        
+
         $response[$this->field_readinfo_total] = $this->count_exist(array_merge(
             $filter,
             array(
-                'IFNULL('.$this->field_disposisi_retract.','.self::ACTIVE.')' => self::ACTIVE
+                'IFNULL(' . $this->field_disposisi_retract . ',' . self::ACTIVE . ')' => self::ACTIVE
             )
         ));
-        
+
         $response[$this->field_readinfo_init] = $this->count_exist(array_merge(
             $filter,
             array(
-                'IFNULL('.$this->field_readinfo_lookup.','.self::BACA_INIT.')' => self::BACA_INIT,
-                'IFNULL('.$this->field_disposisi_retract.','.self::ACTIVE.')' => self::ACTIVE
+                'IFNULL(' . $this->field_readinfo_lookup . ',' . self::BACA_INIT . ')' => self::BACA_INIT,
+                'IFNULL(' . $this->field_disposisi_retract . ',' . self::ACTIVE . ')' => self::ACTIVE
             )
         ));
         $response[$this->field_readinfo_read] = $this->count_exist(array_merge(
             $filter,
             array(
                 $this->field_readinfo_lookup => self::BACA_ISBACA,
-                'IFNULL('.$this->field_disposisi_retract.','.self::ACTIVE.')' => self::ACTIVE
+                'IFNULL(' . $this->field_disposisi_retract . ',' . self::ACTIVE . ')' => self::ACTIVE
             )
         ));
         $response[$this->field_readinfo_forward] = $this->count_exist(array_merge(
             $filter,
             array(
                 $this->field_readinfo_lookup => self::FORWARD_ISFORWARDED,
-                'IFNULL('.$this->field_disposisi_retract.','.self::ACTIVE.')' => self::ACTIVE
+                'IFNULL(' . $this->field_disposisi_retract . ',' . self::ACTIVE . ')' => self::ACTIVE
             )
         ));
 
@@ -379,34 +382,36 @@ class Sipas_model_Disposisi_masuk_netral_view extends Sipas_model_Disposisi_masu
 
         return $response;
     }
-    
-    function penerimasurat($id){
+
+    function penerimasurat($id)
+    {
         $config = array(
             'table' => $this->table,
             'filters' => array(
-                array('property'=>'surat_masuk','data'=>array('type'=>'exact','value'=>$id)),
-                array('property'=>'disposisi_staf','data'=>array('type'=>'exact','value'=>NULL))
+                array('property' => 'surat_masuk', 'data' => array('type' => 'exact', 'value' => $id)),
+                array('property' => 'disposisi_staf', 'data' => array('type' => 'exact', 'value' => NULL))
             ),
-            'fields'=>array('penerima_nip','penerima_nama','penerima_jabatan_nama','penerima_unit_nama'),
-            'fields_map'=>array(
-                'penerima_nip'=>'staf_kode',
-                'penerima_nama'=>'staf_nama',
-                'penerima_jabatan_nama'=>'jabatan_nama',
-                'penerima_unit_nama'=>'unit_nama'
+            'fields' => array('penerima_nip', 'penerima_nama', 'penerima_jabatan_nama', 'penerima_unit_nama'),
+            'fields_map' => array(
+                'penerima_nip' => 'staf_kode',
+                'penerima_nama' => 'staf_nama',
+                'penerima_jabatan_nama' => 'jabatan_nama',
+                'penerima_unit_nama' => 'unit_nama'
             )
         );
         return $this->select($config);
     }
 
-    function create_disposisi($data){
+    function create_disposisi($data)
+    {
         $CI = get_instance();
         $staf_model                     = $CI->model('sipas/staf',                          true);
         $properti                       = $CI->model('sipas/properti',                      true);
         $disposisi_masuk                = $CI->model('sipas/disposisi_masuk',               true);
         $disposisi_masuk_view           = $CI->model('sipas/disposisi_masuk_netral_view',   true);
         $disposisi_masuk_log            = $CI->model('sipas/disposisi_masuk_log',           true);
-        $disposisi_jumlah_penerima      = $CI->model('sipas/disposisi_jumlah_penerima_sama_view',true);
-        $disposisi_jumlah_disposisi     = $CI->model('sipas/disposisi_jumlah_penerima_disposisi_sama_view',true);
+        $disposisi_jumlah_penerima      = $CI->model('sipas/disposisi_jumlah_penerima_sama_view', true);
+        $disposisi_jumlah_disposisi     = $CI->model('sipas/disposisi_jumlah_penerima_disposisi_sama_view', true);
 
         $queueTube = Config()->item('queueServer_notifTube');
         $queueTubeRedis = Config()->item('queueServer_notifTubeRedis');
@@ -420,14 +425,14 @@ class Sipas_model_Disposisi_masuk_netral_view extends Sipas_model_Disposisi_masu
         if (empty($data['penerima_id'])) $data['penerima_id'] = NULL;
         if (empty($data['penerima_jabatan'])) $data['penerima_jabatan'] = NULL;
 
-        if($data['penerima_id'] != NULL) {
-            if($data['disposisi_masuk_profil']){
+        if ($data['penerima_id'] != NULL) {
+            if ($data['disposisi_masuk_profil']) {
                 $staf_profil = $data['disposisi_masuk_profil'];
-            }else{
+            } else {
                 $staf = $staf_model->read($penerima_id);
-                $staf_profil = $staf['staf_profil']; 
+                $staf_profil = $staf['staf_profil'];
             }
-        }else{
+        } else {
             $staf_profil = NULL;
         }
 
@@ -442,15 +447,25 @@ class Sipas_model_Disposisi_masuk_netral_view extends Sipas_model_Disposisi_masu
             'disposisi_masuk_terima_jabatan' => $data['penerima_jabatan'],
             'disposisi_masuk_istembusan'    => $data['tembusan'],
             'disposisi_masuk_isberkas'      => $data['berkas'],
-        ), null, function ($response) use ($data, $disposisi_masuk_log, $disposisi_masuk, $disposisi_masuk_view, $now, 
-            $properti, $queueTube, $queueTubeRedis, $disposisi_jumlah_penerima, $disposisi_jumlah_disposisi) {
+        ), null, function ($response) use (
+            $data,
+            $disposisi_masuk_log,
+            $disposisi_masuk,
+            $disposisi_masuk_view,
+            $now,
+            $properti,
+            $queueTube,
+            $queueTubeRedis,
+            $disposisi_jumlah_penerima,
+            $disposisi_jumlah_disposisi
+        ) {
 
             $disposisi_masuk_id = $disposisi_masuk->get_insertid();
             $inserted_data = $disposisi_masuk_view->read($disposisi_masuk_id);
 
 
             $disposisi_masuk->update($disposisi_masuk_id, array(
-                'disposisi_masuk_parent_path' => $data['dispo_masuk_parent'].'/'.$disposisi_masuk_id
+                'disposisi_masuk_parent_path' => $data['dispo_masuk_parent'] . '/' . $disposisi_masuk_id
             ));
 
             if ($inserted_data['disposisi_mode'] == 'Masuk') {
@@ -474,11 +489,11 @@ class Sipas_model_Disposisi_masuk_netral_view extends Sipas_model_Disposisi_masu
                 $addJob = create_job($queueTube, $data_fcm);
 
                 $data_redis = array(
-                    'type'=>'Disposisi-Staf',
-                    'staf_id'=>$data['penerima_id'],
-                    'jabatan_id'=>null,
-                    'unit_id'=>null,
-                    'data'=> $data['penerima_id']
+                    'type' => 'Disposisi-Staf',
+                    'staf_id' => $data['penerima_id'],
+                    'jabatan_id' => null,
+                    'unit_id' => null,
+                    'data' => $data['penerima_id']
                 );
                 $addJobStaf = create_job($queueTubeRedis, $data_redis);
             }
@@ -492,7 +507,7 @@ class Sipas_model_Disposisi_masuk_netral_view extends Sipas_model_Disposisi_masu
                 'group' => array('staf', 'asistensi'),
                 'type' => 'disposisi_masuk'
             ));
-            
+
             $op = $properti->created($data['pengirim_id'], $inserted_data, 'disposisi_masuk', $inserted_data['disposisi_masuk_id'], $inserted_data['disposisi_masuk_nomor']);
 
             if ($op) {
@@ -502,5 +517,4 @@ class Sipas_model_Disposisi_masuk_netral_view extends Sipas_model_Disposisi_masu
             }
         });
     }
-
 }

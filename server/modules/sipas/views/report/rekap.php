@@ -40,7 +40,7 @@
 				</tr> -->
 				<tr style="background-color:#757575; font-size:12px;">
 					<td colspan="" style="color:#FFFFFF; font-weight:bold; padding: 4px; font-size: 14px; line-height: 28px; vertical-align: top; text-align: right;">#</td>
-					<td colspan="" style="color:#FFFFFF; font-weight:bold; padding: 4px; font-size: 14px; line-height: 28px; vertical-align: top; text-align: left;">Unit</td>
+					<td colspan="" style="color:#FFFFFF; font-weight:bold; padding: 4px; font-size: 14px; line-height: 28px; vertical-align: top; text-align: left;">Unit Bagian</td>
 					<td colspan="13" style="color:#FFFFFF; font-weight:bold; padding: 4px; font-size: 14px; line-height: 28px; vertical-align: top; text-align: center;">Bulan (Internal | Eksternal)</td>
 					<td colspan="" style="color:#FFFFFF; font-weight:bold; padding: 4px; font-size: 14px; line-height: 28px; vertical-align: top;">Total</td>
 				</tr>

@@ -1,0 +1,62 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userClassName": "Sipas.surat.libnomor.jabatan.penyetuju.Combo",
+        "model": "Sipas.surat.libnomor.jabatan.Penyetuju",
+        "pageSize": null,
+        "storeId": "Sipas.surat.libnomor.jabatan"
+    },
+    "name": "Sipas.jabatan.Combo1",
+    "designerId": "ac273368-0533-4644-8477-8af62ebef259",
+    "cn": [
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "direction": null,
+                "property": "jabatan_nama",
+                "root": null
+            },
+            "name": "MySorter",
+            "designerId": "4127437f-25b8-4205-8f05-c1b39bdcb63c"
+        },
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "server.php/sipas/jabatan/aktif"
+            },
+            "name": "MyAjaxProxy13",
+            "designerId": "6d9cf141-acd6-4068-88a1-2eb57bc49549",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "name": "MyJsonReader13",
+                    "designerId": "dc2b327e-fed0-4176-b38e-f865ac78d2ff"
+                }
+            ]
+        }
+    ]
+}

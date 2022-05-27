@@ -24,9 +24,9 @@ Ext.define('SIPAS.view.Sipas.jabatan.Treelist', {
         'Ext.tree.View',
         'Ext.tree.Column',
         'Ext.toolbar.Toolbar',
+        'Ext.form.field.ComboBox',
         'Ext.button.Button',
         'Ext.toolbar.Fill',
-        'Ext.form.field.ComboBox',
         'Ext.form.Panel',
         'SIPAS.store.Sipas.jabatan.aktif.Treelist'
     ],
@@ -75,6 +75,16 @@ Ext.define('SIPAS.view.Sipas.jabatan.Treelist', {
                         }
                     },
                     items: [
+                        {
+                            xtype: 'combobox',
+                            itemId: 'comboUnit',
+                            emptyText: 'Unit',
+                            editable: false,
+                            hideTrigger: true,
+                            displayField: 'unit_nama',
+                            store: 'Sipas.unit.Combo',
+                            valueField: 'unit_id'
+                        },
                         {
                             xtype: 'sipas_com_button_refresh'
                         },

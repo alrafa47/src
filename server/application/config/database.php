@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
@@ -64,10 +64,14 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'db-sipaslab.skwn.dev',
-	'username' => 'sipas_playground',
-	'password' => 'sipas',
-	'database' => 'sipas_playground_rhama_5_28_teo',
+	'hostname' => 'db-sipasplayground.skwn.dev',
+	// 'hostname' => 'db-sipaslab.skwn.dev',
+	'username' => 'sipas',
+	// 'username' => 'sipas_playground',
+	'password' => 'sipas-playground',
+	// 'password' => 'sipas',
+	'database' => 'sipas_playground_timah_5_28_alfrizal',
+	// 'database' => 'sipas_playground_rhama_5_28_teo',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

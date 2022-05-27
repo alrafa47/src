@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>{title}</title>
 </head>
 <!-- we dont use head style -->
+
 <body style="-webkit-print-color-adjust: exact;">
 
 	<!-- <style type="text/css">
@@ -13,7 +15,9 @@
 	</style> -->
 	{style}
 	<style {params}>
-	{content}
+		{
+			content
+		}
 	</style>
 	{/style}
 
@@ -30,10 +34,11 @@
 				<td colspan="6" style="text-align:left; font-weight:bold; color:#607D8B; font-size:13px; padding-top: 10px;">Periode Laporan: {periode}</td>
 			</tr>
 		</table>
-		<br/>
+		<br />
 		{unit}
 		<!-- <div style="text-align:left; font-weight:bold; color:#3636ff; font-size:13px;">Periode: {periode}</div> -->
 		<!-- <div style="text-align:left; font-weight:bold; color:#3636ff; font-size:13px;">{unit_nama}</div> -->
+		<br>
 		<table style="width:100%; font-family:Arial; font-size:11px; border-collapse: collapse; border: 1px solid #757575; border-collapse: collapse;">
 			<thead style="font-size:12px;">
 				<tr style="background-color:#757575; font-size:12px;">
@@ -41,7 +46,7 @@
 				</tr>
 				<tr style="background-color:#9E9E9E; font-size:12px;">
 					<td style="color:#FFFFFF; vertical-align: top; width:4%; padding:2px; font-size: 13px; line-height:28px; text-align:right;">#</td>
-					<td style="color:#FFFFFF; vertical-align: top; width:60%; padding:2px; font-size: 13px; line-height:28px; text-align:left;">Jenis Surat</td>
+					<td style="color:#FFFFFF; vertical-align: top; width:30%; padding:2px; font-size: 13px; line-height:28px; text-align:left;">Jenis Surat</td>
 					<td style="color:#FFFFFF; vertical-align: top; width:36%; padding:2px; font-size: 13px; line-height:28px; text-align:center;">Jumlah</td>
 				</tr>
 			</thead>
@@ -63,4 +68,5 @@
 		</table>
 	</div>
 </body>
+
 </html>

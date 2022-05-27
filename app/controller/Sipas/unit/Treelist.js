@@ -93,23 +93,6 @@ Ext.define("SIPAS.controller.Sipas.unit.Treelist", {
       mainview = $this.getMainview({ from: combo }),
       comboUnit = $this.getComboUnit({ root: mainview }),
       store = mainview.getStore();
-
-    // switch (value) {
-    //   case 1:
-    //     // store.removeAll();
-    //     store.getProxy().url = "server.php/sipas/unit/aktif/tree";
-    //     break;
-    //   case 2:
-    //     // store.removeAll();
-    //     store.getProxy().url = "server.php/sipas/unit/nonaktif/tree";
-    //     break;
-    //   default:
-    //     // store.removeAll();
-    //     store.getProxy().url = "server.php/sipas/unit/read/tree";
-    //     break;
-    // }
-    // // mainview.down('pagingtoolbar').moveFirst();
-    // store.reload();
     this.updateList(value, comboUnit.getValue(), mainview);
   },
 
@@ -120,23 +103,6 @@ Ext.define("SIPAS.controller.Sipas.unit.Treelist", {
       mainview = $this.getMainview({ from: combo }),
       comboStatus = $this.getComboStatus({ root: mainview }),
       store = mainview.getStore();
-
-    // switch (value) {
-    //   case 1:
-    //     // store.removeAll();
-    //     store.getProxy().url = "server.php/sipas/unit/aktif/tree";
-    //     break;
-    //   case 2:
-    //     // store.removeAll();
-    //     store.getProxy().url = "server.php/sipas/unit/nonaktif/tree";
-    //     break;
-    //   default:
-    //     // store.removeAll();
-    //     store.getProxy().url = "server.php/sipas/unit/read/tree";
-    //     break;
-    // }
-    // // mainview.down('pagingtoolbar').moveFirst();
-    // store.reload();
     this.updateList(comboStatus.getValue(), value, mainview);
   },
 
@@ -185,7 +151,7 @@ Ext.define("SIPAS.controller.Sipas.unit.Treelist", {
 
   onButtonRefresh_Click: function (button, e, eOpts) {
     var view = this.getMainview({ from: button }),
-      checkSession = $this.getApplication().getSession().getResetSession(),
+      checkSession = this.getApplication().getSession().getResetSession(),
       form = this.getForm({ root: view });
 
     this.refresh(view);
@@ -214,40 +180,41 @@ Ext.define("SIPAS.controller.Sipas.unit.Treelist", {
   updateList: function (status, unit = "semua", mainview) {
     var $this = this,
       store = mainview.getStore();
-    console.log(store);
+    console.log(unit);
     switch (status) {
       case 1:
-        store.getProxy().url = "server.php/sipas/unit/aktif/tree?unit=" + unit;
+        store.getProxy().url =
+          "server.php/sipas/unit/aktif/tree?node=root&unit=" + unit;
         break;
       case 2:
         store.getProxy().url =
-          "server.php/sipas/unit/nonaktif/tree?unit=" + unit;
+          "server.php/sipas/unit/nonaktif/tree?node=root&unit=" + unit;
         break;
       default:
-        store.getProxy().url = "server.php/sipas/unit/read/tree?unit=" + unit;
+        store.getProxy().url =
+          "server.php/sipas/unit/read/tree?node=root&unit=" + unit;
         break;
     }
 
     store.reload();
   },
 
-  //   onMainview_AfterRender: function (mainview) {
-  //     var $this = this,
-  //       featureName = "unit",
-  //       $app = this.getApplication(),
-  //       session = $app.Session(),
-  //       profile = session.getProfile(),
-  //       comboStatus = $this.getComboStatus({ root: mainview }),
-  //       comboUnit = $this.getComboUnit({ root: mainview });
-  //     comboUnit.getStore().load();
+  onMainview_AfterRender: function (mainview) {
+    var $this = this,
+      featureName = "unit",
+      $app = this.getApplication(),
+      session = $app.Session(),
+      profile = session.getProfile(),
+      comboStatus = $this.getComboStatus({ root: mainview }),
+      comboUnit = $this.getComboUnit({ root: mainview });
+    comboUnit.getStore().load();
 
-  //     if (session.getRuleAccess(`${featureName}_combo_unit`)) {
-  //       comboUnit.setDisabled(false);
-  //     } else {
-  //       comboUnit.setDisabled(true);
-  //     }
-  //     comboUnit.setValue(profile.unit_id);
-  //     console.log("tes");
-  //     this.updateList(comboStatus.getValue(), profile.unit_id, mainview);
-  //   },
+    if (session.getRuleAccess(`${featureName}_combo_unit`)) {
+      comboUnit.setDisabled(false);
+    } else {
+      comboUnit.setDisabled(true);
+    }
+    comboUnit.setValue(profile.unit_induk);
+    this.updateList(comboStatus.getValue(), profile.unit_induk, mainview);
+  },
 });

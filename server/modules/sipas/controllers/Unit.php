@@ -37,14 +37,18 @@ class unit extends Base_Controller
         $filter = json_decode(varGet('filter', '[]'));
         $sorter = json_decode(varGet('sort', '[]'));
         $recursive = varGet('recursive');
+        $staf_filter = empty($staf_id) ? array() : array('unit_manager' => $staf_id);
 
         $filter = $this->filterUnit($filter);
 
         if (strtolower($id) == 'root') $id = null;
-
+        $records = [];
         if ($section == 'tree') {
-
-            $records = $model->tree($id, $filter, $recursive);
+            if (varGet('unit')) {
+                $staf_filter['unit_id'] = varGet('unit');
+            }
+            // $records = $model->tree(varGet('unit'), $staf_filter, true, 'read');
+            $records = $model->tree($id, $staf_filter, $recursive);
         } else {
             if (!empty($id)) {
                 $record = null;
@@ -94,14 +98,16 @@ class unit extends Base_Controller
         $start = varGet('start');
         $filter = json_decode(varGet('filter', '[]'));
         $sorter = json_decode(varGet('sort', '[]'));
-
+        $staf_filter = empty($staf_id) ? array() : array('unit_manager' => $staf_id);
         $filter = $this->filterUnit($filter);
 
         if (strtolower($id) == 'root') $id = null;
-
+        $records = [];
         if ($section == 'tree') {
-            $records = $model->tree($id, $filter);
-            // $operation['debug']=$model->get_lastquery();
+            if (varGet('unit')) {
+                // $records = $model->tree(varGet('unit'), $staf_filter, true, 'aktif');
+                $records = $model->tree($id, $staf_filter);
+            }
         } else {
             if (!empty($id)) {
                 $record = null;
@@ -157,7 +163,10 @@ class unit extends Base_Controller
         if (strtolower($id) == 'root') $id = null;
 
         if ($section == 'tree') {
-            $records = $model->tree($id, $filter);
+            if (varGet('unit')) {
+                // $records = $model->tree(varGet('unit'), $filter, true, 'nonaktif');
+                $records = $model->tree($id, $filter);
+            }
         } else {
             if (!empty($id)) {
                 $record = null;
@@ -439,19 +448,29 @@ class unit extends Base_Controller
     {
         $unit = $this->m_unit;
 
-        $data = $unit->find();
+        $query = $this->db->get_where('unit', array('IFNULL(unit_ishapus, 0) = 0' => NULL), 1000);
+        $data = $query->result_array();
+        // return  $this->response($data);
+        // print_r($query);
+        // echo "hallo";
+        // die;
+
         foreach ($data as $key => &$value) {
             $id = $value['unit_id'];
-            if ($value['unit_induk'] && ($value['unit_induk'] !== $id) && !$value['unit_parent_path']) {
+
+            if ($value['unit_induk']) {
                 $data_unit = $unit->read($id);
+
                 if (!$data_unit['unit_parent_path']) {
                     $parent = $unit->read($data_unit['unit_induk']);
+
                     if (!$parent['unit_parent_path']) {
                         $data_parent = $this->parent_path($parent);
                         $value['unit_parent_path'] = $data_parent['unit_parent_path'] . '/' . $data_unit['unit_id'];
                     } else {
                         $value['unit_parent_path'] = $parent['unit_parent_path'] . '/' . $data_unit['unit_id'];
                     }
+
                     $operation = $unit->update($id, $value);
                 } else {
                     $value['unit_parent_path'] = $data_unit['unit_parent_path'];
@@ -468,9 +487,9 @@ class unit extends Base_Controller
     public function parent_path($data)
     {
         $unit = $this->m_unit;
-
         $id = $data['unit_id'];
-        if ($data['unit_induk'] && ($data['unit_induk'] !== $id)) {
+
+        if ($data['unit_induk']) {
             if (!$data['unit_parent_path']) {
                 $parent = $unit->read($data['unit_induk']);
                 if (!$parent['unit_parent_path']) {
@@ -479,12 +498,85 @@ class unit extends Base_Controller
                 } else {
                     $data['unit_parent_path'] = $parent['unit_parent_path'] . '/' . $data['unit_id'];
                 }
-                $operation = $unit->update($id, $data);
             }
         } else {
             $data['unit_parent_path'] = '/' . $data['unit_id'];
-            $operation = $unit->update($id, $data);
         }
+
+        $operation = $unit->update($id, $data);
         return $data;
+    }
+
+    // for combobox unit
+    public function combounit()
+    {
+        // $model = $this->m_unit_hidup;
+        $model = $this->m_unit_aktif;
+
+        $limit = varGet('limit');
+        $start = varGet('start');
+        $sorter = varGet('sort');
+        $filter = json_decode(varGet('filter', '[]'));
+
+        array_unshift($filter, (object)array(
+            'type'  => 'exact',
+            'field' => 'unit_induk',
+            'value' => null
+        ));
+
+        $filter = json_encode($filter);
+        $records = $model->select(array(
+            'fields' => ['unit_id', 'unit_nama', 'unit_kode'],
+            'limit'    => $limit,
+            'start'    => $start,
+            'filter'   => $filter,
+            'sort'     => $sorter
+        ));
+
+        // add option semua for combobox
+        $records['data'][] = array(
+            'unit_id' => 'semua',
+            'unit_nama' => 'Semua Bagian'
+        );
+        $this->response($records);
+    }
+
+    // for combobox bagian unit
+    public function combobagian()
+    {
+        $model = $this->m_unit_hidup;
+
+        $limit = varGet('limit');
+        $start = varGet('start');
+        $sorter = varGet('sort');
+        $filter = json_decode(varGet('filter', '[]'));
+
+        $unit = varGet('unit');
+        if (!$unit) {
+            $this->response((object)[
+                'success' => false,
+                'message' => 'Unit tidak ditemukan'
+            ]);
+        }
+        array_unshift($filter, (object)array(
+            'type'  => 'exact',
+            'field' => 'unit_induk',
+            'value' => $unit
+        ));
+
+        $filter = json_encode($filter);
+        $records = $model->select(array(
+            'fields' => ['unit_id', 'unit_nama'],
+            'limit'    => $limit,
+            'start'    => $start,
+            'filter'   => $filter,
+            'sort'     => $sorter
+        ));
+        // add option semua for combobox
+        $records['data'][] = array(
+            'unit_id' => 'semua',
+            'unit_nama' => 'Semua Bagian'
+        );
+        $this->response($records);
     }
 }

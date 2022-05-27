@@ -89,6 +89,17 @@ Ext.define('SIPAS.view.Sipas.klise.Prop', {
                                     valueField: 'klise_kelompok'
                                 },
                                 {
+                                    xtype: 'combobox',
+                                    fieldLabel: 'Unit',
+                                    labelAlign: 'top',
+                                    labelWidth: 120,
+                                    name: 'klise_unit_id',
+                                    emptyText: 'Masukan Unit template',
+                                    displayField: 'unit_nama',
+                                    store: 'Sipas.unit.Combo',
+                                    valueField: 'unit_id'
+                                },
+                                {
                                     xtype: 'fieldset',
                                     padding: 0,
                                     title: 'status aktif',

@@ -196,7 +196,7 @@ class Surat_masuk extends Base_Controller
                 'filters'   => json_encode($filter),
                 'sort'      => $sorter
             ));
-
+            // echo $surat_masuk_view->get_lastquery();
             $this->response($records);
         }
     }
@@ -610,6 +610,8 @@ class Surat_masuk extends Base_Controller
                 $filter = array_merge($costumFilter, $nonCustomFilter);
             }
 
+            $filter = $this->filter_unit_bagian($filter);
+
             $limit      = varGet('limit');
             $start      = varGet('start', 0);
             $sorter     = json_decode(varGet('sort', '[]'));
@@ -668,6 +670,8 @@ class Surat_masuk extends Base_Controller
 
                 $filter = array_merge($costumFilter, $nonCustomFilter);
             }
+
+            $filter = $this->filter_unit_bagian($filter);
 
             $limit      = varGet('limit');
             $start      = varGet('start', 0);
@@ -728,6 +732,8 @@ class Surat_masuk extends Base_Controller
 
                 $filter = array_merge($costumFilter, $nonCustomFilter);
             }
+
+            $filter = $this->filter_unit_bagian($filter);
 
             $limit      = varGet('limit');
             $start      = varGet('start', 0);
@@ -2035,6 +2041,7 @@ class Surat_masuk extends Base_Controller
         $surat_view         = $this->m_surat_view;
         $surat_masuk_view   = $this->m_surat_masuk_aktif_view;
 
+        $_filter = [];
         $filter         = varGet('filter');
         $filterValue    = varGet('value');
         $download       = varGet('download', 0);
@@ -2042,28 +2049,49 @@ class Surat_masuk extends Base_Controller
         $report_title   = varGet('title', 0) ? base64_decode(varGet('title')) : '';
 
         $param_unitkerja = varGet('unit');
+        $param_bagian = varGet('bagian');
 
         if (strtolower($download) == 'false') $download = 0;
         $download = (bool) $download;
         $user = $account_model->get_profile();
 
-        if (empty($param_unitkerja) || is_null($param_unitkerja)) {
-            $unitkerja_recs2 = $unitkerja_model->select(array(
-                'filter'    => json_encode($filter),
-                'sorter'    => 'unit_nama'
-            ));
-            $unitkerja_recs = $unitkerja_recs2['data'];
-        } else {
-            $unitkerja_recs = $unitkerja_model->find(
-                (is_null($param_unitkerja) ? null : array('unit_id' => $param_unitkerja)),
-                null,
-                null,
-                null,
-                array(
-                    'unit_nama' => 'asc'
-                )
-            );
+
+        // Filter Date
+        if ($filterValue) {
+            $filterDate     = $report_model->generateFieldDate(varGet('filter'), $filterValue);
+            if ($filterDate) {
+                array_unshift($_filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => $filterDate
+                ));
+            }
         }
+
+        // Filter Unit
+        if ($param_bagian != 'null') {
+            if ($param_bagian && $param_bagian != 'semua') {
+                array_unshift($_filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => "unit_id = '$param_bagian'"
+                ));
+                // $unit_model->find(array('unit_id' => $param_bagian));
+            } else if ($param_unitkerja == 'semua') {
+                array_unshift($_filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => 'unit_induk IS NOT NULL'
+                ));
+            } else {
+                array_unshift($_filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => 'unit_parent_path LIKE "%' . $param_unitkerja . '%"'
+                ));
+            }
+        }
+
+        $unitkerja_recs = $unitkerja_model->select(array(
+            'filter'    => json_encode($_filter),
+            'sorter'    => 'unit_nama',
+        ))['data'];
 
         if (!is_array($unitkerja_recs)) $unitkerja_recs = array();
         foreach ($unitkerja_recs as $d_i => $v) {
@@ -2134,7 +2162,7 @@ class Surat_masuk extends Base_Controller
             'unitkerja' => $unitkerja_recs,
             'dateReport' => date('d-m-Y H:i:s'),
             'dateReportFormated' => date('d M Y H:i'),
-            'operator' => $user[$account_model->field_display]
+            // 'operator' => $user[$account_model->field_display]
         );
 
         $filename = $report_title . $report_model->generatePeriode($filter, $filterValue, true);
@@ -2161,6 +2189,7 @@ class Surat_masuk extends Base_Controller
 
         $buatSuratMasuk = $pengaturan->getSettingByCode('use_unit_buat_surat_masuk');
 
+        $_filter = [];
         $filter         = varGet('filter');
         $filterValue    = varGet('value');
         $download       = varGet('download', 0);
@@ -2173,23 +2202,32 @@ class Surat_masuk extends Base_Controller
         $download = (bool) $download;
         $user = $account_model->get_profile();
 
-        if ($buatSuratMasuk) {
-            $unitkerja_recs = $unitkerja_model->find(
-                array('IFNULL(unit_isbuatsurat, 0) = 1' => null),
-                null,
-                null,
-                null,
-                array(
-                    'unit_nama' => 'asc'
-                )
-            );
-        } else {
-            $unitkerja_recs2 = $unitkerja_model->select(array(
-                'filter'    => json_encode($filter),
-                'sorter'    => 'unit_nama',
+        // filter unit Kerja
+        if ($param_unitkerja !== 'semua' && $param_unitkerja !== 'null' && $param_unitkerja) {
+            array_unshift($_filter, array(
+                'type' => 'exact',
+                'field' => 'unit_induk',
+                'value' => $param_unitkerja
             ));
-            $unitkerja_recs = $unitkerja_recs2['data'];
+        } else if ($param_unitkerja === 'semua') {
+            array_unshift($_filter, array(
+                'type' => 'custom',
+                'value' => 'unit_induk IS NOT NULL'
+            ));
         }
+
+        // filter buat surat masuk
+        if ($buatSuratMasuk) {
+            array_unshift($_filter, array(
+                'type' => 'custom',
+                'value' => 'IFNULL(unit_isbuatsurat, 0) = 1'
+            ));
+        }
+
+        $unitkerja_recs = $unitkerja_model->select(array(
+            'filter'    => json_encode($_filter),
+            'sorter'    => 'unit_nama',
+        ))['data'];
 
         if (!is_array($unitkerja_recs)) $unitkerja_recs = array();
         foreach ($unitkerja_recs as $d_i => $v) {
@@ -2260,7 +2298,7 @@ class Surat_masuk extends Base_Controller
             'unitkerja' => $unitkerja_recs,
             'dateReport' => date('d-m-Y H:i:s'),
             'dateReportFormated' => date('d M Y H:i'),
-            'operator' => $user[$account_model->field_display]
+            // 'operator' => $user[$account_model->field_display]
         );
 
         $filename = $report_title . $report_model->generatePeriode($filter, $filterValue, true);
@@ -2410,6 +2448,7 @@ class Surat_masuk extends Base_Controller
 
         $buatSuratMasuk = $pengaturan->getSettingByCode('use_unit_buat_surat_masuk');
 
+        $_filter = [];
         $filter         = varGet('filter');
         $filterValue    = varGet('value');
         $download       = varGet('download', 0);
@@ -2417,38 +2456,45 @@ class Surat_masuk extends Base_Controller
         $report_title   = varGet('title', '') ? base64_decode(varGet('title')) : '';
 
         $param_unitkerja = varGet('unit');
+        $param_bagian = varGet('bagian');
 
         if (strtolower($download) == 'false') $download = 0;
         $download = (bool) $download;
         $user = $account_model->get_profile();
 
-        if ($buatSuratMasuk) {
-            $unitkerja_recs = $unitkerja_model->find(
-                array('IFNULL(unit_isbuatsurat, 0) = 1' => null),
-                null,
-                null,
-                null,
-                array(
-                    'unit_nama' => 'asc'
-                )
-            );
-        } else if (empty($param_unitkerja) || is_null($param_unitkerja)) {
-            $unitkerja_recs2 = $unitkerja_model->select(array(
-                'filter'    => json_encode($filter),
-                'sorter'    => 'unit_nama'
-            ));
-            $unitkerja_recs = $unitkerja_recs2['data'];
-        } else {
-            $unitkerja_recs = $unitkerja_model->find(
-                (is_null($param_unitkerja) ? null : array('unit_id' => $param_unitkerja)),
-                null,
-                null,
-                null,
-                array(
-                    'unit_nama' => 'asc'
-                )
-            );
+        // filter unit Kerja
+        if ($param_bagian != 'null') {
+            if ($param_bagian && $param_bagian != 'semua') {
+                array_unshift($_filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => "unit_id = '$param_bagian'"
+                ));
+                // $unit_model->find(array('unit_id' => $param_bagian));
+            } else if ($param_unitkerja == 'semua') {
+                array_unshift($_filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => 'unit_induk IS NOT NULL'
+                ));
+            } else {
+                array_unshift($_filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => 'unit_parent_path LIKE "%' . $param_unitkerja . '%"'
+                ));
+            }
         }
+
+        // filter buat surat masuk
+        if ($buatSuratMasuk) {
+            array_unshift($_filter, array(
+                'type' => 'custom',
+                'value' => 'IFNULL(unit_isbuatsurat, 0) = 1'
+            ));
+        }
+
+        $unitkerja_recs = $unitkerja_model->select(array(
+            'filter'    => json_encode($_filter),
+            'sorter'    => 'unit_nama',
+        ))['data'];
 
         if (!is_array($unitkerja_recs)) $unitkerja_recs = array();
         foreach ($unitkerja_recs as $d_i => $v) {
@@ -2502,7 +2548,11 @@ class Surat_masuk extends Base_Controller
 
         if (!$unitkerja_recs) {
             $unitkerja_recs = array();
-            $unit_nama = ($param_unitkerja) ? $unitkerja_model->read($param_unitkerja)['unit_nama'] : $this::$default_value['title'];
+            if ($param_bagian !== "semua" && $param_bagian !== "null") {
+                $unit_nama = $unitkerja_model->read($param_bagian)['unit_nama'];
+            } else {
+                $unit_nama = ($param_unitkerja) ? $unitkerja_model->read($param_unitkerja)['unit_nama'] : $this::$default_value['title'];
+            }
             $unit  = array('unit_nama' => $unit_nama, 'records' => array());
             $surat = array_fill_keys(array('surat_agenda_converted', 'surat_nomor', 'surat_tanggal', 'surat_perihal', 'surat_kelas_kode', 'surat_kelas_nama', 'surat_jenis', 'surat_unit', 'surat_lokasi', 'surat_lampiran'), $this::$default_value['nodata']);
             $surat['no'] = 1;
@@ -2519,7 +2569,7 @@ class Surat_masuk extends Base_Controller
             'unit' => $unitkerja_recs,
             'dateReport' => date('d-m-Y H:i:s'),
             'dateReportFormated' => date('d M Y H:i'),
-            'operator' => $user[$account_model->field_display]
+            // 'operator' => $user[$account_model->field_display]
         );
 
         $filename = $report_title . $report_model->generatePeriode($filter, $filterValue, true);
@@ -2543,35 +2593,56 @@ class Surat_masuk extends Base_Controller
         $surat_view      = $this->m_surat_view;
         $surat_masuk_view      = $this->m_surat_masuk_blm_distribusi_view;
 
+        $_filter = [];
         $filter         = varGet('filter');
         $filterValue    = varGet('value');
         $download       = varGet('download', 0);
         $excel          = varGet('excel', 0);
         $report_title   = varGet('title', 0) ? base64_decode(varGet('title')) : '';
 
-        $param_unitkerja = varGet('unit');
+        $param_unit = varGet('unit');
+        $param_bagian = varGet('bagian');
 
         if (strtolower($download) == 'false') $download = 0;
         $download = (bool) $download;
         $user = $account_model->get_profile();
 
-        if (empty($param_unitkerja) || is_null($param_unitkerja)) {
-            $unitkerja_recs2 = $unitkerja_model->select(array(
-                'filter'    => json_encode($filter),
-                'sorter'    => 'unit_nama'
-            ));
-            $unitkerja_recs = $unitkerja_recs2['data'];
-        } else {
-            $unitkerja_recs = $unitkerja_model->find(
-                (is_null($param_unitkerja) ? null : array('unit_id' => $param_unitkerja)),
-                null,
-                null,
-                null,
-                array(
-                    'unit_nama' => 'asc'
-                )
-            );
+        // Filter Date
+        if ($filterValue) {
+            $filterDate     = $report_model->generateFieldDate(varGet('filter'), $filterValue);
+            if ($filterDate) {
+                array_unshift($_filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => $filterDate
+                ));
+            }
         }
+
+        // Filter Unit
+        if ($param_bagian != 'null') {
+            if ($param_bagian && $param_bagian != 'semua') {
+                array_unshift($_filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => "unit_id = '$param_bagian'"
+                ));
+                // $unit_model->find(array('unit_id' => $param_bagian));
+            } else if ($param_unit == 'semua') {
+                array_unshift($_filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => 'unit_induk IS NOT NULL'
+                ));
+            } else {
+                array_unshift($_filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => 'unit_parent_path LIKE "%' . $param_unit . '%"'
+                ));
+            }
+        }
+
+        $unitkerja_recs = $unitkerja_model->select(array(
+            'filter'    => json_encode($_filter),
+            'sorter'    => 'unit_nama',
+        ))['data'];
 
         if (!is_array($unitkerja_recs)) $unitkerja_recs = array();
         foreach ($unitkerja_recs as $d_i => $v) {
@@ -2650,7 +2721,7 @@ class Surat_masuk extends Base_Controller
             'unitkerja' => $unitkerja_recs,
             'dateReport' => date('d-m-Y H:i:s'),
             'dateReportFormated' => date('d M Y H:i'),
-            'operator' => $user[$account_model->field_display]
+            // 'operator' => $user[$account_model->field_display]
         );
 
         $filename = $report_title . $report_model->generatePeriode($filter, $filterValue);
@@ -2677,6 +2748,7 @@ class Surat_masuk extends Base_Controller
 
         $buatSuratMasuk = $pengaturan->getSettingByCode('use_unit_buat_surat_masuk');
 
+        $_filter = [];
         $filter         = varGet('filter');
         $filterValue    = varGet('value');
         $download       = varGet('download', 0);
@@ -2689,23 +2761,32 @@ class Surat_masuk extends Base_Controller
         $download = (bool) $download;
         $user = $account_model->get_profile();
 
-        if ($buatSuratMasuk) {
-            $unitkerja_recs = $unitkerja_model->find(
-                array('IFNULL(unit_isbuatsurat, 0) = 1' => null),
-                null,
-                null,
-                null,
-                array(
-                    'unit_nama' => 'asc'
-                )
-            );
-        } else {
-            $unitkerja_recs2 = $unitkerja_model->select(array(
-                'filter'    => json_encode($filter),
-                'sorter'    => 'unit_nama',
+        // filter unit Kerja
+        if ($param_unitkerja !== 'semua' && $param_unitkerja !== 'null' && $param_unitkerja) {
+            array_unshift($_filter, array(
+                'type' => 'exact',
+                'field' => 'unit_induk',
+                'value' => $param_unitkerja
             ));
-            $unitkerja_recs = $unitkerja_recs2['data'];
+        } else if ($param_unitkerja === 'semua') {
+            array_unshift($_filter, array(
+                'type' => 'custom',
+                'value' => 'unit_induk IS NOT NULL'
+            ));
         }
+
+        // filter buat surat masuk
+        if ($buatSuratMasuk) {
+            array_unshift($_filter, array(
+                'type' => 'custom',
+                'value' => 'IFNULL(unit_isbuatsurat, 0) = 1'
+            ));
+        }
+
+        $unitkerja_recs = $unitkerja_model->select(array(
+            'filter'    => json_encode($_filter),
+            'sorter'    => 'unit_nama',
+        ))['data'];
 
         if (!is_array($unitkerja_recs)) $unitkerja_recs = array();
         foreach ($unitkerja_recs as $d_i => $v) {
@@ -2784,7 +2865,7 @@ class Surat_masuk extends Base_Controller
             'unitkerja' => $unitkerja_recs,
             'dateReport' => date('d-m-Y H:i:s'),
             'dateReportFormated' => date('d M Y H:i'),
-            'operator' => $user[$account_model->field_display]
+            // 'operator' => $user[$account_model->field_display]
         );
 
         $filename = $report_title . $report_model->generatePeriode($filter, $filterValue);
@@ -2939,13 +3020,34 @@ class Surat_masuk extends Base_Controller
         $model          = '';
 
         $param_unitkerja = varGet('unit');
+        $param_bagian = varGet('bagian');
 
         if (strtolower($download) == 'false') $download = 0;
         $download = (bool) $download;
         $user = $account_model->get_profile();
 
         $_filter = $report_model->generateSelectField($filter, $filterValue);
-        if ($param_unitkerja) array_unshift($_filter, array('type' => 'exact', 'field' => 'unit_id', 'value' => $param_unitkerja));
+
+        // Filter Unit
+        if ($param_bagian != 'null') {
+            if ($param_bagian && $param_bagian != 'semua') {
+                array_unshift($_filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => "unit_id = '$param_bagian'"
+                ));
+                // $unit_model->find(array('unit_id' => $param_bagian));
+            } else if ($param_unitkerja == 'semua') {
+                array_unshift($_filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => 'unit_induk IS NOT NULL'
+                ));
+            } else {
+                array_unshift($_filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => 'unit_parent_path LIKE "%' . $param_unitkerja . '%"'
+                ));
+            }
+        }
 
         array_unshift($_filter, array('type' => 'exact', 'field' => 'surat_model', 'value' => $surat::MODEL_MASUK));
         $sort = array();
@@ -2969,7 +3071,7 @@ class Surat_masuk extends Base_Controller
                     $no++;
                 }
                 foreach ($vdata as $key => $val) {
-                    if ($key !== 'unit_nama' && $key !== 'unit_kode' && $key !== 'surat_tanggal' && $key !== 'surat_model' && $key !== 'unit_id' && $key !== 'jenis_id' && $key !== 'jenis_nama') {
+                    if (!in_array($key, ['unit_nama', 'unit_kode', 'surat_tanggal', 'surat_model', 'unit_id', 'jenis_id', 'jenis_nama', 'unit_induk', 'unit_induk_nama'])) {
                         if (!array_key_exists($key, $grouped[$kunit])) {
                             $grouped[$kunit][$key] = $val;
                         } else {
@@ -2996,7 +3098,7 @@ class Surat_masuk extends Base_Controller
             'unit' => $grouped,
             'dateReport' => date('d-m-Y H:i:s'),
             'dateReportFormated' => date('d M Y H:i'),
-            'operator' => $user[$account_model->field_display]
+            // 'operator' => $user[$account_model->field_display]
         );
 
         $filename = $report_title . $report_model->generatePeriode($filter, $filterValue, true);
@@ -3008,5 +3110,27 @@ class Surat_masuk extends Base_Controller
         } else {
             $report_model->generateReport($file, $report_data, true);
         }
+    }
+
+    public function filter_unit_bagian($filter)
+    {
+        $unit = varGet('unit');
+        $bagianUnit = varGet('bagian_unit');
+        if ($unit != 'semua') {
+            if ($bagianUnit == 'semua') {
+                array_unshift($filter, (object)array(
+                    'type'  => 'custom',
+                    // 'value' => "unit_id = '$unit' || unit_induk_id = '$unit'"
+                    'value' => "unit_parent_path LIKE '%$unit%'"
+                ));
+            } else if ($bagianUnit != 'semua') {
+                array_unshift($filter, (object)array(
+                    'type'  => 'exact',
+                    'field' => 'unit_id',
+                    'value' => $bagianUnit
+                ));
+            }
+        }
+        return $filter;
     }
 }

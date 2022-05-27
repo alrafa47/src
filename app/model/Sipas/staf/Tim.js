@@ -40,6 +40,12 @@ Ext.define('SIPAS.model.Sipas.staf.Tim', {
         },
         {
             name: 'staf_tim_properti'
+        },
+        {
+            name: 'staf_tim_unit'
+        },
+        {
+            name: 'staf_tim_unit_nama'
         }
     ],
 

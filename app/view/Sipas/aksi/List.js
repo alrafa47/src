@@ -147,6 +147,13 @@ Ext.define('SIPAS.view.Sipas.aksi.List', {
                     minWidth: 400,
                     dataIndex: 'aksi_nama',
                     text: 'Tindakan'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    filterable: true,
+                    minWidth: 400,
+                    dataIndex: 'aksi_level',
+                    text: 'Level'
                 }
             ],
             selModel: Ext.create('Ext.selection.RowModel', {

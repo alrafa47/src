@@ -112,6 +112,17 @@ Ext.define('SIPAS.view.Sipas.klise.List', {
                                 ]
                             },
                             valueField: 'value'
+                        },
+                        {
+                            xtype: 'combobox',
+                            itemId: 'comboUnit',
+                            labelAlign: 'right',
+                            emptyText: 'Unit',
+                            editable: false,
+                            hideTrigger: true,
+                            displayField: 'unit_nama',
+                            store: 'Sipas.unit.Combo',
+                            valueField: 'unit_id'
                         }
                     ]
                 },
@@ -154,6 +165,14 @@ Ext.define('SIPAS.view.Sipas.klise.List', {
                     sortable: true,
                     dataIndex: 'klise_nama',
                     text: 'Nama Template',
+                    flex: 1
+                },
+                {
+                    xtype: 'gridcolumn',
+                    width: 300,
+                    sortable: true,
+                    dataIndex: 'klise_unit_nama',
+                    text: 'Unit',
                     flex: 1
                 },
                 {

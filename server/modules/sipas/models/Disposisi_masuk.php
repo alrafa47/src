@@ -1,6 +1,7 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Sipas_model_Disposisi_masuk extends Base_model {
+class Sipas_model_Disposisi_masuk extends Base_model
+{
 
     static $use_readinfo_on_read            = false;
 
@@ -10,14 +11,14 @@ class Sipas_model_Disposisi_masuk extends Base_model {
     static $field_readinfo_forward          = 'forward';
     static $field_count_disposisi_retract   = 'retract';
     static $field_readinfo_total            = 'total';
-    
+
     static $field_code                      = 'disposisi_masuk_nomor';
     static $field_receiver_id               = 'disposisi_masuk_staf';
     static $field_receiver_jabatan_id       = 'disposisi_masuk_jabatan';
     static $field_aksi                      = 'disposisi_masuk_aksi';
 
     const TEMBUSAN_INIT = 0;
-    const TEMBUSAN_TEMBUSAN =1;
+    const TEMBUSAN_TEMBUSAN = 1;
 
     const BERKAS_INIT = 0;
     const BERKAS_BERKAS = 1;
@@ -35,14 +36,15 @@ class Sipas_model_Disposisi_masuk extends Base_model {
     const BERKAS_APPROVE = 2;
     const BERKAS_CANCEL = 3;
     const BERKAS_DECLINE = 4;
- 
-    public function __construct(){
+
+    public function __construct()
+    {
         parent::__construct(array(
-            'table' =>array(
-                'name'=>'disposisi_masuk',
-                'primary'=>'disposisi_masuk_id',
-                'fields'=> array(
-                    array('name' => 'disposisi_masuk_id', 'update'=>false, 'unique'=>true, 'notnull'=>true),
+            'table' => array(
+                'name' => 'disposisi_masuk',
+                'primary' => 'disposisi_masuk_id',
+                'fields' => array(
+                    array('name' => 'disposisi_masuk_id', 'update' => false, 'unique' => true, 'notnull' => true),
                     array('name' => 'disposisi_masuk_disposisi'),
                     array('name' => 'disposisi_masuk_staf'),
                     array('name' => 'disposisi_masuk_profil'),
@@ -97,29 +99,31 @@ class Sipas_model_Disposisi_masuk extends Base_model {
                     array('name' => 'disposisi_masuk_pengingat_profil'),
                     array('name' => 'disposisi_masuk_pengingat_tgl')
                 ),
-                'limit'=>null,
+                'limit' => null,
             ),
-            'auto_id'=> true
+            'auto_id' => true
         ));
     }
 
-    function insert($id = null, $data = null, $fn = null){
-        if(is_null($data)){
+    function insert($id = null, $data = null, $fn = null)
+    {
+        if (is_null($data)) {
             $data = $id;
             $id = null;
         }
-        if(is_array($data) and !array_key_exists($this::$field_code, $data)){
+        if (is_array($data) and !array_key_exists($this::$field_code, $data)) {
             $data[$this::$field_code] = $this->generate_code();
         }
         return parent::insert($id, $data, $fn);
     }
 
-    function generate_code($index = false){
+    function generate_code($index = false)
+    {
         return parent::generate_code(array(
-            'pattern'       =>'DIS.R.{date}.{#}',
-            'date_format'   =>'Ym',
+            'pattern'       => 'DIS.R.{date}.{#}',
+            'date_format'   => 'Ym',
             'field'         => $this::$field_code,
-            'index_format'  =>'0000',
+            'index_format'  => '0000',
             'index_mask'    => $index
         ));
     }

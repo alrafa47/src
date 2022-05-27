@@ -1,10 +1,12 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
- 
-class Jenis extends Base_Controller {
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+class Jenis extends Base_Controller
+{
 
     protected $message = array();
 
-	public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->m_jenis          = $this->model('sipas/jenis',               true);
         $this->m_jenis_view     = $this->model('sipas/jenis_view',          true);
@@ -18,14 +20,15 @@ class Jenis extends Base_Controller {
 
         $this->m_jenis_unit_view        = $this->model('sipas/jenis_unit_view',             true);
         $this->m_jenis_umum_aktif       = $this->model('sipas/jenis_umum_aktif_view',       true);
-        $this->m_jenis_umum_aktif       = $this->model('sipas/jenis_umum_aktif_view',       true);
     }
 
-    public function index(){
+    public function index()
+    {
         $this->read();
     }
-    
-    public function read(){
+
+    public function read()
+    {
         $model = $this->m_jenis_hidup;
         $modeljenis = $this->m_jenis; // used by cache
         $pengaturan = $this->m_pengaturan;
@@ -34,19 +37,19 @@ class Jenis extends Base_Controller {
 
         $filter     = json_decode(varGet('filter', '[]'));
         $limit      = varGet('limit');
-        $start      = varGet('start',0);
+        $start      = varGet('start', 0);
         $sorter     = json_decode(varGet('sort', '[]'));
 
-        if(varGetHas('id') || varGetHas('jenis_id')){
+        if (varGetHas('id') || varGetHas('jenis_id')) {
             $id = varGet('id', varGet('jenis_id'));
             $record = null;
 
-            if(inCacheExists($modeljenis, $id)){
+            if (inCacheExists($modeljenis, $id)) {
                 $record = getRecordFromCache($modeljenis, $id);
                 $useCache = true;
             }
 
-            if(!$record){
+            if (!$record) {
                 $record = $model->read($id);
                 addRecordToCache($modeljenis, $record);
                 $useCache = false;
@@ -54,15 +57,17 @@ class Jenis extends Base_Controller {
 
             if (!$bookingNomor) $record['jenis_nomor_awal'] = null;
             $this->response_record($record, false, $useCache);
-        }else{
+        } else {
             $query = varGet('query');
-            if(!empty($query)){
+            if (!empty($query)) {
                 array_unshift($filter, (object)array(
                     'type'      => 'custom',
-                    'value'     => 'jenis_kode LIKE "%'.$query.'%" OR jenis_nama LIKE "%'.$query.'%"'
+                    'value'     => 'jenis_kode LIKE "%' . $query . '%" OR jenis_nama LIKE "%' . $query . '%"'
                 ));
             }
-            
+
+            $filter = $this->filterUnit($filter);
+
             $records = $model->select(array(
                 'limit'     => $limit,
                 'start'     => $start,
@@ -74,38 +79,39 @@ class Jenis extends Base_Controller {
         }
     }
 
-    public function perunit_aktif(){
+    public function perunit_aktif()
+    {
         $model = $this->m_jenis_perunit_aktif;
         $modeljenis = $this->m_jenis; // used by cache
 
         $filter     = json_decode(varGet('filter', '[]'));
         $limit      = varGet('limit');
-        $start      = varGet('start',0);
+        $start      = varGet('start', 0);
         $sorter     = json_decode(varGet('sort', '[]'));
 
-        if(varGetHas('id') || varGetHas('jenis_id')){
+        if (varGetHas('id') || varGetHas('jenis_id')) {
             $id = varGet('id', varGet('jenis_id'));
 
             $record = null;
 
-            if(inCacheExists($modeljenis, $id)){
+            if (inCacheExists($modeljenis, $id)) {
                 $record = getRecordFromCache($modeljenis, $id);
                 $useCache = true;
             }
 
-            if(!$record){
+            if (!$record) {
                 $record = $model->read($id);
                 addRecordToCache($modeljenis, $record);
                 $useCache = false;
             }
 
             $this->response_record($record, false, $useCache);
-        }else{
+        } else {
             $query = varGet('query');
-            if(!empty($query)){
+            if (!empty($query)) {
                 array_unshift($filter, (object)array(
                     'type'      => 'custom',
-                    'value'     => 'jenis_kode LIKE "%'.$query.'%" OR jenis_nama LIKE "%'.$query.'%"'
+                    'value'     => 'jenis_kode LIKE "%' . $query . '%" OR jenis_nama LIKE "%' . $query . '%"'
                 ));
             }
 
@@ -119,41 +125,43 @@ class Jenis extends Base_Controller {
         }
     }
 
-    public function aktif(){
+    public function aktif()
+    {
         $model = $this->m_jenis_aktif;
         $modeljenis = $this->m_jenis; // used by cache
 
         $filter     = json_decode(varGet('filter', '[]'));
         $limit      = varGet('limit');
-        $start      = varGet('start',0);
+        $start      = varGet('start', 0);
         $sorter     = json_decode(varGet('sort', '[]'));
 
-        if(varGetHas('id') || varGetHas('jenis_id')){
+        if (varGetHas('id') || varGetHas('jenis_id')) {
             $id = varGet('id', varGet('jenis_id'));
 
             $record = null;
 
-            if(inCacheExists($modeljenis, $id)){
+            if (inCacheExists($modeljenis, $id)) {
                 $record = getRecordFromCache($modeljenis, $id);
                 $useCache = true;
             }
 
-            if(!$record){
+            if (!$record) {
                 $record = $model->read($id);
                 addRecordToCache($modeljenis, $record);
                 $useCache = false;
             }
-            
+
             $this->response_record($record, false, $useCache);
-        }else{
+        } else {
             $query = varGet('query');
-            if(!empty($query)){
+            if (!empty($query)) {
                 array_unshift($filter, (object)array(
                     'type'      => 'custom',
-                    'value'     => 'jenis_kode LIKE "%'.$query.'%" OR jenis_nama LIKE "%'.$query.'%"'
+                    'value'     => 'jenis_kode LIKE "%' . $query . '%" OR jenis_nama LIKE "%' . $query . '%"'
                 ));
             }
 
+            $filter = $this->filterUnit($filter);
             $records = $model->select(array(
                 'limit'     => $limit,
                 'start'     => $start,
@@ -164,38 +172,39 @@ class Jenis extends Base_Controller {
         }
     }
 
-    public function perunit(){
+    public function perunit()
+    {
         $model = $this->m_jenis_perunit_aktif;
         $modeljenis = $this->m_jenis; // used by cache
 
         $filter     = json_decode(varGet('filter', '[]'));
         $limit      = varGet('limit');
-        $start      = varGet('start',0);
+        $start      = varGet('start', 0);
         $sorter     = json_decode(varGet('sort', '[]'));
 
-        if(varGetHas('id') || varGetHas('jenis_id')){
+        if (varGetHas('id') || varGetHas('jenis_id')) {
             $id = varGet('id', varGet('jenis_id'));
-            
+
             $record = null;
 
-            if(inCacheExists($modeljenis, $id)){
+            if (inCacheExists($modeljenis, $id)) {
                 $record = getRecordFromCache($modeljenis, $id);
                 $useCache = true;
             }
 
-            if(!$record){
+            if (!$record) {
                 $record = $model->read($id);
                 addRecordToCache($modeljenis, $record);
                 $useCache = false;
             }
 
             $this->response_record($record, false, $useCache);
-        }else{
+        } else {
             $query = varGet('query');
-            if(!empty($query)){
+            if (!empty($query)) {
                 array_unshift($filter, (object)array(
                     'type'      => 'custom',
-                    'value'     => 'jenis_kode LIKE "%'.$query.'%" OR jenis_nama LIKE "%'.$query.'%"'
+                    'value'     => 'jenis_kode LIKE "%' . $query . '%" OR jenis_nama LIKE "%' . $query . '%"'
                 ));
             }
 
@@ -209,38 +218,39 @@ class Jenis extends Base_Controller {
         }
     }
 
-    public function combo(){
+    public function combo()
+    {
         $model = $this->m_jenis_aktif;
         $modeljenis = $this->m_jenis; // used by cache
 
         $filter     = json_decode(varGet('filter', '[]'));
         $limit      = varGet('limit');
-        $start      = varGet('start',0);
+        $start      = varGet('start', 0);
         $sorter     = json_decode(varGet('sort', '[]'));
 
-        if(varGetHas('id') || varGetHas('jenis_id')){
+        if (varGetHas('id') || varGetHas('jenis_id')) {
             $id = varGet('id', varGet('jenis_id'));
-            
+
             $record = null;
 
-            if(inCacheExists($modeljenis, $id)){
+            if (inCacheExists($modeljenis, $id)) {
                 $record = getRecordFromCache($modeljenis, $id);
                 $useCache = true;
             }
 
-            if(!$record){
+            if (!$record) {
                 $record = $model->read($id);
                 addRecordToCache($modeljenis, $record);
                 $useCache = false;
             }
 
             $this->response_record($record, false, $useCache);
-        }else{
+        } else {
             $query = varGet('query');
-            if(!empty($query)){
+            if (!empty($query)) {
                 array_unshift($filter, (object)array(
                     'type'      => 'custom',
-                    'value'     => 'jenis_kode LIKE "%'.$query.'%" OR jenis_nama LIKE "%'.$query.'%"'
+                    'value'     => 'jenis_kode LIKE "%' . $query . '%" OR jenis_nama LIKE "%' . $query . '%"'
                 ));
             }
             // array_unshift($filter, (object)array(
@@ -248,7 +258,7 @@ class Jenis extends Base_Controller {
             //     'property'  => 'jenis_tampil_si',
             //     'value'     => 1
             // ));
-            
+
             $records = $model->select(array(
                 'limit'     => $limit,
                 'start'     => $start,
@@ -259,7 +269,8 @@ class Jenis extends Base_Controller {
         }
     }
 
-    function jenis_perunit($withCurrent = true){
+    function jenis_perunit($withCurrent = true)
+    {
         $account = $this->m_account;
         $jenis      = $this->m_jenis_umum_aktif;
         $jenisPerunit  = $this->m_jenis_unit_view;
@@ -267,12 +278,15 @@ class Jenis extends Base_Controller {
         $unit = varGet('unit');
         $tampil = varGet('tampil');
 
-        if($tampil == 1){
+        if ($tampil == 1) {
             $record = $jenisPerunit->find(
                 array(
-                    'jenis_unit_unit'=>$unit,
-                    'jenis_tampil_sm'=> 1
-                ), null, null, true,
+                    'jenis_unit_unit' => $unit,
+                    'jenis_tampil_sm' => 1
+                ),
+                null,
+                null,
+                true,
                 array(
                     'jenis_nama' => 'asc'
                 )
@@ -282,55 +296,63 @@ class Jenis extends Base_Controller {
             $data = $r['records'];
 
             $recordJenis = $jenis->find(array(
-                'jenis_tampil_sm'=> 1), null, null, true,array('jenis_nama' => 'asc'));
+                'jenis_tampil_sm' => 1
+            ), null, null, true, array('jenis_nama' => 'asc'));
             // foreach ($record as $k => $r) {}
             $j['records'] = $recordJenis;
             $dataJenis = $j['records'];
-        }else if($tampil == 2){
+        } else if ($tampil == 2) {
             $record = $jenisPerunit->find(array(
-                'jenis_unit_unit'=>$unit,
-                'jenis_tampil_sk'=> 1), null, null, true,array('jenis_nama' => 'asc'));
+                'jenis_unit_unit' => $unit,
+                'jenis_tampil_sk' => 1
+            ), null, null, true, array('jenis_nama' => 'asc'));
             // foreach ($record as $k => $r) {}
             $r['records'] = $record;
             $data = $r['records'];
 
             $recordJenis = $jenis->find(array(
-                'jenis_tampil_sk'=> 1), null, null, true,array('jenis_nama' => 'asc'));
+                'jenis_tampil_sk' => 1
+            ), null, null, true, array('jenis_nama' => 'asc'));
             // foreach ($record as $k => $r) {}
             $j['records'] = $recordJenis;
             $dataJenis = $j['records'];
-        }else if($tampil == 3){
+        } else if ($tampil == 3) {
             $record = $jenisPerunit->find(array(
-                'jenis_unit_unit'=>$unit,
-                'jenis_tampil_si'=> 1), null, null, true,array('jenis_nama' => 'asc'));
+                'jenis_unit_unit' => $unit,
+                'jenis_tampil_si' => 1
+            ), null, null, true, array('jenis_nama' => 'asc'));
             // foreach ($record as $k => $r) {}
             $r['records'] = $record;
             $data = $r['records'];
 
             $recordJenis = $jenis->find(array(
-                'jenis_tampil_si'=> 1), null, null, true,array('jenis_nama' => 'asc'));
+                'jenis_tampil_si' => 1
+            ), null, null, true, array('jenis_nama' => 'asc'));
             // foreach ($record as $k => $r) {}
             $j['records'] = $recordJenis;
             $dataJenis = $j['records'];
-        }else if($tampil == 4){
+        } else if ($tampil == 4) {
             $record = $jenisPerunit->find(array(
-                'jenis_unit_unit'=>$unit,
-                'jenis_tampil_sik'=> 1), null, null, true,array('jenis_nama' => 'asc'));
+                'jenis_unit_unit' => $unit,
+                'jenis_tampil_sik' => 1
+            ), null, null, true, array('jenis_nama' => 'asc'));
             $r['records'] = $record;
             $data = $r['records'];
 
             $recordJenis = $jenis->find(array(
-                'jenis_tampil_sik'=> 1), null, null, true,array('jenis_nama' => 'asc'));
+                'jenis_tampil_sik' => 1
+            ), null, null, true, array('jenis_nama' => 'asc'));
             $j['records'] = $recordJenis;
             $dataJenis = $j['records'];
-        }else{
+        } else {
             $record = $jenisPerunit->find(array(
-                'jenis_unit_unit'=>$unit), null, null, true,array('jenis_nama' => 'asc'));
+                'jenis_unit_unit' => $unit
+            ), null, null, true, array('jenis_nama' => 'asc'));
             // foreach ($record as $k => $r) {}
             $r['records'] = $record;
             $data = $r['records'];
 
-            $recordJenis = $jenis->find(null, null, null, true,array('jenis_nama' => 'asc'));
+            $recordJenis = $jenis->find(null, null, null, true, array('jenis_nama' => 'asc'));
             // foreach ($record as $k => $r) {}
             $j['records'] = $recordJenis;
             $dataJenis = $j['records'];
@@ -338,7 +360,7 @@ class Jenis extends Base_Controller {
 
         $datas = array_merge($dataJenis, $data);
 
-        usort($datas, function($a, $b) {
+        usort($datas, function ($a, $b) {
             return $a['jenis_nama'] <=> $b['jenis_nama'];
         });
 
@@ -348,40 +370,43 @@ class Jenis extends Base_Controller {
         ));
     }
 
-    public function nonaktif(){
+    public function nonaktif()
+    {
         $model = $this->m_jenis_nonaktif;
         $modeljenis = $this->m_jenis; // used by cache
 
         $filter     = json_decode(varGet('filter', '[]'));
         $limit      = varGet('limit');
-        $start      = varGet('start',0);
+        $start      = varGet('start', 0);
         $sorter     = json_decode(varGet('sort', '[]'));
 
-        if(varGetHas('id') || varGetHas('jenis_id')){
+        if (varGetHas('id') || varGetHas('jenis_id')) {
             $id = varGet('id', varGet('jenis_id'));
-            
+
             $record = null;
 
-            if(inCacheExists($modeljenis, $id)){
+            if (inCacheExists($modeljenis, $id)) {
                 $record = getRecordFromCache($modeljenis, $id);
                 $useCache = true;
             }
 
-            if(!$record){
+            if (!$record) {
                 $record = $model->read($id);
                 addRecordToCache($modeljenis, $record);
                 $useCache = false;
             }
 
             $this->response_record($record, false, $useCache);
-        }else{
+        } else {
             $query = varGet('query');
-            if(!empty($query)){
+            if (!empty($query)) {
                 array_unshift($filter, (object)array(
                     'type'      => 'custom',
-                    'value'     => 'jenis_kode LIKE "%'.$query.'%" OR jenis_nama LIKE "%'.$query.'%"'
+                    'value'     => 'jenis_kode LIKE "%' . $query . '%" OR jenis_nama LIKE "%' . $query . '%"'
                 ));
             }
+
+            $filter = $this->filterUnit($filter);
 
             $records = $model->select(array(
                 'limit'     => $limit,
@@ -393,11 +418,12 @@ class Jenis extends Base_Controller {
         }
     }
 
-    public function create($usePayload = true){
+    public function create($usePayload = true)
+    {
         $model = $this->m_jenis;
         $properti = $this->m_properti;
         $account = $this->m_account;
-        
+
         $custom = varGet('custom');
 
         $akun = $account->get_profile_id();
@@ -405,25 +431,25 @@ class Jenis extends Base_Controller {
         $data = (array) ($usePayload ? $payload : varPost());
 
         $data['jenis_terpusat'] = (int) $custom;
-        $operation = $model->insert($data, null, function($response) use 
-            ($model, $akun, $properti, $data){
-            if($response[$model->successProperty] !== true) return;
+        $operation = $model->insert($data, null, function ($response) use ($model, $akun, $properti, $data) {
+            if ($response[$model->successProperty] !== true) return;
 
             addRecordToCache($model, $response[$model->dataProperty]);
             $inserted_data = $response['data'];
 
             $op = $properti->created($akun, $inserted_data, 'jenis', $inserted_data['jenis_id'], $inserted_data['jenis_kode']);
-            if($op){
+            if ($op) {
                 $model->update($inserted_data['jenis_id'], array(
                     'jenis_properti' => $op['properti_id']
                 ));
             }
         });
-        if($operation[$model->successProperty]) $operation[$model->dataProperty] = $model->read($model->get_insertid());
+        if ($operation[$model->successProperty]) $operation[$model->dataProperty] = $model->read($model->get_insertid());
         $this->response($operation);
     }
-    
-    public function update($usePayload = true){
+
+    public function update($usePayload = true)
+    {
         $model = $this->m_jenis;
         $properti = $this->m_properti;
         $account = $this->m_account;
@@ -434,18 +460,17 @@ class Jenis extends Base_Controller {
         $payload = getRequestPayload();
         $data = (array) ($usePayload ? $payload : varPost());
         $id = array_key_exists('id', $data) ? $data['id'] : (array_key_exists($primary, $data) ? $data[$primary] : null);
-                
+
         $data['jenis_terpusat'] = (int) $custom;
-        $operation = $model->update($id, $data, function($response) use 
-            ($properti, $model, $akun, $data){
-            
+        $operation = $model->update($id, $data, function ($response) use ($properti, $model, $akun, $data) {
+
             addRecordtoCache($model, $response[$model->dataProperty]);
 
             $updated_data = $model->read($data['jenis_id']);
             $idProp = $updated_data['jenis_properti'];
-            if(empty($idProp)){
+            if (empty($idProp)) {
                 $op = $properti->created($akun, $updated_data, 'jenis', $updated_data['jenis_id'], $updated_data['jenis_kode']);
-                if($op){
+                if ($op) {
                     $model->update($updated_data['jenis_id'], array(
                         'jenis_properti' => $op['properti_id']
                     ));
@@ -456,7 +481,8 @@ class Jenis extends Base_Controller {
         $this->response($operation);
     }
 
-    public function destroy($usePayload = true){
+    public function destroy($usePayload = true)
+    {
         $model = $this->m_jenis;
         $properti = $this->m_properti;
         $account = $this->m_account;
@@ -471,15 +497,14 @@ class Jenis extends Base_Controller {
         $data['jenis_kode'] = $data['jenis_id'];
         $data['jenis_isaktif'] = 0;
         $data['jenis_ishapus'] = 1;
-        $operation = $model->update($id, $data,function($response) use 
-            ($properti, $model, $akun, $data){
+        $operation = $model->update($id, $data, function ($response) use ($properti, $model, $akun, $data) {
 
             addRecordToCache($model, $response[$model->dataProperty]);
-            
+
             // $deleted_data = $response['data'];
             $deleted_data = $model->read($data['jenis_id']);
             $idProp = $deleted_data['jenis_properti'];
-            if(empty($idProp)){
+            if (empty($idProp)) {
                 $op = $properti->created($akun, $deleted_data, 'jenis', $deleted_data['jenis_id'], $deleted_data['jenis_kode']);
 
                 $model->update($deleted_data['jenis_id'], array(
@@ -494,13 +519,14 @@ class Jenis extends Base_Controller {
             $this->db->where('kelas_jenis', $deleted_data['jenis_id']);
             $this->db->update('kelas', $kelas);
         });
-        if($operation['success'] ){
+        if ($operation['success']) {
             $operation['message'] = 'Berhasil Menghapus Data';
         }
         $this->response($operation);
     }
 
-    public function is_useawal() {
+    public function is_useawal()
+    {
         $model = $this->m_jenis;
         $pengaturan = $this->m_pengaturan;
         $id = varGet('id');
@@ -517,8 +543,9 @@ class Jenis extends Base_Controller {
             ));
         }
     }
-    
-    function masterSubJenis(){
+
+    function masterSubJenis()
+    {
         /* 
             sub tipe 1 : gol baru = gol lama + 1 
             sub tipe 2 : sgt baru = sgt lama + 1
@@ -528,10 +555,10 @@ class Jenis extends Base_Controller {
         $model = $this->m_jenis;
         $data = $model->get_jenis_sub();
 
-        if(varGetHas('id') || varGetHas('sub_id')){
+        if (varGetHas('id') || varGetHas('sub_id')) {
             $id = varGet('id', varGet('sub_id'));
             $item = null;
-            foreach($data as $_data) {
+            foreach ($data as $_data) {
                 if ($id == $_data->sub_id) {
                     $item = $_data;
                     break;
@@ -541,6 +568,19 @@ class Jenis extends Base_Controller {
         } else {
             $this->response($data);
         }
+    }
 
+    public function filterUnit($filter)
+    {
+        $unit = varGet('unit');
+        if ($unit) {
+            if ($unit != 'semua') {
+                array_unshift($filter, (object)array(
+                    'type'  => 'custom',
+                    'value' => "jenis_unit_id = '$unit'",
+                ));
+            }
+        }
+        return $filter;
     }
 }

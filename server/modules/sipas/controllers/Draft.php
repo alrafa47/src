@@ -1,8 +1,10 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Draft extends Base_Controller {
+class Draft extends Base_Controller
+{
 
-	function __construct(){
+    function __construct()
+    {
         parent::__construct();
 
         $this->m_account      = $this->model('sipas/account',       true);
@@ -33,7 +35,8 @@ class Draft extends Base_Controller {
         $this->read();
     }
 
-    function read(){
+    function read()
+    {
         $me = $this;
 
         $koreksi        = $me->m_disposisi;
@@ -46,67 +49,68 @@ class Draft extends Base_Controller {
         $user         = $account->get_profile();
         $user_id        = $account->get_profile_id();
 
-        $filter         = json_decode(varGet('filter','[]'));
+        $filter         = json_decode(varGet('filter', '[]'));
 
         $costumFilter   = array();
-        $nonCustomFilter= array();
+        $nonCustomFilter = array();
 
-        $now = date('Y-m-d'); 
+        $now = date('Y-m-d');
 
         $useredis = Config()->item('useredis');
-        if($useredis == 1){
-            $pgs = $redis->get(Config()->item('redisPrefix').'staf_wakil_staf:'.$user_id);
+        if ($useredis == 1) {
+            $pgs = $redis->get(Config()->item('redisPrefix') . 'staf_wakil_staf:' . $user_id);
             $pgs = json_decode($pgs, true);
         }
 
-        if(!empty($filter)){
+        if (!empty($filter)) {
             foreach ($filter as $i => $val) {
 
-                if(isset($val->field) == 'surat_perihal' || $val->property == 'query'){
-                    $custom_filter  = array('surat_perihal', 'surat_tujuan', 'surat_pengirim',
-                            'surat_nomor', 'surat_registrasi', 'unit_nama', 'jenis_nama',
-                            'disposisi_pengirim_nama', 'disposisi_pengirim_unit_nama',
-                            'disposisi_pengirim_jabatan_nama', 'disposisi_mode', 'unit_source_nama');
+                if (isset($val->field) == 'surat_perihal' || $val->property == 'query') {
+                    $custom_filter  = array(
+                        'surat_perihal', 'surat_tujuan', 'surat_pengirim',
+                        'surat_nomor', 'surat_registrasi', 'unit_nama', 'jenis_nama',
+                        'disposisi_pengirim_nama', 'disposisi_pengirim_unit_nama',
+                        'disposisi_pengirim_jabatan_nama', 'disposisi_mode', 'unit_source_nama'
+                    );
 
                     $value = $val->value;
-                    $query = "(".implode(" LIKE '%".$value."%' OR ", $custom_filter)." LIKE '%".$value."%')";
+                    $query = "(" . implode(" LIKE '%" . $value . "%' OR ", $custom_filter) . " LIKE '%" . $value . "%')";
                     $costumFilter = array(array(
-                                'value' => $query,
-                                'type'  => 'custom'
-                            ));
-                }else{
+                        'value' => $query,
+                        'type'  => 'custom'
+                    ));
+                } else {
                     $custom_filter2 = $val->field;
                     $value2 = $val->value;
-                    $query2 = "(".$custom_filter2." LIKE '%".$value2."%')";
+                    $query2 = "(" . $custom_filter2 . " LIKE '%" . $value2 . "%')";
                     $filter3 = array(array(
-                                'value' => $query2,
-                                'type'  => 'custom'
-                            ));
+                        'value' => $query2,
+                        'type'  => 'custom'
+                    ));
                     $nonCustomFilter = array_merge($nonCustomFilter, $filter3);
                 }
             }
 
             $filter = array_merge($costumFilter, $nonCustomFilter);
         }
-        $sorter     =  json_decode(varGet('sorter',varGet('sort', '[]')));
+        $filter = $this->filter_tipe_surat($filter);
+        $sorter     =  json_decode(varGet('sorter', varGet('sort', '[]')));
 
-        if(varGetHas('id') || varGetHas('disposisi_masuk_id')) {
+        if (varGetHas('id') || varGetHas('disposisi_masuk_id')) {
             $id = varGet('id', varGet('disposisi_masuk_id'));
             $get_record = $penerima_view->read($id);
 
             /*patch for flag as read if user acess it*/
-            if($get_record and $account->isMyProfileId($get_record['disposisi_masuk_staf']))
-            {
-                if((int)$get_record['disposisi_masuk_isbaca'] == $penerima_view::BACA_INIT)
-                {
+            if ($get_record and $account->isMyProfileId($get_record['disposisi_masuk_staf'])) {
+                if ((int)$get_record['disposisi_masuk_isbaca'] == $penerima_view::BACA_INIT) {
                     $disposisi_masuk->update($id, array(
-                        'disposisi_masuk_baca_tgl'=> date('Y-m-d H:i:s')
+                        'disposisi_masuk_baca_tgl' => date('Y-m-d H:i:s')
                     ));
                 }
             }
 
             $record = $penerima_view->read($id);
-            
+
             // if($pgs['staf_wakil_tgl_mulai'] <= $now && $pgs['staf_wakil_tgl_selesai'] >= $now){
             //     $record['disposisi_masuk_plt'] = 1;
             // }else{
@@ -115,7 +119,7 @@ class Draft extends Base_Controller {
 
             if (($user['staf_jabatan'] !== $record['disposisi_masuk_penerima_jabatan_id']) || ($user['staf_unit'] !== $record['disposisi_masuk_penerima_unit_id'])) {
                 $record['disposisi_masuk_profil_isganti'] = 1;
-            }else{
+            } else {
                 $record['disposisi_masuk_profil_isganti'] = 0;
             }
 
@@ -125,16 +129,15 @@ class Draft extends Base_Controller {
                 $record['staf_hide'] = 0;
             }
             $this->response_record($record);
-
-        }else{
+        } else {
             array_unshift($filter, (object)array(
-                'property'  =>'disposisi_masuk_staf',
+                'property'  => 'disposisi_masuk_staf',
                 'value'     => $user_id,
-                'type'      =>'exact'
+                'type'      => 'exact'
             ));
             array_unshift($filter, (object)array(
-                'type'      =>'custom',
-                'value'     => 'IFNULL('.$surat_view::$field_approval_lookup.', 0) <> '.$surat_view::SETUJU_INIT
+                'type'      => 'custom',
+                'value'     => 'IFNULL(' . $surat_view::$field_approval_lookup . ', 0) <> ' . $surat_view::SETUJU_INIT
             ));
 
             $filter = json_encode($filter);
@@ -145,7 +148,7 @@ class Draft extends Base_Controller {
                 'filter'    => $filter,
                 'sorter'    => $sorter
             ));
-            
+
             // if($pgs['staf_wakil_tgl_mulai'] <= $now && $pgs['staf_wakil_tgl_selesai'] >= $now){
             //     foreach ($records['data'] as $key => &$value) {
             //         $value['disposisi_masuk_plt'] = 1;
@@ -159,7 +162,7 @@ class Draft extends Base_Controller {
             foreach ($records['data'] as $key => &$value) {
                 if (($user['staf_jabatan'] !== $value['disposisi_masuk_penerima_jabatan_id']) || ($user['staf_unit'] !== $value['disposisi_masuk_penerima_unit_id'])) {
                     $value['disposisi_masuk_profil_isganti'] = 1;
-                }else{
+                } else {
                     $value['disposisi_masuk_profil_isganti'] = 0;
                 }
 
@@ -169,12 +172,13 @@ class Draft extends Base_Controller {
                     $value['staf_hide'] = 0;
                 }
             }
-            
+
             $this->response($records);
         }
     }
 
-    function blmtindak(){
+    function blmtindak()
+    {
         $me = $this;
 
         $koreksi        = $me->m_disposisi;
@@ -188,70 +192,72 @@ class Draft extends Base_Controller {
         $koreksi_penerima     = $me->m_disposisi_masuk;
         $penerima_view        = $me->m_koreksi_masuk_blmtindak_view;
 
-        $now = date('Y-m-d'); 
+        $now = date('Y-m-d');
 
         $pegawai    = $user['staf_id'];
-        $filter     = json_decode(varGet('filter','[]'));
+        $filter     = json_decode(varGet('filter', '[]'));
 
-        $now = date('Y-m-d'); 
+        $now = date('Y-m-d');
 
         $useredis = Config()->item('useredis');
-        if($useredis == 1){
-            $pgs = $redis->get(Config()->item('redisPrefix').'staf_wakil_staf:'.$profileId);
+        if ($useredis == 1) {
+            $pgs = $redis->get(Config()->item('redisPrefix') . 'staf_wakil_staf:' . $profileId);
             $pgs = json_decode($pgs, true);
         }
 
         $costumFilter = array();
         $nonCustomFilter = array();
 
-        if(!empty($filter)){
+        if (!empty($filter)) {
             foreach ($filter as $i => $val) {
 
-                if(isset($val->field) == 'surat_perihal' || $val->property == 'query'){
-                    $custom_filter  = array('surat_perihal', 'surat_tujuan', 'surat_pengirim',
-                            'surat_nomor', 'surat_registrasi', 'unit_nama', 'jenis_nama',
-                            'disposisi_pengirim_nama', 'disposisi_pengirim_unit_nama',
-                            'disposisi_pengirim_jabatan_nama', 'disposisi_mode', 'unit_source_nama');
+                if (isset($val->field) == 'surat_perihal' || $val->property == 'query') {
+                    $custom_filter  = array(
+                        'surat_perihal', 'surat_tujuan', 'surat_pengirim',
+                        'surat_nomor', 'surat_registrasi', 'unit_nama', 'jenis_nama',
+                        'disposisi_pengirim_nama', 'disposisi_pengirim_unit_nama',
+                        'disposisi_pengirim_jabatan_nama', 'disposisi_mode', 'unit_source_nama'
+                    );
 
                     $value = $val->value;
-                    $query = "(".implode(" LIKE '%".$value."%' OR ", $custom_filter)." LIKE '%".$value."%')";
+                    $query = "(" . implode(" LIKE '%" . $value . "%' OR ", $custom_filter) . " LIKE '%" . $value . "%')";
                     $costumFilter = array(array(
-                                'value' => $query,
-                                'type'  => 'custom'
-                            ));
-                }else{
+                        'value' => $query,
+                        'type'  => 'custom'
+                    ));
+                } else {
                     $custom_filter2 = $val->field;
                     $value2 = $val->value;
-                    $query2 = "(".$custom_filter2." LIKE '%".$value2."%')";
+                    $query2 = "(" . $custom_filter2 . " LIKE '%" . $value2 . "%')";
                     $filter3 = array(array(
-                                'value' => $query2,
-                                'type'  => 'custom'
-                            ));
+                        'value' => $query2,
+                        'type'  => 'custom'
+                    ));
                     $nonCustomFilter = array_merge($nonCustomFilter, $filter3);
                 }
             }
 
             $filter = array_merge($costumFilter, $nonCustomFilter);
         }
-        $sorter = json_decode(varGet('sorter',varGet('sort', '[]')));
+        $sorter = json_decode(varGet('sorter', varGet('sort', '[]')));
 
-        if(varGetHas('id') || varGetHas('disposisi_masuk_id')) {
+        $filter = $this->filter_tipe_surat($filter);
+
+        if (varGetHas('id') || varGetHas('disposisi_masuk_id')) {
             $id = varGet('id', varGet('disposisi_masuk_id'));
             $get_record = $penerima_view->read($id);
 
             /*patch for flag as read if user acess it*/
-            if($get_record and $account->isMyProfileId($get_record['disposisi_masuk_staf']))
-            {
-                if((int)$get_record['disposisi_masuk_isbaca'] == $penerima_view::BACA_INIT)
-                {
+            if ($get_record and $account->isMyProfileId($get_record['disposisi_masuk_staf'])) {
+                if ((int)$get_record['disposisi_masuk_isbaca'] == $penerima_view::BACA_INIT) {
                     $disposisi_masuk->update($id, array(
-                        'disposisi_masuk_baca_tgl'=> date('Y-m-d H:i:s')
+                        'disposisi_masuk_baca_tgl' => date('Y-m-d H:i:s')
                     ));
                 }
             }
 
             $record = $penerima_view->read($id);
-            
+
             // if($pgs['staf_wakil_tgl_mulai'] <= $now && $pgs['staf_wakil_tgl_selesai'] >= $now){
             //     $record['disposisi_masuk_plt'] = 1;
             // }else{
@@ -260,7 +266,7 @@ class Draft extends Base_Controller {
 
             if (($user['staf_jabatan'] !== $record['disposisi_masuk_penerima_jabatan_id']) || ($user['staf_unit'] !== $record['disposisi_masuk_penerima_unit_id'])) {
                 $record['disposisi_masuk_profil_isganti'] = 1;
-            }else{
+            } else {
                 $record['disposisi_masuk_profil_isganti'] = 0;
             }
 
@@ -270,16 +276,15 @@ class Draft extends Base_Controller {
                 $record['staf_hide'] = 0;
             }
             $this->response_record($record);
-
-        }else{
+        } else {
             array_unshift($filter, (object)array(
-                'property'  =>'disposisi_masuk_staf',
+                'property'  => 'disposisi_masuk_staf',
                 'value'     => $pegawai,
-                'type'      =>'exact'
+                'type'      => 'exact'
             ));
             array_unshift($filter, (object)array(
-                'type'      =>'custom',
-                'value'     => 'IFNULL('.$surat_view::$field_approval_lookup.', 0) <> '.$surat_view::SETUJU_INIT
+                'type'      => 'custom',
+                'value'     => 'IFNULL(' . $surat_view::$field_approval_lookup . ', 0) <> ' . $surat_view::SETUJU_INIT
             ));
 
             $filter = json_encode($filter);
@@ -303,10 +308,10 @@ class Draft extends Base_Controller {
             foreach ($records['data'] as $key => &$value) {
                 if (($user['staf_jabatan'] !== $value['disposisi_masuk_penerima_jabatan_id']) || ($user['staf_unit'] !== $value['disposisi_masuk_penerima_unit_id'])) {
                     $value['disposisi_masuk_profil_isganti'] = 1;
-                }else{
+                } else {
                     $value['disposisi_masuk_profil_isganti'] = 0;
                 }
-                
+
                 if ($user['staf_status'] == 1) {
                     $value['staf_hide'] = 1;
                 } else {
@@ -317,7 +322,8 @@ class Draft extends Base_Controller {
         }
     }
 
-    function setuju(){
+    function setuju()
+    {
         $me = $this;
 
         $koreksi        = $me->m_disposisi;
@@ -331,61 +337,63 @@ class Draft extends Base_Controller {
         $penerima_view        = $me->m_koreksi_masuk_setuju_view;
 
         $pegawai    = $user['staf_id'];
-        $filter     = json_decode(varGet('filter','[]'));
+        $filter     = json_decode(varGet('filter', '[]'));
 
-        $now = date('Y-m-d'); 
+
+        $now = date('Y-m-d');
 
         $useredis = Config()->item('useredis');
-        if($useredis == 1){
-            $pgs = $redis->get(Config()->item('redisPrefix').'staf_wakil_staf:'.$profileId);
+        if ($useredis == 1) {
+            $pgs = $redis->get(Config()->item('redisPrefix') . 'staf_wakil_staf:' . $profileId);
             $pgs = json_decode($pgs, true);
         }
 
         $costumFilter = array();
         $nonCustomFilter = array();
 
-        if(!empty($filter)){
+        if (!empty($filter)) {
             foreach ($filter as $i => $val) {
 
-                if(isset($val->field) == 'surat_perihal' || $val->property == 'query'){
-                    $custom_filter  = array('surat_perihal', 'surat_tujuan', 'surat_pengirim',
-                            'surat_nomor', 'surat_registrasi', 'unit_nama', 'jenis_nama',
-                            'disposisi_pengirim_nama', 'disposisi_pengirim_unit_nama',
-                            'disposisi_pengirim_jabatan_nama', 'disposisi_mode', 'unit_source_nama');
+                if (isset($val->field) == 'surat_perihal' || $val->property == 'query') {
+                    $custom_filter  = array(
+                        'surat_perihal', 'surat_tujuan', 'surat_pengirim',
+                        'surat_nomor', 'surat_registrasi', 'unit_nama', 'jenis_nama',
+                        'disposisi_pengirim_nama', 'disposisi_pengirim_unit_nama',
+                        'disposisi_pengirim_jabatan_nama', 'disposisi_mode', 'unit_source_nama'
+                    );
 
                     $value = $val->value;
-                    $query = "(".implode(" LIKE '%".$value."%' OR ", $custom_filter)." LIKE '%".$value."%')";
+                    $query = "(" . implode(" LIKE '%" . $value . "%' OR ", $custom_filter) . " LIKE '%" . $value . "%')";
                     $costumFilter = array(array(
-                                'value' => $query,
-                                'type'  => 'custom'
-                            ));
-                }else{
+                        'value' => $query,
+                        'type'  => 'custom'
+                    ));
+                } else {
                     $custom_filter2 = $val->field;
                     $value2 = $val->value;
-                    $query2 = "(".$custom_filter2." LIKE '%".$value2."%')";
+                    $query2 = "(" . $custom_filter2 . " LIKE '%" . $value2 . "%')";
                     $filter3 = array(array(
-                                'value' => $query2,
-                                'type'  => 'custom'
-                            ));
+                        'value' => $query2,
+                        'type'  => 'custom'
+                    ));
                     $nonCustomFilter = array_merge($nonCustomFilter, $filter3);
                 }
             }
 
             $filter = array_merge($costumFilter, $nonCustomFilter);
         }
-        $sorter     =  json_decode(varGet('sorter',varGet('sort', '[]')));
+        $sorter     =  json_decode(varGet('sorter', varGet('sort', '[]')));
+        $filter = $this->filter_tipe_surat($filter);
 
-        if(varGetHas('id') || varGetHas('disposisi_masuk_id')) {
+        if (varGetHas('id') || varGetHas('disposisi_masuk_id')) {
             $id = varGet('id', varGet('disposisi_masuk_id'));
             $get_record = $penerima_view->read($id);
 
             /*patch for flag as read if user acess it*/
-            if($get_record and $account->isMyProfileId($get_record['disposisi_masuk_staf']))
-            {
-                if((int)$get_record['disposisi_masuk_isbaca'] == $penerima_view::BACA_INIT)
-                {
+            if ($get_record and $account->isMyProfileId($get_record['disposisi_masuk_staf'])) {
+                if ((int)$get_record['disposisi_masuk_isbaca'] == $penerima_view::BACA_INIT) {
                     $disposisi_masuk->update($id, array(
-                        'disposisi_masuk_baca_tgl'=> date('Y-m-d H:i:s')
+                        'disposisi_masuk_baca_tgl' => date('Y-m-d H:i:s')
                     ));
                 }
             }
@@ -399,7 +407,7 @@ class Draft extends Base_Controller {
 
             if (($user['staf_jabatan'] !== $record['disposisi_masuk_penerima_jabatan_id']) || ($user['staf_unit'] !== $record['disposisi_masuk_penerima_unit_id'])) {
                 $record['disposisi_masuk_profil_isganti'] = 1;
-            }else{
+            } else {
                 $record['disposisi_masuk_profil_isganti'] = 0;
             }
 
@@ -408,18 +416,17 @@ class Draft extends Base_Controller {
             } else {
                 $record['staf_hide'] = 0;
             }
-            
-            $this->response_record($record);
 
-        }else{
+            $this->response_record($record);
+        } else {
             array_unshift($filter, (object)array(
-                'property'  =>'disposisi_masuk_staf',
+                'property'  => 'disposisi_masuk_staf',
                 'value'     => $pegawai,
-                'type'      =>'exact'
+                'type'      => 'exact'
             ));
             array_unshift($filter, (object)array(
-                'type'      =>'custom',
-                'value'     => 'IFNULL('.$surat_view::$field_approval_lookup.', 0) <> '.$surat_view::SETUJU_INIT
+                'type'      => 'custom',
+                'value'     => 'IFNULL(' . $surat_view::$field_approval_lookup . ', 0) <> ' . $surat_view::SETUJU_INIT
             ));
 
             $filter = json_encode($filter);
@@ -444,22 +451,23 @@ class Draft extends Base_Controller {
             foreach ($records['data'] as $key => &$value) {
                 if (($user['staf_jabatan'] !== $value['disposisi_masuk_penerima_jabatan_id']) || ($user['staf_unit'] !== $value['disposisi_masuk_penerima_unit_id'])) {
                     $value['disposisi_masuk_profil_isganti'] = 1;
-                }else{
+                } else {
                     $value['disposisi_masuk_profil_isganti'] = 0;
                 }
-                
+
                 if ($user['staf_status'] == 1) {
                     $value['staf_hide'] = 1;
                 } else {
                     $value['staf_hide'] = 0;
                 }
             }
-            
+
             $this->response($records);
         }
     }
 
-    function tolak(){
+    function tolak()
+    {
         $me = $this;
 
         $koreksi        = $me->m_disposisi;
@@ -473,64 +481,65 @@ class Draft extends Base_Controller {
         $penerima_view        = $me->m_koreksi_masuk_tolak_view;
 
         $pegawai    = $user['staf_id'];
-        $filter     = json_decode(varGet('filter','[]'));
+        $filter     = json_decode(varGet('filter', '[]'));
 
-        $now = date('Y-m-d'); 
+        $now = date('Y-m-d');
 
-        $redis = new Redis(); 
+        $redis = new Redis();
         $redis->connect('publish-sipaslab.sekawanmedia.co.id', 6379);
         $redis->auth("password");
 
 
-        $pgs = $redis->get(Config()->item('redisPrefix').'staf_wakil_staf:'.$profileId);
+        $pgs = $redis->get(Config()->item('redisPrefix') . 'staf_wakil_staf:' . $profileId);
         $pgs = json_decode($pgs, true);
 
         $costumFilter = array();
         $nonCustomFilter = array();
 
 
-        if(!empty($filter)){
+        if (!empty($filter)) {
             foreach ($filter as $i => $val) {
 
-                if(isset($val->field) == 'surat_perihal' || $val->property == 'query'){
-                    $custom_filter  = array('surat_perihal', 'surat_tujuan', 'surat_pengirim',
-                            'surat_nomor', 'surat_registrasi', 'unit_nama', 'jenis_nama',
-                            'disposisi_pengirim_nama', 'disposisi_pengirim_unit_nama',
-                            'disposisi_pengirim_jabatan_nama', 'disposisi_mode', 'unit_source_nama');
+                if (isset($val->field) == 'surat_perihal' || $val->property == 'query') {
+                    $custom_filter  = array(
+                        'surat_perihal', 'surat_tujuan', 'surat_pengirim',
+                        'surat_nomor', 'surat_registrasi', 'unit_nama', 'jenis_nama',
+                        'disposisi_pengirim_nama', 'disposisi_pengirim_unit_nama',
+                        'disposisi_pengirim_jabatan_nama', 'disposisi_mode', 'unit_source_nama'
+                    );
 
                     $value = $val->value;
-                    $query = "(".implode(" LIKE '%".$value."%' OR ", $custom_filter)." LIKE '%".$value."%')";
+                    $query = "(" . implode(" LIKE '%" . $value . "%' OR ", $custom_filter) . " LIKE '%" . $value . "%')";
                     $costumFilter = array(array(
-                                'value' => $query,
-                                'type'  => 'custom'
-                            ));
-                }else{
+                        'value' => $query,
+                        'type'  => 'custom'
+                    ));
+                } else {
                     $custom_filter2 = $val->field;
                     $value2 = $val->value;
-                    $query2 = "(".$custom_filter2." LIKE '%".$value2."%')";
+                    $query2 = "(" . $custom_filter2 . " LIKE '%" . $value2 . "%')";
                     $filter3 = array(array(
-                                'value' => $query2,
-                                'type'  => 'custom'
-                            ));
+                        'value' => $query2,
+                        'type'  => 'custom'
+                    ));
                     $nonCustomFilter = array_merge($nonCustomFilter, $filter3);
                 }
             }
 
             $filter = array_merge($costumFilter, $nonCustomFilter);
         }
-        $sorter     =  json_decode(varGet('sorter',varGet('sort', '[]')));
+        $sorter     =  json_decode(varGet('sorter', varGet('sort', '[]')));
+        $filter = $this->filter_tipe_surat($filter);
 
-        if(varGetHas('id') || varGetHas('disposisi_masuk_id')) {
+        if (varGetHas('id') || varGetHas('disposisi_masuk_id')) {
             $id = varGet('id', varGet('disposisi_masuk_id'));
             $get_record = $penerima_view->read($id);
 
             /*patch for flag as read if user acess it*/
-            if($get_record and $account->isMyProfileId($get_record['disposisi_masuk_staf']))
-            {
-                if((int)$get_record['disposisi_masuk_isbaca'] == $penerima_view::BACA_INIT)
-                {
+            if ($get_record and $account->isMyProfileId($get_record['disposisi_masuk_staf'])) {
+                if ((int)$get_record['disposisi_masuk_isbaca'] == $penerima_view::BACA_INIT) {
                     $disposisi_masuk->update($id, array(
-                        'disposisi_masuk_baca_tgl'=> date('Y-m-d H:i:s')
+                        'disposisi_masuk_baca_tgl' => date('Y-m-d H:i:s')
                     ));
                 }
             }
@@ -544,7 +553,7 @@ class Draft extends Base_Controller {
 
             if (($user['staf_jabatan'] !== $record['disposisi_masuk_penerima_jabatan_id']) || ($user['staf_unit'] !== $record['disposisi_masuk_penerima_unit_id'])) {
                 $record['disposisi_masuk_profil_isganti'] = 1;
-            }else{
+            } else {
                 $record['disposisi_masuk_profil_isganti'] = 0;
             }
 
@@ -555,16 +564,15 @@ class Draft extends Base_Controller {
             }
 
             $this->response_record($record);
-
-        }else{
+        } else {
             array_unshift($filter, (object)array(
-                'property'  =>'disposisi_masuk_staf',
+                'property'  => 'disposisi_masuk_staf',
                 'value'     => $pegawai,
-                'type'      =>'exact'
+                'type'      => 'exact'
             ));
             array_unshift($filter, (object)array(
-                'type'      =>'custom',
-                'value'     => 'IFNULL('.$surat_view::$field_approval_lookup.', 0) <> '.$surat_view::SETUJU_INIT
+                'type'      => 'custom',
+                'value'     => 'IFNULL(' . $surat_view::$field_approval_lookup . ', 0) <> ' . $surat_view::SETUJU_INIT
             ));
 
             $filter = json_encode($filter);
@@ -575,7 +583,7 @@ class Draft extends Base_Controller {
                 'filter'    => $filter,
                 'sorter'    => $sorter
             ));
-            
+
             // if($pgs['staf_wakil_tgl_mulai'] <= $now && $pgs['staf_wakil_tgl_selesai'] >= $now){
             //     foreach ($records['data'] as $key => &$value) {
             //         $value['disposisi_masuk_plt'] = 1;
@@ -589,10 +597,10 @@ class Draft extends Base_Controller {
             foreach ($records['data'] as $key => &$value) {
                 if (($user['staf_jabatan'] !== $value['disposisi_masuk_penerima_jabatan_id']) || ($user['staf_unit'] !== $value['disposisi_masuk_penerima_unit_id'])) {
                     $value['disposisi_masuk_profil_isganti'] = 1;
-                }else{
+                } else {
                     $value['disposisi_masuk_profil_isganti'] = 0;
                 }
-                
+
                 if ($user['staf_status'] == 1) {
                     $value['staf_hide'] = 1;
                 } else {
@@ -603,7 +611,26 @@ class Draft extends Base_Controller {
         }
     }
 
-    function asistensi($section = null){
+    function filter_tipe_surat($filter)
+    {
+        $tipe_surat = varGet('tipe_surat');
+        if ($tipe_surat) {
+            // default luar
+            $condition = 'surat_keluar_type IS NULL || surat_keluar_type = 0';
+            // jika tipe surat dalam
+            if ($tipe_surat == "dalam") {
+                $condition = 'surat_keluar_type = 1';
+            }
+            array_unshift($filter, (object)array(
+                'value'     => $condition,
+                'type'      => 'custom'
+            ));
+        }
+        return $filter;
+    }
+
+    function asistensi($section = null)
+    {
         $me = $this;
 
         $koreksi        = $me->m_disposisi;
@@ -619,48 +646,50 @@ class Draft extends Base_Controller {
         $penerima_view        = $me->m_koreksi_masuk_status_view;
 
         $asisten    = varGet('asisten');
-        $filter     = json_decode(varGet('filter','[]'));
-        $sorter     =  json_decode(varGet('sorter',varGet('sort', '[]')));
-        
-        if($asisten !== null){
+        $filter     = json_decode(varGet('filter', '[]'));
+        $sorter     =  json_decode(varGet('sorter', varGet('sort', '[]')));
+
+        if ($asisten !== null) {
             $pegawai = $asisten;
-        }else{
+        } else {
             $pegawai = null;
         }
 
         $costumFilter = array();
         $nonCustomFilter = array();
-        $now = date('Y-m-d'); 
+        $now = date('Y-m-d');
 
         $useredis = Config()->item('useredis');
-        if($useredis == 1){
-            $pgs = $redis->get(Config()->item('redisPrefix').'staf_wakil_staf:'.$profileId);
+        if ($useredis == 1) {
+            $pgs = $redis->get(Config()->item('redisPrefix') . 'staf_wakil_staf:' . $profileId);
             $pgs = json_decode($pgs, true);
         }
 
-        if(!empty($filter)){
+        if (!empty($filter)) {
             foreach ($filter as $i => $val) {
 
-                if(isset($val->field) == 'surat_perihal' || $val->property == 'query'){
-                    $custom_filter  = array('surat_perihal', 'surat_tujuan', 'surat_pengirim',
-                            'surat_nomor', 'surat_registrasi', 'unit_nama', 'jenis_nama',
-                            'disposisi_pengirim_nama', 'disposisi_pengirim_unit_nama',
-                            'disposisi_pengirim_jabatan_nama', 'disposisi_mode', 'unit_source_nama');
+                if (isset($val->field) == 'surat_perihal' || $val->property == 'query') {
+                    $custom_filter  = array(
+                        'surat_perihal', 'surat_tujuan', 'surat_pengirim',
+                        'surat_nomor', 'surat_registrasi', 'unit_nama', 'jenis_nama',
+                        'disposisi_pengirim_nama', 'disposisi_pengirim_unit_nama',
+                        'disposisi_pengirim_jabatan_nama', 'disposisi_mode', 'unit_source_nama'
+                    );
 
                     $value = $val->value;
-                    $query = "(".implode(" LIKE '%".$value."%' OR ", $custom_filter)." LIKE '%".$value."%')";
+                    $query = "(" . implode(" LIKE '%" . $value . "%' OR ", $custom_filter) . " LIKE '%" . $value . "%')";
                     $costumFilter = array(array(
-                                'value' => $query,
-                                'type'  => 'custom'
-                            ));
-                }else{
+                        'value' => $query,
+                        'type'  => 'custom'
+                    ));
+                } else {
                     $custom_filter2 = $val->field;
                     $value2 = $val->value;
-                    $query2 = "(".$custom_filter2." LIKE '%".$value2."%')";
+                    $query2 = "(" . $custom_filter2 . " LIKE '%" . $value2 . "%')";
                     $filter3 = array(array(
-                                'value' => $query2,
-                                'type'  => 'custom'
-                            ));
+                        'value' => $query2,
+                        'type'  => 'custom'
+                    ));
                     $nonCustomFilter = array_merge($nonCustomFilter, $filter3);
                 }
             }
@@ -668,23 +697,21 @@ class Draft extends Base_Controller {
             $filter = array_merge($costumFilter, $nonCustomFilter);
         }
 
-        if(varGetHas('id') || varGetHas('disposisi_masuk_id')) {
+        if (varGetHas('id') || varGetHas('disposisi_masuk_id')) {
             $id = varGet('id', varGet('disposisi_masuk_id'));
             $get_record = $penerima_view->read($id);
 
             /*patch for flag as read if user acess it*/
-            if($get_record and $account->isMyProfileId($get_record['disposisi_masuk_staf']))
-            {
-                if((int)$get_record['disposisi_masuk_isbaca'] == $penerima_view::BACA_INIT)
-                {
+            if ($get_record and $account->isMyProfileId($get_record['disposisi_masuk_staf'])) {
+                if ((int)$get_record['disposisi_masuk_isbaca'] == $penerima_view::BACA_INIT) {
                     $disposisi_masuk->update($id, array(
-                        'disposisi_masuk_baca_tgl'=> date('Y-m-d H:i:s')
+                        'disposisi_masuk_baca_tgl' => date('Y-m-d H:i:s')
                     ));
                 }
             }
 
             $record = $penerima_view->read($id);
-                
+
             // if($pgs['staf_wakil_tgl_mulai'] <= $now && $pgs['staf_wakil_tgl_selesai'] >= $now){
             //     $record['disposisi_masuk_plt'] = 1;
             // }else{
@@ -694,7 +721,7 @@ class Draft extends Base_Controller {
             $data_staf = $staf->read($record['disposisi_masuk_staf']);
             if (($data_staf['staf_jabatan'] !== $record['disposisi_masuk_penerima_jabatan_id']) || ($data_staf['staf_unit'] !== $record['disposisi_masuk_penerima_unit_id'])) {
                 $record['disposisi_masuk_profil_isganti'] = 1;
-            }else{
+            } else {
                 $record['disposisi_masuk_profil_isganti'] = 0;
             }
 
@@ -704,33 +731,32 @@ class Draft extends Base_Controller {
                 $record['staf_hide'] = 0;
             }
             $this->response_record($record);
-
-        }else{
+        } else {
             array_unshift($filter, (object)array(
-                'property'  =>'disposisi_masuk_staf',
+                'property'  => 'disposisi_masuk_staf',
                 'value'     => $pegawai,
-                'type'      =>'exact'
+                'type'      => 'exact'
             ));
             array_unshift($filter, (object)array(
-                'type'      =>'custom',
-                'value'     => 'IFNULL('.$surat_view::$field_approval_lookup.', 0) <> '.$surat_view::SETUJU_INIT
+                'type'      => 'custom',
+                'value'     => 'IFNULL(' . $surat_view::$field_approval_lookup . ', 0) <> ' . $surat_view::SETUJU_INIT
             ));
 
             switch ($section) {
-                case 'read' :
+                case 'read':
                     $penerima_view        = $me->m_koreksi_masuk_status_view;
-                break;
-                case 'blmtindak' :
+                    break;
+                case 'blmtindak':
                     $penerima_view        = $me->m_koreksi_masuk_blmtindak_view;
-                break;
-                case 'setuju' :
+                    break;
+                case 'setuju':
                     $penerima_view        = $me->m_koreksi_masuk_setuju_view;
-                break;
-                case 'tolak' :
+                    break;
+                case 'tolak':
                     $penerima_view        = $me->m_koreksi_masuk_tolak_view;
-                break;                    
+                    break;
             }
-            
+
             $filter = json_encode($filter);
             $sorter = json_encode($sorter);
             $records = $penerima_view->select(array(
@@ -739,7 +765,7 @@ class Draft extends Base_Controller {
                 'filter'    => $filter,
                 'sorter'    => $sorter
             ));
-            
+
             // if($pgs['staf_wakil_tgl_mulai'] <= $now && $pgs['staf_wakil_tgl_selesai'] >= $now){
             //     foreach ($records['data'] as $key => &$value) {
             //         $value['disposisi_masuk_plt'] = 1;
@@ -754,23 +780,23 @@ class Draft extends Base_Controller {
                 $data_staf = $staf->read($value['disposisi_masuk_staf']);
                 if (($data_staf['staf_jabatan'] !== $value['disposisi_masuk_penerima_jabatan_id']) || ($data_staf['staf_unit'] !== $value['disposisi_masuk_penerima_unit_id'])) {
                     $value['disposisi_masuk_profil_isganti'] = 1;
-                }else{
+                } else {
                     $value['disposisi_masuk_profil_isganti'] = 0;
                 }
-                
+
                 if ($data_staf['staf_status'] == 1) {
                     $value['staf_hide'] = 1;
                 } else {
                     $value['staf_hide'] = 0;
                 }
-
             }
-            
+
             $this->response($records);
         }
     }
 
-    function penyetuju(){ /*PENYETUJU Lain*/
+    function penyetuju()
+    { /*PENYETUJU Lain*/
         $me = $this;
 
         $account      = $me->m_account;
@@ -786,15 +812,17 @@ class Draft extends Base_Controller {
         $id = varGet('id');
 
         $records = $model->find(array(
-            'surat_stack_surat' => $id), false, false, true, array('surat_stack_level' => 'asc'));
+            'surat_stack_surat' => $id
+        ), false, false, true, array('surat_stack_level' => 'asc'));
         foreach ($records as $key => &$value) {
-            $value['staf_image_preview'] = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'].'/sipas/staf/get_image/foto?id='.$value['surat_stack_staf'];
+            $value['staf_image_preview'] = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'] . '/sipas/staf/get_image/foto?id=' . $value['surat_stack_staf'];
         }
 
         $me->response($records);
     }
 
-    function petikan(){ /*PETIKAN Lain*/
+    function petikan()
+    { /*PETIKAN Lain*/
         $me = $this;
 
         $account      = $me->m_account;
@@ -810,9 +838,10 @@ class Draft extends Base_Controller {
         $id = varGet('id');
 
         $records = $model->find(array(
-            'surat_stack_surat' => $id), false, false, true, array('surat_stack_level' => 'asc'));
+            'surat_stack_surat' => $id
+        ), false, false, true, array('surat_stack_level' => 'asc'));
         foreach ($records as $key => &$value) {
-            $value['staf_image_preview'] = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'].'/sipas/staf/get_image/foto?id='.$value['surat_stack_staf'];
+            $value['staf_image_preview'] = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'] . '/sipas/staf/get_image/foto?id=' . $value['surat_stack_staf'];
         }
 
         $me->response($records);

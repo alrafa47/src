@@ -11,7 +11,8 @@ class Sipas_model_Jenis_aktif extends Sipas_model_Jenis {
             array('insert'=>false, 'update'=>false, 'name'=>'jenis_nama'),
             array('insert'=>false, 'update'=>false, 'name'=>'jenis_kode'),
             array('insert'=>false, 'update'=>false, 'name'=>'jenis_isaktif'),
-            array('insert'=>false, 'update'=>false, 'name'=>'jenis_properti')
+            array('insert'=>false, 'update'=>false, 'name'=>'jenis_properti'), 
+            array('insert'=>false, 'update'=>false, 'name'=>'jenis_ishapus')
             // array('insert'=>false, 'update'=>false, 'name'=>'properti_id'),
             // array('insert'=>false, 'update'=>false, 'name'=>'properti_buat_tgl'),
             // array('insert'=>false, 'update'=>false, 'name'=>'properti_buat_staf'),

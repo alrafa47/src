@@ -397,17 +397,20 @@ class Surat_keluar extends Base_Controller
             $start      = varGet('start', 0);
             $sorter     = json_decode(varGet('sort', '[]'));
 
-            if (varGet('scope')) {
-                $scopeid = varGet('scope');
-            } else {
-                $scopeid = $account['staf_unit'];
-            }
+            // if (varGet('scope')) {
+            //     $scopeid = varGet('scope');
+            // } else {
+            //     $scopeid = $account['staf_unit'];
+            // }
 
-            array_unshift($filter, (object)array(
-                'type'  => 'exact',
-                'field' => 'surat_unit',
-                'value' => $scopeid
-            ));
+            // array_unshift($filter, (object)array(
+            //     'type'  => 'exact',
+            //     'field' => 'surat_unit',
+            //     'value' => $scopeid
+            // ));
+
+            $filter = $this->filter_unit_bagian($filter);
+
 
             $records = $model->select(array(
                 'limit'     => $limit,
@@ -518,7 +521,6 @@ class Surat_keluar extends Base_Controller
                 'sort'      => $sorter
             ));
 
-            // print_r($model->get_lastquery());
             $this->response($records);
         }
     }
@@ -1389,6 +1391,8 @@ class Surat_keluar extends Base_Controller
         $penyetuju_profil = varReq('py_p');
         $penerima   = varReq('pn');
         $penerima_profil = varReq('pn_p');
+        $penerimakeluar   = varReq('pnk');
+        $penerimakeluar_profil = varReq('pnk_p');
         $upenyetuju = varReq('upy');
         $upenyetuju_profil = varReq('upy_p');
         $upenerima  = varReq('upn');
@@ -2227,6 +2231,7 @@ class Surat_keluar extends Base_Controller
                 $upenyetuju,
                 $upenerima,
                 $penerima,
+                $penerimakeluar,
                 $temporary, /*$isberkas,*/
                 $surat_stack,
                 $surat_stack_view,
@@ -2248,6 +2253,7 @@ class Surat_keluar extends Base_Controller
                 $penyetuju_profil,
                 $upenyetuju_profil,
                 $penerima_profil,
+                $penerimakeluar_profil,
                 $upenerima_profil,
                 $stafProfil,
                 $notifikasi,
@@ -2806,7 +2812,8 @@ class Surat_keluar extends Base_Controller
                     /*delete temporary first*/
                     $surat_stack->delete(array(
                         'surat_stack_surat'     => $data['surat_id'],
-                        'surat_stack_model'     => $surat_stack::MODEL_PENERIMA
+                        'surat_stack_model'     => $surat_stack::MODEL_PENERIMA,
+                        'surat_stack_istembusan'     => 1
                     ), function ($response) {
                     });
 
@@ -2873,6 +2880,99 @@ class Surat_keluar extends Base_Controller
                                 $this->m_staf_recent->insert(array(
                                     'staf_aktual_pengirim' => $account_id,
                                     'staf_aktual_penerima' => $penerima_id,
+                                    'staf_aktual_tgl'     => $now,
+                                    'staf_aktual_tipe'    => $disposisi::MODEL_KOREKSI
+                                ), null, function ($response) use ($data, $properti, $account_id) {
+
+                                    $inserted_data = $this->m_staf_recent->read($this->m_staf_recent->get_insertid());
+                                    $op = $properti->created($account_id, $inserted_data, 'staf_aktual', $inserted_data['staf_aktual_id'], 'staf_aktual ' . $inserted_data['staf_aktual_tgl']);
+                                    if ($op) {
+                                        $this->m_staf_recent->update($inserted_data['staf_aktual_id'], array(
+                                            'staf_aktual_properti' => $op['properti_id']
+                                        ));
+                                    }
+                                });
+                            }
+                        }
+                    }
+                }
+
+                /* 
+                    * by Alfrizal 12 may 2022
+                    *jika user memilih jenis pengiriman dalam perusahaan maka lakukan 
+                    *insert penerima keluar
+                */
+                if (!empty($penerimakeluar)) {
+                    /*delete temporary first*/
+                    $surat_stack->delete(array(
+                        'surat_stack_surat'     => $data['surat_id'],
+                        'surat_stack_model'     => 0,
+                        'IFNULL(surat_stack_istembusan, 0) = 0'     => null
+                    ), function ($response) {
+                    });
+
+                    foreach ($penerimakeluar as $index => $p) {
+                        // if($isberkas[$index] === 'true'){
+                        //     $isberkas[$index] = true;
+                        // }
+
+                        if (is_string($p)) {
+                            $penerimakeluar_id = $p;
+                            // $berkas = ((int)$isberkas[$index] != '') ? 1 : 0;
+                            $penerimakeluarProfil = $penerimakeluar_profil[$index] ? $penerimakeluar_profil[$index] : null;
+                        } else if (is_object($p)) {
+                            $penerimakeluar_id = property_exists($p, 'staf_id') ? $p->staf_id : null;
+                            // $berkas = ((int)$isberkas[$index] != '') ? 1 : 0;
+                            $penerimakeluarProfil = $penerimakeluar_profil[$index] ? $penerimakeluar_profil[$index] : null;
+                        } else if (is_array($p)) {
+                            $penerimakeluar_id = array_key_exists('staf_id', $p) ? $p['staf_id'] : null;
+                            // $berkas = ((int)$isberkas[$index] != '') ? 1 : 0;
+                            $penerimakeluarProfil = $penerimakeluar_profil[$index] ? $penerimakeluar_profil[$index] : null;
+                        }
+
+                        if (empty($penerimakeluar_id)) {
+                            continue;
+                        }
+                        $lvl = $index;
+
+                        /*Re-insert penerima List*/
+                        $penerimakeluar_stack = $surat_stack->insert(array(
+                            'surat_stack_staf'      => $penerimakeluar_id,
+                            'surat_stack_profil'    => $penerimakeluarProfil,
+                            'surat_stack_surat'     => $data['surat_id'],
+                            'surat_stack_model'     => $surat_stack::MODEL_PENERIMA,
+                            'surat_stack_level'     => $lvl,
+                            'surat_stack_status'    => $surat_view::SETUJU_INIT,
+                            'surat_stack_isberkas'  => $data['surat_useberkas'],
+                        ));
+
+                        if ($temporary == 2) {
+                            $recent_exist = $this->m_staf_recent->read(array(
+                                'staf_aktual_pengirim' => $account_id,
+                                'staf_aktual_penerima' => $penerimakeluar_id,
+                            ));
+
+                            if ($recent_exist) {
+                                $this->m_staf_recent->update(array(
+                                    'staf_aktual_pengirim' => $account_id,
+                                    'staf_aktual_penerima' => $penerimakeluar_id
+                                ), array(
+                                    'staf_aktual_pengirim' => $account_id,
+                                    'staf_aktual_penerima' => $penerimakeluar_id,
+                                    'staf_aktual_tgl'     => $now,
+                                    'staf_aktual_tipe'    => $disposisi::MODEL_KOREKSI
+                                ), function ($response) use ($properti, $data, $account_id) {
+
+                                    $recent_data = $response['data'];
+                                    $updated_data = $this->m_staf_recent->read($recent_data['staf_aktual_id']);
+                                    $idProp = $updated_data['staf_aktual_properti'];
+
+                                    $properti->updated($idProp, $account_id, $updated_data, 'staf_aktual ' . $updated_data['staf_aktual_tgl']);
+                                });
+                            } else {
+                                $this->m_staf_recent->insert(array(
+                                    'staf_aktual_pengirim' => $account_id,
+                                    'staf_aktual_penerima' => $penerimakeluar_id,
                                     'staf_aktual_tgl'     => $now,
                                     'staf_aktual_tipe'    => $disposisi::MODEL_KOREKSI
                                 ), null, function ($response) use ($data, $properti, $account_id) {
@@ -3051,99 +3151,119 @@ class Surat_keluar extends Base_Controller
         $surat_view             = $this->m_surat_view;
         $surat_keluar_view      = $this->m_surat_keluar_aktif_view;
 
-        $filter = varGet('filter');
+        $filter = [];
         $filterValue = varGet('value');
         $download = varGet('download', 0);
         $excel = varGet('excel', 0);
         $report_title = varGet('title', 0) ? base64_decode(varGet('title')) : '';
-
         $param_unitkerja = varGet('unit');
+        $param_bagian     = varGet('bagian');
+        $dataReport = [];
+
+        // Filter Date
+        if ($filterValue) {
+            $filterDate     = $report_model->generateFieldDate(varGet('filter'), $filterValue);
+            if ($filterDate) {
+                array_unshift($filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => $filterDate
+                ));
+            }
+        }
+
+        // Filter Unit
+        if ($param_bagian != 'null') {
+            if ($param_bagian && $param_bagian != 'semua') {
+                array_unshift($filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => "unit_id = '$param_bagian'"
+                ));
+                // $unit_model->find(array('unit_id' => $param_bagian));
+            } else {
+                array_unshift($filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => 'surat_induk_unit_parent_path LIKE "%' . $param_unitkerja . '%"'
+                ));
+            }
+        }
 
         if (strtolower($download) == 'false') $download = 0;
         $download = (bool) $download;
         $user = $account_model->get_profile();
 
-        if (empty($param_unitkerja) || is_null($param_unitkerja)) {
-            $unitkerja_recs2 = $unitkerja_model->select(array(
-                'filter'    => json_encode($filter),
-                'sorter'    => 'unit_nama',
-            ));
-            $unitkerja_recs = $unitkerja_recs2['data'];
-        } else {
-            $unitkerja_recs = $unitkerja_model->find(
-                (is_null($param_unitkerja) ? null : array('unit_id' => $param_unitkerja)),
-                null,
-                null,
-                null,
-                array(
-                    'unit_nama' => 'asc'
-                )
-            );
-        }
+        $records = $surat_keluar_view->select([
+            'filter' => json_encode($filter),
+            array(
+                'surat_nomor_urut' => 'asc',
+                'surat_nomor_backdate' => 'asc'
+            )
+        ]);
 
-        if (!is_array($unitkerja_recs)) $unitkerja_recs = array();
-        foreach ($unitkerja_recs as $d_i => $v) {
+        $bagianUnit = array_unique(array_column($records['data'], 'unit_id'));
+        foreach ($bagianUnit as $unit_kode) {
+            $dataBagianUnit = array_keys(array_column($records['data'], 'unit_id'), $unit_kode);
 
-            $param_unitkerja = $unitkerja_recs[$d_i]['unit_id'];
-            $time_field = $report_model->generateField($param_unitkerja, $filter, $filterValue);
-            $time_field[$surat::$field_id . '<>' . $surat::$field_code] = NULL;
-            $records = $surat_keluar_view->find(
-                $time_field,
-                null,
-                null,
-                null,
-                array(
-                    'surat_nomor_urut' => 'asc',
-                    'surat_nomor_backdate' => 'asc'
-                )
-            );
-
-            foreach ($records as $i => &$r) {
-                $r['no'] = $i + 1;
-                $r['bg_color'] = ($i % 2 == 0) ? $this::$bg_color_item_laporan['even'] : $this::$bg_color_item_laporan['odd'];
-
-                $r['surat_tanggal'] = $r['surat_tanggal'] ? $report_model->date_format($r['surat_tanggal'], 'd M Y') : $this::$default_report['surattgl'];
-                $r['surat_perihal'] = $r['surat_perihal'] ? 'tentang ' . $r['surat_perihal'] : $this::$default_value['perihal'];
-                $r['surat_nomor'] = $r['surat_nomor'] ? $r['surat_nomor'] : $this::$default_value['nosurat'];
-                $r['surat_kelas_kode'] = $r['surat_kelas'] ? $r['kelas_kode'] : $this::$default_value['kelas_kode'];
-                $r['surat_kelas_nama'] = $r['surat_kelas'] ? $r['kelas_nama'] : $this::$default_value['kelas'];
-                $r['surat_jenis'] = $r['surat_jenis'] ? $r['jenis_nama'] : $this::$default_value['jenis'];
-                $r['surat_unit'] = $r['surat_unit'] ? $r['unit_nama'] : $this::$default_value['unit'];
-                $r['tahun'] = $r['surat_tanggal'] ? $report_model->date_format($r['surat_tanggal'], 'Y') : $this::$default_value['surattgl'];
-                $r['surat_lokasi'] = $r['surat_lokasi'] ? $r['lokasi_kode'] : $this::$default_value['lokasi'];
-
-                if (!$r['surat_lampiran'] == NULL) {
-                    $r['surat_lampiran'] = $r['surat_lampiran'] . ' Berkas';
-                } else {
-                    $r['surat_lampiran'] = $this::$default_value['lampiran'];
-                }
-
-                if (!$r['surat_agenda_sub'] == NULL) {
-                    $r['surat_agenda_converted'] = $r['surat_agenda'] . '.' . $r['surat_agenda_sub'];
-                } else {
-                    $r['surat_agenda_converted'] = $r['surat_agenda'];
-                }
-                $r['surat_agenda_converted'] = $r['surat_agenda_converted'] ? $r['surat_agenda_converted'] : $this::$default_value['agenda'];
+            // if unit_nama is empty then skip
+            if (!$records['data'][$dataBagianUnit[0]]['unit_nama']) {
+                continue;
             }
-            if (!empty($records)) {
-                $v['records']  = $records;
-                $v['count']    = count($records);
-                $unitkerja_recs[$d_i] = $v;
-                $unitkerja_recs[$d_i]['unitkerja_nama'] = $v['unit_nama'];
-            } else {
-                unset($unitkerja_recs[$d_i]);
+            $dataReport[$unit_kode]['unit_nama'] = $records['data'][$dataBagianUnit[0]]['unit_nama'];
+            $no = 1;
+            foreach ($dataBagianUnit as $key) {
+                $records['data'][$key]['no'] = $no;
+                $records['data'][$key]['bg_color'] = ($key % 2 == 0) ? $this::$bg_color_item_laporan['even'] : $this::$bg_color_item_laporan['odd'];
+
+                $records['data'][$key]['surat_tanggal'] = $records['data'][$key]['surat_tanggal'] ? $report_model->date_format($records['data'][$key]['surat_tanggal'], 'd M Y') : $this::$default_report['surattgl'];
+                $records['data'][$key]['surat_perihal'] = $records['data'][$key]['surat_perihal'] ? 'tentang ' . $records['data'][$key]['surat_perihal'] : $this::$default_value['perihal'];
+                $records['data'][$key]['surat_nomor'] = $records['data'][$key]['surat_nomor'] ? $records['data'][$key]['surat_nomor'] : $this::$default_value['nosurat'];
+                $records['data'][$key]['surat_kelas_kode'] = $records['data'][$key]['surat_kelas'] ? $records['data'][$key]['kelas_kode'] : $this::$default_value['kelas_kode'];
+                $records['data'][$key]['surat_kelas_nama'] = $records['data'][$key]['surat_kelas'] ? $records['data'][$key]['kelas_nama'] : $this::$default_value['kelas'];
+                $records['data'][$key]['surat_jenis'] = $records['data'][$key]['surat_jenis'] ? $records['data'][$key]['jenis_nama'] : $this::$default_value['jenis'];
+                $records['data'][$key]['surat_unit'] = $records['data'][$key]['surat_unit'] ? $records['data'][$key]['unit_nama'] : $this::$default_value['unit'];
+                $records['data'][$key]['tahun'] = $records['data'][$key]['surat_tanggal'] ? $report_model->date_format($records['data'][$key]['surat_tanggal'], 'Y') : $this::$default_value['surattgl'];
+                $records['data'][$key]['surat_lokasi'] = $records['data'][$key]['surat_lokasi'] ? $records['data'][$key]['lokasi_kode'] : $this::$default_value['lokasi'];
+
+                if (!$records['data'][$key]['surat_lampiran'] == NULL) {
+                    $records['data'][$key]['surat_lampiran'] = $records['data'][$key]['surat_lampiran'] . ' Berkas';
+                } else {
+                    $records['data'][$key]['surat_lampiran'] = $this::$default_value['lampiran'];
+                }
+
+                if (!$records['data'][$key]['surat_agenda_sub'] == NULL) {
+                    $records['data'][$key]['surat_agenda_converted'] = $records['data'][$key]['surat_agenda'] . '.' . $records['data'][$key]['surat_agenda_sub'];
+                } else {
+                    $records['data'][$key]['surat_agenda_converted'] = $records['data'][$key]['surat_agenda'];
+                }
+                $records['data'][$key]['surat_agenda_converted'] = $records['data'][$key]['surat_agenda_converted'] ? $records['data'][$key]['surat_agenda_converted'] : $this::$default_value['agenda'];
+
+                $dataReport[$unit_kode]['records'][] = $records['data'][$key];
+                $no++;
             }
         }
 
-        if (!$unitkerja_recs) {
-            $unitkerja_recs = array();
-            $unit_nama = ($param_unitkerja) ? $unitkerja_model->read($param_unitkerja)['unit_nama'] : $this::$default_value['title'];
-            $unit  = array('unit_nama' => $unit_nama, 'records' => array());
-            $surat = array_fill_keys(array('surat_agenda_converted', 'surat_nomor', 'surat_tanggal', 'surat_perihal', 'surat_kelas_kode', 'surat_kelas_nama', 'surat_jenis', 'surat_unit', 'surat_lokasi', 'surat_lampiran'), $this::$default_value['nodata']);
-            $surat['no'] = 1;
-            array_unshift($unit['records'], $surat);
-            array_unshift($unitkerja_recs, $unit);
-        }
+        // if (!empty($records)) {
+        //     $v['records']  = $records;
+        //     $v['count']    = count($records);
+        //     $unitkerja_recs[$d_i] = $v;
+        //     $unitkerja_recs[$d_i]['unitkerja_nama'] = $v['unit_nama'];
+        // } else {
+        //     unset($unitkerja_recs[$d_i]);
+        //     $unit  = array('unit_nama' => $v['unit_nama'], 'records' => array());
+        //     $surat = array_fill_keys(array('surat_agenda_converted', 'surat_nomor', 'surat_tanggal', 'surat_perihal', 'surat_kelas_kode', 'surat_kelas_nama', 'surat_jenis', 'surat_unit', 'surat_lokasi', 'surat_lampiran'), $this::$default_value['nodata']);
+        //     $surat['no'] = 1;
+        //     array_unshift($unit['records'], $surat);
+        //     array_unshift($unitkerja_recs, $unit);
+        // }
+
+        // if (!$unitkerja_recs) {
+        //     $unitkerja_recs = array();
+        //     $unit_nama = ($param_unitkerja) ? $unitkerja_model->read($param_unitkerja)['unit_nama'] : $this::$default_value['title'];
+        //     $unit  = array('unit_nama' => $unit_nama, 'records' => array());
+        //     $surat = array_fill_keys(array('surat_agenda_converted', 'surat_nomor', 'surat_tanggal', 'surat_perihal', 'surat_kelas_kode', 'surat_kelas_nama', 'surat_jenis', 'surat_unit', 'surat_lokasi', 'surat_lampiran'), $this::$default_value['nodata']);
+        //     $surat['no'] = 1;
+        //     array_unshift($unit['records'], $surat);
+        //     array_unshift($unitkerja_recs, $unit);
+        // }
 
         $report_title = ($download || $excel) ? explode('<', $report_title)[0] : $report_title;
         $report_data = array(
@@ -3151,10 +3271,10 @@ class Surat_keluar extends Base_Controller
             'subtitle' => $this::$report_subtitle,
             'header' => $report_model->generateHeader($download, 7),
             'periode' => $report_model->generatePeriode($filter, $filterValue),
-            'unitkerja' => $unitkerja_recs,
+            'unitkerja' => $dataReport,
             'dateReport' => date('d-m-Y H:i:s'),
             'dateReportFormated' => date('d M Y H:i'),
-            'operator' => $user[$account_model->field_display]
+            // 'operator' => $user[$account_model->field_display]
         );
         $filename = $report_title . $report_model->generatePeriode($filter, $filterValue, true);
         $file = $this->load->view($this::$report_template, null, true);
@@ -3177,100 +3297,139 @@ class Surat_keluar extends Base_Controller
         $surat_view             = $this->m_surat_view;
         $surat_keluar_view      = $this->m_surat_keluar_aktif_view;
         $pengaturan             = $this->m_pengaturan;
+        $filter = [];
 
         $buatSuratKeluar = $pengaturan->getSettingByCode('use_unit_buat_surat_keluar');
 
         $param_unitkerja = varGet('unit');
-        $filter = varGet('filter');
+        $filterDate = varGet('filter');
         $filterValue = varGet('value');
         $download = varGet('download', 0);
         $excel = varGet('excel', 0);
         $report_title = varGet('title', 0) ? base64_decode(varGet('title')) : '';
+        $dataReport = [];
 
         if (strtolower($download) == 'false') $download = 0;
         $download = (bool) $download;
         $user = $account_model->get_profile();
 
         if ($buatSuratKeluar) {
-            $unitkerja_recs = $unitkerja_model->find(
-                array('IFNULL(unit_isbuatsurat, 0) = 1' => null),
-                null,
-                null,
-                null,
-                array(
-                    'unit_nama' => 'asc'
-                )
-            );
-        } else {
-            $unitkerja_recs2 = $unitkerja_model->select(array(
-                'filter'    => json_encode($filter),
-                'sorter'    => 'unit_nama',
+            array_unshift($filter, (object)array(
+                'type'  => 'custom',
+                'value'     => 'IFNULL(surat_induk_unit_isbuatsurat, 0) = 1'
             ));
-            $unitkerja_recs = $unitkerja_recs2['data'];
         }
 
-        if (!is_array($unitkerja_recs)) $unitkerja_recs = array();
-        foreach ($unitkerja_recs as $d_i => $v) {
-
-            $param_unitkerja = $unitkerja_recs[$d_i]['unit_id'];
-            $time_field = $report_model->generateField($param_unitkerja, $filter, $filterValue);
-            $time_field[$surat::$field_id . '<>' . $surat::$field_code] = NULL;
-            $records = $surat_keluar_view->find(
-                $time_field,
-                null,
-                null,
-                null,
-                array(
-                    'surat_nomor_urut' => 'asc',
-                    'surat_nomor_backdate' => 'asc'
-                )
-            );
-
-            foreach ($records as $i => &$r) {
-                $r['no'] = $i + 1;
-                $r['bg_color'] = ($i % 2 == 0) ? $this::$bg_color_item_laporan['even'] : $this::$bg_color_item_laporan['odd'];
-                $r['surat_tanggal'] = $r['surat_tanggal'] ? $report_model->date_format($r['surat_tanggal'], 'd M Y') : $this::$default_report['surattgl'];
-                $r['surat_perihal'] = $r['surat_perihal'] ? 'tentang ' . $r['surat_perihal'] : $this::$default_value['perihal'];
-                $r['surat_nomor'] = $r['surat_nomor'] ? $r['surat_nomor'] : $this::$default_value['nosurat'];
-                $r['surat_kelas_kode'] = $r['surat_kelas'] ? $r['kelas_kode'] : $this::$default_value['kelas_kode'];
-                $r['surat_kelas_nama'] = $r['surat_kelas'] ? $r['kelas_nama'] : $this::$default_value['kelas'];
-                $r['surat_jenis'] = $r['surat_jenis'] ? $r['jenis_nama'] : $this::$default_value['jenis'];
-                $r['surat_unit'] = $r['surat_unit'] ? $r['unit_nama'] : $this::$default_value['unit'];
-                $r['tahun'] = $r['surat_tanggal'] ? $report_model->date_format($r['surat_tanggal'], 'Y') : $this::$default_value['surattgl'];
-                $r['surat_lokasi'] = $r['surat_lokasi'] ? $r['lokasi_kode'] : $this::$default_value['lokasi'];
-
-                if (!$r['surat_lampiran'] == NULL) {
-                    $r['surat_lampiran'] = $r['surat_lampiran'] . ' Berkas';
-                } else {
-                    $r['surat_lampiran'] = $this::$default_value['lampiran'];
-                }
-
-                if (!$r['surat_agenda_sub'] == NULL) {
-                    $r['surat_agenda_converted'] = $r['surat_agenda'] . '.' . $r['surat_agenda_sub'];
-                } else {
-                    $r['surat_agenda_converted'] = $r['surat_agenda'];
-                }
-                $r['surat_agenda_converted'] = $r['surat_agenda_converted'] ? $r['surat_agenda_converted'] : $this::$default_value['agenda'];
-            }
-            if (!empty($records)) {
-                $v['records']  = $records;
-                $v['count']    = count($records);
-                $unitkerja_recs[$d_i] = $v;
-                $unitkerja_recs[$d_i]['unitkerja_nama'] = $v['unit_nama'];
-            } else {
-                unset($unitkerja_recs[$d_i]);
+        // Filter Date 
+        if ($filterValue) {
+            $filterDate     = $report_model->generateFieldDate(varGet('filter'), $filterValue);
+            if ($filterDate) {
+                array_unshift($filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => $filterDate
+                ));
             }
         }
 
-        if (!$unitkerja_recs) {
-            $unitkerja_recs = array();
-            $unit_nama = ($param_unitkerja) ? $unitkerja_model->read($param_unitkerja)['unit_nama'] : $this::$default_value['title'];
-            $unit  = array('unit_nama' => $unit_nama, 'records' => array());
-            $surat = array_fill_keys(array('surat_agenda_converted', 'surat_nomor', 'surat_tanggal', 'surat_perihal', 'surat_kelas_kode', 'surat_kelas_nama', 'surat_jenis', 'surat_unit', 'surat_lokasi', 'surat_lampiran'), $this::$default_value['nodata']);
-            $surat['no'] = 1;
-            array_unshift($unit['records'], $surat);
-            array_unshift($unitkerja_recs, $unit);
+        // Filter Unit
+        if ($param_unitkerja != 'null') {
+            array_unshift($filter, (object)array(
+                'type'  => 'custom',
+                'value'     => 'unit_parent_path LIKE "%' . $param_unitkerja . '%"'
+            ));
         }
+
+        $records = $surat_keluar_view->select([
+            'filter' => json_encode($filter),
+            'sorter' => json_encode(array(
+                'surat_nomor_urut' => 'asc',
+                'surat_nomor_backdate' => 'asc'
+            )),
+            'fields' => [
+                'unit_id',
+                'unit_nama',
+                'surat_tanggal',
+                'surat_perihal',
+                'surat_nomor',
+                'surat_kelas',
+                'surat_kelas',
+                'surat_jenis',
+                'surat_unit',
+                'surat_lokasi',
+                'surat_lampiran',
+                'surat_agenda_sub',
+                'surat_agenda',
+                'surat_agenda_converted',
+                'kelas_kode',
+                'kelas_nama',
+                'jenis_nama',
+                'lokasi_kode'
+            ]
+        ]);
+
+        $bagianUnit = array_unique(array_column($records['data'], 'unit_id'));
+        foreach ($bagianUnit as $unit_kode) {
+            $dataBagianUnit = array_keys(array_column($records['data'], 'unit_id'), $unit_kode);
+
+            // if unit_nama is empty then skip
+            if (!$records['data'][$dataBagianUnit[0]]['unit_nama']) {
+                continue;
+            }
+            $dataReport[$unit_kode]['unit_nama'] = $records['data'][$dataBagianUnit[0]]['unit_nama'];
+            $no = 1;
+            foreach ($dataBagianUnit as $key) {
+                $records['data'][$key]['no'] = $no;
+                $records['data'][$key]['bg_color'] = ($key % 2 == 0) ? $this::$bg_color_item_laporan['even'] : $this::$bg_color_item_laporan['odd'];
+                $records['data'][$key]['surat_tanggal'] = $records['data'][$key]['surat_tanggal'] ? $report_model->date_format($records['data'][$key]['surat_tanggal'], 'd M Y') : $this::$default_report['surattgl'];
+                $records['data'][$key]['surat_perihal'] = $records['data'][$key]['surat_perihal'] ? 'tentang ' . $records['data'][$key]['surat_perihal'] : $this::$default_value['perihal'];
+                $records['data'][$key]['surat_nomor'] = $records['data'][$key]['surat_nomor'] ? $records['data'][$key]['surat_nomor'] : $this::$default_value['nosurat'];
+                $records['data'][$key]['surat_kelas_kode'] = $records['data'][$key]['surat_kelas'] ? $records['data'][$key]['kelas_kode'] : $this::$default_value['kelas_kode'];
+                $records['data'][$key]['surat_kelas_nama'] = $records['data'][$key]['surat_kelas'] ? $records['data'][$key]['kelas_nama'] : $this::$default_value['kelas'];
+                $records['data'][$key]['surat_jenis'] = $records['data'][$key]['surat_jenis'] ? $records['data'][$key]['jenis_nama'] : $this::$default_value['jenis'];
+                $records['data'][$key]['surat_unit'] = $records['data'][$key]['surat_unit'] ? $records['data'][$key]['unit_nama'] : $this::$default_value['unit'];
+                $records['data'][$key]['tahun'] = $records['data'][$key]['surat_tanggal'] ? $report_model->date_format($records['data'][$key]['surat_tanggal'], 'Y') : $this::$default_value['surattgl'];
+                $records['data'][$key]['surat_lokasi'] = $records['data'][$key]['surat_lokasi'] ? $records['data'][$key]['lokasi_kode'] : $this::$default_value['lokasi'];
+
+                if (!$records['data'][$key]['surat_lampiran'] == NULL) {
+                    $records['data'][$key]['surat_lampiran'] = $records['data'][$key]['surat_lampiran'] . ' Berkas';
+                } else {
+                    $records['data'][$key]['surat_lampiran'] = $this::$default_value['lampiran'];
+                }
+
+                if (!$records['data'][$key]['surat_agenda_sub'] == NULL) {
+                    $records['data'][$key]['surat_agenda_converted'] = $records['data'][$key]['surat_agenda'] . '.' . $records['data'][$key]['surat_agenda_sub'];
+                } else {
+                    $records['data'][$key]['surat_agenda_converted'] = $records['data'][$key]['surat_agenda'];
+                }
+                $records['data'][$key]['surat_agenda_converted'] = $records['data'][$key]['surat_agenda_converted'] ? $records['data'][$key]['surat_agenda_converted'] : $this::$default_value['agenda'];
+                $dataReport[$unit_kode]['records'][] = $records['data'][$key];
+                $no++;
+            }
+        }
+
+        // if (!empty($records)) {
+        //     $v['records']  = $records;
+        //     $v['count']    = count($records);
+        //     $unitkerja_recs[$d_i] = $v;
+        //     $unitkerja_recs[$d_i]['unitkerja_nama'] = $v['unit_nama'];
+        // } else {
+        //     unset($unitkerja_recs[$d_i]);
+        //     $unit  = array('unit_nama' => $v['unit_nama'], 'records' => array());
+        //     $surat = array_fill_keys(array('surat_agenda_converted', 'surat_nomor', 'surat_tanggal', 'surat_perihal', 'surat_kelas_kode', 'surat_kelas_nama', 'surat_jenis', 'surat_unit', 'surat_lokasi', 'surat_lampiran'), $this::$default_value['nodata']);
+        //     $surat['no'] = 1;
+        //     array_unshift($unit['records'], $surat);
+        //     array_unshift($unitkerja_recs, $unit);
+        // }
+
+        // if (!$unitkerja_recs) {
+        //     $unitkerja_recs = array();
+        //     $unit_nama = ($param_unitkerja) ? $unitkerja_model->read($param_unitkerja)['unit_nama'] : $this::$default_value['title'];
+        //     $unit  = array('unit_nama' => $unit_nama, 'records' => array());
+        //     $surat = array_fill_keys(array('surat_agenda_converted', 'surat_nomor', 'surat_tanggal', 'surat_perihal', 'surat_kelas_kode', 'surat_kelas_nama', 'surat_jenis', 'surat_unit', 'surat_lokasi', 'surat_lampiran'), $this::$default_value['nodata']);
+        //     $surat['no'] = 1;
+        //     array_unshift($unit['records'], $surat);
+        //     array_unshift($unitkerja_recs, $unit);
+        // }
 
         $report_title = ($download || $excel) ? explode('<', $report_title)[0] : $report_title;
         $report_data = array(
@@ -3278,10 +3437,10 @@ class Surat_keluar extends Base_Controller
             'subtitle' => $this::$report_subtitle,
             'header' => $report_model->generateHeader($download, 7),
             'periode' => $report_model->generatePeriode($filter, $filterValue),
-            'unitkerja' => $unitkerja_recs,
+            'unitkerja' => $dataReport,
             'dateReport' => date('d-m-Y H:i:s'),
             'dateReportFormated' => date('d M Y H:i'),
-            'operator' => $user[$account_model->field_display]
+            // 'operator' => $user[$account_model->field_display]
         );
         $filename = $report_title . $report_model->generatePeriode($filter, $filterValue, true);
         $file = $this->load->view($this::$report_template, null, true);
@@ -3407,7 +3566,7 @@ class Surat_keluar extends Base_Controller
             'unitkerja' => $unitkerja_recs,
             'dateReport' => date('d-m-Y H:i:s'),
             'dateReportFormated' => date('d M Y H:i'),
-            'operator' => $user[$account_model->field_display]
+            // 'operator' => $user[$account_model->field_display]
         );
         $filename = $report_title . $report_model->generatePeriode($filter, $filterValue, true);
         $file = $this->load->view($this::$report_template, null, true);
@@ -3522,7 +3681,7 @@ class Surat_keluar extends Base_Controller
             'periode' => $report_model->generatePeriode($filter, $filterValue),
             'unitkerja' => $unitkerja_recs,
             'dateReport' => date('d-m-Y H:i:s'),
-            'operator' => $user[$account_model->field_display]
+            // 'operator' => $user[$account_model->field_display]
         );
 
         $filename = $report_title . $report_model->generatePeriode($filter, $filterValue, true);
@@ -3559,26 +3718,7 @@ class Surat_keluar extends Base_Controller
         $download   = (bool) $download;
         $user       = $account_model->get_profile();
 
-        // =========================================================
         $_filter_date = $report_model->generateSelectField($filter, $filterValue);
-
-        // if ($param_unitkerja) array_unshift($_filter, array('type' => 'exact', 'field' => 'unit_id', 'value' => $param_unitkerja));
-
-        // array_unshift($_filter, array('type' => 'exact', 'field' => 'surat_model', 'value' => $surat::MODEL_KELUAR));
-        // $sort = array();
-        // array_unshift($sort, array('property' => 'unit_nama', 'direction' => 'ASC'));
-        // $data = $surat_ekeluar_rekap->select(
-        //     array(
-        //         'filter'    => json_encode($_filter),
-        //         'sort'      => json_encode($sort),
-        //     )
-        // );
-        // =============================================================
-
-        // echo '<pre>';
-        // print_r($data);
-        // echo '</pre>';
-        // die;
         $this->db->select("
         unit_id, unit_kode, unit_nama, unit_induk, unit_induk_nama,
         SUM(terdistribusi_count) as terdistribusi_count,  
@@ -3769,108 +3909,194 @@ class Surat_keluar extends Base_Controller
 
         $buatSuratKeluar = $pengaturan->getSettingByCode('use_unit_buat_surat_keluar');
 
-        $filter         = varGet('filter');
+        $filter         = [];
         $filterValue    = varGet('value');
         $download       = varGet('download', 0);
         $excel          = varGet('excel', 0);
         $report_title   = varGet('title', 0) ? base64_decode(varGet('title')) : '';
         $param_unit     = varGet('unit');
+        $param_bagian     = varGet('bagian');
+        $dataReport = [];
 
         if (strtolower($download) == 'false') $download = 0;
         $download   = (bool) $download;
         $user       = $account_model->get_profile();
 
+
         if ($buatSuratKeluar) {
-            $unit_recs = $unit_model->find(
-                array('IFNULL(unit_isbuatsurat, 0) = 1' => null),
-                null,
-                null,
-                null,
-                array(
-                    'unit_nama' => 'asc'
-                )
-            );
-        } else if (empty($param_unit) || is_null($param_unit)) {
-            $unit_recs2 = $unit_model->select(array(
-                'filter'    => json_encode($filter),
-                'sorter'    => 'unit_nama',
+            array_unshift($filter, (object)array(
+                'type'  => 'custom',
+                'value'     => 'IFNULL(surat_induk_unit_isbuatsurat, 0) = 1'
             ));
-            $unit_recs = $unit_recs2['data'];
-        } else {
-            $unit_recs = $unit_model->find(
-                (is_null($param_unit) ? null : array('unit_id' => $param_unit)),
-                null,
-                null,
-                null,
-                array(
-                    'unit_nama' => 'asc'
-                )
-            );
         }
 
-        if (!is_array($unit_recs)) $unit_recs = array();
-
-        foreach ($unit_recs as $d_i => $v) {
-            $param_unit     = $unit_recs[$d_i]['unit_id'];
-            $time_field     = $report_model->generateField($param_unit, $filter, $filterValue);
-            $time_field[$surat::$field_id . '<>' . $surat::$field_code] = NULL;
-
-            $time_field['surat_unit'] = $unit_recs[$d_i]['unit_id'];
-            $records = $surat_keluar_rekap_berakhir->find(
-                $time_field,
-                null,
-                null,
-                null,
-                array(
-                    'surat_nomor_urut' => 'asc',
-                    'surat_nomor_backdate' => 'asc'
-                )
-            );
-
-            foreach ($records as $i => &$r) {
-                $r['no']            = $i + 1;
-                $r['bg_color']      = ($i % 2 == 0) ? $this::$bg_color_item_laporan['even'] : $this::$bg_color_item_laporan['odd'];
-                $r['surat_tanggal'] = ($r['surat_tanggal']) ? $report_model->date_format($r['surat_tanggal'], 'd M Y') : $this::$default_report['surat_tanggal'];
-                $r['surat_perihal'] = $r['surat_perihal'] ? 'tentang ' . $r['surat_perihal'] : $this::$default_value['perihal'];
-                $r['surat_nomor'] = $r['surat_nomor'] ? $r['surat_nomor'] : $this::$default_value['nosurat'];
-                $r['surat_kelas_kode'] = $r['surat_kelas'] ? $r['kelas_kode'] : $this::$default_value['kelas_kode'];
-                $r['surat_kelas_nama'] = $r['surat_kelas'] ? $r['kelas_nama'] : $this::$default_value['kelas'];
-                $r['surat_jenis'] = $r['surat_jenis'] ? $r['jenis_nama'] : $this::$default_value['jenis'];
-                $r['surat_unit'] = $r['surat_unit'] ? $r['unit_nama'] : $this::$default_value['unit'];
-                $r['tahun'] = $r['surat_tanggal'] ? $report_model->date_format($r['surat_tanggal'], 'Y') : $this::$default_value['surattgl'];
-                $r['surat_lokasi'] = $r['surat_lokasi'] ? $r['lokasi_kode'] : $this::$default_value['lokasi'];
-
-                if (!$r['surat_lampiran'] == NULL) {
-                    $r['surat_lampiran'] = $r['surat_lampiran'] . ' Berkas';
-                } else {
-                    $r['surat_lampiran'] = $this::$default_value['lampiran'];
-                }
-
-                if (!$r['surat_agenda_sub'] == NULL) {
-                    $r['surat_agenda_converted'] = $r['surat_agenda'] . '.' . $r['surat_agenda_sub'];
-                } else {
-                    $r['surat_agenda_converted'] = $r['surat_agenda'];
-                }
-                $r['surat_agenda_converted'] = $r['surat_agenda_converted'] ? $r['surat_agenda_converted'] : $this::$default_value['agenda'];
+        // Filter Date 
+        if ($filterValue) {
+            $filterDate     = $report_model->generateFieldDate(varGet('filter'), $filterValue);
+            if ($filterDate) {
+                array_unshift($filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => $filterDate
+                ));
             }
-            if (!empty($records)) {
-                $v['records']       = $records;
-                $v['count']         = count($records);
-                $unit_recs[$d_i]    = $v;
+        }
+
+        // Filter Unit
+        if ($param_bagian != 'null') {
+            if ($param_bagian && $param_bagian != 'semua') {
+                array_unshift($filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => "unit_id = '$param_bagian'"
+                ));
+                // $unit_model->find(array('unit_id' => $param_bagian));
+            } else if ($param_unit == 'semua') {
+                array_unshift($filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => "surat_induk_unit IS NOT NULL"
+                ));
             } else {
-                unset($unit_recs[$d_i]);
+                array_unshift($filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => 'unit_parent_path LIKE "%' . $param_unit . '%"'
+                ));
             }
         }
 
-        if (!$unit_recs) {
-            $unit_recs  = array();
-            $unit_nama  = ($param_unit) ? $unit_model->read($param_unit)['unit_nama'] : $this::$default_value['title'];
-            $unit       = array('unit_nama' => $unit_nama, 'records' => array());
-            $surat      = array_fill_keys(array('surat_agenda_converted', 'surat_nomor', 'surat_tanggal', 'surat_perihal', 'surat_kelas_kode', 'surat_kelas_nama', 'surat_jenis', 'surat_unit', 'surat_lokasi', 'surat_lampiran'), $this::$default_value['nodata']);
-            $surat['no'] = 1;
-            array_unshift($unit['records'], $surat);
-            array_unshift($unit_recs, $unit);
+        $records = $surat_keluar_rekap_berakhir->select([
+            'filter' => json_encode($filter),
+            'sorter' => json_encode(array(
+                'surat_nomor_urut' => 'asc',
+                'surat_nomor_backdate' => 'asc'
+            )),
+            'fields' => [
+                'unit_id',
+                'unit_nama',
+                'surat_tanggal',
+                'surat_perihal',
+                'surat_nomor',
+                'surat_kelas',
+                'surat_kelas',
+                'surat_jenis',
+                'surat_unit',
+                'surat_lokasi',
+                'surat_lampiran',
+                'surat_agenda_sub',
+                'surat_agenda',
+                'surat_agenda_converted',
+                'kelas_kode',
+                'kelas_nama',
+                'jenis_nama',
+                'lokasi_kode'
+            ]
+        ]);
+
+        $bagianUnit = array_unique(array_column($records['data'], 'unit_id'));
+        foreach ($bagianUnit as $unit_kode) {
+            $dataBagianUnit = array_keys(array_column($records['data'], 'unit_id'), $unit_kode);
+
+            // if unit_nama is empty then skip
+            if (!$records['data'][$dataBagianUnit[0]]['unit_nama']) {
+                continue;
+            }
+            $dataReport[$unit_kode]['unit_nama'] = $records['data'][$dataBagianUnit[0]]['unit_nama'];
+            $no = 1;
+            foreach ($dataBagianUnit as $key) {
+                $records['data'][$key]['no'] = $no;
+                $records['data'][$key]['bg_color'] = ($key % 2 == 0) ? $this::$bg_color_item_laporan['even'] : $this::$bg_color_item_laporan['odd'];
+                $records['data'][$key]['surat_tanggal'] = ($records['data'][$key]['surat_tanggal']) ? $report_model->date_format($records['data'][$key]['surat_tanggal'], 'd M Y') : $this::$default_report['surat_tanggal'];
+                $records['data'][$key]['surat_perihal'] = $records['data'][$key]['surat_perihal'] ? 'tentang ' . $records['data'][$key]['surat_perihal'] : $this::$default_value['perihal'];
+                $records['data'][$key]['surat_nomor'] = $records['data'][$key]['surat_nomor'] ? $records['data'][$key]['surat_nomor'] : $this::$default_value['nosurat'];
+                $records['data'][$key]['surat_kelas_kode'] = $records['data'][$key]['surat_kelas'] ? $records['data'][$key]['kelas_kode'] : $this::$default_value['kelas_kode'];
+                $records['data'][$key]['surat_kelas_nama'] = $records['data'][$key]['surat_kelas'] ? $records['data'][$key]['kelas_nama'] : $this::$default_value['kelas'];
+                $records['data'][$key]['surat_jenis'] = $records['data'][$key]['surat_jenis'] ? $records['data'][$key]['jenis_nama'] : $this::$default_value['jenis'];
+                $records['data'][$key]['surat_unit'] = $records['data'][$key]['surat_unit'] ? $records['data'][$key]['unit_nama'] : $this::$default_value['unit'];
+                $records['data'][$key]['tahun'] = $records['data'][$key]['surat_tanggal'] ? $report_model->date_format($records['data'][$key]['surat_tanggal'], 'Y') : $this::$default_value['surattgl'];
+                $records['data'][$key]['surat_lokasi'] = $records['data'][$key]['surat_lokasi'] ? $records['data'][$key]['lokasi_kode'] : $this::$default_value['lokasi'];
+
+                if (!$records['data'][$key]['surat_lampiran'] == NULL) {
+                    $records['data'][$key]['surat_lampiran'] = $records['data'][$key]['surat_lampiran'] . ' Berkas';
+                } else {
+                    $records['data'][$key]['surat_lampiran'] = $this::$default_value['lampiran'];
+                }
+
+                if (!$records['data'][$key]['surat_agenda_sub'] == NULL) {
+                    $records['data'][$key]['surat_agenda_converted'] = $records['data'][$key]['surat_agenda'] . '.' . $records['data'][$key]['surat_agenda_sub'];
+                } else {
+                    $records['data'][$key]['surat_agenda_converted'] = $records['data'][$key]['surat_agenda'];
+                }
+                $records['data'][$key]['surat_agenda_converted'] = $records['data'][$key]['surat_agenda_converted'] ? $records['data'][$key]['surat_agenda_converted'] : $this::$default_value['agenda'];
+                $dataReport[$unit_kode]['records'][] = $records['data'][$key];
+                $no++;
+            }
         }
+
+        // foreach ($unit_recs as $d_i => $v) {
+        //     $param_unit     = $unit_recs[$d_i]['unit_id'];
+        //     $time_field     = $report_model->generateField($param_unit, $filter, $filterValue);
+        //     $time_field[$surat::$field_id . '<>' . $surat::$field_code] = NULL;
+
+        //     $time_field['surat_unit'] = $unit_recs[$d_i]['unit_id'];
+        //     $records = $surat_keluar_rekap_berakhir->find(
+        //         $time_field,
+        //         null,
+        //         null,
+        //         null,
+        //         array(
+        //             'surat_nomor_urut' => 'asc',
+        //             'surat_nomor_backdate' => 'asc'
+        //         )
+        //     );
+
+        //     foreach ($records as $i => &$r) {
+        //         $r['no']            = $i + 1;
+        //         $r['bg_color']      = ($i % 2 == 0) ? $this::$bg_color_item_laporan['even'] : $this::$bg_color_item_laporan['odd'];
+        //         $r['surat_tanggal'] = ($r['surat_tanggal']) ? $report_model->date_format($r['surat_tanggal'], 'd M Y') : $this::$default_report['surat_tanggal'];
+        //         $r['surat_perihal'] = $r['surat_perihal'] ? 'tentang ' . $r['surat_perihal'] : $this::$default_value['perihal'];
+        //         $r['surat_nomor'] = $r['surat_nomor'] ? $r['surat_nomor'] : $this::$default_value['nosurat'];
+        //         $r['surat_kelas_kode'] = $r['surat_kelas'] ? $r['kelas_kode'] : $this::$default_value['kelas_kode'];
+        //         $r['surat_kelas_nama'] = $r['surat_kelas'] ? $r['kelas_nama'] : $this::$default_value['kelas'];
+        //         $r['surat_jenis'] = $r['surat_jenis'] ? $r['jenis_nama'] : $this::$default_value['jenis'];
+        //         $r['surat_unit'] = $r['surat_unit'] ? $r['unit_nama'] : $this::$default_value['unit'];
+        //         $r['tahun'] = $r['surat_tanggal'] ? $report_model->date_format($r['surat_tanggal'], 'Y') : $this::$default_value['surattgl'];
+        //         $r['surat_lokasi'] = $r['surat_lokasi'] ? $r['lokasi_kode'] : $this::$default_value['lokasi'];
+
+        //         if (!$r['surat_lampiran'] == NULL) {
+        //             $r['surat_lampiran'] = $r['surat_lampiran'] . ' Berkas';
+        //         } else {
+        //             $r['surat_lampiran'] = $this::$default_value['lampiran'];
+        //         }
+
+        //         if (!$r['surat_agenda_sub'] == NULL) {
+        //             $r['surat_agenda_converted'] = $r['surat_agenda'] . '.' . $r['surat_agenda_sub'];
+        //         } else {
+        //             $r['surat_agenda_converted'] = $r['surat_agenda'];
+        //         }
+        //         $r['surat_agenda_converted'] = $r['surat_agenda_converted'] ? $r['surat_agenda_converted'] : $this::$default_value['agenda'];
+        //     }
+        // if (!empty($records)) {
+        //     $v['records']       = $records;
+        //     $v['count']         = count($records);
+        //     $unit_recs[$d_i]    = $v;
+        // } else {
+        //     unset($unit_recs[$d_i]);
+        //     $unit_nama  = ($param_unit) ? $unit_model->read($param_unit)['unit_nama'] : $this::$default_value['title'];
+        //     $unit       = array('unit_nama' => $unit_nama, 'records' => array());
+        //     $surat      = array_fill_keys(array('surat_agenda_converted', 'surat_nomor', 'surat_tanggal', 'surat_perihal', 'surat_kelas_kode', 'surat_kelas_nama', 'surat_jenis', 'surat_unit', 'surat_lokasi', 'surat_lampiran'), $this::$default_value['nodata']);
+        //     $surat['no'] = 1;
+        //     array_unshift($unit['records'], $surat);
+        //     array_unshift($unit_recs, $unit);
+        // }
+        // }
+
+        // if (!$unit_recs) {
+        //     $unit_recs  = array();
+        //     $unit_nama  = ($param_unit) ? $unit_model->read($param_unit)['unit_nama'] : $this::$default_value['title'];
+        //     $unit       = array('unit_nama' => $unit_nama, 'records' => array());
+        //     $surat      = array_fill_keys(array('surat_agenda_converted', 'surat_nomor', 'surat_tanggal', 'surat_perihal', 'surat_kelas_kode', 'surat_kelas_nama', 'surat_jenis', 'surat_unit', 'surat_lokasi', 'surat_lampiran'), $this::$default_value['nodata']);
+        //     $surat['no'] = 1;
+        //     array_unshift($unit['records'], $surat);
+        //     array_unshift($unit_recs, $unit);
+        // }
 
         $report_title = ($download || $excel) ? explode('<', $report_title)[0] : $report_title;
         $report_data = array(
@@ -3879,10 +4105,10 @@ class Surat_keluar extends Base_Controller
             'subtitle'              => $this->report_subtitle_retensi,
             'header'                => $report_model->generateHeader($download, 6),
             'periode'               => $report_model->generatePeriode($filter, $filterValue),
-            'unit'                  => $unit_recs,
+            'unit'                  => $dataReport,
             'dateReport'            => date('d-m-Y H:i:s'),
             'dateReportFormated'    => date('d M Y H:i'),
-            'operator'              => $user[$account_model->field_display]
+            // 'operator'              => $user[$account_model->field_display]
         );
 
         $filename = $report_title . $report_model->generatePeriode($filter, $filterValue, true);
@@ -3911,5 +4137,27 @@ class Surat_keluar extends Base_Controller
             'surat_selesai_tgl IS NOT NULL' => null
         ));
         $this->response_record($record);
+    }
+
+    public function filter_unit_bagian($filter)
+    {
+        $unit = varGet('scope');
+        $bagianUnit = varGet('bagian_unit');
+        if ($unit != 'semua') {
+            if ($bagianUnit == 'semua') {
+                array_unshift($filter, (object)array(
+                    'type'  => 'custom',
+                    // 'value' => "unit_id = '$unit' || unit_induk_id = '$unit'"
+                    'value' => "unit_parent_path LIKE '%$unit%'"
+                ));
+            } else if ($bagianUnit != 'semua') {
+                array_unshift($filter, (object)array(
+                    'type'  => 'exact',
+                    'field' => 'unit_id',
+                    'value' => $bagianUnit
+                ));
+            }
+        }
+        return $filter;
     }
 }

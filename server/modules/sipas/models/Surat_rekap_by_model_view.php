@@ -14,6 +14,7 @@ class Sipas_model_Surat_rekap_by_model_view extends Base_model
             array('insert' => false, 'update' => false, 'name' => 'unit_kode'),
             array('insert' => false, 'update' => false, 'name' => 'unit_induk'),
             array('insert' => false, 'update' => false, 'name' => 'unit_induk_nama'),
+            array('insert' => false, 'update' => false, 'name' => 'unit_parent_path'),
             array('insert' => false, 'update' => false, 'name' => 'jenis_id'),
             array('insert' => false, 'update' => false, 'name' => 'jenis_nama'),
             array('insert' => false, 'update' => false, 'name' => 'surat_tanggal'),

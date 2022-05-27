@@ -1061,6 +1061,56 @@ Ext.define('SIPAS.view.Sipas.sistem.setting.Pane', {
                                 },
                                 {
                                     xtype: 'fieldset',
+                                    featureable: true,
+                                    featureName: 'agenda_keluar_eksternal',
+                                    checkboxName: 'use_auto_distribusi_keluar_eksternal',
+                                    checkboxToggle: true,
+                                    title: 'Agenda Surat Keluar Eksternal, Otomasi Pendistribusian Surat',
+                                    items: [
+                                        {
+                                            xtype: 'checkboxfield',
+                                            hidden: true,
+                                            margin: '0 0 0 5',
+                                            fieldLabel: 'Aktifkan Otomatis Beri Nomor',
+                                            labelWidth: 215,
+                                            name: 'use_auto_nomor_internal1',
+                                            inputValue: '1',
+                                            uncheckedValue: '0'
+                                        },
+                                        {
+                                            xtype: 'label',
+                                            padding: '',
+                                            text: 'Ketika pengaturan dicentang/diaktifkan, Agenda Surat Keluar Eksternal akan mengirim surat secara otomatis ke penerima dan tembusan dari sistem ketika surat selesai disetujui.'
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'fieldset',
+                                    featureable: true,
+                                    featureName: 'agenda_masuk_eksternal',
+                                    checkboxName: 'use_auto_distribusi_masuk_eksternal',
+                                    checkboxToggle: true,
+                                    title: 'Agenda Surat Masuk Eksternal, Otomasi Pendistribusian Surat',
+                                    items: [
+                                        {
+                                            xtype: 'checkboxfield',
+                                            hidden: true,
+                                            margin: '0 0 0 5',
+                                            fieldLabel: 'Aktifkan Otomatis Beri Nomor',
+                                            labelWidth: 215,
+                                            name: 'use_auto_nomor_internal1',
+                                            inputValue: '1',
+                                            uncheckedValue: '0'
+                                        },
+                                        {
+                                            xtype: 'label',
+                                            padding: '',
+                                            text: 'Ketika pengaturan dicentang/diaktifkan, Agenda Surat Masuk Eksternal akan mengirim surat secara otomatis ke penerima dari sistem ketika surat selesai disetujui.'
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'fieldset',
                                     featureName: 'agenda_internal',
                                     featureable: true,
                                     itemId: 'autoDisInt',

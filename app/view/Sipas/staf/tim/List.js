@@ -18,9 +18,11 @@ Ext.define('SIPAS.view.Sipas.staf.tim.List', {
     alias: 'widget.sipas_staf_tim_list',
 
     requires: [
+        'SIPAS.view.Sipas.unit.Combo',
         'SIPAS.view.Sipas.com.button.Refresh',
         'SIPAS.view.Sipas.com.button.Add',
         'SIPAS.view.Sipas.com.button.View',
+        'Ext.form.field.ComboBox',
         'Ext.button.Button',
         'Ext.grid.RowNumberer',
         'Ext.selection.RowModel',
@@ -53,6 +55,9 @@ Ext.define('SIPAS.view.Sipas.staf.tim.List', {
                         }
                     },
                     items: [
+                        {
+                            xtype: 'sipasunitcombo'
+                        },
                         {
                             xtype: 'sipas_com_button_refresh'
                         },
@@ -91,6 +96,14 @@ Ext.define('SIPAS.view.Sipas.staf.tim.List', {
                     sortable: true,
                     dataIndex: 'staf_tim_nama',
                     text: 'Nama Kelompok',
+                    flex: 1
+                },
+                {
+                    xtype: 'gridcolumn',
+                    width: 300,
+                    sortable: true,
+                    dataIndex: 'staf_tim_unit_nama',
+                    text: 'Unit',
                     flex: 1
                 }
             ],

@@ -24,9 +24,9 @@ Ext.define('SIPAS.view.Sipas.jabatan.List', {
         'SIPAS.view.Sipas.com.button.Edit',
         'SIPAS.view.Sipas.com.button.Delete',
         'SIPAS.view.Sipas.com.button.ToggleFilter',
+        'Ext.form.field.ComboBox',
         'Ext.button.Button',
         'Ext.toolbar.Fill',
-        'Ext.form.field.ComboBox',
         'Ext.grid.RowNumberer',
         'Ext.selection.RowModel',
         'Ext.toolbar.Paging'
@@ -59,6 +59,16 @@ Ext.define('SIPAS.view.Sipas.jabatan.List', {
                         }
                     },
                     items: [
+                        {
+                            xtype: 'combobox',
+                            itemId: 'comboUnit',
+                            emptyText: 'Unit',
+                            editable: false,
+                            hideTrigger: true,
+                            displayField: 'unit_nama',
+                            store: 'Sipas.unit.Combo',
+                            valueField: 'unit_id'
+                        },
                         {
                             xtype: 'sipas_com_button_refresh'
                         },

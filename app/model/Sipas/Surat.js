@@ -818,7 +818,6 @@ Ext.define('SIPAS.model.Sipas.Surat', {
                 jumlah_petikan_pending = records.get('surat_petikan_setuju_pending'),
                 jumlah_petikan_setuju = records.get('surat_petikan_setuju_setuju'),
                 jumlah_petikan_tolak = records.get('surat_petikan_setuju_tolak');
-
             if (!supporttext){
                 supporttext = '';
             }
@@ -928,7 +927,14 @@ Ext.define('SIPAS.model.Sipas.Surat', {
                             word: 'Diekspedisi',
                             tgl: 'Pada '+Ext.util.Format.date(ekspedisi_tgl, 'd M Y')
                         });
-                    } else if (model == 6 && setuju_petikan != 2 && model_sub === 2){
+                    }else if(model == 2 && !isdistribusi){
+                        return tpl.apply({
+                            title: 'Belum Didistribusikan',
+                            color: 'warning',
+                            iconCls: 'icon ion-md-warning warning'
+                        });
+
+                    }else if (model == 6 && setuju_petikan != 2 && model_sub === 2){
                         // Proses Petikan
 
                         if (jumlah_petikan_pending > 0){
@@ -2985,6 +2991,9 @@ Ext.define('SIPAS.model.Sipas.Surat', {
             name: 'surat_kelas'
         },
         {
+            name: 'surat_keluar_type'
+        },
+        {
             name: 'surat_jenis'
         },
         {
@@ -4248,6 +4257,25 @@ Ext.define('SIPAS.model.Sipas.Surat', {
                 proxy: {
                     type: 'ajax',
                     url: 'server.php/sipas/surat_stack/disposisi/penerima',
+                    reader: {
+                        type: 'json',
+                        root: 'data'
+                    }
+                },
+                sorters: {
+                    property: 'surat_stack_level'
+                }
+            }
+        },
+        {
+            model: 'SIPAS.model.Sipas.surat.stack.Disposisi',
+            primaryKey: 'surat_id',
+            foreignKey: 'surat_stack_surat',
+            name: 'fetchStackPenerimaKeluar',
+            storeConfig: {
+                proxy: {
+                    type: 'ajax',
+                    url: 'server.php/sipas/surat_stack/disposisi/penerimakeluar',
                     reader: {
                         type: 'json',
                         root: 'data'

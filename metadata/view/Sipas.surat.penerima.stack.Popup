@@ -1,0 +1,201 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "border": false,
+        "designer|userAlias": "sipas_surat_penerima_stack_popup",
+        "designer|userClassName": "Sipas.surat.penerima.stack.Popup",
+        "height": 400,
+        "layout": "fit",
+        "modal": true,
+        "title": "Daftar Tembusan",
+        "width": 600
+    },
+    "name": "Sipas.surat.tembusan.stack.Popup1",
+    "designerId": "67d08a4e-7df2-493c-b0fd-ca513d19debc",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "autoScroll": true,
+                "bodyPadding": null,
+                "border": false,
+                "cls": "sipas_disposisi_penerima_detail_form",
+                "header": false,
+                "layout": "fit",
+                "title": "My Form"
+            },
+            "name": "MyForm",
+            "designerId": "a493d7d5-4872-473b-976c-7d56eab57580",
+            "cn": [
+                {
+                    "type": "Ext.grid.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "associated": true,
+                        "cls": null,
+                        "emptyText": "Tidak ada Data",
+                        "header": false,
+                        "hideHeaders": true,
+                        "itemId": "listPenerima",
+                        "margin": "0 10 10 10",
+                        "store": "Sipas.surat.penerima.stack.Popup",
+                        "title": "My Grid Panel"
+                    },
+                    "name": "MyGridPanel",
+                    "designerId": "0ada2f99-5564-46fd-b5de-27473b76a261",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "associated",
+                            "type": "boolean"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": null,
+                                "dataIndex": "penyetuju_nama",
+                                "flex": 1,
+                                "minWidth": 200,
+                                "text": "Penerima",
+                                "width": null
+                            },
+                            "name": "MyColumn10",
+                            "designerId": "05a94cb5-d372-4bb4-944d-bebec8762e61",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "value",
+                                            "metaData",
+                                            "record",
+                                            "rowIndex",
+                                            "colIndex",
+                                            "store",
+                                            "view"
+                                        ],
+                                        "fn": "renderer",
+                                        "implHandler": [
+                                            "var modelPegawai = Ext.ModelManager.getModel('SIPAS.model.Sipas.Staf'),",
+                                            "    modelJabatan = Ext.ModelManager.getModel('SIPAS.model.Sipas.Jabatan'),",
+                                            "    jabatan_id = record.get('jabatan_penerima_id'),",
+                                            "    jabatan_nama = record.get('jabatan_penerima_nama'),",
+                                            "    staf_id = record.get('staf_id'),",
+                                            "    staf_nama = record.get('staf_nama'),",
+                                            "    staf_jabatan = record.get('jabatan_nama'),",
+                                            "    staf_unit = record.get('unit_nama'),",
+                                            "    supporttext = '';",
+                                            "",
+                                            "if(jabatan_id) {",
+                                            "    return modelJabatan.renderJabatanAdditional(jabatan_id, jabatan_nama, supporttext);",
+                                            "} else {",
+                                            "    return modelPegawai.renderPegawaiAdditional(staf_id, staf_nama, staf_jabatan, staf_unit, supporttext, false);",
+                                            "}"
+                                        ]
+                                    },
+                                    "name": "renderer",
+                                    "designerId": "d6d09701-8edb-4de3-90d4-63032ce777ad"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.grid.View",
+                            "reference": {
+                                "name": "viewConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "MyGridView",
+                            "designerId": "1a4b39c7-e4ce-4ac6-aa9b-d5ed73693aaf"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "border": false,
+                "dock": "bottom",
+                "hidden": true
+            },
+            "name": "MyToolbar",
+            "designerId": "ab16303b-e127-445a-b875-c6dcd91e1c59",
+            "cn": [
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "refNomor",
+                        "layout|flex": null,
+                        "text": "Ref Nomor"
+                    },
+                    "name": "MyButton3",
+                    "designerId": "6edf3319-cf0b-4a9a-a119-18a0e73ff68b"
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "MyFill",
+                    "designerId": "af8ce5ca-fc9c-4dd4-be29-0c9d4fd64166"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "name": "sipas.com.button.save",
+                    "designerId": "d6597a70-657e-4a1d-92b9-1eeabfeb78d1",
+                    "masterInstanceId": "feb6c6f9-7733-4b38-9254-091d0db2d3a9"
+                }
+            ]
+        }
+    ]
+}

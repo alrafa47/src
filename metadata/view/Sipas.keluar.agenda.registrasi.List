@@ -70,6 +70,7 @@
                     "userConfig": {
                         "displayField": "unit_nama",
                         "editable": false,
+                        "emptyText": "Unit",
                         "fieldLabel": null,
                         "hideTrigger": true,
                         "itemId": "comboScope",
@@ -77,7 +78,8 @@
                         "layout|flex": null,
                         "minWidth": 300,
                         "store": "Sipas.surat.scope.Combo",
-                        "valueField": "unit_id"
+                        "valueField": "unit_id",
+                        "width": 300
                     },
                     "name": "MyComboBox13",
                     "designerId": "f3395183-6e8d-4d36-92f5-73d02db12053",
@@ -110,6 +112,63 @@
                                     },
                                     "name": "itemTpl",
                                     "designerId": "41a1725d-2a7b-46e2-a3c2-bfbbdf1bcc39"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayField": "unit_nama",
+                        "editable": false,
+                        "emptyText": "Bagian Unit",
+                        "fieldLabel": null,
+                        "hideTrigger": true,
+                        "itemId": "comboBagian",
+                        "labelAlign": null,
+                        "layout|flex": null,
+                        "minWidth": 300,
+                        "store": "Sipas.unit.ComboBagian",
+                        "valueField": "unit_id",
+                        "width": 300
+                    },
+                    "name": "MyComboBox",
+                    "designerId": "1e9332d2-a732-4305-bdcd-7f187e8db015",
+                    "cn": [
+                        {
+                            "type": "Ext.view.BoundList",
+                            "reference": {
+                                "name": "listConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemSelector": "div"
+                            },
+                            "name": "MyBoundList",
+                            "designerId": "0f3a2f12-879a-4809-8b74-0e0691b23d90",
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "{unit_nama} <span style=\"color: gray\">({unit_kode})</span>"
+                                        ]
+                                    },
+                                    "name": "itemTpl",
+                                    "designerId": "86d290d4-142f-496c-93f6-155174ae260a"
                                 }
                             ]
                         }

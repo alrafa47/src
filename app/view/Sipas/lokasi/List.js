@@ -93,6 +93,14 @@ Ext.define('SIPAS.view.Sipas.lokasi.List', {
                         },
                         {
                             xtype: 'combobox',
+                            itemId: 'comboUnit',
+                            emptyText: 'Unit',
+                            displayField: 'unit_nama',
+                            store: 'Sipas.unit.Combo',
+                            valueField: 'unit_id'
+                        },
+                        {
+                            xtype: 'combobox',
                             itemId: 'Aktif',
                             labelAlign: 'right',
                             value: 'Aktif',
@@ -162,6 +170,13 @@ Ext.define('SIPAS.view.Sipas.lokasi.List', {
                     sortable: true,
                     dataIndex: 'lokasi_nama',
                     text: 'Nama Lokasi'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    width: 400,
+                    sortable: true,
+                    dataIndex: 'lokasi_unit_nama',
+                    text: 'Unit'
                 },
                 {
                     xtype: 'gridcolumn',

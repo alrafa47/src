@@ -50,6 +50,9 @@ Ext.define('SIPAS.model.Sipas.Jenis', {
             type: 'int'
         },
         {
+            name: 'jenis_unit_id'
+        },
+        {
             convert: function(v, rec) {
                 return (new Ext.Template('{jenis_nama} ({jenis_kode})')).apply(rec.getData());
             },
@@ -94,16 +97,72 @@ Ext.define('SIPAS.model.Sipas.Jenis', {
             name: 'jenis_properti'
         },
         {
-            name: 'jenis_batasibackdate',
+            name: 'jenis_ishapus',
             type: 'boolean'
         },
         {
-            name: 'jenis_batasipenerima',
+            name: 'jenis_nomor_unit_pembuat',
             type: 'boolean'
         },
         {
-            name: 'jenis_ttd',
+            name: 'jenis_nomor_unit_penyetuju',
             type: 'boolean'
+        },
+        {
+            name: 'jenis_nomor_jabatan_pembuat',
+            type: 'boolean'
+        },
+        {
+            name: 'jenis_nomor_jabatan_penyetuju',
+            type: 'boolean'
+        },
+        {
+            name: 'jenis_nomor_tahun',
+            type: 'boolean'
+        },
+        {
+            name: 'jenis_nomor_jenis',
+            type: 'boolean'
+        },
+        {
+            name: 'jenis_nomor_kelas',
+            type: 'boolean'
+        },
+        {
+            name: 'jenis_nomor_model',
+            type: 'boolean'
+        },
+        {
+            name: 'jenis_nomor_sifat',
+            type: 'boolean'
+        },
+        {
+            name: 'jenis_nomor_lokasi',
+            type: 'boolean'
+        },
+        {
+            name: 'jenis_formateks'
+        },
+        {
+            name: 'jenis_formateksbackdate'
+        },
+        {
+            name: 'jenis_formatint'
+        },
+        {
+            name: 'jenis_formatintbackdate'
+        },
+        {
+            name: 'jenis_format',
+            type: 'boolean'
+        },
+        {
+            name: 'jenis_digiteks',
+            type: 'string'
+        },
+        {
+            name: 'jenis_digitint',
+            type: 'string'
         }
     ],
 

@@ -109,6 +109,16 @@ Ext.define('SIPAS.view.Sipas.jenis.List', {
                         },
                         {
                             xtype: 'combobox',
+                            itemId: 'comboUnit',
+                            emptyText: 'Unit',
+                            editable: false,
+                            hideTrigger: true,
+                            displayField: 'unit_nama',
+                            store: 'Sipas.unit.Combo',
+                            valueField: 'unit_id'
+                        },
+                        {
+                            xtype: 'combobox',
                             itemId: 'Aktif',
                             labelAlign: 'right',
                             value: 'Aktif',
@@ -211,6 +221,23 @@ Ext.define('SIPAS.view.Sipas.jenis.List', {
                     xtype: 'gridcolumn',
                     renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
                         var aktif = record.get('jenis_isaktif');
+
+                        if(value){
+                            return this.genAktif(value, aktif);
+                        }else{
+                            return '<span class="alternative">-</span>';
+                        }
+                    },
+                    filterable: true,
+                    width: 85,
+                    sortable: true,
+                    dataIndex: 'jenis_unit_nama',
+                    text: 'Unit'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                        var aktif = record.get('jenis_isaktif');
                         if(value){
                             if(value === 1){
                                 value = "Terpusat Perjenis";
@@ -226,7 +253,7 @@ Ext.define('SIPAS.view.Sipas.jenis.List', {
                     },
                     width: 200,
                     align: 'center',
-                    dataIndex: 'jenis_terpusat',
+                    dataIndex: 'jenis_unit_id',
                     text: 'Penomoran'
                 },
                 {
@@ -385,7 +412,7 @@ Ext.define('SIPAS.view.Sipas.jenis.List', {
                         }
                     },
                     align: 'center',
-                    dataIndex: 'jenis_ttd',
+                    dataIndex: 'jenis_unit_parent_path',
                     text: 'Perlu<br/>Tanda Tangan'
                 },
                 {

@@ -61,6 +61,12 @@ Ext.define('SIPAS.model.Sipas.Klise', {
         },
         {
             name: 'klise_properti'
+        },
+        {
+            name: 'klise_unit_id'
+        },
+        {
+            name: 'klise_unit_nama'
         }
     ]
 });

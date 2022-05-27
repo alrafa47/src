@@ -158,6 +158,36 @@ Ext.define('SIPAS.view.Sipas.koreksi.session.List', {
                                 ]
                             },
                             valueField: 'value'
+                        }),
+                        me.processTipe_surat({
+                            xtype: 'combobox',
+                            itemId: 'tipe_surat',
+                            width: 200,
+                            editable: false,
+                            hideTrigger: true,
+                            displayField: 'nama',
+                            store: {
+                                fields: [
+                                    'value',
+                                    'nama'
+                                ],
+                                data: [
+                                    {
+                                        value: 0,
+                                        nama: 'semua Jenis Pengiriman'
+                                    },
+                                    {
+                                        value: 'luar',
+                                        nama: 'luar Perusahaan'
+                                    },
+                                    {
+                                        value: 'dalam',
+                                        nama: 'dalamperusahaan'
+                                    },
+                                    
+                                ]
+                            },
+                            valueField: 'value'
                         })
                     ]
                 },
@@ -501,6 +531,14 @@ Ext.define('SIPAS.view.Sipas.koreksi.session.List', {
     },
 
     processStatus: function(config) {
+        if(this.isAsistensi)
+        {
+            return null;
+        }
+        return config;
+    },
+
+    processTipe_surat: function(config) {
         if(this.isAsistensi)
         {
             return null;

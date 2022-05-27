@@ -35,7 +35,7 @@ Ext.define('SIPAS.store.Sipas.unit.Combo', {
             },
             proxy: {
                 type: 'ajax',
-                url: 'server.php/sipas/unit/aktif',
+                url: 'server.php/sipas/unit/combounit',
                 reader: {
                     type: 'json',
                     root: 'data'

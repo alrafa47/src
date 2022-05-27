@@ -1,7 +1,8 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Sipas_model_Klise extends Base_model {
-    
+class Sipas_model_Klise extends Base_model
+{
+
     public $field_template = 'klise_isi';
     public $report_template_legend = array(
 
@@ -23,15 +24,15 @@ class Sipas_model_Klise extends Base_model {
         '[%nip_penyetuju_terakhir%]'              => 'Penyetuju - NIP Staf',
         '[%jabatan_penyetuju_terakhir%]'          => 'Penyetuju - Nama Jabatan',
 
-        '[%surat_registrasi%]'       =>'Surat - Nomor Registrasi Surat',
-        '[%surat_perihal%]'          =>'Surat - Perihal Surat',
-        '[%surat_tujuan%]'           =>'Surat - Kepada',
-        '[%surat_pengirim%]'         =>'Surat - Dari',
-        '[%tembusan%]'               =>'Surat - Tembusan',
-        '[%surat_tanggal%]'          =>'Surat - Tanggal Surat',
-        '[%surat_lampiran%]'         =>'Surat - Lampiran',
-        '[%surat_tujuan%]'           =>'Surat - Tujuan Surat',
-        '[%surat_kepada%]'           =>'Surat - Kepada Surat',
+        '[%surat_registrasi%]'       => 'Surat - Nomor Registrasi Surat',
+        '[%surat_perihal%]'          => 'Surat - Perihal Surat',
+        '[%surat_tujuan%]'           => 'Surat - Kepada',
+        '[%surat_pengirim%]'         => 'Surat - Dari',
+        '[%tembusan%]'               => 'Surat - Tembusan',
+        '[%surat_tanggal%]'          => 'Surat - Tanggal Surat',
+        '[%surat_lampiran%]'         => 'Surat - Lampiran',
+        '[%surat_tujuan%]'           => 'Surat - Tujuan Surat',
+        '[%surat_kepada%]'           => 'Surat - Kepada Surat',
 
         '[%surat_alamat%]'       => 'Surat - Alamat Surat',
         '[%surat_lampiran_sub%]' => 'Surat - Sub Lampiran',
@@ -42,12 +43,12 @@ class Sipas_model_Klise extends Base_model {
         '[%header1%]'            => 'Header - Lain 1',
         '[%header2%]'            => 'Header - Lain 2',
         '[%header3%]'            => 'Header - Lain 3',
- 
+
         // Sesudah
         '{nip_penyetuju_pelaku}'        => 'Penyetuju Pelaku - NIP Staf',
         '{nama_penyetuju_pelaku}'       => 'Penyetuju Pelaku - Nama Staf',
         '{jabatan_penyetuju_pelaku}'    => 'Penyetuju Pelaku - Nama Jabatan',
-	
+
         '{nama_penyetuju_terakhir}'         => 'Penyetuju - NIP Staf',
         '{nip_penyetuju_terakhir}'          => 'Penyetuju - Nama Staf',
         '{jabatan_penyetuju_terakhir}'      => 'Penyetuju - Nama Jabatan',
@@ -85,12 +86,12 @@ class Sipas_model_Klise extends Base_model {
         '{header1}'                 => 'Header - Lain 1',
         '{header2}'                 => 'Header - Lain 2',
         '{header3}'                 => 'Header - Lain 3',
-        
+
         '{nip_petikan_terakhir}'     => 'Petikan - NIP Staf',
         '{nama_petikan_terakhir}'    => 'Petikan - Nama Staf',
         '{jabatan_petikan_terakhir}' => 'Petikan - Nama Jabatan',
         '{ttd_petikan_terakhir}'     => 'Tanda Tangan - Staf Petikan',
-        
+
         '[%terhitung_mulai_tgl%]'       => 'Terhitung Mulai Tanggal',
         '[%penerimask_pertama%]'        => 'Penerima SK - Penerima Pertama',
         '[%penerimask_unit_pertama%]'   => 'Penerima SK - Unit Staf Pertama',
@@ -112,72 +113,77 @@ class Sipas_model_Klise extends Base_model {
         '{jenjang_jabatan_baru}'        => 'Penerima SK - Jenjang Jabatan Baru',
         '{penerimask_ket}'              => 'Penerima SK - Keterangan',
         '{penerimask_jumlah}'           => 'Jumlah Penerima SK',
-        
+
     );
-    
-    public function __construct(){
+
+    public function __construct()
+    {
         parent::__construct(array(
-            'table' =>array(
-                'name'=>'klise',
-                'primary'=>'klise_id',
-                'fields'=> array(
+            'table' => array(
+                'name' => 'klise',
+                'primary' => 'klise_id',
+                'fields' => array(
                     array(
-                        'name'=>'klise_id',
-                        'display'=>'Id',
-                        'update'=>false,
-                        'unique'=>true,
-                        'notnull'=>true
+                        'name' => 'klise_id',
+                        'display' => 'Id',
+                        'update' => false,
+                        'unique' => true,
+                        'notnull' => true
                     ),
                     array(
-                        'name'=>'klise_nama',
-                        'display'=>'Nama'
+                        'name' => 'klise_nama',
+                        'display' => 'Nama'
                     ),
                     array(
-                        'name'=>'klise_kelompok',
-                        'display'=>'Kelompok',
-                        'preparer'=>function($value){
+                        'name' => 'klise_unit_id',
+                        'display' => 'Unit'
+                    ),
+                    array(
+                        'name' => 'klise_kelompok',
+                        'display' => 'Kelompok',
+                        'preparer' => function ($value) {
                             $newval = trim($value);
                             $newval = preg_replace('!\s+!', '_', $newval);
                             $newval = strtolower($newval);
                             return $newval;
                         },
-                        'convert'=>function($value){
+                        'convert' => function ($value) {
                             $newval = preg_replace('!\_+!', ' ', $value);
                             $newval = ucwords($newval);
-                            return $newval;  
+                            return $newval;
                         }
                     ),
                     array(
-                        'name'=>'klise_isi',
-                        'display'=>'Isi',
-                        'convert'=>function($value){
+                        'name' => 'klise_isi',
+                        'display' => 'Isi',
+                        'convert' => function ($value) {
                             return htmlspecialchars_decode($value);
                         }
                     ),
                     array(
-                        'name'=>'klise_ispetikan',
-                        'display'=>'Status ispetikan',
-                        'secure'=>false
+                        'name' => 'klise_ispetikan',
+                        'display' => 'Status ispetikan',
+                        'secure' => false
                     ),
                     array(
-                        'name'=>'klise_isaktif',
-                        'display'=>'Status',
-                        'secure'=>false
+                        'name' => 'klise_isaktif',
+                        'display' => 'Status',
+                        'secure' => false
                     ),
                     array(
-                        'name'=>'klise_ishapus',
-                        'display'=>'Hapus',
-                        'secure'=>false
+                        'name' => 'klise_ishapus',
+                        'display' => 'Hapus',
+                        'secure' => false
                     ),
                     array(
-                        'name'=>'klise_properti',
-                        'display'=>'Properti',
-                        'secure'=>false
+                        'name' => 'klise_properti',
+                        'display' => 'Properti',
+                        'secure' => false
                     ),
                 ),
-                'limit'=>null,
+                'limit' => null,
             ),
-            'auto_id'=> true
+            'auto_id' => true
         ));
     }
 }

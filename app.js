@@ -48,7 +48,10 @@ Ext.application({
         'Sipas.golongan.nonaktif.List',
         'Sipas.golongan.Combo',
         'Sipas.jenis.sub.Combo',
-        'Sipas.surat.penerima.keputusan.list.Combo'
+        'Sipas.surat.penerima.keputusan.list.Combo',
+        'Sipas.unit.ComboBagian',
+        'Sipas.surat.penerimakeluar.List',
+        'Sipas.surat.penerima.stack.Popup'
     ],
     views: [
         'Sipas.surat.informasi.arsip.Pane',
@@ -77,7 +80,11 @@ Ext.application({
         'Sipas.pelaporan.internal.keputusan.retensi.Pane',
         'Sipas.com.reportfilter.kewenangan.Keputusan',
         'Sipas.com.button.SaveDistribute',
-        'Sipas.unit.Combo'
+        'Sipas.unit.Combo',
+        'Sipas.unit.ComboUnitBagian',
+        'MyToolbar9',
+        'Sipas.surat.penerima.stack.Popup',
+        'Sipas.surat.distribusi.Popup'
     ],
     controllers: [
         'Sipas.Application'

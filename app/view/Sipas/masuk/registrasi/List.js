@@ -25,9 +25,9 @@ Ext.define('SIPAS.view.Sipas.masuk.registrasi.List', {
         'Ext.grid.RowNumberer',
         'Ext.grid.View',
         'Ext.toolbar.Paging',
+        'Ext.form.field.ComboBox',
         'Ext.button.Button',
-        'Ext.toolbar.Fill',
-        'Ext.form.field.ComboBox'
+        'Ext.toolbar.Fill'
     ],
 
     featureable: true,
@@ -255,6 +255,24 @@ Ext.define('SIPAS.view.Sipas.masuk.registrasi.List', {
                         }
                     },
                     items: [
+                        {
+                            xtype: 'combobox',
+                            itemId: 'comboUnit',
+                            fieldLabel: '',
+                            emptyText: 'Unit',
+                            displayField: 'unit_nama',
+                            store: 'Sipas.unit.Combo',
+                            valueField: 'unit_id'
+                        },
+                        {
+                            xtype: 'combobox',
+                            itemId: 'comboBagian',
+                            fieldLabel: '',
+                            emptyText: 'Bagian Unit',
+                            displayField: 'unit_nama',
+                            store: 'Sipas.unit.ComboBagian',
+                            valueField: 'unit_id'
+                        },
                         {
                             xtype: 'sipas_com_button_refresh'
                         },

@@ -487,6 +487,9 @@ Ext.define('SIPAS.model.Sipas.koreksi.Masuk', {
             name: 'surat_kelas'
         },
         {
+            name: 'surat_keluar_type'
+        },
+        {
             name: 'surat_jenis'
         },
         {

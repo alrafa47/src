@@ -990,69 +990,85 @@ class Surat extends Base_Controller
         $surat                      = $this->m_surat;
         $surat_rekap_by_jenis_view  = $this->m_surat_rekap_by_jenis_view;
 
-        $filter         = varGet('filter');
+        $filter = [];
         $filterValue    = varGet('value');
         $download       = varGet('download', 0);
         $excel          = varGet('excel', 0);
         $report_title   = varGet('title', '') ? base64_decode(varGet('title')) : '';
         $jenis_id       = varGet('jenis', 0);
         $param_unit     = varGet('unit');
+        $param_bagian     = varGet('bagian');
+        $dataReport = [];
 
         if (strtolower($download) == 'false') $download = 0;
         $download   = (bool) $download;
         $user       = $account_model->get_profile();
 
-        if (empty($param_unit) || is_null($param_unit)) {
-            $unit_recs2 = $unit_model->select(array(
-                'filter'    => json_encode($filter),
-                'sorter'    => 'unit_nama',
+        // Filter Date
+        if ($filterValue) {
+            $filterDate     = $report_model->generateFieldDate(varGet('filter'), $filterValue);
+            if ($filterDate) {
+                array_unshift($filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => $filterDate
+                ));
+            }
+        }
+
+        // Filter Jenis Surat
+        if ($jenis_id != "null") {
+            array_unshift($filter, (object)array(
+                'type'  => 'custom',
+                'value'     => "jenis_id = '$jenis_id'"
             ));
-            $unit_recs = $unit_recs2['data'];
-        } else {
-            $unit_recs = $unit_model->find(
-                (is_null($param_unit) ? null : array('unit_id' => $param_unit))
-            );
         }
 
-        if (!is_array($unit_recs)) $unit_recs = array();
-
-        foreach ($unit_recs as $d_i => $v) {
-            $param_unit     = $unit_recs[$d_i]['unit_id'];
-            $time_field     = $report_model->generateField($param_unit, $filter, $filterValue);
-
-            if ($jenis_id) {
-                $time_field['surat_jenis'] = $jenis_id;
-            }
-
-            $time_field['surat_unit'] = $unit_recs[$d_i]['unit_id'];
-            $records = $surat_rekap_by_jenis_view->find(
-                $time_field,
-                null,
-                null,
-                null,
-                array(
-                    'surat_tanggal' => 'asc'
-                )
-            );
-
-            foreach ($records as $i => &$r) {
-                $r['no']            = $i + 1;
-                $r['bg_color']      = ($i % 2 == 0) ? $this::$bg_color_item_laporan['even'] : $this::$bg_color_item_laporan['odd'];
-                $r['jenis_nama']    = $r['jenis_nama'] ? $r['jenis_nama'] : $this::$default_value['nodata'];
-            }
-            if (!empty($records)) {
-                $v['records']       = $records;
-                $v['count']         = count($records);
-                $unit_recs[$d_i]    = $v;
+        // Filter Unit
+        if ($param_bagian != 'null') {
+            if ($param_bagian && $param_bagian != 'semua') {
+                array_unshift($filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => "unit_id = '$param_bagian'"
+                ));
+                // $unit_model->find(array('unit_id' => $param_bagian));
             } else {
-                unset($unit_recs[$d_i]);
+                array_unshift($filter, (object)array(
+                    'type'  => 'custom',
+                    'value'     => 'unit_parent_path LIKE "%' . $param_unit . '%"'
+                ));
             }
         }
 
-        if (!$unit_recs) {
-            $unit_recs  = array();
+        $suratRekap = $surat_rekap_by_jenis_view->select([
+            'filter' => json_encode($filter),
+            'sorter'    =>  json_encode(array(
+                'surat_tanggal' => 'asc',
+                'unit_nama' => 'asc'
+            )),
+        ]);
+
+        $bagianUnit = array_unique(array_column($suratRekap['data'], 'unit_id'));
+        foreach ($bagianUnit as $unit_kode) {
+            $dataBagianUnit = array_keys(array_column($suratRekap['data'], 'unit_id'), $unit_kode);
+
+            // if unit_nama is empty then skip
+            if (!$suratRekap['data'][$dataBagianUnit[0]]['unit_nama']) {
+                continue;
+            }
+            $dataReport[$unit_kode]['unit_nama'] = $suratRekap['data'][$dataBagianUnit[0]]['unit_nama'];
+            $no = 1;
+            foreach ($dataBagianUnit as $key) {
+                $suratRekap['data'][$key]['no'] = $no;
+                $suratRekap['data'][$key]['bg_color'] = ($key % 2 == 0) ? $this::$bg_color_item_laporan['even'] : $this::$bg_color_item_laporan['odd'];
+                $dataReport[$unit_kode]['records'][] = $suratRekap['data'][$key];
+                $no++;
+            }
+        }
+
+        if (!$suratRekap) {
+            $dataReport  = array();
             $unit_nama  = ($param_unit) ? $unit_model->read($param_unit)['unit_nama'] : $this::$default_value['title'];
-            $unit       = array('unit_nama' => $unit_nama, 'records' => array());
+            $unit       = array('groupName' => $unit_nama, 'records' => array());
             $surat      = array_fill_keys(array(
                 'surat_jenis',
                 'surat_unit',
@@ -1066,7 +1082,7 @@ class Surat extends Base_Controller
             ), $this::$default_value['nodata']);
             $surat['no'] = 1;
             array_unshift($unit['records'], $surat);
-            array_unshift($unit_recs, $unit);
+            array_unshift($dataReport, $unit);
         }
 
         $report_title = ($download || $excel) ? explode('<', $report_title)[0] : $report_title;
@@ -1076,10 +1092,10 @@ class Surat extends Base_Controller
             'subtitle'              => $this->report_subtitle_jenis,
             'header'                => $report_model->generateHeader($download, 6),
             'periode'               => $report_model->generatePeriode($filter, $filterValue),
-            'unit'                  => $unit_recs,
+            'unit'                  => $dataReport,
             'dateReport'            => date('d-m-Y H:i:s'),
             'dateReportFormated'    => date('d M Y H:i'),
-            'operator'              => $user[$account_model->field_display]
+            // 'operator'              => $user[$account_model->field_display]
         );
 
         $filename = $report_title . $report_model->generatePeriode($filter, $filterValue, true);

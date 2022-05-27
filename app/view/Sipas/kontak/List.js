@@ -23,6 +23,7 @@ Ext.define('SIPAS.view.Sipas.kontak.List', {
         'SIPAS.view.Sipas.com.button.Add',
         'SIPAS.view.Sipas.com.button.ToggleFilter',
         'SIPAS.view.Sipas.com.button.View',
+        'Ext.form.field.ComboBox',
         'Ext.button.Button',
         'Ext.grid.RowNumberer',
         'Ext.selection.RowModel',
@@ -63,6 +64,16 @@ Ext.define('SIPAS.view.Sipas.kontak.List', {
                         }
                     },
                     items: [
+                        {
+                            xtype: 'combobox',
+                            itemId: 'comboUnit',
+                            emptyText: 'Unit',
+                            editable: false,
+                            hideTrigger: true,
+                            displayField: 'unit_nama',
+                            store: 'Sipas.unit.Combo',
+                            valueField: 'unit_id'
+                        },
                         {
                             xtype: 'sipas_com_button_refresh'
                         },
@@ -118,6 +129,15 @@ Ext.define('SIPAS.view.Sipas.kontak.List', {
                     sortable: true,
                     dataIndex: 'kontak_nama',
                     text: 'Nama Kontak',
+                    flex: 1
+                },
+                {
+                    xtype: 'gridcolumn',
+                    filterable: true,
+                    minWidth: 400,
+                    sortable: true,
+                    dataIndex: 'kontak_unit_nama',
+                    text: 'Unit',
                     flex: 1
                 }
             ],

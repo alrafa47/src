@@ -1,10 +1,12 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Staf_tim extends Base_Controller {
+class Staf_tim extends Base_Controller
+{
 
     protected $message = array();
 
-	public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model(array(
             'sipas/staf',
@@ -22,46 +24,45 @@ class Staf_tim extends Base_Controller {
         $this->m_staf_tim_hidup    = $this->model('sipas/staf_tim_hidup_view',         true);
     }
 
-    public function index(){
+    public function index()
+    {
         $this->read();
     }
-    
-    public function read(){
+
+    public function read()
+    {
         $model = $this->m_staf_tim_hidup;
         $modelStafTim = $this->m_staf_tim;
         $filter     = json_decode(varGet('filter', '[]'));
         $limit      = varGet('limit');
-        $start      = varGet('start',0);
+        $start      = varGet('start', 0);
         $sorter     = json_decode(varGet('sort', '[]'));
 
-        if(varGetHas('id') || varGetHas('staf_tim_id')){
+        if (varGetHas('id') || varGetHas('staf_tim_id')) {
             $id = varGet('id', varGet('staf_tim_id'));
             $record = null;
 
-            if(inCacheExists($modelStafTim, $id)){
+            if (inCacheExists($modelStafTim, $id)) {
                 $record = getRecordFromCache($modelStafTim, $id);
                 $useCache = true;
             }
 
-            if(!$record){
+            if (!$record) {
                 $record = $model->read($id);
                 addRecordToCache($modelStafTim, $record);
                 $useCache = false;
             }
-            
+
             $this->response_record($record, false, $useCache);
-        }else{
+        } else {
             $query = varGet('query');
-            if(!empty($query)){
+            if (!empty($query)) {
                 array_unshift($filter, (object)array(
                     'type'      => 'custom',
-                    'value'     => 'staf_tim_nama LIKE "%'.$query.'%" OR staf_tim_nama LIKE "%'.$query.'%"'
+                    'value'     => 'staf_tim_nama LIKE "%' . $query . '%" OR staf_tim_nama LIKE "%' . $query . '%"'
                 ));
             }
-            // array_unshift($filter, (object)array(
-            //     'type'      => 'custom',
-            //     'value'     => '(properti_hapus_tgl IS NULL OR properti_pulih_tgl IS NOT NULL)'
-            // ));
+            $filter = $this->filterUnit($filter);
             $records = $model->select(array(
                 'limit'     => $limit,
                 'start'     => $start,
@@ -72,7 +73,8 @@ class Staf_tim extends Base_Controller {
         }
     }
 
-    public function create($usePayload = true){
+    public function create($usePayload = true)
+    {
         $model = $this->m_staf_tim;
         $properti = $this->m_properti;
         $account = $this->m_account;
@@ -84,27 +86,28 @@ class Staf_tim extends Base_Controller {
         // $op = $properti->created($akun);
         // $data['staf_tim_properti'] = $op['properti_id'];
 
-        $operation = $model->insert($data, null, function($response)
-            use($data, $properti, $account, $model, $akun){
-                if($response[$model->successProperty] !== true) return;
+        $operation = $model->insert($data, null, function ($response)
+        use ($data, $properti, $account, $model, $akun) {
+            if ($response[$model->successProperty] !== true) return;
 
-                addRecordToCache($model, $response[$model->dataProperty]);
-                $inserted_data = $response['data'];
-                $op = $properti->created($akun, $inserted_data, 'staf_tim', $inserted_data['staf_tim_id'], $inserted_data['staf_tim_nama']);
-                if($op){
-                    $model->update($inserted_data['staf_tim_id'], array(
-                        'staf_tim_properti' => $op['properti_id']
-                    ));
-                }
+            addRecordToCache($model, $response[$model->dataProperty]);
+            $inserted_data = $response['data'];
+            $op = $properti->created($akun, $inserted_data, 'staf_tim', $inserted_data['staf_tim_id'], $inserted_data['staf_tim_nama']);
+            if ($op) {
+                $model->update($inserted_data['staf_tim_id'], array(
+                    'staf_tim_properti' => $op['properti_id']
+                ));
+            }
 
-                // $data['staf_tim_id'] = $model->get_insertid();
-                // $op = $properti->updated($data['staf_tim_properti'], $akun, $data, 'staf_tim', $data['staf_tim_id']);
-            });
-        if($operation[$model->successProperty]) $operation[$model->dataProperty] = $model->read($model->get_insertid());
+            // $data['staf_tim_id'] = $model->get_insertid();
+            // $op = $properti->updated($data['staf_tim_properti'], $akun, $data, 'staf_tim', $data['staf_tim_id']);
+        });
+        if ($operation[$model->successProperty]) $operation[$model->dataProperty] = $model->read($model->get_insertid());
         $this->response($operation);
     }
-    
-    public function update($usePayload = true){
+
+    public function update($usePayload = true)
+    {
         $model = $this->m_staf_tim;
         $properti = $this->m_properti;
         $account = $this->m_account;
@@ -124,16 +127,15 @@ class Staf_tim extends Base_Controller {
         // $properti->updated($idProp, $akun);
 
         // $operation = $model->update($id, $data, function($response){});
-        
-        $operation = $model->update($id, $data, function($response) use 
-            ($properti, $model, $akun, $data){
+
+        $operation = $model->update($id, $data, function ($response) use ($properti, $model, $akun, $data) {
             addRecordToCache($model, $response[$model->dataProperty]);
             $updated_data = $model->read($data['staf_tim_id']);
-            
+
             $idProp = $updated_data['staf_tim_properti'];
-            if(empty($idProp)){
+            if (empty($idProp)) {
                 $op = $properti->created($akun, $updated_data, 'staf_tim', $updated_data['staf_tim_id'], $updated_data['staf_tim_nama']);
-                if($op){
+                if ($op) {
                     $model->update($updated_data['staf_tim_id'], array(
                         'staf_tim_properti' => $op['properti_id']
                     ));
@@ -144,7 +146,8 @@ class Staf_tim extends Base_Controller {
         $this->response($operation);
     }
 
-    public function destroy($usePayload = true){
+    public function destroy($usePayload = true)
+    {
         $model = $this->m_staf_tim;
         $properti = $this->m_properti;
         $account = $this->m_account;
@@ -164,17 +167,16 @@ class Staf_tim extends Base_Controller {
         // $properti->deleted($idProp, $akun);
 
         // $operation = $model->update($id, $data,function($response){});
-        
-        $operation = $model->update($id, $data,function($response) use 
-            ($properti, $model, $akun, $data){
+
+        $operation = $model->update($id, $data, function ($response) use ($properti, $model, $akun, $data) {
 
             // $deleted_data = $response['data'];
             addRecordToCache($model, $response[$model->dataProperty]);
             $deleted_data = $model->read($data['staf_tim_id']);
             $idProp = $deleted_data['staf_tim_properti'];
-            if(empty($idProp)){
+            if (empty($idProp)) {
                 $op = $properti->created($akun, $deleted_data, 'staf_tim', $deleted_data['staf_tim_id'], $deleted_data['staf_tim_nama']);
-                if($op){
+                if ($op) {
                     $model->update($deleted_data['staf_tim_id'], array(
                         'staf_tim_properti' => $op['properti_id']
                     ));
@@ -182,9 +184,21 @@ class Staf_tim extends Base_Controller {
             }
             $properti->deleted($idProp, $akun, $deleted_data, $deleted_data['staf_tim_nama']);
         });
-        if($operation['success']){
+        if ($operation['success']) {
             $operation['message'] = 'Berhasil Menghapus Data';
         }
         $this->response($operation);
+    }
+
+    public function filterUnit($filter)
+    {
+        $unit = varGet('unit');
+        if ($unit && $unit != 'semua') {
+            array_unshift($filter, (object)array(
+                'type'      => 'custom',
+                'value'     => "staf_tim_unit_parent_path LIKE '%$unit'"
+            ));
+        }
+        return $filter;
     }
 }

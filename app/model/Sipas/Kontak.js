@@ -32,6 +32,12 @@ Ext.define('SIPAS.model.Sipas.Kontak', {
             name: 'kontak_nama'
         },
         {
+            name: 'kontak_unit_id'
+        },
+        {
+            name: 'kontak_unit_nama'
+        },
+        {
             name: 'kontak_properti'
         }
     ],

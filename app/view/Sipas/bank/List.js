@@ -23,9 +23,9 @@ Ext.define('SIPAS.view.Sipas.bank.List', {
         'SIPAS.view.Sipas.com.button.Delete',
         'SIPAS.view.Sipas.com.button.Setting',
         'SIPAS.view.Sipas.com.button.ToggleFilter',
+        'Ext.form.field.ComboBox',
         'Ext.button.Button',
         'Ext.toolbar.Fill',
-        'Ext.form.field.ComboBox',
         'Ext.grid.RowNumberer',
         'Ext.grid.column.Date',
         'Ext.grid.View',
@@ -83,6 +83,26 @@ Ext.define('SIPAS.view.Sipas.bank.List', {
                         }
                     },
                     items: [
+                        {
+                            xtype: 'combobox',
+                            itemId: 'comboUnit',
+                            emptyText: 'Unit',
+                            editable: false,
+                            hideTrigger: true,
+                            displayField: 'unit_nama',
+                            store: 'Sipas.unit.Combo',
+                            valueField: 'unit_id'
+                        },
+                        {
+                            xtype: 'combobox',
+                            itemId: 'comboBagian',
+                            emptyText: 'Unit Bagian',
+                            editable: false,
+                            hideTrigger: true,
+                            displayField: 'unit_nama',
+                            store: 'Sipas.unit.ComboBagian',
+                            valueField: 'unit_id'
+                        },
                         {
                             xtype: 'sipas_com_button_refresh'
                         },

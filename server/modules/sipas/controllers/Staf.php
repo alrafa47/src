@@ -20,7 +20,8 @@ class Staf extends Base_Controller
         'unit' => '<span style="color:white; font-style:italic;">(Tidak Memiliki Unit)</span>',
         'unit_nama' => '<span style="color:grey; font-style:italic;">(Tidak Memiliki Unit)</span>',
         'unit_kode' => '<span style="color:grey; font-style:italic;">(Tidak Memiliki Kode Unit)</span>',
-        'peran_nama' => '<span style="color:grey; font-style:italic;">(Tidak Memiliki Hak akses)</span>'
+        'peran_nama' => '<span style="color:grey; font-style:italic;">(Tidak Memiliki Hak akses)</span>',
+        'empty' => '<span style="color:grey; font-style:italic;">(Tidak Memiliki Data)</span>'
     );
 
     public function __construct()
@@ -992,14 +993,25 @@ class Staf extends Base_Controller
         $download   = varGet('download', 0);
         $excel      = varGet('excel', 0);
         $unit       = varGet('unit');
-        $filter     = array();
+        $filter = array();
         $report_title = varGet('title', 0) ? base64_decode(varGet('title')) : '';
 
         $user   = $m_account->get_profile();
 
+        if ($unit != 'semua' && $unit) {
+            array_unshift($filter, (object)array(
+                'type'  => 'exact',
+                'field' => 'unit_induk',
+                'value' => $unit
+            ));
+        }
+
         $sorter = array();
         array_unshift($sorter, array('property' => 'unit_kode', 'direction' => 'asc'));
-        $data = $m_staf_rekap->select(array('sorter' => json_encode($sorter)));
+        $data = $m_staf_rekap->select([
+            'filter'   => json_encode($filter),
+            'sorter' => json_encode($sorter)
+        ]);
 
         if ($data['total'] > 0) {
             foreach ($data['data'] as $kstaf => &$vstaf) {
@@ -1012,8 +1024,8 @@ class Staf extends Base_Controller
             $data['data'] = array(
                 array(
                     'no'            => 1,
-                    'unit_nama'     => $this::$default_value['empty'],
-                    'unit_kode'     => $this::$default_value['empty'],
+                    'unit_nama'     => $this::$default_value['unit_nama'],
+                    'unit_kode'     => $this::$default_value['unit_kode'],
                     'jumlah_staf'   => $this::$default_value['empty'],
                     'jumlah_akun_staf_aktif' => $this::$default_value['empty'],
                     'jumlah_akun_staf_nonaktif'  => $this::$default_value['empty'],
@@ -1029,7 +1041,7 @@ class Staf extends Base_Controller
             'data'          => $data['data'],
             'dateReport'    => date('d-m-Y H:i:s'),
             'dateReportFormated' => date('d M Y H:i'),
-            'operator'      => $user[$m_account->field_display],
+            // 'operator'      => $user[$m_account->field_display],
             'total_pegawai' => array_sum(array_column($data, 'jumlah_pegawai'))
         );
 
@@ -1084,7 +1096,7 @@ class Staf extends Base_Controller
             'data'                  => $grouped,
             'dateReport'            => date('d-m-Y H:i:s'),
             'dateReportFormated'    => date('d M Y H:i'),
-            'operator'              => $user[$m_account->field_display],
+            // 'operator'              => $user[$m_account->field_display],
             'total_pegawai'         => array_sum(array_column($data, 'total_staf'))
         );
 

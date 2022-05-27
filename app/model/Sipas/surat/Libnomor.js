@@ -24,8 +24,13 @@ Ext.define('SIPAS.model.Sipas.surat.Libnomor', {
     ],
     uses: [
         'SIPAS.model.Sipas.Unit',
+        'SIPAS.model.Sipas.surat.libnomor.unit.Penyetuju',
         'SIPAS.model.Sipas.Jabatan',
-        'SIPAS.model.Sipas.Jenis'
+        'SIPAS.model.Sipas.surat.libnomor.jabatan.Penyetuju',
+        'SIPAS.model.Sipas.Jenis',
+        'SIPAS.model.Sipas.Kelas',
+        'SIPAS.model.Sipas.Sifat',
+        'SIPAS.model.Sipas.Lokasi'
     ],
 
     statics: {
@@ -94,16 +99,35 @@ Ext.define('SIPAS.model.Sipas.surat.Libnomor', {
             name: 'surat_libnomor_tahun'
         },
         {
+            name: 'surat_libnomor_booking'
+        },
+        {
             name: 'surat_libnomor_unit_pembuat'
+        },
+        {
+            name: 'surat_libnomor_unit_penyetuju'
+        },
+        {
+            name: 'surat_libnomor_jabatan_pembuat'
+        },
+        {
+            name: 'surat_libnomor_jabatan_penyetuju'
+        },
+        {
+            name: 'surat_libnomor_kelas'
         },
         {
             name: 'surat_libnomor_jenis'
         },
         {
+            name: 'surat_libnomor_lokasi'
+        },
+        {
             name: 'surat_libnomor_sifat'
         },
         {
-            name: 'surat_libnomor_value'
+            name: 'surat_libnomor_value',
+            type: 'int'
         },
         {
             name: 'surat_libnomor_last_generated'
@@ -112,7 +136,25 @@ Ext.define('SIPAS.model.Sipas.surat.Libnomor', {
             name: 'unit_pembuat_nama'
         },
         {
+            name: 'unit_penyetuju_nama'
+        },
+        {
+            name: 'jabatan_pembuat_nama'
+        },
+        {
+            name: 'jabatan_penyetuju_nama'
+        },
+        {
             name: 'jenis_nama'
+        },
+        {
+            name: 'kelas_nama'
+        },
+        {
+            name: 'sifat_nama'
+        },
+        {
+            name: 'lokasi_nama'
         }
     ],
 
@@ -125,6 +167,13 @@ Ext.define('SIPAS.model.Sipas.surat.Libnomor', {
             setterName: 'setUnitPembuat'
         },
         {
+            model: 'SIPAS.model.Sipas.surat.libnomor.unit.Penyetuju',
+            primaryKey: 'unit_id',
+            foreignKey: 'surat_libnomor_unit_penyetuju',
+            getterName: 'getUnitPenyetuju',
+            setterName: 'setUnitPenyetuju'
+        },
+        {
             model: 'SIPAS.model.Sipas.Jabatan',
             primaryKey: 'jabatan_id',
             foreignKey: 'surat_libnomor_jabatan_pembuat',
@@ -132,11 +181,39 @@ Ext.define('SIPAS.model.Sipas.surat.Libnomor', {
             setterName: 'setJabatanPembuat'
         },
         {
+            model: 'SIPAS.model.Sipas.surat.libnomor.jabatan.Penyetuju',
+            primaryKey: 'jabatan_id',
+            foreignKey: 'surat_libnomor_jabatan_penyetuju',
+            getterName: 'getJabatanPenyetuju',
+            setterName: 'setJabatanPenyetuju'
+        },
+        {
             model: 'SIPAS.model.Sipas.Jenis',
             primaryKey: 'jenis_id',
             foreignKey: 'surat_libnomor_jenis',
             getterName: 'getJenis',
             setterName: 'setJenis'
+        },
+        {
+            model: 'SIPAS.model.Sipas.Kelas',
+            primaryKey: 'kelas_id',
+            foreignKey: 'surat_libnomor_kelas',
+            getterName: 'getKelas',
+            setterName: 'setKelas'
+        },
+        {
+            model: 'SIPAS.model.Sipas.Sifat',
+            primaryKey: 'sifat_id',
+            foreignKey: 'surat_libnomor_sifat',
+            getterName: 'getSifat',
+            setterName: 'setSifat'
+        },
+        {
+            model: 'SIPAS.model.Sipas.Lokasi',
+            primaryKey: 'lokasi_id',
+            foreignKey: 'surat_libnomor_lokasi',
+            getterName: 'getLokasi',
+            setterName: 'setLokasi'
         }
     ],
 

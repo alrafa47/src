@@ -39,7 +39,7 @@ Ext.define('SIPAS.store.Sipas.aksi.Combo', {
                 }
             },
             sorters: {
-                property: 'aksi_nama'
+                property: 'aksi_level'
             }
         }, cfg)]);
     }

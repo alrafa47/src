@@ -40,16 +40,16 @@ Ext.define('SIPAS.view.Sipas.surat.agenda.Prop', {
         'SIPAS.view.Sipas.com.button.SaveDistribute',
         'Ext.form.Panel',
         'Ext.XTemplate',
+        'Ext.form.RadioGroup',
+        'Ext.form.field.Radio',
         'Ext.form.field.ComboBox',
         'Ext.form.field.TextArea',
-        'Ext.form.FieldContainer',
         'Ext.form.field.Display',
         'Ext.button.Button',
         'Ext.view.BoundList',
         'Ext.form.field.Date',
         'Ext.form.field.Number',
         'Ext.form.FieldSet',
-        'Ext.form.field.Checkbox',
         'Ext.grid.Panel'
     ],
 
@@ -156,6 +156,28 @@ Ext.define('SIPAS.view.Sipas.surat.agenda.Prop', {
                                                                     name: 'surat_registrasi',
                                                                     readOnly: true,
                                                                     emptyText: 'No.Registrasi'
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            xtype: 'radiogroup',
+                                                            itemId: 'radio_jenis_pengiriman',
+                                                            fieldLabel: 'Jenis Pengiriman',
+                                                            items: [
+                                                                {
+                                                                    xtype: 'radiofield',
+                                                                    itemId: 'pengiriman_luar',
+                                                                    name: 'surat_keluar_type',
+                                                                    boxLabel: 'Luar Perusahaan',
+                                                                    checked: true,
+                                                                    inputValue: '0'
+                                                                },
+                                                                {
+                                                                    xtype: 'radiofield',
+                                                                    itemId: 'pengiriman_dalam',
+                                                                    name: 'surat_keluar_type',
+                                                                    boxLabel: 'Dalam Perusahaan',
+                                                                    inputValue: '1'
                                                                 }
                                                             ]
                                                         },
@@ -1135,6 +1157,19 @@ Ext.define('SIPAS.view.Sipas.surat.agenda.Prop', {
                                             collapseDirection: 'bottom',
                                             collapsed: false,
                                             collapsible: true
+                                        }),
+                                        me.processPanePenerimaKeluar({
+                                            xtype: 'sipas_surat_penerima_list',
+                                            associated: true,
+                                            propType: 'default',
+                                            useToolbarTitle: true,
+                                            hidden: true,
+                                            itemId: 'panePenerimaKeluar',
+                                            collapseDirection: 'bottom',
+                                            collapsed: false,
+                                            collapsible: true,
+                                            title: 'Daftar Penerima',
+                                            store: 'Sipas.surat.penerimakeluar.List'
                                         })
                                     ]
                                 },
@@ -1404,6 +1439,14 @@ Ext.define('SIPAS.view.Sipas.surat.agenda.Prop', {
                             roleable: true,
                             itemId: 'simpanSetujui',
                             text: 'KIRIM'
+                        }),
+                        me.processBtnDistribusiSuratKeluar({
+                            xtype: 'sipas_com_button_disposisi',
+                            roleable: true,
+                            roleName: 'surat_internal_masuk_distribusi',
+                            propType: 'default',
+                            itemId: 'btnDistribusiSuratKeluar',
+                            text: 'Distribusikan'
                         }),
                         me.processKirimTembusan1({
                             xtype: 'sipas_com_button_approve',
@@ -2280,6 +2323,11 @@ Ext.define('SIPAS.view.Sipas.surat.agenda.Prop', {
         return config;
     },
 
+    processPanePenerimaKeluar: function(config) {
+        config.propType = this.propType;
+        return config;
+    },
+
     processSipassuratinformasipane: function(config) {
         config.propType = this.propType;
         return config;
@@ -2409,6 +2457,11 @@ Ext.define('SIPAS.view.Sipas.surat.agenda.Prop', {
     },
 
     processSimpanSetujui: function(config) {
+        config.propType = this.propType;
+        return config;
+    },
+
+    processBtnDistribusiSuratKeluar: function(config) {
         config.propType = this.propType;
         return config;
     },

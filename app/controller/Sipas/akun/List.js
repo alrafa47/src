@@ -89,6 +89,7 @@ Ext.define("SIPAS.controller.Sipas.akun.List", {
     var $this = this,
       checkSession = $this.getApplication().getSession().getResetSession(),
       view = $this.getMainview({ from: button }),
+      comboUnit = $this.getComboUnit({ root: view }),
       controllerProperty = $this.getController($this.controllerProperty);
 
     controllerProperty.launch({
@@ -100,6 +101,7 @@ Ext.define("SIPAS.controller.Sipas.akun.List", {
           // $this.refresh(view);
         }
       },
+      unit: comboUnit.getValue(),
     });
   },
 
@@ -207,7 +209,7 @@ Ext.define("SIPAS.controller.Sipas.akun.List", {
     } else {
       comboUnit.setDisabled(true);
     }
-    comboUnit.setValue(profile.unit_id);
-    this.updateList(comboStatus.getValue(), profile.unit_id, mainview);
+    comboUnit.setValue(profile.unit_induk);
+    this.updateList(comboStatus.getValue(), profile.unit_induk, mainview);
   },
 });

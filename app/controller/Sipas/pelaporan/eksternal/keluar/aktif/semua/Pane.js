@@ -63,6 +63,10 @@ Ext.define(
           {
             click: this.onButtonDownloadExcel_Click,
           },
+        "sipas_pelaporan_eksternal_keluar_aktif_semua_pane combobox#comboUnit":
+          {
+            afterrender: this.onComboUnit_AfterRender,
+          },
       });
     },
 
@@ -90,6 +94,7 @@ Ext.define(
         $helper = this.getApplication().Helper(),
         iframe = this.getCmpFrame({ root: view }),
         url = this.getApi("url", {
+          unit: unit,
           filter: filter,
           value: filter == "daterange" ? value.join("|") : value,
           title: btoa(view.title),
@@ -155,6 +160,13 @@ Ext.define(
         });
 
       iframe.getWindow().location.assign(url);
+    },
+
+    onComboUnit_AfterRender: function (component, eOpts) {
+      var store = component.getStore();
+      // change url from store
+      store.getProxy().url = "server.php/sipas/unit/combounit";
+      store.load();
     },
   }
 );

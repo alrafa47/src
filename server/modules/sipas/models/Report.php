@@ -259,6 +259,43 @@ class Sipas_model_Report extends Base_model
         return $return;
     }
 
+    function generateFieldDate($periode = null, $value = null)
+    {
+        $return = null;
+        switch ($periode) {
+            case 'date':
+                $return = "DATE(surat_tanggal) = " + $value;
+                break;
+
+            case 'beforedate':
+                $return = 'DATE(surat_tanggal) < ' + $value;
+                break;
+
+            case 'afterdate':
+                $return = 'DATE(surat_tanggal) > '   . $value;
+                break;
+
+            case 'daterange':
+                $values = explode("|", $value);
+                $return = 'DATE(surat_tanggal) >= ' . $values[0] . ' AND DATE(surat_tanggal) <= ' . $values[1];
+                break;
+
+            case 'month':
+                $monthyear = explode('-', date("Y-m", strtotime($value)));
+                $return = 'MONTH(surat_tanggal) =' . $monthyear[1] . ' AND YEAR(surat_tanggal) =' . $monthyear[0];
+                break;
+
+            case 'year':
+                $return = 'YEAR(surat_tanggal) = ' . $value;
+                break;
+
+            default:
+                $return = null;
+                break;
+        }
+        return $return;
+    }
+
     function generateFieldBy($periode = null, $value = null, $date_field = 'surat_tanggal')
     {
         $return = null;

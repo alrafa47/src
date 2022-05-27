@@ -22,7 +22,7 @@ Ext.define('SIPAS.view.Sipas.staf.tim.Prop', {
         'SIPAS.view.Sipas.com.button.Edit',
         'SIPAS.view.Sipas.com.button.Save',
         'Ext.form.Panel',
-        'Ext.form.field.Text',
+        'Ext.form.field.ComboBox',
         'Ext.button.Button'
     ],
 
@@ -59,6 +59,18 @@ Ext.define('SIPAS.view.Sipas.staf.tim.Prop', {
                                     labelWidth: 120,
                                     name: 'staf_tim_nama',
                                     emptyText: 'Masukkan nama kelompok'
+                                },
+                                {
+                                    xtype: 'combobox',
+                                    anchor: '100%',
+                                    itemId: 'staf_tim_unit',
+                                    fieldLabel: 'Unit',
+                                    labelWidth: 120,
+                                    name: 'staf_tim_unit',
+                                    emptyText: 'unit',
+                                    displayField: 'unit_nama',
+                                    store: 'Sipas.unit.ComboBagian',
+                                    valueField: 'unit_id'
                                 }
                             ]
                         }

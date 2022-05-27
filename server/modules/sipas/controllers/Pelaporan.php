@@ -467,17 +467,21 @@ class Pelaporan extends Base_Controller
         $report_title       = varGet('title', 0) ? base64_decode(varGet('title')) : '';
 
         $chart_title        = ($filterValue) ? strtoupper('Grafik Surat Masuk Tahun ' . $filterValue) : ' ';
-        $unitnama           = $m_unitkerja->read($param_unitkerja)['unit_nama'];
+        $unitnama           = 'Semua Unit';
 
         $user = $m_account->get_profile();
 
         $_filter = array();
         array_unshift($_filter, array('type' => 'exact', 'field' => 'tahun', 'value' => $filterValue));
 
+        if ($param_unitkerja && $param_unitkerja != 'semua' && $param_unitkerja != 'null') {
+            $unitnama = "Unit " . $m_unitkerja->read($param_unitkerja)['unit_nama'];
+            array_unshift($_filter, array('type' => 'exact', 'field' => 'unit_induk', 'value' => $param_unitkerja));
+        }
+
         $sorter = array();
         array_unshift($sorter, array('property' => 'unit_nama', 'direction' => 'ASC'));
         $data = $m_surat_masuk_rekap->select(array('filter' => json_encode($_filter), 'sorter' => json_encode($sorter)));
-
         $user = $m_account->get_profile();
 
         if ($data['total'] > 0) {
@@ -525,14 +529,14 @@ class Pelaporan extends Base_Controller
 
         $report_title = ($download || $excel) ? explode('<', $report_title)[0] : $report_title;
         $report_data = array(
-            'title'         =>  $report_title,
+            'title'         =>  "$report_title $unitnama",
             'subtitle'      =>  $this::$rekap_masuk_template_subtitle . ' ' . $filterValue,
             'header'        =>  $m_report->generateHeader($download, 16),
             'periode'       =>  $m_report->generatePeriode($filter, $filterValue),
             'rekap'         =>  $grouped,
             'dateReport'    =>  date('d-m-Y H:i:s'),
             'dateReportFormated'    =>  date('d M Y H:i'),
-            'operator'      =>  $user[$m_account->field_display]
+            // 'operator'      =>  $user[$m_account->field_display]
         );
 
         $filename = $report_title . $m_report->generatePeriode($filter, $filterValue, true);

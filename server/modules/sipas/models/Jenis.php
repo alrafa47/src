@@ -1,104 +1,160 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Sipas_model_Jenis extends Base_Model {
-    public function __construct(){
+class Sipas_model_Jenis extends Base_Model
+{
+    public function __construct()
+    {
         parent::__construct(array(
-            'table' =>array(
-                'name'=>'jenis',
-                'primary'=>'jenis_id',
-                'fields'=> array(
+            'table' => array(
+                'name' => 'jenis',
+                'primary' => 'jenis_id',
+                'fields' => array(
                     array(
-                        'name'=>'jenis_id',
-                        'display'=>'Id',
-                        'update'=>false,
-                        'unique'=>true,
-                        'notnull'=>true
+                        'name' => 'jenis_id',
+                        'display' => 'Id',
+                        'update' => false,
+                        'unique' => true,
+                        'notnull' => true
                     ),
                     array(
-                        'name'=>'jenis_kode',
-                        'display'=>'Kode',
-                        'unique'=>true,
-                        'notnull'=>true
+                        'name' => 'jenis_kode',
+                        'display' => 'Kode',
+                        'unique' => true,
+                        'notnull' => true
                     ),
                     array(
-                        'name'=>'jenis_nama',
-                        'display'=>'Nama',
-                        'notnull'=>true,
+                        'name' => 'jenis_nama',
+                        'display' => 'Nama',
+                        'notnull' => true,
                     ),
                     array(
-                        'name'=>'jenis_isaktif',
-                        'display'=>'Aktif'
+                        'name' => 'jenis_unit_id',
+                        'display' => 'Unit',
+                        'notnull' => true
                     ),
                     array(
-                        'name'=>'jenis_tampil_sm',
-                        'display'=>'Tampil'
+                        'name' => 'jenis_isaktif',
+                        'display' => 'Aktif'
                     ),
                     array(
-                        'name'=>'jenis_tampil_sk',
-                        'display'=>'Tampil'
+                        'name' => 'jenis_tampil_sm',
+                        'display' => 'Tampil'
                     ),
                     array(
-                        'name'=>'jenis_tampil_si',
-                        'display'=>'Tampil'
+                        'name' => 'jenis_tampil_sk',
+                        'display' => 'Tampil'
                     ),
                     array(
-                        'name'=>'jenis_tampil_sik',
-                        'display'=>'Tampil'
+                        'name' => 'jenis_tampil_si',
+                        'display' => 'Tampil'
                     ),
                     array(
-                        'name'=>'jenis_terpusat',
-                        'display'=>'Terpusat'
+                        'name' => 'jenis_tampil_sik',
+                        'display' => 'Tampil'
                     ),
                     array(
-                        'name'=>'jenis_nomor_awal',
-                        'display'=>'nomor'
+                        'name' => 'jenis_terpusat',
+                        'display' => 'Terpusat'
                     ),
                     array(
-                        'name'=>'jenis_batasibackdate',
-                        'display'=>'backdate'
+                        'name' => 'jenis_nomor_awal',
+                        'display' => 'nomor'
                     ),
                     array(
-                        'name'=>'jenis_batasipenerima',
-                        'display'=>'penerima'
+                        'name' => 'jenis_nomor_unit_pembuat',
+                        'display' => 'nomor'
                     ),
                     array(
-                        'name'=>'jenis_tipe',
-                        'display'=>'Tipe'
-                    ),
-		    array(
-                        'name'=>'jenis_ishapus',
-                        'display'=>'hapus'
+                        'name' => 'jenis_nomor_unit_penyetuju',
+                        'display' => 'nomor'
                     ),
                     array(
-                        'name'=>'jenis_ttd',
-                        'display'=>'Ttd'
+                        'name' => 'jenis_nomor_jabatan_pembuat',
+                        'display' => 'nomor'
                     ),
                     array(
-                        'name'=>'jenis_properti',
-                        'display'=>'properti'
+                        'name' => 'jenis_nomor_jabatan_penyetuju',
+                        'display' => 'nomor'
                     ),
                     array(
-                        'name'=>'jenis_retensi',
-                        'display'=>'Retensi'
+                        'name' => 'jenis_nomor_tahun',
+                        'display' => 'nomor'
                     ),
                     array(
-                        'name'=>'jenis_isbatas',
-                        'display'=>'Batas Surat'
+                        'name' => 'jenis_nomor_jenis',
+                        'display' => 'nomor'
                     ),
                     array(
-                        'name'=>'jenis_batas_jumlah',
-                        'display'=>'Jumlah Batas Surat'
+                        'name' => 'jenis_nomor_kelas',
+                        'display' => 'nomor'
+                    ),
+                    array(
+                        'name' => 'jenis_nomor_model',
+                        'display' => 'nomor'
+                    ),
+                    array(
+                        'name' => 'jenis_nomor_sifat',
+                        'display' => 'nomor'
+                    ),
+                    array(
+                        'name' => 'jenis_nomor_lokasi',
+                        'display' => 'nomor'
+                    ),
+                    array(
+                        'name' => 'jenis_tipe',
+                        'display' => 'Tipe'
+                    ),
+                    array(
+                        'name' => 'jenis_properti',
+                        'display' => 'properti'
+                    ),
+                    array(
+                        'name' => 'jenis_retensi',
+                        'display' => 'Retensi'
+                    ),
+                    array(
+                        'name' => 'jenis_format',
+                        'display' => 'format'
+                    ),
+                    array(
+                        'name' => 'jenis_formateks',
+                        'display' => 'format'
+                    ),
+                    array(
+                        'name' => 'jenis_formateksbackdate',
+                        'display' => 'format'
+                    ),
+                    array(
+                        'name' => 'jenis_formatint',
+                        'display' => 'format'
+                    ),
+                    array(
+                        'name' => 'jenis_formatintbackdate',
+                        'display' => 'format'
+                    ),
+                    array(
+                        'name' => 'jenis_digitint',
+                        'display' => 'digit'
+                    ),
+                    array(
+                        'name' => 'jenis_digiteks',
+                        'display' => 'digit'
+                    ),
+                    array(
+                        'name' => 'jenis_ishapus',
+                        'display' => 'Hapus'
                     )
 
                 ),
-                'limit'=>null,
+                'limit' => null,
             ),
-            'auto_id'=>true
+            'auto_id' => true
         ));
     }
 
-    public function get_jenis_sub() {
-        $data = Array(
+    public function get_jenis_sub()
+    {
+        $data = array(
             (object) ["sub_id" => "1", "sub_tipe" => "2", "sub_nama" => "SK Berkala"],
             (object) ["sub_id" => "2", "sub_tipe" => "1", "sub_nama" => "SK Golongan Reguler"],
             (object) ["sub_id" => "3", "sub_tipe" => "1", "sub_nama" => "SK Golongan Pilihan"],

@@ -18,22 +18,24 @@ Ext.define('SIPAS.view.Sipas.jenis.Prop', {
     alias: 'widget.sipas_jenis_prop',
 
     requires: [
+        'SIPAS.view.Sipas.pengaturan.surat.penomoran.legenda.List',
         'SIPAS.view.Sipas.com.button.Delete',
         'SIPAS.view.Sipas.com.button.Edit',
         'SIPAS.view.Sipas.com.button.Save',
         'Ext.form.Panel',
+        'Ext.form.field.ComboBox',
         'Ext.form.field.Number',
         'Ext.XTemplate',
-        'Ext.form.field.ComboBox',
         'Ext.form.FieldSet',
         'Ext.form.field.Checkbox',
-        'Ext.button.Button'
+        'Ext.button.Button',
+        'Ext.grid.Panel'
     ],
 
     height: 520,
     minHeight: 400,
     minWidth: 400,
-    width: 500,
+    width: 600,
     constrain: true,
     layout: 'fit',
     title: 'Jenis Surat',
@@ -46,276 +48,563 @@ Ext.define('SIPAS.view.Sipas.jenis.Prop', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'form',
-                    border: false,
-                    autoScroll: true,
-                    bodyPadding: '8 16 8 16',
-                    header: false,
-                    title: 'Jenis Surat',
-                    titleAlign: 'center',
+                    xtype: 'container',
+                    itemId: 'containerJenis',
+                    layout: 'border',
                     items: [
                         {
-                            xtype: 'textfield',
-                            anchor: '100%',
-                            fieldLabel: 'Nama Jenis',
-                            name: 'jenis_nama',
-                            emptyText: 'Masukkan nama jenis'
-                        },
-                        {
-                            xtype: 'textfield',
-                            width: 240,
-                            fieldLabel: 'Kode Jenis',
-                            name: 'jenis_kode',
-                            emptyText: 'Masukkan Kode Jenis'
-                        },
-                        {
-                            xtype: 'container',
-                            featureName: 'jenis_retensi',
-                            featureable: true,
-                            itemId: 'containerJenis',
-                            layout: {
-                                type: 'hbox',
-                                align: 'stretch'
-                            },
+                            xtype: 'form',
+                            flex: 1,
+                            region: 'center',
+                            border: false,
+                            autoScroll: true,
+                            bodyPadding: '8 16 8 16',
+                            header: false,
+                            title: 'Jenis Surat',
+                            titleAlign: 'center',
                             items: [
                                 {
-                                    xtype: 'numberfield',
-                                    width: 160,
-                                    afterSubTpl: [
-                                        'hari'
-                                    ],
-                                    fieldLabel: 'Lama Masa Aktif',
-                                    name: 'jenis_retensi',
-                                    emptyText: '0',
-                                    hideTrigger: true,
-                                    allowDecimals: false,
-                                    allowExponential: false,
-                                    minValue: 0
+                                    xtype: 'textfield',
+                                    anchor: '100%',
+                                    fieldLabel: 'Nama Jenis',
+                                    name: 'jenis_nama',
+                                    emptyText: 'Masukkan nama jenis'
+                                },
+                                {
+                                    xtype: 'textfield',
+                                    width: 240,
+                                    fieldLabel: 'Kode Jenis',
+                                    name: 'jenis_kode',
+                                    emptyText: 'Masukkan Kode Jenis'
                                 },
                                 {
                                     xtype: 'combobox',
-                                    cls: 'x-field-triggeronly',
-                                    itemId: 'comboRetensi',
-                                    width: 20,
-                                    formItemCls: 'comboRetensi',
-                                    submitValue: false,
-                                    emptyText: 'Pilih masa aktif',
+                                    anchor: '100%',
+                                    itemId: 'comboUnit',
+                                    fieldLabel: 'Unit',
+                                    name: 'jenis_unit_id',
                                     editable: false,
-                                    matchFieldWidth: false,
-                                    anyMatch: true,
-                                    displayField: 'retensi_nama',
-                                    forceSelection: true,
-                                    pageSize: 15,
-                                    store: 'Sipas.retensi.Combo',
-                                    valueField: 'retensi_hari',
-                                    listeners: {
-                                        afterrender: {
-                                            fn: me.onRetensiAfterRender,
-                                            scope: me
-                                        },
-                                        select: {
-                                            fn: me.onRetensiSelect,
-                                            scope: me
-                                        }
-                                    }
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'fieldset',
-                            padding: 0,
-                            title: 'Opsi Tampil',
-                            items: [
-                                {
-                                    xtype: 'checkboxfield',
-                                    name: 'jenis_tampil_sm',
-                                    boxLabel: 'Tampil di Surat Masuk Eksternal'
-                                },
-                                {
-                                    xtype: 'checkboxfield',
-                                    name: 'jenis_tampil_sk',
-                                    boxLabel: 'Tampil di Surat Keluar Eksternal'
-                                },
-                                {
-                                    xtype: 'checkboxfield',
-                                    featureName: 'agenda_internal',
-                                    featureable: true,
-                                    name: 'jenis_tampil_si',
-                                    boxLabel: 'Tampil di Surat Internal'
-                                },
-                                {
-                                    xtype: 'checkboxfield',
-                                    featureName: 'agenda_internal',
-                                    featureable: true,
-                                    languageable: true,
-                                    languageCode: 'cb_tampil_disik',
-                                    languageMode: 'boxLabel',
-                                    name: 'jenis_tampil_sik',
-                                    boxLabel: 'Tampil di Surat Keputusan'
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'fieldset',
-                            padding: 0,
-                            title: 'Penomoran Khusus',
-                            items: [
-                                {
-                                    xtype: 'checkboxfield',
-                                    anchor: '100%',
-                                    itemId: 'cbNomorAwal',
-                                    fieldLabel: 'Gunakan Penomoran Awal',
-                                    hideLabel: true,
-                                    labelWidth: 200,
-                                    name: 'jenis_nomor_awal',
-                                    boxLabel: 'Gunakan Penomoran Awal'
-                                },
-                                {
-                                    xtype: 'checkboxfield',
-                                    anchor: '100%',
-                                    itemId: 'cbPusat',
-                                    fieldLabel: 'Gunakan Penomoran Terpusat Perjenis',
-                                    hideLabel: true,
-                                    labelWidth: 200,
-                                    name: 'jenis_terpusat_jenis',
-                                    boxLabel: 'Gunakan Penomoran Terpusat Perjenis'
-                                },
-                                {
-                                    xtype: 'checkboxfield',
-                                    anchor: '100%',
-                                    itemId: 'cbUJ',
-                                    fieldLabel: 'Gunakan Penomoran Perunit Perjenis',
-                                    hideLabel: true,
-                                    labelWidth: 200,
-                                    name: 'jenis_terpusat_unit',
-                                    boxLabel: 'Gunakan Penomoran Perunit Perjenis'
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'fieldset',
-                            padding: 0,
-                            title: 'Batasi Backdate',
-                            items: [
-                                {
-                                    xtype: 'checkboxfield',
-                                    anchor: '100%',
-                                    name: 'jenis_batasibackdate',
-                                    boxLabel: 'Batasi akses pengajuan surat dengan tanggal backdate pada jenis ini'
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'fieldset',
-                            padding: 0,
-                            title: 'Batasi Penerima',
-                            items: [
-                                {
-                                    xtype: 'checkboxfield',
-                                    anchor: '100%',
-                                    name: 'jenis_batasipenerima',
-                                    boxLabel: 'Batasi akses penerimaan surat keluar internal'
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'fieldset',
-                            languageable: true,
-                            languageCode: 'batas_reupload',
-                            languageMode: 'fieldLabel',
-                            padding: 0,
-                            title: 'Batas Belum Reupload',
-                            items: [
-                                {
-                                    xtype: 'checkboxfield',
-                                    anchor: '100%',
-                                    itemId: 'batasReupload',
-                                    name: 'jenis_isbatas',
-                                    boxLabel: 'Batasan pembuat surat yang belum upload ulang berkas'
-                                },
-                                {
-                                    xtype: 'numberfield',
-                                    anchor: '47%',
-                                    itemId: 'batasMax',
-                                    fieldLabel: 'Batas Maksimal',
-                                    name: 'jenis_batas_jumlah',
-                                    emptyText: 'Atur Maksimal'
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'fieldset',
-                            languageable: true,
-                            languageCode: 'jenis_perlu_ttd',
-                            languageMode: 'fieldLabel',
-                            padding: 0,
-                            title: 'Perlu Tanda Tangan Digital',
-                            items: [
-                                {
-                                    xtype: 'checkboxfield',
-                                    languageMode: 'boxLabel',
-                                    languageCode: 'jenis_ttd_desc',
-                                    languageable: true,
-                                    anchor: '100%',
-                                    name: 'jenis_ttd',
-                                    boxLabel: 'Jenis perlu tanda tangan'
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'fieldset',
-                            featureable: true,
-                            featureName: 'jenis_perunit',
-                            padding: 0,
-                            title: 'Akses',
-                            items: [
-                                {
-                                    xtype: 'checkboxfield',
-                                    anchor: '100%',
-                                    name: 'jenis_tipe',
-                                    afterBoxLabelTpl: [
-                                        '<div class="supporttext margin-left-24">Jika diaktifkan maka jenis hanya akan tampil pada unit yang terpilih saja</div>'
-                                    ],
-                                    boxLabel: 'Batasi akses hanya untuk unit tertentu',
-                                    inputValue: '1'
+                                    hideTrigger: true,
+                                    displayField: 'unit_nama',
+                                    store: 'Sipas.unit.aktif.List',
+                                    valueField: 'unit_id'
                                 },
                                 {
                                     xtype: 'container',
+                                    featureName: 'jenis_retensi',
+                                    featureable: true,
+                                    itemId: 'containerJenis',
                                     layout: {
                                         type: 'hbox',
-                                        align: 'stretch',
-                                        padding: '0 24'
+                                        align: 'stretch'
                                     },
                                     items: [
                                         {
-                                            xtype: 'button',
-                                            roleable: true,
-                                            roleName: 'jenis_unit',
+                                            xtype: 'numberfield',
+                                            width: 160,
+                                            afterSubTpl: [
+                                                'hari'
+                                            ],
+                                            fieldLabel: 'Lama Masa Aktif',
+                                            name: 'jenis_retensi',
+                                            emptyText: '0',
+                                            hideTrigger: true,
+                                            allowDecimals: false,
+                                            allowExponential: false,
+                                            minValue: 0
+                                        },
+                                        {
+                                            xtype: 'combobox',
+                                            cls: 'x-field-triggeronly',
+                                            itemId: 'comboRetensi',
+                                            width: 20,
+                                            formItemCls: 'comboRetensi',
+                                            submitValue: false,
+                                            emptyText: 'Pilih masa aktif',
+                                            editable: false,
+                                            matchFieldWidth: false,
+                                            anyMatch: true,
+                                            displayField: 'retensi_nama',
+                                            forceSelection: true,
+                                            pageSize: 15,
+                                            store: 'Sipas.retensi.Combo',
+                                            valueField: 'retensi_hari',
+                                            listeners: {
+                                                afterrender: {
+                                                    fn: me.onRetensiAfterRender,
+                                                    scope: me
+                                                },
+                                                select: {
+                                                    fn: me.onRetensiSelect,
+                                                    scope: me
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'fieldset',
+                                    padding: 0,
+                                    title: 'Opsi Tampil',
+                                    items: [
+                                        {
+                                            xtype: 'checkboxfield',
+                                            name: 'jenis_tampil_sm',
+                                            boxLabel: 'Tampil di Surat Masuk Eksternal'
+                                        },
+                                        {
+                                            xtype: 'checkboxfield',
+                                            name: 'jenis_tampil_sk',
+                                            boxLabel: 'Tampil di Surat Keluar Eksternal'
+                                        },
+                                        {
+                                            xtype: 'checkboxfield',
+                                            featureName: 'agenda_internal',
+                                            featureable: true,
+                                            name: 'jenis_tampil_si',
+                                            boxLabel: 'Tampil di Surat Internal'
+                                        },
+                                        {
+                                            xtype: 'checkboxfield',
+                                            featureName: 'agenda_internal',
+                                            featureable: true,
                                             languageable: true,
-                                            languageMode: 'text',
-                                            languageCode: 'jenis_perunit_jenis',
-                                            cls: 'x-btn-bordered',
-                                            itemId: 'btnUnit',
-                                            ui: 'default-toolbar',
-                                            text: 'atur Daftar Unit'
+                                            languageCode: 'cb_tampil_disik',
+                                            languageMode: 'boxLabel',
+                                            name: 'jenis_tampil_sik',
+                                            boxLabel: 'Tampil di Surat Keputusan'
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'fieldset',
+                                    featureable: true,
+                                    featureName: 'jenis_nomor_khusus',
+                                    padding: 0,
+                                    checkboxName: 'jenis_terpusat',
+                                    checkboxToggle: true,
+                                    title: 'Penomoran Khusus',
+                                    items: [
+                                        {
+                                            xtype: 'container',
+                                            margin: '8 0 0 0',
+                                            layout: {
+                                                type: 'vbox',
+                                                align: 'stretch',
+                                                defaultMargins: {
+                                                    top: 0,
+                                                    right: 0,
+                                                    bottom: 0,
+                                                    left: 24
+                                                }
+                                            },
+                                            items: [
+                                                {
+                                                    xtype: 'checkboxfield',
+                                                    flex: 1,
+                                                    hideLabel: true,
+                                                    labelWidth: 200,
+                                                    name: 'jenis_nomor_tahun',
+                                                    boxLabel: 'Tahun Surat'
+                                                },
+                                                {
+                                                    xtype: 'checkboxfield',
+                                                    flex: 1,
+                                                    hideLabel: true,
+                                                    labelWidth: 200,
+                                                    name: 'jenis_nomor_model',
+                                                    boxLabel: 'Model Surat'
+                                                },
+                                                {
+                                                    xtype: 'checkboxfield',
+                                                    flex: 1,
+                                                    hideLabel: true,
+                                                    labelWidth: 200,
+                                                    name: 'jenis_nomor_unit_pembuat',
+                                                    boxLabel: 'Unit Pembuat'
+                                                },
+                                                {
+                                                    xtype: 'checkboxfield',
+                                                    flex: 1,
+                                                    hideLabel: true,
+                                                    labelWidth: 200,
+                                                    name: 'jenis_nomor_unit_penyetuju',
+                                                    boxLabel: 'Unit Penyetuju'
+                                                },
+                                                {
+                                                    xtype: 'checkboxfield',
+                                                    flex: 1,
+                                                    hideLabel: true,
+                                                    labelWidth: 200,
+                                                    name: 'jenis_nomor_jabatan_pembuat',
+                                                    boxLabel: 'Jabatan Pembuat'
+                                                },
+                                                {
+                                                    xtype: 'checkboxfield',
+                                                    flex: 1,
+                                                    hideLabel: true,
+                                                    labelWidth: 200,
+                                                    name: 'jenis_nomor_jabatan_penyetuju',
+                                                    boxLabel: 'Jabatan Penyetuju'
+                                                },
+                                                {
+                                                    xtype: 'checkboxfield',
+                                                    flex: 1,
+                                                    hideLabel: true,
+                                                    labelWidth: 200,
+                                                    name: 'jenis_nomor_jenis',
+                                                    boxLabel: 'Jenis Surat'
+                                                },
+                                                {
+                                                    xtype: 'checkboxfield',
+                                                    flex: 1,
+                                                    hideLabel: true,
+                                                    labelWidth: 200,
+                                                    name: 'jenis_nomor_kelas',
+                                                    boxLabel: 'Klasifikasi Surat'
+                                                },
+                                                {
+                                                    xtype: 'checkboxfield',
+                                                    flex: 1,
+                                                    hideLabel: true,
+                                                    labelWidth: 200,
+                                                    name: 'jenis_nomor_sifat',
+                                                    boxLabel: 'Sifat Surat'
+                                                },
+                                                {
+                                                    xtype: 'checkboxfield',
+                                                    flex: 1,
+                                                    hideLabel: true,
+                                                    labelWidth: 200,
+                                                    name: 'jenis_nomor_lokasi',
+                                                    boxLabel: 'Lokasi Surat'
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'fieldset',
+                                    languageable: true,
+                                    languageCode: 'jenis_format',
+                                    languageMode: 'title',
+                                    featureName: 'jenis_nomor_format',
+                                    featureable: true,
+                                    checkboxName: 'jenis_format',
+                                    checkboxToggle: true,
+                                    title: 'Format Penomoran',
+                                    items: [
+                                        {
+                                            xtype: 'fieldset',
+                                            languageable: true,
+                                            languageCode: 'jenis_format_eks',
+                                            languageMode: 'title',
+                                            margin: '0 0 0 24',
+                                            title: 'Eksternal',
+                                            items: [
+                                                {
+                                                    xtype: 'combobox',
+                                                    width: 220,
+                                                    fieldLabel: 'Digit Penomoran {#}',
+                                                    labelWidth: 115,
+                                                    name: 'jenis_digiteks',
+                                                    editable: false,
+                                                    displayField: '{1}',
+                                                    store: [
+                                                        [
+                                                            '0',
+                                                            '1 digit'
+                                                        ],
+                                                        [
+                                                            '00',
+                                                            '2 digit'
+                                                        ],
+                                                        [
+                                                            '000',
+                                                            '3 digit'
+                                                        ],
+                                                        [
+                                                            '0000',
+                                                            '4 digit'
+                                                        ],
+                                                        [
+                                                            '00000',
+                                                            '5 digit'
+                                                        ],
+                                                        [
+                                                            '000000',
+                                                            '6 digit'
+                                                        ],
+                                                        [
+                                                            '0000000',
+                                                            '7 digit'
+                                                        ]
+                                                    ],
+                                                    valueField: '{0}'
+                                                },
+                                                {
+                                                    xtype: 'textfield',
+                                                    anchor: '100%',
+                                                    fieldLabel: 'Format',
+                                                    labelWidth: 115,
+                                                    name: 'jenis_formateks',
+                                                    emptyText: 'Format nomor'
+                                                },
+                                                {
+                                                    xtype: 'textfield',
+                                                    anchor: '100%',
+                                                    fieldLabel: 'Format Backdate',
+                                                    labelWidth: 115,
+                                                    name: 'jenis_formateksbackdate',
+                                                    emptyText: 'Format nomor backdate'
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            xtype: 'fieldset',
+                                            languageable: true,
+                                            languageCode: 'jenis_format_int',
+                                            languageMode: 'title',
+                                            margin: '0 0 0 24',
+                                            padding: 0,
+                                            title: 'Internal',
+                                            items: [
+                                                {
+                                                    xtype: 'combobox',
+                                                    width: 220,
+                                                    fieldLabel: 'Digit Penomoran {#}',
+                                                    labelWidth: 115,
+                                                    name: 'jenis_digitint',
+                                                    editable: false,
+                                                    displayField: '{1}',
+                                                    store: [
+                                                        [
+                                                            '0',
+                                                            '1 digit'
+                                                        ],
+                                                        [
+                                                            '00',
+                                                            '2 digit'
+                                                        ],
+                                                        [
+                                                            '000',
+                                                            '3 digit'
+                                                        ],
+                                                        [
+                                                            '0000',
+                                                            '4 digit'
+                                                        ],
+                                                        [
+                                                            '00000',
+                                                            '5 digit'
+                                                        ],
+                                                        [
+                                                            '000000',
+                                                            '6 digit'
+                                                        ],
+                                                        [
+                                                            '0000000',
+                                                            '7 digit'
+                                                        ]
+                                                    ],
+                                                    valueField: '{0}'
+                                                },
+                                                {
+                                                    xtype: 'textfield',
+                                                    anchor: '100%',
+                                                    fieldLabel: 'Format',
+                                                    labelWidth: 115,
+                                                    name: 'jenis_formatint',
+                                                    emptyText: 'Format nomor'
+                                                },
+                                                {
+                                                    xtype: 'textfield',
+                                                    anchor: '100%',
+                                                    fieldLabel: 'Format Backdate',
+                                                    labelWidth: 115,
+                                                    name: 'jenis_formatintbackdate',
+                                                    emptyText: 'Format nomor backdate'
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'fieldset',
+                                    padding: 0,
+                                    title: 'Penomoran Awal',
+                                    items: [
+                                        {
+                                            xtype: 'checkboxfield',
+                                            anchor: '100%',
+                                            itemId: 'cbNomorAwal',
+                                            fieldLabel: 'Gunakan Penomoran Awal',
+                                            hideLabel: true,
+                                            labelWidth: 200,
+                                            name: 'jenis_nomor_awal',
+                                            boxLabel: 'Gunakan Penomoran Awal'
+                                        },
+                                        {
+                                            xtype: 'checkboxfield',
+                                            anchor: '100%',
+                                            hidden: true,
+                                            itemId: 'cbPusat',
+                                            fieldLabel: 'Gunakan Penomoran Terpusat Perjenis',
+                                            hideLabel: true,
+                                            labelWidth: 200,
+                                            name: 'jenis_terpusat_jenis',
+                                            boxLabel: 'Gunakan Penomoran Terpusat Perjenis'
+                                        },
+                                        {
+                                            xtype: 'checkboxfield',
+                                            anchor: '100%',
+                                            hidden: true,
+                                            itemId: 'cbUJ',
+                                            fieldLabel: 'Gunakan Penomoran Perunit Perjenis',
+                                            hideLabel: true,
+                                            labelWidth: 200,
+                                            name: 'jenis_terpusat_unit',
+                                            boxLabel: 'Gunakan Penomoran Perunit Perjenis'
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'fieldset',
+                                    padding: 0,
+                                    title: 'Batasi Backdate',
+                                    items: [
+                                        {
+                                            xtype: 'checkboxfield',
+                                            anchor: '100%',
+                                            name: 'jenis_batasibackdate',
+                                            boxLabel: 'Batasi akses pengajuan surat dengan tanggal backdate pada jenis ini'
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'fieldset',
+                                    padding: 0,
+                                    title: 'Batasi Penerima',
+                                    items: [
+                                        {
+                                            xtype: 'checkboxfield',
+                                            anchor: '100%',
+                                            name: 'jenis_batasipenerima',
+                                            boxLabel: 'Batasi akses penerimaan surat keluar internal'
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'fieldset',
+                                    languageable: true,
+                                    languageCode: 'batas_reupload',
+                                    languageMode: 'fieldLabel',
+                                    padding: 0,
+                                    title: 'Batas Belum Reupload',
+                                    items: [
+                                        {
+                                            xtype: 'checkboxfield',
+                                            anchor: '100%',
+                                            itemId: 'batasReupload',
+                                            name: 'jenis_isbatas',
+                                            boxLabel: 'Batasan pembuat surat yang belum upload ulang berkas'
+                                        },
+                                        {
+                                            xtype: 'numberfield',
+                                            anchor: '47%',
+                                            itemId: 'batasMax',
+                                            fieldLabel: 'Batas Maksimal',
+                                            name: 'jenis_batas_jumlah',
+                                            emptyText: 'Atur Maksimal'
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'fieldset',
+                                    languageable: true,
+                                    languageCode: 'jenis_perlu_ttd',
+                                    languageMode: 'fieldLabel',
+                                    padding: 0,
+                                    title: 'Perlu Tanda Tangan Digital',
+                                    items: [
+                                        {
+                                            xtype: 'checkboxfield',
+                                            languageMode: 'boxLabel',
+                                            languageCode: 'jenis_ttd_desc',
+                                            languageable: true,
+                                            anchor: '100%',
+                                            name: 'jenis_ttd',
+                                            boxLabel: 'Jenis perlu tanda tangan'
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'fieldset',
+                                    featureable: true,
+                                    featureName: 'jenis_perunit',
+                                    padding: 0,
+                                    title: 'Akses',
+                                    items: [
+                                        {
+                                            xtype: 'checkboxfield',
+                                            anchor: '100%',
+                                            name: 'jenis_tipe',
+                                            afterBoxLabelTpl: [
+                                                '<div class="supporttext margin-left-24">Jika diaktifkan maka jenis hanya akan tampil pada unit yang terpilih saja</div>'
+                                            ],
+                                            boxLabel: 'Batasi akses hanya untuk unit tertentu',
+                                            inputValue: '1'
+                                        },
+                                        {
+                                            xtype: 'container',
+                                            layout: {
+                                                type: 'hbox',
+                                                align: 'stretch',
+                                                padding: '0 24'
+                                            },
+                                            items: [
+                                                {
+                                                    xtype: 'button',
+                                                    roleable: true,
+                                                    roleName: 'jenis_unit',
+                                                    languageable: true,
+                                                    languageMode: 'text',
+                                                    languageCode: 'jenis_perunit_jenis',
+                                                    cls: 'x-btn-bordered',
+                                                    itemId: 'btnUnit',
+                                                    ui: 'default-toolbar',
+                                                    text: 'atur Daftar Unit'
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'fieldset',
+                                    padding: 0,
+                                    title: 'Status Aktif',
+                                    items: [
+                                        {
+                                            xtype: 'checkboxfield',
+                                            anchor: '100%',
+                                            name: 'jenis_isaktif',
+                                            boxLabel: 'Aktif',
+                                            inputValue: '1'
                                         }
                                     ]
                                 }
                             ]
                         },
                         {
-                            xtype: 'fieldset',
-                            padding: 0,
-                            title: 'Status Aktif',
-                            items: [
-                                {
-                                    xtype: 'checkboxfield',
-                                    anchor: '100%',
-                                    name: 'jenis_isaktif',
-                                    boxLabel: 'Aktif',
-                                    inputValue: '1'
-                                }
-                            ]
+                            xtype: 'sipas_pengaturan_surat_penomoran_legenda_list',
+                            maxHeight: 400,
+                            maxWidth: 250,
+                            minHeight: 400,
+                            width: 300,
+                            collapseDirection: 'left',
+                            collapsed: true,
+                            collapsible: true,
+                            region: 'east'
                         }
                     ]
                 },

@@ -39,7 +39,7 @@ Ext.define('SIPAS.store.Sipas.perintah.Combo', {
                 }
             },
             sorters: {
-                property: 'perintah_nama'
+                property: 'perintah_level'
             }
         }, cfg)]);
     }
